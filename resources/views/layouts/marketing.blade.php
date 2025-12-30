@@ -102,13 +102,8 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b" style="border-color: var(--border);">
         <nav class="max-w-6xl mx-auto px-6">
             <div class="flex items-center justify-between h-16">
-                <a href="/" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--accent);">
-                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <span class="text-lg font-semibold" style="color: var(--text-primary);">Carbex</span>
+                <a href="/">
+                    <x-logo />
                 </a>
 
                 <div class="hidden md:flex items-center space-x-8">
