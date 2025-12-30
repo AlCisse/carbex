@@ -144,7 +144,6 @@
         }
 
         /* Section spacing */
-        main { margin-top: 70px !important; }
         main > section { margin-top: 0 !important; }
 
         /* Premium card glow on hover */
