@@ -39,12 +39,12 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-sm font-semibold text-white">Assistant Carbex</h3>
-                    <p class="text-xs text-white/70">IA - Bilan Carbone</p>
+                    <h3 class="text-sm font-semibold text-white">{{ __('carbex.ai.chat.assistant_name') }}</h3>
+                    <p class="text-xs text-white/70">{{ __('carbex.ai.chat.subtitle') }}</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <button wire:click="startNewConversation" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors" title="Nouvelle conversation">
+                <button wire:click="startNewConversation" class="p-1.5 rounded-lg hover:bg-white/10 transition-colors" title="{{ __('carbex.ai.chat.new_conversation') }}">
                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
@@ -72,8 +72,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
                     </div>
-                    <h4 class="font-semibold mb-2" style="color: #0f172a;">Bonjour ! Je suis votre assistant.</h4>
-                    <p class="text-sm mb-4" style="color: #64748b;">Je peux vous aider avec votre bilan carbone, expliquer les facteurs d'emission, et suggerer des actions de reduction.</p>
+                    <h4 class="font-semibold mb-2" style="color: #0f172a;">{{ __('carbex.ai.chat.welcome') }}</h4>
+                    <p class="text-sm mb-4" style="color: #64748b;">{{ __('carbex.ai.chat.welcome_description') }}</p>
 
                     {{-- Suggested Prompts --}}
                     <div class="space-y-2">
@@ -149,7 +149,7 @@
                     <input
                         type="text"
                         wire:model="message"
-                        placeholder="Posez votre question..."
+                        placeholder="{{ __('carbex.ai.ask_question') }}"
                         class="flex-1 px-4 py-2.5 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                         style="border-color: #e2e8f0;"
                         @disabled($isLoading)
@@ -167,11 +167,11 @@
                 </form>
                 {{-- Quota Display --}}
                 <div class="flex items-center justify-between mt-2 text-xs" style="color: #94a3b8;">
-                    <span>Propulsé par Claude AI</span>
+                    <span>{{ __('carbex.ai.chat.powered_by') }}</span>
                     @if($quota['unlimited'] ?? false)
                         <span class="flex items-center gap-1">
                             <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                            Illimité
+                            {{ __('carbex.ai.chat.unlimited') }}
                         </span>
                     @else
                         <span class="flex items-center gap-1" title="Quota journalier: {{ $quota['daily_used'] }}/{{ $quota['daily_limit'] }} | Mensuel: {{ $quota['monthly_used'] }}/{{ $quota['monthly_limit'] }}">
@@ -181,7 +181,7 @@
                             @endphp
                             <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded {{ $isLow ? 'bg-orange-100 text-orange-600' : 'bg-teal-50 text-teal-600' }}">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                {{ $remaining }} restant{{ $remaining > 1 ? 's' : '' }}
+                                {{ $remaining }} {{ $remaining > 1 ? __('carbex.ai.chat.remaining_plural') : __('carbex.ai.chat.remaining') }}
                             </span>
                         </span>
                     @endif
@@ -189,9 +189,9 @@
             @else
                 {{-- AI Not Available --}}
                 <div class="text-center py-3">
-                    <p class="text-sm font-medium" style="color: #64748b;">L'IA n'est pas disponible sur votre plan</p>
+                    <p class="text-sm font-medium" style="color: #64748b;">{{ __('carbex.ai.chat.ai_not_available') }}</p>
                     <a href="{{ url('/settings/billing') }}" class="inline-flex items-center gap-1 mt-2 text-xs font-medium" style="color: #0d9488;">
-                        Passer à Premium
+                        {{ __('carbex.ai.chat.upgrade_premium') }}
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                     </a>
                 </div>
