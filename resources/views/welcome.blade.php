@@ -195,6 +195,7 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
+                    <x-language-selector />
                     @auth
                         <a href="{{ route('dashboard') }}" class="btn-primary px-4 py-2 text-sm font-medium text-white rounded-lg" style="background-color: var(--accent);">Dashboard</a>
                     @else

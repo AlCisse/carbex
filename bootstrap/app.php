@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Global web middleware for locale
+        $middleware->web(append: [
+            \App\Http\Middleware\SetLocale::class,
+        ]);
+
         // Middleware aliases for subscription features
         $middleware->alias([
             'plan.limit' => \App\Http\Middleware\CheckPlanLimits::class,
