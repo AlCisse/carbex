@@ -73,6 +73,178 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Home Page
+    |--------------------------------------------------------------------------
+    */
+
+    'home' => [
+        'title' => 'Carbex - CO2-Bilanz-Plattform für KMU',
+        'meta_description' => 'Steuern Sie Ihren CO2-Fußabdruck und treffen Sie wirkungsvolle Entscheidungen. Die KI-Plattform, die CO2-Verpflichtungen in strategische Entscheidungen für KMU verwandelt.',
+        'badge' => 'Carbon Intelligence for SMEs',
+        'csrd_badge' => 'CSRD 2025 konform',
+
+        // Navigation
+        'nav' => [
+            'features' => 'Funktionen',
+            'pricing' => 'Preise',
+            'resources' => 'Ressourcen',
+            'login' => 'Anmelden',
+            'start' => 'Loslegen',
+        ],
+
+        // Hero section
+        'hero' => [
+            'title_line1' => 'Steuern Sie Ihren',
+            'title_line2' => 'CO2-Fußabdruck.',
+            'subtitle' => 'Die KI-Plattform, die CO2-Verpflichtungen in strategische Entscheidungen für KMU verwandelt.',
+            'cta_primary' => 'Kostenlos starten',
+            'cta_secondary' => 'So funktioniert es',
+            'no_commitment' => 'Keine Verpflichtung · 10 Min · Sichere Daten',
+            'badges' => 'ADEME-Datenbank · GHG Protocol · CSRD Ready',
+        ],
+
+        // Dashboard preview
+        'preview' => [
+            'total_footprint' => 'Gesamtfußabdruck',
+            'vs_previous_year' => 'vs. Vorjahr',
+            'monthly_evolution' => 'Monatliche Entwicklung',
+        ],
+
+        // Features section
+        'features' => [
+            'title' => 'So funktioniert es',
+            'subtitle' => '3 einfache Schritte zur Verwaltung Ihres CO2-Fußabdrucks',
+
+            'step1' => [
+                'title' => 'Automatisch messen',
+                'description' => 'Importieren Sie Ihre PDF-Rechnungen, Buchhaltungsexporte oder Excel-Dateien. Unsere KI extrahiert und berechnet Ihre Emissionen nach GHG Protocol Standards.',
+                'item1' => 'PDF, Excel, ERP Import',
+                'item2' => '20.000+ ADEME-Faktoren',
+                'item3' => 'Automatisch Scope 1, 2, 3',
+            ],
+
+            'step2' => [
+                'title' => 'Mit KI verstehen',
+                'description' => 'Stellen Sie Fragen in natürlicher Sprache. Unsere KI analysiert Ihre Daten und identifiziert Reduktionshebel.',
+                'item1' => 'Datenanalyse',
+                'item2' => 'Reduktionshebel',
+                'item3' => 'CSRD/BEGES-Konformität',
+                'ai_question' => 'Was sind meine Hauptemissionsquellen?',
+                'ai_answer_title' => 'Ihre Top 3 Quellen:',
+                'ai_answer1' => 'Eingekaufte Waren (42%)',
+                'ai_answer2' => 'Reisen (28%)',
+                'ai_answer3' => 'Strom (18%)',
+            ],
+
+            'step3' => [
+                'title' => 'Effektiv reduzieren',
+                'description' => 'Erhalten Sie personalisierte Empfehlungen mit CO₂-Auswirkung und ROI-Schätzungen.',
+                'item1' => 'Maßnahmen nach Wirkung',
+                'item2' => 'ROI und Einsparungen',
+                'item3' => 'CSRD-Berichte',
+                'action1_title' => 'Elektroflotte',
+                'action1_impact' => '-180 tCO₂e',
+                'action1_details' => 'ROI: 24 Monate · Einsparungen: 12k€/Jahr',
+                'action2_title' => 'Grüne Energie',
+                'action2_impact' => '-120 tCO₂e',
+                'action2_details' => 'ROI: 6 Monate · Einsparungen: 3k€/Jahr',
+            ],
+
+            'upload' => [
+                'file1_name' => 'stromrechnung-2024.pdf',
+                'file1_category' => 'Scope 2 · Strom',
+                'file1_status' => 'Verarbeitet',
+                'file2_name' => 'buchhaltung-export.xlsx',
+                'file2_category' => 'Scope 3 · Einkäufe',
+                'file2_status' => 'In Bearbeitung',
+            ],
+        ],
+
+        // Stats section
+        'stats' => [
+            'title' => 'Warum jetzt handeln',
+            'subtitle' => 'CO2-Berichterstattung wird zum Wettbewerbsvorteil',
+            'stat1_value' => '90%',
+            'stat1_label' => 'der KMU-Emissionen stammen aus Scope 3',
+            'stat2_value' => '67%',
+            'stat2_label' => 'der Einkäufer bevorzugen verantwortungsvolle Unternehmen',
+            'stat3_value' => '85%',
+            'stat3_label' => 'der KMU sparen nach ihrer Bilanz Geld',
+        ],
+
+        // Pricing section
+        'pricing' => [
+            'title' => 'Einfache Preise',
+            'subtitle' => 'Kostenlos starten',
+
+            'free' => [
+                'name' => 'Kostenlos',
+                'price' => '0€',
+                'period' => 'für immer',
+                'feature1' => '5 Importe',
+                'feature2' => '1 Bericht',
+                'feature3' => 'Ohne KI',
+                'cta' => 'Loslegen',
+            ],
+
+            'premium_monthly' => [
+                'name' => 'Premium',
+                'price' => '39€',
+                'period' => 'pro Monat',
+                'feature1' => 'KI (monatliches Kontingent)',
+                'feature2' => 'Unbegrenzte Importe',
+                'feature3' => '5 Benutzer',
+                'cta' => 'Auswählen',
+            ],
+
+            'premium_annual' => [
+                'name' => 'Premium',
+                'price' => '400€',
+                'period' => 'pro Jahr',
+                'discount' => '-15%',
+                'feature1' => 'Unbegrenzte KI',
+                'feature2' => 'Unbegrenzte Importe',
+                'feature3' => '5 Benutzer',
+                'cta' => 'Auswählen',
+            ],
+
+            'enterprise' => [
+                'name' => 'Unternehmen',
+                'price' => '840€',
+                'period' => 'pro Jahr',
+                'old_price' => '1200€',
+                'discount' => '-30%',
+                'feature1' => 'Alles aus Premium +',
+                'feature2' => 'Unbegrenzte Benutzer',
+                'feature3' => 'API + Support',
+                'cta' => 'Kontaktieren',
+            ],
+        ],
+
+        // CTA section
+        'cta' => [
+            'title' => 'Bereit loszulegen?',
+            'subtitle' => 'Starten Sie Ihre erste CO2-Bilanz in 10 Minuten.',
+            'button' => 'Kostenlos starten',
+            'note' => 'Keine Verpflichtung · Keine Kreditkarte',
+        ],
+
+        // Footer
+        'footer' => [
+            'tagline' => 'CO2-Bilanz für KMU',
+            'product' => 'Produkt',
+            'resources' => 'Ressourcen',
+            'documentation' => 'Dokumentation',
+            'csrd_guide' => 'CSRD-Leitfaden',
+            'legal' => 'Rechtliches',
+            'privacy' => 'Datenschutz',
+            'terms' => 'AGB',
+            'compliance' => 'ADEME · GHG Protocol · DSGVO',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Data Entry / Manual Entry
     |--------------------------------------------------------------------------
     */

@@ -68,6 +68,178 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Home Page
+    |--------------------------------------------------------------------------
+    */
+
+    'home' => [
+        'title' => 'Carbex - Plateforme de Bilan Carbone pour PME',
+        'meta_description' => 'Pilotez votre empreinte carbone et décidez avec impact. La plateforme IA qui transforme les obligations carbone en décisions stratégiques pour les PME.',
+        'badge' => 'Carbon Intelligence for SMEs',
+        'csrd_badge' => 'Conforme CSRD 2025',
+
+        // Navigation
+        'nav' => [
+            'features' => 'Fonctionnalités',
+            'pricing' => 'Tarifs',
+            'resources' => 'Ressources',
+            'login' => 'Connexion',
+            'start' => 'Commencer',
+        ],
+
+        // Hero section
+        'hero' => [
+            'title_line1' => 'Pilotez votre',
+            'title_line2' => 'empreinte carbone.',
+            'subtitle' => 'La plateforme IA qui transforme les obligations carbone en décisions stratégiques pour les PME.',
+            'cta_primary' => 'Commencer gratuitement',
+            'cta_secondary' => 'Voir comment ça marche',
+            'no_commitment' => 'Sans engagement · 10 min · Données sécurisées',
+            'badges' => 'Base ADEME · GHG Protocol · CSRD Ready',
+        ],
+
+        // Dashboard preview
+        'preview' => [
+            'total_footprint' => 'Empreinte totale',
+            'vs_previous_year' => 'vs année précédente',
+            'monthly_evolution' => 'Évolution mensuelle',
+        ],
+
+        // Features section
+        'features' => [
+            'title' => 'Comment ça marche',
+            'subtitle' => '3 étapes simples pour piloter votre empreinte carbone',
+
+            'step1' => [
+                'title' => 'Mesurez automatiquement',
+                'description' => 'Importez vos factures PDF, exports comptables ou fichiers Excel. Notre IA extrait et calcule vos émissions selon les normes GHG Protocol.',
+                'item1' => 'Import PDF, Excel, ERP',
+                'item2' => '20 000+ facteurs ADEME',
+                'item3' => 'Scope 1, 2, 3 automatique',
+            ],
+
+            'step2' => [
+                'title' => 'Comprenez avec l\'IA',
+                'description' => 'Posez vos questions en langage naturel. Notre IA analyse vos données et identifie les leviers de réduction.',
+                'item1' => 'Analyse de vos données',
+                'item2' => 'Leviers de réduction',
+                'item3' => 'Conformité CSRD/BEGES',
+                'ai_question' => 'Quels sont mes principaux postes d\'émission ?',
+                'ai_answer_title' => 'Vos 3 principaux postes :',
+                'ai_answer1' => 'Achats de biens (42%)',
+                'ai_answer2' => 'Déplacements (28%)',
+                'ai_answer3' => 'Électricité (18%)',
+            ],
+
+            'step3' => [
+                'title' => 'Réduisez concrètement',
+                'description' => 'Recevez des recommandations personnalisées avec estimation d\'impact CO₂ et ROI.',
+                'item1' => 'Actions par impact',
+                'item2' => 'ROI et économies',
+                'item3' => 'Rapports CSRD',
+                'action1_title' => 'Flotte électrique',
+                'action1_impact' => '-180 tCO₂e',
+                'action1_details' => 'ROI : 24 mois · Économies : 12k€/an',
+                'action2_title' => 'Énergie verte',
+                'action2_impact' => '-120 tCO₂e',
+                'action2_details' => 'ROI : 6 mois · Économies : 3k€/an',
+            ],
+
+            'upload' => [
+                'file1_name' => 'facture-edf-2024.pdf',
+                'file1_category' => 'Scope 2 · Électricité',
+                'file1_status' => 'Traité',
+                'file2_name' => 'export-comptable.xlsx',
+                'file2_category' => 'Scope 3 · Achats',
+                'file2_status' => 'En cours',
+            ],
+        ],
+
+        // Stats section
+        'stats' => [
+            'title' => 'Pourquoi agir maintenant',
+            'subtitle' => 'Le bilan carbone devient un avantage compétitif',
+            'stat1_value' => '90%',
+            'stat1_label' => 'des émissions PME viennent du Scope 3',
+            'stat2_value' => '67%',
+            'stat2_label' => 'des acheteurs préfèrent les entreprises responsables',
+            'stat3_value' => '85%',
+            'stat3_label' => 'des PME font des économies après leur bilan',
+        ],
+
+        // Pricing section
+        'pricing' => [
+            'title' => 'Tarifs simples',
+            'subtitle' => 'Commencez gratuitement',
+
+            'free' => [
+                'name' => 'Gratuit',
+                'price' => '0€',
+                'period' => 'pour toujours',
+                'feature1' => '5 imports',
+                'feature2' => '1 rapport',
+                'feature3' => 'Sans IA',
+                'cta' => 'Commencer',
+            ],
+
+            'premium_monthly' => [
+                'name' => 'Premium',
+                'price' => '39€',
+                'period' => 'par mois',
+                'feature1' => 'IA (quota mensuel)',
+                'feature2' => 'Imports illimités',
+                'feature3' => '5 utilisateurs',
+                'cta' => 'Choisir',
+            ],
+
+            'premium_annual' => [
+                'name' => 'Premium',
+                'price' => '400€',
+                'period' => 'par an',
+                'discount' => '-15%',
+                'feature1' => 'IA illimitée',
+                'feature2' => 'Imports illimités',
+                'feature3' => '5 utilisateurs',
+                'cta' => 'Choisir',
+            ],
+
+            'enterprise' => [
+                'name' => 'Entreprise',
+                'price' => '840€',
+                'period' => 'par an',
+                'old_price' => '1200€',
+                'discount' => '-30%',
+                'feature1' => 'Tout Premium +',
+                'feature2' => 'Users illimités',
+                'feature3' => 'API + Support',
+                'cta' => 'Contacter',
+            ],
+        ],
+
+        // CTA section
+        'cta' => [
+            'title' => 'Prêt à commencer ?',
+            'subtitle' => 'Lancez votre premier bilan carbone en 10 minutes.',
+            'button' => 'Commencer gratuitement',
+            'note' => 'Sans engagement · Sans carte bancaire',
+        ],
+
+        // Footer
+        'footer' => [
+            'tagline' => 'Bilan carbone pour PME',
+            'product' => 'Produit',
+            'resources' => 'Ressources',
+            'documentation' => 'Documentation',
+            'csrd_guide' => 'Guide CSRD',
+            'legal' => 'Légal',
+            'privacy' => 'Confidentialité',
+            'terms' => 'CGU',
+            'compliance' => 'ADEME · GHG Protocol · RGPD',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Data Entry / Manual Entry
     |--------------------------------------------------------------------------
     */

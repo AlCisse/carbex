@@ -59,6 +59,178 @@ return [
         'no' => 'No',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Home Page
+    |--------------------------------------------------------------------------
+    */
+
+    'home' => [
+        'title' => 'Carbex - Carbon Footprint Platform for SMEs',
+        'meta_description' => 'Take control of your carbon footprint and make impactful decisions. The AI platform that turns carbon obligations into strategic decisions for SMEs.',
+        'badge' => 'Carbon Intelligence for SMEs',
+        'csrd_badge' => 'CSRD 2025 Compliant',
+
+        // Navigation
+        'nav' => [
+            'features' => 'Features',
+            'pricing' => 'Pricing',
+            'resources' => 'Resources',
+            'login' => 'Login',
+            'start' => 'Get Started',
+        ],
+
+        // Hero section
+        'hero' => [
+            'title_line1' => 'Take control of your',
+            'title_line2' => 'carbon footprint.',
+            'subtitle' => 'The AI platform that turns carbon obligations into strategic decisions for SMEs.',
+            'cta_primary' => 'Start for free',
+            'cta_secondary' => 'See how it works',
+            'no_commitment' => 'No commitment · 10 min · Secure data',
+            'badges' => 'ADEME Database · GHG Protocol · CSRD Ready',
+        ],
+
+        // Dashboard preview
+        'preview' => [
+            'total_footprint' => 'Total footprint',
+            'vs_previous_year' => 'vs previous year',
+            'monthly_evolution' => 'Monthly evolution',
+        ],
+
+        // Features section
+        'features' => [
+            'title' => 'How it works',
+            'subtitle' => '3 simple steps to manage your carbon footprint',
+
+            'step1' => [
+                'title' => 'Measure automatically',
+                'description' => 'Import your PDF invoices, accounting exports or Excel files. Our AI extracts and calculates your emissions according to GHG Protocol standards.',
+                'item1' => 'PDF, Excel, ERP import',
+                'item2' => '20,000+ ADEME factors',
+                'item3' => 'Automatic Scope 1, 2, 3',
+            ],
+
+            'step2' => [
+                'title' => 'Understand with AI',
+                'description' => 'Ask questions in natural language. Our AI analyzes your data and identifies reduction levers.',
+                'item1' => 'Data analysis',
+                'item2' => 'Reduction levers',
+                'item3' => 'CSRD/BEGES compliance',
+                'ai_question' => 'What are my main emission sources?',
+                'ai_answer_title' => 'Your top 3 sources:',
+                'ai_answer1' => 'Purchased goods (42%)',
+                'ai_answer2' => 'Travel (28%)',
+                'ai_answer3' => 'Electricity (18%)',
+            ],
+
+            'step3' => [
+                'title' => 'Reduce effectively',
+                'description' => 'Receive personalized recommendations with CO₂ impact and ROI estimates.',
+                'item1' => 'Actions by impact',
+                'item2' => 'ROI and savings',
+                'item3' => 'CSRD reports',
+                'action1_title' => 'Electric fleet',
+                'action1_impact' => '-180 tCO₂e',
+                'action1_details' => 'ROI: 24 months · Savings: €12k/year',
+                'action2_title' => 'Green energy',
+                'action2_impact' => '-120 tCO₂e',
+                'action2_details' => 'ROI: 6 months · Savings: €3k/year',
+            ],
+
+            'upload' => [
+                'file1_name' => 'electricity-invoice-2024.pdf',
+                'file1_category' => 'Scope 2 · Electricity',
+                'file1_status' => 'Processed',
+                'file2_name' => 'accounting-export.xlsx',
+                'file2_category' => 'Scope 3 · Purchases',
+                'file2_status' => 'Processing',
+            ],
+        ],
+
+        // Stats section
+        'stats' => [
+            'title' => 'Why act now',
+            'subtitle' => 'Carbon reporting becomes a competitive advantage',
+            'stat1_value' => '90%',
+            'stat1_label' => 'of SME emissions come from Scope 3',
+            'stat2_value' => '67%',
+            'stat2_label' => 'of buyers prefer responsible companies',
+            'stat3_value' => '85%',
+            'stat3_label' => 'of SMEs save money after their assessment',
+        ],
+
+        // Pricing section
+        'pricing' => [
+            'title' => 'Simple pricing',
+            'subtitle' => 'Start for free',
+
+            'free' => [
+                'name' => 'Free',
+                'price' => '€0',
+                'period' => 'forever',
+                'feature1' => '5 imports',
+                'feature2' => '1 report',
+                'feature3' => 'No AI',
+                'cta' => 'Get Started',
+            ],
+
+            'premium_monthly' => [
+                'name' => 'Premium',
+                'price' => '€39',
+                'period' => 'per month',
+                'feature1' => 'AI (monthly quota)',
+                'feature2' => 'Unlimited imports',
+                'feature3' => '5 users',
+                'cta' => 'Choose',
+            ],
+
+            'premium_annual' => [
+                'name' => 'Premium',
+                'price' => '€400',
+                'period' => 'per year',
+                'discount' => '-15%',
+                'feature1' => 'Unlimited AI',
+                'feature2' => 'Unlimited imports',
+                'feature3' => '5 users',
+                'cta' => 'Choose',
+            ],
+
+            'enterprise' => [
+                'name' => 'Enterprise',
+                'price' => '€840',
+                'period' => 'per year',
+                'old_price' => '€1200',
+                'discount' => '-30%',
+                'feature1' => 'Everything in Premium +',
+                'feature2' => 'Unlimited users',
+                'feature3' => 'API + Support',
+                'cta' => 'Contact',
+            ],
+        ],
+
+        // CTA section
+        'cta' => [
+            'title' => 'Ready to get started?',
+            'subtitle' => 'Launch your first carbon assessment in 10 minutes.',
+            'button' => 'Start for free',
+            'note' => 'No commitment · No credit card',
+        ],
+
+        // Footer
+        'footer' => [
+            'tagline' => 'Carbon footprint for SMEs',
+            'product' => 'Product',
+            'resources' => 'Resources',
+            'documentation' => 'Documentation',
+            'csrd_guide' => 'CSRD Guide',
+            'legal' => 'Legal',
+            'privacy' => 'Privacy',
+            'terms' => 'Terms',
+            'compliance' => 'ADEME · GHG Protocol · GDPR',
+        ],
+    ],
+
     'data_entry' => [
         'title' => 'Manual Entry',
         'subtitle' => 'Record activities not captured by bank transactions.',
