@@ -27,8 +27,14 @@
             {{ $slot }}
         </div>
 
-        <p class="mt-6 text-center text-sm text-gray-500">
-            Plateforme de comptabilite carbone pour PME
+        @isset($footer)
+        <div class="mt-6 text-center">
+            {{ $footer }}
+        </div>
+        @endisset
+
+        <p class="mt-4 text-center text-sm text-gray-500">
+            {{ __('carbex.tagline') }}
         </p>
     </div>
 
