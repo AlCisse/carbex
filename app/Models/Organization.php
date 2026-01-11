@@ -49,6 +49,17 @@ class Organization extends Model
         'onboarding_completed',
         'onboarded_at',
         'status',
+        // ISO 14064-1 fields
+        'consolidation_method',
+        'boundary_description',
+        'boundary_definition_date',
+        'base_year',
+        'base_year_emissions_tco2e',
+        'base_year_justification',
+        'recalculation_policy',
+        'recalculation_threshold_percent',
+        'last_verification_date',
+        'verification_level',
     ];
 
     /**
@@ -61,6 +72,11 @@ class Organization extends Model
         'onboarding_completed' => 'boolean',
         'onboarded_at' => 'datetime',
         'annual_turnover' => 'decimal:2',
+        // ISO 14064-1 casts
+        'boundary_definition_date' => 'date',
+        'base_year_emissions_tco2e' => 'decimal:4',
+        'recalculation_threshold_percent' => 'decimal:2',
+        'last_verification_date' => 'date',
     ];
 
     /**
@@ -253,5 +269,49 @@ class Organization extends Model
         return $this->belongsToMany(Badge::class, 'organization_badges')
             ->withPivot(['earned_at', 'share_token', 'metadata'])
             ->withTimestamps();
+    }
+
+    /**
+     * Get the GHG removals (carbon sinks/offsets) for the organization.
+     * ISO 14064-1 Section 5.2.4
+     */
+    public function ghgRemovals(): HasMany
+    {
+        return $this->hasMany(GhgRemoval::class);
+    }
+
+    /**
+     * Get the GHG verifications for the organization.
+     * ISO 14064-1 Section 7 / ISO 14064-3
+     */
+    public function ghgVerifications(): HasMany
+    {
+        return $this->hasMany(GhgVerification::class);
+    }
+
+    /**
+     * Get the current verification level label.
+     */
+    public function getVerificationLevelLabelAttribute(): string
+    {
+        return match ($this->verification_level) {
+            'internal' => 'Internal Review',
+            'limited' => 'Limited Assurance',
+            'reasonable' => 'Reasonable Assurance',
+            default => 'Not Verified',
+        };
+    }
+
+    /**
+     * Get the consolidation method label.
+     */
+    public function getConsolidationMethodLabelAttribute(): string
+    {
+        return match ($this->consolidation_method) {
+            'operational_control' => 'Operational Control',
+            'financial_control' => 'Financial Control',
+            'equity_share' => 'Equity Share',
+            default => 'Not Defined',
+        };
     }
 }
