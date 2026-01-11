@@ -1,0 +1,253 @@
+# ===========================================
+# Carbex - Docker Swarm Stack
+# ===========================================
+# Deploy: docker stack deploy -c stack.yml carbex
+# ===========================================
+
+version: "3.8"
+
+services:
+  # -----------------------------------------
+  # Application
+  # -----------------------------------------
+  app:
+    image: ghcr.io/carbex/carbex-app:${APP_VERSION:-latest}
+    networks:
+      - traefik-public
+      - internal
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        order: start-first
+      rollback_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.carbex.rule=Host(`app.carbex.eu`)"
+        - "traefik.http.routers.carbex.entrypoints=websecure"
+        - "traefik.http.routers.carbex.tls.certresolver=letsencrypt"
+        - "traefik.http.services.carbex.loadbalancer.server.port=80"
+        - "traefik.http.routers.carbex.middlewares=security-headers@file"
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: https://app.carbex.eu
+      LOG_CHANNEL: stderr
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: carbex
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      MEILISEARCH_HOST: http://meilisearch:7700
+      CACHE_DRIVER: redis
+      QUEUE_CONNECTION: redis
+      SESSION_DRIVER: redis
+    secrets:
+      - app_key
+      - db_password
+      - redis_password
+      - meilisearch_key
+      - stripe_secret
+      - anthropic_api_key
+      - bridge_client_secret
+      - finapi_client_secret
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # -----------------------------------------
+  # Queue Worker (Horizon)
+  # -----------------------------------------
+  horizon:
+    image: ghcr.io/carbex/carbex-app:${APP_VERSION:-latest}
+    command: php artisan horizon
+    networks:
+      - internal
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    environment:
+      APP_ENV: production
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    secrets:
+      - app_key
+      - db_password
+      - redis_password
+    depends_on:
+      - postgres
+      - redis
+
+  # -----------------------------------------
+  # Scheduler
+  # -----------------------------------------
+  scheduler:
+    image: ghcr.io/carbex/carbex-app:${APP_VERSION:-latest}
+    command: sh -c "while true; do php artisan schedule:run --verbose --no-interaction; sleep 60; done"
+    networks:
+      - internal
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+    environment:
+      APP_ENV: production
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    secrets:
+      - app_key
+      - db_password
+      - redis_password
+
+  # -----------------------------------------
+  # PostgreSQL
+  # -----------------------------------------
+  postgres:
+    image: postgres:17-alpine
+    networks:
+      - internal
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          memory: 512M
+    environment:
+      POSTGRES_DB: carbex
+      POSTGRES_USER: carbex
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carbex -d carbex"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -----------------------------------------
+  # Redis
+  # -----------------------------------------
+  redis:
+    image: redis:7.4-alpine
+    command: redis-server --requirepass_file /run/secrets/redis_password --appendonly yes
+    networks:
+      - internal
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    secrets:
+      - redis_password
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -----------------------------------------
+  # Meilisearch
+  # -----------------------------------------
+  meilisearch:
+    image: getmeili/meilisearch:v1.11
+    networks:
+      - internal
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    environment:
+      MEILI_ENV: production
+      MEILI_MASTER_KEY_FILE: /run/secrets/meilisearch_key
+      MEILI_NO_ANALYTICS: "true"
+    secrets:
+      - meilisearch_key
+    volumes:
+      - meilisearch_data:/meili_data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7700/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# -----------------------------------------
+# Networks
+# -----------------------------------------
+networks:
+  traefik-public:
+    external: true
+  internal:
+    driver: overlay
+    attachable: true
+
+# -----------------------------------------
+# Volumes
+# -----------------------------------------
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  meilisearch_data:
+    driver: local
+
+# -----------------------------------------
+# Secrets
+# -----------------------------------------
+secrets:
+  app_key:
+    external: true
+  db_password:
+    external: true
+  redis_password:
+    external: true
+  meilisearch_key:
+    external: true
+  stripe_secret:
+    external: true
+  anthropic_api_key:
+    external: true
+  bridge_client_secret:
+    external: true
+  finapi_client_secret:
+    external: true

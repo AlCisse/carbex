@@ -1,0 +1,71 @@
+# ===========================================
+# Traefik Configuration
+# Carbex - Reverse Proxy & SSL
+# ===========================================
+
+# API and Dashboard
+api:
+  dashboard: true
+  insecure: false
+
+# Entry Points
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+
+  websecure:
+    address: ":443"
+    http:
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - security-headers@file
+
+# Providers
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    swarmMode: true
+    exposedByDefault: false
+    network: traefik-public
+
+  file:
+    filename: /etc/traefik/dynamic.yml
+    watch: true
+
+# Certificate Resolvers
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: ssl@carbex.eu
+      storage: /letsencrypt/acme.json
+      httpChallenge:
+        entryPoint: web
+      # Staging server for testing (uncomment for production)
+      # caServer: https://acme-v02.api.letsencrypt.org/directory
+
+# Logging
+log:
+  level: INFO
+  format: json
+
+accessLog:
+  format: json
+  filters:
+    statusCodes:
+      - "400-599"
+
+# Metrics (Prometheus)
+metrics:
+  prometheus:
+    buckets:
+      - 0.1
+      - 0.3
+      - 1.2
+      - 5.0

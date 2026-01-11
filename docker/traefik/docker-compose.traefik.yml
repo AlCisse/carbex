@@ -1,0 +1,57 @@
+# ===========================================
+# Traefik Docker Compose for Swarm
+# Deploy: docker stack deploy -c docker-compose.traefik.yml traefik
+# ===========================================
+
+version: "3.8"
+
+services:
+  traefik:
+    image: traefik:v3.2
+    command:
+      - "--configFile=/etc/traefik/traefik.yml"
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+      - target: 443
+        published: 443
+        protocol: tcp
+        mode: host
+    networks:
+      - traefik-public
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-certificates:/letsencrypt
+    configs:
+      - source: traefik-config
+        target: /etc/traefik/traefik.yml
+      - source: traefik-dynamic
+        target: /etc/traefik/dynamic.yml
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role == manager
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+
+networks:
+  traefik-public:
+    external: true
+
+volumes:
+  traefik-certificates:
+    driver: local
+
+configs:
+  traefik-config:
+    file: ./traefik.yml
+  traefik-dynamic:
+    file: ./dynamic.yml

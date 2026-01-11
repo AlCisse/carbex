@@ -1,0 +1,98 @@
+# ===========================================
+# Fail2Ban Configuration
+# Carbex - Intrusion Prevention
+# ===========================================
+
+[DEFAULT]
+# Ban duration: 1 hour
+bantime = 3600
+
+# Detection window: 10 minutes
+findtime = 600
+
+# Max retries before ban
+maxretry = 5
+
+# Email notifications (configure sendmail)
+destemail = security@carbex.eu
+sender = fail2ban@carbex.eu
+mta = sendmail
+
+# Action: ban IP and send email
+action = %(action_mwl)s
+
+# Ignore local IPs
+ignoreip = 127.0.0.1/8 ::1 10.0.0.0/8
+
+# ===========================================
+# SSH Protection
+# ===========================================
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+bantime = 86400
+
+# ===========================================
+# Nginx Protection
+# ===========================================
+[nginx-http-auth]
+enabled = true
+filter = nginx-http-auth
+port = http,https
+logpath = /var/log/nginx/*error*.log
+maxretry = 3
+
+[nginx-botsearch]
+enabled = true
+filter = nginx-botsearch
+port = http,https
+logpath = /var/log/nginx/*access*.log
+maxretry = 2
+
+[nginx-badbots]
+enabled = true
+filter = nginx-badbots
+port = http,https
+logpath = /var/log/nginx/*access*.log
+maxretry = 2
+
+[nginx-noscript]
+enabled = true
+filter = nginx-noscript
+port = http,https
+logpath = /var/log/nginx/*access*.log
+maxretry = 6
+
+# ===========================================
+# Laravel/Carbex Specific
+# ===========================================
+[carbex-login]
+enabled = true
+filter = carbex-login
+port = http,https
+logpath = /var/www/html/storage/logs/laravel.log
+maxretry = 5
+findtime = 300
+bantime = 7200
+
+[carbex-api]
+enabled = true
+filter = carbex-api
+port = http,https
+logpath = /var/www/html/storage/logs/laravel.log
+maxretry = 100
+findtime = 60
+bantime = 3600
+
+# ===========================================
+# Docker Protection
+# ===========================================
+[docker-auth]
+enabled = true
+filter = docker-auth
+port = 2376
+logpath = /var/log/docker.log
+maxretry = 3

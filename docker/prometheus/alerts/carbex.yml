@@ -1,0 +1,135 @@
+groups:
+  - name: carbex-application
+    rules:
+      # High error rate
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(http_requests_total{status=~"5.."}[5m]))
+          / sum(rate(http_requests_total[5m])) * 100 > 5
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | printf \"%.2f\" }}% (threshold: 5%)"
+
+      # Slow response time
+      - alert: SlowResponseTime
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(http_request_duration_seconds_bucket[5m])) by (le)
+          ) > 2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow response times detected"
+          description: "95th percentile response time is {{ $value | printf \"%.2f\" }}s"
+
+      # Queue jobs backing up
+      - alert: QueueBacklog
+        expr: carbex_queue_size > 500
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Queue backlog detected"
+          description: "Queue size is {{ $value }} jobs"
+
+      # Failed queue jobs
+      - alert: FailedQueueJobs
+        expr: increase(horizon_failed_jobs_total[1h]) > 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High number of failed queue jobs"
+          description: "{{ $value }} jobs failed in the last hour"
+
+      # Bank sync failures
+      - alert: BankSyncFailures
+        expr: |
+          increase(carbex_bank_syncs_total{status="failed"}[1h])
+          / increase(carbex_bank_syncs_total[1h]) * 100 > 20
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High bank sync failure rate"
+          description: "{{ $value | printf \"%.1f\" }}% of bank syncs are failing"
+
+      # No emissions calculated
+      - alert: NoEmissionsCalculated
+        expr: increase(carbex_emissions_calculated_total[1h]) == 0
+        for: 2h
+        labels:
+          severity: warning
+        annotations:
+          summary: "No emissions calculated"
+          description: "No emissions have been calculated in the last 2 hours during business hours"
+
+  - name: carbex-infrastructure
+    rules:
+      # High CPU usage
+      - alert: HighCPUUsage
+        expr: |
+          100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is {{ $value | printf \"%.1f\" }}%"
+
+      # High memory usage
+      - alert: HighMemoryUsage
+        expr: |
+          (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value | printf \"%.1f\" }}%"
+
+      # Disk space low
+      - alert: DiskSpaceLow
+        expr: |
+          (node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"}
+          / node_filesystem_size_bytes) * 100 < 15
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space on {{ $labels.mountpoint }}"
+          description: "Only {{ $value | printf \"%.1f\" }}% disk space remaining"
+
+      # PostgreSQL connection pool
+      - alert: PostgresConnectionPoolExhausted
+        expr: pg_stat_activity_count / pg_settings_max_connections * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL connection pool near capacity"
+          description: "{{ $value | printf \"%.1f\" }}% of connections in use"
+
+      # Redis memory
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes * 100 > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Redis memory usage high"
+          description: "Redis is using {{ $value | printf \"%.1f\" }}% of max memory"
+
+      # Container restarts
+      - alert: ContainerRestarting
+        expr: increase(kube_pod_container_status_restarts_total[1h]) > 3
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.container }} restarting"
+          description: "Container has restarted {{ $value }} times in the last hour"
