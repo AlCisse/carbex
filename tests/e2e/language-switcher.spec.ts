@@ -86,17 +86,13 @@ test.describe('Language Switcher', () => {
   });
 
   test('should persist language when navigating to login', async ({ page }) => {
-    // Switch to English
-    const langButton = page.locator('button').filter({ hasText: /🇫🇷|🇬🇧|🇩🇪/ }).first();
-    await langButton.click();
-    await page.waitForTimeout(500);
-    const englishLink = page.locator('a').filter({ hasText: 'English' });
-    await englishLink.waitFor({ state: 'visible', timeout: 5000 });
-    await englishLink.click();
+    // Switch to English using direct URL
+    await page.goto('/language/en');
     await page.waitForLoadState('networkidle');
 
     // Navigate to login
     await page.goto('/login');
+    await page.waitForLoadState('networkidle');
 
     // Check that login page is in English
     await expect(page.locator('body')).toContainText(/Email|Password|Sign in|Login/i);
