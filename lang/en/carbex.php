@@ -1431,6 +1431,41 @@ return [
         'share_badge' => 'Share this badge',
         'share_link' => 'Share link',
         'share_text' => 'I earned a badge on Carbex!',
+        'badge_earned_by' => 'Badge earned by',
+        'discover_carbex' => 'Discover Carbex',
+        'categories' => [
+            'assessment' => 'Assessment',
+            'reduction' => 'Reduction',
+            'engagement' => 'Engagement',
+            'expert' => 'Expert',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Promote (TrackZero-inspired)
+    |--------------------------------------------------------------------------
+    */
+
+    'promote' => [
+        'showcase_title' => 'Sustainability Showcase',
+        'showcase_desc' => 'Share your achievements and environmental commitments with stakeholders.',
+        'sustainability_journey' => 'Your sustainability journey',
+        'badges_earned' => 'Badges earned',
+        'share' => 'Share',
+        'share_badge' => 'Share this badge',
+        'embed_widget' => 'Website widget',
+        'embed_desc' => 'Copy this code and paste it into your website to display this badge.',
+        'download' => 'Download',
+        'copy_link' => 'Copy link',
+        'copy_code' => 'Copy code',
+        'no_badges_desc' => 'Complete your carbon assessment and implement reduction actions to earn your first badges.',
+        'view_all_badges' => 'View all badges',
+        'linkedin_share_text' => 'We earned the "%s" badge on Carbex! %s is committed to the ecological transition.',
+        'twitter_share_text' => 'We earned the "%s" badge on @CarbexApp! %s is committed to climate action.',
+        'email_signature' => 'Email signature',
+        'social_kit' => 'Social media kit',
+        'marketing_assets' => 'Marketing assets',
     ],
 
     /*

@@ -1611,6 +1611,41 @@ return [
         'share_badge' => 'Dieses Abzeichen teilen',
         'share_link' => 'Link teilen',
         'share_text' => 'Ich habe ein Abzeichen bei Carbex verdient!',
+        'badge_earned_by' => 'Abzeichen erhalten von',
+        'discover_carbex' => 'Carbex entdecken',
+        'categories' => [
+            'assessment' => 'Bewertung',
+            'reduction' => 'Reduktion',
+            'engagement' => 'Engagement',
+            'expert' => 'Experte',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Promote (TrackZero-inspired)
+    |--------------------------------------------------------------------------
+    */
+
+    'promote' => [
+        'showcase_title' => 'Nachhaltigkeits-Schaufenster',
+        'showcase_desc' => 'Teilen Sie Ihre Erfolge und Umweltverpflichtungen mit Stakeholdern.',
+        'sustainability_journey' => 'Ihre Nachhaltigkeitsreise',
+        'badges_earned' => 'Verdiente Abzeichen',
+        'share' => 'Teilen',
+        'share_badge' => 'Dieses Abzeichen teilen',
+        'embed_widget' => 'Website-Widget',
+        'embed_desc' => 'Kopieren Sie diesen Code und fügen Sie ihn in Ihre Website ein, um dieses Abzeichen anzuzeigen.',
+        'download' => 'Herunterladen',
+        'copy_link' => 'Link kopieren',
+        'copy_code' => 'Code kopieren',
+        'no_badges_desc' => 'Vervollständigen Sie Ihre CO2-Bilanz und setzen Sie Reduktionsmaßnahmen um, um Ihre ersten Abzeichen zu erhalten.',
+        'view_all_badges' => 'Alle Abzeichen anzeigen',
+        'linkedin_share_text' => 'Wir haben das Abzeichen "%s" bei Carbex erhalten! %s engagiert sich für die ökologische Wende.',
+        'twitter_share_text' => 'Wir haben das Abzeichen "%s" bei @CarbexApp erhalten! %s engagiert sich für Klimaschutz.',
+        'email_signature' => 'E-Mail-Signatur',
+        'social_kit' => 'Social-Media-Kit',
+        'marketing_assets' => 'Marketing-Assets',
     ],
 
     /*

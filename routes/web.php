@@ -170,6 +170,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('badges.share')
         ->withoutMiddleware(['auth', 'verified']);
 
+    // Promote (Badge Showcase, Sharing) - TrackZero-inspired
+    Route::get('/promote/showcase', App\Livewire\Promote\BadgeShowcase::class)
+        ->name('promote.showcase');
+
+    Route::get('/promote/share', function () {
+        return view('promote.share');
+    })->name('promote.share');
+
     // Plan de transition
     Route::get('/transition-plan', function () {
         return view('transition-plan.index');

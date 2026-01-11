@@ -1707,6 +1707,41 @@ return [
         'share_badge' => 'Partager ce badge',
         'share_link' => 'Lien de partage',
         'share_text' => 'J\'ai obtenu un badge sur Carbex !',
+        'badge_earned_by' => 'Badge obtenu par',
+        'discover_carbex' => 'Découvrir Carbex',
+        'categories' => [
+            'assessment' => 'Évaluation',
+            'reduction' => 'Réduction',
+            'engagement' => 'Engagement',
+            'expert' => 'Expert',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Promote (TrackZero-inspired)
+    |--------------------------------------------------------------------------
+    */
+
+    'promote' => [
+        'showcase_title' => 'Vitrine durabilité',
+        'showcase_desc' => 'Partagez vos réussites et engagements environnementaux avec vos parties prenantes.',
+        'sustainability_journey' => 'Votre parcours durabilité',
+        'badges_earned' => 'Badges obtenus',
+        'share' => 'Partager',
+        'share_badge' => 'Partager ce badge',
+        'embed_widget' => 'Widget pour site web',
+        'embed_desc' => 'Copiez ce code et collez-le dans votre site web pour afficher ce badge.',
+        'download' => 'Télécharger',
+        'copy_link' => 'Copier le lien',
+        'copy_code' => 'Copier le code',
+        'no_badges_desc' => 'Complétez votre bilan carbone et mettez en place des actions de réduction pour obtenir vos premiers badges.',
+        'view_all_badges' => 'Voir tous les badges',
+        'linkedin_share_text' => 'Nous avons obtenu le badge "%s" sur Carbex ! Notre entreprise %s s\'engage pour la transition écologique.',
+        'twitter_share_text' => 'Nous avons obtenu le badge "%s" sur @CarbexApp ! %s s\'engage pour le climat.',
+        'email_signature' => 'Signature email',
+        'social_kit' => 'Kit réseaux sociaux',
+        'marketing_assets' => 'Assets marketing',
     ],
 
     /*
