@@ -1641,4 +1641,91 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employee Engagement (T180-T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'engage' => [
+        'title' => 'Engagement des employés',
+        'description' => 'Sensibilisez vos équipes et mesurez votre empreinte carbone personnelle.',
+        'your_points' => 'Vos points',
+
+        'tabs' => [
+            'quiz' => 'Quiz climat',
+            'calculator' => 'Calculateur',
+            'challenges' => 'Défis',
+            'leaderboard' => 'Classement',
+        ],
+
+        'quiz' => [
+            'question' => 'Question',
+            'completed' => 'Quiz terminé !',
+            'excellent' => 'Excellent ! Vous êtes un expert du climat.',
+            'good' => 'Bon résultat ! Continuez à apprendre.',
+            'keep_learning' => 'Continuez à vous informer sur le climat.',
+            'retry' => 'Recommencer le quiz',
+        ],
+
+        'calculator' => [
+            'title' => 'Calculateur d\'empreinte personnelle',
+            'commute_distance' => 'Distance domicile-travail (km)',
+            'commute_mode' => 'Mode de transport',
+            'diet' => 'Régime alimentaire',
+            'flights_short' => 'Vols court-courrier / an',
+            'flights_long' => 'Vols long-courrier / an',
+            'heating_type' => 'Type de chauffage',
+            'calculate' => 'Calculer mon empreinte',
+            'your_footprint' => 'Votre empreinte carbone',
+            'tonnes_year' => 't CO2e/an',
+            'breakdown' => 'Répartition',
+            'recalculate' => 'Recalculer',
+
+            'modes' => [
+                'car_petrol' => 'Voiture essence',
+                'car_diesel' => 'Voiture diesel',
+                'car_electric' => 'Voiture électrique',
+                'public_transport' => 'Transports en commun',
+                'bike' => 'Vélo',
+                'walk' => 'Marche',
+            ],
+
+            'diets' => [
+                'vegan' => 'Végan',
+                'vegetarian' => 'Végétarien',
+                'mixed' => 'Mixte',
+                'meat_heavy' => 'Riche en viande',
+            ],
+
+            'heating' => [
+                'gas' => 'Gaz naturel',
+                'oil' => 'Fioul',
+                'electric' => 'Électrique',
+                'heat_pump' => 'Pompe à chaleur',
+            ],
+        ],
+
+        'challenges' => [
+            'title' => 'Défis éco-responsables',
+            'no_car_week' => 'Semaine sans voiture',
+            'meatless_monday' => 'Lundi sans viande',
+            'energy_saver' => 'Économiseur d\'énergie',
+            'bike_to_work' => 'Vélo au travail',
+            'join' => 'Rejoindre',
+            'leave' => 'Quitter',
+            'mark_complete' => 'Marquer comme terminé',
+            'co2_saved' => 'CO2 économisé',
+        ],
+
+        'leaderboard' => [
+            'title' => 'Classement',
+            'participate' => 'Participer au classement',
+            'your_rank' => 'Votre rang',
+            'rank' => 'Rang',
+            'name' => 'Nom',
+            'points' => 'Points',
+        ],
+    ],
+
 ];

@@ -4,7 +4,7 @@ namespace Tests\Browser;
 
 use App\Models\Organization;
 use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTruncation;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
@@ -13,7 +13,7 @@ use Tests\DuskTestCase;
  */
 class EmployeeEngagementTest extends DuskTestCase
 {
-    use DatabaseMigrations;
+    use DatabaseTruncation;
 
     private User $user;
 
@@ -30,7 +30,6 @@ class EmployeeEngagementTest extends DuskTestCase
         $this->user = User::factory()->create([
             'organization_id' => $this->organization->id,
             'email_verified_at' => now(),
-            'settings' => [],
         ]);
     }
 

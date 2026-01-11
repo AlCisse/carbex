@@ -1365,4 +1365,91 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employee Engagement (T180-T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'engage' => [
+        'title' => 'Employee Engagement',
+        'description' => 'Engage your teams and measure your personal carbon footprint.',
+        'your_points' => 'Your points',
+
+        'tabs' => [
+            'quiz' => 'Climate Quiz',
+            'calculator' => 'Calculator',
+            'challenges' => 'Challenges',
+            'leaderboard' => 'Leaderboard',
+        ],
+
+        'quiz' => [
+            'question' => 'Question',
+            'completed' => 'Quiz completed!',
+            'excellent' => 'Excellent! You are a climate expert.',
+            'good' => 'Good result! Keep learning.',
+            'keep_learning' => 'Keep learning about climate.',
+            'retry' => 'Retry quiz',
+        ],
+
+        'calculator' => [
+            'title' => 'Personal Footprint Calculator',
+            'commute_distance' => 'Commute distance (km)',
+            'commute_mode' => 'Transport mode',
+            'diet' => 'Diet',
+            'flights_short' => 'Short-haul flights / year',
+            'flights_long' => 'Long-haul flights / year',
+            'heating_type' => 'Heating type',
+            'calculate' => 'Calculate my footprint',
+            'your_footprint' => 'Your carbon footprint',
+            'tonnes_year' => 't CO2e/year',
+            'breakdown' => 'Breakdown',
+            'recalculate' => 'Recalculate',
+
+            'modes' => [
+                'car_petrol' => 'Petrol car',
+                'car_diesel' => 'Diesel car',
+                'car_electric' => 'Electric car',
+                'public_transport' => 'Public transport',
+                'bike' => 'Bicycle',
+                'walk' => 'Walking',
+            ],
+
+            'diets' => [
+                'vegan' => 'Vegan',
+                'vegetarian' => 'Vegetarian',
+                'mixed' => 'Mixed',
+                'meat_heavy' => 'Meat-heavy',
+            ],
+
+            'heating' => [
+                'gas' => 'Natural gas',
+                'oil' => 'Oil',
+                'electric' => 'Electric',
+                'heat_pump' => 'Heat pump',
+            ],
+        ],
+
+        'challenges' => [
+            'title' => 'Eco-friendly Challenges',
+            'no_car_week' => 'No Car Week',
+            'meatless_monday' => 'Meatless Monday',
+            'energy_saver' => 'Energy Saver',
+            'bike_to_work' => 'Bike to Work',
+            'join' => 'Join',
+            'leave' => 'Leave',
+            'mark_complete' => 'Mark as complete',
+            'co2_saved' => 'CO2 saved',
+        ],
+
+        'leaderboard' => [
+            'title' => 'Leaderboard',
+            'participate' => 'Participate in leaderboard',
+            'your_rank' => 'Your rank',
+            'rank' => 'Rank',
+            'name' => 'Name',
+            'points' => 'Points',
+        ],
+    ],
+
 ];

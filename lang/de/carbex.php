@@ -1545,4 +1545,91 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employee Engagement (T180-T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'engage' => [
+        'title' => 'Mitarbeiter-Engagement',
+        'description' => 'Motivieren Sie Ihre Teams und messen Sie Ihren persönlichen CO2-Fußabdruck.',
+        'your_points' => 'Ihre Punkte',
+
+        'tabs' => [
+            'quiz' => 'Klima-Quiz',
+            'calculator' => 'Rechner',
+            'challenges' => 'Challenges',
+            'leaderboard' => 'Rangliste',
+        ],
+
+        'quiz' => [
+            'question' => 'Frage',
+            'completed' => 'Quiz abgeschlossen!',
+            'excellent' => 'Ausgezeichnet! Sie sind ein Klimaexperte.',
+            'good' => 'Gutes Ergebnis! Lernen Sie weiter.',
+            'keep_learning' => 'Lernen Sie weiter über das Klima.',
+            'retry' => 'Quiz wiederholen',
+        ],
+
+        'calculator' => [
+            'title' => 'Persönlicher Fußabdruck-Rechner',
+            'commute_distance' => 'Pendelstrecke (km)',
+            'commute_mode' => 'Transportmittel',
+            'diet' => 'Ernährung',
+            'flights_short' => 'Kurzstreckenflüge / Jahr',
+            'flights_long' => 'Langstreckenflüge / Jahr',
+            'heating_type' => 'Heizungsart',
+            'calculate' => 'Meinen Fußabdruck berechnen',
+            'your_footprint' => 'Ihr CO2-Fußabdruck',
+            'tonnes_year' => 't CO2e/Jahr',
+            'breakdown' => 'Aufschlüsselung',
+            'recalculate' => 'Neu berechnen',
+
+            'modes' => [
+                'car_petrol' => 'Benzin-Auto',
+                'car_diesel' => 'Diesel-Auto',
+                'car_electric' => 'Elektroauto',
+                'public_transport' => 'Öffentliche Verkehrsmittel',
+                'bike' => 'Fahrrad',
+                'walk' => 'Zu Fuß',
+            ],
+
+            'diets' => [
+                'vegan' => 'Vegan',
+                'vegetarian' => 'Vegetarisch',
+                'mixed' => 'Gemischt',
+                'meat_heavy' => 'Fleischreich',
+            ],
+
+            'heating' => [
+                'gas' => 'Erdgas',
+                'oil' => 'Öl',
+                'electric' => 'Elektrisch',
+                'heat_pump' => 'Wärmepumpe',
+            ],
+        ],
+
+        'challenges' => [
+            'title' => 'Umwelt-Challenges',
+            'no_car_week' => 'Autofreie Woche',
+            'meatless_monday' => 'Fleischloser Montag',
+            'energy_saver' => 'Energiesparer',
+            'bike_to_work' => 'Mit dem Rad zur Arbeit',
+            'join' => 'Beitreten',
+            'leave' => 'Verlassen',
+            'mark_complete' => 'Als abgeschlossen markieren',
+            'co2_saved' => 'CO2 gespart',
+        ],
+
+        'leaderboard' => [
+            'title' => 'Rangliste',
+            'participate' => 'An der Rangliste teilnehmen',
+            'your_rank' => 'Ihr Rang',
+            'rank' => 'Rang',
+            'name' => 'Name',
+            'points' => 'Punkte',
+        ],
+    ],
+
 ];

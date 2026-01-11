@@ -104,6 +104,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/sites/comparison', App\Livewire\Sites\SiteComparison::class)
         ->name('sites.comparison');
 
+    // Employee Engagement (T180-T182)
+    Route::get('/engage/employees', App\Livewire\Engage\EmployeeEngagement::class)
+        ->name('engage.employees');
+
     Route::get('/settings/billing', App\Livewire\Billing\SubscriptionManager::class)
         ->name('settings.billing');
 
