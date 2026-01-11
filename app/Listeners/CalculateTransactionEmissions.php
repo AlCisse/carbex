@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\TransactionSynced;
-use App\Jobs\CalculateEmissionsForTransaction;
+use App\Jobs\ProcessNewTransactions;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -22,6 +22,6 @@ class CalculateTransactionEmissions implements ShouldQueue
     public function handle(TransactionSynced $event): void
     {
         // Dispatch job to calculate emissions for newly synced transactions
-        CalculateEmissionsForTransaction::dispatch($event->connection);
+        ProcessNewTransactions::dispatch($event->connection->id);
     }
 }
