@@ -1585,6 +1585,22 @@ return [
             'ai_not_available' => 'L\'IA n\'est pas disponible sur votre plan',
             'upgrade_premium' => 'Passer à Premium',
         ],
+
+        // Page Analyse IA
+        'analysis_title' => 'Analyse IA',
+        'analysis_description' => 'Obtenez des insights et recommandations IA pour votre bilan carbone',
+        'recommendations_title' => 'Recommandations IA',
+        'not_configured' => 'IA non configurée',
+        'configure_to_use' => 'Configurez vos paramètres IA pour utiliser cette fonctionnalité',
+        'configure_ai' => 'Configurer l\'IA',
+        'how_it_works' => 'Comment ça marche',
+        'how_it_works_description' => 'Notre IA analyse vos données d\'émissions et fournit des recommandations personnalisées pour réduire votre empreinte carbone.',
+        'data_sources' => 'Sources de données',
+        'data_source_emissions' => 'Vos enregistrements d\'émissions',
+        'data_source_sector' => 'Benchmarks sectoriels',
+        'data_source_benchmarks' => 'Base de données des bonnes pratiques',
+        'privacy' => 'Confidentialité',
+        'privacy_description' => 'Vos données sont traitées de manière sécurisée et ne sont jamais partagées avec des tiers.',
     ],
 
     /*

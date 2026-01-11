@@ -1309,6 +1309,22 @@ return [
             'ai_not_available' => 'AI is not available on your plan',
             'upgrade_premium' => 'Upgrade to Premium',
         ],
+
+        // AI Analysis page
+        'analysis_title' => 'AI Analysis',
+        'analysis_description' => 'Get AI-powered insights and recommendations for your carbon footprint',
+        'recommendations_title' => 'AI Recommendations',
+        'not_configured' => 'AI not configured',
+        'configure_to_use' => 'Configure your AI settings to use this feature',
+        'configure_ai' => 'Configure AI',
+        'how_it_works' => 'How it works',
+        'how_it_works_description' => 'Our AI analyzes your emission data and provides personalized recommendations to reduce your carbon footprint.',
+        'data_sources' => 'Data sources',
+        'data_source_emissions' => 'Your emission records',
+        'data_source_sector' => 'Industry benchmarks',
+        'data_source_benchmarks' => 'Best practices database',
+        'privacy' => 'Privacy',
+        'privacy_description' => 'Your data is processed securely and never shared with third parties.',
     ],
 
     /*

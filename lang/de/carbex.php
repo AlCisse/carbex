@@ -1489,6 +1489,22 @@ return [
             'ai_not_available' => 'KI ist in Ihrem Plan nicht verfügbar',
             'upgrade_premium' => 'Auf Premium upgraden',
         ],
+
+        // KI-Analyse Seite
+        'analysis_title' => 'KI-Analyse',
+        'analysis_description' => 'Erhalten Sie KI-gestützte Erkenntnisse und Empfehlungen für Ihre CO2-Bilanz',
+        'recommendations_title' => 'KI-Empfehlungen',
+        'not_configured' => 'KI nicht konfiguriert',
+        'configure_to_use' => 'Konfigurieren Sie Ihre KI-Einstellungen, um diese Funktion zu nutzen',
+        'configure_ai' => 'KI konfigurieren',
+        'how_it_works' => 'So funktioniert es',
+        'how_it_works_description' => 'Unsere KI analysiert Ihre Emissionsdaten und liefert personalisierte Empfehlungen zur Reduzierung Ihres CO2-Fußabdrucks.',
+        'data_sources' => 'Datenquellen',
+        'data_source_emissions' => 'Ihre Emissionsaufzeichnungen',
+        'data_source_sector' => 'Branchen-Benchmarks',
+        'data_source_benchmarks' => 'Datenbank bewährter Praktiken',
+        'privacy' => 'Datenschutz',
+        'privacy_description' => 'Ihre Daten werden sicher verarbeitet und niemals an Dritte weitergegeben.',
     ],
 
     /*
