@@ -1086,13 +1086,15 @@
   - occupancy_rate (decimal, nullable)
   ```
 
-- [ ] T174 🟠 **Créer Livewire SiteComparison** dans `app/Livewire/Sites/SiteComparison.php`
+- [x] T174 🟠 **Créer Livewire SiteComparison** dans `app/Livewire/Sites/SiteComparison.php`
+  > Implémenté: Composant complet avec agrégation émissions par site, filtres (année, scope, métrique), tri, calculs d'intensité (par m², par employé), 18 tests
   - Tableau comparatif émissions par site
   - Graphique bar chart par site
   - Identification sites les plus émetteurs
   - Recommandations par site
 
-- [ ] T175 🟠 [P] **Créer view site-comparison** dans `resources/views/livewire/sites/site-comparison.blade.php`
+- [x] T175 🟠 [P] **Créer view site-comparison** dans `resources/views/livewire/sites/site-comparison.blade.php`
+  > Implémenté: Vue complète avec cartes résumé, filtres, graphique ApexCharts stacked bar, tableau détaillé, section recommandations
 
 - [ ] T176 🟡 **Créer import CSV sites en masse**
 
@@ -1150,8 +1152,8 @@
 | Phase 7: Polish & Testing | 17 | 17 | ✅ Complété |
 | Phase 8: Site Marketing Public | 22 | 22 | ✅ Complété |
 | Phase 9: Intelligence Artificielle | 43 | 43 | ✅ Complété |
-| Phase 10: Fonctionnalités Avancées (TrackZero) | 17 | 3 | 🟡 18% |
-| **Total** | **182** | **168** | **92%** |
+| Phase 10: Fonctionnalités Avancées (TrackZero) | 17 | 5 | 🟡 29% |
+| **Total** | **182** | **170** | **93%** |
 
 ## Prochaines Actions
 
