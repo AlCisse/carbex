@@ -1115,20 +1115,23 @@
 
 ## 10.5 Engagement Équipes Internes
 
-- [ ] T180 🟡 **Créer module sensibilisation employés**
+- [x] T180 🟡 **Créer module sensibilisation employés**
+  > Implémenté: Quiz carbone (5 questions), Calculateur empreinte personnelle, Challenges (no_car_week, meatless_monday, etc.), Leaderboard équipes
   - Quiz carbone interactif
   - Calcul bilan individuel
   - Classement équipes (opt-in)
   - Challenges réduction
 
-- [ ] T181 🟡 **Créer Livewire EmployeeEngagement** dans `app/Livewire/Engage/EmployeeEngagement.php`
+- [x] T181 🟡 **Créer Livewire EmployeeEngagement** dans `app/Livewire/Engage/EmployeeEngagement.php`
+  > Implémenté: Composant complet avec 4 onglets (Quiz, Calculator, Challenges, Leaderboard), route /engage/employees, traductions FR/EN/DE, 26 tests feature + 13 tests browser
 
-- [ ] T182 🟡 **Créer emails automatiques engagement**
+- [x] T182 🟡 **Créer emails automatiques engagement**
+  > Implémenté: EngagementNewsletterNotification, ChallengeReminderNotification, EngagementMilestoneNotification + commandes console SendEngagementNewsletter, SendChallengeReminders
   - Newsletter mensuelle progrès
   - Rappels objectifs
   - Célébration milestones
 
-**Checkpoint TrackZero Features**: [ ] Fonctionnalités avancées non commencées
+**Checkpoint TrackZero Features**: [ ] Fonctionnalités avancées partiellement complétées (T180-T182 terminées)
 
 ---
 
@@ -1147,13 +1150,14 @@
 | Phase 7: Polish & Testing | 17 | 17 | ✅ Complété |
 | Phase 8: Site Marketing Public | 22 | 22 | ✅ Complété |
 | Phase 9: Intelligence Artificielle | 43 | 43 | ✅ Complété |
-| Phase 10: Fonctionnalités Avancées (TrackZero) | 17 | 0 | 🔴 0% |
-| **Total** | **182** | **165** | **91%** |
+| Phase 10: Fonctionnalités Avancées (TrackZero) | 17 | 3 | 🟡 18% |
+| **Total** | **182** | **168** | **92%** |
 
 ## Prochaines Actions
 
 1. **Phases 1-9**: ✅ Complété (165/165 tâches)
-2. **Phase 10 TrackZero**: À faire - T166-T182 (Fonctionnalités avancées inspirées TrackZero)
+2. **Phase 10 TrackZero**: En cours - 3/17 tâches complétées (T180-T182 Employee Engagement)
+   - Restant: T166-T179 (Navigation 5 Piliers, Badges, Multi-Sites, Conformité CSRD/ISO)
 
 ---
 
