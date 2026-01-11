@@ -66,6 +66,7 @@ return [
         'calculating' => 'Berechnung...',
         'actions' => 'Aktionen',
         'close' => 'Schließen',
+        'copy' => 'Kopieren',
         'confirm' => 'Bestätigen',
         'yes' => 'Ja',
         'no' => 'Nein',
@@ -1488,6 +1489,100 @@ return [
             'ai_not_available' => 'KI ist in Ihrem Plan nicht verfügbar',
             'upgrade_premium' => 'Auf Premium upgraden',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Gamification
+    |--------------------------------------------------------------------------
+    */
+    'gamification' => [
+        'title' => 'Gamification',
+        'subtitle' => 'Verdienen Sie Abzeichen und steigen Sie auf',
+        'level' => [
+            'starter' => 'Einsteiger',
+            'bronze' => 'Bronze',
+            'silver' => 'Silber',
+            'gold' => 'Gold',
+            'platinum' => 'Platin',
+            'diamond' => 'Diamant',
+        ],
+        'total_points' => ':points Punkte',
+        'badges_earned' => 'Verdiente Abzeichen',
+        'next_level' => 'Nächstes Level',
+        'points' => 'Punkte',
+        'check_badges' => 'Abzeichen prüfen',
+        'leaderboard' => 'Rangliste',
+        'your_badges' => 'Ihre Abzeichen',
+        'max_level_reached' => 'Maximales Level erreicht!',
+        'no_badges_available' => 'Keine Abzeichen verfügbar',
+        'badges' => 'Abzeichen',
+
+        // How it works section
+        'how_it_works' => 'So funktioniert es',
+        'step1_title' => 'Vervollständigen Sie Ihre Bewertung',
+        'step1_desc' => 'Geben Sie Ihre Emissionen in allen Kategorien ein, um Punkte zu sammeln.',
+        'step2_title' => 'Reduzieren Sie Ihre Emissionen',
+        'step2_desc' => 'Setzen Sie Reduktionsmaßnahmen um und verfolgen Sie Ihren Fortschritt.',
+        'step3_title' => 'Teilen Sie Ihre Erfolge',
+        'step3_desc' => 'Verdienen Sie Abzeichen und teilen Sie sie mit Ihrer Community.',
+        'badge_categories' => 'Abzeichen-Kategorien',
+
+        // Categories
+        'category' => [
+            'all' => 'Alle',
+            'assessment' => 'Bewertung',
+            'assessment_desc' => 'Abzeichen für die Vervollständigung Ihrer CO2-Bilanz.',
+            'reduction' => 'Reduktion',
+            'reduction_desc' => 'Abzeichen für Ihre Emissionsreduzierung.',
+            'engagement' => 'Engagement',
+            'engagement_desc' => 'Abzeichen für Ihr und das Engagement Ihres Teams.',
+            'expert' => 'Experte',
+            'expert_desc' => 'Abzeichen für fortgeschrittene Nutzer.',
+        ],
+
+        // Individual badges
+        'badge_list' => [
+            'first_emission' => 'Erste Emission',
+            'first_emission_desc' => 'Erfassen Sie Ihre erste Emission',
+            'scope_master' => 'Scope-Meister',
+            'scope_master_desc' => 'Vervollständigen Sie alle 3 Scopes',
+            'data_collector' => 'Datensammler',
+            'data_collector_desc' => 'Erfassen Sie 100 Emissionen',
+            'reducer' => 'Reduzierer',
+            'reducer_desc' => 'Reduzieren Sie Ihre Emissionen um 10%',
+            'green_champion' => 'Grüner Champion',
+            'green_champion_desc' => 'Reduzieren Sie Ihre Emissionen um 25%',
+            'carbon_hero' => 'CO2-Held',
+            'carbon_hero_desc' => 'Reduzieren Sie Ihre Emissionen um 50%',
+            'team_player' => 'Teamplayer',
+            'team_player_desc' => 'Laden Sie 5 Mitglieder ein',
+            'reporter' => 'Berichterstatter',
+            'reporter_desc' => 'Erstellen Sie 10 Berichte',
+            'consistent' => 'Beständig',
+            'consistent_desc' => 'Melden Sie sich 30 Tage hintereinander an',
+        ],
+
+        // Progress and status
+        'progress' => 'Fortschritt',
+        'locked' => 'Gesperrt',
+        'unlocked' => 'Freigeschaltet',
+        'earned_on' => 'Verdient am',
+        'points_to_next' => 'Punkte bis zum nächsten Level',
+
+        // Leaderboard
+        'rank' => 'Rang',
+        'user' => 'Benutzer',
+        'score' => 'Punktzahl',
+
+        // Empty states
+        'no_badges_yet' => 'Noch keine Abzeichen verdient',
+        'keep_going' => 'Weiter so!',
+
+        // Sharing
+        'share_badge' => 'Dieses Abzeichen teilen',
+        'share_link' => 'Link teilen',
+        'share_text' => 'Ich habe ein Abzeichen bei Carbex verdient!',
     ],
 
 ];
