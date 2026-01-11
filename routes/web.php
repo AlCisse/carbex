@@ -191,6 +191,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/compliance', App\Livewire\Compliance\ComplianceMonitor::class)
         ->name('compliance');
 
+    // CSRD Compliance (EU Corporate Sustainability Reporting Directive)
+    Route::prefix('csrd')->group(function () {
+        Route::get('/', App\Livewire\Csrd\CsrdDashboard::class)
+            ->name('csrd.dashboard');
+        Route::get('/esrs2', App\Livewire\Csrd\Esrs2DisclosureManager::class)
+            ->name('csrd.esrs2');
+        Route::get('/transition-plan', App\Livewire\Csrd\ClimateTransitionPlanEditor::class)
+            ->name('csrd.transition-plan');
+        Route::get('/taxonomy', App\Livewire\Csrd\EuTaxonomyReportEditor::class)
+            ->name('csrd.taxonomy');
+        Route::get('/due-diligence', App\Livewire\Csrd\ValueChainDueDiligenceEditor::class)
+            ->name('csrd.due-diligence');
+    });
+
     // Plan de transition
     Route::get('/transition-plan', function () {
         return view('transition-plan.index');
