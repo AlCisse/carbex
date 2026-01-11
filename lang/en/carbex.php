@@ -1310,4 +1310,59 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Sites - Multi-sites Management (T174-T175)
+    |--------------------------------------------------------------------------
+    */
+
+    'sites' => [
+        'manage_sites' => 'Manage sites',
+        'add_site' => 'Add a site',
+        'employees' => 'employees',
+
+        'comparison' => [
+            'title' => 'Site Comparison',
+            'subtitle' => 'Analyze and compare carbon emissions across your different sites',
+            'total_sites' => 'Active sites',
+            'total_emissions' => 'Total emissions',
+            'top_emitter' => 'Top emitter',
+            'average_per_site' => 'Average per site',
+            'year' => 'Year',
+            'scope' => 'Scope',
+            'all_scopes' => 'All scopes',
+            'metric' => 'Metric',
+            'metric_total' => 'Total emissions',
+            'metric_per_m2' => 'Per m² floor area',
+            'metric_per_employee' => 'Per employee',
+            'sort_by' => 'Sort by',
+            'sort_emissions_desc' => 'Emissions (highest first)',
+            'sort_emissions_asc' => 'Emissions (lowest first)',
+            'sort_name_asc' => 'Name (A-Z)',
+            'sort_name_desc' => 'Name (Z-A)',
+            'sort_intensity_desc' => 'Intensity (highest first)',
+            'sort_intensity_asc' => 'Intensity (lowest first)',
+            'chart_title' => 'Emissions by site',
+            'emissions_unit' => 't CO₂e',
+            'no_sites' => 'No sites configured',
+            'no_sites_description' => 'Add your sites to start comparing their emissions',
+            'table_title' => 'Site details',
+            'site' => 'Site',
+            'total' => 'Total',
+            'intensity' => 'Intensity',
+            'share' => 'Share',
+            'recommendations' => 'Recommendations',
+        ],
+
+        'recommendations' => [
+            'high_emitter' => 'This site emits :percent% more than average. Priority for reduction actions.',
+            'scope1_heavy' => 'High direct emissions. Consider alternatives to fossil fuels.',
+            'scope2_heavy' => 'High electricity consumption. Consider green energy contracts or energy efficiency.',
+            'high_intensity' => 'High carbon intensity per m². Energy audit recommended.',
+            'missing_area' => 'Enter floor area to calculate carbon intensity.',
+            'missing_employees' => 'Enter employee count for per-person analysis.',
+            'good_performance' => 'Excellent performance! This site is well below average.',
+        ],
+    ],
+
 ];

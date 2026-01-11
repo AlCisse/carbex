@@ -1490,4 +1490,59 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Sites - Multi-sites Management (T174-T175)
+    |--------------------------------------------------------------------------
+    */
+
+    'sites' => [
+        'manage_sites' => 'Standorte verwalten',
+        'add_site' => 'Standort hinzufügen',
+        'employees' => 'Mitarbeiter',
+
+        'comparison' => [
+            'title' => 'Standortvergleich',
+            'subtitle' => 'Analysieren und vergleichen Sie die CO2-Emissionen Ihrer verschiedenen Standorte',
+            'total_sites' => 'Aktive Standorte',
+            'total_emissions' => 'Gesamtemissionen',
+            'top_emitter' => 'Größter Emittent',
+            'average_per_site' => 'Durchschnitt pro Standort',
+            'year' => 'Jahr',
+            'scope' => 'Scope',
+            'all_scopes' => 'Alle Scopes',
+            'metric' => 'Metrik',
+            'metric_total' => 'Gesamtemissionen',
+            'metric_per_m2' => 'Pro m² Fläche',
+            'metric_per_employee' => 'Pro Mitarbeiter',
+            'sort_by' => 'Sortieren nach',
+            'sort_emissions_desc' => 'Emissionen (absteigend)',
+            'sort_emissions_asc' => 'Emissionen (aufsteigend)',
+            'sort_name_asc' => 'Name (A-Z)',
+            'sort_name_desc' => 'Name (Z-A)',
+            'sort_intensity_desc' => 'Intensität (absteigend)',
+            'sort_intensity_asc' => 'Intensität (aufsteigend)',
+            'chart_title' => 'Emissionen nach Standort',
+            'emissions_unit' => 't CO₂e',
+            'no_sites' => 'Keine Standorte konfiguriert',
+            'no_sites_description' => 'Fügen Sie Ihre Standorte hinzu, um deren Emissionen zu vergleichen',
+            'table_title' => 'Standortdetails',
+            'site' => 'Standort',
+            'total' => 'Gesamt',
+            'intensity' => 'Intensität',
+            'share' => 'Anteil',
+            'recommendations' => 'Empfehlungen',
+        ],
+
+        'recommendations' => [
+            'high_emitter' => 'Dieser Standort emittiert :percent% mehr als der Durchschnitt. Priorität für Reduktionsmaßnahmen.',
+            'scope1_heavy' => 'Hohe direkte Emissionen. Erwägen Sie Alternativen zu fossilen Brennstoffen.',
+            'scope2_heavy' => 'Hoher Stromverbrauch. Erwägen Sie Ökostromverträge oder Energieeffizienz.',
+            'high_intensity' => 'Hohe CO2-Intensität pro m². Energieaudit empfohlen.',
+            'missing_area' => 'Geben Sie die Fläche ein, um die CO2-Intensität zu berechnen.',
+            'missing_employees' => 'Geben Sie die Mitarbeiterzahl für die Pro-Kopf-Analyse ein.',
+            'good_performance' => 'Ausgezeichnete Leistung! Dieser Standort liegt deutlich unter dem Durchschnitt.',
+        ],
+    ],
+
 ];

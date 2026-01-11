@@ -1586,4 +1586,59 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Sites - Multi-sites Management (T174-T175)
+    |--------------------------------------------------------------------------
+    */
+
+    'sites' => [
+        'manage_sites' => 'Gérer les sites',
+        'add_site' => 'Ajouter un site',
+        'employees' => 'employés',
+
+        'comparison' => [
+            'title' => 'Comparaison des sites',
+            'subtitle' => 'Analysez et comparez les émissions carbone de vos différents sites',
+            'total_sites' => 'Sites actifs',
+            'total_emissions' => 'Émissions totales',
+            'top_emitter' => 'Plus gros émetteur',
+            'average_per_site' => 'Moyenne par site',
+            'year' => 'Année',
+            'scope' => 'Scope',
+            'all_scopes' => 'Tous les scopes',
+            'metric' => 'Métrique',
+            'metric_total' => 'Émissions totales',
+            'metric_per_m2' => 'Par m² de surface',
+            'metric_per_employee' => 'Par employé',
+            'sort_by' => 'Trier par',
+            'sort_emissions_desc' => 'Émissions (décroissant)',
+            'sort_emissions_asc' => 'Émissions (croissant)',
+            'sort_name_asc' => 'Nom (A-Z)',
+            'sort_name_desc' => 'Nom (Z-A)',
+            'sort_intensity_desc' => 'Intensité (décroissant)',
+            'sort_intensity_asc' => 'Intensité (croissant)',
+            'chart_title' => 'Émissions par site',
+            'emissions_unit' => 't CO₂e',
+            'no_sites' => 'Aucun site configuré',
+            'no_sites_description' => 'Ajoutez vos sites pour commencer à comparer leurs émissions',
+            'table_title' => 'Détail par site',
+            'site' => 'Site',
+            'total' => 'Total',
+            'intensity' => 'Intensité',
+            'share' => 'Part',
+            'recommendations' => 'Recommandations',
+        ],
+
+        'recommendations' => [
+            'high_emitter' => 'Ce site émet :percent% de plus que la moyenne. Prioritaire pour les actions de réduction.',
+            'scope1_heavy' => 'Émissions directes élevées. Envisagez des alternatives aux combustibles fossiles.',
+            'scope2_heavy' => 'Forte consommation électrique. Considérez des contrats d\'énergie verte ou l\'efficacité énergétique.',
+            'high_intensity' => 'Intensité carbone élevée par m². Audit énergétique recommandé.',
+            'missing_area' => 'Renseignez la surface pour calculer l\'intensité carbone.',
+            'missing_employees' => 'Renseignez le nombre d\'employés pour l\'analyse par personne.',
+            'good_performance' => 'Excellente performance ! Ce site est bien en dessous de la moyenne.',
+        ],
+    ],
+
 ];

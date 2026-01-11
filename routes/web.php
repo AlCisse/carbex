@@ -100,6 +100,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('settings.sites');
     })->name('settings.sites');
 
+    // Site Comparison (T174-T175)
+    Route::get('/sites/comparison', App\Livewire\Sites\SiteComparison::class)
+        ->name('sites.comparison');
+
     Route::get('/settings/billing', App\Livewire\Billing\SubscriptionManager::class)
         ->name('settings.billing');
 
