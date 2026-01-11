@@ -182,7 +182,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Trajectory (SBTi)
     Route::get('/trajectory', function () {
         return view('transition-plan.trajectory');
-    })->name('trajectory');
+    })->name('transition-plan.trajectory');
 
     // Assessments (Bilans)
     Route::get('/assessments', function () {
