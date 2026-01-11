@@ -71,6 +71,13 @@ class Organization extends Model
         'iso50001_registrar',
         'energy_manager_name',
         'energy_manager_email',
+        // CSRD fields
+        'csrd_applicable',
+        'csrd_applicable_from',
+        'csrd_company_category',
+        'balance_sheet_total',
+        'sustainability_auditor',
+        'sustainability_assurance_level',
     ];
 
     /**
@@ -94,6 +101,9 @@ class Organization extends Model
         'iso50001_certified' => 'boolean',
         'iso50001_cert_date' => 'date',
         'iso50001_cert_expiry' => 'date',
+        // CSRD casts
+        'csrd_applicable' => 'boolean',
+        'balance_sheet_total' => 'decimal:2',
     ];
 
     /**
@@ -279,6 +289,52 @@ class Organization extends Model
     }
 
     /**
+     * Get the ESRS 2 disclosures for the organization.
+     * CSRD/ESRS Set 1 (2023)
+     */
+    public function esrs2Disclosures(): HasMany
+    {
+        return $this->hasMany(Esrs2Disclosure::class);
+    }
+
+    /**
+     * Get the climate transition plans for the organization.
+     * ESRS E1-1
+     */
+    public function climateTransitionPlans(): HasMany
+    {
+        return $this->hasMany(ClimateTransitionPlan::class);
+    }
+
+    /**
+     * Get the current climate transition plan.
+     */
+    public function currentClimateTransitionPlan(): HasOne
+    {
+        return $this->hasOne(ClimateTransitionPlan::class)
+            ->whereIn('status', ['approved', 'published'])
+            ->latest('plan_year');
+    }
+
+    /**
+     * Get the EU Taxonomy reports for the organization.
+     * EU Regulation 2020/852 Article 8
+     */
+    public function euTaxonomyReports(): HasMany
+    {
+        return $this->hasMany(EuTaxonomyReport::class);
+    }
+
+    /**
+     * Get the value chain due diligence records.
+     * LkSG / CSDDD compliance
+     */
+    public function valueChainDueDiligence(): HasMany
+    {
+        return $this->hasMany(ValueChainDueDiligence::class);
+    }
+
+    /**
      * Get the badges earned by this organization.
      */
     public function badges(): BelongsToMany
@@ -393,5 +449,84 @@ class Organization extends Model
         return $this->iso50001_certified
             && $this->iso50001_cert_expiry
             && $this->iso50001_cert_expiry > now();
+    }
+
+    /**
+     * Check if CSRD reporting is applicable.
+     * Based on EU thresholds for different company categories.
+     */
+    public function isCsrdApplicable(?int $year = null): bool
+    {
+        $year = $year ?? now()->year;
+
+        // Large companies (from FY 2024, reports in 2025)
+        if ($year >= 2024) {
+            // Balance sheet > €25M OR Turnover > €50M AND > 250 employees
+            $isLarge = (
+                ($this->balance_sheet_total > 25_000_000 || $this->annual_turnover > 50_000_000)
+                && ($this->employee_count ?? 0) > 250
+            );
+            if ($isLarge) {
+                return true;
+            }
+        }
+
+        // Listed SMEs (from FY 2026, reports in 2027)
+        if ($year >= 2026) {
+            // Listed companies meeting 2 of 3: Balance > €5M, Turnover > €10M, Employees > 10
+            $criteria = 0;
+            if ($this->balance_sheet_total > 5_000_000) {
+                $criteria++;
+            }
+            if ($this->annual_turnover > 10_000_000) {
+                $criteria++;
+            }
+            if (($this->employee_count ?? 0) > 10) {
+                $criteria++;
+            }
+
+            // Note: This should also check if the company is publicly listed
+            if ($criteria >= 2) {
+                return true;
+            }
+        }
+
+        return $this->csrd_applicable ?? false;
+    }
+
+    /**
+     * Get CSRD company category.
+     */
+    public function getCsrdCategoryAttribute(): ?string
+    {
+        $employees = $this->employee_count ?? 0;
+        $turnover = $this->annual_turnover ?? 0;
+        $balance = $this->balance_sheet_total ?? 0;
+
+        // Large undertaking
+        if ($employees > 250 || $turnover > 50_000_000 || $balance > 25_000_000) {
+            return 'large';
+        }
+
+        // Small/Medium
+        if ($employees > 10 || $turnover > 900_000 || $balance > 450_000) {
+            return 'sme';
+        }
+
+        return 'micro';
+    }
+
+    /**
+     * Get CSRD first reporting year based on company category.
+     */
+    public function getCsrdFirstReportingYearAttribute(): ?int
+    {
+        $category = $this->csrd_category;
+
+        return match ($category) {
+            'large' => 2025, // FY 2024
+            'sme' => 2027,   // FY 2026 (if listed)
+            default => null,
+        };
     }
 }
