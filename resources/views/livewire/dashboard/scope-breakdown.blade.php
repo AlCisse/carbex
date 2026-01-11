@@ -1,4 +1,4 @@
-<div>
+<div dusk="scope-breakdown-chart">
     <x-card>
         <x-slot name="header">
             <div class="flex items-center justify-between">

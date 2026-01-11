@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6" dusk="carbon-equivalents">
     <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ __('carbex.dashboard.equivalents_title') }}</h3>
     <p class="text-sm text-gray-500 mb-6">{{ __('carbex.dashboard.equivalents_subtitle') }}</p>
 

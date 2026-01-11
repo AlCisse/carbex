@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden" dusk="training-section">
     <!-- Header -->
     <button wire:click="toggleExpanded" class="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
         <div class="flex items-center">

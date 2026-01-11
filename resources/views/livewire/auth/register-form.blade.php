@@ -32,7 +32,7 @@
                     {{ __('carbex.auth.name') }} *
                 </label>
                 <div class="mt-2">
-                    <input wire:model="name" id="name" type="text" required
+                    <input wire:model="name" id="name" name="name" type="text" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 @error('name') ring-red-300 @enderror">
                 </div>
                 @error('name')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
@@ -44,7 +44,7 @@
                     {{ __('carbex.auth.email') }} *
                 </label>
                 <div class="mt-2">
-                    <input wire:model="email" id="email" type="email" required
+                    <input wire:model="email" id="email" name="email" type="email" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 @error('email') ring-red-300 @enderror">
                 </div>
                 @error('email')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
@@ -56,7 +56,7 @@
                     {{ __('carbex.auth.password') }} *
                 </label>
                 <div class="mt-2">
-                    <input wire:model="password" id="password" type="password" required
+                    <input wire:model="password" id="password" name="password" type="password" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 @error('password') ring-red-300 @enderror">
                 </div>
                 <p class="mt-1 text-xs text-gray-500">{{ __('carbex.auth.password_requirements') }}</p>
@@ -69,7 +69,7 @@
                     {{ __('carbex.auth.confirm_password') }} *
                 </label>
                 <div class="mt-2">
-                    <input wire:model="password_confirmation" id="password_confirmation" type="password" required
+                    <input wire:model="password_confirmation" id="password_confirmation" name="password_confirmation" type="password" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     {{ __('carbex.auth.organization_name') }} *
                 </label>
                 <div class="mt-2">
-                    <input wire:model="organization_name" id="organization_name" type="text" required
+                    <input wire:model="organization_name" id="organization_name" name="organization_name" type="text" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 @error('organization_name') ring-red-300 @enderror">
                 </div>
                 @error('organization_name')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
@@ -141,7 +141,7 @@
             <!-- Terms and Privacy -->
             <div class="space-y-3 pt-4">
                 <div class="flex items-start">
-                    <input wire:model="accept_terms" id="accept_terms" type="checkbox"
+                    <input wire:model="accept_terms" id="accept_terms" name="accept_terms" type="checkbox"
                         class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600 mt-0.5">
                     <label for="accept_terms" class="ml-3 text-sm text-gray-600">
                         {!! __('carbex.auth.accept_terms_html') !!} *
@@ -150,7 +150,7 @@
                 @error('accept_terms')<p class="text-sm text-red-600">{{ $message }}</p>@enderror
 
                 <div class="flex items-start">
-                    <input wire:model="accept_privacy" id="accept_privacy" type="checkbox"
+                    <input wire:model="accept_privacy" id="accept_privacy" name="accept_privacy" type="checkbox"
                         class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600 mt-0.5">
                     <label for="accept_privacy" class="ml-3 text-sm text-gray-600">
                         {!! __('carbex.auth.accept_privacy_html') !!} *

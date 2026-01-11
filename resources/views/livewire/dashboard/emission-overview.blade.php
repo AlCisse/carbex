@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
     {{-- Total Emissions Card --}}
-    <x-card class="relative overflow-hidden">
+    <x-card class="relative overflow-hidden" dusk="total-emissions-card">
         <div class="absolute top-0 right-0 w-24 h-24 -mr-8 -mt-8">
             <div class="w-full h-full bg-green-100 dark:bg-green-900/30 rounded-full opacity-50"></div>
         </div>
@@ -32,7 +32,7 @@
     </x-card>
 
     {{-- Scope 1 Card --}}
-    <x-card>
+    <x-card dusk="scope-1-card">
         <div class="flex items-center justify-between mb-2">
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
                 {{ __('carbex.dashboard.scope_1') }}

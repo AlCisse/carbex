@@ -1,5 +1,19 @@
 @props(['currentScope' => null, 'currentCategory' => null])
 
+{{-- Mobile menu button (visible on small screens) --}}
+<div class="lg:hidden fixed top-4 left-4 z-50">
+    <button
+        x-data
+        @click="$dispatch('toggle-mobile-menu')"
+        class="p-2 rounded-md bg-slate-800 text-white shadow-lg"
+        dusk="mobile-menu-button"
+    >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+</div>
+
 @php
     $scopes = [
         1 => [
@@ -37,7 +51,13 @@
     ];
 @endphp
 
-<aside class="fixed inset-y-0 left-0 z-50 w-64 bg-slate-800 text-white flex flex-col">
+<aside
+    x-data="{ mobileOpen: false }"
+    @toggle-mobile-menu.window="mobileOpen = !mobileOpen"
+    :class="{ '-translate-x-full lg:translate-x-0': !mobileOpen, 'translate-x-0': mobileOpen }"
+    class="fixed inset-y-0 left-0 z-50 w-64 bg-slate-800 text-white flex flex-col transition-transform duration-300"
+    dusk="mobile-menu"
+>
     <!-- Logo -->
     <div class="flex items-center h-16 px-4 bg-slate-900">
         <a href="{{ route('dashboard') }}">

@@ -1,4 +1,4 @@
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6" dusk="progress-circle">
     <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('carbex.dashboard.progress_title') }}</h3>
 
     <div class="flex items-center justify-center mb-6">

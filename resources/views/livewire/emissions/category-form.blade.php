@@ -43,7 +43,7 @@
                 <p class="mt-1 text-sm text-gray-500">{{ __('carbex.emissions.sources_subtitle') }}</p>
             </div>
             @if(count($sources) > 0)
-                <button wire:click="openAddSourceForm" type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700">
+                <button wire:click="openAddSourceForm" type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700" dusk="add-emission-button">
                     <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
@@ -61,7 +61,7 @@
                 <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.emissions.no_sources') }}</h3>
                 <p class="mt-1 text-sm text-gray-500">{{ __('carbex.emissions.no_sources_hint') }}</p>
                 <div class="mt-6">
-                    <button wire:click="openAddSourceForm" type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700">
+                    <button wire:click="openAddSourceForm" type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700" dusk="add-emission-button">
                         <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -73,9 +73,9 @@
         @else
             <!-- Sources List -->
             @if(count($sources) > 0)
-                <div class="divide-y divide-gray-200">
-                    @foreach($sources as $source)
-                        <div class="p-6 hover:bg-gray-50 transition-colors">
+                <div class="divide-y divide-gray-200" dusk="emissions-list">
+                    @foreach($sources as $index => $source)
+                        <div class="p-6 hover:bg-gray-50 transition-colors" dusk="emission-row-{{ $index + 1 }}">
                             <div class="flex items-center justify-between">
                                 <div class="flex-1 min-w-0">
                                     <div class="flex items-center gap-3">
@@ -108,7 +108,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
                                         </button>
-                                        <button wire:click="deleteSource('{{ $source['id'] }}')" wire:confirm="{{ __('carbex.emissions.confirm_delete') }}" type="button" class="p-2 text-gray-400 hover:text-red-600 rounded-md hover:bg-red-50">
+                                        <button wire:click="deleteSource('{{ $source['id'] }}')" wire:confirm="{{ __('carbex.emissions.confirm_delete') }}" type="button" class="p-2 text-gray-400 hover:text-red-600 rounded-md hover:bg-red-50" dusk="delete-emission-button">
                                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
@@ -123,7 +123,7 @@
 
             <!-- Add/Edit Source Form -->
             @if($showSourceForm)
-                <div class="p-6 bg-gray-50 border-t border-gray-200">
+                <div class="p-6 bg-gray-50 border-t border-gray-200" dusk="emission-form-modal">
                     <h3 class="text-sm font-medium text-gray-900 mb-4">
                         {{ $editingSourceId ? __('carbex.emissions.edit_source') : __('carbex.emissions.new_source') }}
                     </h3>
@@ -147,12 +147,12 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Emission Factor -->
-                            <div>
+                            <div dusk="category-selector">
                                 <label class="block text-sm font-medium text-gray-700 mb-1">
                                     {{ __('carbex.emissions.factor') }} <span class="text-red-500">*</span>
                                 </label>
                                 @if($selectedFactor)
-                                    <div class="flex items-center justify-between p-3 bg-white border border-gray-300 rounded-md">
+                                    <div class="flex items-center justify-between p-3 bg-white border border-gray-300 rounded-md" dusk="category-options">
                                         <div class="min-w-0 flex-1">
                                             <p class="text-sm font-medium text-gray-900 truncate">{{ $selectedFactor['name'] }}</p>
                                             <p class="text-xs text-gray-500">
@@ -205,7 +205,7 @@
 
                         <!-- Calculated Emissions Preview -->
                         @if($selectedFactor && $sourceQuantity)
-                            <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="p-4 bg-green-50 border border-green-200 rounded-lg" dusk="emission-preview">
                                 <div class="flex items-center justify-between">
                                     <span class="text-sm text-green-700">{{ __('carbex.emissions.calculated_emissions') }}</span>
                                     <span class="text-lg font-bold text-green-800">

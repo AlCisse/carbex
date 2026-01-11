@@ -1,4 +1,4 @@
-<div>
+<div wire:loading.class="opacity-50" dusk="dashboard-loading">
     {{-- Header --}}
     <div class="mb-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -30,8 +30,44 @@
                         wire:target="refreshDashboard"
                     />
                 </button>
+
+                {{-- Export Button --}}
+                <div x-data="{ open: false }" class="relative">
+                    <button
+                        @click="open = !open"
+                        class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                        dusk="export-dashboard-button"
+                    >
+                        <x-heroicon-o-arrow-down-tray class="w-5 h-5" />
+                    </button>
+                    <div
+                        x-show="open"
+                        @click.outside="open = false"
+                        x-transition
+                        class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5"
+                        dusk="export-options"
+                    >
+                        <div class="py-1">
+                            <a href="#" wire:click.prevent="exportPdf" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">PDF</a>
+                            <a href="#" wire:click.prevent="exportExcel" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Excel</a>
+                            <a href="#" wire:click.prevent="exportCsv" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">CSV</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
+    {{-- Quick Actions --}}
+    <div class="mb-6 flex flex-wrap gap-3" dusk="quick-actions">
+        <a href="{{ route('emissions') }}" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition">
+            <x-heroicon-s-plus class="w-4 h-4 mr-2" />
+            {{ __('carbex.dashboard.add_emission') }}
+        </a>
+        <a href="{{ route('banking.connect') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+            <x-heroicon-s-building-library class="w-4 h-4 mr-2" />
+            {{ __('carbex.banking.connect') }}
+        </a>
     </div>
 
     {{-- KPIs --}}
@@ -70,7 +106,7 @@
     </div>
 
     {{-- Recent Transactions --}}
-    <x-card>
+    <x-card dusk="recent-transactions">
         <x-slot name="header">
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">

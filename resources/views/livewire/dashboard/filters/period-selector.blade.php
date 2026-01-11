@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="relative">
+<div x-data="{ open: false }" class="relative" dusk="year-selector">
     {{-- Trigger Button --}}
     <button
         @click="open = !open"

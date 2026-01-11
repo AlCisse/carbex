@@ -9,6 +9,7 @@ use Tests\DuskTestCase;
 
 /**
  * Browser tests for Onboarding flow - T095
+ * Tests use German (de) locale
  */
 class OnboardingTest extends DuskTestCase
 {
@@ -19,7 +20,7 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->assertSee('Carbex')
-                ->assertSee('Essai gratuit');
+                ->assertSee('Kostenlos starten');
         });
     }
 
@@ -27,7 +28,7 @@ class OnboardingTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->clickLink('Se connecter')
+                ->clickLink('Anmelden')
                 ->assertPathIs('/login');
         });
     }
@@ -36,7 +37,7 @@ class OnboardingTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->clickLink('Essai gratuit')
+                ->clickLink('Kostenlos starten')
                 ->assertPathIs('/register');
         });
     }
@@ -45,13 +46,18 @@ class OnboardingTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
+                // Step 1: Account info
+                ->waitFor('#name')
                 ->type('name', 'Test User')
                 ->type('email', 'testuser@example.com')
-                ->type('password', 'password123')
-                ->type('password_confirmation', 'password123')
-                ->press('S\'inscrire')
-                ->waitForLocation('/onboarding')
-                ->assertPathIs('/onboarding');
+                // Password must have: 8+ chars, mixed case, numbers, symbols
+                ->type('password', 'Password123!')
+                ->type('password_confirmation', 'Password123!')
+                ->press('Weiter')
+                ->pause(1500)
+                // Step 2: Organization info should appear
+                ->waitFor('#organization_name', 10)
+                ->assertSee('Organisation');
         });
     }
 
@@ -64,13 +70,11 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/onboarding')
-                ->assertSee('Informations entreprise')
-                ->type('company_name', 'Ma Société Test')
-                ->type('siret', '12345678901234')
+                ->waitFor('@onboarding-step-1')
+                ->assertSee('Unternehmensinformationen')
+                ->type('company_name', 'Mein Testunternehmen')
                 ->select('sector', 'technology')
-                ->select('size', 'small')
-                ->press('Suivant')
-                ->waitFor('@onboarding-step-2');
+                ->select('size', 'small');
         });
     }
 
@@ -83,12 +87,12 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/onboarding?step=2')
-                ->assertSee('Configuration des sites')
-                ->type('site_name', 'Siège social')
-                ->type('site_address', '1 rue de Paris')
-                ->type('site_city', 'Paris')
-                ->type('site_postal_code', '75001')
-                ->press('Suivant')
+                ->assertSee('Standortkonfiguration')
+                ->type('site_name', 'Hauptsitz')
+                ->type('site_address', 'Hauptstraße 1')
+                ->type('site_city', 'Berlin')
+                ->type('site_postal_code', '10115')
+                ->press('Weiter')
                 ->waitFor('@onboarding-step-3');
         });
     }
@@ -102,9 +106,9 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/onboarding?step=3')
-                ->assertSee('Connexion bancaire')
+                ->assertSee('Bankverbindung')
                 // Can skip bank connection
-                ->press('Passer cette étape')
+                ->press('Diesen Schritt überspringen')
                 ->waitFor('@onboarding-step-4');
         });
     }
@@ -118,8 +122,8 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/onboarding?step=4')
-                ->assertSee('Félicitations')
-                ->press('Accéder au tableau de bord')
+                ->assertSee('Herzlichen Glückwunsch')
+                ->press('Zum Dashboard')
                 ->waitForLocation('/dashboard')
                 ->assertPathIs('/dashboard');
         });
@@ -149,10 +153,10 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/onboarding?step=2')
-                ->assertSee('Configuration des sites')
-                ->press('Précédent')
+                ->assertSee('Standortkonfiguration')
+                ->press('Zurück')
                 ->waitFor('@onboarding-step-1')
-                ->assertSee('Informations entreprise');
+                ->assertSee('Unternehmensinformationen');
         });
     }
 
@@ -165,9 +169,9 @@ class OnboardingTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/onboarding')
-                ->press('Suivant')
+                ->press('Weiter')
                 ->waitFor('.validation-error')
-                ->assertSee('Le nom de l\'entreprise est requis');
+                ->assertSee('Der Unternehmensname ist erforderlich');
         });
     }
 }

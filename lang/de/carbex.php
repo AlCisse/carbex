@@ -319,6 +319,19 @@ return [
         'reset_password' => 'Passwort zurücksetzen',
         'send_reset_link' => 'Link senden',
         'reset_link_sent' => 'Ein Link zum Zurücksetzen wurde gesendet.',
+        'step_account' => 'Konto',
+        'step_organization' => 'Organisation',
+        'organization_name' => 'Organisationsname',
+        'country' => 'Land',
+        'sector' => 'Branche',
+        'select_sector' => 'Branche auswählen',
+        'organization_size' => 'Unternehmensgröße',
+        'select_size' => 'Größe auswählen',
+        'employees' => 'Mitarbeiter',
+        'accept_terms_html' => 'Ich akzeptiere die <a href="/terms" class="text-green-600 hover:underline">Nutzungsbedingungen</a>',
+        'accept_privacy_html' => 'Ich akzeptiere die <a href="/privacy" class="text-green-600 hover:underline">Datenschutzrichtlinie</a>',
+        'create_account' => 'Konto erstellen',
+        'password_requirements' => 'Mindestens 8 Zeichen',
     ],
 
     /*
@@ -1630,6 +1643,258 @@ return [
             'name' => 'Name',
             'points' => 'Punkte',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Badge Promotion (T169-T172)
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Compliance Monitor (T177-T179)
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | 5 Pillars Navigation (T166)
+    |--------------------------------------------------------------------------
+    */
+
+    'pillars' => [
+        'measure' => 'Messen',
+        'plan' => 'Planen',
+        'engage' => 'Einbinden',
+        'report' => 'Berichten',
+        'promote' => 'Fördern',
+
+        'sites' => 'Standorte',
+        'transition' => 'Übergangsplan',
+        'trajectory' => 'SBTi-Trajektorie',
+        'assessments' => 'Jahresbilanzen',
+        'suppliers' => 'Lieferanten',
+        'employees' => 'Teams',
+        'reports' => 'Berichte',
+        'compliance' => 'Compliance',
+        'badges' => 'Abzeichen',
+        'showcase' => 'Vitrine',
+    ],
+
+    'settings' => [
+        'navigation_mode' => 'Navigationsmodus',
+        'nav_standard' => 'Standardnavigation',
+        'nav_standard_desc' => 'Klassisches Menü nach Funktionen',
+        'nav_pillars' => '5-Säulen-Navigation',
+        'nav_pillars_desc' => 'Organisiert nach strategischen Säulen (TrackZero-Stil)',
+    ],
+
+    'compliance' => [
+        'title' => 'Compliance-Dashboard',
+        'subtitle' => 'Verfolgen Sie Ihre CSRD-Konformität und ISO-Zertifizierungen',
+        'reporting_year' => 'Berichtsjahr',
+        'add_task' => 'Aufgabe hinzufügen',
+
+        'tabs' => [
+            'overview' => 'Übersicht',
+            'tasks' => 'Aufgaben',
+        ],
+
+        'progress' => 'Fortschritt',
+        'disclosures' => 'Offenlegungen',
+        'certifications' => 'Zertifizierungen',
+        'certified' => 'Zertifiziert',
+        'in_progress' => 'In Bearbeitung',
+        'expiring_soon' => 'läuft bald ab',
+        'overdue_tasks' => 'Überfällige Aufgaben',
+        'no_overdue' => 'Keine überfälligen Aufgaben',
+        'upcoming' => 'Anstehend',
+        'no_upcoming' => 'Keine anstehenden Aufgaben',
+        'by_category' => 'nach Kategorie',
+        'requirements' => 'Anforderungen',
+
+        'categories' => [
+            'environment' => 'Umwelt',
+            'social' => 'Soziales',
+            'governance' => 'Unternehmensführung',
+        ],
+
+        'iso_categories' => [
+            'environmental' => 'Umwelt',
+            'energy' => 'Energie',
+            'quality' => 'Qualität',
+            'carbon' => 'CO2',
+        ],
+
+        'code' => 'Code',
+        'disclosure' => 'Offenlegung',
+        'category' => 'Kategorie',
+        'status' => 'Status',
+        'mandatory' => 'Pflicht',
+        'no_frameworks' => 'Keine CSRD-Rahmenwerke gefunden',
+        'no_standards' => 'Keine ISO-Standards gefunden',
+        'expires' => 'Läuft ab',
+        'certifier' => 'Zertifizierer',
+
+        'status' => [
+            'not_started' => 'Nicht begonnen',
+            'in_progress' => 'In Bearbeitung',
+            'compliant' => 'Konform',
+            'non_compliant' => 'Nicht konform',
+        ],
+
+        'cert_status' => [
+            'not_certified' => 'Nicht zertifiziert',
+            'in_progress' => 'In Bearbeitung',
+            'certified' => 'Zertifiziert',
+            'expired' => 'Abgelaufen',
+        ],
+
+        'task_status' => [
+            'pending' => 'Ausstehend',
+            'in_progress' => 'In Bearbeitung',
+            'completed' => 'Abgeschlossen',
+            'overdue' => 'Überfällig',
+        ],
+
+        'priority' => [
+            'low' => 'Niedrig',
+            'medium' => 'Mittel',
+            'high' => 'Hoch',
+            'critical' => 'Kritisch',
+        ],
+
+        'task' => 'Aufgabe',
+        'type' => 'Typ',
+        'due_date' => 'Fälligkeitsdatum',
+        'no_tasks' => 'Keine Compliance-Aufgaben',
+        'mark_complete' => 'Als erledigt markieren',
+        'confirm_delete_task' => 'Sind Sie sicher, dass Sie diese Aufgabe löschen möchten?',
+
+        'new_task' => 'Neue Aufgabe',
+        'edit_task' => 'Aufgabe bearbeiten',
+        'internal' => 'Intern',
+        'title' => 'Titel',
+        'description' => 'Beschreibung',
+        'task_title_placeholder' => 'Aufgabentitel...',
+        'task_description_placeholder' => 'Detaillierte Beschreibung...',
+
+        'status_updated' => 'Status erfolgreich aktualisiert',
+        'task_created' => 'Aufgabe erfolgreich erstellt',
+        'task_updated' => 'Aufgabe erfolgreich aktualisiert',
+        'task_completed' => 'Aufgabe erfolgreich abgeschlossen',
+        'task_deleted' => 'Aufgabe erfolgreich gelöscht',
+    ],
+
+    'promote' => [
+        'title' => 'Abzeichen-Vitrine',
+        'subtitle' => 'Teilen Sie Ihre CO2-Erfolge',
+        'no_badges' => 'Noch keine Abzeichen verdient',
+        'no_badges_description' => 'Setzen Sie Ihre CO2-Reduktionsbemühungen fort, um Abzeichen freizuschalten.',
+        'start_measuring' => 'Mit der Messung beginnen',
+
+        // Badge details
+        'your_badges' => 'Ihre Abzeichen',
+        'badge_gallery' => 'Abzeichen-Galerie',
+        'total_points' => 'Gesamtpunkte',
+        'selected_badge' => 'Ausgewähltes Abzeichen',
+        'earned_on' => 'Verdient am',
+        'points' => 'Punkte',
+
+        // Actions
+        'share' => 'Teilen',
+        'embed' => 'Einbetten',
+        'download' => 'Herunterladen',
+
+        // Share modal
+        'share_title' => 'Dieses Abzeichen teilen',
+        'share_description' => 'Teilen Sie Ihre Leistung in sozialen Medien oder kopieren Sie den Link.',
+        'copy_link' => 'Link kopieren',
+        'link_copied' => 'Link kopiert!',
+        'share_on_linkedin' => 'Auf LinkedIn teilen',
+        'share_on_twitter' => 'Auf X (Twitter) teilen',
+        'linkedin_summary' => 'Wir sind stolz, das Abzeichen :badge für unsere CO2-Managementbemühungen erhalten zu haben. Verifiziert von Carbex.',
+        'twitter_text' => 'Wir haben das Abzeichen :badge für unser CO2-Engagement erhalten! #CarbonNeutral #Nachhaltigkeit',
+
+        // Embed modal
+        'embed_title' => 'Dieses Abzeichen einbetten',
+        'embed_description' => 'Kopieren Sie den HTML-Code, um dieses Abzeichen auf Ihrer Website einzubetten.',
+        'embed_size' => 'Größe',
+        'embed_size_small' => 'Klein (200x250)',
+        'embed_size_medium' => 'Mittel (300x375)',
+        'embed_size_large' => 'Groß (400x500)',
+        'copy_code' => 'Code kopieren',
+        'code_copied' => 'Code kopiert!',
+        'preview' => 'Vorschau',
+
+        // Download modal
+        'download_title' => 'Assets herunterladen',
+        'download_description' => 'Laden Sie Assets für Ihre Kommunikation herunter.',
+        'format' => 'Format',
+        'download_badge' => 'Abzeichen herunterladen',
+        'download_signature' => 'E-Mail-Signatur',
+        'download_social_kit' => 'Social-Media-Kit',
+        'social_kit_preparing' => 'Kit wird vorbereitet...',
+
+        // Public badge page
+        'awarded_to' => 'Verliehen an',
+        'verified' => 'Verifiziert',
+        'verified_by_carbex' => 'Verifiziert von Carbex',
+        'verify' => 'Überprüfen',
+        'learn_more' => 'Mehr erfahren',
+        'cta_text' => 'Auch Sie können Ihren CO2-Fußabdruck messen und reduzieren.',
+        'start_free' => 'Kostenlos starten',
+        'all_rights_reserved' => 'Alle Rechte vorbehalten.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Onboarding
+    |--------------------------------------------------------------------------
+    */
+    'onboarding' => [
+        'company_info' => 'Unternehmensinformationen',
+        'company_info_desc' => 'Geben Sie die Informationen Ihres Unternehmens ein, um zu beginnen.',
+        'company_name' => 'Unternehmensname',
+        'siret' => 'Handelsregisternummer',
+        'sector' => 'Branche',
+        'select_sector' => 'Branche auswählen',
+        'company_size' => 'Unternehmensgröße',
+        'select_size' => 'Größe auswählen',
+        'site_config' => 'Standortkonfiguration',
+        'site_config_desc' => 'Fügen Sie Ihren ersten Standort hinzu, um mit der Verfolgung Ihrer Emissionen zu beginnen.',
+        'site_name' => 'Standortname',
+        'address' => 'Adresse',
+        'city' => 'Stadt',
+        'postal_code' => 'Postleitzahl',
+        'bank_connection' => 'Bankverbindung',
+        'bank_connection_desc' => 'Verbinden Sie Ihr Bankkonto, um die Verfolgung Ihrer CO2-Ausgaben zu automatisieren.',
+        'bank_connection_info' => 'Die Bankverbindung ermöglicht es Ihnen, Ihre Transaktionen automatisch zu importieren und Ihren CO2-Fußabdruck zu berechnen.',
+        'connect_bank' => 'Meine Bank verbinden',
+        'skip_step' => 'Diesen Schritt überspringen',
+        'congratulations' => 'Herzlichen Glückwunsch',
+        'setup_complete' => 'Ihr Konto ist eingerichtet. Sie können nun Ihren CO2-Fußabdruck verfolgen.',
+        'go_to_dashboard' => 'Zum Dashboard',
+    ],
+
+    'sectors' => [
+        'technology' => 'Technologie',
+        'manufacturing' => 'Industrie',
+        'services' => 'Dienstleistungen',
+        'retail' => 'Handel',
+        'healthcare' => 'Gesundheitswesen',
+        'construction' => 'Bauwesen',
+        'transport' => 'Transport',
+        'energy' => 'Energie',
+        'other' => 'Sonstiges',
+    ],
+
+    'sizes' => [
+        'small' => 'Klein (1-50 Mitarbeiter)',
+        'medium' => 'Mittel (51-250 Mitarbeiter)',
+        'large' => 'Groß (251-1000 Mitarbeiter)',
+        'enterprise' => 'Sehr groß (1000+ Mitarbeiter)',
     ],
 
 ];
