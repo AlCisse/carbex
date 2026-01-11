@@ -151,6 +151,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('emissions.activities');
     })->name('emissions.activities');
 
+    // AI Analysis (Analyse IA)
+    Route::get('/ai-analysis', function () {
+        return view('ai.analysis');
+    })->name('ai.analysis');
+
+    // Suppliers (Fournisseurs Scope 3)
+    Route::get('/suppliers', App\Livewire\Suppliers\SupplierManagement::class)
+        ->name('suppliers');
+
+    // Gamification (Badges & Engagement)
+    Route::get('/gamification', function () {
+        return view('gamification.index');
+    })->name('gamification');
+
+    // Badge share page (public with token)
+    Route::get('/badges/share/{token}', [\App\Http\Controllers\BadgeShareController::class, 'show'])
+        ->name('badges.share')
+        ->withoutMiddleware(['auth', 'verified']);
+
     // Plan de transition
     Route::get('/transition-plan', function () {
         return view('transition-plan.index');

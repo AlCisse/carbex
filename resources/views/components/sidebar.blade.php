@@ -121,6 +121,27 @@
             </span>
         </a>
 
+        <!-- Analyse IA (Recommandations) -->
+        <a href="{{ route('ai.analysis') }}"
+           class="flex items-center px-4 py-2.5 text-sm font-medium {{ request()->routeIs('ai.analysis*') ? 'bg-slate-700 text-white' : 'text-slate-300 hover:bg-slate-700 hover:text-white' }}">
+            <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <span class="flex items-center">
+                Analyse IA
+                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-emerald-600 text-white">NEW</span>
+            </span>
+        </a>
+
+        <!-- Fournisseurs (Scope 3) -->
+        <a href="{{ route('suppliers') }}"
+           class="flex items-center px-4 py-2.5 text-sm font-medium {{ request()->routeIs('suppliers*') ? 'bg-slate-700 text-white' : 'text-slate-300 hover:bg-slate-700 hover:text-white' }}">
+            <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            Fournisseurs
+        </a>
+
         <!-- Plan de transition -->
         <a href="{{ route('transition-plan') }}"
            class="flex items-center px-4 py-2.5 text-sm font-medium {{ request()->routeIs('transition-plan*') ? 'bg-slate-700 text-white' : 'text-slate-300 hover:bg-slate-700 hover:text-white' }}">
@@ -137,6 +158,18 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             Rapports & exports
+        </a>
+
+        <!-- Badges & Engagement -->
+        <a href="{{ route('gamification') }}"
+           class="flex items-center px-4 py-2.5 text-sm font-medium {{ request()->routeIs('gamification*') ? 'bg-slate-700 text-white' : 'text-slate-300 hover:bg-slate-700 hover:text-white' }}">
+            <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span class="flex items-center">
+                Badges
+                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-purple-600 text-white">NEW</span>
+            </span>
         </a>
     </nav>
 
