@@ -95,7 +95,7 @@
                                     <p class="mt-1 text-sm text-gray-500">
                                         {{ __('carbex.ai.helper.configure_api_key') }}
                                     </p>
-                                    <a href="{{ route('filament.admin.pages.ai-settings') }}" class="mt-4 inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700">
+                                    <a href="{{ route('settings') }}" class="mt-4 inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700">
                                         {{ __('carbex.ai.helper.configure_ai') }}
                                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
