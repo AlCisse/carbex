@@ -2137,4 +2137,248 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employee Engagement (T180-T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'engage' => [
+        'title' => 'Engagement Employés',
+        'subtitle' => 'Sensibilisez et engagez votre équipe dans la démarche carbone',
+        'your_points' => 'Vos points',
+
+        'tabs' => [
+            'quiz' => 'Quiz Carbone',
+            'calculator' => 'Calculateur',
+            'challenges' => 'Défis',
+            'leaderboard' => 'Classement',
+        ],
+
+        'quiz' => [
+            'question' => 'Question',
+            'completed' => 'Quiz terminé !',
+            'score_excellent' => 'Excellent ! Vous êtes un expert du carbone !',
+            'score_good' => 'Bien joué ! Vous avez de bonnes connaissances.',
+            'score_improve' => 'Continuez à apprendre sur l\'empreinte carbone.',
+            'review' => 'Vos réponses',
+            'your_answer' => 'Votre réponse',
+            'correct_answer' => 'Bonne réponse',
+            'retry' => 'Recommencer le quiz',
+
+            // Question 1
+            'q1' => 'Quel secteur émet le plus de CO2 en France ?',
+            'q1_a' => 'L\'industrie',
+            'q1_b' => 'Les transports',
+            'q1_c' => 'Le bâtiment',
+            'q1_d' => 'L\'agriculture',
+            'q1_explain' => 'Les transports représentent environ 31% des émissions de GES en France, principalement dus aux véhicules particuliers.',
+
+            // Question 2
+            'q2' => 'Combien de tonnes de CO2 émet en moyenne un Français par an ?',
+            'q2_a' => '4 tonnes',
+            'q2_b' => '6 tonnes',
+            'q2_c' => '9 tonnes',
+            'q2_d' => '15 tonnes',
+            'q2_explain' => 'L\'empreinte carbone moyenne d\'un Français est d\'environ 9 tonnes de CO2 par an.',
+
+            // Question 3
+            'q3' => 'Quel objectif l\'Accord de Paris fixe-t-il pour 2050 ?',
+            'q3_a' => '2 tonnes de CO2 par personne',
+            'q3_b' => '4 tonnes de CO2 par personne',
+            'q3_c' => '6 tonnes de CO2 par personne',
+            'q3_d' => '8 tonnes de CO2 par personne',
+            'q3_explain' => 'Pour limiter le réchauffement à 2°C, nous devons atteindre 2 tonnes de CO2 par personne d\'ici 2050.',
+
+            // Question 4
+            'q4' => 'Quel geste a le plus d\'impact sur l\'empreinte carbone individuelle ?',
+            'q4_a' => 'Éteindre les lumières',
+            'q4_b' => 'Trier ses déchets',
+            'q4_c' => 'Prendre des douches plus courtes',
+            'q4_d' => 'Réduire les trajets en avion',
+            'q4_explain' => 'Un aller-retour Paris-New York émet environ 2 tonnes de CO2, soit l\'équivalent de l\'objectif annuel 2050.',
+
+            // Question 5
+            'q5' => 'Qu\'est-ce que le Scope 3 dans le bilan carbone d\'une entreprise ?',
+            'q5_a' => 'Les émissions des bureaux',
+            'q5_b' => 'Les émissions indirectes de la chaîne de valeur',
+            'q5_c' => 'Les émissions des véhicules de fonction',
+            'q5_d' => 'Les émissions liées au chauffage',
+            'q5_explain' => 'Le Scope 3 couvre toutes les émissions indirectes de la chaîne de valeur : fournisseurs, transport, utilisation des produits, etc.',
+        ],
+
+        'calculator' => [
+            'title' => 'Calculateur d\'Empreinte Carbone',
+            'commute_distance' => 'Distance domicile-travail',
+            'commute_mode' => 'Mode de transport',
+            'wfh_days' => 'Jours de télétravail par semaine',
+            'flights_short' => 'Vols court-courrier/an',
+            'flights_long' => 'Vols long-courrier/an',
+            'diet' => 'Régime alimentaire',
+            'heating' => 'Type de chauffage',
+            'electricity' => 'Consommation électrique',
+            'month' => 'mois',
+            'calculate' => 'Calculer mon empreinte',
+            'reset' => 'Réinitialiser',
+            'fill_form' => 'Remplissez le formulaire pour calculer votre empreinte carbone personnelle',
+
+            'modes' => [
+                'car_petrol' => 'Voiture essence',
+                'car_diesel' => 'Voiture diesel',
+                'car_hybrid' => 'Voiture hybride',
+                'car_electric' => 'Voiture électrique',
+                'public_transport' => 'Transports en commun',
+                'bike' => 'Vélo',
+                'walk' => 'Marche',
+            ],
+
+            'diets' => [
+                'vegan' => 'Végétalien',
+                'vegetarian' => 'Végétarien',
+                'mixed' => 'Mixte (peu de viande)',
+                'meat_heavy' => 'Riche en viande',
+            ],
+
+            'heating_types' => [
+                'gas' => 'Gaz naturel',
+                'oil' => 'Fioul',
+                'electric' => 'Électrique',
+                'heat_pump' => 'Pompe à chaleur',
+                'wood' => 'Bois',
+            ],
+
+            'your_footprint' => 'Votre empreinte carbone',
+            'tonnes_year' => 'tonnes CO2/an',
+            'french_avg' => 'Moyenne FR',
+            'global_avg' => 'Moyenne monde',
+            'paris_target' => 'Objectif Paris',
+            'breakdown' => 'Répartition',
+
+            'categories' => [
+                'commute' => 'Trajets domicile-travail',
+                'flights' => 'Vols',
+                'diet' => 'Alimentation',
+                'heating' => 'Chauffage',
+                'electricity' => 'Électricité',
+            ],
+
+            'tips_title' => 'Conseils de réduction',
+            'tip_commute' => 'Envisagez le covoiturage, les transports en commun ou le vélo pour vos trajets quotidiens.',
+            'tip_flights' => 'Réduisez vos vols long-courrier ou compensez vos émissions via des projets certifiés.',
+            'tip_diet' => 'Réduire la viande rouge pourrait diminuer votre empreinte alimentaire de 30%.',
+            'tip_heating' => 'Passez à une pompe à chaleur ou améliorez l\'isolation de votre logement.',
+            'tip_wfh' => 'Le télétravail 2 jours par semaine peut réduire vos émissions transport de 40%.',
+        ],
+
+        'challenges' => [
+            'no_car_week' => 'Semaine sans voiture',
+            'no_car_week_desc' => 'Utilisez uniquement les transports en commun, le vélo ou la marche pendant une semaine.',
+            'meatless_monday' => 'Lundi sans viande',
+            'meatless_monday_desc' => 'Adoptez un régime végétarien chaque lundi pendant un mois.',
+            'zero_waste_lunch' => 'Déjeuner zéro déchet',
+            'zero_waste_lunch_desc' => 'Apportez votre repas dans des contenants réutilisables pendant 2 semaines.',
+            'energy_saver' => 'Économiseur d\'énergie',
+            'energy_saver_desc' => 'Réduisez votre consommation d\'électricité de 10% ce mois-ci.',
+            'digital_detox' => 'Détox digitale',
+            'digital_detox_desc' => 'Réduisez votre temps d\'écran de 30% pendant une semaine.',
+
+            'difficulty' => [
+                'easy' => 'Facile',
+                'medium' => 'Moyen',
+                'hard' => 'Difficile',
+            ],
+
+            'duration' => 'Durée',
+            'completed' => 'Complété',
+            'mark_complete' => 'Marquer comme terminé',
+            'join' => 'Participer',
+            'leave' => 'Quitter',
+        ],
+
+        'leaderboard' => [
+            'title' => 'Classement de l\'équipe',
+            'subtitle' => 'Comparez vos efforts avec vos collègues (participation optionnelle)',
+            'you' => 'vous',
+            'challenges_completed' => 'défis complétés',
+            'no_participants' => 'Aucun participant pour le moment. Soyez le premier !',
+            'settings' => 'Paramètres',
+            'participate' => 'Participer au classement',
+            'participate_desc' => 'Votre nom apparaîtra dans le classement d\'équipe',
+            'your_rank' => 'Votre rang',
+            'points' => 'points',
+
+            'how_to_earn' => 'Comment gagner des points',
+            'earn_challenges' => 'Compléter des défis',
+            'earn_quiz' => 'Terminer le quiz',
+            'earn_calculator' => 'Calculer son empreinte',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notifications (T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'notifications' => [
+        'newsletter' => [
+            'subject' => 'Votre newsletter carbone - :org',
+            'greeting' => 'Bonjour :name,',
+            'intro' => 'Voici les actualités de votre équipe :org sur la réduction carbone !',
+            'team_stats' => '**Statistiques de l\'équipe ce mois-ci :**',
+            'challenges_this_month' => ':count défis complétés',
+            'total_points' => ':count points cumulés',
+            'top_performer' => 'Meilleur contributeur : :name',
+            'tip_title' => '**Conseil de la semaine :**',
+            'cta' => 'Voir les défis',
+            'closing' => 'Continuez vos efforts pour un avenir plus vert !',
+            'salutation' => "L'équipe Carbex",
+        ],
+
+        'challenge_reminder' => [
+            'subject' => 'Rappel : :challenge se termine bientôt',
+            'greeting' => 'Bonjour :name,',
+            'last_day' => 'C\'est le dernier jour pour compléter votre défi « :challenge » !',
+            'days_left' => 'Il vous reste **:days jours** pour compléter votre défi « :challenge ».',
+            'points_reminder' => 'N\'oubliez pas : :points points vous attendent à la clé !',
+            'cta' => 'Marquer comme terminé',
+            'encouragement' => 'Vous êtes sur la bonne voie. Continuez !',
+            'salutation' => "L'équipe Carbex",
+        ],
+
+        'milestone' => [
+            'cta' => 'Voir mon profil',
+            'salutation' => "L'équipe Carbex",
+
+            'quiz_subject' => 'Bravo ! Vous avez complété le quiz carbone',
+            'quiz_greeting' => 'Félicitations :name !',
+            'quiz_score' => 'Vous avez obtenu un score de **:score%** au quiz carbone.',
+            'quiz_excellent' => 'Excellent ! Vous êtes un véritable expert du carbone.',
+            'quiz_good' => 'Bien joué ! Vous avez de solides connaissances.',
+            'quiz_improve' => 'Continuez à apprendre sur l\'empreinte carbone.',
+            'quiz_points' => 'Vous avez gagné **:points points** pour avoir complété le quiz.',
+
+            'challenge_subject' => 'Bravo ! Défi « :challenge » complété',
+            'challenge_greeting' => 'Félicitations :name !',
+            'challenge_completed' => 'Vous avez complété le défi « :challenge » avec succès !',
+            'challenge_points' => 'Vous avez gagné **:points points**.',
+            'challenge_impact' => 'Chaque petit geste compte pour notre planète.',
+
+            'points_subject' => 'Vous avez atteint :milestone points !',
+            'points_greeting' => 'Bravo :name !',
+            'points_reached' => 'Vous avez atteint le cap des **:milestone points** !',
+            'points_total' => 'Votre total actuel : **:points points**.',
+            'points_keep_going' => 'Continuez sur cette lancée !',
+
+            'leaderboard_subject' => 'Vous êtes #:rank au classement !',
+            'leaderboard_greeting' => 'Félicitations :name !',
+            'leaderboard_rank' => 'Vous êtes actuellement à la **:rank° place** du classement de votre équipe.',
+            'leaderboard_message' => 'Votre engagement fait la différence. Continuez !',
+
+            'generic_subject' => 'Nouvelle réussite débloquée !',
+            'generic_greeting' => 'Félicitations :name !',
+            'generic_message' => 'Vous avez atteint une nouvelle étape dans votre parcours carbone.',
+        ],
+    ],
+
 ];

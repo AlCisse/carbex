@@ -1861,4 +1861,248 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employee Engagement (T180-T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'engage' => [
+        'title' => 'Employee Engagement',
+        'subtitle' => 'Raise awareness and engage your team in the carbon journey',
+        'your_points' => 'Your points',
+
+        'tabs' => [
+            'quiz' => 'Carbon Quiz',
+            'calculator' => 'Calculator',
+            'challenges' => 'Challenges',
+            'leaderboard' => 'Leaderboard',
+        ],
+
+        'quiz' => [
+            'question' => 'Question',
+            'completed' => 'Quiz completed!',
+            'score_excellent' => 'Excellent! You\'re a carbon expert!',
+            'score_good' => 'Well done! You have good knowledge.',
+            'score_improve' => 'Keep learning about carbon footprint.',
+            'review' => 'Your answers',
+            'your_answer' => 'Your answer',
+            'correct_answer' => 'Correct answer',
+            'retry' => 'Retake quiz',
+
+            // Question 1
+            'q1' => 'Which sector emits the most CO2 in Europe?',
+            'q1_a' => 'Industry',
+            'q1_b' => 'Transportation',
+            'q1_c' => 'Buildings',
+            'q1_d' => 'Agriculture',
+            'q1_explain' => 'Transportation accounts for about 25% of EU GHG emissions, mainly from passenger cars.',
+
+            // Question 2
+            'q2' => 'How many tonnes of CO2 does the average European emit per year?',
+            'q2_a' => '4 tonnes',
+            'q2_b' => '6 tonnes',
+            'q2_c' => '9 tonnes',
+            'q2_d' => '15 tonnes',
+            'q2_explain' => 'The average European carbon footprint is approximately 9 tonnes of CO2 per year.',
+
+            // Question 3
+            'q3' => 'What target does the Paris Agreement set for 2050?',
+            'q3_a' => '2 tonnes CO2 per person',
+            'q3_b' => '4 tonnes CO2 per person',
+            'q3_c' => '6 tonnes CO2 per person',
+            'q3_d' => '8 tonnes CO2 per person',
+            'q3_explain' => 'To limit warming to 2°C, we must reach 2 tonnes of CO2 per person by 2050.',
+
+            // Question 4
+            'q4' => 'Which action has the most impact on individual carbon footprint?',
+            'q4_a' => 'Turning off lights',
+            'q4_b' => 'Recycling',
+            'q4_c' => 'Taking shorter showers',
+            'q4_d' => 'Reducing air travel',
+            'q4_explain' => 'A round-trip Paris-New York flight emits about 2 tonnes of CO2, equivalent to the 2050 annual target.',
+
+            // Question 5
+            'q5' => 'What is Scope 3 in a company\'s carbon footprint?',
+            'q5_a' => 'Office emissions',
+            'q5_b' => 'Indirect emissions from the value chain',
+            'q5_c' => 'Company vehicle emissions',
+            'q5_d' => 'Heating emissions',
+            'q5_explain' => 'Scope 3 covers all indirect value chain emissions: suppliers, transport, product use, etc.',
+        ],
+
+        'calculator' => [
+            'title' => 'Carbon Footprint Calculator',
+            'commute_distance' => 'Home-work distance',
+            'commute_mode' => 'Transport mode',
+            'wfh_days' => 'Work from home days per week',
+            'flights_short' => 'Short-haul flights/year',
+            'flights_long' => 'Long-haul flights/year',
+            'diet' => 'Diet',
+            'heating' => 'Heating type',
+            'electricity' => 'Electricity consumption',
+            'month' => 'month',
+            'calculate' => 'Calculate my footprint',
+            'reset' => 'Reset',
+            'fill_form' => 'Fill in the form to calculate your personal carbon footprint',
+
+            'modes' => [
+                'car_petrol' => 'Petrol car',
+                'car_diesel' => 'Diesel car',
+                'car_hybrid' => 'Hybrid car',
+                'car_electric' => 'Electric car',
+                'public_transport' => 'Public transport',
+                'bike' => 'Bicycle',
+                'walk' => 'Walking',
+            ],
+
+            'diets' => [
+                'vegan' => 'Vegan',
+                'vegetarian' => 'Vegetarian',
+                'mixed' => 'Mixed (low meat)',
+                'meat_heavy' => 'Meat heavy',
+            ],
+
+            'heating_types' => [
+                'gas' => 'Natural gas',
+                'oil' => 'Oil',
+                'electric' => 'Electric',
+                'heat_pump' => 'Heat pump',
+                'wood' => 'Wood',
+            ],
+
+            'your_footprint' => 'Your carbon footprint',
+            'tonnes_year' => 'tonnes CO2/year',
+            'french_avg' => 'French avg',
+            'global_avg' => 'Global avg',
+            'paris_target' => 'Paris target',
+            'breakdown' => 'Breakdown',
+
+            'categories' => [
+                'commute' => 'Commute',
+                'flights' => 'Flights',
+                'diet' => 'Diet',
+                'heating' => 'Heating',
+                'electricity' => 'Electricity',
+            ],
+
+            'tips_title' => 'Reduction tips',
+            'tip_commute' => 'Consider carpooling, public transport, or cycling for your daily commute.',
+            'tip_flights' => 'Reduce long-haul flights or offset your emissions through certified projects.',
+            'tip_diet' => 'Reducing red meat could decrease your food footprint by 30%.',
+            'tip_heating' => 'Switch to a heat pump or improve your home insulation.',
+            'tip_wfh' => 'Working from home 2 days a week can reduce your transport emissions by 40%.',
+        ],
+
+        'challenges' => [
+            'no_car_week' => 'Car-free week',
+            'no_car_week_desc' => 'Use only public transport, cycling, or walking for one week.',
+            'meatless_monday' => 'Meatless Monday',
+            'meatless_monday_desc' => 'Adopt a vegetarian diet every Monday for a month.',
+            'zero_waste_lunch' => 'Zero-waste lunch',
+            'zero_waste_lunch_desc' => 'Bring your meal in reusable containers for 2 weeks.',
+            'energy_saver' => 'Energy saver',
+            'energy_saver_desc' => 'Reduce your electricity consumption by 10% this month.',
+            'digital_detox' => 'Digital detox',
+            'digital_detox_desc' => 'Reduce your screen time by 30% for one week.',
+
+            'difficulty' => [
+                'easy' => 'Easy',
+                'medium' => 'Medium',
+                'hard' => 'Hard',
+            ],
+
+            'duration' => 'Duration',
+            'completed' => 'Completed',
+            'mark_complete' => 'Mark as complete',
+            'join' => 'Join',
+            'leave' => 'Leave',
+        ],
+
+        'leaderboard' => [
+            'title' => 'Team Leaderboard',
+            'subtitle' => 'Compare your efforts with colleagues (optional participation)',
+            'you' => 'you',
+            'challenges_completed' => 'challenges completed',
+            'no_participants' => 'No participants yet. Be the first!',
+            'settings' => 'Settings',
+            'participate' => 'Participate in leaderboard',
+            'participate_desc' => 'Your name will appear in the team leaderboard',
+            'your_rank' => 'Your rank',
+            'points' => 'points',
+
+            'how_to_earn' => 'How to earn points',
+            'earn_challenges' => 'Complete challenges',
+            'earn_quiz' => 'Complete the quiz',
+            'earn_calculator' => 'Calculate your footprint',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notifications (T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'notifications' => [
+        'newsletter' => [
+            'subject' => 'Your carbon newsletter - :org',
+            'greeting' => 'Hello :name,',
+            'intro' => 'Here are the latest updates from your :org team on carbon reduction!',
+            'team_stats' => '**Team statistics this month:**',
+            'challenges_this_month' => ':count challenges completed',
+            'total_points' => ':count total points',
+            'top_performer' => 'Top contributor: :name',
+            'tip_title' => '**Tip of the week:**',
+            'cta' => 'View challenges',
+            'closing' => 'Keep up your efforts for a greener future!',
+            'salutation' => 'The Carbex Team',
+        ],
+
+        'challenge_reminder' => [
+            'subject' => 'Reminder: :challenge ending soon',
+            'greeting' => 'Hello :name,',
+            'last_day' => 'Today is the last day to complete your ":challenge" challenge!',
+            'days_left' => 'You have **:days days** left to complete your ":challenge" challenge.',
+            'points_reminder' => 'Don\'t forget: :points points are waiting for you!',
+            'cta' => 'Mark as complete',
+            'encouragement' => 'You\'re on the right track. Keep going!',
+            'salutation' => 'The Carbex Team',
+        ],
+
+        'milestone' => [
+            'cta' => 'View my profile',
+            'salutation' => 'The Carbex Team',
+
+            'quiz_subject' => 'Congratulations! You completed the carbon quiz',
+            'quiz_greeting' => 'Well done :name!',
+            'quiz_score' => 'You scored **:score%** on the carbon quiz.',
+            'quiz_excellent' => 'Excellent! You\'re a true carbon expert.',
+            'quiz_good' => 'Well done! You have solid knowledge.',
+            'quiz_improve' => 'Keep learning about carbon footprint.',
+            'quiz_points' => 'You earned **:points points** for completing the quiz.',
+
+            'challenge_subject' => 'Congratulations! ":challenge" challenge completed',
+            'challenge_greeting' => 'Well done :name!',
+            'challenge_completed' => 'You successfully completed the ":challenge" challenge!',
+            'challenge_points' => 'You earned **:points points**.',
+            'challenge_impact' => 'Every small action counts for our planet.',
+
+            'points_subject' => 'You reached :milestone points!',
+            'points_greeting' => 'Congratulations :name!',
+            'points_reached' => 'You\'ve reached the **:milestone points** milestone!',
+            'points_total' => 'Your current total: **:points points**.',
+            'points_keep_going' => 'Keep up the momentum!',
+
+            'leaderboard_subject' => 'You\'re #:rank on the leaderboard!',
+            'leaderboard_greeting' => 'Congratulations :name!',
+            'leaderboard_rank' => 'You\'re currently in **:rank place** on your team leaderboard.',
+            'leaderboard_message' => 'Your engagement makes a difference. Keep it up!',
+
+            'generic_subject' => 'New achievement unlocked!',
+            'generic_greeting' => 'Congratulations :name!',
+            'generic_message' => 'You\'ve reached a new milestone in your carbon journey.',
+        ],
+    ],
+
 ];

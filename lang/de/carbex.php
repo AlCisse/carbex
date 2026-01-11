@@ -2041,4 +2041,248 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Employee Engagement (T180-T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'engage' => [
+        'title' => 'Mitarbeiter-Engagement',
+        'subtitle' => 'Sensibilisieren und engagieren Sie Ihr Team für den CO2-Weg',
+        'your_points' => 'Ihre Punkte',
+
+        'tabs' => [
+            'quiz' => 'CO2-Quiz',
+            'calculator' => 'Rechner',
+            'challenges' => 'Challenges',
+            'leaderboard' => 'Rangliste',
+        ],
+
+        'quiz' => [
+            'question' => 'Frage',
+            'completed' => 'Quiz abgeschlossen!',
+            'score_excellent' => 'Ausgezeichnet! Sie sind ein CO2-Experte!',
+            'score_good' => 'Gut gemacht! Sie haben gutes Wissen.',
+            'score_improve' => 'Lernen Sie weiter über den CO2-Fußabdruck.',
+            'review' => 'Ihre Antworten',
+            'your_answer' => 'Ihre Antwort',
+            'correct_answer' => 'Richtige Antwort',
+            'retry' => 'Quiz wiederholen',
+
+            // Question 1
+            'q1' => 'Welcher Sektor emittiert in Europa am meisten CO2?',
+            'q1_a' => 'Industrie',
+            'q1_b' => 'Verkehr',
+            'q1_c' => 'Gebäude',
+            'q1_d' => 'Landwirtschaft',
+            'q1_explain' => 'Der Verkehr macht etwa 25% der THG-Emissionen der EU aus, hauptsächlich durch Pkw.',
+
+            // Question 2
+            'q2' => 'Wie viele Tonnen CO2 emittiert der durchschnittliche Europäer pro Jahr?',
+            'q2_a' => '4 Tonnen',
+            'q2_b' => '6 Tonnen',
+            'q2_c' => '9 Tonnen',
+            'q2_d' => '15 Tonnen',
+            'q2_explain' => 'Der durchschnittliche europäische CO2-Fußabdruck beträgt etwa 9 Tonnen CO2 pro Jahr.',
+
+            // Question 3
+            'q3' => 'Welches Ziel setzt das Pariser Abkommen für 2050?',
+            'q3_a' => '2 Tonnen CO2 pro Person',
+            'q3_b' => '4 Tonnen CO2 pro Person',
+            'q3_c' => '6 Tonnen CO2 pro Person',
+            'q3_d' => '8 Tonnen CO2 pro Person',
+            'q3_explain' => 'Um die Erwärmung auf 2°C zu begrenzen, müssen wir bis 2050 2 Tonnen CO2 pro Person erreichen.',
+
+            // Question 4
+            'q4' => 'Welche Maßnahme hat den größten Einfluss auf den individuellen CO2-Fußabdruck?',
+            'q4_a' => 'Licht ausschalten',
+            'q4_b' => 'Recycling',
+            'q4_c' => 'Kürzer duschen',
+            'q4_d' => 'Flugreisen reduzieren',
+            'q4_explain' => 'Ein Hin- und Rückflug Paris-New York emittiert etwa 2 Tonnen CO2, entspricht dem Jahresziel 2050.',
+
+            // Question 5
+            'q5' => 'Was ist Scope 3 im CO2-Fußabdruck eines Unternehmens?',
+            'q5_a' => 'Büro-Emissionen',
+            'q5_b' => 'Indirekte Emissionen aus der Wertschöpfungskette',
+            'q5_c' => 'Firmenwagen-Emissionen',
+            'q5_d' => 'Heizungsemissionen',
+            'q5_explain' => 'Scope 3 umfasst alle indirekten Emissionen der Wertschöpfungskette: Lieferanten, Transport, Produktnutzung usw.',
+        ],
+
+        'calculator' => [
+            'title' => 'CO2-Fußabdruck-Rechner',
+            'commute_distance' => 'Arbeitsweg-Entfernung',
+            'commute_mode' => 'Verkehrsmittel',
+            'wfh_days' => 'Homeoffice-Tage pro Woche',
+            'flights_short' => 'Kurzstreckenflüge/Jahr',
+            'flights_long' => 'Langstreckenflüge/Jahr',
+            'diet' => 'Ernährung',
+            'heating' => 'Heizungsart',
+            'electricity' => 'Stromverbrauch',
+            'month' => 'Monat',
+            'calculate' => 'Meinen Fußabdruck berechnen',
+            'reset' => 'Zurücksetzen',
+            'fill_form' => 'Füllen Sie das Formular aus, um Ihren persönlichen CO2-Fußabdruck zu berechnen',
+
+            'modes' => [
+                'car_petrol' => 'Benziner',
+                'car_diesel' => 'Diesel',
+                'car_hybrid' => 'Hybrid',
+                'car_electric' => 'Elektroauto',
+                'public_transport' => 'ÖPNV',
+                'bike' => 'Fahrrad',
+                'walk' => 'Zu Fuß',
+            ],
+
+            'diets' => [
+                'vegan' => 'Vegan',
+                'vegetarian' => 'Vegetarisch',
+                'mixed' => 'Gemischt (wenig Fleisch)',
+                'meat_heavy' => 'Fleischreich',
+            ],
+
+            'heating_types' => [
+                'gas' => 'Erdgas',
+                'oil' => 'Heizöl',
+                'electric' => 'Elektrisch',
+                'heat_pump' => 'Wärmepumpe',
+                'wood' => 'Holz',
+            ],
+
+            'your_footprint' => 'Ihr CO2-Fußabdruck',
+            'tonnes_year' => 'Tonnen CO2/Jahr',
+            'french_avg' => 'Durchschn. FR',
+            'global_avg' => 'Durchschn. Welt',
+            'paris_target' => 'Paris-Ziel',
+            'breakdown' => 'Aufschlüsselung',
+
+            'categories' => [
+                'commute' => 'Pendelverkehr',
+                'flights' => 'Flüge',
+                'diet' => 'Ernährung',
+                'heating' => 'Heizung',
+                'electricity' => 'Strom',
+            ],
+
+            'tips_title' => 'Reduktionstipps',
+            'tip_commute' => 'Erwägen Sie Fahrgemeinschaften, ÖPNV oder Radfahren für Ihren täglichen Arbeitsweg.',
+            'tip_flights' => 'Reduzieren Sie Langstreckenflüge oder kompensieren Sie Ihre Emissionen durch zertifizierte Projekte.',
+            'tip_diet' => 'Weniger rotes Fleisch könnte Ihren Ernährungs-Fußabdruck um 30% senken.',
+            'tip_heating' => 'Wechseln Sie zu einer Wärmepumpe oder verbessern Sie Ihre Hausdämmung.',
+            'tip_wfh' => 'Homeoffice an 2 Tagen pro Woche kann Ihre Verkehrsemissionen um 40% reduzieren.',
+        ],
+
+        'challenges' => [
+            'no_car_week' => 'Autofreie Woche',
+            'no_car_week_desc' => 'Nutzen Sie eine Woche lang nur ÖPNV, Fahrrad oder gehen Sie zu Fuß.',
+            'meatless_monday' => 'Fleischloser Montag',
+            'meatless_monday_desc' => 'Ernähren Sie sich jeden Montag einen Monat lang vegetarisch.',
+            'zero_waste_lunch' => 'Zero-Waste-Mittagessen',
+            'zero_waste_lunch_desc' => 'Bringen Sie Ihr Essen 2 Wochen lang in wiederverwendbaren Behältern mit.',
+            'energy_saver' => 'Energiesparer',
+            'energy_saver_desc' => 'Reduzieren Sie Ihren Stromverbrauch diesen Monat um 10%.',
+            'digital_detox' => 'Digital Detox',
+            'digital_detox_desc' => 'Reduzieren Sie Ihre Bildschirmzeit eine Woche lang um 30%.',
+
+            'difficulty' => [
+                'easy' => 'Einfach',
+                'medium' => 'Mittel',
+                'hard' => 'Schwer',
+            ],
+
+            'duration' => 'Dauer',
+            'completed' => 'Abgeschlossen',
+            'mark_complete' => 'Als erledigt markieren',
+            'join' => 'Teilnehmen',
+            'leave' => 'Verlassen',
+        ],
+
+        'leaderboard' => [
+            'title' => 'Team-Rangliste',
+            'subtitle' => 'Vergleichen Sie Ihre Bemühungen mit Kollegen (optionale Teilnahme)',
+            'you' => 'Sie',
+            'challenges_completed' => 'Challenges abgeschlossen',
+            'no_participants' => 'Noch keine Teilnehmer. Seien Sie der Erste!',
+            'settings' => 'Einstellungen',
+            'participate' => 'An Rangliste teilnehmen',
+            'participate_desc' => 'Ihr Name erscheint in der Team-Rangliste',
+            'your_rank' => 'Ihr Rang',
+            'points' => 'Punkte',
+
+            'how_to_earn' => 'So sammeln Sie Punkte',
+            'earn_challenges' => 'Challenges abschließen',
+            'earn_quiz' => 'Quiz absolvieren',
+            'earn_calculator' => 'Fußabdruck berechnen',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notifications (T182)
+    |--------------------------------------------------------------------------
+    */
+
+    'notifications' => [
+        'newsletter' => [
+            'subject' => 'Ihr CO2-Newsletter - :org',
+            'greeting' => 'Hallo :name,',
+            'intro' => 'Hier sind die neuesten Updates Ihres :org Teams zur CO2-Reduktion!',
+            'team_stats' => '**Team-Statistiken diesen Monat:**',
+            'challenges_this_month' => ':count Challenges abgeschlossen',
+            'total_points' => ':count Gesamtpunkte',
+            'top_performer' => 'Top-Beitragender: :name',
+            'tip_title' => '**Tipp der Woche:**',
+            'cta' => 'Challenges ansehen',
+            'closing' => 'Machen Sie weiter für eine grünere Zukunft!',
+            'salutation' => 'Das Carbex Team',
+        ],
+
+        'challenge_reminder' => [
+            'subject' => 'Erinnerung: :challenge endet bald',
+            'greeting' => 'Hallo :name,',
+            'last_day' => 'Heute ist der letzte Tag, um Ihre Challenge ":challenge" abzuschließen!',
+            'days_left' => 'Sie haben noch **:days Tage**, um Ihre Challenge ":challenge" abzuschließen.',
+            'points_reminder' => 'Vergessen Sie nicht: :points Punkte warten auf Sie!',
+            'cta' => 'Als erledigt markieren',
+            'encouragement' => 'Sie sind auf dem richtigen Weg. Weiter so!',
+            'salutation' => 'Das Carbex Team',
+        ],
+
+        'milestone' => [
+            'cta' => 'Mein Profil ansehen',
+            'salutation' => 'Das Carbex Team',
+
+            'quiz_subject' => 'Glückwunsch! Sie haben das CO2-Quiz abgeschlossen',
+            'quiz_greeting' => 'Gut gemacht :name!',
+            'quiz_score' => 'Sie haben **:score%** im CO2-Quiz erreicht.',
+            'quiz_excellent' => 'Ausgezeichnet! Sie sind ein echter CO2-Experte.',
+            'quiz_good' => 'Gut gemacht! Sie haben solides Wissen.',
+            'quiz_improve' => 'Lernen Sie weiter über den CO2-Fußabdruck.',
+            'quiz_points' => 'Sie haben **:points Punkte** für das Abschließen des Quiz verdient.',
+
+            'challenge_subject' => 'Glückwunsch! Challenge ":challenge" abgeschlossen',
+            'challenge_greeting' => 'Gut gemacht :name!',
+            'challenge_completed' => 'Sie haben die Challenge ":challenge" erfolgreich abgeschlossen!',
+            'challenge_points' => 'Sie haben **:points Punkte** verdient.',
+            'challenge_impact' => 'Jede kleine Handlung zählt für unseren Planeten.',
+
+            'points_subject' => 'Sie haben :milestone Punkte erreicht!',
+            'points_greeting' => 'Glückwunsch :name!',
+            'points_reached' => 'Sie haben die **:milestone Punkte**-Marke erreicht!',
+            'points_total' => 'Ihr aktueller Stand: **:points Punkte**.',
+            'points_keep_going' => 'Weiter so!',
+
+            'leaderboard_subject' => 'Sie sind #:rank in der Rangliste!',
+            'leaderboard_greeting' => 'Glückwunsch :name!',
+            'leaderboard_rank' => 'Sie sind derzeit auf **Platz :rank** in Ihrer Team-Rangliste.',
+            'leaderboard_message' => 'Ihr Engagement macht einen Unterschied. Weiter so!',
+
+            'generic_subject' => 'Neue Errungenschaft freigeschaltet!',
+            'generic_greeting' => 'Glückwunsch :name!',
+            'generic_message' => 'Sie haben einen neuen Meilenstein auf Ihrer CO2-Reise erreicht.',
+        ],
+    ],
+
 ];

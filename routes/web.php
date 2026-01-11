@@ -169,6 +169,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('gamification.index');
     })->name('gamification');
 
+    // Employee Engagement (T180-T182)
+    Route::get('/engage/employees', App\Livewire\Engage\EmployeeEngagement::class)
+        ->name('engage.employees');
+
     // Badge share page (public with token)
     Route::get('/badges/share/{token}', [\App\Http\Controllers\BadgeShareController::class, 'show'])
         ->name('badges.share')
