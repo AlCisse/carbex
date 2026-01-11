@@ -125,7 +125,7 @@
                                     <span>{{ $report->created_at->format('d/m/Y H:i') }}</span>
                                     @if($report->file_size)
                                         <span>&bull;</span>
-                                        <span>{{ $report->file_formatted_file_size }}</span>
+                                        <span>{{ $report->formatted_file_size }}</span>
                                     @endif
                                     @if($report->download_count > 0)
                                         <span>&bull;</span>
@@ -140,13 +140,13 @@
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                     {{ __('carbex.reports.status_completed') }}
                                 </span>
-                            @elseif($report->status === 'processing')
+                            @elseif($report->status === 'generating')
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                     <svg class="animate-spin -ml-0.5 mr-1.5 h-3 w-3" fill="none" viewBox="0 0 24 24">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
-                                    {{ __('carbex.reports.status_processing') }}
+                                    {{ __('carbex.reports.status_generating') }}
                                 </span>
                             @elseif($report->status === 'pending')
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">

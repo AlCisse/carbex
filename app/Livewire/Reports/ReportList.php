@@ -5,7 +5,11 @@ namespace App\Livewire\Reports;
 use App\Models\Assessment;
 use App\Models\Report;
 use App\Services\Reporting\ReportBuilder;
+use App\Services\Reporting\WordReportGenerator;
+use App\Services\Reporting\AdemeExporter;
+use App\Services\Reporting\GhgExporter;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
@@ -151,12 +155,22 @@ class ReportList extends Component
                 'started_at' => now(),
             ]);
 
-            // Dispatch job for async generation (or generate synchronously for now)
-            // For MVP, we'll mark as pending and show instructions
-            $report->update([
-                'status' => 'pending',
-                'description' => __('carbex.reports.pending_generation'),
-            ]);
+            // Generate the actual file based on type
+            $filePath = $this->generateReportFile($this->generateType, $organizationId, $year);
+
+            if ($filePath) {
+                $report->update([
+                    'status' => 'completed',
+                    'file_path' => $filePath,
+                    'file_size' => Storage::exists($filePath) ? Storage::size($filePath) : null,
+                    'completed_at' => now(),
+                ]);
+            } else {
+                $report->update([
+                    'status' => 'failed',
+                    'error_message' => 'Failed to generate report file',
+                ]);
+            }
 
             session()->flash('message', __('carbex.reports.generation_started'));
 
@@ -221,6 +235,24 @@ class ReportList extends Component
             'ghg' => 'ghg_inventory',
             default => 'custom',
         };
+    }
+
+    /**
+     * Generate the actual report file.
+     */
+    private function generateReportFile(string $type, string $organizationId, int $year): ?string
+    {
+        try {
+            return match ($type) {
+                'carbon_footprint' => app(WordReportGenerator::class)->generate($organizationId, $year),
+                'ademe' => app(AdemeExporter::class)->export($organizationId, $year),
+                'ghg' => app(GhgExporter::class)->export($organizationId, $year),
+                default => null,
+            };
+        } catch (\Exception $e) {
+            \Log::error("Report generation failed for type {$type}: " . $e->getMessage());
+            return null;
+        }
     }
 
     public function render(): View

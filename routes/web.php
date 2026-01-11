@@ -201,6 +201,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Reports (Livewire full-page component)
     Route::get('/reports', App\Livewire\Reports\ReportList::class)->name('reports');
+    Route::get('/reports/{report}/download', function (App\Models\Report $report) {
+        if ($report->organization_id !== auth()->user()->organization_id) {
+            abort(403);
+        }
+        if (!$report->isReady()) {
+            abort(404);
+        }
+        $report->recordDownload();
+        return \Illuminate\Support\Facades\Storage::download($report->file_path, basename($report->file_path));
+    })->name('reports.download');
 
     // Logout
     Route::post('/logout', function () {

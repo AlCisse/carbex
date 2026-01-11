@@ -116,27 +116,26 @@ test('Generate ADEME Declaration', async ({ page }) => {
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1000);
 
-    // Click the second Generate button (ADEME Declaration)
+    // Click the second Generate button (ADEME Declaration) to open modal
     console.log('Clicking Generate for ADEME Declaration...');
-
-    const downloadPromise = page.waitForEvent('download', { timeout: 30000 }).catch(() => null);
-
-    // Click the second generate button
     await page.locator('button:has-text("Generate")').nth(1).click();
+    await page.waitForTimeout(1000);
 
-    await page.waitForTimeout(3000);
+    // Click Generate button in modal
+    const modalGenerate = page.locator('.relative.z-20 button:has-text("Generate")');
+    if (await modalGenerate.isVisible()) {
+        console.log('Modal opened, clicking Generate...');
+        await modalGenerate.click();
+        await page.waitForTimeout(3000);
 
-    const download = await downloadPromise;
-
-    if (download) {
-        const filename = download.suggestedFilename();
-        console.log('✅ ADEME Download started:', filename);
-        await download.saveAs(`test-results/${filename}`);
-    } else {
-        console.log('No ADEME download triggered');
-        await page.screenshot({ path: 'test-results/ademe-generation.png', fullPage: true });
+        // Check if modal closed (success)
+        const modalStillOpen = await page.locator('.relative.z-20').isVisible().catch(() => false);
+        if (!modalStillOpen) {
+            console.log('✅ ADEME report generated successfully');
+        }
     }
 
+    await page.screenshot({ path: 'test-results/ademe-generation.png', fullPage: true });
     console.log('✅ ADEME test completed');
 });
 
@@ -159,26 +158,25 @@ test('Generate GHG Protocol Report', async ({ page }) => {
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1000);
 
-    // Click the third Generate button (GHG Protocol)
+    // Click the third Generate button (GHG Protocol) to open modal
     console.log('Clicking Generate for GHG Protocol Report...');
-
-    const downloadPromise = page.waitForEvent('download', { timeout: 30000 }).catch(() => null);
-
-    // Click the third generate button
     await page.locator('button:has-text("Generate")').nth(2).click();
+    await page.waitForTimeout(1000);
 
-    await page.waitForTimeout(3000);
+    // Click Generate button in modal
+    const modalGenerate = page.locator('.relative.z-20 button:has-text("Generate")');
+    if (await modalGenerate.isVisible()) {
+        console.log('Modal opened, clicking Generate...');
+        await modalGenerate.click();
+        await page.waitForTimeout(3000);
 
-    const download = await downloadPromise;
-
-    if (download) {
-        const filename = download.suggestedFilename();
-        console.log('✅ GHG Download started:', filename);
-        await download.saveAs(`test-results/${filename}`);
-    } else {
-        console.log('No GHG download triggered');
-        await page.screenshot({ path: 'test-results/ghg-generation.png', fullPage: true });
+        // Check if modal closed (success)
+        const modalStillOpen = await page.locator('.relative.z-20').isVisible().catch(() => false);
+        if (!modalStillOpen) {
+            console.log('✅ GHG report generated successfully');
+        }
     }
 
+    await page.screenshot({ path: 'test-results/ghg-generation.png', fullPage: true });
     console.log('✅ GHG test completed');
 });

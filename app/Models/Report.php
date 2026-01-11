@@ -96,10 +96,15 @@ class Report extends Model
             return null;
         }
 
-        return Storage::disk('s3')->temporaryUrl(
-            $this->file_path,
-            now()->addHours(1)
-        );
+        // Use local storage for development, S3 for production
+        if (config('filesystems.default') === 's3') {
+            return Storage::disk('s3')->temporaryUrl(
+                $this->file_path,
+                now()->addHours(1)
+            );
+        }
+
+        return route('reports.download', $this->id);
     }
 
     /**
@@ -153,8 +158,8 @@ class Report extends Model
      */
     public function deleteFile(): bool
     {
-        if ($this->file_path && Storage::disk('s3')->exists($this->file_path)) {
-            return Storage::disk('s3')->delete($this->file_path);
+        if ($this->file_path && Storage::exists($this->file_path)) {
+            return Storage::delete($this->file_path);
         }
 
         return false;
