@@ -77,6 +77,12 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
+// Onboarding (auth required, but no email verification)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/onboarding', App\Livewire\Onboarding\OnboardingWizard::class)
+        ->name('onboarding');
+});
+
 // Authenticated routes
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -103,6 +109,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Site Comparison (T174-T175)
     Route::get('/sites/comparison', App\Livewire\Sites\SiteComparison::class)
         ->name('sites.comparison');
+
+    // Site Import (T176)
+    Route::get('/sites/import', App\Livewire\Sites\SiteImport::class)
+        ->name('sites.import');
 
     // Employee Engagement (T180-T182)
     Route::get('/engage/employees', App\Livewire\Engage\EmployeeEngagement::class)
@@ -173,10 +183,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('gamification.index');
     })->name('gamification');
 
-    // Badge share page (public with token)
-    Route::get('/badges/share/{token}', [\App\Http\Controllers\BadgeShareController::class, 'show'])
-        ->name('badges.share')
-        ->withoutMiddleware(['auth', 'verified']);
+    // Badge Showcase (T169-T172)
+    Route::get('/promote/badges', App\Livewire\Promote\BadgeShowcase::class)
+        ->name('promote.badges');
+
+    // Compliance Monitor (T177-T179)
+    Route::get('/compliance', App\Livewire\Compliance\ComplianceMonitor::class)
+        ->name('compliance');
 
     // Plan de transition
     Route::get('/transition-plan', function () {
@@ -234,6 +247,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/invitation/{token}', function (string $token) {
     return view('auth.accept-invitation', ['token' => $token]);
 })->name('invitation.accept');
+
+/*
+|--------------------------------------------------------------------------
+| Public Badge Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/badge/{token}', [\App\Http\Controllers\BadgeShareController::class, 'show'])
+    ->name('badge.public');
+Route::get('/badge/{token}/verify', [\App\Http\Controllers\BadgeShareController::class, 'verify'])
+    ->name('badge.verify');
 
 /*
 |--------------------------------------------------------------------------

@@ -1363,6 +1363,51 @@ return [
             'missing_employees' => 'Enter employee count for per-person analysis.',
             'good_performance' => 'Excellent performance! This site is well below average.',
         ],
+
+        'name' => 'Name',
+        'code' => 'Code',
+        'type' => 'Type',
+        'address' => 'Address',
+        'city' => 'City',
+        'postal_code' => 'Postal code',
+        'country' => 'Country',
+        'floor_area' => 'Floor area (m²)',
+        'energy_rating' => 'Energy rating',
+        'construction_year' => 'Construction year',
+        'heating_type' => 'Heating type',
+
+        'import' => [
+            'title' => 'CSV Site Import',
+            'description' => 'Import multiple sites at once from a CSV file.',
+            'upload_file' => 'Upload file',
+            'download_template' => 'Download template',
+            'csv_file' => 'CSV file',
+            'click_to_upload' => 'Click to upload',
+            'has_header' => 'First row contains headers',
+            'map_columns' => 'Map columns',
+            'skip' => 'Skip',
+            'column' => 'Column',
+            'col' => 'Col.',
+            'preview' => 'Data preview',
+            'rows' => 'rows',
+            'import_button' => 'Import sites',
+            'importing' => 'Importing...',
+            'file_read_error' => 'Unable to read file.',
+            'name_required' => '"Name" column is required.',
+            'duplicate_code' => 'Code ":code" already exists.',
+            'create_failed' => 'Failed to create site.',
+            'import_failed' => 'Import failed. Please try again.',
+            'result' => ':imported site(s) imported, :skipped skipped.',
+            'success_title' => 'Import complete',
+            'no_imports' => 'No sites imported',
+            'imported' => 'Imported',
+            'skipped' => 'Skipped',
+            'errors' => 'Errors',
+            'row' => 'Row',
+            'more_errors' => 'more errors',
+            'import_more' => 'Import more sites',
+            'view_sites' => 'View sites',
+        ],
     ],
 
     /*
@@ -1450,6 +1495,209 @@ return [
             'name' => 'Name',
             'points' => 'Points',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Badge Promotion (T169-T172)
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Compliance Monitor (T177-T179)
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | 5 Pillars Navigation (T166)
+    |--------------------------------------------------------------------------
+    */
+
+    'pillars' => [
+        'measure' => 'Measure',
+        'plan' => 'Plan',
+        'engage' => 'Engage',
+        'report' => 'Report',
+        'promote' => 'Promote',
+
+        'sites' => 'Sites',
+        'transition' => 'Transition Plan',
+        'trajectory' => 'SBTi Trajectory',
+        'assessments' => 'Annual Assessments',
+        'suppliers' => 'Suppliers',
+        'employees' => 'Teams',
+        'reports' => 'Reports',
+        'compliance' => 'Compliance',
+        'badges' => 'Badges',
+        'showcase' => 'Showcase',
+    ],
+
+    'settings' => [
+        'navigation_mode' => 'Navigation mode',
+        'nav_standard' => 'Standard navigation',
+        'nav_standard_desc' => 'Classic menu by feature',
+        'nav_pillars' => '5 Pillars navigation',
+        'nav_pillars_desc' => 'Organized by strategic pillars (TrackZero style)',
+    ],
+
+    'compliance' => [
+        'title' => 'Compliance Dashboard',
+        'subtitle' => 'Track your CSRD compliance and ISO certifications',
+        'reporting_year' => 'Reporting year',
+        'add_task' => 'Add task',
+
+        'tabs' => [
+            'overview' => 'Overview',
+            'tasks' => 'Tasks',
+        ],
+
+        'progress' => 'Progress',
+        'disclosures' => 'disclosures',
+        'certifications' => 'Certifications',
+        'certified' => 'Certified',
+        'in_progress' => 'In progress',
+        'expiring_soon' => 'expiring soon',
+        'overdue_tasks' => 'Overdue tasks',
+        'no_overdue' => 'No overdue tasks',
+        'upcoming' => 'Upcoming',
+        'no_upcoming' => 'No upcoming tasks',
+        'by_category' => 'by category',
+        'requirements' => 'requirements',
+
+        'categories' => [
+            'environment' => 'Environment',
+            'social' => 'Social',
+            'governance' => 'Governance',
+        ],
+
+        'iso_categories' => [
+            'environmental' => 'Environmental',
+            'energy' => 'Energy',
+            'quality' => 'Quality',
+            'carbon' => 'Carbon',
+        ],
+
+        'code' => 'Code',
+        'disclosure' => 'Disclosure',
+        'category' => 'Category',
+        'status' => 'Status',
+        'mandatory' => 'Mandatory',
+        'no_frameworks' => 'No CSRD frameworks found',
+        'no_standards' => 'No ISO standards found',
+        'expires' => 'Expires',
+        'certifier' => 'Certifier',
+
+        'status' => [
+            'not_started' => 'Not started',
+            'in_progress' => 'In progress',
+            'compliant' => 'Compliant',
+            'non_compliant' => 'Non-compliant',
+        ],
+
+        'cert_status' => [
+            'not_certified' => 'Not certified',
+            'in_progress' => 'In progress',
+            'certified' => 'Certified',
+            'expired' => 'Expired',
+        ],
+
+        'task_status' => [
+            'pending' => 'Pending',
+            'in_progress' => 'In progress',
+            'completed' => 'Completed',
+            'overdue' => 'Overdue',
+        ],
+
+        'priority' => [
+            'low' => 'Low',
+            'medium' => 'Medium',
+            'high' => 'High',
+            'critical' => 'Critical',
+        ],
+
+        'task' => 'Task',
+        'type' => 'Type',
+        'due_date' => 'Due date',
+        'no_tasks' => 'No compliance tasks',
+        'mark_complete' => 'Mark as complete',
+        'confirm_delete_task' => 'Are you sure you want to delete this task?',
+
+        'new_task' => 'New task',
+        'edit_task' => 'Edit task',
+        'internal' => 'Internal',
+        'title' => 'Title',
+        'description' => 'Description',
+        'task_title_placeholder' => 'Task title...',
+        'task_description_placeholder' => 'Detailed description...',
+
+        'status_updated' => 'Status updated successfully',
+        'task_created' => 'Task created successfully',
+        'task_updated' => 'Task updated successfully',
+        'task_completed' => 'Task completed successfully',
+        'task_deleted' => 'Task deleted successfully',
+    ],
+
+    'promote' => [
+        'title' => 'Badge Showcase',
+        'subtitle' => 'Share your carbon achievements',
+        'no_badges' => 'No badges earned yet',
+        'no_badges_description' => 'Continue your carbon reduction efforts to unlock badges.',
+        'start_measuring' => 'Start measuring',
+
+        // Badge details
+        'your_badges' => 'Your Badges',
+        'badge_gallery' => 'Badge Gallery',
+        'total_points' => 'Total Points',
+        'selected_badge' => 'Selected Badge',
+        'earned_on' => 'Earned on',
+        'points' => 'points',
+
+        // Actions
+        'share' => 'Share',
+        'embed' => 'Embed',
+        'download' => 'Download',
+
+        // Share modal
+        'share_title' => 'Share this badge',
+        'share_description' => 'Share your achievement on social media or copy the link.',
+        'copy_link' => 'Copy link',
+        'link_copied' => 'Link copied!',
+        'share_on_linkedin' => 'Share on LinkedIn',
+        'share_on_twitter' => 'Share on X (Twitter)',
+        'linkedin_summary' => 'We are proud to have earned the :badge badge for our carbon management efforts. Verified by Carbex.',
+        'twitter_text' => 'We earned the :badge badge for our carbon commitment! #CarbonNeutral #Sustainability',
+
+        // Embed modal
+        'embed_title' => 'Embed this badge',
+        'embed_description' => 'Copy the HTML code to embed this badge on your website.',
+        'embed_size' => 'Size',
+        'embed_size_small' => 'Small (200x250)',
+        'embed_size_medium' => 'Medium (300x375)',
+        'embed_size_large' => 'Large (400x500)',
+        'copy_code' => 'Copy code',
+        'code_copied' => 'Code copied!',
+        'preview' => 'Preview',
+
+        // Download modal
+        'download_title' => 'Download assets',
+        'download_description' => 'Download assets for your communications.',
+        'format' => 'Format',
+        'download_badge' => 'Download badge',
+        'download_signature' => 'Email signature',
+        'download_social_kit' => 'Social media kit',
+        'social_kit_preparing' => 'Preparing kit...',
+
+        // Public badge page
+        'awarded_to' => 'Awarded to',
+        'verified' => 'Verified',
+        'verified_by_carbex' => 'Verified by Carbex',
+        'verify' => 'Verify',
+        'learn_more' => 'Learn more',
+        'cta_text' => 'You too, measure and reduce your carbon footprint.',
+        'start_free' => 'Start for free',
+        'all_rights_reserved' => 'All rights reserved.',
     ],
 
 ];

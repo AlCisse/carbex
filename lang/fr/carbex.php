@@ -1639,6 +1639,53 @@ return [
             'missing_employees' => 'Renseignez le nombre d\'employés pour l\'analyse par personne.',
             'good_performance' => 'Excellente performance ! Ce site est bien en dessous de la moyenne.',
         ],
+
+        // Site fields
+        'name' => 'Nom',
+        'code' => 'Code',
+        'type' => 'Type',
+        'address' => 'Adresse',
+        'city' => 'Ville',
+        'postal_code' => 'Code postal',
+        'country' => 'Pays',
+        'floor_area' => 'Surface (m²)',
+        'energy_rating' => 'DPE',
+        'construction_year' => 'Année de construction',
+        'heating_type' => 'Type de chauffage',
+
+        // Import (T176)
+        'import' => [
+            'title' => 'Import CSV de sites',
+            'description' => 'Importez plusieurs sites à la fois depuis un fichier CSV.',
+            'upload_file' => 'Téléverser le fichier',
+            'download_template' => 'Télécharger le modèle',
+            'csv_file' => 'Fichier CSV',
+            'click_to_upload' => 'Cliquez pour téléverser',
+            'has_header' => 'La première ligne contient les en-têtes',
+            'map_columns' => 'Mapper les colonnes',
+            'skip' => 'Ignorer',
+            'column' => 'Colonne',
+            'col' => 'Col.',
+            'preview' => 'Aperçu des données',
+            'rows' => 'lignes',
+            'import_button' => 'Importer les sites',
+            'importing' => 'Importation en cours...',
+            'file_read_error' => 'Impossible de lire le fichier.',
+            'name_required' => 'La colonne "Nom" est obligatoire.',
+            'duplicate_code' => 'Le code ":code" existe déjà.',
+            'create_failed' => 'Échec de la création du site.',
+            'import_failed' => 'L\'import a échoué. Veuillez réessayer.',
+            'result' => ':imported site(s) importé(s), :skipped ignoré(s).',
+            'success_title' => 'Import terminé',
+            'no_imports' => 'Aucun site importé',
+            'imported' => 'Importés',
+            'skipped' => 'Ignorés',
+            'errors' => 'Erreurs',
+            'row' => 'Ligne',
+            'more_errors' => 'erreurs supplémentaires',
+            'import_more' => 'Importer d\'autres sites',
+            'view_sites' => 'Voir les sites',
+        ],
     ],
 
     /*
@@ -1726,6 +1773,221 @@ return [
             'name' => 'Nom',
             'points' => 'Points',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Badge Promotion (T169-T172)
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Compliance Monitor (T177-T179)
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | 5 Pillars Navigation (T166)
+    |--------------------------------------------------------------------------
+    */
+
+    'pillars' => [
+        'measure' => 'Mesurer',
+        'plan' => 'Planifier',
+        'engage' => 'Engager',
+        'report' => 'Rapporter',
+        'promote' => 'Promouvoir',
+
+        // Sub-items
+        'sites' => 'Sites',
+        'transition' => 'Plan de transition',
+        'trajectory' => 'Trajectoire SBTi',
+        'assessments' => 'Bilans annuels',
+        'suppliers' => 'Fournisseurs',
+        'employees' => 'Équipes',
+        'reports' => 'Rapports',
+        'compliance' => 'Conformité',
+        'badges' => 'Badges',
+        'showcase' => 'Vitrine',
+    ],
+
+    'settings' => [
+        'navigation_mode' => 'Mode de navigation',
+        'nav_standard' => 'Navigation standard',
+        'nav_standard_desc' => 'Menu classique par fonctionnalité',
+        'nav_pillars' => 'Navigation 5 Piliers',
+        'nav_pillars_desc' => 'Organisée par piliers stratégiques (style TrackZero)',
+    ],
+
+    'compliance' => [
+        'title' => 'Tableau de bord Conformité',
+        'subtitle' => 'Suivez votre conformité CSRD et vos certifications ISO',
+        'reporting_year' => 'Année de reporting',
+        'add_task' => 'Ajouter une tâche',
+
+        // Tabs
+        'tabs' => [
+            'overview' => 'Vue d\'ensemble',
+            'tasks' => 'Tâches',
+        ],
+
+        // Stats
+        'progress' => 'Progression',
+        'disclosures' => 'divulgations',
+        'certifications' => 'Certifications',
+        'certified' => 'Certifié',
+        'in_progress' => 'En cours',
+        'expiring_soon' => 'expirant bientôt',
+        'overdue_tasks' => 'Tâches en retard',
+        'no_overdue' => 'Aucune tâche en retard',
+        'upcoming' => 'À venir',
+        'no_upcoming' => 'Aucune tâche à venir',
+        'by_category' => 'par catégorie',
+        'requirements' => 'exigences',
+
+        // CSRD Categories
+        'categories' => [
+            'environment' => 'Environnement',
+            'social' => 'Social',
+            'governance' => 'Gouvernance',
+        ],
+
+        // ISO Categories
+        'iso_categories' => [
+            'environmental' => 'Environnemental',
+            'energy' => 'Énergie',
+            'quality' => 'Qualité',
+            'carbon' => 'Carbone',
+        ],
+
+        // Table Headers
+        'code' => 'Code',
+        'disclosure' => 'Divulgation',
+        'category' => 'Catégorie',
+        'status' => 'Statut',
+        'mandatory' => 'Obligatoire',
+        'no_frameworks' => 'Aucun cadre CSRD trouvé',
+        'no_standards' => 'Aucune norme ISO trouvée',
+        'expires' => 'Expire',
+        'certifier' => 'Certificateur',
+
+        // Status Labels
+        'status' => [
+            'not_started' => 'Non commencé',
+            'in_progress' => 'En cours',
+            'compliant' => 'Conforme',
+            'non_compliant' => 'Non conforme',
+        ],
+
+        'cert_status' => [
+            'not_certified' => 'Non certifié',
+            'in_progress' => 'En cours',
+            'certified' => 'Certifié',
+            'expired' => 'Expiré',
+        ],
+
+        // Task Status
+        'task_status' => [
+            'pending' => 'En attente',
+            'in_progress' => 'En cours',
+            'completed' => 'Terminé',
+            'overdue' => 'En retard',
+        ],
+
+        // Priority
+        'priority' => [
+            'low' => 'Basse',
+            'medium' => 'Moyenne',
+            'high' => 'Haute',
+            'critical' => 'Critique',
+        ],
+
+        // Tasks
+        'task' => 'Tâche',
+        'type' => 'Type',
+        'due_date' => 'Date d\'échéance',
+        'no_tasks' => 'Aucune tâche de conformité',
+        'mark_complete' => 'Marquer comme terminé',
+        'confirm_delete_task' => 'Êtes-vous sûr de vouloir supprimer cette tâche ?',
+
+        // Task Modal
+        'new_task' => 'Nouvelle tâche',
+        'edit_task' => 'Modifier la tâche',
+        'internal' => 'Interne',
+        'title' => 'Titre',
+        'description' => 'Description',
+        'task_title_placeholder' => 'Titre de la tâche...',
+        'task_description_placeholder' => 'Description détaillée...',
+
+        // Messages
+        'status_updated' => 'Statut mis à jour avec succès',
+        'task_created' => 'Tâche créée avec succès',
+        'task_updated' => 'Tâche mise à jour avec succès',
+        'task_completed' => 'Tâche terminée avec succès',
+        'task_deleted' => 'Tâche supprimée avec succès',
+    ],
+
+    'promote' => [
+        'title' => 'Vitrine des Badges',
+        'subtitle' => 'Partagez vos réussites carbone',
+        'no_badges' => 'Pas encore de badges obtenus',
+        'no_badges_description' => 'Continuez vos efforts de réduction carbone pour débloquer des badges.',
+        'start_measuring' => 'Commencer à mesurer',
+
+        // Badge details
+        'your_badges' => 'Vos Badges',
+        'badge_gallery' => 'Galerie de Badges',
+        'total_points' => 'Points Totaux',
+        'selected_badge' => 'Badge Sélectionné',
+        'earned_on' => 'Obtenu le',
+        'points' => 'points',
+
+        // Actions
+        'share' => 'Partager',
+        'embed' => 'Intégrer',
+        'download' => 'Télécharger',
+
+        // Share modal
+        'share_title' => 'Partager ce badge',
+        'share_description' => 'Partagez votre réussite sur les réseaux sociaux ou copiez le lien.',
+        'copy_link' => 'Copier le lien',
+        'link_copied' => 'Lien copié !',
+        'share_on_linkedin' => 'Partager sur LinkedIn',
+        'share_on_twitter' => 'Partager sur X (Twitter)',
+        'linkedin_summary' => 'Nous sommes fiers d\'avoir obtenu le badge :badge pour nos efforts en matière de gestion carbone. Vérifié par Carbex.',
+        'twitter_text' => 'Nous avons obtenu le badge :badge pour notre engagement carbone ! #CarbonNeutral #Sustainability',
+
+        // Embed modal
+        'embed_title' => 'Intégrer ce badge',
+        'embed_description' => 'Copiez le code HTML pour intégrer ce badge sur votre site web.',
+        'embed_size' => 'Taille',
+        'embed_size_small' => 'Petit (200x250)',
+        'embed_size_medium' => 'Moyen (300x375)',
+        'embed_size_large' => 'Grand (400x500)',
+        'copy_code' => 'Copier le code',
+        'code_copied' => 'Code copié !',
+        'preview' => 'Aperçu',
+
+        // Download modal
+        'download_title' => 'Télécharger les assets',
+        'download_description' => 'Téléchargez les assets pour vos communications.',
+        'format' => 'Format',
+        'download_badge' => 'Télécharger le badge',
+        'download_signature' => 'Signature email',
+        'download_social_kit' => 'Kit réseaux sociaux',
+        'social_kit_preparing' => 'Préparation du kit en cours...',
+
+        // Public badge page
+        'awarded_to' => 'Décerné à',
+        'verified' => 'Vérifié',
+        'verified_by_carbex' => 'Vérifié par Carbex',
+        'verify' => 'Vérifier',
+        'learn_more' => 'En savoir plus',
+        'cta_text' => 'Vous aussi, mesurez et réduisez votre empreinte carbone.',
+        'start_free' => 'Commencer gratuitement',
+        'all_rights_reserved' => 'Tous droits réservés.',
     ],
 
 ];
