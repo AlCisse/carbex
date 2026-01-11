@@ -759,6 +759,11 @@ return [
         'contact_info' => 'Contact information',
         'fiscal_settings' => 'Fiscal settings',
         'fiscal_settings_desc' => 'Fiscal year and reference currency',
+        'display_settings' => 'Display settings',
+        'display_settings_desc' => 'Customize your workspace interface',
+        'navigation_mode' => 'Navigation mode',
+        'navigation_scopes_desc' => 'Classic navigation by GHG Scopes (1, 2, 3)',
+        'navigation_pillars_desc' => '5 pillars navigation: Measure, Plan, Engage, Report, Promote',
         'country_config' => 'Country configuration',
         'country_config_desc' => 'Settings determined by your organization country',
         'currencies' => [
@@ -1595,10 +1600,66 @@ return [
         'amount_optional' => 'Amount (optional)',
         'calculating' => 'Calculating...',
         'reset' => 'Reset',
+        'coming_soon' => 'Soon',
         'status' => [
             'pending' => 'Pending',
             'invited' => 'Invited',
             'active' => 'Active',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Navigation
+    |--------------------------------------------------------------------------
+    */
+
+    'navigation' => [
+        'dashboard' => 'Dashboard',
+        'mode' => [
+            'scopes' => 'Scopes Navigation',
+            'pillars' => '5 Pillars Navigation',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | 5 Pillars Navigation (TrackZero-inspired)
+    |--------------------------------------------------------------------------
+    */
+
+    'pillars' => [
+        'measure' => [
+            'name' => 'Measure',
+            'scope1' => 'Scope 1 - Direct Emissions',
+            'scope2' => 'Scope 2 - Indirect Energy',
+            'scope3' => 'Scope 3 - Other Indirect',
+            'documents' => 'Documents & Invoices',
+            'analysis' => 'Data Analysis',
+        ],
+        'plan' => [
+            'name' => 'Plan',
+            'objectives' => 'Objectives & Trajectory',
+            'actions' => 'Action Plan',
+            'ai_recommendations' => 'AI Recommendations',
+        ],
+        'engage' => [
+            'name' => 'Engage',
+            'suppliers' => 'Suppliers',
+            'employees' => 'Teams & Employees',
+            'sites' => 'Sites & Facilities',
+        ],
+        'report' => [
+            'name' => 'Report',
+            'reports' => 'Reports & Exports',
+            'compliance' => 'Regulatory Compliance',
+            'history' => 'Assessment History',
+        ],
+        'promote' => [
+            'name' => 'Promote',
+            'badges' => 'Badges & Rewards',
+            'showcase' => 'Sustainability Showcase',
+            'share' => 'Share Your Commitments',
         ],
     ],
 

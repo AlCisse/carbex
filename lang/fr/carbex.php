@@ -858,6 +858,11 @@ return [
         'contact_info' => 'Coordonnées',
         'fiscal_settings' => 'Paramètres fiscaux',
         'fiscal_settings_desc' => 'Année fiscale et devise de référence',
+        'display_settings' => 'Paramètres d\'affichage',
+        'display_settings_desc' => 'Personnalisez l\'interface de votre espace de travail',
+        'navigation_mode' => 'Mode de navigation',
+        'navigation_scopes_desc' => 'Navigation classique par Scopes GHG (1, 2, 3)',
+        'navigation_pillars_desc' => 'Navigation par 5 piliers: Mesurer, Planifier, Engager, Rapporter, Promouvoir',
         'country_config' => 'Configuration pays',
         'country_config_desc' => 'Ces paramètres sont déterminés par le pays de votre organisation',
         'currencies' => [
@@ -1871,10 +1876,66 @@ return [
         'amount_optional' => 'Montant (optionnel)',
         'calculating' => 'Calcul en cours...',
         'reset' => 'Réinitialiser',
+        'coming_soon' => 'Bientôt',
         'status' => [
             'pending' => 'En attente',
             'invited' => 'Invité',
             'active' => 'Actif',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Navigation
+    |--------------------------------------------------------------------------
+    */
+
+    'navigation' => [
+        'dashboard' => 'Tableau de bord',
+        'mode' => [
+            'scopes' => 'Navigation Scopes',
+            'pillars' => 'Navigation 5 Piliers',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | 5 Pillars Navigation (TrackZero-inspired)
+    |--------------------------------------------------------------------------
+    */
+
+    'pillars' => [
+        'measure' => [
+            'name' => 'Mesurer',
+            'scope1' => 'Scope 1 - Émissions directes',
+            'scope2' => 'Scope 2 - Énergie indirecte',
+            'scope3' => 'Scope 3 - Autres indirectes',
+            'documents' => 'Documents & Factures',
+            'analysis' => 'Analyse des données',
+        ],
+        'plan' => [
+            'name' => 'Planifier',
+            'objectives' => 'Objectifs & Trajectoire',
+            'actions' => 'Plan d\'action',
+            'ai_recommendations' => 'Recommandations IA',
+        ],
+        'engage' => [
+            'name' => 'Engager',
+            'suppliers' => 'Fournisseurs',
+            'employees' => 'Équipes & Employés',
+            'sites' => 'Sites & Locaux',
+        ],
+        'report' => [
+            'name' => 'Rapporter',
+            'reports' => 'Rapports & Exports',
+            'compliance' => 'Conformité réglementaire',
+            'history' => 'Historique des bilans',
+        ],
+        'promote' => [
+            'name' => 'Promouvoir',
+            'badges' => 'Badges & Récompenses',
+            'showcase' => 'Vitrine durabilité',
+            'share' => 'Partager vos engagements',
         ],
     ],
 

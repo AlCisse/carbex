@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Emission;
+use App\Models\EmissionRecord;
 use App\Models\Organization;
 use App\Models\Transaction;
 use App\Models\User;
@@ -38,8 +38,8 @@ class StatsOverview extends BaseWidget
             ->count();
 
         // Emissions stats
-        $totalEmissions = Emission::sum('co2_kg') / 1000; // Convert to tonnes
-        $thisYearEmissions = Emission::whereYear('date', now()->year)->sum('co2_kg') / 1000;
+        $totalEmissions = EmissionRecord::sum('co2e_kg') / 1000; // Convert to tonnes
+        $thisYearEmissions = EmissionRecord::whereYear('date', now()->year)->sum('co2e_kg') / 1000;
 
         return [
             Stat::make('Total Organizations', number_format($totalOrgs))

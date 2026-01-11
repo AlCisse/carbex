@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Emission;
+use App\Models\EmissionRecord;
 use App\Models\Organization;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -19,7 +19,7 @@ class EmissionCalculated implements ShouldBroadcast
      * Create a new event instance.
      */
     public function __construct(
-        public Emission $emission,
+        public EmissionRecord $emission,
         public Organization $organization,
         public array $metadata = []
     ) {
@@ -53,8 +53,8 @@ class EmissionCalculated implements ShouldBroadcast
         return [
             'emission_id' => $this->emission->id,
             'scope' => $this->emission->scope,
-            'category' => $this->emission->category,
-            'co2_kg' => $this->emission->co2_kg,
+            'category' => $this->emission->ghg_category,
+            'co2_kg' => $this->emission->co2e_kg,
             'date' => $this->emission->date->toISOString(),
             'site_id' => $this->emission->site_id,
             'calculated_at' => now()->toISOString(),
@@ -67,7 +67,7 @@ class EmissionCalculated implements ShouldBroadcast
     public function broadcastWhen(): bool
     {
         // Only broadcast for significant emissions (> 1kg CO2)
-        return $this->emission->co2_kg > 1;
+        return $this->emission->co2e_kg > 1;
     }
 
     /**
@@ -82,12 +82,12 @@ class EmissionCalculated implements ShouldBroadcast
                 'emission' => [
                     'id' => $this->emission->id,
                     'scope' => $this->emission->scope,
-                    'category' => $this->emission->category,
-                    'subcategory' => $this->emission->subcategory,
-                    'co2_kg' => round($this->emission->co2_kg, 4),
-                    'co2_tonnes' => round($this->emission->co2_kg / 1000, 6),
+                    'category' => $this->emission->ghg_category,
+                    'scope_3_category' => $this->emission->scope_3_category,
+                    'co2_kg' => round($this->emission->co2e_kg, 4),
+                    'co2_tonnes' => round($this->emission->co2e_kg / 1000, 6),
                     'date' => $this->emission->date->format('Y-m-d'),
-                    'source' => $this->emission->source,
+                    'source' => $this->emission->source_type,
                 ],
                 'organization_id' => $this->organization->id,
                 'site_id' => $this->emission->site_id,

@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Emission;
+use App\Models\EmissionRecord;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
 
@@ -16,12 +16,12 @@ class MonthlyEmissionsChart extends ChartWidget
 
     protected function getData(): array
     {
-        $data = Emission::query()
+        $data = EmissionRecord::query()
             ->select(
                 DB::raw("DATE_TRUNC('month', date) as month"),
-                DB::raw('SUM(CASE WHEN scope = 1 THEN co2_kg ELSE 0 END) / 1000 as scope_1'),
-                DB::raw('SUM(CASE WHEN scope = 2 THEN co2_kg ELSE 0 END) / 1000 as scope_2'),
-                DB::raw('SUM(CASE WHEN scope = 3 THEN co2_kg ELSE 0 END) / 1000 as scope_3')
+                DB::raw('SUM(CASE WHEN scope = 1 THEN co2e_kg ELSE 0 END) / 1000 as scope_1'),
+                DB::raw('SUM(CASE WHEN scope = 2 THEN co2e_kg ELSE 0 END) / 1000 as scope_2'),
+                DB::raw('SUM(CASE WHEN scope = 3 THEN co2e_kg ELSE 0 END) / 1000 as scope_3')
             )
             ->where('date', '>=', now()->subMonths(12))
             ->groupBy(DB::raw("DATE_TRUNC('month', date)"))
