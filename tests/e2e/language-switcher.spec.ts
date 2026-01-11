@@ -29,10 +29,12 @@ test.describe('Language Switcher', () => {
     // Click language selector
     const langButton = page.locator('button').filter({ hasText: /🇫🇷|🇬🇧|🇩🇪/ }).first();
     await langButton.click();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(500);
 
-    // Click English option
-    await page.locator('a').filter({ hasText: 'English' }).click();
+    // Wait for dropdown to be visible and click English option
+    const englishLink = page.locator('a').filter({ hasText: 'English' });
+    await englishLink.waitFor({ state: 'visible', timeout: 5000 });
+    await englishLink.click();
 
     // Wait for page to reload
     await page.waitForLoadState('networkidle');
@@ -46,10 +48,12 @@ test.describe('Language Switcher', () => {
     // Click language selector
     const langButton = page.locator('button').filter({ hasText: /🇫🇷|🇬🇧|🇩🇪/ }).first();
     await langButton.click();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(500);
 
     // Click German option
-    await page.locator('a').filter({ hasText: 'Deutsch' }).click();
+    const germanLink = page.locator('a').filter({ hasText: 'Deutsch' });
+    await germanLink.waitFor({ state: 'visible', timeout: 5000 });
+    await germanLink.click();
 
     // Wait for page to reload
     await page.waitForLoadState('networkidle');
@@ -62,15 +66,19 @@ test.describe('Language Switcher', () => {
     // First switch to English
     const langButton = page.locator('button').filter({ hasText: /🇫🇷|🇬🇧|🇩🇪/ }).first();
     await langButton.click();
-    await page.waitForTimeout(200);
-    await page.locator('a').filter({ hasText: 'English' }).click();
+    await page.waitForTimeout(500);
+    const englishLink = page.locator('a').filter({ hasText: 'English' });
+    await englishLink.waitFor({ state: 'visible', timeout: 5000 });
+    await englishLink.click();
     await page.waitForLoadState('networkidle');
 
     // Now switch back to French
     const langButton2 = page.locator('button').filter({ hasText: /🇫🇷|🇬🇧|🇩🇪/ }).first();
     await langButton2.click();
-    await page.waitForTimeout(200);
-    await page.locator('a').filter({ hasText: 'Français' }).click();
+    await page.waitForTimeout(500);
+    const frenchLink = page.locator('a').filter({ hasText: 'Français' });
+    await frenchLink.waitFor({ state: 'visible', timeout: 5000 });
+    await frenchLink.click();
     await page.waitForLoadState('networkidle');
 
     // Check that page is now in French
@@ -81,8 +89,10 @@ test.describe('Language Switcher', () => {
     // Switch to English
     const langButton = page.locator('button').filter({ hasText: /🇫🇷|🇬🇧|🇩🇪/ }).first();
     await langButton.click();
-    await page.waitForTimeout(200);
-    await page.locator('a').filter({ hasText: 'English' }).click();
+    await page.waitForTimeout(500);
+    const englishLink = page.locator('a').filter({ hasText: 'English' });
+    await englishLink.waitFor({ state: 'visible', timeout: 5000 });
+    await englishLink.click();
     await page.waitForLoadState('networkidle');
 
     // Navigate to login
