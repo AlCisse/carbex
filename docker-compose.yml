@@ -126,6 +126,20 @@ services:
     networks:
       - carbex-network
 
+  # Selenium Chrome - Browser Testing (Laravel Dusk)
+  selenium:
+    image: seleniarm/standalone-chromium:latest
+    container_name: carbex-selenium
+    restart: unless-stopped
+    ports:
+      - "4444:4444"  # Selenium Hub
+      - "7900:7900"  # noVNC for viewing tests
+    shm_size: 2gb
+    environment:
+      SE_NODE_MAX_SESSIONS: 2
+    networks:
+      - carbex-network
+
 volumes:
   postgres_data:
     driver: local
