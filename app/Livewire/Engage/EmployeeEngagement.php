@@ -57,9 +57,14 @@ class EmployeeEngagement extends Component
 
     protected array $quizQuestions = [];
 
+    public function boot(): void
+    {
+        // Load quiz questions on every request (protected properties don't persist)
+        $this->loadQuizQuestions();
+    }
+
     public function mount(): void
     {
-        $this->loadQuizQuestions();
         $this->loadChallenges();
         $this->loadLeaderboard();
 
