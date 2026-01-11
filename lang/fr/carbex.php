@@ -1234,6 +1234,7 @@ return [
         'confirm' => 'Confirmer',
         'yes' => 'Oui',
         'no' => 'Non',
+        'copy' => 'Copier',
     ],
 
     /*
@@ -1584,6 +1585,100 @@ return [
             'ai_not_available' => 'L\'IA n\'est pas disponible sur votre plan',
             'upgrade_premium' => 'Passer à Premium',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Gamification
+    |--------------------------------------------------------------------------
+    */
+    'gamification' => [
+        'title' => 'Gamification',
+        'subtitle' => 'Gagnez des badges et montez en niveau',
+        'level' => [
+            'starter' => 'Débutant',
+            'bronze' => 'Bronze',
+            'silver' => 'Argent',
+            'gold' => 'Or',
+            'platinum' => 'Platine',
+            'diamond' => 'Diamant',
+        ],
+        'total_points' => ':points points',
+        'badges_earned' => 'Badges obtenus',
+        'next_level' => 'Prochain niveau',
+        'points' => 'points',
+        'check_badges' => 'Vérifier les badges',
+        'leaderboard' => 'Classement',
+        'your_badges' => 'Vos badges',
+        'max_level_reached' => 'Niveau maximum atteint !',
+        'no_badges_available' => 'Aucun badge disponible',
+        'badges' => 'badges',
+
+        // How it works section
+        'how_it_works' => 'Comment ça marche',
+        'step1_title' => 'Complétez votre bilan',
+        'step1_desc' => 'Renseignez vos émissions dans toutes les catégories pour gagner des points.',
+        'step2_title' => 'Réduisez vos émissions',
+        'step2_desc' => 'Mettez en place des actions de réduction et suivez vos progrès.',
+        'step3_title' => 'Partagez vos réussites',
+        'step3_desc' => 'Obtenez des badges et partagez-les avec votre communauté.',
+        'badge_categories' => 'Catégories de badges',
+
+        // Categories
+        'category' => [
+            'all' => 'Tous',
+            'assessment' => 'Évaluation',
+            'assessment_desc' => 'Badges liés à la complétion de votre bilan carbone.',
+            'reduction' => 'Réduction',
+            'reduction_desc' => 'Badges pour vos efforts de réduction des émissions.',
+            'engagement' => 'Engagement',
+            'engagement_desc' => 'Badges pour votre implication et celle de votre équipe.',
+            'expert' => 'Expert',
+            'expert_desc' => 'Badges réservés aux utilisateurs les plus avancés.',
+        ],
+
+        // Individual badges
+        'badge_list' => [
+            'first_emission' => 'Première émission',
+            'first_emission_desc' => 'Enregistrez votre première émission',
+            'scope_master' => 'Maître des Scopes',
+            'scope_master_desc' => 'Complétez les 3 scopes',
+            'data_collector' => 'Collecteur de données',
+            'data_collector_desc' => 'Enregistrez 100 émissions',
+            'reducer' => 'Réducteur',
+            'reducer_desc' => 'Réduisez vos émissions de 10%',
+            'green_champion' => 'Champion vert',
+            'green_champion_desc' => 'Réduisez vos émissions de 25%',
+            'carbon_hero' => 'Héros carbone',
+            'carbon_hero_desc' => 'Réduisez vos émissions de 50%',
+            'team_player' => 'Joueur d\'équipe',
+            'team_player_desc' => 'Invitez 5 membres',
+            'reporter' => 'Rapporteur',
+            'reporter_desc' => 'Générez 10 rapports',
+            'consistent' => 'Régulier',
+            'consistent_desc' => 'Connectez-vous 30 jours de suite',
+        ],
+
+        // Progress and status
+        'progress' => 'Progression',
+        'locked' => 'Verrouillé',
+        'unlocked' => 'Débloqué',
+        'earned_on' => 'Obtenu le',
+        'points_to_next' => 'points avant le prochain niveau',
+
+        // Leaderboard
+        'rank' => 'Rang',
+        'user' => 'Utilisateur',
+        'score' => 'Score',
+
+        // Empty states
+        'no_badges_yet' => 'Aucun badge obtenu pour le moment',
+        'keep_going' => 'Continuez vos efforts !',
+
+        // Sharing
+        'share_badge' => 'Partager ce badge',
+        'share_link' => 'Lien de partage',
+        'share_text' => 'J\'ai obtenu un badge sur Carbex !',
     ],
 
 ];

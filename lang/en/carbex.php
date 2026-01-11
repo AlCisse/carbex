@@ -54,6 +54,7 @@ return [
         'calculating' => 'Calculating...',
         'actions' => 'Actions',
         'close' => 'Close',
+        'copy' => 'Copy',
         'confirm' => 'Confirm',
         'yes' => 'Yes',
         'no' => 'No',
@@ -1308,6 +1309,100 @@ return [
             'ai_not_available' => 'AI is not available on your plan',
             'upgrade_premium' => 'Upgrade to Premium',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Gamification
+    |--------------------------------------------------------------------------
+    */
+    'gamification' => [
+        'title' => 'Gamification',
+        'subtitle' => 'Earn badges and level up',
+        'level' => [
+            'starter' => 'Starter',
+            'bronze' => 'Bronze',
+            'silver' => 'Silver',
+            'gold' => 'Gold',
+            'platinum' => 'Platinum',
+            'diamond' => 'Diamond',
+        ],
+        'total_points' => ':points points',
+        'badges_earned' => 'Badges earned',
+        'next_level' => 'Next level',
+        'points' => 'points',
+        'check_badges' => 'Check badges',
+        'leaderboard' => 'Leaderboard',
+        'your_badges' => 'Your badges',
+        'max_level_reached' => 'Maximum level reached!',
+        'no_badges_available' => 'No badges available',
+        'badges' => 'badges',
+
+        // How it works section
+        'how_it_works' => 'How it works',
+        'step1_title' => 'Complete your assessment',
+        'step1_desc' => 'Enter your emissions in all categories to earn points.',
+        'step2_title' => 'Reduce your emissions',
+        'step2_desc' => 'Implement reduction actions and track your progress.',
+        'step3_title' => 'Share your achievements',
+        'step3_desc' => 'Earn badges and share them with your community.',
+        'badge_categories' => 'Badge categories',
+
+        // Categories
+        'category' => [
+            'all' => 'All',
+            'assessment' => 'Assessment',
+            'assessment_desc' => 'Badges related to completing your carbon footprint.',
+            'reduction' => 'Reduction',
+            'reduction_desc' => 'Badges for your emission reduction efforts.',
+            'engagement' => 'Engagement',
+            'engagement_desc' => 'Badges for your and your team\'s involvement.',
+            'expert' => 'Expert',
+            'expert_desc' => 'Badges reserved for advanced users.',
+        ],
+
+        // Individual badges
+        'badge_list' => [
+            'first_emission' => 'First emission',
+            'first_emission_desc' => 'Record your first emission',
+            'scope_master' => 'Scope Master',
+            'scope_master_desc' => 'Complete all 3 scopes',
+            'data_collector' => 'Data Collector',
+            'data_collector_desc' => 'Record 100 emissions',
+            'reducer' => 'Reducer',
+            'reducer_desc' => 'Reduce your emissions by 10%',
+            'green_champion' => 'Green Champion',
+            'green_champion_desc' => 'Reduce your emissions by 25%',
+            'carbon_hero' => 'Carbon Hero',
+            'carbon_hero_desc' => 'Reduce your emissions by 50%',
+            'team_player' => 'Team Player',
+            'team_player_desc' => 'Invite 5 members',
+            'reporter' => 'Reporter',
+            'reporter_desc' => 'Generate 10 reports',
+            'consistent' => 'Consistent',
+            'consistent_desc' => 'Log in 30 days in a row',
+        ],
+
+        // Progress and status
+        'progress' => 'Progress',
+        'locked' => 'Locked',
+        'unlocked' => 'Unlocked',
+        'earned_on' => 'Earned on',
+        'points_to_next' => 'points to next level',
+
+        // Leaderboard
+        'rank' => 'Rank',
+        'user' => 'User',
+        'score' => 'Score',
+
+        // Empty states
+        'no_badges_yet' => 'No badges earned yet',
+        'keep_going' => 'Keep going!',
+
+        // Sharing
+        'share_badge' => 'Share this badge',
+        'share_link' => 'Share link',
+        'share_text' => 'I earned a badge on Carbex!',
     ],
 
 ];
