@@ -296,6 +296,7 @@ return [
         'reset_password' => 'Reset password',
         'send_reset_link' => 'Send reset link',
         'reset_link_sent' => 'A reset link has been sent.',
+        'employees' => 'Number of employees',
     ],
 
     'nav' => [
@@ -1419,6 +1420,48 @@ return [
         'share_badge' => 'Share this badge',
         'share_link' => 'Share link',
         'share_text' => 'I earned a badge on Carbex!',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Settings Pages
+    |--------------------------------------------------------------------------
+    */
+
+    'settings' => [
+        'organization' => 'Organization',
+        'profile' => 'Profile',
+        'users' => 'Users',
+        'sites' => 'Sites',
+        'api' => 'API & Integrations',
+        'notifications' => 'Notifications',
+        'billing' => 'Billing',
+        'security' => 'Security',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Industry Sectors
+    |--------------------------------------------------------------------------
+    */
+
+    'sectors' => [
+        'technology' => 'Technology',
+        'manufacturing' => 'Manufacturing',
+        'retail' => 'Retail',
+        'services' => 'Services',
+        'finance' => 'Finance & Insurance',
+        'healthcare' => 'Healthcare',
+        'construction' => 'Construction',
+        'transport' => 'Transport & Logistics',
+        'energy' => 'Energy',
+        'agriculture' => 'Agriculture & Food',
+        'real_estate' => 'Real Estate',
+        'hospitality' => 'Hospitality & Tourism',
+        'education' => 'Education',
+        'consulting' => 'Consulting',
+        'media' => 'Media & Communications',
+        'other' => 'Other',
     ],
 
 ];

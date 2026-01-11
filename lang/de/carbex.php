@@ -320,6 +320,7 @@ return [
         'reset_password' => 'Passwort zurücksetzen',
         'send_reset_link' => 'Link senden',
         'reset_link_sent' => 'Ein Link zum Zurücksetzen wurde gesendet.',
+        'employees' => 'Anzahl der Mitarbeiter',
     ],
 
     /*
@@ -1599,6 +1600,48 @@ return [
         'share_badge' => 'Dieses Abzeichen teilen',
         'share_link' => 'Link teilen',
         'share_text' => 'Ich habe ein Abzeichen bei Carbex verdient!',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Settings Pages
+    |--------------------------------------------------------------------------
+    */
+
+    'settings' => [
+        'organization' => 'Organisation',
+        'profile' => 'Profil',
+        'users' => 'Benutzer',
+        'sites' => 'Standorte',
+        'api' => 'API & Integrationen',
+        'notifications' => 'Benachrichtigungen',
+        'billing' => 'Abrechnung',
+        'security' => 'Sicherheit',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Industry Sectors
+    |--------------------------------------------------------------------------
+    */
+
+    'sectors' => [
+        'technology' => 'Technologie',
+        'manufacturing' => 'Fertigung',
+        'retail' => 'Einzelhandel',
+        'services' => 'Dienstleistungen',
+        'finance' => 'Finanzen & Versicherung',
+        'healthcare' => 'Gesundheitswesen',
+        'construction' => 'Bauwesen',
+        'transport' => 'Transport & Logistik',
+        'energy' => 'Energie',
+        'agriculture' => 'Landwirtschaft & Lebensmittel',
+        'real_estate' => 'Immobilien',
+        'hospitality' => 'Gastgewerbe & Tourismus',
+        'education' => 'Bildung',
+        'consulting' => 'Beratung',
+        'media' => 'Medien & Kommunikation',
+        'other' => 'Andere',
     ],
 
 ];

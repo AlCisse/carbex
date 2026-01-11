@@ -317,6 +317,7 @@ return [
         'reset_password' => 'Réinitialiser le mot de passe',
         'send_reset_link' => 'Envoyer le lien',
         'reset_link_sent' => 'Un lien de réinitialisation a été envoyé.',
+        'employees' => 'Nombre d\'employés',
     ],
 
     /*
@@ -1695,6 +1696,48 @@ return [
         'share_badge' => 'Partager ce badge',
         'share_link' => 'Lien de partage',
         'share_text' => 'J\'ai obtenu un badge sur Carbex !',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Settings Pages
+    |--------------------------------------------------------------------------
+    */
+
+    'settings' => [
+        'organization' => 'Organisation',
+        'profile' => 'Profil',
+        'users' => 'Utilisateurs',
+        'sites' => 'Sites',
+        'api' => 'API & Intégrations',
+        'notifications' => 'Notifications',
+        'billing' => 'Facturation',
+        'security' => 'Sécurité',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Industry Sectors
+    |--------------------------------------------------------------------------
+    */
+
+    'sectors' => [
+        'technology' => 'Technologie',
+        'manufacturing' => 'Industrie manufacturière',
+        'retail' => 'Commerce de détail',
+        'services' => 'Services',
+        'finance' => 'Finance & Assurance',
+        'healthcare' => 'Santé',
+        'construction' => 'Construction & BTP',
+        'transport' => 'Transport & Logistique',
+        'energy' => 'Énergie',
+        'agriculture' => 'Agriculture & Agroalimentaire',
+        'real_estate' => 'Immobilier',
+        'hospitality' => 'Hôtellerie & Restauration',
+        'education' => 'Éducation',
+        'consulting' => 'Conseil',
+        'media' => 'Médias & Communication',
+        'other' => 'Autre',
     ],
 
 ];
