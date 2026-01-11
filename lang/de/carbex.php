@@ -1897,4 +1897,146 @@ return [
         'enterprise' => 'Sehr groß (1000+ Mitarbeiter)',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Cookie Consent (GDPR/TTDSG/BDSG)
+    |--------------------------------------------------------------------------
+    */
+
+    'cookies' => [
+        'title' => 'Cookie-Einstellungen',
+        'description' => 'Wir verwenden Cookies, um Ihnen das beste Nutzererlebnis zu bieten. Einige Cookies sind für den Betrieb der Website erforderlich, während andere uns helfen, die Website zu verbessern.',
+        'legal_notice' => 'Gemäß DSGVO Art. 7, TTDSG § 25 und BDSG benötigen wir Ihre Einwilligung für nicht-essenzielle Cookies.',
+
+        'accept_all' => 'Alle akzeptieren',
+        'essential_only' => 'Nur Essenzielle',
+        'customize' => 'Anpassen',
+        'save_preferences' => 'Einstellungen speichern',
+
+        'essential_title' => 'Essenzielle Cookies',
+        'essential_desc' => 'Diese Cookies sind für den Betrieb der Website unbedingt erforderlich. Sie ermöglichen Grundfunktionen wie Seitennavigation und Zugriff auf sichere Bereiche.',
+        'always_active' => 'Immer aktiv',
+
+        'functional_title' => 'Funktionale Cookies',
+        'functional_desc' => 'Diese Cookies ermöglichen erweiterte Funktionen wie Spracheinstellungen, Zeitzone und personalisierte Darstellung.',
+
+        'analytics_title' => 'Analyse-Cookies',
+        'analytics_desc' => 'Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren, um sie zu verbessern.',
+
+        'marketing_title' => 'Marketing-Cookies',
+        'marketing_desc' => 'Diese Cookies werden verwendet, um Werbung relevanter für Sie zu gestalten.',
+
+        'privacy_policy' => 'Datenschutzerklärung',
+        'legal_notice_link' => 'Impressum',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | GDPR/DSGVO Data Rights (German BDSG Compliance)
+    |--------------------------------------------------------------------------
+    */
+
+    'gdpr' => [
+        'title' => 'Datenschutz-Einstellungen',
+        'subtitle' => 'Verwalten Sie Ihre persönlichen Daten gemäß DSGVO und BDSG',
+
+        // Data Export (Art. 20 DSGVO)
+        'export_data' => 'Daten exportieren',
+        'export_description' => 'Laden Sie alle Ihre persönlichen Daten in einem portablen Format herunter (Art. 20 DSGVO)',
+        'export_button' => 'Meine Daten herunterladen',
+        'export_processing' => 'Export wird vorbereitet...',
+        'export_ready' => 'Ihr Datenexport ist bereit zum Download.',
+
+        // Data Deletion (Art. 17 DSGVO, § 35 BDSG)
+        'delete_account' => 'Konto löschen',
+        'delete_description' => 'Löschen Sie Ihr Konto und alle zugehörigen Daten (Art. 17 DSGVO - Recht auf Löschung)',
+        'delete_warning' => 'Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten werden unwiderruflich gelöscht.',
+        'delete_button' => 'Konto unwiderruflich löschen',
+        'delete_confirm_title' => 'Konto wirklich löschen?',
+        'delete_confirm_message' => 'Bitte geben Sie "LÖSCHEN" ein, um zu bestätigen:',
+        'delete_confirm_word' => 'LÖSCHEN',
+
+        // Consent Management (Art. 7 DSGVO)
+        'consent_title' => 'Einwilligungen verwalten',
+        'consent_description' => 'Verwalten Sie Ihre Einwilligungen für verschiedene Datenverarbeitungen',
+        'consent_marketing' => 'Marketing-Kommunikation',
+        'consent_analytics' => 'Nutzungsanalyse',
+        'consent_ai' => 'KI-gestützte Funktionen',
+
+        // Data Access (Art. 15 DSGVO)
+        'access_title' => 'Auskunftsrecht',
+        'access_description' => 'Sie haben das Recht auf Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)',
+
+        // Data Rectification (Art. 16 DSGVO)
+        'rectification_title' => 'Berichtigung',
+        'rectification_description' => 'Sie können unrichtige Daten jederzeit berichtigen (Art. 16 DSGVO)',
+
+        // Data Portability (Art. 20 DSGVO)
+        'portability_title' => 'Datenübertragbarkeit',
+        'portability_description' => 'Ihre Daten in einem maschinenlesbaren Format erhalten',
+
+        // Right to Object (Art. 21 DSGVO, § 37 BDSG)
+        'object_title' => 'Widerspruchsrecht',
+        'object_description' => 'Sie können der Verarbeitung Ihrer Daten widersprechen (Art. 21 DSGVO)',
+
+        // Legal References
+        'legal_basis' => 'Rechtsgrundlage',
+        'legal_basis_consent' => 'Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)',
+        'legal_basis_contract' => 'Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)',
+        'legal_basis_legal' => 'Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)',
+        'legal_basis_legitimate' => 'Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO)',
+
+        // Contact
+        'dpo_contact' => 'Datenschutzbeauftragter',
+        'dpo_email' => 'dpo@carbex.fr',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | German Regulatory Compliance
+    |--------------------------------------------------------------------------
+    */
+
+    'compliance' => [
+        'title' => 'Regulatorische Konformität',
+
+        // German Climate Regulations
+        'klimaschutzgesetz' => 'Bundes-Klimaschutzgesetz (KSG)',
+        'klimaschutzgesetz_desc' => 'Konform mit den deutschen Klimazielen nach dem Bundes-Klimaschutzgesetz',
+
+        // EU Regulations
+        'csrd' => 'CSRD 2025',
+        'csrd_desc' => 'Corporate Sustainability Reporting Directive - EU Nachhaltigkeitsberichterstattung',
+
+        'esrs' => 'ESRS Standards',
+        'esrs_desc' => 'European Sustainability Reporting Standards',
+
+        'eu_taxonomy' => 'EU-Taxonomie',
+        'eu_taxonomy_desc' => 'EU-Klassifizierungssystem für nachhaltige Wirtschaftstätigkeiten',
+
+        // German Data Protection
+        'bdsg' => 'BDSG',
+        'bdsg_desc' => 'Bundesdatenschutzgesetz - Deutsche Datenschutzgesetzgebung',
+
+        'ttdsg' => 'TTDSG',
+        'ttdsg_desc' => 'Telekommunikation-Telemedien-Datenschutz-Gesetz',
+
+        // Banking Regulations
+        'psd2' => 'PSD2',
+        'psd2_desc' => 'Zahlungsdiensterichtlinie - Sichere Bankverbindungen',
+
+        'bafin' => 'BaFin-konform',
+        'bafin_desc' => 'Konform mit den Anforderungen der Bundesanstalt für Finanzdienstleistungsaufsicht',
+
+        // Emission Standards
+        'ghg_protocol' => 'GHG Protocol',
+        'ghg_protocol_desc' => 'Greenhouse Gas Protocol - Internationaler Standard für Treibhausgasbilanzierung',
+
+        'uba' => 'UBA-Faktoren',
+        'uba_desc' => 'Emissionsfaktoren des Umweltbundesamtes für Deutschland',
+
+        'din_en_iso' => 'DIN EN ISO 14064',
+        'din_en_iso_desc' => 'Internationale Norm für Treibhausgasbilanzierung und -verifizierung',
+    ],
+
 ];
