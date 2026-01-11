@@ -1,0 +1,214 @@
+{
+  "transactions": [
+    {
+      "id": "txn_001",
+      "account_id": "acc_12345",
+      "amount": -45.50,
+      "currency": "EUR",
+      "date": "2024-12-15",
+      "description": "SHELL STATION PARIS",
+      "clean_description": "Shell Station",
+      "mcc": 5541,
+      "category": {
+        "id": 1,
+        "name": "Fuel"
+      },
+      "merchant": {
+        "name": "Shell",
+        "logo_url": "https://logo.clearbit.com/shell.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-15T10:30:00Z"
+    },
+    {
+      "id": "txn_002",
+      "account_id": "acc_12345",
+      "amount": -125.00,
+      "currency": "EUR",
+      "date": "2024-12-14",
+      "description": "SNCF VOYAGES",
+      "clean_description": "SNCF Voyages",
+      "mcc": 4112,
+      "category": {
+        "id": 2,
+        "name": "Transport"
+      },
+      "merchant": {
+        "name": "SNCF",
+        "logo_url": "https://logo.clearbit.com/sncf.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-14T14:20:00Z"
+    },
+    {
+      "id": "txn_003",
+      "account_id": "acc_12345",
+      "amount": -350.00,
+      "currency": "EUR",
+      "date": "2024-12-13",
+      "description": "AIR FRANCE TICKET",
+      "clean_description": "Air France",
+      "mcc": 4511,
+      "category": {
+        "id": 3,
+        "name": "Airlines"
+      },
+      "merchant": {
+        "name": "Air France",
+        "logo_url": "https://logo.clearbit.com/airfrance.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-13T09:15:00Z"
+    },
+    {
+      "id": "txn_004",
+      "account_id": "acc_12345",
+      "amount": -89.90,
+      "currency": "EUR",
+      "date": "2024-12-12",
+      "description": "HOTEL IBIS LYON",
+      "clean_description": "Ibis Hotel",
+      "mcc": 7011,
+      "category": {
+        "id": 4,
+        "name": "Hotels"
+      },
+      "merchant": {
+        "name": "Ibis",
+        "logo_url": "https://logo.clearbit.com/accor.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-12T18:45:00Z"
+    },
+    {
+      "id": "txn_005",
+      "account_id": "acc_12345",
+      "amount": -28.50,
+      "currency": "EUR",
+      "date": "2024-12-11",
+      "description": "UBER TRIP PARIS",
+      "clean_description": "Uber",
+      "mcc": 4121,
+      "category": {
+        "id": 5,
+        "name": "Taxi"
+      },
+      "merchant": {
+        "name": "Uber",
+        "logo_url": "https://logo.clearbit.com/uber.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-11T20:30:00Z"
+    },
+    {
+      "id": "txn_006",
+      "account_id": "acc_12345",
+      "amount": -156.78,
+      "currency": "EUR",
+      "date": "2024-12-10",
+      "description": "EDF ELECTRICITE",
+      "clean_description": "EDF",
+      "mcc": 4900,
+      "category": {
+        "id": 6,
+        "name": "Utilities"
+      },
+      "merchant": {
+        "name": "EDF",
+        "logo_url": "https://logo.clearbit.com/edf.fr"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-10T08:00:00Z"
+    },
+    {
+      "id": "txn_007",
+      "account_id": "acc_12345",
+      "amount": -234.00,
+      "currency": "EUR",
+      "date": "2024-12-09",
+      "description": "AMAZON MARKETPLACE",
+      "clean_description": "Amazon",
+      "mcc": 5942,
+      "category": {
+        "id": 7,
+        "name": "Shopping"
+      },
+      "merchant": {
+        "name": "Amazon",
+        "logo_url": "https://logo.clearbit.com/amazon.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-09T11:22:00Z"
+    },
+    {
+      "id": "txn_008",
+      "account_id": "acc_12345",
+      "amount": -65.00,
+      "currency": "EUR",
+      "date": "2024-12-08",
+      "description": "DHL EXPRESS SHIPPING",
+      "clean_description": "DHL Express",
+      "mcc": 4215,
+      "category": {
+        "id": 8,
+        "name": "Courier"
+      },
+      "merchant": {
+        "name": "DHL",
+        "logo_url": "https://logo.clearbit.com/dhl.com"
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-08T15:45:00Z"
+    },
+    {
+      "id": "txn_009",
+      "account_id": "acc_12345",
+      "amount": -42.30,
+      "currency": "EUR",
+      "date": "2024-12-07",
+      "description": "RESTAURANT LA BRASSERIE",
+      "clean_description": "La Brasserie",
+      "mcc": 5812,
+      "category": {
+        "id": 9,
+        "name": "Restaurant"
+      },
+      "merchant": {
+        "name": "La Brasserie",
+        "logo_url": null
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-07T13:00:00Z"
+    },
+    {
+      "id": "txn_010",
+      "account_id": "acc_12345",
+      "amount": -1250.00,
+      "currency": "EUR",
+      "date": "2024-12-06",
+      "description": "CABINET CONSEIL XYZ",
+      "clean_description": "Cabinet Conseil XYZ",
+      "mcc": 7392,
+      "category": {
+        "id": 10,
+        "name": "Professional Services"
+      },
+      "merchant": {
+        "name": "Cabinet Conseil XYZ",
+        "logo_url": null
+      },
+      "is_deleted": false,
+      "updated_at": "2024-12-06T10:00:00Z"
+    }
+  ],
+  "pagination": {
+    "next_cursor": null,
+    "has_more": false,
+    "total_count": 10
+  },
+  "meta": {
+    "account_id": "acc_12345",
+    "since": "2024-12-01",
+    "until": "2024-12-15"
+  }
+}

@@ -1,0 +1,929 @@
+# =============================================================================
+# CARBEX - Configuration Projet
+# =============================================================================
+# Plateforme SaaS de bilan carbone automatique pour PME europeennes
+# Document genere le 28.12.2025
+# =============================================================================
+
+# =============================================================================
+# 1. PROJECT METADATA
+# =============================================================================
+
+[project]
+name = "Carbex"
+version = "1.0.0"
+description = "Plateforme SaaS de bilan carbone automatique pour PME europeennes"
+type = "saas"
+license = "proprietary"
+created = "2025-12-28"
+repository = "github.com/carbex/carbex"
+website = "https://carbex.io"
+
+[project.innovation]
+name = "Zero-Input Carbon"
+tagline = "Le Bankin' du carbone"
+description = """
+Bilan carbone automatique via connexion Open Banking, APIs comptabilite
+et APIs energie. Premier bilan en 2 heures au lieu de 2-4 semaines.
+Mise a jour temps reel, pas annuelle.
+"""
+differentiators = [
+    "Open Banking PSD2 -> Scope 3 automatique",
+    "APIs Comptabilite -> FEC/ecritures automatiques",
+    "APIs Energie -> kWh/m3 reels",
+    "IA Categorisation -> Claude API + MCC mapping"
+]
+
+[project.target]
+segment = "PME europeennes"
+employees_range = "10-250"
+regulations = ["CSRD", "BEGES"]
+primary_markets = ["FR", "DE"]
+
+# =============================================================================
+# 2. MARKETS CONFIGURATION
+# =============================================================================
+
+[markets]
+primary = ["FR", "DE"]
+expansion = ["BE", "NL", "AT", "CH", "ES", "IT"]
+languages = ["fr", "de", "en"]
+
+[markets.FR]
+name = "France"
+code = "FR"
+currency = "EUR"
+regulation = "BEGES"
+data_source = "ADEME"
+electricity_factor = 0.052  # kgCO2e/kWh
+electricity_factor_unit = "kgCO2e/kWh"
+open_banking = ["Bridge", "Powens"]
+accounting = ["Pennylane", "Sage", "Cegid", "Tiime"]
+energy = ["Enedis", "GRDF"]
+reporting_frameworks = ["BEGES", "CSRD"]
+fiscal_year_start = "01-01"
+
+[markets.DE]
+name = "Germany"
+code = "DE"
+currency = "EUR"
+regulation = "CSRD"
+data_source = "UBA"
+electricity_factor = 0.362  # kgCO2e/kWh
+electricity_factor_unit = "kgCO2e/kWh"
+open_banking = ["Finapi", "Bridge"]
+accounting = ["DATEV", "Lexware", "sevDesk"]
+energy = ["Smart Meter APIs", "netze-bw"]
+reporting_frameworks = ["CSRD"]
+fiscal_year_start = "01-01"
+
+# =============================================================================
+# 3. TECHNOLOGY STACK
+# =============================================================================
+
+[stack]
+updated = "2025-12"
+
+[stack.backend]
+framework = "Laravel"
+framework_version = "12.x"
+language = "PHP"
+language_version = "8.4+"
+database = "PostgreSQL"
+database_version = "17"
+cache = "Redis"
+cache_version = "7.4+"
+search = "Meilisearch"
+search_version = "1.11+"
+queue = "Redis"
+
+[stack.frontend]
+interactivity = "Livewire"
+livewire_version = "3.x"
+css = "TailwindCSS"
+css_version = "4.x"
+js = "Alpine.js"
+js_version = "3.x"
+charts = "ApexCharts"
+charts_version = "4.x"
+build = "Vite"
+build_version = "5.x"
+
+[stack.admin]
+panel = "Filament"
+panel_version = "3.x"
+features = ["Multi-pays", "Super Admin", "RBAC", "Audit Logs"]
+
+[stack.api]
+auth = "Laravel Sanctum"
+auth_version = "4.x"
+docs = "Scramble"
+docs_version = "0.12+"
+format = "REST JSON"
+versioning = "URL prefix (/api/v1)"
+
+[stack.mobile]
+phase = "Phase 2"
+
+[stack.mobile.android]
+language = "Kotlin"
+language_version = "2.1+"
+ui = "Jetpack Compose"
+ui_version = "1.7+"
+architecture = "MVVM + Clean Architecture"
+di = "Hilt"
+http = "Retrofit"
+push = "Firebase Cloud Messaging"
+
+[stack.mobile.ios]
+language = "Swift"
+language_version = "6.0+"
+ui = "SwiftUI"
+ui_version = "5.x"
+architecture = "MVVM + Combine"
+concurrency = "Swift Concurrency (async/await)"
+push = "APNs"
+
+[stack.ai]
+provider = "Anthropic"
+model = "claude-sonnet-4-20250514"
+usage = [
+    "Transaction categorization",
+    "MCC mapping",
+    "Ambiguous resolution",
+    "Reduction suggestions"
+]
+confidence_threshold = 0.9
+
+[stack.external_services]
+payments = "Stripe"
+ocr = "AWS Textract"
+storage = "S3 Scaleway"
+email = "Resend"
+monitoring = "Sentry"
+
+# =============================================================================
+# 4. INFRASTRUCTURE
+# =============================================================================
+
+[infrastructure]
+provider = "Scaleway"
+region = "fr-par"
+orchestration = "Docker Swarm"
+sovereignty = "EU"
+
+[infrastructure.nodes]
+manager = { type = "DEV1-M", vcpu = 3, ram_gb = 4, count = 1 }
+workers = { type = "DEV1-M", vcpu = 3, ram_gb = 4, count = 2 }
+
+[infrastructure.costs]
+launch = 75      # EUR/month (0-100 clients)
+growth = 200     # EUR/month (100-500 clients)
+scale = 500      # EUR/month (500-2000 clients)
+
+[infrastructure.services]
+reverse_proxy = "Traefik 3.x"
+container_runtime = "Docker"
+secrets_management = "Docker Swarm Secrets"
+ssl_provider = "Let's Encrypt"
+
+[infrastructure.backup]
+tool = "Restic"
+encryption = "GPG AES256"
+storage = "S3 Scaleway"
+database_frequency = "6h"
+database_retention = "30d"
+redis_frequency = "daily"
+redis_retention = "7d"
+uploads_frequency = "continuous"
+uploads_retention = "unlimited"
+
+[infrastructure.monitoring]
+metrics = "Prometheus"
+dashboards = "Grafana"
+logs = "Loki"
+tracing = "Promtail"
+alerts = [
+    "HighErrorRate",
+    "DatabaseDown",
+    "HighMemoryUsage",
+    "SSLCertExpiry",
+    "SuspiciousLogins"
+]
+
+# =============================================================================
+# 5. SECURITY
+# =============================================================================
+
+[security]
+level = "banking"  # Niveau bancaire requis pour Open Banking
+
+[security.edge]
+provider = "Cloudflare Pro"
+cost = 20  # EUR/month
+features = [
+    "WAF",
+    "DDoS L3/L4/L7",
+    "Bot Management",
+    "Rate Limiting",
+    "Geo-blocking",
+    "Zero Trust Access"
+]
+ssl_mode = "Full Strict"
+min_tls_version = "1.2"
+
+[security.firewall]
+tool = "nftables"
+default_policy = "DROP ALL"
+allowed_http = "Cloudflare IPs only"
+allowed_ssh = "Admin IPs only"
+bruteforce_protection = "Fail2Ban"
+
+[security.reverse_proxy]
+tool = "Traefik 3.x"
+ssl_cert = "Let's Encrypt (Cloudflare DNS Challenge)"
+ip_whitelist = "Cloudflare IPs"
+headers = [
+    "HSTS",
+    "X-Frame-Options",
+    "X-Content-Type-Options",
+    "Content-Security-Policy"
+]
+
+[security.secrets]
+manager = "Docker Swarm Secrets"
+mount_path = "/run/secrets/"
+env_files_in_prod = false
+
+[security.secrets.list]
+database = ["db_password", "db_database", "db_username"]
+application = ["app_key", "redis_password", "meilisearch_master_key"]
+external = ["stripe_secret_key", "stripe_webhook_secret", "claude_api_key"]
+open_banking = ["bridge_client_id", "bridge_client_secret", "finapi_client_id", "finapi_client_secret"]
+infrastructure = ["cloudflare_api_token", "backup_encryption_key"]
+
+[security.authentication]
+web = "Laravel Fortify + Session"
+api = "Laravel Sanctum (tokens)"
+two_factor = "TOTP (Google Authenticator)"
+sso = "SAML 2.0 (Phase 2, Enterprise)"
+token_expiry_days = 30
+
+[security.authorization]
+model = "RBAC"
+policy_pattern = "Laravel Policies"
+multi_tenancy = "Organization-scoped"
+
+# =============================================================================
+# 6. DOMAIN MODEL
+# =============================================================================
+
+[domain]
+bounded_contexts = [
+    "Identity",
+    "Organization",
+    "Carbon",
+    "Reporting",
+    "Billing",
+    "Admin"
+]
+
+[domain.entities.core]
+list = [
+    "User",
+    "Organization",
+    "Site",
+    "LegalEntity",
+    "Activity",
+    "Emission",
+    "EmissionFactor",
+    "Category"
+]
+
+[domain.entities.zero_input]
+list = [
+    "BankConnection",
+    "BankAccount",
+    "RawTransaction",
+    "CategorizedTransaction",
+    "CategorizationRule",
+    "MccMapping",
+    "AccountingConnection",
+    "EnergyConnection"
+]
+
+[domain.entities.reporting]
+list = [
+    "Report",
+    "ReportTemplate",
+    "ReductionTarget",
+    "ReductionScenario",
+    "Benchmark"
+]
+
+[domain.entities.billing]
+list = [
+    "Subscription",
+    "Invoice",
+    "Plan",
+    "PaymentMethod"
+]
+
+[domain.entities.admin]
+list = [
+    "Country",
+    "CountryCalculationMethod",
+    "DataSource",
+    "AuditLog"
+]
+
+[domain.scopes.scope_1]
+name = "Emissions directes"
+categories = [
+    "Combustion fixe (chauffage)",
+    "Combustion mobile (flotte)",
+    "Emissions fugitives (frigorigenes)",
+    "Procedes industriels"
+]
+
+[domain.scopes.scope_2]
+name = "Emissions indirectes energie"
+categories = [
+    "Electricite (location-based)",
+    "Electricite (market-based)",
+    "Chaleur/Froid reseau"
+]
+
+[domain.scopes.scope_3]
+name = "Autres emissions indirectes"
+categories = [
+    "Cat. 1 - Achats de biens et services",
+    "Cat. 2 - Biens immobilises",
+    "Cat. 3 - Combustibles et energie (hors Scope 1&2)",
+    "Cat. 4 - Transport amont",
+    "Cat. 5 - Dechets",
+    "Cat. 6 - Voyages d'affaires",
+    "Cat. 7 - Deplacements domicile-travail",
+    "Cat. 8 - Actifs loues amont",
+    "Cat. 9 - Transport aval",
+    "Cat. 10 - Transformation des produits",
+    "Cat. 11 - Utilisation des produits",
+    "Cat. 12 - Fin de vie des produits",
+    "Cat. 13 - Actifs loues aval",
+    "Cat. 14 - Franchises",
+    "Cat. 15 - Investissements"
+]
+
+# =============================================================================
+# 7. MODULES
+# =============================================================================
+
+[modules]
+
+[modules.zero_input_engine]
+priority = "MVP"
+description = "Moteur d'automatisation Zero-Input Carbon"
+components = [
+    "Open Banking connector",
+    "Accounting API connector",
+    "Energy API connector",
+    "AI Categorization engine"
+]
+
+[modules.zero_input_engine.pipeline]
+steps = [
+    { order = 1, name = "Connection", description = "OAuth2 avec provider" },
+    { order = 2, name = "Sync", description = "Recuperation horaire/quotidienne" },
+    { order = 3, name = "Normalization", description = "Format unifie multi-source" },
+    { order = 4, name = "Categorization", description = "MCC + Claude AI (threshold 0.9)" },
+    { order = 5, name = "Calculation", description = "Application facteurs pays" },
+    { order = 6, name = "Validation", description = "Auto si confidence > 0.9" },
+    { order = 7, name = "Dashboard", description = "Mise a jour temps reel" }
+]
+
+[modules.collection]
+priority = "MVP"
+description = "Collecte manuelle (fallback)"
+features = [
+    "Formulaires Scope 1/2/3",
+    "Import CSV/Excel",
+    "Import FEC (FR)",
+    "Import DATEV (DE)",
+    "OCR factures energie"
+]
+
+[modules.calculation]
+priority = "MVP"
+description = "Moteur de calcul multi-pays"
+features = [
+    "Facteurs ADEME (FR)",
+    "Facteurs UBA (DE)",
+    "Location-based Scope 2",
+    "Market-based Scope 2",
+    "Incertitudes GHG Protocol"
+]
+
+[modules.analysis]
+priority = "MVP"
+description = "Dashboard et analyse"
+features = [
+    "KPIs temps reel",
+    "Repartition par Scope",
+    "Evolution temporelle",
+    "Top postes d'emission",
+    "Comparaison sites",
+    "Benchmark sectoriel"
+]
+
+[modules.reporting]
+priority = "MVP"
+description = "Generation de rapports"
+outputs = [
+    "PDF synthese personnalisable",
+    "BEGES conforme ADEME",
+    "CSRD/ESRS E1",
+    "Nachhaltigkeitsbericht (DE)"
+]
+
+[modules.trajectory]
+priority = "Phase 2"
+description = "Objectifs et trajectoire"
+features = [
+    "Objectifs SBTi",
+    "Scenarios de reduction",
+    "Suggestions IA",
+    "Suivi progression"
+]
+
+[modules.mobile_apps]
+priority = "Phase 2"
+description = "Applications mobiles natives"
+features = [
+    "Dashboard lecture",
+    "OCR camera factures",
+    "Push Carbon Pulse",
+    "Saisie rapide flotte",
+    "Mode offline",
+    "GPS tracking (opt-in)"
+]
+
+[modules.supplier_portal]
+priority = "Phase 3"
+description = "Portail fournisseurs"
+features = [
+    "Collecte Scope 3 amont",
+    "Questionnaires fournisseurs",
+    "Engagement et suivi"
+]
+
+# =============================================================================
+# 8. USER ROLES
+# =============================================================================
+
+[roles]
+
+[roles.super_admin]
+name = "Super Admin"
+scope = "platform"
+permissions = ["all"]
+description = "Administrateur plateforme Carbex"
+
+[roles.org_admin]
+name = "Organization Admin"
+scope = "organization"
+permissions = [
+    "users.manage",
+    "settings.manage",
+    "billing.manage",
+    "sites.manage",
+    "activities.manage",
+    "reports.manage",
+    "integrations.manage"
+]
+description = "Administrateur de l'organisation (Owner)"
+
+[roles.contributor]
+name = "Contributor"
+scope = "sites_assigned"
+permissions = [
+    "activities.create",
+    "activities.update",
+    "reports.view",
+    "dashboard.view"
+]
+description = "Contributeur sur sites assignes"
+
+[roles.viewer]
+name = "Viewer"
+scope = "organization"
+permissions = [
+    "dashboard.view",
+    "reports.view",
+    "activities.view"
+]
+description = "Lecture seule"
+
+[roles.auditor]
+name = "Auditor"
+scope = "organization"
+permissions = [
+    "dashboard.view",
+    "reports.view",
+    "activities.view",
+    "exports.all",
+    "audit_logs.view"
+]
+description = "Auditeur externe"
+
+# =============================================================================
+# 9. PERSONAS
+# =============================================================================
+
+[personas]
+
+[personas.marie_dubois]
+name = "Marie Dubois"
+country = "FR"
+role = "DAF"
+company_size = 85
+age = 45
+segment = "PME"
+pain_points = [
+    "Pas de temps pour le bilan carbone",
+    "Conformite BEGES obligatoire",
+    "Budget limite (pas de consultant)"
+]
+goals = [
+    "Bilan rapide sans expertise",
+    "Conformite reglementaire",
+    "ROI evident"
+]
+quote = "J'ai besoin d'un outil qui fait le travail pour moi"
+adoption_trigger = "Demande du CAC40 client"
+
+[personas.thomas_martin]
+name = "Thomas Martin"
+country = "FR"
+role = "Responsable RSE"
+company_size = 180
+age = 32
+segment = "ETI"
+pain_points = [
+    "Donnees eparpillees (Excel, factures, ERP)",
+    "Scope 3 complexe a calculer",
+    "Difficulte a convaincre la direction"
+]
+goals = [
+    "Centralisation des donnees",
+    "Precision et fiabilite",
+    "Plan d'action concret"
+]
+quote = "J'ai besoin de donnees fiables pour convaincre ma direction"
+adoption_trigger = "Strategie RSE de l'entreprise"
+
+[personas.klaus_weber]
+name = "Klaus Weber"
+country = "DE"
+role = "Geschaftsfuhrer"
+company_size = 120
+age = 52
+segment = "Mittelstand"
+pain_points = [
+    "CSRD deadline approche",
+    "Pas de ressources internes dediees",
+    "Complexite reglementaire"
+]
+goals = [
+    "Conformite CSRD",
+    "Rapport officiel valide",
+    "Minimum d'effort"
+]
+quote = "Wir mussen CSRD erfullen, aber ohne grosses Team"
+adoption_trigger = "Obligation CSRD 2025"
+
+# =============================================================================
+# 10. PRICING
+# =============================================================================
+
+[pricing]
+currency = "EUR"
+billing_period = "monthly"
+annual_discount = 0.17  # -17%
+trial_days = 14
+
+[pricing.plans.starter]
+name = "Starter"
+price_monthly = 79
+price_annual = 790
+target = "TPE < 20 salaries"
+sites = 1
+users = 3
+features = [
+    "Scope 1 + 2",
+    "Zero-Input basic",
+    "Export PDF",
+    "Support email"
+]
+scope_3 = false
+beges_export = false
+api_access = false
+
+[pricing.plans.pro]
+name = "Pro"
+price_monthly = 149
+price_annual = 1490
+target = "PME 20-100 salaries"
+sites = 3
+users = 10
+features = [
+    "Scope 1 + 2 + 3 partiel",
+    "Zero-Input complet",
+    "Import FEC/DATEV",
+    "OCR factures (50/mois)",
+    "Export BEGES/CSRD",
+    "Apps mobiles",
+    "Support email + chat"
+]
+scope_3 = "partial"
+beges_export = true
+api_access = false
+
+[pricing.plans.business]
+name = "Business"
+price_monthly = 249
+price_annual = 2490
+target = "ETI 100-250 salaries"
+sites = -1  # unlimited
+users = 50
+features = [
+    "Scope 1 + 2 + 3 complet",
+    "Zero-Input full",
+    "OCR factures (200/mois)",
+    "API REST",
+    "Benchmark sectoriel",
+    "Support prioritaire",
+    "CSM dedie"
+]
+scope_3 = "full"
+beges_export = true
+api_access = true
+sla = "99.5%"
+
+[pricing.plans.enterprise]
+name = "Enterprise"
+price_monthly = "custom"
+target = "250+ salaries"
+sites = -1  # unlimited
+users = -1  # unlimited
+features = [
+    "Tout Business",
+    "Multi-entites",
+    "SSO/SAML",
+    "SLA 99.9%",
+    "On-premise option",
+    "Support dedie 24/7"
+]
+scope_3 = "full"
+beges_export = true
+api_access = true
+sso = true
+sla = "99.9%"
+
+# =============================================================================
+# 11. ROADMAP
+# =============================================================================
+
+[roadmap]
+
+[roadmap.phase_1]
+name = "MVP + Zero-Input"
+duration_weeks = 14
+objectives = [
+    "30 entreprises en test (FR + DE)",
+    "70% donnees collectees automatiquement",
+    "NPS > 40",
+    "10 clients payants"
+]
+
+[roadmap.phase_1.milestones]
+"S1-2" = "Setup Laravel 12, CI/CD, Auth Sanctum, Models de base"
+"S3-4" = "CRUD Organisation/Sites, Config multi-pays, Filament Admin"
+"S5-6" = "Integration Bridge (FR) + Finapi (DE) Open Banking"
+"S7-8" = "IA Categorisation (Claude + MCC rules), Pipeline ingestion"
+"S9" = "Formulaires Scope 1 complet"
+"S10" = "Formulaires Scope 2, Calculs location/market"
+"S11" = "Scope 3 cat. 1 (auto), cat. 6, cat. 7"
+"S12" = "Import CSV/Excel/FEC, OCR factures"
+"S13" = "Dashboard temps reel, ApexCharts"
+"S14" = "Export PDF, Stripe, Tests, Deploy prod"
+
+[roadmap.phase_2]
+name = "Mobile Apps + Consolidation"
+duration_weeks = 14
+objectives = [
+    "200 clients",
+    "40K EUR MRR",
+    "Apps iOS/Android natives"
+]
+
+[roadmap.phase_2.backend]
+features = [
+    "Integration Enedis DataConnect",
+    "Integration GRDF ADICT",
+    "Integration sevDesk (DE)",
+    "Export BEGES conforme ADEME",
+    "Export CSRD/ESRS E1",
+    "Benchmark sectoriel"
+]
+
+[roadmap.phase_2.mobile]
+features = [
+    "Auth + Dashboard lecture",
+    "Push notifications Carbon Pulse",
+    "Camera OCR factures",
+    "Saisie rapide flotte",
+    "Mode offline + sync",
+    "GPS tracking (opt-in)"
+]
+
+[roadmap.phase_3]
+name = "Scale EU"
+duration_weeks = 16
+objectives = [
+    "100K EUR MRR",
+    "Expansion 6 pays EU"
+]
+
+[roadmap.phase_3.features]
+countries = ["BE", "NL", "AT", "CH", "ES", "IT"]
+features = [
+    "Scope 3 complet (15 categories)",
+    "API publique + webhooks",
+    "Portail fournisseurs",
+    "SSO/SAML",
+    "Multi-entites"
+]
+
+# =============================================================================
+# 12. GO-TO-MARKET
+# =============================================================================
+
+[gtm]
+strategy = "Product-led growth + Targeted outbound"
+
+[gtm.inbound]
+primary_channel = "SEO"
+keywords_fr = [
+    "bilan carbone entreprise",
+    "bilan carbone PME",
+    "logiciel bilan carbone",
+    "BEGES obligatoire",
+    "CSRD PME"
+]
+keywords_de = [
+    "CO2 Bilanz erstellen",
+    "CO2 Fussabdruck Unternehmen",
+    "CSRD Mittelstand",
+    "Nachhaltigkeitsbericht Software"
+]
+content = [
+    "Blog FR/DE (2 articles/semaine)",
+    "Guides PDF (lead magnets)",
+    "Webinaires mensuels",
+    "Case studies"
+]
+social = "LinkedIn (primary)"
+
+[gtm.outbound]
+targets = ["DAF", "Responsable RSE", "Geschaftsfuhrer"]
+tools = ["LinkedIn Sales Navigator", "Lemlist", "HubSpot"]
+volume = "50 contacts/semaine/marche"
+approach = "Fournisseurs CAC40/DAX"
+
+[gtm.partnerships]
+types = [
+    "Experts-comptables (FR)",
+    "Steuerberater (DE)",
+    "ESG consultants",
+    "CCI/IHK"
+]
+model = "Revenue share 10-20%"
+
+[gtm.projections]
+M6 = { mrr = 20000, clients_fr = 80, clients_de = 50 }
+M12 = { mrr = 60000, clients_fr = 250, clients_de = 150 }
+M24 = { mrr = 180000, clients_fr = 600, clients_de = 400 }
+M36 = { mrr = 500000, clients_fr = 1200, clients_de = 800 }
+
+# =============================================================================
+# 13. STANDARDS
+# =============================================================================
+
+[standards]
+
+[standards.code]
+style = "PSR-12"
+typing = "strict"
+documentation = "PHPDoc"
+naming = "snake_case (DB), camelCase (PHP)"
+
+[standards.architecture]
+patterns = [
+    "Service Layer",
+    "Repository Pattern",
+    "Form Requests",
+    "API Resources",
+    "DTOs",
+    "Actions"
+]
+structure = "Domain-driven (app/Domain/)"
+
+[standards.testing]
+frameworks = ["PHPUnit", "Pest", "Playwright"]
+coverage_target = 80
+types = ["Unit", "Feature", "E2E"]
+
+[standards.git]
+workflow = "GitFlow"
+commits = "Conventional Commits"
+branches = [
+    "main (production)",
+    "develop (staging)",
+    "feature/* (features)",
+    "hotfix/* (urgent fixes)"
+]
+
+[standards.ci_cd]
+platform = "GitHub Actions"
+pipeline = [
+    "lint",
+    "test",
+    "build",
+    "deploy"
+]
+environments = ["staging", "production"]
+
+# =============================================================================
+# 14. COMPLIANCE
+# =============================================================================
+
+[compliance]
+
+[compliance.gdpr]
+data_location = "EU (Scaleway Paris)"
+dpo_email = "dpo@carbex.io"
+privacy_policy = "https://carbex.io/privacy"
+
+[compliance.gdpr.retention]
+user_data = "account lifetime + 3 years"
+logs = "90 days"
+backups = "30 days"
+analytics = "26 months"
+
+[compliance.gdpr.rights]
+supported = [
+    "access",
+    "rectification",
+    "erasure",
+    "portability",
+    "objection",
+    "restriction"
+]
+
+[compliance.carbon]
+frameworks = [
+    "GHG Protocol",
+    "ISO 14064",
+    "BEGES",
+    "CSRD/ESRS E1"
+]
+audit_trail = true
+uncertainty_calculation = true
+methodology_transparency = true
+
+[compliance.psd2]
+open_banking = true
+aisp_license = "via aggregators (Bridge, Finapi)"
+data_minimization = true
+consent_management = true
+
+# =============================================================================
+# 15. SPECS REFERENCE
+# =============================================================================
+
+[specs]
+constitution_file = ".specify/memory/constitution.md"
+hosting_security_file = ".specify/memory/hosting-security.md"
+config_file = ".specify/memory/carbex.toml"
+
+[specs.documents]
+"01" = { name = "Vision & Personas", sections = "1-3", file = "constitution.md" }
+"02" = { name = "Architecture Fonctionnelle", section = "4", file = "constitution.md" }
+"03" = { name = "Architecture Technique", section = "5", file = "constitution.md" }
+"04" = { name = "Specifications Fonctionnelles", section = "6", file = "constitution.md" }
+"05" = { name = "Plan & Business", sections = "7-9", file = "constitution.md" }
+"06" = { name = "Hosting & Securite", file = "hosting-security.md" }
+
+# =============================================================================
+# END OF CONFIGURATION
+# =============================================================================

@@ -1,0 +1,94 @@
+# ===========================================
+# Traefik Dynamic Configuration
+# Carbex - Middlewares & Security
+# ===========================================
+
+http:
+  middlewares:
+    # Security Headers
+    security-headers:
+      headers:
+        frameDeny: true
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: "strict-origin-when-cross-origin"
+        customResponseHeaders:
+          X-Robots-Tag: "noindex, nofollow"
+          Permissions-Policy: "geolocation=(), microphone=(), camera=()"
+        stsSeconds: 31536000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        contentSecurityPolicy: |
+          default-src 'self';
+          script-src 'self' 'unsafe-inline' 'unsafe-eval';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self' data: https:;
+          font-src 'self' data:;
+          connect-src 'self' https://api.stripe.com;
+          frame-ancestors 'self';
+          form-action 'self';
+          base-uri 'self';
+
+    # Rate Limiting
+    rate-limit:
+      rateLimit:
+        average: 100
+        burst: 200
+        period: 1m
+
+    # IP Whitelist for Admin
+    admin-whitelist:
+      ipWhiteList:
+        sourceRange:
+          - "127.0.0.1/32"
+          - "10.0.0.0/8"
+          # Add trusted IPs here
+
+    # Basic Auth for Traefik Dashboard
+    auth:
+      basicAuth:
+        users:
+          # Generate with: htpasswd -nb admin password
+          - "admin:$apr1$xyz..."
+
+    # Compress responses
+    compress:
+      compress: {}
+
+    # Redirect www to non-www
+    redirect-www:
+      redirectRegex:
+        regex: "^https://www\\.(.*)"
+        replacement: "https://${1}"
+        permanent: true
+
+  # Routers
+  routers:
+    # Traefik Dashboard
+    traefik-dashboard:
+      rule: "Host(`traefik.carbex.eu`)"
+      entryPoints:
+        - websecure
+      service: api@internal
+      middlewares:
+        - auth
+        - admin-whitelist
+      tls:
+        certResolver: letsencrypt
+
+# TCP Configuration (if needed)
+tcp: {}
+
+# TLS Configuration
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+        - TLS_AES_128_GCM_SHA256
+        - TLS_AES_256_GCM_SHA384
+        - TLS_CHACHA20_POLY1305_SHA256
+      sniStrict: true

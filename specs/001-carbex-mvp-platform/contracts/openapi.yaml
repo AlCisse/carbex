@@ -1,0 +1,1245 @@
+openapi: 3.1.0
+info:
+  title: Carbex API
+  description: |
+    API for the Carbex carbon footprint calculation platform.
+    Supports web application (Livewire) and future mobile apps.
+  version: 1.0.0
+  contact:
+    email: api@carbex.io
+  license:
+    name: Proprietary
+
+servers:
+  - url: https://api.carbex.io/v1
+    description: Production
+  - url: https://staging-api.carbex.io/v1
+    description: Staging
+  - url: http://localhost:8000/api/v1
+    description: Local development
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Auth
+    description: Authentication and session management
+  - name: Organizations
+    description: Organization and site management
+  - name: Banking
+    description: Open Banking connections
+  - name: Emissions
+    description: Emission data and calculations
+  - name: Reports
+    description: Report generation and download
+  - name: Subscriptions
+    description: Billing and subscription management
+
+paths:
+  # ============ AUTH ============
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Register new user and organization
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, name, organization_name, country]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                name:
+                  type: string
+                organization_name:
+                  type: string
+                country:
+                  type: string
+                  enum: [FR, DE]
+                sector:
+                  type: string
+                employee_count:
+                  type: integer
+                  minimum: 1
+      responses:
+        '201':
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Authenticate user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Revoke current token
+      responses:
+        '204':
+          description: Logged out successfully
+
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: Get current user profile
+      responses:
+        '200':
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  # ============ ORGANIZATIONS ============
+  /organizations/current:
+    get:
+      tags: [Organizations]
+      summary: Get current organization
+      responses:
+        '200':
+          description: Organization details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+
+    patch:
+      tags: [Organizations]
+      summary: Update organization settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                sector:
+                  type: string
+                employee_count:
+                  type: integer
+                fiscal_year_start:
+                  type: string
+                  pattern: '^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'
+      responses:
+        '200':
+          description: Organization updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+
+  /organizations/current/sites:
+    get:
+      tags: [Organizations]
+      summary: List organization sites
+      responses:
+        '200':
+          description: Site list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Site'
+
+    post:
+      tags: [Organizations]
+      summary: Create new site
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, country]
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+                country:
+                  type: string
+                  enum: [FR, DE]
+                city:
+                  type: string
+                postal_code:
+                  type: string
+                surface_m2:
+                  type: number
+      responses:
+        '201':
+          description: Site created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+
+  /organizations/current/sites/{siteId}:
+    parameters:
+      - name: siteId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags: [Organizations]
+      summary: Get site details
+      responses:
+        '200':
+          description: Site details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+    patch:
+      tags: [Organizations]
+      summary: Update site
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+                surface_m2:
+                  type: number
+      responses:
+        '200':
+          description: Site updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+    delete:
+      tags: [Organizations]
+      summary: Delete site
+      responses:
+        '204':
+          description: Site deleted
+
+  /organizations/current/users:
+    get:
+      tags: [Organizations]
+      summary: List organization users
+      responses:
+        '200':
+          description: User list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+
+    post:
+      tags: [Organizations]
+      summary: Invite new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, name, role]
+              properties:
+                email:
+                  type: string
+                  format: email
+                name:
+                  type: string
+                role:
+                  type: string
+                  enum: [admin, contributor, reader]
+                site_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '201':
+          description: Invitation sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  # ============ BANKING ============
+  /banking/connections:
+    get:
+      tags: [Banking]
+      summary: List bank connections
+      responses:
+        '200':
+          description: Connection list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BankConnection'
+
+    post:
+      tags: [Banking]
+      summary: Initiate bank connection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [provider]
+              properties:
+                provider:
+                  type: string
+                  enum: [bridge, finapi]
+                redirect_url:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: OAuth redirect URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  redirect_url:
+                    type: string
+                    format: uri
+
+  /banking/connections/{connectionId}:
+    parameters:
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags: [Banking]
+      summary: Get connection details
+      responses:
+        '200':
+          description: Connection details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankConnection'
+    delete:
+      tags: [Banking]
+      summary: Revoke bank connection
+      responses:
+        '204':
+          description: Connection revoked
+
+  /banking/connections/{connectionId}/sync:
+    parameters:
+      - name: connectionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      tags: [Banking]
+      summary: Trigger manual sync
+      responses:
+        '202':
+          description: Sync queued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+
+  /banking/transactions:
+    get:
+      tags: [Banking]
+      summary: List transactions
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+        - name: validated
+          in: query
+          schema:
+            type: boolean
+        - name: date_from
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: date_to
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Transaction list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+
+  /banking/transactions/{transactionId}/validate:
+    parameters:
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    post:
+      tags: [Banking]
+      summary: Validate transaction category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [category_id]
+              properties:
+                category_id:
+                  type: string
+                  format: uuid
+                remember_merchant:
+                  type: boolean
+                  default: false
+      responses:
+        '200':
+          description: Transaction validated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+
+  # ============ EMISSIONS ============
+  /emissions/dashboard:
+    get:
+      tags: [Emissions]
+      summary: Get dashboard KPIs
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+            enum: [ytd, last_12_months, last_year, custom]
+            default: ytd
+        - name: date_from
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: date_to
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: site_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardData'
+
+  /emissions/records:
+    get:
+      tags: [Emissions]
+      summary: List emission records
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: scope
+          in: query
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+        - name: site_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: date_from
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: date_to
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Emission records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EmissionRecord'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+
+  /emissions/activities:
+    post:
+      tags: [Emissions]
+      summary: Create manual activity entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [category_id, date, quantity, unit]
+              properties:
+                site_id:
+                  type: string
+                  format: uuid
+                category_id:
+                  type: string
+                  format: uuid
+                date:
+                  type: string
+                  format: date
+                quantity:
+                  type: number
+                unit:
+                  type: string
+                  enum: [kWh, L, km, m3, kg, EUR]
+                description:
+                  type: string
+      responses:
+        '201':
+          description: Activity created and emissions calculated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+
+  /emissions/import:
+    post:
+      tags: [Emissions]
+      summary: Import data from file
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, type]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                type:
+                  type: string
+                  enum: [csv, excel, fec]
+      responses:
+        '202':
+          description: Import queued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                  preview:
+                    type: object
+                    properties:
+                      row_count:
+                        type: integer
+                      sample_rows:
+                        type: array
+
+  /emissions/factors:
+    get:
+      tags: [Emissions]
+      summary: Search emission factors
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Search query
+        - name: scope
+          in: query
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: country
+          in: query
+          schema:
+            type: string
+            enum: [FR, DE]
+      responses:
+        '200':
+          description: Emission factors
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EmissionFactor'
+
+  # ============ REPORTS ============
+  /reports:
+    get:
+      tags: [Reports]
+      summary: List generated reports
+      responses:
+        '200':
+          description: Report list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Report'
+
+    post:
+      tags: [Reports]
+      summary: Generate new report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type, period_start, period_end]
+              properties:
+                type:
+                  type: string
+                  enum: [summary_pdf, beges, csrd, ghg_protocol]
+                period_start:
+                  type: string
+                  format: date
+                period_end:
+                  type: string
+                  format: date
+                options:
+                  type: object
+                  properties:
+                    include_methodology:
+                      type: boolean
+                    include_factors:
+                      type: boolean
+      responses:
+        '202':
+          description: Report generation queued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                  estimated_time_seconds:
+                    type: integer
+
+  /reports/{reportId}:
+    parameters:
+      - name: reportId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags: [Reports]
+      summary: Get report details
+      responses:
+        '200':
+          description: Report details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+
+  /reports/{reportId}/download:
+    parameters:
+      - name: reportId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      tags: [Reports]
+      summary: Download report file
+      responses:
+        '200':
+          description: Report file
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '302':
+          description: Redirect to signed S3 URL
+
+  # ============ SUBSCRIPTIONS ============
+  /subscriptions/current:
+    get:
+      tags: [Subscriptions]
+      summary: Get current subscription
+      responses:
+        '200':
+          description: Subscription details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+
+  /subscriptions/plans:
+    get:
+      tags: [Subscriptions]
+      summary: List available plans
+      security: []
+      responses:
+        '200':
+          description: Available plans
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plan'
+
+  /subscriptions/checkout:
+    post:
+      tags: [Subscriptions]
+      summary: Create checkout session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [plan]
+              properties:
+                plan:
+                  type: string
+                  enum: [starter, pro, business]
+                success_url:
+                  type: string
+                  format: uri
+                cancel_url:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Checkout URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  checkout_url:
+                    type: string
+                    format: uri
+
+  /subscriptions/portal:
+    post:
+      tags: [Subscriptions]
+      summary: Create billing portal session
+      responses:
+        '200':
+          description: Portal URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  portal_url:
+                    type: string
+                    format: uri
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Sanctum Token
+
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthenticated.
+    ValidationError:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+
+  schemas:
+    AuthResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        role:
+          type: string
+          enum: [super_admin, admin, contributor, reader]
+        organization_id:
+          type: string
+          format: uuid
+        locale:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        country:
+          type: string
+        sector:
+          type: string
+        employee_count:
+          type: integer
+        fiscal_year_start:
+          type: string
+        timezone:
+          type: string
+        locale:
+          type: string
+        currency:
+          type: string
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+        created_at:
+          type: string
+          format: date-time
+
+    Site:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        address:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+        postal_code:
+          type: string
+        surface_m2:
+          type: number
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+
+    BankConnection:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        provider:
+          type: string
+        bank_name:
+          type: string
+        account_iban_masked:
+          type: string
+        status:
+          type: string
+          enum: [pending, active, expired, revoked]
+        last_sync_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+        currency:
+          type: string
+        merchant_name:
+          type: string
+        mcc_code:
+          type: string
+        description:
+          type: string
+        source:
+          type: string
+          enum: [bank_sync, csv_import, manual]
+        category:
+          $ref: '#/components/schemas/Category'
+        confidence:
+          type: number
+        validated:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        scope:
+          type: integer
+        ghg_category:
+          type: string
+        name:
+          type: string
+
+    Activity:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        site:
+          $ref: '#/components/schemas/Site'
+        category:
+          $ref: '#/components/schemas/Category'
+        date:
+          type: string
+          format: date
+        quantity:
+          type: number
+        unit:
+          type: string
+        emission_record:
+          $ref: '#/components/schemas/EmissionRecord'
+        created_at:
+          type: string
+          format: date-time
+
+    EmissionRecord:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        scope:
+          type: integer
+        ghg_category:
+          type: string
+        amount_kg_co2e:
+          type: number
+        amount_t_co2e:
+          type: number
+        factor_value:
+          type: number
+        factor_unit:
+          type: string
+        calculation_date:
+          type: string
+          format: date
+
+    EmissionFactor:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        scope:
+          type: integer
+        category:
+          type: string
+        subcategory:
+          type: string
+        value:
+          type: number
+        unit:
+          type: string
+        country_code:
+          type: string
+        source:
+          type: string
+        valid_from:
+          type: string
+          format: date
+
+    DashboardData:
+      type: object
+      properties:
+        total_emissions_t_co2e:
+          type: number
+        scope_breakdown:
+          type: object
+          properties:
+            scope1:
+              type: number
+            scope2:
+              type: number
+            scope3:
+              type: number
+        monthly_trend:
+          type: array
+          items:
+            type: object
+            properties:
+              month:
+                type: string
+              total:
+                type: number
+              scope1:
+                type: number
+              scope2:
+                type: number
+              scope3:
+                type: number
+        top_categories:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              amount_t_co2e:
+                type: number
+              percentage:
+                type: number
+        pending_validations:
+          type: integer
+
+    Report:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [summary_pdf, beges, csrd, ghg_protocol]
+        period_start:
+          type: string
+          format: date
+        period_end:
+          type: string
+          format: date
+        file_name:
+          type: string
+        file_size:
+          type: integer
+        download_url:
+          type: string
+          format: uri
+        created_at:
+          type: string
+          format: date-time
+
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        plan:
+          type: string
+          enum: [starter, pro, business, enterprise]
+        status:
+          type: string
+          enum: [trialing, active, past_due, canceled, unpaid]
+        trial_ends_at:
+          type: string
+          format: date-time
+        current_period_end:
+          type: string
+          format: date-time
+
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price_monthly_eur:
+          type: number
+        features:
+          type: object
+          properties:
+            sites:
+              type: string
+            users:
+              type: integer
+            bank_connections:
+              type: string
+            scope3:
+              type: string
+            export_formats:
+              type: array
+              items:
+                type: string
+
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        last_page:
+          type: integer
+        per_page:
+          type: integer
+        total:
+          type: integer

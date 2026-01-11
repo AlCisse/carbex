@@ -1,0 +1,139 @@
+services:
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: carbex-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html:ro
+      - ./docker/nginx/docker.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - carbex-network
+
+  # PHP Application (Development)
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: development
+    container_name: carbex-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: carbex
+      DB_USERNAME: carbex
+      DB_PASSWORD: secret
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CACHE_DRIVER: redis
+      SESSION_DRIVER: redis
+      QUEUE_CONNECTION: redis
+      MAIL_MAILER: smtp
+      MAIL_HOST: mailpit
+      MAIL_PORT: 1025
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_KEY: masterKey
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - carbex-network
+
+  # PostgreSQL 17 - Primary Database
+  postgres:
+    image: postgres:17
+    container_name: carbex-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: carbex
+      POSTGRES_USER: carbex
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carbex -d carbex"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - carbex-network
+
+  # Redis 7.4 - Cache, Queues, Sessions
+  redis:
+    image: redis:7.4-alpine
+    container_name: carbex-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - carbex-network
+
+  # Meilisearch 1.11 - Emission Factor Search
+  meilisearch:
+    image: getmeili/meilisearch:v1.11
+    container_name: carbex-meilisearch
+    restart: unless-stopped
+    ports:
+      - "7700:7700"
+    environment:
+      MEILI_MASTER_KEY: masterKey
+      MEILI_ENV: development
+    volumes:
+      - meilisearch_data:/meili_data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7700/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - carbex-network
+
+  # Mailpit - Local Email Testing
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: carbex-mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - carbex-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  meilisearch_data:
+    driver: local
+
+networks:
+  carbex-network:
+    driver: bridge
