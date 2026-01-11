@@ -29,6 +29,7 @@ return [
     'import' => 'Import',
     'download' => 'Download',
     'upload' => 'Upload',
+    'reset_filters' => 'Reset filters',
 
     'common' => [
         'loading' => 'Loading...',
@@ -292,11 +293,15 @@ return [
         'name' => 'Full name',
         'confirm_password' => 'Confirm password',
         'already_have_account' => 'Already have an account?',
+        'already_account' => 'Already have an account?',
         'login_link' => 'Sign in',
         'reset_password' => 'Reset password',
         'send_reset_link' => 'Send reset link',
         'reset_link_sent' => 'A reset link has been sent.',
         'employees' => 'Number of employees',
+        'step_account' => 'Account',
+        'step_organization' => 'Organization',
+        'password_requirements' => 'Password must be at least 8 characters',
     ],
 
     'nav' => [
@@ -497,6 +502,7 @@ return [
             'purchased_goods' => 'Purchases',
             'cloud_services' => 'Cloud services',
             'restaurant_meals' => 'Restaurant meals',
+            'unknown' => 'Unknown category',
         ],
         'factors' => [
             'title' => 'Select an emission factor',
@@ -1432,6 +1438,7 @@ return [
         'organization' => 'Organization',
         'profile' => 'Profile',
         'users' => 'Users',
+        'team' => 'Team',
         'sites' => 'Sites',
         'api' => 'API & Integrations',
         'notifications' => 'Notifications',
@@ -1462,6 +1469,137 @@ return [
         'consulting' => 'Consulting',
         'media' => 'Media & Communications',
         'other' => 'Other',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users Management
+    |--------------------------------------------------------------------------
+    */
+
+    'users' => [
+        'member' => 'Member',
+        'role' => 'Role',
+        'status' => 'Status',
+        'last_login' => 'Last login',
+        'you' => 'You',
+        'invitation_sent' => 'Invitation sent',
+        'invitation_resent' => 'Invitation resent',
+        'updated' => 'User updated',
+        'deleted' => 'User deleted',
+        'activated' => 'User activated',
+        'deactivated' => 'User deactivated',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sites Management
+    |--------------------------------------------------------------------------
+    */
+
+    'sites' => [
+        'no_sites' => 'No sites',
+        'no_sites_desc' => 'You haven\'t added any sites yet. Add your first site to get started.',
+        'add_site' => 'Add site',
+        'edit_site' => 'Edit site',
+        'delete_site' => 'Delete site',
+        'site_name' => 'Site name',
+        'site_address' => 'Address',
+        'site_type' => 'Site type',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers
+    |--------------------------------------------------------------------------
+    */
+
+    'suppliers' => [
+        'title' => 'Suppliers',
+        'description' => 'Manage your suppliers and collect their Scope 3 emissions data.',
+        'import_csv' => 'Import CSV',
+        'add_supplier' => 'Add supplier',
+        'no_suppliers' => 'No suppliers',
+        'no_suppliers_desc' => 'Add your suppliers to collect their emissions data.',
+        'all_statuses' => 'All statuses',
+        'name' => 'Name',
+        'sector' => 'Sector',
+        'annual_spend' => 'Annual Spend',
+        'data_quality' => 'Data Quality',
+        'invite' => 'Invite',
+        'confirm_delete' => 'Are you sure you want to delete this supplier?',
+        'stats' => [
+            'total' => 'Total suppliers',
+            'active' => 'Active suppliers',
+            'with_data' => 'With data',
+            'pending' => 'Pending',
+            'total_spend' => 'Total spend',
+        ],
+        'status' => [
+            'pending' => 'Pending',
+            'invited' => 'Invited',
+            'active' => 'Active',
+            'inactive' => 'Inactive',
+        ],
+        'all_quality' => 'All quality levels',
+        'quality' => [
+            'none' => 'None',
+            'low' => 'Low',
+            'medium' => 'Medium',
+            'high' => 'High',
+            'verified' => 'Verified',
+            'estimated' => 'Estimated',
+            'supplier_specific' => 'Supplier-specific',
+        ],
+        'empty' => 'No suppliers',
+        'add_first' => 'Add your first supplier',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Roles
+    |--------------------------------------------------------------------------
+    */
+
+    'roles' => [
+        'owner' => 'Owner',
+        'admin' => 'Administrator',
+        'manager' => 'Manager',
+        'member' => 'Member',
+        'viewer' => 'Viewer',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Common
+    |--------------------------------------------------------------------------
+    */
+
+    'common' => [
+        'active' => 'Active',
+        'inactive' => 'Inactive',
+        'pending' => 'Pending',
+        'completed' => 'Completed',
+        'loading' => 'Loading...',
+        'next' => 'Next',
+        'select' => 'Select',
+        'save' => 'Save',
+        'saving' => 'Saving...',
+        'view_all' => 'View all',
+        'view_details' => 'View details',
+        'date' => 'Date',
+        'description' => 'Description',
+        'quantity' => 'Quantity',
+        'actions' => 'Actions',
+        'unit' => 'Unit',
+        'amount_optional' => 'Amount (optional)',
+        'calculating' => 'Calculating...',
+        'reset' => 'Reset',
+        'status' => [
+            'pending' => 'Pending',
+            'invited' => 'Invited',
+            'active' => 'Active',
+        ],
     ],
 
 ];

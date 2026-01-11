@@ -35,6 +35,7 @@ return [
     'import' => 'Importer',
     'download' => 'Télécharger',
     'upload' => 'Téléverser',
+    'reset_filters' => 'Réinitialiser les filtres',
 
     /*
     |--------------------------------------------------------------------------
@@ -313,11 +314,15 @@ return [
         'name' => 'Nom complet',
         'confirm_password' => 'Confirmer le mot de passe',
         'already_have_account' => 'Déjà un compte ?',
+        'already_account' => 'Déjà un compte ?',
         'login_link' => 'Se connecter',
         'reset_password' => 'Réinitialiser le mot de passe',
         'send_reset_link' => 'Envoyer le lien',
         'reset_link_sent' => 'Un lien de réinitialisation a été envoyé.',
         'employees' => 'Nombre d\'employés',
+        'step_account' => 'Compte',
+        'step_organization' => 'Organisation',
+        'password_requirements' => 'Le mot de passe doit contenir au moins 8 caractères',
     ],
 
     /*
@@ -578,6 +583,7 @@ return [
             'purchased_goods' => 'Achats',
             'cloud_services' => 'Services cloud',
             'restaurant_meals' => 'Restauration',
+            'unknown' => 'Catégorie inconnue',
         ],
         'factors' => [
             'title' => 'Sélectionner un facteur d\'émission',
@@ -1708,6 +1714,7 @@ return [
         'organization' => 'Organisation',
         'profile' => 'Profil',
         'users' => 'Utilisateurs',
+        'team' => 'Équipe',
         'sites' => 'Sites',
         'api' => 'API & Intégrations',
         'notifications' => 'Notifications',
@@ -1738,6 +1745,137 @@ return [
         'consulting' => 'Conseil',
         'media' => 'Médias & Communication',
         'other' => 'Autre',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users Management
+    |--------------------------------------------------------------------------
+    */
+
+    'users' => [
+        'member' => 'Membre',
+        'role' => 'Rôle',
+        'status' => 'Statut',
+        'last_login' => 'Dernière connexion',
+        'you' => 'Vous',
+        'invitation_sent' => 'Invitation envoyée',
+        'invitation_resent' => 'Invitation renvoyée',
+        'updated' => 'Utilisateur mis à jour',
+        'deleted' => 'Utilisateur supprimé',
+        'activated' => 'Utilisateur activé',
+        'deactivated' => 'Utilisateur désactivé',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sites Management
+    |--------------------------------------------------------------------------
+    */
+
+    'sites' => [
+        'no_sites' => 'Aucun site',
+        'no_sites_desc' => 'Vous n\'avez pas encore ajouté de site. Ajoutez votre premier site pour commencer.',
+        'add_site' => 'Ajouter un site',
+        'edit_site' => 'Modifier le site',
+        'delete_site' => 'Supprimer le site',
+        'site_name' => 'Nom du site',
+        'site_address' => 'Adresse',
+        'site_type' => 'Type de site',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers
+    |--------------------------------------------------------------------------
+    */
+
+    'suppliers' => [
+        'title' => 'Fournisseurs',
+        'description' => 'Gérez vos fournisseurs et collectez leurs données d\'émissions Scope 3.',
+        'import_csv' => 'Importer CSV',
+        'add_supplier' => 'Ajouter un fournisseur',
+        'no_suppliers' => 'Aucun fournisseur',
+        'no_suppliers_desc' => 'Ajoutez vos fournisseurs pour collecter leurs données d\'émissions.',
+        'all_statuses' => 'Tous les statuts',
+        'name' => 'Nom',
+        'sector' => 'Secteur',
+        'annual_spend' => 'Dépenses annuelles',
+        'data_quality' => 'Qualité des données',
+        'invite' => 'Inviter',
+        'confirm_delete' => 'Êtes-vous sûr de vouloir supprimer ce fournisseur ?',
+        'stats' => [
+            'total' => 'Total fournisseurs',
+            'active' => 'Fournisseurs actifs',
+            'with_data' => 'Avec données',
+            'pending' => 'En attente',
+            'total_spend' => 'Dépenses totales',
+        ],
+        'status' => [
+            'pending' => 'En attente',
+            'invited' => 'Invité',
+            'active' => 'Actif',
+            'inactive' => 'Inactif',
+        ],
+        'all_quality' => 'Toutes les qualités',
+        'quality' => [
+            'none' => 'Aucune',
+            'low' => 'Faible',
+            'medium' => 'Moyenne',
+            'high' => 'Élevée',
+            'verified' => 'Vérifiée',
+            'estimated' => 'Estimée',
+            'supplier_specific' => 'Spécifique fournisseur',
+        ],
+        'empty' => 'Aucun fournisseur',
+        'add_first' => 'Ajouter votre premier fournisseur',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Roles
+    |--------------------------------------------------------------------------
+    */
+
+    'roles' => [
+        'owner' => 'Propriétaire',
+        'admin' => 'Administrateur',
+        'manager' => 'Manager',
+        'member' => 'Membre',
+        'viewer' => 'Lecteur',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Common
+    |--------------------------------------------------------------------------
+    */
+
+    'common' => [
+        'active' => 'Actif',
+        'inactive' => 'Inactif',
+        'pending' => 'En attente',
+        'completed' => 'Terminé',
+        'loading' => 'Chargement...',
+        'next' => 'Suivant',
+        'select' => 'Sélectionner',
+        'save' => 'Enregistrer',
+        'saving' => 'Enregistrement...',
+        'view_all' => 'Voir tout',
+        'view_details' => 'Voir les détails',
+        'date' => 'Date',
+        'description' => 'Description',
+        'quantity' => 'Quantité',
+        'actions' => 'Actions',
+        'unit' => 'Unité',
+        'amount_optional' => 'Montant (optionnel)',
+        'calculating' => 'Calcul en cours...',
+        'reset' => 'Réinitialiser',
+        'status' => [
+            'pending' => 'En attente',
+            'invited' => 'Invité',
+            'active' => 'Actif',
+        ],
     ],
 
 ];

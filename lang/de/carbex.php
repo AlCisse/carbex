@@ -35,6 +35,7 @@ return [
     'import' => 'Importieren',
     'download' => 'Herunterladen',
     'upload' => 'Hochladen',
+    'reset_filters' => 'Filter zurücksetzen',
 
     /*
     |--------------------------------------------------------------------------
@@ -316,11 +317,15 @@ return [
         'name' => 'Vollständiger Name',
         'confirm_password' => 'Passwort bestätigen',
         'already_have_account' => 'Bereits ein Konto?',
+        'already_account' => 'Bereits ein Konto?',
         'login_link' => 'Anmelden',
         'reset_password' => 'Passwort zurücksetzen',
         'send_reset_link' => 'Link senden',
         'reset_link_sent' => 'Ein Link zum Zurücksetzen wurde gesendet.',
         'employees' => 'Anzahl der Mitarbeiter',
+        'step_account' => 'Konto',
+        'step_organization' => 'Organisation',
+        'password_requirements' => 'Das Passwort muss mindestens 8 Zeichen lang sein',
     ],
 
     /*
@@ -569,6 +574,7 @@ return [
             'purchased_goods' => 'Einkäufe',
             'cloud_services' => 'Cloud-Dienste',
             'restaurant_meals' => 'Gastronomie',
+            'unknown' => 'Unbekannte Kategorie',
         ],
         'factors' => [
             'title' => 'Emissionsfaktor auswählen',
@@ -1612,6 +1618,7 @@ return [
         'organization' => 'Organisation',
         'profile' => 'Profil',
         'users' => 'Benutzer',
+        'team' => 'Team',
         'sites' => 'Standorte',
         'api' => 'API & Integrationen',
         'notifications' => 'Benachrichtigungen',
@@ -1642,6 +1649,137 @@ return [
         'consulting' => 'Beratung',
         'media' => 'Medien & Kommunikation',
         'other' => 'Andere',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users Management
+    |--------------------------------------------------------------------------
+    */
+
+    'users' => [
+        'member' => 'Mitglied',
+        'role' => 'Rolle',
+        'status' => 'Status',
+        'last_login' => 'Letzte Anmeldung',
+        'you' => 'Sie',
+        'invitation_sent' => 'Einladung gesendet',
+        'invitation_resent' => 'Einladung erneut gesendet',
+        'updated' => 'Benutzer aktualisiert',
+        'deleted' => 'Benutzer gelöscht',
+        'activated' => 'Benutzer aktiviert',
+        'deactivated' => 'Benutzer deaktiviert',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sites Management
+    |--------------------------------------------------------------------------
+    */
+
+    'sites' => [
+        'no_sites' => 'Keine Standorte',
+        'no_sites_desc' => 'Sie haben noch keine Standorte hinzugefügt. Fügen Sie Ihren ersten Standort hinzu.',
+        'add_site' => 'Standort hinzufügen',
+        'edit_site' => 'Standort bearbeiten',
+        'delete_site' => 'Standort löschen',
+        'site_name' => 'Standortname',
+        'site_address' => 'Adresse',
+        'site_type' => 'Standorttyp',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers
+    |--------------------------------------------------------------------------
+    */
+
+    'suppliers' => [
+        'title' => 'Lieferanten',
+        'description' => 'Verwalten Sie Ihre Lieferanten und erfassen Sie deren Scope-3-Emissionsdaten.',
+        'import_csv' => 'CSV importieren',
+        'add_supplier' => 'Lieferant hinzufügen',
+        'no_suppliers' => 'Keine Lieferanten',
+        'no_suppliers_desc' => 'Fügen Sie Ihre Lieferanten hinzu, um deren Emissionsdaten zu erfassen.',
+        'all_statuses' => 'Alle Status',
+        'name' => 'Name',
+        'sector' => 'Branche',
+        'annual_spend' => 'Jährliche Ausgaben',
+        'data_quality' => 'Datenqualität',
+        'invite' => 'Einladen',
+        'confirm_delete' => 'Möchten Sie diesen Lieferanten wirklich löschen?',
+        'stats' => [
+            'total' => 'Lieferanten gesamt',
+            'active' => 'Aktive Lieferanten',
+            'with_data' => 'Mit Daten',
+            'pending' => 'Ausstehend',
+            'total_spend' => 'Gesamtausgaben',
+        ],
+        'status' => [
+            'pending' => 'Ausstehend',
+            'invited' => 'Eingeladen',
+            'active' => 'Aktiv',
+            'inactive' => 'Inaktiv',
+        ],
+        'all_quality' => 'Alle Qualitätsstufen',
+        'quality' => [
+            'none' => 'Keine',
+            'low' => 'Niedrig',
+            'medium' => 'Mittel',
+            'high' => 'Hoch',
+            'verified' => 'Verifiziert',
+            'estimated' => 'Geschätzt',
+            'supplier_specific' => 'Lieferantenspezifisch',
+        ],
+        'empty' => 'Keine Lieferanten',
+        'add_first' => 'Fügen Sie Ihren ersten Lieferanten hinzu',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Roles
+    |--------------------------------------------------------------------------
+    */
+
+    'roles' => [
+        'owner' => 'Eigentümer',
+        'admin' => 'Administrator',
+        'manager' => 'Manager',
+        'member' => 'Mitglied',
+        'viewer' => 'Betrachter',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Common
+    |--------------------------------------------------------------------------
+    */
+
+    'common' => [
+        'active' => 'Aktiv',
+        'inactive' => 'Inaktiv',
+        'pending' => 'Ausstehend',
+        'completed' => 'Abgeschlossen',
+        'loading' => 'Laden...',
+        'next' => 'Weiter',
+        'select' => 'Auswählen',
+        'save' => 'Speichern',
+        'saving' => 'Speichern...',
+        'view_all' => 'Alle anzeigen',
+        'view_details' => 'Details anzeigen',
+        'date' => 'Datum',
+        'description' => 'Beschreibung',
+        'quantity' => 'Menge',
+        'actions' => 'Aktionen',
+        'unit' => 'Einheit',
+        'amount_optional' => 'Betrag (optional)',
+        'calculating' => 'Berechnung...',
+        'reset' => 'Zurücksetzen',
+        'status' => [
+            'pending' => 'Ausstehend',
+            'invited' => 'Eingeladen',
+            'active' => 'Aktiv',
+        ],
     ],
 
 ];

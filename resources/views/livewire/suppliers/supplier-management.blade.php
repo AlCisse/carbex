@@ -134,7 +134,7 @@
                             {{ __('carbex.suppliers.annual_spend') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            {{ __('carbex.suppliers.status') }}
+                            {{ __('carbex.users.status') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                             {{ __('carbex.suppliers.data_quality') }}
