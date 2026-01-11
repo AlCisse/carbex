@@ -1,14 +1,22 @@
 <div>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h1 class="text-xl font-semibold text-gray-900">{{ __('carbex.settings.sites') }}</h1>
+            <h1 class="text-xl font-semibold text-gray-900 dark:text-white">{{ __('carbex.settings.sites') }}</h1>
             @can('create', App\Models\Site::class)
-            <x-button wire:click="openForm" type="button">
-                <svg class="-ml-0.5 mr-1.5 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                {{ __('carbex.sites.add') }}
-            </x-button>
+            <div class="flex items-center space-x-3">
+                <x-button wire:click="openImportModal" type="button" variant="secondary">
+                    <svg class="-ml-0.5 mr-1.5 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                    </svg>
+                    {{ __('carbex.sites.import.csv') }}
+                </x-button>
+                <x-button wire:click="openForm" type="button">
+                    <svg class="-ml-0.5 mr-1.5 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    {{ __('carbex.sites.add') }}
+                </x-button>
+            </div>
             @endcan
         </div>
     </x-slot>
@@ -226,6 +234,115 @@
                         {{ __('carbex.common.delete') }}
                     </x-button>
                     <x-button type="button" variant="secondary" wire:click="cancelDelete">
+                        {{ __('carbex.common.cancel') }}
+                    </x-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <!-- CSV Import Modal -->
+    @if ($showImportModal)
+    <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex min-h-screen items-end justify-center px-4 pb-20 pt-4 text-center sm:block sm:p-0">
+            <div wire:click="closeImportModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+            <div class="inline-block transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:align-middle">
+                <div class="bg-white dark:bg-gray-800 px-4 pb-4 pt-5 sm:p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                            {{ __('carbex.sites.import.title') }}
+                        </h3>
+                        <button wire:click="downloadTemplate" type="button" class="text-sm text-emerald-600 hover:text-emerald-700 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            {{ __('carbex.sites.import.download_template') }}
+                        </button>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            {{ __('carbex.sites.import.select_file') }}
+                        </label>
+                        <div class="flex items-center justify-center w-full">
+                            <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                    @if($csvFile)
+                                        <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">{{ $csvFile->getClientOriginalName() }}</p>
+                                    @else
+                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                            <span class="font-semibold">{{ __('carbex.sites.import.click_to_upload') }}</span>
+                                        </p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">CSV (max 2MB)</p>
+                                    @endif
+                                </div>
+                                <input wire:model="csvFile" type="file" class="hidden" accept=".csv,.txt" />
+                            </label>
+                        </div>
+                        @error('csvFile')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Import Errors -->
+                    @if(count($importErrors) > 0)
+                        <div class="mb-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg">
+                            <h4 class="text-sm font-medium text-red-800 dark:text-red-400 mb-2">{{ __('carbex.sites.import.errors') }}</h4>
+                            <ul class="list-disc list-inside text-sm text-red-600 dark:text-red-400">
+                                @foreach($importErrors as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <!-- Preview Table -->
+                    @if(count($importPreview) > 0)
+                        <div class="mb-4">
+                            <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-2">
+                                {{ __('carbex.sites.import.preview') }} ({{ count($importPreview) }} {{ __('carbex.sites.import.rows') }})
+                            </h4>
+                            <div class="overflow-x-auto max-h-64 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                    <thead class="bg-gray-50 dark:bg-gray-700 sticky top-0">
+                                        <tr>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">#</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{{ __('carbex.sites.name') }}</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{{ __('carbex.sites.site_type') }}</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{{ __('carbex.organization.city') }}</th>
+                                            <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{{ __('carbex.sites.floor_area') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                        @foreach($importPreview as $row)
+                                            <tr>
+                                                <td class="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">{{ $row['row'] }}</td>
+                                                <td class="px-3 py-2 text-sm text-gray-900 dark:text-white">{{ $row['name'] }}</td>
+                                                <td class="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">{{ $row['type'] }}</td>
+                                                <td class="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">{{ $row['city'] ?? '-' }}</td>
+                                                <td class="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">{{ $row['floor_area_m2'] ? number_format($row['floor_area_m2'], 0) . ' m²' : '-' }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-700 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    @if(count($importPreview) > 0)
+                        <x-button type="button" wire:click="confirmImport" class="sm:ml-3">
+                            {{ __('carbex.sites.import.confirm') }} ({{ count($importPreview) }})
+                        </x-button>
+                    @endif
+                    <x-button type="button" variant="secondary" wire:click="closeImportModal">
                         {{ __('carbex.common.cancel') }}
                     </x-button>
                 </div>

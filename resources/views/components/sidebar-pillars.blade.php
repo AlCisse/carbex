@@ -32,6 +32,7 @@
                 ['key' => 'suppliers', 'name' => __('carbex.pillars.engage.suppliers'), 'route' => 'suppliers'],
                 ['key' => 'employees', 'name' => __('carbex.pillars.engage.employees'), 'route' => 'engage.employees'],
                 ['key' => 'sites', 'name' => __('carbex.pillars.engage.sites'), 'route' => 'settings.sites'],
+                ['key' => 'site-comparison', 'name' => __('carbex.sites.comparison.title'), 'route' => 'sites.comparison'],
             ],
         ],
         'report' => [

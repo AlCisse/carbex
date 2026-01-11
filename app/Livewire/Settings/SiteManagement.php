@@ -7,11 +7,14 @@ use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
 #[Title('Gestion des sites - Carbex')]
 class SiteManagement extends Component
 {
+    use WithFileUploads;
+
     public $sites = [];
 
     // Form fields
@@ -36,6 +39,13 @@ class SiteManagement extends Component
     // Delete confirmation
     public bool $showDeleteModal = false;
     public ?string $deletingSiteId = null;
+
+    // CSV Import
+    public bool $showImportModal = false;
+    public $csvFile = null;
+    public array $importPreview = [];
+    public array $importErrors = [];
+    public int $importedCount = 0;
 
     public function mount(): void
     {
@@ -237,6 +247,268 @@ class SiteManagement extends Component
 
         $this->loadSites();
         session()->flash('success', __('carbex.sites.set_as_primary'));
+    }
+
+    // CSV Import Methods
+
+    public function openImportModal(): void
+    {
+        Gate::authorize('create', Site::class);
+        $this->resetImport();
+        $this->showImportModal = true;
+    }
+
+    public function closeImportModal(): void
+    {
+        $this->showImportModal = false;
+        $this->resetImport();
+    }
+
+    public function resetImport(): void
+    {
+        $this->csvFile = null;
+        $this->importPreview = [];
+        $this->importErrors = [];
+        $this->importedCount = 0;
+    }
+
+    public function updatedCsvFile(): void
+    {
+        $this->validate([
+            'csvFile' => 'required|file|mimes:csv,txt|max:2048',
+        ]);
+
+        $this->parseCSV();
+    }
+
+    protected function parseCSV(): void
+    {
+        if (! $this->csvFile) {
+            return;
+        }
+
+        $this->importPreview = [];
+        $this->importErrors = [];
+
+        $path = $this->csvFile->getRealPath();
+        $handle = fopen($path, 'r');
+
+        if ($handle === false) {
+            $this->importErrors[] = __('carbex.sites.import.file_read_error');
+
+            return;
+        }
+
+        // Read header row
+        $header = fgetcsv($handle, 0, ';');
+        if (! $header) {
+            $this->importErrors[] = __('carbex.sites.import.empty_file');
+            fclose($handle);
+
+            return;
+        }
+
+        // Normalize headers (lowercase, trim)
+        $header = array_map(fn ($h) => strtolower(trim($h)), $header);
+
+        // Required columns
+        $requiredColumns = ['name'];
+        $missingColumns = array_diff($requiredColumns, $header);
+
+        if (! empty($missingColumns)) {
+            $this->importErrors[] = __('carbex.sites.import.missing_columns', [
+                'columns' => implode(', ', $missingColumns),
+            ]);
+            fclose($handle);
+
+            return;
+        }
+
+        // Parse rows (max 100 for preview)
+        $rowNumber = 1;
+        while (($row = fgetcsv($handle, 0, ';')) !== false && $rowNumber <= 100) {
+            $rowNumber++;
+
+            if (count($row) < count($header)) {
+                $row = array_pad($row, count($header), null);
+            }
+
+            $data = array_combine($header, $row);
+
+            // Skip empty rows
+            if (empty(trim($data['name'] ?? ''))) {
+                continue;
+            }
+
+            $this->importPreview[] = [
+                'row' => $rowNumber,
+                'name' => $data['name'] ?? '',
+                'code' => $data['code'] ?? null,
+                'type' => $this->mapSiteType($data['type'] ?? 'office'),
+                'city' => $data['city'] ?? null,
+                'country' => $data['country'] ?? auth()->user()->organization->country,
+                'floor_area_m2' => $this->parseNumber($data['floor_area_m2'] ?? null),
+                'employee_count' => $this->parseInteger($data['employee_count'] ?? null),
+                'address_line_1' => $data['address'] ?? $data['address_line_1'] ?? null,
+                'postal_code' => $data['postal_code'] ?? $data['zip'] ?? null,
+                'building_type' => $data['building_type'] ?? null,
+                'energy_rating' => $data['energy_rating'] ?? null,
+            ];
+        }
+
+        fclose($handle);
+
+        if (empty($this->importPreview)) {
+            $this->importErrors[] = __('carbex.sites.import.no_valid_rows');
+        }
+    }
+
+    protected function mapSiteType(?string $type): string
+    {
+        if (! $type) {
+            return 'office';
+        }
+
+        $type = strtolower(trim($type));
+
+        return match ($type) {
+            'office', 'bureau' => 'office',
+            'warehouse', 'entrepôt', 'entrepot' => 'warehouse',
+            'factory', 'usine' => 'factory',
+            'store', 'magasin', 'retail' => 'store',
+            'datacenter', 'data center' => 'datacenter',
+            default => 'other',
+        };
+    }
+
+    protected function parseNumber(?string $value): ?float
+    {
+        if (! $value || trim($value) === '') {
+            return null;
+        }
+
+        // Replace comma with dot for French decimals
+        $value = str_replace(',', '.', $value);
+
+        return is_numeric($value) ? (float) $value : null;
+    }
+
+    protected function parseInteger(?string $value): ?int
+    {
+        if (! $value || trim($value) === '') {
+            return null;
+        }
+
+        return is_numeric($value) ? (int) $value : null;
+    }
+
+    public function confirmImport(): void
+    {
+        Gate::authorize('create', Site::class);
+
+        if (empty($this->importPreview)) {
+            return;
+        }
+
+        $this->importedCount = 0;
+        $organization = auth()->user()->organization;
+
+        foreach ($this->importPreview as $row) {
+            // Check if site with same name already exists
+            $exists = Site::where('organization_id', $organization->id)
+                ->where('name', $row['name'])
+                ->exists();
+
+            if ($exists) {
+                $this->importErrors[] = __('carbex.sites.import.duplicate', ['name' => $row['name']]);
+
+                continue;
+            }
+
+            // Generate code if not provided
+            $code = $row['code'] ?: strtoupper(substr(preg_replace('/[^a-zA-Z0-9]/', '', $row['name']), 0, 8));
+
+            Site::create([
+                'organization_id' => $organization->id,
+                'name' => $row['name'],
+                'code' => $code,
+                'type' => $row['type'],
+                'city' => $row['city'],
+                'country' => $row['country'],
+                'floor_area_m2' => $row['floor_area_m2'],
+                'employee_count' => $row['employee_count'],
+                'address_line_1' => $row['address_line_1'],
+                'postal_code' => $row['postal_code'],
+                'building_type' => $row['building_type'],
+                'energy_rating' => $row['energy_rating'],
+                'is_active' => true,
+            ]);
+
+            $this->importedCount++;
+        }
+
+        // Update subscription usage
+        if ($this->importedCount > 0) {
+            $subscription = $organization->subscription;
+            if ($subscription) {
+                $subscription->increment('sites_used', $this->importedCount);
+            }
+        }
+
+        $this->loadSites();
+        $this->closeImportModal();
+
+        if ($this->importedCount > 0) {
+            session()->flash('success', __('carbex.sites.import.success', ['count' => $this->importedCount]));
+        }
+
+        if (! empty($this->importErrors)) {
+            session()->flash('warning', implode(' | ', $this->importErrors));
+        }
+    }
+
+    public function downloadTemplate(): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="carbex_sites_template.csv"',
+        ];
+
+        $columns = [
+            'name',
+            'code',
+            'type',
+            'address',
+            'city',
+            'postal_code',
+            'country',
+            'floor_area_m2',
+            'employee_count',
+            'building_type',
+            'energy_rating',
+        ];
+
+        $exampleRow = [
+            'Siège Paris',
+            'SIEGE-PAR',
+            'office',
+            '12 rue de la Paix',
+            'Paris',
+            '75002',
+            'FR',
+            '2500',
+            '120',
+            'office_modern',
+            'B',
+        ];
+
+        return response()->streamDownload(function () use ($columns, $exampleRow) {
+            $output = fopen('php://output', 'w');
+            fprintf($output, chr(0xEF) . chr(0xBB) . chr(0xBF)); // UTF-8 BOM
+            fputcsv($output, $columns, ';');
+            fputcsv($output, $exampleRow, ';');
+            fclose($output);
+        }, 'carbex_sites_template.csv', $headers);
     }
 
     public function render()
