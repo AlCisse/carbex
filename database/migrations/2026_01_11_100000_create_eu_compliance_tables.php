@@ -36,7 +36,7 @@ return new class extends Migration
             // Compliance
             $table->boolean('is_mandatory')->default(true);
             $table->boolean('is_verified')->default(false);
-            $table->foreignUuid('verified_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('verified_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('verified_at')->nullable();
             $table->text('notes')->nullable();
 
@@ -84,9 +84,9 @@ return new class extends Migration
             $table->text('justification')->nullable();
 
             // Review
-            $table->foreignUuid('assessed_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('assessed_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('assessed_at')->nullable();
-            $table->foreignUuid('approved_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('approved_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamp('approved_at')->nullable();
 
             $table->timestamps();
@@ -101,7 +101,7 @@ return new class extends Migration
         Schema::create('psd2_audit_logs', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('organization_id')->constrained()->cascadeOnDelete();
-            $table->foreignUuid('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignUuid('bank_connection_id')->nullable()->constrained()->nullOnDelete();
 
             // Event details
