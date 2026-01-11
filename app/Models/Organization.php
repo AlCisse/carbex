@@ -60,6 +60,17 @@ class Organization extends Model
         'recalculation_threshold_percent',
         'last_verification_date',
         'verification_level',
+        // ISO 50001 fields
+        'energy_policy',
+        'energy_policy_date',
+        'enms_scope',
+        'enms_boundaries',
+        'iso50001_certified',
+        'iso50001_cert_date',
+        'iso50001_cert_expiry',
+        'iso50001_registrar',
+        'energy_manager_name',
+        'energy_manager_email',
     ];
 
     /**
@@ -77,6 +88,12 @@ class Organization extends Model
         'base_year_emissions_tco2e' => 'decimal:4',
         'recalculation_threshold_percent' => 'decimal:2',
         'last_verification_date' => 'date',
+        // ISO 50001 casts
+        'energy_policy_date' => 'date',
+        'enms_boundaries' => 'array',
+        'iso50001_certified' => 'boolean',
+        'iso50001_cert_date' => 'date',
+        'iso50001_cert_expiry' => 'date',
     ];
 
     /**
@@ -313,5 +330,68 @@ class Organization extends Model
             'equity_share' => 'Equity Share',
             default => 'Not Defined',
         };
+    }
+
+    /**
+     * Get the energy reviews for the organization.
+     * ISO 50001:2018 Section 6.3
+     */
+    public function energyReviews(): HasMany
+    {
+        return $this->hasMany(EnergyReview::class);
+    }
+
+    /**
+     * Get the energy performance indicators for the organization.
+     * ISO 50001:2018 Section 6.4
+     */
+    public function energyPerformanceIndicators(): HasMany
+    {
+        return $this->hasMany(EnergyPerformanceIndicator::class);
+    }
+
+    /**
+     * Get the energy baselines for the organization.
+     * ISO 50001:2018 Section 6.5
+     */
+    public function energyBaselines(): HasMany
+    {
+        return $this->hasMany(EnergyBaseline::class);
+    }
+
+    /**
+     * Get the current energy baseline.
+     */
+    public function currentEnergyBaseline(): HasOne
+    {
+        return $this->hasOne(EnergyBaseline::class)->where('is_current', true);
+    }
+
+    /**
+     * Get the energy targets for the organization.
+     * ISO 50001:2018 Section 6.6
+     */
+    public function energyTargets(): HasMany
+    {
+        return $this->hasMany(EnergyTarget::class);
+    }
+
+    /**
+     * Get the energy audits for the organization.
+     * ISO 50001:2018 Section 9.2
+     */
+    public function energyAudits(): HasMany
+    {
+        return $this->hasMany(EnergyAudit::class);
+    }
+
+    /**
+     * Check if organization is ISO 50001 certified.
+     */
+    public function isIso50001Certified(): bool
+    {
+        return $this->iso50001_certified
+            && $this->iso50001_cert_expiry
+            && $this->iso50001_cert_expiry > now();
     }
 }
