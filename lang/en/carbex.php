@@ -1762,4 +1762,103 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Compliance (T177-T179)
+    |--------------------------------------------------------------------------
+    */
+
+    'compliance' => [
+        'title' => 'Regulatory Compliance',
+        'subtitle' => 'Track your compliance with carbon and environmental regulations',
+        'overall' => 'Overall compliance',
+        'completed' => 'completed',
+        'csrd_applicable' => 'CSRD Subject',
+        'upcoming_deadlines' => 'Upcoming Deadlines',
+
+        'frameworks' => [
+            'csrd_desc' => 'European Corporate Sustainability Reporting Directive',
+            'iso14064_desc' => 'International standard for greenhouse gas accounting',
+            'iso14001_desc' => 'Environmental Management System',
+            'beges_desc' => 'Mandatory GHG emissions report for French companies',
+            'ghg_desc' => 'International emissions accounting protocol',
+        ],
+
+        'csrd' => [
+            'e1_1' => 'Climate transition plan',
+            'e1_1_desc' => 'Define a transition plan aligned with climate objectives',
+            'e1_2' => 'Climate policies',
+            'e1_2_desc' => 'Document climate change mitigation policies',
+            'e1_4' => 'Climate targets',
+            'e1_4_desc' => 'Set GHG emissions reduction targets',
+            'e1_5' => 'Energy consumption',
+            'e1_5_desc' => 'Report energy consumption and energy mix',
+            'e1_6' => 'GHG emissions',
+            'e1_6_desc' => 'Report Scope 1, 2, and 3 emissions',
+            'e1_7' => 'Carbon removals',
+            'e1_7_desc' => 'Report carbon credits and offset projects',
+            'e1_9' => 'Climate financial impacts',
+            'e1_9_desc' => 'Analyze climate-related financial risks and opportunities',
+        ],
+
+        'iso14064' => [
+            'boundaries' => 'Organizational boundaries',
+            'boundaries_desc' => 'Define organizational and operational boundaries',
+            'sources' => 'Emission sources',
+            'sources_desc' => 'Identify all direct and indirect emission sources',
+            'quantification' => 'Quantification',
+            'quantification_desc' => 'Calculate GHG emissions according to ISO methodology',
+            'emission_factors' => 'Emission factors',
+            'emission_factors_desc' => 'Use documented and verifiable emission factors',
+            'documentation' => 'Documentation',
+            'documentation_desc' => 'Maintain complete documentation of the quantification process',
+            'verification' => 'Verification',
+            'verification_desc' => 'Obtain external verification of emission data',
+        ],
+
+        'iso14001' => [
+            'context' => 'Organization context',
+            'context_desc' => 'Understand context and interested parties',
+            'aspects' => 'Environmental aspects',
+            'aspects_desc' => 'Identify significant environmental aspects',
+            'objectives' => 'Environmental objectives',
+            'objectives_desc' => 'Define measurable objectives and action plans',
+            'operational_control' => 'Operational control',
+            'operational_control_desc' => 'Implement controls for significant processes',
+            'monitoring' => 'Monitoring and measurement',
+            'monitoring_desc' => 'Monitor environmental performance',
+            'continual_improvement' => 'Continual improvement',
+            'continual_improvement_desc' => 'Continuously improve the environmental management system',
+        ],
+
+        'beges' => [
+            'scope12' => 'Scope 1 & 2 Report',
+            'scope12_desc' => 'Complete the direct and energy-related indirect emissions report',
+            'action_plan' => 'Action plan',
+            'action_plan_desc' => 'Establish an emissions reduction action plan',
+            'publication' => 'ADEME publication',
+            'publication_desc' => 'Publish the report on the ADEME platform',
+            'update' => 'Update',
+            'update_desc' => 'Update the report every 4 years (3 years for public entities)',
+        ],
+
+        'ghg' => [
+            'scope1' => 'Scope 1 - Direct emissions',
+            'scope1_desc' => 'Emissions from owned or controlled sources',
+            'scope2' => 'Scope 2 - Indirect emissions (energy)',
+            'scope2_desc' => 'Emissions from purchased electricity, heat, steam',
+            'scope3' => 'Scope 3 - Other indirect emissions',
+            'scope3_desc' => 'Value chain emissions (suppliers, transport, waste)',
+            'boundary' => 'Consolidation boundary',
+            'boundary_desc' => 'Define the consolidation approach (operational or equity control)',
+        ],
+
+        'deadlines' => [
+            'csrd_report' => 'CSRD Report',
+            'csrd_report_desc' => 'First CSRD-compliant sustainability report',
+            'beges_update' => 'BEGES Update',
+            'beges_update_desc' => 'Regulatory report update',
+        ],
+    ],
+
 ];

@@ -1942,4 +1942,103 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Compliance (T177-T179)
+    |--------------------------------------------------------------------------
+    */
+
+    'compliance' => [
+        'title' => 'Regulatorische Compliance',
+        'subtitle' => 'Verfolgen Sie Ihre Einhaltung der CO2- und Umweltvorschriften',
+        'overall' => 'Gesamtkonformität',
+        'completed' => 'abgeschlossen',
+        'csrd_applicable' => 'CSRD-pflichtig',
+        'upcoming_deadlines' => 'Anstehende Fristen',
+
+        'frameworks' => [
+            'csrd_desc' => 'Europäische Richtlinie zur Nachhaltigkeitsberichterstattung',
+            'iso14064_desc' => 'Internationaler Standard für die Treibhausgasbilanzierung',
+            'iso14001_desc' => 'Umweltmanagementsystem',
+            'beges_desc' => 'Obligatorischer GHG-Emissionsbericht für französische Unternehmen',
+            'ghg_desc' => 'Internationales Protokoll zur Emissionsbilanzierung',
+        ],
+
+        'csrd' => [
+            'e1_1' => 'Klimatransitionsplan',
+            'e1_1_desc' => 'Einen an den Klimazielen ausgerichteten Transitionsplan definieren',
+            'e1_2' => 'Klimapolitiken',
+            'e1_2_desc' => 'Politiken zur Bekämpfung des Klimawandels dokumentieren',
+            'e1_4' => 'Klimaziele',
+            'e1_4_desc' => 'Reduktionsziele für THG-Emissionen festlegen',
+            'e1_5' => 'Energieverbrauch',
+            'e1_5_desc' => 'Energieverbrauch und Energiemix berichten',
+            'e1_6' => 'THG-Emissionen',
+            'e1_6_desc' => 'Scope 1, 2 und 3 Emissionen berichten',
+            'e1_7' => 'CO2-Entnahmen',
+            'e1_7_desc' => 'CO2-Zertifikate und Kompensationsprojekte berichten',
+            'e1_9' => 'Finanzielle Klimaauswirkungen',
+            'e1_9_desc' => 'Klimabezogene finanzielle Risiken und Chancen analysieren',
+        ],
+
+        'iso14064' => [
+            'boundaries' => 'Organisatorische Grenzen',
+            'boundaries_desc' => 'Organisatorische und operative Grenzen definieren',
+            'sources' => 'Emissionsquellen',
+            'sources_desc' => 'Alle direkten und indirekten Emissionsquellen identifizieren',
+            'quantification' => 'Quantifizierung',
+            'quantification_desc' => 'THG-Emissionen nach ISO-Methodik berechnen',
+            'emission_factors' => 'Emissionsfaktoren',
+            'emission_factors_desc' => 'Dokumentierte und verifizierbare Emissionsfaktoren verwenden',
+            'documentation' => 'Dokumentation',
+            'documentation_desc' => 'Vollständige Dokumentation des Quantifizierungsprozesses pflegen',
+            'verification' => 'Verifizierung',
+            'verification_desc' => 'Externe Verifizierung der Emissionsdaten erhalten',
+        ],
+
+        'iso14001' => [
+            'context' => 'Kontext der Organisation',
+            'context_desc' => 'Kontext und interessierte Parteien verstehen',
+            'aspects' => 'Umweltaspekte',
+            'aspects_desc' => 'Signifikante Umweltaspekte identifizieren',
+            'objectives' => 'Umweltziele',
+            'objectives_desc' => 'Messbare Ziele und Aktionspläne definieren',
+            'operational_control' => 'Betriebliche Steuerung',
+            'operational_control_desc' => 'Kontrollen für signifikante Prozesse implementieren',
+            'monitoring' => 'Überwachung und Messung',
+            'monitoring_desc' => 'Umweltleistung überwachen',
+            'continual_improvement' => 'Kontinuierliche Verbesserung',
+            'continual_improvement_desc' => 'Das Umweltmanagementsystem kontinuierlich verbessern',
+        ],
+
+        'beges' => [
+            'scope12' => 'Scope 1 & 2 Bericht',
+            'scope12_desc' => 'Bericht über direkte und energiebedingte indirekte Emissionen erstellen',
+            'action_plan' => 'Aktionsplan',
+            'action_plan_desc' => 'Einen Emissionsreduktions-Aktionsplan erstellen',
+            'publication' => 'ADEME-Veröffentlichung',
+            'publication_desc' => 'Den Bericht auf der ADEME-Plattform veröffentlichen',
+            'update' => 'Aktualisierung',
+            'update_desc' => 'Den Bericht alle 4 Jahre aktualisieren (3 Jahre für öffentliche Stellen)',
+        ],
+
+        'ghg' => [
+            'scope1' => 'Scope 1 - Direkte Emissionen',
+            'scope1_desc' => 'Emissionen aus eigenen oder kontrollierten Quellen',
+            'scope2' => 'Scope 2 - Indirekte Emissionen (Energie)',
+            'scope2_desc' => 'Emissionen aus gekauftem Strom, Wärme, Dampf',
+            'scope3' => 'Scope 3 - Andere indirekte Emissionen',
+            'scope3_desc' => 'Wertschöpfungsketten-Emissionen (Lieferanten, Transport, Abfall)',
+            'boundary' => 'Konsolidierungsgrenze',
+            'boundary_desc' => 'Konsolidierungsansatz definieren (operative oder Kapitalkontrolle)',
+        ],
+
+        'deadlines' => [
+            'csrd_report' => 'CSRD-Bericht',
+            'csrd_report_desc' => 'Erster CSRD-konformer Nachhaltigkeitsbericht',
+            'beges_update' => 'BEGES-Aktualisierung',
+            'beges_update_desc' => 'Aktualisierung des regulatorischen Berichts',
+        ],
+    ],
+
 ];

@@ -2038,4 +2038,103 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Compliance (T177-T179)
+    |--------------------------------------------------------------------------
+    */
+
+    'compliance' => [
+        'title' => 'Conformité Réglementaire',
+        'subtitle' => 'Suivez votre conformité aux réglementations carbone et environnementales',
+        'overall' => 'Conformité globale',
+        'completed' => 'complétés',
+        'csrd_applicable' => 'Soumis CSRD',
+        'upcoming_deadlines' => 'Échéances à venir',
+
+        'frameworks' => [
+            'csrd_desc' => 'Directive européenne de reporting de durabilité des entreprises',
+            'iso14064_desc' => 'Norme internationale pour la comptabilisation des gaz à effet de serre',
+            'iso14001_desc' => 'Système de management environnemental',
+            'beges_desc' => 'Bilan obligatoire des émissions de GES pour les entreprises françaises',
+            'ghg_desc' => 'Protocole international de comptabilisation des émissions',
+        ],
+
+        'csrd' => [
+            'e1_1' => 'Plan de transition climat',
+            'e1_1_desc' => 'Définir un plan de transition aligné sur les objectifs climatiques',
+            'e1_2' => 'Politiques climat',
+            'e1_2_desc' => 'Documenter les politiques liées à l\'atténuation du changement climatique',
+            'e1_4' => 'Objectifs climat',
+            'e1_4_desc' => 'Fixer des objectifs de réduction des émissions de GES',
+            'e1_5' => 'Consommation énergétique',
+            'e1_5_desc' => 'Rapporter la consommation d\'énergie et le mix énergétique',
+            'e1_6' => 'Émissions de GES',
+            'e1_6_desc' => 'Rapporter les émissions Scope 1, 2 et 3',
+            'e1_7' => 'Absorptions carbone',
+            'e1_7_desc' => 'Rapporter les crédits carbone et projets de compensation',
+            'e1_9' => 'Impacts financiers climat',
+            'e1_9_desc' => 'Analyser les risques et opportunités financiers liés au climat',
+        ],
+
+        'iso14064' => [
+            'boundaries' => 'Périmètre organisationnel',
+            'boundaries_desc' => 'Définir les limites organisationnelles et opérationnelles',
+            'sources' => 'Sources d\'émissions',
+            'sources_desc' => 'Identifier toutes les sources d\'émissions directes et indirectes',
+            'quantification' => 'Quantification',
+            'quantification_desc' => 'Calculer les émissions de GES selon la méthodologie ISO',
+            'emission_factors' => 'Facteurs d\'émission',
+            'emission_factors_desc' => 'Utiliser des facteurs d\'émission documentés et vérifiables',
+            'documentation' => 'Documentation',
+            'documentation_desc' => 'Maintenir une documentation complète du processus de quantification',
+            'verification' => 'Vérification',
+            'verification_desc' => 'Obtenir une vérification externe des données d\'émissions',
+        ],
+
+        'iso14001' => [
+            'context' => 'Contexte de l\'organisation',
+            'context_desc' => 'Comprendre le contexte et les parties intéressées',
+            'aspects' => 'Aspects environnementaux',
+            'aspects_desc' => 'Identifier les aspects environnementaux significatifs',
+            'objectives' => 'Objectifs environnementaux',
+            'objectives_desc' => 'Définir des objectifs mesurables et des plans d\'action',
+            'operational_control' => 'Maîtrise opérationnelle',
+            'operational_control_desc' => 'Mettre en place des contrôles pour les processus significatifs',
+            'monitoring' => 'Surveillance et mesure',
+            'monitoring_desc' => 'Surveiller les performances environnementales',
+            'continual_improvement' => 'Amélioration continue',
+            'continual_improvement_desc' => 'Améliorer en continu le système de management environnemental',
+        ],
+
+        'beges' => [
+            'scope12' => 'Bilan Scope 1 & 2',
+            'scope12_desc' => 'Réaliser le bilan des émissions directes et indirectes liées à l\'énergie',
+            'action_plan' => 'Plan d\'actions',
+            'action_plan_desc' => 'Établir un plan d\'actions de réduction des émissions',
+            'publication' => 'Publication ADEME',
+            'publication_desc' => 'Publier le bilan sur la plateforme de l\'ADEME',
+            'update' => 'Mise à jour',
+            'update_desc' => 'Actualiser le bilan tous les 4 ans (3 ans pour les collectivités)',
+        ],
+
+        'ghg' => [
+            'scope1' => 'Scope 1 - Émissions directes',
+            'scope1_desc' => 'Émissions provenant de sources détenues ou contrôlées',
+            'scope2' => 'Scope 2 - Émissions indirectes (énergie)',
+            'scope2_desc' => 'Émissions liées à l\'achat d\'électricité, chaleur, vapeur',
+            'scope3' => 'Scope 3 - Autres émissions indirectes',
+            'scope3_desc' => 'Émissions de la chaîne de valeur (fournisseurs, transport, déchets)',
+            'boundary' => 'Périmètre de consolidation',
+            'boundary_desc' => 'Définir l\'approche de consolidation (contrôle opérationnel ou capital)',
+        ],
+
+        'deadlines' => [
+            'csrd_report' => 'Rapport CSRD',
+            'csrd_report_desc' => 'Premier rapport de durabilité conforme CSRD',
+            'beges_update' => 'Mise à jour BEGES',
+            'beges_update_desc' => 'Actualisation du bilan réglementaire',
+        ],
+    ],
+
 ];
