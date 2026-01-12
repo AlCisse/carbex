@@ -3,6 +3,7 @@
 namespace App\Services\AI\Providers;
 
 use App\Contracts\AIProviderContract;
+use App\Models\AISetting;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -33,7 +34,23 @@ abstract class AbstractAIProvider implements AIProviderContract
 
     public function isAvailable(): bool
     {
-        return !empty($this->getApiKey()) && ($this->config['enabled'] ?? false);
+        return !empty($this->getApiKey()) && $this->isEnabled();
+    }
+
+    /**
+     * Check if this provider is enabled.
+     * Checks database first, then falls back to config.
+     */
+    protected function isEnabled(): bool
+    {
+        // First check database setting
+        $dbEnabled = AISetting::getValue("{$this->key}_enabled");
+        if ($dbEnabled !== null) {
+            return (bool) $dbEnabled;
+        }
+
+        // Fallback to config
+        return $this->config['enabled'] ?? false;
     }
 
     public function getModels(): array
@@ -48,7 +65,13 @@ abstract class AbstractAIProvider implements AIProviderContract
 
     protected function getApiKey(): ?string
     {
-        // First try Docker secret
+        // First try database setting
+        $dbKey = AISetting::getValue("{$this->key}_api_key");
+        if (!empty($dbKey)) {
+            return $dbKey;
+        }
+
+        // Then try Docker secret
         $secretPath = "/run/secrets/{$this->key}_api_key";
         if (file_exists($secretPath)) {
             return trim(file_get_contents($secretPath));

@@ -30,11 +30,29 @@ class AISetting extends Model
     /**
      * Set a setting value.
      */
-    public static function setValue(string $key, mixed $value): void
+    public static function setValue(string $key, mixed $value, ?string $type = null): void
     {
+        // Auto-detect type if not provided
+        if ($type === null) {
+            $type = match (true) {
+                is_bool($value) => 'boolean',
+                is_int($value) => 'integer',
+                is_float($value) => 'float',
+                is_array($value) => 'json',
+                default => 'string',
+            };
+        }
+
+        // Convert value to string for storage
+        $storedValue = match ($type) {
+            'boolean' => $value ? '1' : '0',
+            'json' => json_encode($value),
+            default => (string) $value,
+        };
+
         self::updateOrCreate(
             ['key' => $key],
-            ['value' => is_array($value) ? json_encode($value) : (string) $value]
+            ['value' => $storedValue, 'type' => $type]
         );
 
         Cache::forget("ai_setting_{$key}");
@@ -68,7 +86,7 @@ class AISetting extends Model
     /**
      * Cast value to proper type.
      */
-    protected static function castValue(mixed $value, string $type): mixed
+    protected static function castValue(mixed $value, ?string $type): mixed
     {
         return match ($type) {
             'boolean' => (bool) $value,
