@@ -2569,4 +2569,304 @@ return [
         'cta_button' => 'Démarrer l\'essai gratuit',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Legal Pages
+    |--------------------------------------------------------------------------
+    */
+
+    'legal' => [
+        // Common
+        'label' => 'Legal',
+        'last_updated' => 'Dernière mise à jour : Décembre 2024',
+
+        // Legal Notice (Mentions légales)
+        'mentions' => [
+            'title' => 'Mentions Légales',
+            'meta_description' => 'Mentions légales et politique de confidentialité de Carbex, plateforme de bilan carbone pour entreprises.',
+
+            'section1_title' => '1. Éditeur du site',
+            'site_edited_by' => 'Le site carbex.fr est édité par :',
+            'company_name' => 'Carbex SAS',
+            'company_type' => 'Société par Actions Simplifiée au capital de 10 000 €',
+            'capital' => 'Capital : 10 000 EUR',
+            'address' => 'Siège social : 123 Avenue de la République, 75011 Paris, France',
+            'register' => 'RCS Paris : XXX XXX XXX',
+            'tax_id' => 'SIRET : XXX XXX XXX XXXXX',
+            'vat_id' => 'TVA intracommunautaire : FR XX XXX XXX XXX',
+            'director' => 'Directeur de la publication : [Nom du dirigeant]',
+            'email' => 'Email',
+
+            'section2_title' => '2. Hébergement',
+            'hosted_by' => 'Le site est hébergé par :',
+            'hosting_name' => 'Scaleway SAS',
+            'hosting_address' => '8 rue de la Ville l\'Évêque, 75008 Paris, France',
+            'website' => 'Site web',
+
+            'section3_title' => '3. Politique de confidentialité',
+            'section3_1_title' => '3.1 Responsable du traitement',
+            'section3_1_text' => 'Carbex SAS est responsable du traitement des données personnelles collectées sur ce site, conformément au Règlement Général sur la Protection des Données (RGPD).',
+            'section3_2_title' => '3.2 Données collectées',
+            'section3_2_text' => 'Nous collectons les données suivantes :',
+            'data_id' => 'Données d\'identification : nom, prénom, email professionnel',
+            'data_company' => 'Données de l\'entreprise : raison sociale, SIRET, secteur d\'activité',
+            'data_connection' => 'Données de connexion : adresse IP, logs de connexion',
+            'data_business' => 'Données métier : consommations énergétiques, données d\'émissions',
+            'section3_3_title' => '3.3 Finalités du traitement',
+            'section3_3_text' => 'Vos données sont utilisées pour :',
+            'purpose_service' => 'Fournir le service de bilan carbone',
+            'purpose_account' => 'Gérer votre compte et votre abonnement',
+            'purpose_communication' => 'Vous envoyer des communications liées au service',
+            'purpose_improve' => 'Améliorer nos services (statistiques anonymisées)',
+            'purpose_legal' => 'Respecter nos obligations légales',
+            'section3_4_title' => '3.4 Base légale',
+            'section3_4_text' => 'Le traitement de vos données repose sur :',
+            'legal_contract' => 'L\'exécution du contrat (fourniture du service)',
+            'legal_legitimate' => 'Notre intérêt légitime (amélioration du service)',
+            'legal_consent' => 'Votre consentement (newsletter, cookies non essentiels)',
+            'legal_obligation' => 'Nos obligations légales (conservation des factures)',
+            'section3_5_title' => '3.5 Durée de conservation',
+            'account_data' => 'Données de compte : 3 ans après la fin de l\'abonnement',
+            'billing_data' => 'Données de facturation : 10 ans (obligation légale)',
+            'connection_logs' => 'Logs de connexion : 1 an',
+            'business_data' => 'Données métier : supprimées sur demande ou 3 ans après inactivité',
+            'section3_6_title' => '3.6 Destinataires des données',
+            'section3_6_text' => 'Vos données peuvent être partagées avec :',
+            'recipient_stripe' => 'Stripe : traitement des paiements',
+            'recipient_hosting' => 'Scaleway : hébergement',
+            'recipient_ai' => 'Anthropic (Claude AI) : assistant IA (données anonymisées)',
+            'recipient_email' => 'Brevo : envoi d\'emails transactionnels',
+            'no_transfer' => 'Aucune donnée n\'est transférée hors de l\'Union Européenne sans garanties adéquates.',
+            'section3_7_title' => '3.7 Vos droits',
+            'section3_7_text' => 'Conformément au RGPD, vous disposez des droits suivants :',
+            'right_access' => 'Droit d\'accès : obtenir une copie de vos données',
+            'right_rectification' => 'Droit de rectification : corriger vos données inexactes',
+            'right_erasure' => 'Droit à l\'effacement : demander la suppression de vos données',
+            'right_portability' => 'Droit à la portabilité : recevoir vos données dans un format structuré',
+            'right_objection' => 'Droit d\'opposition : vous opposer au traitement',
+            'right_restriction' => 'Droit à la limitation : limiter le traitement de vos données',
+            'contact_dpo' => 'Pour exercer ces droits, contactez notre DPO :',
+            'supervisory_authority' => 'En cas de litige, vous pouvez saisir la CNIL :',
+
+            'section4_title' => '4. Cookies',
+            'section4_1_title' => '4.1 Cookies essentiels',
+            'section4_1_text' => 'Ces cookies sont nécessaires au fonctionnement du site :',
+            'cookie_session' => 'Session : maintien de votre connexion',
+            'cookie_csrf' => 'CSRF : sécurité contre les attaques',
+            'cookie_preferences' => 'Préférences : langue, thème',
+            'section4_2_title' => '4.2 Cookies analytiques',
+            'section4_2_text' => 'Nous utilisons Plausible Analytics, une solution respectueuse de la vie privée qui ne collecte pas de données personnelles et ne nécessite pas de consentement.',
+            'section4_3_title' => '4.3 Gestion des cookies',
+            'section4_3_text' => 'Vous pouvez gérer vos préférences de cookies via le bandeau de consentement ou les paramètres de votre navigateur.',
+
+            'section5_title' => '5. Propriété intellectuelle',
+            'section5_text1' => 'L\'ensemble du contenu du site (textes, images, logos, code source) est protégé par le droit d\'auteur et appartient à Carbex SAS. Toute reproduction sans autorisation est interdite.',
+            'section5_text2' => 'Les marques "Carbex" et "Empreinte Carbone" sont déposées. Les logos des partenaires et clients sont utilisés avec leur autorisation.',
+
+            'section6_title' => '6. Limitation de responsabilité',
+            'section6_text' => 'Carbex s\'efforce de fournir des informations exactes et à jour. Cependant, nous ne garantissons pas l\'absence d\'erreurs. Les calculs d\'émissions sont fournis à titre indicatif et ne constituent pas un conseil professionnel.',
+
+            'section7_title' => '7. Liens externes',
+            'section7_text' => 'Le site peut contenir des liens vers des sites tiers. Carbex n\'est pas responsable du contenu de ces sites.',
+
+            'section8_title' => '8. Droit applicable',
+            'section8_text' => 'Les présentes mentions légales sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de Paris.',
+
+            'section9_title' => '9. Contact',
+            'section9_text' => 'Pour toute question concernant ces mentions légales ou la protection de vos données :',
+            'contact_legal' => 'Email',
+            'contact_dpo_label' => 'DPO',
+            'contact_mail' => 'Courrier : Carbex SAS - Service Juridique, 123 Avenue de la République, 75011 Paris',
+        ],
+
+        // Terms of Use (CGU)
+        'cgu' => [
+            'title' => 'Conditions Générales d\'Utilisation',
+            'meta_description' => 'Conditions Générales d\'Utilisation de la plateforme Carbex, outil SaaS de bilan carbone.',
+
+            'article1_title' => 'Article 1 - Définitions',
+            'def_platform' => 'Plateforme : L\'application web Carbex accessible à l\'adresse app.carbex.fr',
+            'def_user' => 'Utilisateur : Toute personne accédant à la Plateforme',
+            'def_account' => 'Compte : Espace personnel de l\'Utilisateur sur la Plateforme',
+            'def_organization' => 'Organisation : Entité juridique (entreprise) pour laquelle le bilan carbone est réalisé',
+            'def_assessment' => 'Bilan : Évaluation des émissions de gaz à effet de serre sur une période donnée',
+
+            'article2_title' => 'Article 2 - Acceptation des CGU',
+            'article2_text' => 'L\'utilisation de la Plateforme implique l\'acceptation pleine et entière des présentes Conditions Générales d\'Utilisation. Si vous n\'acceptez pas ces conditions, veuillez ne pas utiliser la Plateforme.',
+
+            'article3_title' => 'Article 3 - Accès à la Plateforme',
+            'article3_1_title' => '3.1 Inscription',
+            'article3_1_text' => 'L\'accès aux fonctionnalités de la Plateforme nécessite la création d\'un compte. L\'Utilisateur s\'engage à fournir des informations exactes et à les maintenir à jour.',
+            'article3_2_title' => '3.2 Sécurité du compte',
+            'article3_2_text' => 'L\'Utilisateur est responsable de la confidentialité de ses identifiants de connexion. Toute activité réalisée depuis son compte est présumée être de son fait.',
+            'article3_3_title' => '3.3 Rôles et permissions',
+            'article3_3_text' => 'La Plateforme propose différents niveaux d\'accès :',
+            'role_owner' => 'Propriétaire : Accès complet, gestion des utilisateurs et facturation',
+            'role_admin' => 'Administrateur : Accès complet aux données, pas d\'accès facturation',
+            'role_member' => 'Membre : Saisie et consultation des données',
+            'role_reader' => 'Lecteur : Consultation uniquement',
+
+            'article4_title' => 'Article 4 - Utilisation de la Plateforme',
+            'article4_1_title' => '4.1 Usage autorisé',
+            'article4_1_text' => 'La Plateforme est destinée à :',
+            'use_ghg' => 'Réaliser des bilans carbone conformes aux standards GHG Protocol',
+            'use_track' => 'Suivre et analyser les émissions de gaz à effet de serre',
+            'use_plan' => 'Définir et piloter des plans de réduction',
+            'use_report' => 'Générer des rapports réglementaires (BEGES, CSRD)',
+            'article4_2_title' => '4.2 Usages interdits',
+            'article4_2_text' => 'Il est strictement interdit de :',
+            'forbidden_illegal' => 'Utiliser la Plateforme à des fins illégales ou frauduleuses',
+            'forbidden_security' => 'Tenter de contourner les mesures de sécurité',
+            'forbidden_scraping' => 'Extraire massivement des données (scraping)',
+            'forbidden_share' => 'Partager son compte avec des tiers non autorisés',
+            'forbidden_false' => 'Utiliser la Plateforme pour générer des rapports mensongers',
+            'forbidden_resell' => 'Revendre ou sous-licencier l\'accès à la Plateforme',
+
+            'article5_title' => 'Article 5 - Données et contenu',
+            'article5_1_title' => '5.1 Données de l\'Utilisateur',
+            'article5_1_text' => 'L\'Utilisateur reste propriétaire des données qu\'il saisit sur la Plateforme. Carbex ne peut utiliser ces données que pour fournir le service et, de manière anonymisée, pour améliorer ses algorithmes.',
+            'article5_2_title' => '5.2 Facteurs d\'émission',
+            'article5_2_text' => 'Les facteurs d\'émission proviennent de sources officielles (Base Carbone ADEME, IPCC, etc.). Carbex ne garantit pas leur exactitude et invite l\'Utilisateur à les vérifier pour les usages réglementaires.',
+            'article5_3_title' => '5.3 Sauvegarde',
+            'article5_3_text' => 'Carbex effectue des sauvegardes régulières des données. Cependant, l\'Utilisateur est encouragé à exporter régulièrement ses données.',
+
+            'article6_title' => 'Article 6 - Assistant IA',
+            'article6_text' => 'La Plateforme intègre un assistant basé sur l\'intelligence artificielle. Les suggestions et recommandations fournies par l\'IA sont indicatives et ne constituent pas un conseil professionnel. L\'Utilisateur reste seul responsable des décisions prises sur la base de ces suggestions.',
+
+            'article7_title' => 'Article 7 - Disponibilité',
+            'article7_text' => 'Carbex s\'efforce d\'assurer une disponibilité continue de la Plateforme. Cependant, des interruptions peuvent survenir pour maintenance ou en cas de force majeure. Carbex informera les Utilisateurs dans la mesure du possible.',
+
+            'article8_title' => 'Article 8 - Propriété intellectuelle',
+            'article8_text' => 'Tous les éléments de la Plateforme (code, design, textes, algorithmes) sont protégés par le droit d\'auteur et appartiennent à Carbex SAS. Toute reproduction non autorisée est interdite.',
+
+            'article9_title' => 'Article 9 - Limitation de responsabilité',
+            'article9_text' => 'Carbex fournit la Plateforme "en l\'état". En aucun cas Carbex ne pourra être tenu responsable des dommages indirects, pertes de données ou manque à gagner liés à l\'utilisation de la Plateforme.',
+
+            'article10_title' => 'Article 10 - Suspension et résiliation',
+            'article10_text' => 'Carbex se réserve le droit de suspendre ou de résilier l\'accès d\'un Utilisateur en cas de violation des présentes CGU, après notification préalable sauf en cas d\'urgence.',
+
+            'article11_title' => 'Article 11 - Modification des CGU',
+            'article11_text' => 'Carbex peut modifier les présentes CGU à tout moment. Les Utilisateurs seront informés des modifications substantielles. La poursuite de l\'utilisation après notification vaut acceptation.',
+
+            'article12_title' => 'Article 12 - Contact',
+            'article12_text' => 'Pour toute question concernant ces CGU, contactez-nous à :',
+        ],
+
+        // Terms of Sale (CGV)
+        'cgv' => [
+            'title' => 'Conditions Générales de Vente',
+            'meta_description' => 'Conditions Générales de Vente de la plateforme Carbex, outil SaaS de bilan carbone pour entreprises.',
+
+            'article1_title' => 'Article 1 - Objet',
+            'article1_text1' => 'Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre la société Carbex SAS (ci-après "Carbex") et tout client professionnel (ci-après "le Client") souhaitant souscrire aux services de la plateforme Carbex.',
+            'article1_text2' => 'Carbex propose une solution SaaS (Software as a Service) de bilan carbone et de gestion des émissions de gaz à effet de serre, conforme aux standards GHG Protocol, ISO 14064 et ADEME.',
+
+            'article2_title' => 'Article 2 - Services proposés',
+            'article2_text' => 'Carbex propose les services suivants :',
+            'service_assessment' => 'Réalisation de bilans carbone (Scopes 1, 2 et 3)',
+            'service_factors' => 'Accès à la Base Carbone ADEME et aux facteurs d\'émission',
+            'service_dashboard' => 'Tableaux de bord et analyses des émissions',
+            'service_plan' => 'Plans de transition et suivi des actions de réduction',
+            'service_report' => 'Génération de rapports conformes (BEGES, CSRD, GHG Protocol)',
+            'service_ai' => 'Assistant IA pour l\'aide à la saisie et les recommandations',
+
+            'article3_title' => 'Article 3 - Tarifs et modalités de paiement',
+            'article3_1_title' => '3.1 Grille tarifaire',
+            'article3_1_text' => 'Les tarifs en vigueur sont les suivants (HT) :',
+            'price_trial' => 'Essai Gratuit : 0 € - 15 jours d\'accès complet',
+            'price_premium' => 'Premium : 400 €/an ou 40 €/mois',
+            'price_advanced' => 'Avancé : 1 200 €/an ou 120 €/mois',
+            'price_enterprise' => 'Enterprise : Sur devis',
+            'article3_2_title' => '3.2 Modalités de paiement',
+            'article3_2_text' => 'Le paiement s\'effectue par carte bancaire via notre prestataire de paiement sécurisé Stripe. Les factures sont émises mensuellement ou annuellement selon le mode de facturation choisi.',
+            'article3_2_vat' => 'La TVA applicable est celle en vigueur au jour de la facturation (20% pour la France métropolitaine).',
+
+            'article4_title' => 'Article 4 - Durée et résiliation',
+            'article4_1_title' => '4.1 Durée',
+            'article4_1_text' => 'L\'abonnement est souscrit pour une durée déterminée (mensuelle ou annuelle) renouvelable par tacite reconduction.',
+            'article4_2_title' => '4.2 Résiliation',
+            'article4_2_text' => 'Le Client peut résilier son abonnement à tout moment depuis son espace client. La résiliation prend effet à la fin de la période de facturation en cours. Aucun remboursement au prorata ne sera effectué.',
+
+            'article5_title' => 'Article 5 - Obligations de Carbex',
+            'article5_text' => 'Carbex s\'engage à :',
+            'obligation_access' => 'Fournir un accès continu à la plateforme (objectif de disponibilité 99,5%)',
+            'obligation_security' => 'Maintenir la sécurité et la confidentialité des données',
+            'obligation_support' => 'Assurer un support technique selon le plan souscrit',
+            'obligation_update' => 'Mettre à jour régulièrement les facteurs d\'émission',
+
+            'article6_title' => 'Article 6 - Obligations du Client',
+            'article6_text' => 'Le Client s\'engage à :',
+            'client_accurate' => 'Fournir des informations exactes et à jour',
+            'client_credentials' => 'Ne pas partager ses identifiants de connexion',
+            'client_terms' => 'Respecter les présentes CGV et les CGU',
+            'client_payment' => 'Payer les sommes dues dans les délais impartis',
+
+            'article7_title' => 'Article 7 - Propriété intellectuelle',
+            'article7_text' => 'La plateforme Carbex, son code source, ses algorithmes, sa charte graphique et ses contenus sont la propriété exclusive de Carbex SAS. Le Client bénéficie uniquement d\'un droit d\'usage non exclusif et non cessible pendant la durée de son abonnement.',
+
+            'article8_title' => 'Article 8 - Responsabilité',
+            'article8_text1' => 'Les calculs d\'émissions fournis par Carbex sont basés sur les données saisies par le Client et les facteurs d\'émission officiels. Carbex ne saurait être tenu responsable de l\'exactitude des résultats en cas de données erronées fournies par le Client.',
+            'article8_text2' => 'La responsabilité de Carbex est limitée au montant des sommes effectivement perçues au titre de l\'abonnement sur les 12 derniers mois.',
+
+            'article9_title' => 'Article 9 - Protection des données',
+            'article9_text' => 'Carbex s\'engage à respecter la réglementation en vigueur relative à la protection des données personnelles (RGPD). Pour plus d\'informations, consultez notre',
+            'privacy_policy' => 'Politique de confidentialité',
+
+            'article10_title' => 'Article 10 - Droit applicable et litiges',
+            'article10_text' => 'Les présentes CGV sont soumises au droit français. En cas de litige, les parties s\'engagent à rechercher une solution amiable. À défaut, les tribunaux de Paris seront seuls compétents.',
+
+            'article11_title' => 'Article 11 - Modification des CGV',
+            'article11_text' => 'Carbex se réserve le droit de modifier les présentes CGV. Les modifications seront notifiées aux Clients par email au moins 30 jours avant leur entrée en vigueur.',
+        ],
+
+        // Commitments (Engagements)
+        'engagements' => [
+            'title' => 'Nos Engagements',
+            'meta_description' => 'Découvrez les engagements de Carbex en matière de transparence, sécurité des données et responsabilité environnementale.',
+            'label' => 'Nos valeurs',
+            'hero_subtitle' => 'Chez Carbex, nous croyons que la transition écologique passe par la transparence, l\'accessibilité et l\'action concrète.',
+
+            // Cards
+            'security_title' => 'Sécurité des données',
+            'security_text' => 'Vos données sont hébergées en France sur des serveurs certifiés. Nous appliquons les meilleurs standards de sécurité : chiffrement AES-256, authentification forte, audits réguliers.',
+            'security_hosting' => 'Hébergement en France (Scaleway)',
+            'security_gdpr' => 'Conformité RGPD',
+            'security_backup' => 'Sauvegardes quotidiennes',
+
+            'transparency_title' => 'Transparence totale',
+            'transparency_text' => 'Nos calculs sont basés sur les facteurs d\'émission officiels de l\'ADEME. Chaque résultat est traçable et explicable.',
+            'transparency_factors' => 'Facteurs ADEME officiels',
+            'transparency_ghg' => 'Méthodologie GHG Protocol',
+            'transparency_trace' => 'Traçabilité complète',
+
+            'neutrality_title' => 'Neutralité carbone',
+            'neutrality_text' => 'Nous pratiquons ce que nous préconisons. Carbex mesure et compense ses propres émissions chaque année.',
+            'neutrality_annual' => 'Bilan carbone annuel publié',
+            'neutrality_hosting' => 'Hébergement bas carbone',
+            'neutrality_offset' => 'Compensation certifiée',
+
+            'accessibility_title' => 'Accessibilité pour tous',
+            'accessibility_text' => 'Le bilan carbone ne doit pas être réservé aux grandes entreprises. Nous proposons des tarifs adaptés aux PME.',
+            'accessibility_trial' => 'Essai gratuit 15 jours',
+            'accessibility_pricing' => 'Tarifs PME dès 400 €/an',
+            'accessibility_support' => 'Support inclus',
+
+            // Mission
+            'mission_title' => 'Notre mission',
+            'mission_text' => 'Démocratiser le bilan carbone pour que chaque entreprise, quelle que soit sa taille, puisse mesurer, comprendre et réduire son impact environnemental.',
+
+            // Standards
+            'standards_title' => 'Standards et méthodologies',
+            'standard_uba' => 'Base Carbone officielle',
+            'standard_ghg' => 'Protocol Scopes 1, 2, 3',
+            'standard_iso' => '14064-1 compatible',
+            'standard_csrd' => 'Rapports conformes',
+
+            // CTA
+            'cta_title' => 'Rejoignez les entreprises engagées',
+            'cta_subtitle' => 'Commencez votre bilan carbone aujourd\'hui et contribuez à la transition écologique.',
+            'cta_button' => 'Démarrer l\'essai gratuit',
+        ],
+    ],
+
 ];

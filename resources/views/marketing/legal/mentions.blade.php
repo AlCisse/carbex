@@ -1,165 +1,141 @@
 @extends('layouts.marketing')
 
-@section('title', 'Mentions Legales - Carbex')
-@section('description', 'Mentions legales et politique de confidentialite de Carbex, plateforme de bilan carbone pour entreprises.')
+@section('title', __('carbex.legal.mentions.title') . ' - Carbex')
+@section('description', __('carbex.legal.mentions.meta_description'))
 
 @section('content')
 <section class="pt-32 pb-20" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);">
     <div class="max-w-4xl mx-auto px-6">
         <div class="mb-12">
-            <p class="text-sm font-medium mb-4" style="color: var(--accent);">Legal</p>
+            <p class="text-sm font-medium mb-4" style="color: var(--accent);">{{ __('carbex.legal.label') }}</p>
             <h1 class="text-4xl font-semibold mb-6" style="color: var(--text-primary); letter-spacing: -0.025em;">
-                Mentions Legales
+                {{ __('carbex.legal.mentions.title') }}
             </h1>
-            <p class="text-sm" style="color: var(--text-muted);">Derniere mise a jour : Decembre 2024</p>
+            <p class="text-sm" style="color: var(--text-muted);">{{ __('carbex.legal.last_updated') }}</p>
         </div>
 
         <div class="prose prose-lg max-w-none" style="color: var(--text-secondary);">
 
-            <h2 style="color: var(--text-primary);">1. Editeur du site</h2>
-            <p>
-                Le site carbex.fr est edite par :
-            </p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section1_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.site_edited_by') }}</p>
             <div class="bg-gray-50 p-6 rounded-xl my-6">
-                <p class="mb-2"><strong>Carbex SAS</strong></p>
-                <p class="mb-2">Societe par Actions Simplifiee au capital de 10 000 EUR</p>
-                <p class="mb-2">Siege social : 123 Avenue de la Republique, 75011 Paris, France</p>
-                <p class="mb-2">RCS Paris : XXX XXX XXX</p>
-                <p class="mb-2">SIRET : XXX XXX XXX XXXXX</p>
-                <p class="mb-2">TVA intracommunautaire : FR XX XXX XXX XXX</p>
-                <p class="mb-2">Directeur de la publication : [Nom du dirigeant]</p>
-                <p>Email : <a href="mailto:contact@carbex.fr" style="color: var(--accent);">contact@carbex.fr</a></p>
+                <p class="mb-2"><strong>{{ __('carbex.legal.mentions.company_name') }}</strong></p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.company_type') }}</p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.address') }}</p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.register') }}</p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.tax_id') }}</p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.vat_id') }}</p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.director') }}</p>
+                <p>{{ __('carbex.legal.mentions.email') }} : <a href="mailto:contact@carbex.de" style="color: var(--accent);">contact@carbex.de</a></p>
             </div>
 
-            <h2 style="color: var(--text-primary);">2. Hebergement</h2>
-            <p>Le site est heberge par :</p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section2_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.hosted_by') }}</p>
             <div class="bg-gray-50 p-6 rounded-xl my-6">
-                <p class="mb-2"><strong>Scaleway SAS</strong></p>
-                <p class="mb-2">8 rue de la Ville l'Eveque, 75008 Paris, France</p>
-                <p>Site web : <a href="https://www.scaleway.com" target="_blank" rel="noopener" style="color: var(--accent);">www.scaleway.com</a></p>
+                <p class="mb-2"><strong>{{ __('carbex.legal.mentions.hosting_name') }}</strong></p>
+                <p class="mb-2">{{ __('carbex.legal.mentions.hosting_address') }}</p>
+                <p>{{ __('carbex.legal.mentions.website') }} : <a href="https://www.hetzner.com" target="_blank" rel="noopener" style="color: var(--accent);">www.hetzner.com</a></p>
             </div>
 
-            <h2 style="color: var(--text-primary);">3. Politique de confidentialite</h2>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_title') }}</h2>
 
-            <h3 style="color: var(--text-primary);">3.1 Responsable du traitement</h3>
-            <p>
-                Carbex SAS est responsable du traitement des donnees personnelles collectees sur ce site, conformement au Reglement General sur la Protection des Donnees (RGPD).
-            </p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_1_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section3_1_text') }}</p>
 
-            <h3 style="color: var(--text-primary);">3.2 Donnees collectees</h3>
-            <p>Nous collectons les donnees suivantes :</p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_2_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section3_2_text') }}</p>
             <ul>
-                <li><strong>Donnees d'identification</strong> : nom, prenom, email professionnel</li>
-                <li><strong>Donnees de l'entreprise</strong> : raison sociale, SIRET, secteur d'activite</li>
-                <li><strong>Donnees de connexion</strong> : adresse IP, logs de connexion</li>
-                <li><strong>Donnees metier</strong> : consommations energetiques, donnees d'emissions</li>
+                <li><strong>{{ __('carbex.legal.mentions.data_id') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.data_company') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.data_connection') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.data_business') }}</strong></li>
             </ul>
 
-            <h3 style="color: var(--text-primary);">3.3 Finalites du traitement</h3>
-            <p>Vos donnees sont utilisees pour :</p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_3_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section3_3_text') }}</p>
             <ul>
-                <li>Fournir le service de bilan carbone</li>
-                <li>Gerer votre compte et votre abonnement</li>
-                <li>Vous envoyer des communications liees au service</li>
-                <li>Ameliorer nos services (statistiques anonymisees)</li>
-                <li>Respecter nos obligations legales</li>
+                <li>{{ __('carbex.legal.mentions.purpose_service') }}</li>
+                <li>{{ __('carbex.legal.mentions.purpose_account') }}</li>
+                <li>{{ __('carbex.legal.mentions.purpose_communication') }}</li>
+                <li>{{ __('carbex.legal.mentions.purpose_improve') }}</li>
+                <li>{{ __('carbex.legal.mentions.purpose_legal') }}</li>
             </ul>
 
-            <h3 style="color: var(--text-primary);">3.4 Base legale</h3>
-            <p>Le traitement de vos donnees repose sur :</p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_4_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section3_4_text') }}</p>
             <ul>
-                <li>L'execution du contrat (fourniture du service)</li>
-                <li>Notre interet legitime (amelioration du service)</li>
-                <li>Votre consentement (newsletter, cookies non essentiels)</li>
-                <li>Nos obligations legales (conservation des factures)</li>
+                <li>{{ __('carbex.legal.mentions.legal_contract') }}</li>
+                <li>{{ __('carbex.legal.mentions.legal_legitimate') }}</li>
+                <li>{{ __('carbex.legal.mentions.legal_consent') }}</li>
+                <li>{{ __('carbex.legal.mentions.legal_obligation') }}</li>
             </ul>
 
-            <h3 style="color: var(--text-primary);">3.5 Duree de conservation</h3>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_5_title') }}</h3>
             <ul>
-                <li><strong>Donnees de compte</strong> : 3 ans apres la fin de l'abonnement</li>
-                <li><strong>Donnees de facturation</strong> : 10 ans (obligation legale)</li>
-                <li><strong>Logs de connexion</strong> : 1 an</li>
-                <li><strong>Donnees metier</strong> : supprimees sur demande ou 3 ans apres inactivite</li>
+                <li><strong>{{ __('carbex.legal.mentions.account_data') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.billing_data') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.connection_logs') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.business_data') }}</strong></li>
             </ul>
 
-            <h3 style="color: var(--text-primary);">3.6 Destinataires des donnees</h3>
-            <p>Vos donnees peuvent etre partagees avec :</p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_6_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section3_6_text') }}</p>
             <ul>
-                <li><strong>Stripe</strong> : traitement des paiements</li>
-                <li><strong>Scaleway</strong> : hebergement</li>
-                <li><strong>Anthropic (Claude AI)</strong> : assistant IA (donnees anonymisees)</li>
-                <li><strong>Brevo</strong> : envoi d'emails transactionnels</li>
+                <li><strong>{{ __('carbex.legal.mentions.recipient_stripe') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.recipient_hosting') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.recipient_ai') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.recipient_email') }}</strong></li>
             </ul>
-            <p>Aucune donnee n'est transferee hors de l'Union Europeenne sans garanties adequates.</p>
+            <p>{{ __('carbex.legal.mentions.no_transfer') }}</p>
 
-            <h3 style="color: var(--text-primary);">3.7 Vos droits</h3>
-            <p>Conformement au RGPD, vous disposez des droits suivants :</p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section3_7_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section3_7_text') }}</p>
             <ul>
-                <li><strong>Droit d'acces</strong> : obtenir une copie de vos donnees</li>
-                <li><strong>Droit de rectification</strong> : corriger vos donnees inexactes</li>
-                <li><strong>Droit a l'effacement</strong> : demander la suppression de vos donnees</li>
-                <li><strong>Droit a la portabilite</strong> : recevoir vos donnees dans un format structure</li>
-                <li><strong>Droit d'opposition</strong> : vous opposer au traitement</li>
-                <li><strong>Droit a la limitation</strong> : limiter le traitement de vos donnees</li>
+                <li><strong>{{ __('carbex.legal.mentions.right_access') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.right_rectification') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.right_erasure') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.right_portability') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.right_objection') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.right_restriction') }}</strong></li>
             </ul>
-            <p>
-                Pour exercer ces droits, contactez notre DPO : <a href="mailto:dpo@carbex.fr" style="color: var(--accent);">dpo@carbex.fr</a>
-            </p>
-            <p>
-                En cas de litige, vous pouvez saisir la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener" style="color: var(--accent);">www.cnil.fr</a>
-            </p>
+            <p>{{ __('carbex.legal.mentions.contact_dpo') }} <a href="mailto:dpo@carbex.de" style="color: var(--accent);">dpo@carbex.de</a></p>
+            <p>{{ __('carbex.legal.mentions.supervisory_authority') }} <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener" style="color: var(--accent);">www.bfdi.bund.de</a></p>
 
-            <h2 style="color: var(--text-primary);">4. Cookies</h2>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section4_title') }}</h2>
 
-            <h3 style="color: var(--text-primary);">4.1 Cookies essentiels</h3>
-            <p>Ces cookies sont necessaires au fonctionnement du site :</p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section4_1_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section4_1_text') }}</p>
             <ul>
-                <li><strong>Session</strong> : maintien de votre connexion</li>
-                <li><strong>CSRF</strong> : securite contre les attaques</li>
-                <li><strong>Preferences</strong> : langue, theme</li>
+                <li><strong>{{ __('carbex.legal.mentions.cookie_session') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.cookie_csrf') }}</strong></li>
+                <li><strong>{{ __('carbex.legal.mentions.cookie_preferences') }}</strong></li>
             </ul>
 
-            <h3 style="color: var(--text-primary);">4.2 Cookies analytiques</h3>
-            <p>
-                Nous utilisons Plausible Analytics, une solution respectueuse de la vie privee qui ne collecte pas de donnees personnelles et ne necessite pas de consentement.
-            </p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section4_2_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section4_2_text') }}</p>
 
-            <h3 style="color: var(--text-primary);">4.3 Gestion des cookies</h3>
-            <p>
-                Vous pouvez gerer vos preferences de cookies via le bandeau de consentement ou les parametres de votre navigateur.
-            </p>
+            <h3 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section4_3_title') }}</h3>
+            <p>{{ __('carbex.legal.mentions.section4_3_text') }}</p>
 
-            <h2 style="color: var(--text-primary);">5. Propriete intellectuelle</h2>
-            <p>
-                L'ensemble du contenu du site (textes, images, logos, code source) est protege par le droit d'auteur et appartient a Carbex SAS. Toute reproduction sans autorisation est interdite.
-            </p>
-            <p>
-                Les marques "Carbex" et "Empreinte Carbone" sont deposees. Les logos des partenaires et clients sont utilises avec leur autorisation.
-            </p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section5_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.section5_text1') }}</p>
+            <p>{{ __('carbex.legal.mentions.section5_text2') }}</p>
 
-            <h2 style="color: var(--text-primary);">6. Limitation de responsabilite</h2>
-            <p>
-                Carbex s'efforce de fournir des informations exactes et a jour. Cependant, nous ne garantissons pas l'absence d'erreurs. Les calculs d'emissions sont fournis a titre indicatif et ne constituent pas un conseil professionnel.
-            </p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section6_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.section6_text') }}</p>
 
-            <h2 style="color: var(--text-primary);">7. Liens externes</h2>
-            <p>
-                Le site peut contenir des liens vers des sites tiers. Carbex n'est pas responsable du contenu de ces sites.
-            </p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section7_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.section7_text') }}</p>
 
-            <h2 style="color: var(--text-primary);">8. Droit applicable</h2>
-            <p>
-                Les presentes mentions legales sont soumises au droit francais. Tout litige sera soumis aux tribunaux competents de Paris.
-            </p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section8_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.section8_text') }}</p>
 
-            <h2 style="color: var(--text-primary);">9. Contact</h2>
-            <p>
-                Pour toute question concernant ces mentions legales ou la protection de vos donnees :
-            </p>
+            <h2 style="color: var(--text-primary);">{{ __('carbex.legal.mentions.section9_title') }}</h2>
+            <p>{{ __('carbex.legal.mentions.section9_text') }}</p>
             <ul>
-                <li>Email : <a href="mailto:legal@carbex.fr" style="color: var(--accent);">legal@carbex.fr</a></li>
-                <li>DPO : <a href="mailto:dpo@carbex.fr" style="color: var(--accent);">dpo@carbex.fr</a></li>
-                <li>Courrier : Carbex SAS - Service Juridique, 123 Avenue de la Republique, 75011 Paris</li>
+                <li>{{ __('carbex.legal.mentions.contact_legal') }} : <a href="mailto:legal@carbex.de" style="color: var(--accent);">legal@carbex.de</a></li>
+                <li>{{ __('carbex.legal.mentions.contact_dpo_label') }} : <a href="mailto:dpo@carbex.de" style="color: var(--accent);">dpo@carbex.de</a></li>
+                <li>{{ __('carbex.legal.mentions.contact_mail') }}</li>
             </ul>
 
         </div>

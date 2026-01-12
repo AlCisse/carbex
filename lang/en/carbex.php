@@ -2274,4 +2274,304 @@ return [
         'cta_button' => 'Start free trial',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Legal Pages
+    |--------------------------------------------------------------------------
+    */
+
+    'legal' => [
+        // Common
+        'label' => 'Legal',
+        'last_updated' => 'Last updated: December 2024',
+
+        // Legal Notice
+        'mentions' => [
+            'title' => 'Legal Notice',
+            'meta_description' => 'Legal notice and privacy policy of Carbex, carbon footprint platform for businesses.',
+
+            'section1_title' => '1. Website Publisher',
+            'site_edited_by' => 'The website carbex.com is operated by:',
+            'company_name' => 'Carbex Ltd',
+            'company_type' => 'Limited Company',
+            'capital' => 'Share capital: 25,000 EUR',
+            'address' => 'Registered office: 123 Main Street, Berlin, Germany',
+            'register' => 'Company Registration: HRB XXX XXX',
+            'tax_id' => 'Tax ID: XXX XXX XXX',
+            'vat_id' => 'VAT ID: DE XXX XXX XXX',
+            'director' => 'Director: [Director Name]',
+            'email' => 'Email',
+
+            'section2_title' => '2. Hosting',
+            'hosted_by' => 'The website is hosted by:',
+            'hosting_name' => 'Hetzner Online GmbH',
+            'hosting_address' => 'Industriestr. 25, 91710 Gunzenhausen, Germany',
+            'website' => 'Website',
+
+            'section3_title' => '3. Privacy Policy',
+            'section3_1_title' => '3.1 Data Controller',
+            'section3_1_text' => 'Carbex Ltd is responsible for the processing of personal data collected on this website, in accordance with the General Data Protection Regulation (GDPR).',
+            'section3_2_title' => '3.2 Data Collected',
+            'section3_2_text' => 'We collect the following data:',
+            'data_id' => 'Identification data: name, surname, professional email',
+            'data_company' => 'Company data: company name, registration number, industry sector',
+            'data_connection' => 'Connection data: IP address, connection logs',
+            'data_business' => 'Business data: energy consumption, emissions data',
+            'section3_3_title' => '3.3 Purpose of Processing',
+            'section3_3_text' => 'Your data is used for:',
+            'purpose_service' => 'Providing the carbon footprint service',
+            'purpose_account' => 'Managing your account and subscription',
+            'purpose_communication' => 'Sending you service-related communications',
+            'purpose_improve' => 'Improving our services (anonymized statistics)',
+            'purpose_legal' => 'Complying with our legal obligations',
+            'section3_4_title' => '3.4 Legal Basis',
+            'section3_4_text' => 'The processing of your data is based on:',
+            'legal_contract' => 'Contract performance (service provision)',
+            'legal_legitimate' => 'Our legitimate interest (service improvement)',
+            'legal_consent' => 'Your consent (newsletter, non-essential cookies)',
+            'legal_obligation' => 'Our legal obligations (invoice retention)',
+            'section3_5_title' => '3.5 Retention Period',
+            'account_data' => 'Account data: 3 years after the end of subscription',
+            'billing_data' => 'Billing data: 10 years (legal obligation)',
+            'connection_logs' => 'Connection logs: 1 year',
+            'business_data' => 'Business data: deleted on request or 3 years after inactivity',
+            'section3_6_title' => '3.6 Data Recipients',
+            'section3_6_text' => 'Your data may be shared with:',
+            'recipient_stripe' => 'Stripe: payment processing',
+            'recipient_hosting' => 'Hetzner: hosting',
+            'recipient_ai' => 'Anthropic (Claude AI): AI assistant (anonymized data)',
+            'recipient_email' => 'Brevo: transactional email sending',
+            'no_transfer' => 'No data is transferred outside the European Union without adequate safeguards.',
+            'section3_7_title' => '3.7 Your Rights',
+            'section3_7_text' => 'Under GDPR, you have the following rights:',
+            'right_access' => 'Right of access: obtain a copy of your data',
+            'right_rectification' => 'Right to rectification: correct inaccurate data',
+            'right_erasure' => 'Right to erasure: request deletion of your data',
+            'right_portability' => 'Right to portability: receive your data in a structured format',
+            'right_objection' => 'Right to object: object to processing',
+            'right_restriction' => 'Right to restriction: limit the processing of your data',
+            'contact_dpo' => 'To exercise these rights, contact our DPO:',
+            'supervisory_authority' => 'In case of dispute, you can contact the data protection authority:',
+
+            'section4_title' => '4. Cookies',
+            'section4_1_title' => '4.1 Essential Cookies',
+            'section4_1_text' => 'These cookies are necessary for the website to function:',
+            'cookie_session' => 'Session: maintaining your login',
+            'cookie_csrf' => 'CSRF: security against attacks',
+            'cookie_preferences' => 'Preferences: language, theme',
+            'section4_2_title' => '4.2 Analytics Cookies',
+            'section4_2_text' => 'We use Plausible Analytics, a privacy-friendly solution that does not collect personal data and does not require consent.',
+            'section4_3_title' => '4.3 Cookie Management',
+            'section4_3_text' => 'You can manage your cookie preferences via the consent banner or your browser settings.',
+
+            'section5_title' => '5. Intellectual Property',
+            'section5_text1' => 'All website content (texts, images, logos, source code) is protected by copyright and belongs to Carbex Ltd. Any reproduction without authorization is prohibited.',
+            'section5_text2' => 'The "Carbex" and "Carbon Footprint" trademarks are registered. Partner and client logos are used with their permission.',
+
+            'section6_title' => '6. Limitation of Liability',
+            'section6_text' => 'Carbex strives to provide accurate and up-to-date information. However, we do not guarantee the absence of errors. Emission calculations are provided for guidance only and do not constitute professional advice.',
+
+            'section7_title' => '7. External Links',
+            'section7_text' => 'The website may contain links to third-party websites. Carbex is not responsible for their content.',
+
+            'section8_title' => '8. Applicable Law',
+            'section8_text' => 'This legal notice is governed by German law. Any dispute shall be submitted to the competent courts in Berlin.',
+
+            'section9_title' => '9. Contact',
+            'section9_text' => 'For any questions regarding this legal notice or the protection of your data:',
+            'contact_legal' => 'Email',
+            'contact_dpo_label' => 'DPO',
+            'contact_mail' => 'Mail: Carbex Ltd - Legal Department, 123 Main Street, Berlin, Germany',
+        ],
+
+        // Terms of Use
+        'cgu' => [
+            'title' => 'Terms of Use',
+            'meta_description' => 'Terms of Use of the Carbex platform, SaaS carbon footprint tool.',
+
+            'article1_title' => 'Article 1 - Definitions',
+            'def_platform' => 'Platform: The Carbex web application accessible at app.carbex.com',
+            'def_user' => 'User: Any person accessing the Platform',
+            'def_account' => 'Account: Personal space of the User on the Platform',
+            'def_organization' => 'Organization: Legal entity (company) for which the carbon assessment is performed',
+            'def_assessment' => 'Assessment: Evaluation of greenhouse gas emissions over a given period',
+
+            'article2_title' => 'Article 2 - Acceptance of Terms',
+            'article2_text' => 'Using the Platform implies full acceptance of these Terms of Use. If you do not accept these terms, please do not use the Platform.',
+
+            'article3_title' => 'Article 3 - Access to the Platform',
+            'article3_1_title' => '3.1 Registration',
+            'article3_1_text' => 'Access to Platform features requires account creation. The User agrees to provide accurate information and keep it up to date.',
+            'article3_2_title' => '3.2 Account Security',
+            'article3_2_text' => 'The User is responsible for the confidentiality of their login credentials. Any activity from their account is presumed to be their own.',
+            'article3_3_title' => '3.3 Roles and Permissions',
+            'article3_3_text' => 'The Platform offers different access levels:',
+            'role_owner' => 'Owner: Full access, user management and billing',
+            'role_admin' => 'Administrator: Full data access, no billing access',
+            'role_member' => 'Member: Data entry and viewing',
+            'role_reader' => 'Reader: View only',
+
+            'article4_title' => 'Article 4 - Platform Usage',
+            'article4_1_title' => '4.1 Authorized Use',
+            'article4_1_text' => 'The Platform is intended for:',
+            'use_ghg' => 'Creating carbon assessments compliant with GHG Protocol standards',
+            'use_track' => 'Tracking and analyzing greenhouse gas emissions',
+            'use_plan' => 'Defining and managing reduction plans',
+            'use_report' => 'Generating regulatory reports (CSRD, GHG Protocol)',
+            'article4_2_title' => '4.2 Prohibited Use',
+            'article4_2_text' => 'It is strictly prohibited to:',
+            'forbidden_illegal' => 'Use the Platform for illegal or fraudulent purposes',
+            'forbidden_security' => 'Attempt to bypass security measures',
+            'forbidden_scraping' => 'Mass extract data (scraping)',
+            'forbidden_share' => 'Share account with unauthorized third parties',
+            'forbidden_false' => 'Use the Platform to generate false reports',
+            'forbidden_resell' => 'Resell or sublicense access to the Platform',
+
+            'article5_title' => 'Article 5 - Data and Content',
+            'article5_1_title' => '5.1 User Data',
+            'article5_1_text' => 'The User remains the owner of data entered on the Platform. Carbex may only use this data to provide the service and, in anonymized form, to improve its algorithms.',
+            'article5_2_title' => '5.2 Emission Factors',
+            'article5_2_text' => 'Emission factors come from official sources (IPCC, EPA, etc.). Carbex does not guarantee their accuracy and encourages Users to verify them for regulatory purposes.',
+            'article5_3_title' => '5.3 Backup',
+            'article5_3_text' => 'Carbex performs regular data backups. However, Users are encouraged to export their data regularly.',
+
+            'article6_title' => 'Article 6 - AI Assistant',
+            'article6_text' => 'The Platform integrates an AI-based assistant. Suggestions and recommendations provided by the AI are indicative and do not constitute professional advice. The User remains solely responsible for decisions made based on these suggestions.',
+
+            'article7_title' => 'Article 7 - Availability',
+            'article7_text' => 'Carbex strives to ensure continuous Platform availability. However, interruptions may occur for maintenance or force majeure. Carbex will inform Users as much as possible.',
+
+            'article8_title' => 'Article 8 - Intellectual Property',
+            'article8_text' => 'All Platform elements (code, design, texts, algorithms) are protected by copyright and belong to Carbex Ltd. Any unauthorized reproduction is prohibited.',
+
+            'article9_title' => 'Article 9 - Limitation of Liability',
+            'article9_text' => 'Carbex provides the Platform "as is". In no event shall Carbex be liable for indirect damages, data loss or lost profits related to Platform use.',
+
+            'article10_title' => 'Article 10 - Suspension and Termination',
+            'article10_text' => 'Carbex reserves the right to suspend or terminate a User\'s access in case of violation of these Terms, after prior notification except in urgent cases.',
+
+            'article11_title' => 'Article 11 - Terms Modification',
+            'article11_text' => 'Carbex may modify these Terms at any time. Users will be informed of substantial modifications. Continued use after notification constitutes acceptance.',
+
+            'article12_title' => 'Article 12 - Contact',
+            'article12_text' => 'For any questions regarding these Terms, contact us at:',
+        ],
+
+        // Terms of Sale
+        'cgv' => [
+            'title' => 'Terms of Sale',
+            'meta_description' => 'Terms of Sale of the Carbex platform, SaaS carbon footprint tool for businesses.',
+
+            'article1_title' => 'Article 1 - Purpose',
+            'article1_text1' => 'These Terms of Sale govern the contractual relationships between Carbex Ltd (hereinafter "Carbex") and any professional customer (hereinafter "the Customer") wishing to subscribe to Carbex platform services.',
+            'article1_text2' => 'Carbex offers a SaaS (Software as a Service) solution for carbon footprinting and greenhouse gas emissions management, compliant with GHG Protocol, ISO 14064 standards.',
+
+            'article2_title' => 'Article 2 - Services Offered',
+            'article2_text' => 'Carbex offers the following services:',
+            'service_assessment' => 'Carbon assessments (Scopes 1, 2 and 3)',
+            'service_factors' => 'Access to emission factor databases',
+            'service_dashboard' => 'Dashboards and emissions analysis',
+            'service_plan' => 'Transition plans and reduction action tracking',
+            'service_report' => 'Compliant report generation (CSRD, GHG Protocol)',
+            'service_ai' => 'AI assistant for data entry and recommendations',
+
+            'article3_title' => 'Article 3 - Pricing and Payment Terms',
+            'article3_1_title' => '3.1 Pricing',
+            'article3_1_text' => 'Current prices (excluding VAT) are:',
+            'price_trial' => 'Free Trial: €0 - 15 days full access',
+            'price_premium' => 'Premium: €400/year or €40/month',
+            'price_advanced' => 'Advanced: €1,200/year or €120/month',
+            'price_enterprise' => 'Enterprise: Custom quote',
+            'article3_2_title' => '3.2 Payment Terms',
+            'article3_2_text' => 'Payment is made by credit card through our secure payment provider Stripe. Invoices are issued monthly or annually depending on the chosen billing method.',
+            'article3_2_vat' => 'Applicable VAT is that in effect on the invoice date (19% for Germany, 20% for France).',
+
+            'article4_title' => 'Article 4 - Duration and Termination',
+            'article4_1_title' => '4.1 Duration',
+            'article4_1_text' => 'The subscription is for a fixed term (monthly or annual) renewable by tacit renewal.',
+            'article4_2_title' => '4.2 Termination',
+            'article4_2_text' => 'The Customer may terminate their subscription at any time from their customer area. Termination takes effect at the end of the current billing period. No prorated refund will be made.',
+
+            'article5_title' => 'Article 5 - Carbex Obligations',
+            'article5_text' => 'Carbex commits to:',
+            'obligation_access' => 'Providing continuous platform access (99.5% availability target)',
+            'obligation_security' => 'Maintaining data security and confidentiality',
+            'obligation_support' => 'Providing technical support according to the subscribed plan',
+            'obligation_update' => 'Regularly updating emission factors',
+
+            'article6_title' => 'Article 6 - Customer Obligations',
+            'article6_text' => 'The Customer commits to:',
+            'client_accurate' => 'Providing accurate and up-to-date information',
+            'client_credentials' => 'Not sharing login credentials',
+            'client_terms' => 'Respecting these Terms and the Terms of Use',
+            'client_payment' => 'Paying due amounts within deadlines',
+
+            'article7_title' => 'Article 7 - Intellectual Property',
+            'article7_text' => 'The Carbex platform, its source code, algorithms, design and content are the exclusive property of Carbex Ltd. The Customer only has a non-exclusive, non-transferable right of use during their subscription.',
+
+            'article8_title' => 'Article 8 - Liability',
+            'article8_text1' => 'Emission calculations provided by Carbex are based on data entered by the Customer and official emission factors. Carbex cannot be held responsible for result accuracy in case of erroneous data provided by the Customer.',
+            'article8_text2' => 'Carbex\'s liability is limited to the amount actually received for the subscription over the last 12 months.',
+
+            'article9_title' => 'Article 9 - Data Protection',
+            'article9_text' => 'Carbex commits to respecting applicable personal data protection regulations (GDPR). For more information, see our',
+            'privacy_policy' => 'Privacy Policy',
+
+            'article10_title' => 'Article 10 - Applicable Law and Disputes',
+            'article10_text' => 'These Terms are governed by German law. In case of dispute, the parties agree to seek an amicable solution. Failing that, the courts in Berlin shall have exclusive jurisdiction.',
+
+            'article11_title' => 'Article 11 - Terms Modification',
+            'article11_text' => 'Carbex reserves the right to modify these Terms. Modifications will be notified to Customers by email at least 30 days before taking effect.',
+        ],
+
+        // Commitments
+        'engagements' => [
+            'title' => 'Our Commitments',
+            'meta_description' => 'Discover Carbex\'s commitments regarding transparency, data security and environmental responsibility.',
+            'label' => 'Our values',
+            'hero_subtitle' => 'At Carbex, we believe that ecological transition requires transparency, accessibility and concrete action.',
+
+            // Cards
+            'security_title' => 'Data Security',
+            'security_text' => 'Your data is hosted in Germany on certified servers. We apply the best security standards: AES-256 encryption, strong authentication, regular audits.',
+            'security_hosting' => 'Hosting in Germany (Hetzner)',
+            'security_gdpr' => 'GDPR compliant',
+            'security_backup' => 'Daily backups',
+
+            'transparency_title' => 'Full Transparency',
+            'transparency_text' => 'Our calculations are based on official emission factors. Each result is traceable and explainable.',
+            'transparency_factors' => 'Official emission factors',
+            'transparency_ghg' => 'GHG Protocol methodology',
+            'transparency_trace' => 'Complete traceability',
+
+            'neutrality_title' => 'Carbon Neutrality',
+            'neutrality_text' => 'We practice what we preach. Carbex measures and offsets its own emissions every year.',
+            'neutrality_annual' => 'Published annual carbon report',
+            'neutrality_hosting' => 'Low-carbon hosting',
+            'neutrality_offset' => 'Certified offsetting',
+
+            'accessibility_title' => 'Accessibility for All',
+            'accessibility_text' => 'Carbon footprinting should not be reserved for large companies. We offer pricing adapted to SMEs.',
+            'accessibility_trial' => '15-day free trial',
+            'accessibility_pricing' => 'SME pricing from €400/year',
+            'accessibility_support' => 'Support included',
+
+            // Mission
+            'mission_title' => 'Our Mission',
+            'mission_text' => 'Democratize carbon footprinting so that every company, regardless of size, can measure, understand and reduce its environmental impact.',
+
+            // Standards
+            'standards_title' => 'Standards and Methodologies',
+            'standard_uba' => 'Official emission database',
+            'standard_ghg' => 'Protocol Scopes 1, 2, 3',
+            'standard_iso' => '14064-1 compatible',
+            'standard_csrd' => 'Compliant reports',
+
+            // CTA
+            'cta_title' => 'Join committed companies',
+            'cta_subtitle' => 'Start your carbon footprint today and contribute to the ecological transition.',
+            'cta_button' => 'Start free trial',
+        ],
+    ],
+
 ];
