@@ -6,14 +6,14 @@
     <title>{{ $badge->name }} - {{ $organization->name }} | Carbex</title>
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="{{ $organization->name }} a obtenu le badge {{ $badge->name }}">
+    <meta property="og:title" content="{{ __('carbex.gamification.badge_og_title', ['organization' => $organization->name, 'badge' => $badge->name]) }}">
     <meta property="og:description" content="{{ $badge->description }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('images/badges/' . $badge->code . '.png') }}">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $organization->name }} a obtenu le badge {{ $badge->name }}">
+    <meta name="twitter:title" content="{{ __('carbex.gamification.badge_og_title', ['organization' => $organization->name, 'badge' => $badge->name]) }}">
     <meta name="twitter:description" content="{{ $badge->description }}">
 
     @vite(['resources/css/app.css'])

@@ -6,7 +6,7 @@
     <title>{{ $badgeName }} - {{ $organization->name }} | Carbex</title>
 
     <!-- SEO Meta -->
-    <meta name="description" content="{{ $organization->name }} has earned the {{ $badgeName }} badge for their carbon management efforts. Verified by Carbex.">
+    <meta name="description" content="{{ __('carbex.promote.seo_description', ['organization' => $organization->name, 'badge' => $badgeName]) }}">
     <meta property="og:title" content="{{ $badgeName }} - {{ $organization->name }}">
     <meta property="og:description" content="{{ $badgeDescription }}">
     <meta property="og:type" content="website">

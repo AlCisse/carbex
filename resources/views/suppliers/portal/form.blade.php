@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Portail Fournisseur - {{ $organization->name }}</title>
+    <title>{{ __('carbex.supplier_portal.title') }} - {{ $organization->name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -14,11 +14,11 @@
         <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900">Portail Fournisseur</h1>
+                    <h1 class="text-2xl font-bold text-gray-900">{{ __('carbex.supplier_portal.title') }}</h1>
                     <p class="text-gray-600 mt-1">{{ $organization->name }}</p>
                 </div>
                 <div class="text-right">
-                    <p class="text-sm text-gray-500">Fournisseur</p>
+                    <p class="text-sm text-gray-500">{{ __('carbex.supplier_portal.supplier') }}</p>
                     <p class="font-semibold text-gray-900">{{ $supplier->name }}</p>
                 </div>
             </div>
@@ -31,13 +31,12 @@
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                 </svg>
                 <div class="ml-3">
-                    <h3 class="text-sm font-medium text-blue-800">Collecte de donnees carbone {{ $invitation->year }}</h3>
+                    <h3 class="text-sm font-medium text-blue-800">{{ __('carbex.supplier_portal.data_collection', ['year' => $invitation->year]) }}</h3>
                     <p class="mt-1 text-sm text-blue-700">
-                        Veuillez renseigner vos emissions de gaz a effet de serre pour l'annee {{ $invitation->year }}.
-                        Ces donnees nous permettront de calculer notre empreinte carbone Scope 3.
+                        {{ __('carbex.supplier_portal.data_collection_desc', ['year' => $invitation->year]) }}
                     </p>
                     <p class="mt-2 text-sm text-blue-600">
-                        <strong>Date limite :</strong> {{ $invitation->expires_at->format('d/m/Y') }}
+                        <strong>{{ __('carbex.supplier_portal.deadline') }}</strong> {{ $invitation->expires_at->format('d/m/Y') }}
                     </p>
                 </div>
             </div>
@@ -49,40 +48,40 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">
                     <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600 text-sm font-bold mr-2">1</span>
-                    Emissions Scope 1 - Emissions directes
+                    {{ __('carbex.supplier_portal.scope1_title') }}
                 </h2>
                 <p class="text-sm text-gray-600 mb-4">
-                    Emissions provenant de sources detenues ou controlees par votre organisation (combustibles, vehicules, procedes).
+                    {{ __('carbex.supplier_portal.scope1_desc') }}
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Total Scope 1 (tCO2e)</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.scope1_total') }}</label>
                         <input type="number" step="0.01" x-model="form.scope1_total"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                     </div>
                 </div>
 
                 <details class="mt-4">
-                    <summary class="text-sm text-gray-600 cursor-pointer hover:text-gray-900">Detailler par categorie</summary>
+                    <summary class="text-sm text-gray-600 cursor-pointer hover:text-gray-900">{{ __('carbex.supplier_portal.detail_by_category') }}</summary>
                     <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 pl-4 border-l-2 border-gray-200">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Combustion stationnaire (tCO2e)</label>
+                            <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.stationary_combustion') }}</label>
                             <input type="number" step="0.01" x-model="form.scope1_breakdown.stationary_combustion"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Combustion mobile (tCO2e)</label>
+                            <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.mobile_combustion') }}</label>
                             <input type="number" step="0.01" x-model="form.scope1_breakdown.mobile_combustion"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Emissions fugitives (tCO2e)</label>
+                            <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.fugitive_emissions') }}</label>
                             <input type="number" step="0.01" x-model="form.scope1_breakdown.fugitive_emissions"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Emissions de procedes (tCO2e)</label>
+                            <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.process_emissions') }}</label>
                             <input type="number" step="0.01" x-model="form.scope1_breakdown.process_emissions"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                         </div>
@@ -94,24 +93,24 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">
                     <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-600 text-sm font-bold mr-2">2</span>
-                    Emissions Scope 2 - Energie indirecte
+                    {{ __('carbex.supplier_portal.scope2_title') }}
                 </h2>
                 <p class="text-sm text-gray-600 mb-4">
-                    Emissions liees a l'electricite, la chaleur ou la vapeur achetee.
+                    {{ __('carbex.supplier_portal.scope2_desc') }}
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Scope 2 Location-based (tCO2e)</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.scope2_location') }}</label>
                         <input type="number" step="0.01" x-model="form.scope2_location"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
-                        <p class="mt-1 text-xs text-gray-500">Base sur le mix electrique du reseau</p>
+                        <p class="mt-1 text-xs text-gray-500">{{ __('carbex.supplier_portal.scope2_location_hint') }}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Scope 2 Market-based (tCO2e)</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.scope2_market') }}</label>
                         <input type="number" step="0.01" x-model="form.scope2_market"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
-                        <p class="mt-1 text-xs text-gray-500">Base sur vos contrats d'energie</p>
+                        <p class="mt-1 text-xs text-gray-500">{{ __('carbex.supplier_portal.scope2_market_hint') }}</p>
                     </div>
                 </div>
             </div>
@@ -120,20 +119,20 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">
                     <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600 text-sm font-bold mr-2">3</span>
-                    Informations entreprise
+                    {{ __('carbex.supplier_portal.company_info') }}
                 </h2>
                 <p class="text-sm text-gray-600 mb-4">
-                    Ces informations permettent de calculer votre intensite carbone.
+                    {{ __('carbex.supplier_portal.company_info_desc') }}
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Chiffre d'affaires annuel</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.annual_revenue') }}</label>
                         <input type="number" step="0.01" x-model="form.revenue"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Devise</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.currency') }}</label>
                         <select x-model="form.revenue_currency"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                             <option value="EUR">EUR</option>
@@ -143,7 +142,7 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Nombre d'employes</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.employees_count') }}</label>
                         <input type="number" x-model="form.employees"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                     </div>
@@ -154,29 +153,29 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="text-lg font-semibold text-gray-900 mb-4">
                     <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100 text-green-600 text-sm font-bold mr-2">4</span>
-                    Verification (optionnel)
+                    {{ __('carbex.supplier_portal.verification') }}
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Norme de verification</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.verification_standard') }}</label>
                         <select x-model="form.verification_standard"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
-                            <option value="">Non verifie</option>
+                            <option value="">{{ __('carbex.supplier_portal.not_verified') }}</option>
                             <option value="ISO 14064-1">ISO 14064-1</option>
                             <option value="ISO 14064-3">ISO 14064-3</option>
                             <option value="GHG Protocol">GHG Protocol</option>
                             <option value="BEGES">BEGES</option>
-                            <option value="Other">Autre</option>
+                            <option value="Other">{{ __('carbex.supplier_portal.other') }}</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Verificateur</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.verifier') }}</label>
                         <input type="text" x-model="form.verifier_name"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Date de verification</label>
+                        <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.verification_date') }}</label>
                         <input type="date" x-model="form.verification_date"
                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
                     </div>
@@ -185,21 +184,21 @@
 
             <!-- Notes -->
             <div class="bg-white rounded-lg shadow-sm p-6">
-                <label class="block text-sm font-medium text-gray-700">Notes ou commentaires</label>
+                <label class="block text-sm font-medium text-gray-700">{{ __('carbex.supplier_portal.notes') }}</label>
                 <textarea x-model="form.notes" rows="3"
                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
-                          placeholder="Informations supplementaires, methodologie utilisee, hypotheses..."></textarea>
+                          placeholder="{{ __('carbex.supplier_portal.notes_placeholder') }}"></textarea>
             </div>
 
             <!-- Submit -->
             <div class="flex items-center justify-between">
                 <p class="text-sm text-gray-500">
-                    Vos donnees seront traitees de maniere confidentielle.
+                    {{ __('carbex.supplier_portal.confidentiality_notice') }}
                 </p>
                 <button type="submit" :disabled="isSubmitting"
                         class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50">
-                    <span x-show="!isSubmitting">Soumettre mes donnees</span>
-                    <span x-show="isSubmitting">Envoi en cours...</span>
+                    <span x-show="!isSubmitting">{{ __('carbex.supplier_portal.submit') }}</span>
+                    <span x-show="isSubmitting">{{ __('carbex.supplier_portal.submitting') }}</span>
                 </button>
             </div>
         </form>
@@ -214,9 +213,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">Donnees envoyees avec succes !</h3>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">{{ __('carbex.supplier_portal.success_title') }}</h3>
                     <p class="text-sm text-gray-500">
-                        Merci pour votre contribution. Vos donnees ont ete transmises a {{ $organization->name }}.
+                        {{ __('carbex.supplier_portal.success_message', ['organization' => $organization->name]) }}
                     </p>
                 </div>
             </div>
@@ -269,10 +268,10 @@
                                 window.location.reload();
                             }, 3000);
                         } else {
-                            alert(data.message || 'Une erreur est survenue.');
+                            alert(data.message || '{{ __('carbex.supplier_portal.error_occurred') }}');
                         }
                     } catch (error) {
-                        alert('Une erreur est survenue. Veuillez reessayer.');
+                        alert('{{ __('carbex.supplier_portal.error_retry') }}');
                     } finally {
                         this.isSubmitting = false;
                     }

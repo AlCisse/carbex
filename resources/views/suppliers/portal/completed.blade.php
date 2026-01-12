@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Donnees soumises - Carbex</title>
+    <title>{{ __('carbex.supplier_portal.completed_title') }} - Carbex</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 min-h-screen flex items-center justify-center">
@@ -16,18 +16,18 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
                 </div>
-                <h1 class="text-xl font-bold text-gray-900 mb-2">Donnees deja soumises</h1>
+                <h1 class="text-xl font-bold text-gray-900 mb-2">{{ __('carbex.supplier_portal.completed_title') }}</h1>
                 <p class="text-gray-600">
-                    Vous avez soumis vos donnees le {{ $invitation->completed_at->format('d/m/Y a H:i') }}.
+                    {{ __('carbex.supplier_portal.completed_message', ['date' => $invitation->completed_at->format('d/m/Y H:i')]) }}
                 </p>
             </div>
 
             @if($emission)
             <div class="border-t pt-6">
-                <h2 class="text-lg font-semibold text-gray-900 mb-4">Recapitulatif</h2>
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">{{ __('carbex.supplier_portal.summary') }}</h2>
                 <dl class="space-y-3">
                     <div class="flex justify-between">
-                        <dt class="text-gray-600">Annee</dt>
+                        <dt class="text-gray-600">{{ __('carbex.supplier_portal.year') }}</dt>
                         <dd class="font-medium text-gray-900">{{ $invitation->year }}</dd>
                     </div>
                     @if($emission->scope1_total)
@@ -44,12 +44,12 @@
                     @endif
                     @if($emission->revenue)
                     <div class="flex justify-between">
-                        <dt class="text-gray-600">Chiffre d'affaires</dt>
+                        <dt class="text-gray-600">{{ __('carbex.supplier_portal.revenue') }}</dt>
                         <dd class="font-medium text-gray-900">{{ number_format($emission->revenue, 0, ',', ' ') }} {{ $emission->revenue_currency }}</dd>
                     </div>
                     @endif
                     <div class="flex justify-between">
-                        <dt class="text-gray-600">Score qualite</dt>
+                        <dt class="text-gray-600">{{ __('carbex.supplier_portal.quality_score') }}</dt>
                         <dd class="font-medium text-gray-900">{{ $emission->getQualityScore() }}/100</dd>
                     </div>
                 </dl>
@@ -57,7 +57,7 @@
             @endif
 
             <div class="mt-8 text-center text-sm text-gray-500">
-                <p>Pour modifier vos donnees, veuillez contacter {{ $invitation->organization->name }}.</p>
+                <p>{{ __('carbex.supplier_portal.modify_contact', ['organization' => $invitation->organization->name]) }}</p>
             </div>
         </div>
     </div>

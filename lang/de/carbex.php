@@ -44,6 +44,7 @@ return [
     */
 
     'common' => [
+        'ai' => 'KI',
         'loading' => 'Laden...',
         'saving' => 'Speichern...',
         'processing' => 'Verarbeitung...',
@@ -923,6 +924,7 @@ return [
 
     'billing' => [
         'title' => 'Preise & Abonnement',
+        'subscription' => 'Abonnement',
         'subtitle' => 'Wählen Sie den passenden Plan',
         'current_plan' => 'Aktueller Plan',
         'monthly' => 'Monatlich',
@@ -2019,6 +2021,13 @@ return [
         'cta_text' => 'Auch Sie können Ihren CO2-Fußabdruck messen und reduzieren.',
         'start_free' => 'Kostenlos starten',
         'all_rights_reserved' => 'Alle Rechte vorbehalten.',
+
+        // Email signature & SEO
+        'seo_description' => ':organization hat das Abzeichen :badge für sein CO2-Engagement erhalten. Verifiziert von Carbex.',
+        'carbon_badge' => 'CO2-Abzeichen',
+        'our_organization' => 'Unsere Organisation',
+        'view_badge' => 'Abzeichen ansehen',
+        'powered_by' => 'Unterstützt von',
     ],
 
     /*
@@ -2327,6 +2336,10 @@ return [
         'step2_desc' => 'Führen Sie Reduktionsmaßnahmen durch, um Punkte zu sammeln',
         'step3_title' => 'Erfolge teilen',
         'step3_desc' => 'Zeigen Sie Ihre Abzeichen auf Ihrer Website und in sozialen Netzwerken',
+        'badge_og_title' => ':organization hat das Abzeichen :badge erhalten',
+        'badge_earned_by' => 'Abzeichen verdient von',
+        'earned_on' => 'Verdient am',
+        'discover_carbex' => 'Carbex entdecken',
     ],
 
     /*
@@ -2829,6 +2842,118 @@ return [
             'cta_subtitle' => 'Starten Sie noch heute Ihre CO2-Bilanz und tragen Sie zur ökologischen Transformation bei.',
             'cta_button' => 'Kostenlose Testversion starten',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Transition Plan
+    |--------------------------------------------------------------------------
+    */
+
+    'transition_plan' => [
+        'title' => 'Übergangsplan',
+        'actions' => 'Maßnahmen',
+        'edit_trajectory' => 'Trajektorie bearbeiten',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filament Admin
+    |--------------------------------------------------------------------------
+    */
+
+    'filament' => [
+        'save_configuration' => 'Konfiguration speichern',
+        'api_keys_configuration' => 'API-Schlüssel-Konfiguration',
+        'api_keys_description' => 'Die API-Schlüssel werden sicher in Docker Secrets gespeichert.',
+        'how_to_configure' => 'So konfigurieren Sie die API-Schlüssel:',
+        'step_create_secrets' => 'Erstellen Sie die Secret-Dateien in docker/secrets/',
+        'step_add_keys' => 'Fügen Sie die API-Schlüssel in die entsprechenden Dateien ein',
+        'step_auto_mount' => 'Die Secrets werden automatisch im Container gemountet',
+        'secrets_files' => 'Secret-Dateien:',
+        'anthropic_key' => 'Anthropic API-Schlüssel (Claude)',
+        'openai_key' => 'OpenAI API-Schlüssel',
+        'google_key' => 'Google AI API-Schlüssel',
+        'deepseek_key' => 'DeepSeek API-Schlüssel',
+        'example_command' => 'Beispielbefehl:',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Supplier Portal
+    |--------------------------------------------------------------------------
+    */
+
+    'supplier_portal' => [
+        'title' => 'Lieferantenportal',
+        'supplier' => 'Lieferant',
+        'data_collection' => 'CO2-Datenerhebung :year',
+        'data_collection_desc' => 'Bitte geben Sie Ihre Treibhausgasemissionen für das Jahr :year an. Diese Daten ermöglichen uns, unseren Scope-3-Fußabdruck zu berechnen.',
+        'deadline' => 'Frist:',
+
+        // Scope 1
+        'scope1_title' => 'Scope-1-Emissionen - Direkte Emissionen',
+        'scope1_desc' => 'Emissionen aus Quellen, die von Ihrer Organisation kontrolliert werden (Brennstoffe, Fahrzeuge, Prozesse).',
+        'scope1_total' => 'Scope 1 gesamt (tCO2e)',
+        'detail_by_category' => 'Nach Kategorie aufschlüsseln',
+        'stationary_combustion' => 'Stationäre Verbrennung (tCO2e)',
+        'mobile_combustion' => 'Mobile Verbrennung (tCO2e)',
+        'fugitive_emissions' => 'Flüchtige Emissionen (tCO2e)',
+        'process_emissions' => 'Prozessemissionen (tCO2e)',
+
+        // Scope 2
+        'scope2_title' => 'Scope-2-Emissionen - Indirekte Energie',
+        'scope2_desc' => 'Emissionen aus gekauftem Strom, Wärme oder Dampf.',
+        'scope2_location' => 'Scope 2 standortbasiert (tCO2e)',
+        'scope2_location_hint' => 'Basierend auf dem Stromnetz-Mix',
+        'scope2_market' => 'Scope 2 marktbasiert (tCO2e)',
+        'scope2_market_hint' => 'Basierend auf Ihren Energieverträgen',
+
+        // Company info
+        'company_info' => 'Unternehmensinformationen',
+        'company_info_desc' => 'Diese Informationen ermöglichen die Berechnung Ihrer CO2-Intensität.',
+        'annual_revenue' => 'Jahresumsatz',
+        'currency' => 'Währung',
+        'employees_count' => 'Anzahl der Mitarbeiter',
+
+        // Verification
+        'verification' => 'Verifizierung (optional)',
+        'verification_standard' => 'Verifizierungsstandard',
+        'not_verified' => 'Nicht verifiziert',
+        'other' => 'Andere',
+        'verifier' => 'Prüfer',
+        'verification_date' => 'Verifizierungsdatum',
+
+        // Notes & Submit
+        'notes' => 'Anmerkungen oder Kommentare',
+        'notes_placeholder' => 'Zusätzliche Informationen, verwendete Methodik, Annahmen...',
+        'confidentiality_notice' => 'Ihre Daten werden vertraulich behandelt.',
+        'submit' => 'Daten übermitteln',
+        'submitting' => 'Wird gesendet...',
+
+        // Success/Error
+        'success_title' => 'Daten erfolgreich übermittelt!',
+        'success_message' => 'Vielen Dank für Ihren Beitrag. Ihre Daten wurden an :organization übertragen.',
+        'error_occurred' => 'Ein Fehler ist aufgetreten.',
+        'error_retry' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.',
+
+        // Status pages
+        'not_found_title' => 'Einladung nicht gefunden',
+        'not_found_message' => 'Dieser Einladungslink ist ungültig oder wurde gelöscht.',
+        'not_found_contact' => 'Wenn Sie glauben, dass es sich um einen Fehler handelt, wenden Sie sich bitte an die Organisation, die Sie eingeladen hat.',
+
+        'expired_title' => 'Einladung abgelaufen',
+        'expired_message' => 'Diese Einladung ist am :date abgelaufen.',
+        'expired_contact' => 'Um einen neuen Link zu erhalten, wenden Sie sich bitte an :organization.',
+        'contact_label' => 'Kontakt:',
+
+        'completed_title' => 'Daten bereits übermittelt',
+        'completed_message' => 'Sie haben Ihre Daten am :date übermittelt.',
+        'summary' => 'Zusammenfassung',
+        'year' => 'Jahr',
+        'revenue' => 'Umsatz',
+        'quality_score' => 'Qualitätsbewertung',
+        'modify_contact' => 'Um Ihre Daten zu ändern, wenden Sie sich bitte an :organization.',
     ],
 
 ];

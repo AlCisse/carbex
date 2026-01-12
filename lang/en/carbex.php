@@ -32,6 +32,7 @@ return [
     'upload' => 'Upload',
 
     'common' => [
+        'ai' => 'AI',
         'loading' => 'Loading...',
         'saving' => 'Saving...',
         'processing' => 'Processing...',
@@ -815,6 +816,7 @@ return [
 
     'billing' => [
         'title' => 'Pricing & Subscription',
+        'subscription' => 'Subscription',
         'subtitle' => 'Choose the plan that fits your needs',
         'current_plan' => 'Current plan',
         'monthly' => 'Monthly',
@@ -1871,6 +1873,13 @@ return [
         'cta_text' => 'You too, measure and reduce your carbon footprint.',
         'start_free' => 'Start for free',
         'all_rights_reserved' => 'All rights reserved.',
+
+        // Email signature & SEO
+        'seo_description' => ':organization earned the :badge badge for their carbon management efforts. Verified by Carbex.',
+        'carbon_badge' => 'Carbon Badge',
+        'our_organization' => 'Our Organization',
+        'view_badge' => 'View Badge',
+        'powered_by' => 'Powered by',
     ],
 
     /*
@@ -1986,6 +1995,10 @@ return [
         'step2_desc' => 'Implement reduction actions to earn points',
         'step3_title' => 'Share your success',
         'step3_desc' => 'Display your badges on your website and social networks',
+        'badge_og_title' => ':organization earned the :badge badge',
+        'badge_earned_by' => 'Badge earned by',
+        'earned_on' => 'Earned on',
+        'discover_carbex' => 'Discover Carbex',
     ],
 
     /*
@@ -2601,6 +2614,118 @@ return [
             'cta_subtitle' => 'Start your carbon footprint today and contribute to the ecological transition.',
             'cta_button' => 'Start free trial',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Transition Plan
+    |--------------------------------------------------------------------------
+    */
+
+    'transition_plan' => [
+        'title' => 'Transition Plan',
+        'actions' => 'Actions',
+        'edit_trajectory' => 'Edit Trajectory',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Filament Admin
+    |--------------------------------------------------------------------------
+    */
+
+    'filament' => [
+        'save_configuration' => 'Save configuration',
+        'api_keys_configuration' => 'API Keys Configuration',
+        'api_keys_description' => 'API keys are securely stored in Docker Secrets.',
+        'how_to_configure' => 'How to configure API keys:',
+        'step_create_secrets' => 'Create secret files in docker/secrets/',
+        'step_add_keys' => 'Add API keys in the corresponding files',
+        'step_auto_mount' => 'Secrets are automatically mounted in the container',
+        'secrets_files' => 'Secret files:',
+        'anthropic_key' => 'Anthropic API Key (Claude)',
+        'openai_key' => 'OpenAI API Key',
+        'google_key' => 'Google AI API Key',
+        'deepseek_key' => 'DeepSeek API Key',
+        'example_command' => 'Example command:',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Supplier Portal
+    |--------------------------------------------------------------------------
+    */
+
+    'supplier_portal' => [
+        'title' => 'Supplier Portal',
+        'supplier' => 'Supplier',
+        'data_collection' => 'Carbon Data Collection :year',
+        'data_collection_desc' => 'Please enter your greenhouse gas emissions for year :year. This data will help us calculate our Scope 3 footprint.',
+        'deadline' => 'Deadline:',
+
+        // Scope 1
+        'scope1_title' => 'Scope 1 Emissions - Direct Emissions',
+        'scope1_desc' => 'Emissions from sources owned or controlled by your organization (fuels, vehicles, processes).',
+        'scope1_total' => 'Total Scope 1 (tCO2e)',
+        'detail_by_category' => 'Detail by category',
+        'stationary_combustion' => 'Stationary combustion (tCO2e)',
+        'mobile_combustion' => 'Mobile combustion (tCO2e)',
+        'fugitive_emissions' => 'Fugitive emissions (tCO2e)',
+        'process_emissions' => 'Process emissions (tCO2e)',
+
+        // Scope 2
+        'scope2_title' => 'Scope 2 Emissions - Indirect Energy',
+        'scope2_desc' => 'Emissions from purchased electricity, heat or steam.',
+        'scope2_location' => 'Scope 2 Location-based (tCO2e)',
+        'scope2_location_hint' => 'Based on grid electricity mix',
+        'scope2_market' => 'Scope 2 Market-based (tCO2e)',
+        'scope2_market_hint' => 'Based on your energy contracts',
+
+        // Company info
+        'company_info' => 'Company Information',
+        'company_info_desc' => 'This information allows calculation of your carbon intensity.',
+        'annual_revenue' => 'Annual revenue',
+        'currency' => 'Currency',
+        'employees_count' => 'Number of employees',
+
+        // Verification
+        'verification' => 'Verification (optional)',
+        'verification_standard' => 'Verification standard',
+        'not_verified' => 'Not verified',
+        'other' => 'Other',
+        'verifier' => 'Verifier',
+        'verification_date' => 'Verification date',
+
+        // Notes & Submit
+        'notes' => 'Notes or comments',
+        'notes_placeholder' => 'Additional information, methodology used, assumptions...',
+        'confidentiality_notice' => 'Your data will be treated confidentially.',
+        'submit' => 'Submit data',
+        'submitting' => 'Submitting...',
+
+        // Success/Error
+        'success_title' => 'Data submitted successfully!',
+        'success_message' => 'Thank you for your contribution. Your data has been transmitted to :organization.',
+        'error_occurred' => 'An error occurred.',
+        'error_retry' => 'An error occurred. Please try again.',
+
+        // Status pages
+        'not_found_title' => 'Invitation not found',
+        'not_found_message' => 'This invitation link is invalid or has been deleted.',
+        'not_found_contact' => 'If you believe this is an error, please contact the organization that invited you.',
+
+        'expired_title' => 'Invitation expired',
+        'expired_message' => 'This invitation expired on :date.',
+        'expired_contact' => 'To get a new link, please contact :organization.',
+        'contact_label' => 'Contact:',
+
+        'completed_title' => 'Data already submitted',
+        'completed_message' => 'You submitted your data on :date.',
+        'summary' => 'Summary',
+        'year' => 'Year',
+        'revenue' => 'Revenue',
+        'quality_score' => 'Quality score',
+        'modify_contact' => 'To modify your data, please contact :organization.',
     ],
 
 ];

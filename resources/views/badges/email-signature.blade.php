@@ -22,21 +22,21 @@
                         </td>
                         <td style="vertical-align: middle;">
                             <p style="margin: 0 0 2px 0; font-size: 13px; font-weight: 600; color: #065f46;">
-                                🏆 {{ $badge['name'] ?? 'Carbon Badge' }}
+                                🏆 {{ $badge['name'] ?? __('carbex.promote.carbon_badge') }}
                             </p>
                             <p style="margin: 0 0 4px 0; font-size: 11px; color: #047857;">
-                                {{ $organization->name ?? 'Our Organization' }}
+                                {{ $organization->name ?? __('carbex.promote.our_organization') }}
                             </p>
                             <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse;">
                                 <tr>
                                     <td>
                                         <span style="display: inline-block; background-color: #dcfce7; color: #166534; font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 500;">
-                                            ✓ Verified by Carbex
+                                            ✓ {{ __('carbex.promote.verified_by_carbex') }}
                                         </span>
                                     </td>
                                     <td style="padding-left: 8px;">
                                         <a href="{{ $shareUrl ?? url('/') }}" target="_blank" style="font-size: 10px; color: #10b981; text-decoration: none;">
-                                            View Badge →
+                                            {{ __('carbex.promote.view_badge') }} →
                                         </a>
                                     </td>
                                 </tr>
@@ -52,7 +52,7 @@
                     <span style="display: inline-block; width: 16px; height: 16px; background-color: #10b981; border-radius: 3px; margin-right: 4px; text-align: center; line-height: 16px;">
                         <span style="color: white; font-size: 10px;">⚡</span>
                     </span>
-                    <span style="font-size: 11px; color: #6b7280;">Powered by </span>
+                    <span style="font-size: 11px; color: #6b7280;">{{ __('carbex.promote.powered_by') }} </span>
                     <span style="font-size: 11px; color: #10b981; font-weight: 600; margin-left: 2px;">Carbex</span>
                 </a>
             </td>
