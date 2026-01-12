@@ -202,6 +202,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_OFFICE_SUPPLIES',
                                 'name' => 'Office Supplies',
+                                'ghg_category' => 'purchased_goods',
                                 'scope' => 3,
                                 'scope_3_category' => 1,
                                 'mcc_codes' => ['5943', '5111'],
@@ -217,6 +218,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_CLOUD_SERVICES',
                                 'name' => 'Cloud & SaaS Services',
+                                'ghg_category' => 'purchased_goods',
                                 'scope' => 3,
                                 'scope_3_category' => 1,
                                 'mcc_codes' => ['7372', '7379', '4816'],
@@ -326,6 +328,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_FLIGHTS',
                                 'name' => 'Air Travel',
+                                'ghg_category' => 'business_travel',
                                 'scope' => 3,
                                 'scope_3_category' => 6,
                                 'mcc_codes' => ['3000', '3001', '3002', '3003', '4511'],
@@ -341,6 +344,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_TRAIN',
                                 'name' => 'Rail Travel',
+                                'ghg_category' => 'business_travel',
                                 'scope' => 3,
                                 'scope_3_category' => 6,
                                 'mcc_codes' => ['4011', '4112'],
@@ -356,6 +360,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_RENTAL_CAR',
                                 'name' => 'Rental Cars',
+                                'ghg_category' => 'business_travel',
                                 'scope' => 3,
                                 'scope_3_category' => 6,
                                 'mcc_codes' => ['7512', '7513', '7519'],
@@ -371,6 +376,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_TAXI',
                                 'name' => 'Taxi & Rideshare',
+                                'ghg_category' => 'business_travel',
                                 'scope' => 3,
                                 'scope_3_category' => 6,
                                 'mcc_codes' => ['4121'],
@@ -386,6 +392,7 @@ class MccCategorySeeder extends Seeder
                             [
                                 'code' => 'SCOPE3_HOTEL',
                                 'name' => 'Hotel Stays',
+                                'ghg_category' => 'business_travel',
                                 'scope' => 3,
                                 'scope_3_category' => 6,
                                 'mcc_codes' => ['3501', '3502', '3503', '3504', '7011'],
