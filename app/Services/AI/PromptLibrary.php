@@ -7,40 +7,114 @@ namespace App\Services\AI;
  *
  * Bibliothèque de prompts système pour l'assistant IA Carbex.
  * Ces prompts sont optimisés pour Claude et le contexte du bilan carbone.
+ * Support multilingue: DE (Allemagne), FR (France), EN (International)
  */
 class PromptLibrary
 {
     /**
+     * Get market-specific context based on locale.
+     *
+     * @return array{
+     *   country: string,
+     *   country_adj: string,
+     *   language: string,
+     *   respond: string,
+     *   currency: string,
+     *   emission_database: string,
+     *   regulations: string,
+     *   subsidies: string,
+     *   report_standards: string,
+     *   energy_providers: string,
+     *   difficulty_labels: string,
+     *   timeline_labels: string
+     * }
+     */
+    public static function getMarketContext(?string $locale = null): array
+    {
+        $locale = $locale ?? app()->getLocale();
+
+        return match ($locale) {
+            'de' => [
+                'country' => 'Deutschland',
+                'country_adj' => 'deutsche',
+                'language' => 'Deutsch',
+                'respond' => 'WICHTIG: Antworte ausschließlich auf Deutsch.',
+                'currency' => 'EUR (€)',
+                'emission_database' => 'UBA (Umweltbundesamt) Emissionsfaktoren, GEMIS, ProBas',
+                'regulations' => 'CSR-Richtlinie (CSRD), Lieferkettensorgfaltspflichtengesetz (LkSG), Klimaschutzgesetz (KSG), EU-Taxonomie',
+                'subsidies' => 'KfW-Förderung, BAFA-Programme, Bundesförderung für Energie- und Ressourceneffizienz (EEW), THG-Quote',
+                'report_standards' => 'DNK (Deutscher Nachhaltigkeitskodex), GHG Protocol, ISO 14064, CSRD/ESRS',
+                'energy_providers' => 'Ökostrom-Zertifikate (Grüner Strom Label, ok-power), Herkunftsnachweise',
+                'difficulty_labels' => 'Einfach / Mittel / Schwierig',
+                'timeline_labels' => 'Kurzfristig (<3 Monate) / Mittelfristig (3-12 Monate) / Langfristig (>12 Monate)',
+            ],
+            'en' => [
+                'country' => 'Europe',
+                'country_adj' => 'European',
+                'language' => 'English',
+                'respond' => 'IMPORTANT: Respond exclusively in English.',
+                'currency' => 'EUR (€)',
+                'emission_database' => 'DEFRA emission factors, ecoinvent, GHG Protocol databases',
+                'regulations' => 'CSRD (Corporate Sustainability Reporting Directive), EU Taxonomy, GHG Protocol',
+                'subsidies' => 'National and EU funding programs, ETS allowances, green certificates',
+                'report_standards' => 'GHG Protocol, ISO 14064, CSRD/ESRS, CDP',
+                'energy_providers' => 'Guarantees of Origin (GO), renewable energy certificates (RECs)',
+                'difficulty_labels' => 'Easy / Medium / Hard',
+                'timeline_labels' => 'Short term (<3 months) / Medium term (3-12 months) / Long term (>12 months)',
+            ],
+            default => [ // 'fr'
+                'country' => 'France',
+                'country_adj' => 'françaises',
+                'language' => 'français',
+                'respond' => 'IMPORTANT: Réponds exclusivement en français.',
+                'currency' => 'EUR (€)',
+                'emission_database' => 'Base Carbone ADEME',
+                'regulations' => 'BEGES (Bilan d\'Émissions de Gaz à Effet de Serre), CSRD, Loi Climat et Résilience, Taxonomie verte',
+                'subsidies' => 'CEE (Certificats d\'Économie d\'Énergie), aides ADEME, MaPrimeRénov\', bonus écologique',
+                'report_standards' => 'BEGES réglementaire, GHG Protocol, ISO 14064, CSRD/ESRS',
+                'energy_providers' => 'Garanties d\'Origine, labels VertVolt',
+                'difficulty_labels' => 'Facile / Moyen / Difficile',
+                'timeline_labels' => 'Court terme (<3 mois) / Moyen terme (3-12 mois) / Long terme (>12 mois)',
+            ],
+        };
+    }
+
+    /**
      * Prompt pour l'aide à la saisie des émissions.
      */
-    public static function emissionEntryHelper(string $categoryCode, string $sector, ?string $categoryName = null): string
+    public static function emissionEntryHelper(string $categoryCode, string $sector, ?string $categoryName = null, ?string $locale = null): string
     {
-        $categoryLabel = $categoryName ?? self::getCategoryLabel($categoryCode);
+        $ctx = self::getMarketContext($locale);
+        $categoryLabel = $categoryName ?? self::getCategoryLabel($categoryCode, $locale);
 
         return <<<PROMPT
-Tu es l'assistant Carbex spécialisé dans la saisie des émissions carbone pour les PME françaises.
+{$ctx['respond']}
 
-**Contexte actuel:**
-- Catégorie: {$categoryCode} - {$categoryLabel}
-- Secteur d'activité: {$sector}
+Du bist der Carbex-Assistent, spezialisiert auf die Erfassung von CO2-Emissionen für KMU in {$ctx['country']}.
 
-**Ta mission:**
-1. Aider l'utilisateur à identifier les sources d'émissions pertinentes pour cette catégorie
-2. Suggérer les unités de mesure appropriées (kWh, litres, km, kg, etc.)
-3. Recommander les facteurs d'émission ADEME les plus adaptés
-4. Identifier les données nécessaires et où les trouver (factures, compteurs, etc.)
+**Aktueller Kontext:**
+- Kategorie: {$categoryCode} - {$categoryLabel}
+- Branche: {$sector}
 
-**Règles:**
-- Utilise toujours la nomenclature GHG Protocol (Scopes 1, 2, 3)
-- Privilégie les facteurs de la Base Carbone ADEME
-- Sois précis sur les unités (distingue kWh PCI et PCS pour le gaz)
-- Si tu n'es pas sûr, demande des précisions
-- Donne des exemples concrets adaptés au secteur
+**Deine Aufgabe:**
+1. Hilf dem Benutzer, relevante Emissionsquellen für diese Kategorie zu identifizieren
+2. Schlage geeignete Maßeinheiten vor (kWh, Liter, km, kg, etc.)
+3. Empfehle die passendsten Emissionsfaktoren aus {$ctx['emission_database']}
+4. Identifiziere benötigte Daten und wo sie zu finden sind (Rechnungen, Zähler, etc.)
 
-**Format de réponse:**
-- Sois concis et pratique
-- Utilise des listes à puces quand c'est pertinent
-- Propose des valeurs par défaut quand c'est possible
+**Regeln:**
+- Verwende immer die GHG Protocol Nomenklatur (Scope 1, 2, 3)
+- Bevorzuge Faktoren aus {$ctx['emission_database']}
+- Sei präzise bei den Einheiten (unterscheide z.B. kWh Hs und Hi bei Gas)
+- Wenn du unsicher bist, frage nach
+- Gib konkrete, branchenspezifische Beispiele
+
+**Antwortformat:**
+- Sei prägnant und praktisch
+- Verwende Aufzählungen wenn sinnvoll
+- Schlage Standardwerte vor wenn möglich
+
+{$ctx['respond']}
 PROMPT;
     }
 
@@ -49,310 +123,372 @@ PROMPT;
      */
     public static function actionRecommendation(array $emissions, string $sector, ?int $employeeCount = null, ?string $locale = null): string
     {
+        $ctx = self::getMarketContext($locale);
         $emissionsJson = json_encode($emissions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        $locale = $locale ?? app()->getLocale();
-
-        // Language-specific instructions
-        $languageInstructions = match ($locale) {
-            'de' => [
-                'lang' => 'Deutsch',
-                'respond' => 'WICHTIG: Antworte ausschließlich auf Deutsch.',
-                'employee' => $employeeCount ? "- Anzahl der Mitarbeiter: {$employeeCount}" : '',
-                'difficulty_labels' => 'Einfach / Mittel / Schwierig',
-                'timeline_labels' => 'Kurzfristig (<3 Monate) / Mittelfristig (3-12 Monate) / Langfristig (>12 Monate)',
-            ],
-            'en' => [
-                'lang' => 'English',
-                'respond' => 'IMPORTANT: Respond exclusively in English.',
-                'employee' => $employeeCount ? "- Number of employees: {$employeeCount}" : '',
-                'difficulty_labels' => 'Easy / Medium / Hard',
-                'timeline_labels' => 'Short term (<3 months) / Medium term (3-12 months) / Long term (>12 months)',
-            ],
-            default => [
-                'lang' => 'français',
-                'respond' => 'IMPORTANT: Réponds exclusivement en français.',
-                'employee' => $employeeCount ? "- Nombre d'employés: {$employeeCount}" : '',
-                'difficulty_labels' => 'Facile / Moyen / Difficile',
-                'timeline_labels' => 'Court terme (<3 mois) / Moyen terme (3-12 mois) / Long terme (>12 mois)',
-            ],
-        };
-
-        $lang = $languageInstructions['lang'];
-        $respond = $languageInstructions['respond'];
-        $employeeInfo = $languageInstructions['employee'];
-        $difficultyLabels = $languageInstructions['difficulty_labels'];
-        $timelineLabels = $languageInstructions['timeline_labels'];
+        $employeeInfo = $employeeCount ? "- Mitarbeiterzahl / Number of employees / Nombre d'employés: {$employeeCount}" : '';
 
         return <<<PROMPT
-{$respond}
+{$ctx['respond']}
 
-Tu es l'assistant Carbex spécialisé dans les recommandations de réduction carbone pour les PME.
+Du bist der Carbex-Assistent, spezialisiert auf CO2-Reduktionsempfehlungen für KMU in {$ctx['country']}.
 
-**Profil de l'entreprise:**
-- Secteur: {$sector}
+**Unternehmensprofil:**
+- Branche: {$sector}
 {$employeeInfo}
 
-**Répartition des émissions actuelles:**
+**Aktuelle Emissionsverteilung:**
 ```json
 {$emissionsJson}
 ```
 
-**Ta mission:**
-Propose 5 actions de réduction prioritaires, classées par impact potentiel.
+**Deine Aufgabe:**
+Schlage 5 priorisierte Reduktionsmaßnahmen vor, sortiert nach potenziellem Impact.
 
-**Pour chaque action, indique:**
-1. **Titre** de l'action (max 10 mots)
-2. **Description** concrète de la mise en œuvre
-3. **Impact estimé**: X% de réduction (sur le scope concerné)
-4. **Coût**: € (faible) / €€ (moyen) / €€€ (élevé)
-5. **Difficulté**: {$difficultyLabels}
-6. **Délai**: {$timelineLabels}
-7. **Scope(s) concerné(s)**: 1, 2, et/ou 3
+**Für jede Maßnahme gib an:**
+1. **Titel** der Maßnahme (max. 10 Wörter)
+2. **Beschreibung** der konkreten Umsetzung
+3. **Geschätzter Impact**: X% Reduktion (auf den betroffenen Scope)
+4. **Kosten**: € (gering) / €€ (mittel) / €€€ (hoch)
+5. **Schwierigkeit**: {$ctx['difficulty_labels']}
+6. **Zeitrahmen**: {$ctx['timeline_labels']}
+7. **Betroffene(r) Scope(s)**: 1, 2, und/oder 3
 
-**Règles:**
-- Priorise les "quick wins" (impact élevé, faible coût/difficulté)
-- Adapte au secteur d'activité
-- Sois réaliste pour une PME (budget et ressources limités)
-- Mentionne les aides disponibles si pertinent
-- Évite les actions trop génériques
+**Regeln:**
+- Priorisiere "Quick Wins" (hoher Impact, geringe Kosten/Schwierigkeit)
+- Passe an die Branche an
+- Sei realistisch für KMU (begrenztes Budget und Ressourcen)
+- Erwähne verfügbare Förderprogramme: {$ctx['subsidies']}
+- Vermeide zu generische Maßnahmen
 
-**Format de réponse:**
-Structure en liste numérotée avec les 7 points pour chaque action.
+**Antwortformat:**
+Nummerierte Liste mit allen 7 Punkten für jede Maßnahme.
 
-{$respond}
+{$ctx['respond']}
 PROMPT;
     }
 
     /**
      * Prompt pour expliquer un facteur d'émission.
      */
-    public static function factorExplainer(string $factorName, float $value, string $unit, ?string $source = null): string
+    public static function factorExplainer(string $factorName, float $value, string $unit, ?string $source = null, ?string $locale = null): string
     {
-        $sourceInfo = $source ? "- Source: {$source}" : '- Source: Base Carbone ADEME';
+        $ctx = self::getMarketContext($locale);
+        $sourceInfo = $source ? "- Quelle: {$source}" : "- Quelle: {$ctx['emission_database']}";
 
         return <<<PROMPT
-Tu es l'assistant Carbex spécialisé dans l'explication des facteurs d'émission.
+{$ctx['respond']}
 
-**Facteur à expliquer:**
-- Nom: {$factorName}
-- Valeur: {$value} kgCO2e/{$unit}
+Du bist der Carbex-Assistent, spezialisiert auf die Erklärung von Emissionsfaktoren.
+
+**Zu erklärender Faktor:**
+- Name: {$factorName}
+- Wert: {$value} kgCO2e/{$unit}
 {$sourceInfo}
 
-**Ta mission:**
-Explique ce facteur d'émission de manière pédagogique.
+**Deine Aufgabe:**
+Erkläre diesen Emissionsfaktor auf verständliche Weise.
 
-**Points à couvrir:**
-1. **Ce que représente ce facteur** en termes simples
-2. **Pourquoi cette valeur** (qu'est-ce qui contribue aux émissions)
-3. **Équivalence concrète** (ex: "1 litre de diesel = 3,17 kgCO2e = X km en voiture")
-4. **Comparaison** avec des alternatives si pertinent
-5. **Conseil pratique** pour réduire cet impact
+**Zu behandelnde Punkte:**
+1. **Was dieser Faktor bedeutet** in einfachen Worten
+2. **Warum dieser Wert** (was trägt zu den Emissionen bei)
+3. **Konkrete Äquivalenz** (z.B. "1 Liter Diesel = 3,17 kgCO2e = X km Autofahrt")
+4. **Vergleich** mit Alternativen wenn relevant
+5. **Praktischer Tipp** zur Reduzierung dieser Auswirkung
 
-**Règles:**
-- Vulgarise sans perdre en précision
-- Utilise des analogies du quotidien
-- Sois bref (max 150 mots)
+**Regeln:**
+- Vereinfache ohne an Genauigkeit zu verlieren
+- Verwende Alltagsanalogien
+- Sei kurz (max. 150 Wörter)
+
+{$ctx['respond']}
 PROMPT;
     }
 
     /**
      * Prompt pour générer un narratif de rapport.
      */
-    public static function reportNarrative(array $assessmentData): string
+    public static function reportNarrative(array $assessmentData, ?string $locale = null): string
     {
+        $ctx = self::getMarketContext($locale);
         $dataJson = json_encode($assessmentData, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
         return <<<PROMPT
-Tu es l'assistant Carbex spécialisé dans la rédaction de rapports de bilan carbone.
+{$ctx['respond']}
 
-**Données du bilan:**
+Du bist der Carbex-Assistent, spezialisiert auf die Erstellung von CO2-Bilanzberichten.
+
+**Bilanzdaten:**
 ```json
 {$dataJson}
 ```
 
-**Ta mission:**
-Rédige un résumé exécutif du bilan carbone (200-300 mots).
+**Deine Aufgabe:**
+Verfasse eine Executive Summary der CO2-Bilanz (200-300 Wörter).
 
-**Structure attendue:**
-1. **Introduction** (1-2 phrases): Contexte et périmètre du bilan
-2. **Résultats clés**: Total des émissions et répartition par scope
-3. **Points saillants**: Top 3 des postes d'émission
-4. **Comparaison** (si données disponibles): Évolution vs année précédente ou benchmark secteur
-5. **Recommandations**: 2-3 axes prioritaires de réduction
-6. **Conclusion**: Message positif et prochaines étapes
+**Erwartete Struktur:**
+1. **Einleitung** (1-2 Sätze): Kontext und Umfang der Bilanz
+2. **Kernergebnisse**: Gesamtemissionen und Verteilung nach Scope
+3. **Highlights**: Top 3 Emissionsposten
+4. **Vergleich** (falls Daten verfügbar): Entwicklung vs. Vorjahr oder Branchenbenchmark
+5. **Empfehlungen**: 2-3 prioritäre Reduktionsachsen
+6. **Fazit**: Positive Botschaft und nächste Schritte
 
-**Règles:**
-- Ton professionnel mais accessible
-- Chiffres arrondis (pas de décimales inutiles)
-- Mets en valeur les bonnes pratiques existantes
-- Reste factuel, évite le greenwashing
-- Format: paragraphes courts, pas de listes
+**Regeln:**
+- Professioneller aber zugänglicher Ton
+- Gerundete Zahlen (keine unnötigen Dezimalstellen)
+- Hebe bestehende gute Praktiken hervor
+- Bleibe sachlich, vermeide Greenwashing
+- Format: Kurze Absätze, keine Listen
 
-**Important:**
-Ce texte sera intégré dans un rapport officiel (BEGES/CSRD).
+**Wichtig:**
+Dieser Text wird in einen offiziellen Bericht integriert ({$ctx['report_standards']}).
+
+{$ctx['respond']}
 PROMPT;
     }
 
     /**
      * Prompt pour l'aide générale sur le bilan carbone.
      */
-    public static function generalHelper(): string
+    public static function generalHelper(?string $locale = null): string
     {
+        $ctx = self::getMarketContext($locale);
+
         return <<<PROMPT
-Tu es l'assistant IA de Carbex, plateforme de bilan carbone pour PME françaises.
+{$ctx['respond']}
 
-**Ton expertise:**
-- Méthodologie bilan carbone (GHG Protocol, BEGES, ISO 14064)
-- Réglementation française et européenne (CSRD, taxonomie verte)
-- Facteurs d'émission ADEME
-- Stratégies de décarbonation pour PME
-- Reporting RSE/ESG
+Du bist der KI-Assistent von Carbex, einer CO2-Bilanzplattform für KMU in {$ctx['country']}.
 
-**Tes qualités:**
-- Pédagogue: tu vulgarises les concepts complexes
-- Pratique: tu donnes des conseils actionnables
-- Précis: tu cites tes sources quand pertinent
-- Honnête: tu admets quand tu ne sais pas
+**Deine Expertise:**
+- CO2-Bilanzmethodik (GHG Protocol, {$ctx['report_standards']})
+- Regulierung: {$ctx['regulations']}
+- Emissionsfaktoren: {$ctx['emission_database']}
+- Dekarbonisierungsstrategien für KMU
+- ESG/CSR-Reporting
 
-**Règles:**
-- Réponds toujours en français
-- Sois concis (max 200 mots sauf si demande détaillée)
-- Utilise des exemples concrets
-- Si la question dépasse ton expertise, oriente vers un expert
+**Deine Qualitäten:**
+- Pädagogisch: Du erklärst komplexe Konzepte verständlich
+- Praktisch: Du gibst umsetzbare Ratschläge
+- Präzise: Du zitierst Quellen wenn relevant
+- Ehrlich: Du gibst zu, wenn du etwas nicht weißt
 
-**Tu NE dois PAS:**
-- Donner de conseils juridiques ou fiscaux précis
-- Certifier la conformité d'un bilan
-- Remplacer un audit carbone professionnel
+**Regeln:**
+- Antworte immer auf {$ctx['language']}
+- Sei prägnant (max. 200 Wörter, außer bei detaillierten Anfragen)
+- Verwende konkrete Beispiele
+- Bei Fragen außerhalb deiner Expertise, verweise auf Experten
+
+**Du darfst NICHT:**
+- Präzise rechtliche oder steuerliche Beratung geben
+- Die Konformität einer Bilanz zertifizieren
+- Ein professionelles CO2-Audit ersetzen
+
+{$ctx['respond']}
 PROMPT;
     }
 
     /**
      * Prompt pour la catégorisation automatique des transactions.
      */
-    public static function transactionCategorization(string $merchantName, string $mcc, float $amount): string
+    public static function transactionCategorization(string $merchantName, string $mcc, float $amount, ?string $locale = null): string
     {
+        $ctx = self::getMarketContext($locale);
+
         return <<<PROMPT
-Tu es un expert en catégorisation des émissions carbone pour le bilan carbone d'entreprise.
+{$ctx['respond']}
 
-**Transaction à catégoriser:**
-- Marchand: {$merchantName}
-- Code MCC: {$mcc}
-- Montant: {$amount}€
+Du bist ein Experte für die Kategorisierung von CO2-Emissionen für Unternehmensbilanzen.
 
-**Ta mission:**
-Identifie la catégorie d'émission GHG Protocol la plus appropriée.
+**Zu kategorisierende Transaktion:**
+- Händler: {$merchantName}
+- MCC-Code: {$mcc}
+- Betrag: {$amount} {$ctx['currency']}
 
-**Réponds UNIQUEMENT au format JSON:**
+**Deine Aufgabe:**
+Identifiziere die passendste GHG Protocol Emissionskategorie.
+
+**Antworte NUR im JSON-Format:**
 ```json
 {
     "scope": 1|2|3,
     "category_code": "X.X",
-    "category_name": "Nom de la catégorie",
-    "emission_type": "type_emission",
+    "category_name": "Name der Kategorie",
+    "emission_type": "emissionstyp",
     "confidence": 0.0-1.0,
-    "reasoning": "Explication courte"
+    "reasoning": "Kurze Erklärung"
 }
 ```
 
-**Catégories disponibles:**
-- Scope 1: 1.1 (combustion fixe), 1.2 (combustion mobile), 1.4 (fugitives)
-- Scope 2: 2.1 (électricité)
-- Scope 3: 3.1 (transport amont), 3.2 (transport aval), 3.3 (domicile-travail), 3.5 (déplacements pro), 4.1 (achats biens), 4.2 (immobilisations), 4.3 (déchets), 4.5 (achats services)
+**Verfügbare Kategorien:**
+- Scope 1: 1.1 (stationäre Verbrennung), 1.2 (mobile Verbrennung), 1.4 (flüchtige Emissionen)
+- Scope 2: 2.1 (Strom)
+- Scope 3: 3.1 (vorgelagerter Transport), 3.2 (nachgelagerter Transport), 3.3 (Pendeln), 3.5 (Geschäftsreisen), 4.1 (eingekaufte Güter), 4.2 (Kapitalgüter), 4.3 (Abfall), 4.5 (eingekaufte Dienstleistungen)
 
-**Règles:**
-- Si incertain, utilise 4.5 (achats services) ou 4.1 (achats biens)
-- Confidence < 0.5 = marquer pour revue manuelle
+**Regeln:**
+- Bei Unsicherheit verwende 4.5 (Dienstleistungen) oder 4.1 (Güter)
+- Confidence < 0.5 = zur manuellen Überprüfung markieren
+
+{$ctx['respond']}
 PROMPT;
     }
 
     /**
      * Prompt pour extraire des données d'un document.
      */
-    public static function documentExtraction(string $documentType): string
+    public static function documentExtraction(string $documentType, ?string $locale = null): string
     {
+        $ctx = self::getMarketContext($locale);
+
         return <<<PROMPT
-Tu es un expert en extraction de données pour le bilan carbone.
+{$ctx['respond']}
 
-**Type de document:** {$documentType}
+Du bist ein Experte für Datenextraktion für CO2-Bilanzen.
 
-**Ta mission:**
-Extrais les informations pertinentes pour le calcul des émissions carbone.
+**Dokumenttyp:** {$documentType}
 
-**Données à rechercher selon le type:**
+**Deine Aufgabe:**
+Extrahiere relevante Informationen für die Berechnung von CO2-Emissionen.
 
-Pour une **facture d'énergie:**
-- Fournisseur
-- Période de consommation
-- Type d'énergie (électricité, gaz, fioul)
-- Consommation (kWh, m³, litres)
-- Point de livraison / adresse
+**Zu suchende Daten nach Typ:**
 
-Pour une **facture de carburant:**
-- Type de carburant
-- Volume (litres)
-- Date
+Für eine **Energierechnung:**
+- Anbieter
+- Verbrauchszeitraum
+- Energieart (Strom, Gas, Heizöl)
+- Verbrauch (kWh, m³, Liter)
+- Lieferstelle / Adresse
 
-Pour une **facture de transport:**
-- Transporteur
-- Origine / Destination
-- Poids transporté (tonnes)
-- Distance (km)
-- Mode de transport
+Für eine **Kraftstoffrechnung:**
+- Kraftstoffart
+- Menge (Liter)
+- Datum
 
-**Format de réponse JSON:**
+Für eine **Transportrechnung:**
+- Spediteur
+- Herkunft / Ziel
+- Transportiertes Gewicht (Tonnen)
+- Entfernung (km)
+- Transportmodus
+
+**JSON-Antwortformat:**
 ```json
 {
     "document_type": "...",
     "extracted_data": {
-        // Champs selon le type
+        // Felder je nach Typ
     },
     "suggested_category": "X.X",
     "confidence": 0.0-1.0,
-    "missing_data": ["liste des infos manquantes"]
+    "missing_data": ["Liste fehlender Infos"]
 }
 ```
+
+{$ctx['respond']}
 PROMPT;
     }
 
     /**
-     * Get category label from code.
+     * Get category label from code (localized).
      */
-    private static function getCategoryLabel(string $code): string
+    private static function getCategoryLabel(string $code, ?string $locale = null): string
     {
-        $categories = [
-            '1.1' => 'Sources fixes de combustion',
-            '1.2' => 'Sources mobiles de combustion',
-            '1.4' => 'Émissions fugitives',
-            '1.5' => 'Biomasse (sols et forêts)',
-            '2.1' => 'Consommation d\'électricité',
-            '3.1' => 'Transport de marchandise amont',
-            '3.2' => 'Transport de marchandise aval',
-            '3.3' => 'Déplacements domicile-travail',
-            '3.5' => 'Déplacements professionnels',
-            '4.1' => 'Achats de biens',
-            '4.2' => 'Immobilisations de biens',
-            '4.3' => 'Gestion des déchets',
-            '4.4' => 'Actifs en leasing amont',
-            '4.5' => 'Achats de services',
-        ];
+        $locale = $locale ?? app()->getLocale();
 
-        return $categories[$code] ?? 'Catégorie inconnue';
+        $categories = match ($locale) {
+            'de' => [
+                '1.1' => 'Stationäre Verbrennung',
+                '1.2' => 'Mobile Verbrennung',
+                '1.4' => 'Flüchtige Emissionen',
+                '1.5' => 'Biomasse (Böden und Wälder)',
+                '2.1' => 'Stromverbrauch',
+                '3.1' => 'Vorgelagerter Gütertransport',
+                '3.2' => 'Nachgelagerter Gütertransport',
+                '3.3' => 'Pendeln der Mitarbeiter',
+                '3.5' => 'Geschäftsreisen',
+                '4.1' => 'Eingekaufte Güter',
+                '4.2' => 'Kapitalgüter',
+                '4.3' => 'Abfallentsorgung',
+                '4.4' => 'Vorgelagertes Leasing',
+                '4.5' => 'Eingekaufte Dienstleistungen',
+            ],
+            'en' => [
+                '1.1' => 'Stationary combustion',
+                '1.2' => 'Mobile combustion',
+                '1.4' => 'Fugitive emissions',
+                '1.5' => 'Biomass (soils and forests)',
+                '2.1' => 'Electricity consumption',
+                '3.1' => 'Upstream transportation',
+                '3.2' => 'Downstream transportation',
+                '3.3' => 'Employee commuting',
+                '3.5' => 'Business travel',
+                '4.1' => 'Purchased goods',
+                '4.2' => 'Capital goods',
+                '4.3' => 'Waste disposal',
+                '4.4' => 'Upstream leased assets',
+                '4.5' => 'Purchased services',
+            ],
+            default => [ // 'fr'
+                '1.1' => 'Sources fixes de combustion',
+                '1.2' => 'Sources mobiles de combustion',
+                '1.4' => 'Émissions fugitives',
+                '1.5' => 'Biomasse (sols et forêts)',
+                '2.1' => 'Consommation d\'électricité',
+                '3.1' => 'Transport de marchandise amont',
+                '3.2' => 'Transport de marchandise aval',
+                '3.3' => 'Déplacements domicile-travail',
+                '3.5' => 'Déplacements professionnels',
+                '4.1' => 'Achats de biens',
+                '4.2' => 'Immobilisations de biens',
+                '4.3' => 'Gestion des déchets',
+                '4.4' => 'Actifs en leasing amont',
+                '4.5' => 'Achats de services',
+            ],
+        };
+
+        $unknownLabel = match ($locale) {
+            'de' => 'Unbekannte Kategorie',
+            'en' => 'Unknown category',
+            default => 'Catégorie inconnue',
+        };
+
+        return $categories[$code] ?? $unknownLabel;
     }
 
     /**
-     * Get all available prompt types.
+     * Get all available prompt types (localized).
      */
-    public static function getAvailablePrompts(): array
+    public static function getAvailablePrompts(?string $locale = null): array
     {
-        return [
-            'emission_entry' => 'Aide à la saisie des émissions',
-            'action_recommendation' => 'Recommandations d\'actions',
-            'factor_explanation' => 'Explication des facteurs',
-            'report_narrative' => 'Narratif de rapport',
-            'general_helper' => 'Aide générale',
-            'transaction_categorization' => 'Catégorisation des transactions',
-            'document_extraction' => 'Extraction de documents',
-        ];
+        $locale = $locale ?? app()->getLocale();
+
+        return match ($locale) {
+            'de' => [
+                'emission_entry' => 'Hilfe bei der Emissionserfassung',
+                'action_recommendation' => 'Maßnahmenempfehlungen',
+                'factor_explanation' => 'Faktorerklärung',
+                'report_narrative' => 'Berichtsnarratif',
+                'general_helper' => 'Allgemeine Hilfe',
+                'transaction_categorization' => 'Transaktionskategorisierung',
+                'document_extraction' => 'Dokumentenextraktion',
+            ],
+            'en' => [
+                'emission_entry' => 'Emission entry assistance',
+                'action_recommendation' => 'Action recommendations',
+                'factor_explanation' => 'Factor explanation',
+                'report_narrative' => 'Report narrative',
+                'general_helper' => 'General help',
+                'transaction_categorization' => 'Transaction categorization',
+                'document_extraction' => 'Document extraction',
+            ],
+            default => [ // 'fr'
+                'emission_entry' => 'Aide à la saisie des émissions',
+                'action_recommendation' => 'Recommandations d\'actions',
+                'factor_explanation' => 'Explication des facteurs',
+                'report_narrative' => 'Narratif de rapport',
+                'general_helper' => 'Aide générale',
+                'transaction_categorization' => 'Catégorisation des transactions',
+                'document_extraction' => 'Extraction de documents',
+            ],
+        };
     }
 }
