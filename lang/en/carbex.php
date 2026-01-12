@@ -25,6 +25,7 @@ return [
     'previous' => 'Previous',
     'search' => 'Search',
     'filter' => 'Filter',
+    'reset_filters' => 'Reset filters',
     'export' => 'Export',
     'import' => 'Import',
     'download' => 'Download',
@@ -1730,6 +1731,75 @@ return [
         'cta_text' => 'You too, measure and reduce your carbon footprint.',
         'start_free' => 'Start for free',
         'all_rights_reserved' => 'All rights reserved.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers Management
+    |--------------------------------------------------------------------------
+    */
+
+    'suppliers' => [
+        'title' => 'Supplier Management',
+        'description' => 'Manage your suppliers and collect their carbon emission data.',
+        'import_csv' => 'Import CSV',
+        'add_supplier' => 'Add supplier',
+        'edit_supplier' => 'Edit supplier',
+        'search_placeholder' => 'Search suppliers...',
+        'all_statuses' => 'All statuses',
+        'all_quality' => 'All quality levels',
+        'empty' => 'No suppliers found',
+        'add_first' => 'Add your first supplier',
+        'confirm_delete' => 'Are you sure you want to delete this supplier?',
+
+        // Table headers
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone',
+        'sector' => 'Sector',
+        'annual_spend' => 'Annual spend',
+        'data_quality' => 'Data quality',
+        'country' => 'Country',
+        'contact_name' => 'Contact name',
+        'contact_email' => 'Contact email',
+        'notes' => 'Notes',
+
+        // Stats
+        'stats' => [
+            'total' => 'Total suppliers',
+            'active' => 'Active',
+            'with_data' => 'With data',
+            'pending' => 'Pending',
+            'total_spend' => 'Total spend',
+        ],
+
+        // Status labels
+        'status' => [
+            'pending' => 'Pending',
+            'invited' => 'Invited',
+            'active' => 'Active',
+            'inactive' => 'Inactive',
+        ],
+
+        // Data quality labels
+        'quality' => [
+            'none' => 'No data',
+            'estimated' => 'Estimated',
+            'supplier_specific' => 'Supplier specific',
+            'verified' => 'Verified',
+        ],
+
+        // Invitation
+        'invite' => 'Invite',
+        'send_invitation' => 'Send invitation',
+        'due_date' => 'Due date',
+        'message' => 'Custom message',
+        'send' => 'Send',
+
+        // CSV Import
+        'csv_file' => 'CSV file',
+        'csv_format' => 'Expected format (semicolon separator):',
+        'download_template' => 'Download template',
     ],
 
 ];

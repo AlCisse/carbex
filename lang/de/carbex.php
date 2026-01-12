@@ -31,6 +31,7 @@ return [
     'previous' => 'Zurück',
     'search' => 'Suchen',
     'filter' => 'Filtern',
+    'reset_filters' => 'Filter zurücksetzen',
     'export' => 'Exportieren',
     'import' => 'Importieren',
     'download' => 'Herunterladen',
@@ -2069,6 +2070,75 @@ return [
 
         'din_en_iso' => 'DIN EN ISO 14064',
         'din_en_iso_desc' => 'Internationale Norm für Treibhausgasbilanzierung und -verifizierung',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers Management
+    |--------------------------------------------------------------------------
+    */
+
+    'suppliers' => [
+        'title' => 'Lieferantenverwaltung',
+        'description' => 'Verwalten Sie Ihre Lieferanten und erfassen Sie deren CO2-Emissionsdaten.',
+        'import_csv' => 'CSV importieren',
+        'add_supplier' => 'Lieferant hinzufügen',
+        'edit_supplier' => 'Lieferant bearbeiten',
+        'search_placeholder' => 'Lieferanten suchen...',
+        'all_statuses' => 'Alle Status',
+        'all_quality' => 'Alle Qualitätsstufen',
+        'empty' => 'Keine Lieferanten gefunden',
+        'add_first' => 'Ersten Lieferanten hinzufügen',
+        'confirm_delete' => 'Sind Sie sicher, dass Sie diesen Lieferanten löschen möchten?',
+
+        // Table headers
+        'name' => 'Name',
+        'email' => 'E-Mail',
+        'phone' => 'Telefon',
+        'sector' => 'Branche',
+        'annual_spend' => 'Jährliche Ausgaben',
+        'data_quality' => 'Datenqualität',
+        'country' => 'Land',
+        'contact_name' => 'Kontaktname',
+        'contact_email' => 'Kontakt-E-Mail',
+        'notes' => 'Notizen',
+
+        // Stats
+        'stats' => [
+            'total' => 'Lieferanten gesamt',
+            'active' => 'Aktiv',
+            'with_data' => 'Mit Daten',
+            'pending' => 'Ausstehend',
+            'total_spend' => 'Gesamtausgaben',
+        ],
+
+        // Status labels
+        'status' => [
+            'pending' => 'Ausstehend',
+            'invited' => 'Eingeladen',
+            'active' => 'Aktiv',
+            'inactive' => 'Inaktiv',
+        ],
+
+        // Data quality labels
+        'quality' => [
+            'none' => 'Keine Daten',
+            'estimated' => 'Geschätzt',
+            'supplier_specific' => 'Lieferantenspezifisch',
+            'verified' => 'Verifiziert',
+        ],
+
+        // Invitation
+        'invite' => 'Einladen',
+        'send_invitation' => 'Einladung senden',
+        'due_date' => 'Fälligkeitsdatum',
+        'message' => 'Persönliche Nachricht',
+        'send' => 'Senden',
+
+        // CSV Import
+        'csv_file' => 'CSV-Datei',
+        'csv_format' => 'Erwartetes Format (Semikolon-Trennzeichen):',
+        'download_template' => 'Vorlage herunterladen',
     ],
 
 ];

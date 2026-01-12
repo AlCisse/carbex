@@ -31,6 +31,7 @@ return [
     'previous' => 'Précédent',
     'search' => 'Rechercher',
     'filter' => 'Filtrer',
+    'reset_filters' => 'Réinitialiser les filtres',
     'export' => 'Exporter',
     'import' => 'Importer',
     'download' => 'Télécharger',
@@ -2019,6 +2020,75 @@ return [
         'cta_text' => 'Vous aussi, mesurez et réduisez votre empreinte carbone.',
         'start_free' => 'Commencer gratuitement',
         'all_rights_reserved' => 'Tous droits réservés.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers Management
+    |--------------------------------------------------------------------------
+    */
+
+    'suppliers' => [
+        'title' => 'Gestion des fournisseurs',
+        'description' => 'Gérez vos fournisseurs et collectez leurs données d\'émissions carbone.',
+        'import_csv' => 'Importer CSV',
+        'add_supplier' => 'Ajouter un fournisseur',
+        'edit_supplier' => 'Modifier le fournisseur',
+        'search_placeholder' => 'Rechercher un fournisseur...',
+        'all_statuses' => 'Tous les statuts',
+        'all_quality' => 'Toutes qualités',
+        'empty' => 'Aucun fournisseur trouvé',
+        'add_first' => 'Ajouter votre premier fournisseur',
+        'confirm_delete' => 'Êtes-vous sûr de vouloir supprimer ce fournisseur ?',
+
+        // Table headers
+        'name' => 'Nom',
+        'email' => 'Email',
+        'phone' => 'Téléphone',
+        'sector' => 'Secteur',
+        'annual_spend' => 'Dépenses annuelles',
+        'data_quality' => 'Qualité des données',
+        'country' => 'Pays',
+        'contact_name' => 'Nom du contact',
+        'contact_email' => 'Email du contact',
+        'notes' => 'Notes',
+
+        // Stats
+        'stats' => [
+            'total' => 'Total fournisseurs',
+            'active' => 'Actifs',
+            'with_data' => 'Avec données',
+            'pending' => 'En attente',
+            'total_spend' => 'Dépenses totales',
+        ],
+
+        // Status labels
+        'status' => [
+            'pending' => 'En attente',
+            'invited' => 'Invité',
+            'active' => 'Actif',
+            'inactive' => 'Inactif',
+        ],
+
+        // Data quality labels
+        'quality' => [
+            'none' => 'Aucune donnée',
+            'estimated' => 'Estimée',
+            'supplier_specific' => 'Spécifique fournisseur',
+            'verified' => 'Vérifiée',
+        ],
+
+        // Invitation
+        'invite' => 'Inviter',
+        'send_invitation' => 'Envoyer une invitation',
+        'due_date' => 'Date limite',
+        'message' => 'Message personnalisé',
+        'send' => 'Envoyer',
+
+        // CSV Import
+        'csv_file' => 'Fichier CSV',
+        'csv_format' => 'Format attendu (séparateur point-virgule) :',
+        'download_template' => 'Télécharger le modèle',
     ],
 
 ];
