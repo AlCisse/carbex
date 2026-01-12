@@ -47,11 +47,11 @@ class FactorSelector extends Component
 
     // Source tabs as per constitution 2.7
     public array $tabs = [
-        'all' => 'emissions.factors.tabs.all',
-        'ademe' => 'emissions.factors.tabs.ademe',
-        'uba' => 'emissions.factors.tabs.uba',
-        'ghg_protocol' => 'emissions.factors.tabs.ghg',
-        'custom' => 'emissions.factors.tabs.custom',
+        'all' => 'carbex.emissions.factors.tabs.all',
+        'ademe' => 'carbex.emissions.factors.tabs.ademe',
+        'uba' => 'carbex.emissions.factors.tabs.uba',
+        'ghg_protocol' => 'carbex.emissions.factors.tabs.ghg',
+        'custom' => 'carbex.emissions.factors.tabs.custom',
     ];
 
     protected $queryString = [
@@ -239,25 +239,25 @@ class FactorSelector extends Component
     public function getCountriesProperty(): array
     {
         return [
-            '' => __('emissions.factors.filters.all_countries'),
-            'FR' => __('emissions.factors.countries.fr'),
-            'DE' => __('emissions.factors.countries.de'),
-            'EU' => __('emissions.factors.countries.eu'),
-            'GB' => __('emissions.factors.countries.gb'),
-            'US' => __('emissions.factors.countries.us'),
+            '' => __('carbex.emissions.factors.filters.all_countries'),
+            'FR' => __('carbex.emissions.factors.countries.fr'),
+            'DE' => __('carbex.emissions.factors.countries.de'),
+            'EU' => __('carbex.emissions.factors.countries.eu'),
+            'GB' => __('carbex.emissions.factors.countries.gb'),
+            'US' => __('carbex.emissions.factors.countries.us'),
         ];
     }
 
     public function getUnitsProperty(): array
     {
         return [
-            '' => __('emissions.factors.filters.all_units'),
+            '' => __('carbex.emissions.factors.filters.all_units'),
             'kWh' => 'kWh',
             'MWh' => 'MWh',
-            'L' => __('emissions.factors.units.liter'),
+            'L' => __('carbex.emissions.factors.units.liter'),
             'm3' => 'm³',
             'kg' => 'kg',
-            't' => __('emissions.factors.units.tonne'),
+            't' => __('carbex.emissions.factors.units.tonne'),
             'km' => 'km',
             'tkm' => 'tonne.km',
             'EUR' => 'Euro',
