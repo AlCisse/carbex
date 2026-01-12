@@ -1553,6 +1553,30 @@ return [
             'document_type' => 'Type de document',
             'suggested_category' => 'Catégorie suggérée',
         ],
+
+        // Document types
+        'types' => [
+            'invoice' => 'Facture',
+            'energy_bill' => 'Facture énergie',
+            'fuel_receipt' => 'Ticket carburant',
+            'transport_invoice' => 'Facture transport',
+            'purchase_order' => 'Bon de commande',
+            'bank_statement' => 'Relevé bancaire',
+            'expense_report' => 'Note de frais',
+            'other' => 'Autre',
+        ],
+
+        // Processing statuses
+        'statuses' => [
+            'pending' => 'En attente',
+            'processing' => 'En cours',
+            'completed' => 'Terminé',
+            'failed' => 'Échec',
+            'needs_review' => 'À réviser',
+        ],
+
+        // File formats
+        'file_formats' => 'PDF, Images, Excel, CSV (max 10 Mo)',
     ],
 
     /*

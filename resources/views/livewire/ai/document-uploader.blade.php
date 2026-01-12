@@ -79,7 +79,7 @@
                                 </svg>
                                 <span class="font-medium text-gray-700">{{ __('carbex.documents.drop_files') }}</span>
                                 <span class="text-sm text-gray-500">{{ __('carbex.documents.or_click') }}</span>
-                                <span class="text-xs text-gray-400">PDF, Images, Excel, CSV (max 10MB)</span>
+                                <span class="text-xs text-gray-400">{{ __('carbex.documents.file_formats') }}</span>
                             @endif
                         </span>
                         <input
@@ -137,7 +137,7 @@
                         type="button"
                         class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                     >
-                        {{ __('carbex.cancel') }}
+                        {{ __('carbex.common.cancel') }}
                     </button>
                     <button
                         type="submit"
@@ -291,7 +291,7 @@
                                         wire:confirm="{{ __('carbex.documents.confirm_delete') }}"
                                         type="button"
                                         class="p-2 text-gray-400 hover:text-red-600 rounded-md hover:bg-red-50"
-                                        title="{{ __('carbex.delete') }}"
+                                        title="{{ __('carbex.common.delete') }}"
                                     >
                                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -434,7 +434,7 @@
                             type="button"
                             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
                         >
-                            {{ __('carbex.cancel') }}
+                            {{ __('carbex.common.cancel') }}
                         </button>
                     </div>
                 </div>

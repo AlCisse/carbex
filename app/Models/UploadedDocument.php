@@ -458,25 +458,25 @@ class UploadedDocument extends Model
     public static function getDocumentTypes(): array
     {
         return [
-            self::TYPE_INVOICE => 'Facture',
-            self::TYPE_ENERGY_BILL => 'Facture énergie',
-            self::TYPE_FUEL_RECEIPT => 'Ticket carburant',
-            self::TYPE_TRANSPORT_INVOICE => 'Facture transport',
-            self::TYPE_PURCHASE_ORDER => 'Bon de commande',
-            self::TYPE_BANK_STATEMENT => 'Relevé bancaire',
-            self::TYPE_EXPENSE_REPORT => 'Note de frais',
-            self::TYPE_OTHER => 'Autre',
+            self::TYPE_INVOICE => __('carbex.documents.types.invoice'),
+            self::TYPE_ENERGY_BILL => __('carbex.documents.types.energy_bill'),
+            self::TYPE_FUEL_RECEIPT => __('carbex.documents.types.fuel_receipt'),
+            self::TYPE_TRANSPORT_INVOICE => __('carbex.documents.types.transport_invoice'),
+            self::TYPE_PURCHASE_ORDER => __('carbex.documents.types.purchase_order'),
+            self::TYPE_BANK_STATEMENT => __('carbex.documents.types.bank_statement'),
+            self::TYPE_EXPENSE_REPORT => __('carbex.documents.types.expense_report'),
+            self::TYPE_OTHER => __('carbex.documents.types.other'),
         ];
     }
 
     public static function getProcessingStatuses(): array
     {
         return [
-            self::STATUS_PENDING => 'En attente',
-            self::STATUS_PROCESSING => 'En cours',
-            self::STATUS_COMPLETED => 'Terminé',
-            self::STATUS_FAILED => 'Échec',
-            self::STATUS_NEEDS_REVIEW => 'À réviser',
+            self::STATUS_PENDING => __('carbex.documents.statuses.pending'),
+            self::STATUS_PROCESSING => __('carbex.documents.statuses.processing'),
+            self::STATUS_COMPLETED => __('carbex.documents.statuses.completed'),
+            self::STATUS_FAILED => __('carbex.documents.statuses.failed'),
+            self::STATUS_NEEDS_REVIEW => __('carbex.documents.statuses.needs_review'),
         ];
     }
 }

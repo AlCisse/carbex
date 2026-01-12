@@ -1288,6 +1288,30 @@ return [
             'document_type' => 'Document type',
             'suggested_category' => 'Suggested category',
         ],
+
+        // Document types
+        'types' => [
+            'invoice' => 'Invoice',
+            'energy_bill' => 'Energy bill',
+            'fuel_receipt' => 'Fuel receipt',
+            'transport_invoice' => 'Transport invoice',
+            'purchase_order' => 'Purchase order',
+            'bank_statement' => 'Bank statement',
+            'expense_report' => 'Expense report',
+            'other' => 'Other',
+        ],
+
+        // Processing statuses
+        'statuses' => [
+            'pending' => 'Pending',
+            'processing' => 'Processing',
+            'completed' => 'Completed',
+            'failed' => 'Failed',
+            'needs_review' => 'Needs review',
+        ],
+
+        // File formats
+        'file_formats' => 'PDF, Images, Excel, CSV (max 10MB)',
     ],
 
     'ai' => [

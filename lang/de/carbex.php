@@ -1462,6 +1462,30 @@ return [
             'document_type' => 'Dokumenttyp',
             'suggested_category' => 'Vorgeschlagene Kategorie',
         ],
+
+        // Document types
+        'types' => [
+            'invoice' => 'Rechnung',
+            'energy_bill' => 'Energierechnung',
+            'fuel_receipt' => 'Tankbeleg',
+            'transport_invoice' => 'Transportrechnung',
+            'purchase_order' => 'Bestellung',
+            'bank_statement' => 'Kontoauszug',
+            'expense_report' => 'Spesenabrechnung',
+            'other' => 'Sonstiges',
+        ],
+
+        // Processing statuses
+        'statuses' => [
+            'pending' => 'Ausstehend',
+            'processing' => 'Wird verarbeitet',
+            'completed' => 'Abgeschlossen',
+            'failed' => 'Fehlgeschlagen',
+            'needs_review' => 'Überprüfung erforderlich',
+        ],
+
+        // File formats
+        'file_formats' => 'PDF, Bilder, Excel, CSV (max 10 MB)',
     ],
 
     /*
