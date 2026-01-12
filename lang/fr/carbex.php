@@ -1682,6 +1682,9 @@ return [
         'data_source_benchmarks' => '• Meilleures pratiques du marché',
         'privacy' => 'Confidentialité',
         'privacy_description' => 'Vos données restent confidentielles et ne sont utilisées que pour générer vos recommandations personnalisées.',
+        'analysis_error' => 'Une erreur est survenue lors de l\'analyse. Veuillez réessayer.',
+        'no_assessment' => 'Aucun bilan trouvé. Veuillez d\'abord créer un bilan.',
+        'assessment_year' => 'Bilan :year',
 
         // Emission Helper
         'helper' => [
@@ -1718,6 +1721,40 @@ return [
             'ai_not_available' => 'L\'IA n\'est pas disponible sur votre plan',
             'upgrade_premium' => 'Passer à Premium',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Insights
+    |--------------------------------------------------------------------------
+    */
+
+    'insights' => [
+        'dominant_scope' => 'Scope d\'émission dominant',
+        'dominant_scope_message' => 'Le Scope :scope représente :percent% de vos émissions totales.',
+        'scope3_title' => 'Les émissions Scope 3 sont significatives',
+        'scope3_message' => 'Le Scope 3 représente :percent% de vos émissions. Concentrez-vous sur les fournisseurs et les déplacements professionnels.',
+        'intensity_title' => 'Intensité carbone',
+        'intensity_message' => 'Votre intensité carbone est de :value tCO₂e par million d\'euros de chiffre d\'affaires.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Recommendations
+    |--------------------------------------------------------------------------
+    */
+
+    'recommendations' => [
+        'renewable_energy' => 'Passer aux énergies renouvelables',
+        'renewable_energy_desc' => 'Envisagez de changer pour un fournisseur d\'énergie verte ou d\'installer des panneaux solaires pour réduire vos émissions Scope 2.',
+        'fleet_optimization' => 'Optimiser votre flotte de véhicules',
+        'fleet_optimization_desc' => 'Transition vers des véhicules électriques ou hybrides et optimisation des itinéraires pour réduire la consommation de carburant.',
+        'supplier_engagement' => 'Engager vos fournisseurs',
+        'supplier_engagement_desc' => 'Travaillez avec vos fournisseurs pour réduire leur empreinte carbone et collecter les données d\'émission.',
+        'remote_work' => 'Encourager le télétravail',
+        'remote_work_desc' => 'Permettez aux employés de travailler depuis chez eux pour réduire les émissions liées aux déplacements.',
+        'energy_efficiency' => 'Améliorer l\'efficacité énergétique',
+        'energy_efficiency_desc' => 'Passage à l\'éclairage LED, amélioration de l\'isolation et optimisation des systèmes de chauffage/climatisation.',
     ],
 
     /*

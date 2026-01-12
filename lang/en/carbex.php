@@ -1410,6 +1410,9 @@ return [
         'data_source_benchmarks' => '• Market best practices',
         'privacy' => 'Privacy',
         'privacy_description' => 'Your data remains confidential and is only used to generate your personalized recommendations.',
+        'analysis_error' => 'An error occurred during analysis. Please try again.',
+        'no_assessment' => 'No assessment found. Please create an assessment first.',
+        'assessment_year' => 'Assessment :year',
 
         'helper' => [
             'current_category' => 'Current category',
@@ -1443,6 +1446,40 @@ return [
             'ai_not_available' => 'AI is not available on your plan',
             'upgrade_premium' => 'Upgrade to Premium',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Insights
+    |--------------------------------------------------------------------------
+    */
+
+    'insights' => [
+        'dominant_scope' => 'Dominant emission scope',
+        'dominant_scope_message' => 'Scope :scope represents :percent% of your total emissions.',
+        'scope3_title' => 'Scope 3 emissions are significant',
+        'scope3_message' => 'Scope 3 represents :percent% of your emissions. Focus on suppliers and business travel.',
+        'intensity_title' => 'Carbon intensity',
+        'intensity_message' => 'Your carbon intensity is :value tCO₂e per million euros of revenue.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Recommendations
+    |--------------------------------------------------------------------------
+    */
+
+    'recommendations' => [
+        'renewable_energy' => 'Switch to renewable energy',
+        'renewable_energy_desc' => 'Consider switching to a green energy supplier or installing solar panels to reduce your Scope 2 emissions.',
+        'fleet_optimization' => 'Optimize your vehicle fleet',
+        'fleet_optimization_desc' => 'Transition to electric or hybrid vehicles and optimize routes to reduce fuel consumption.',
+        'supplier_engagement' => 'Engage with suppliers',
+        'supplier_engagement_desc' => 'Work with suppliers to reduce their carbon footprint and collect emission data.',
+        'remote_work' => 'Encourage remote work',
+        'remote_work_desc' => 'Allow employees to work from home to reduce commuting emissions.',
+        'energy_efficiency' => 'Improve energy efficiency',
+        'energy_efficiency_desc' => 'Upgrade to LED lighting, improve insulation, and optimize heating/cooling systems.',
     ],
 
     /*

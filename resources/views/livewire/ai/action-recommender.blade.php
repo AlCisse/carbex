@@ -31,7 +31,7 @@
                 @endif
                 @if($assessmentYear)
                     <span class="px-3 py-1 text-sm font-medium text-white bg-white/20 rounded-full">
-                        {{ __('carbex.assessment.year') }} {{ $assessmentYear }}
+                        {{ __('carbex.ai.assessment_year', ['year' => $assessmentYear]) }}
                     </span>
                 @endif
             </div>

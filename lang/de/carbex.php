@@ -1590,6 +1590,9 @@ return [
         'data_source_benchmarks' => '• Best Practices am Markt',
         'privacy' => 'Datenschutz',
         'privacy_description' => 'Ihre Daten bleiben vertraulich und werden nur zur Generierung Ihrer personalisierten Empfehlungen verwendet.',
+        'analysis_error' => 'Bei der Analyse ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.',
+        'no_assessment' => 'Keine Bewertung gefunden. Bitte erstellen Sie zuerst eine Bewertung.',
+        'assessment_year' => 'Bewertung :year',
 
         'helper' => [
             'current_category' => 'Aktuelle Kategorie',
@@ -1623,6 +1626,40 @@ return [
             'ai_not_available' => 'KI ist in Ihrem Plan nicht verfügbar',
             'upgrade_premium' => 'Auf Premium upgraden',
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Insights
+    |--------------------------------------------------------------------------
+    */
+
+    'insights' => [
+        'dominant_scope' => 'Dominanter Emissionsbereich',
+        'dominant_scope_message' => 'Scope :scope macht :percent% Ihrer Gesamtemissionen aus.',
+        'scope3_title' => 'Scope 3 Emissionen sind signifikant',
+        'scope3_message' => 'Scope 3 macht :percent% Ihrer Emissionen aus. Fokussieren Sie sich auf Lieferanten und Geschäftsreisen.',
+        'intensity_title' => 'CO2-Intensität',
+        'intensity_message' => 'Ihre CO2-Intensität beträgt :value tCO₂e pro Million Euro Umsatz.',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | AI Recommendations
+    |--------------------------------------------------------------------------
+    */
+
+    'recommendations' => [
+        'renewable_energy' => 'Auf erneuerbare Energien umsteigen',
+        'renewable_energy_desc' => 'Erwägen Sie den Wechsel zu einem Ökostromanbieter oder die Installation von Solaranlagen, um Ihre Scope 2 Emissionen zu reduzieren.',
+        'fleet_optimization' => 'Fahrzeugflotte optimieren',
+        'fleet_optimization_desc' => 'Umstellung auf Elektro- oder Hybridfahrzeuge und Routenoptimierung zur Reduzierung des Kraftstoffverbrauchs.',
+        'supplier_engagement' => 'Lieferanten einbinden',
+        'supplier_engagement_desc' => 'Arbeiten Sie mit Lieferanten zusammen, um deren CO2-Fußabdruck zu reduzieren und Emissionsdaten zu sammeln.',
+        'remote_work' => 'Homeoffice fördern',
+        'remote_work_desc' => 'Ermöglichen Sie Mitarbeitern das Arbeiten von zu Hause, um Pendelemissionen zu reduzieren.',
+        'energy_efficiency' => 'Energieeffizienz verbessern',
+        'energy_efficiency_desc' => 'Umrüstung auf LED-Beleuchtung, Verbesserung der Isolierung und Optimierung von Heizungs-/Kühlsystemen.',
     ],
 
     /*
