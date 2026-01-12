@@ -1051,6 +1051,7 @@ return [
 
     'assessments' => [
         'title' => 'Meine CO2-Bilanzen',
+        'my_assessments' => 'Meine Bilanzen',
         'subtitle' => 'Verwalten Sie Ihre jährlichen CO2-Bilanzen',
         'new' => 'Neue Bilanz starten',
         'edit' => 'Bilanz bearbeiten',

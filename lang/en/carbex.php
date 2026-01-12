@@ -931,6 +931,7 @@ return [
 
     'assessments' => [
         'title' => 'My Carbon Footprints',
+        'my_assessments' => 'My Assessments',
         'subtitle' => 'Manage your annual carbon footprints',
         'new' => 'Start new assessment',
         'edit' => 'Edit assessment',

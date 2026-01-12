@@ -1069,6 +1069,7 @@ return [
 
     'assessments' => [
         'title' => 'Mes Bilans Carbone',
+        'my_assessments' => 'Mes Bilans',
         'subtitle' => 'Gérez vos bilans carbone annuels',
         'new' => 'Démarrer un nouveau bilan',
         'edit' => 'Modifier le bilan',
