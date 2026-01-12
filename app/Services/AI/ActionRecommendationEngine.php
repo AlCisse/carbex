@@ -147,7 +147,6 @@ class ActionRecommendationEngine
     public function estimateImpact(Action $action, Assessment $assessment): array
     {
         $totalEmissions = EmissionRecord::where('assessment_id', $assessment->id)
-            ->where('status', 'completed')
             ->sum('co2e_kg');
 
         // Estimation basée sur le type d'action et la catégorie
@@ -198,7 +197,6 @@ class ActionRecommendationEngine
     protected function getEmissionsSummary(Assessment $assessment): array
     {
         $records = EmissionRecord::where('assessment_id', $assessment->id)
-            ->where('status', 'completed')
             ->get();
 
         $scope1 = $records->where('scope', 1)->sum('co2e_kg');
