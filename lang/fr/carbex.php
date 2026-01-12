@@ -348,6 +348,10 @@ return [
         'reports' => 'Rapports',
         'settings' => 'Paramètres',
         'help' => 'Aide',
+        'notifications' => 'Notifications',
+        'bookmarks' => 'Signets',
+        'my_profile' => 'Mon profil',
+        'logout' => 'Déconnexion',
     ],
 
     'navigation' => [
@@ -930,6 +934,10 @@ return [
         'trial' => 'Essai',
         'trial_ends' => 'Fin de l\'essai',
         'trial_started' => 'Votre essai gratuit de 15 jours a commencé !',
+        'free_trial' => 'Essai Gratuit',
+        'days_remaining' => 'jours restants',
+        'plan_premium' => 'Plan Premium',
+        'plan_advanced' => 'Plan Avancé',
 
         // Payment modal
         'checkout_title' => 'Finaliser l\'abonnement',
@@ -1590,6 +1598,16 @@ return [
         'ai_help' => 'Aide IA',
         'close' => 'Fermer',
         'ask_question' => 'Posez votre question...',
+        'not_logged_in' => 'Non connecté',
+        'not_available' => 'IA non disponible',
+
+        // Quick prompts
+        'quick_prompts' => [
+            'emission_sources' => 'Quelles sources d\'émission dois-je inclure ?',
+            'consumption_data' => 'Comment trouver mes données de consommation ?',
+            'which_unit' => 'Quelle unité utiliser ?',
+            'emission_factors' => 'Expliquer les facteurs d\'émission',
+        ],
 
         // Analysis Page
         'analysis_title' => 'Analyse IA',

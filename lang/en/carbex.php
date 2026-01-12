@@ -320,6 +320,10 @@ return [
         'reports' => 'Reports',
         'settings' => 'Settings',
         'help' => 'Help',
+        'notifications' => 'Notifications',
+        'bookmarks' => 'Bookmarks',
+        'my_profile' => 'My Profile',
+        'logout' => 'Logout',
     ],
 
     'navigation' => [
@@ -818,6 +822,10 @@ return [
         'trial' => 'Trial',
         'trial_ends' => 'Trial ends',
         'trial_started' => 'Your 15-day free trial has started!',
+        'free_trial' => 'Free Trial',
+        'days_remaining' => 'days remaining',
+        'plan_premium' => 'Premium Plan',
+        'plan_advanced' => 'Advanced Plan',
         'checkout_title' => 'Complete subscription',
         'billing_period' => 'Billing period',
         'promo_code' => 'Promo code',
@@ -1318,6 +1326,16 @@ return [
         'ai_help' => 'AI Help',
         'close' => 'Close',
         'ask_question' => 'Ask your question...',
+        'not_logged_in' => 'Not logged in',
+        'not_available' => 'AI not available',
+
+        // Quick prompts
+        'quick_prompts' => [
+            'emission_sources' => 'Which emission sources should I include?',
+            'consumption_data' => 'How do I find my consumption data?',
+            'which_unit' => 'Which unit should I use?',
+            'emission_factors' => 'Explain emission factors',
+        ],
 
         // Analysis Page
         'analysis_title' => 'AI Analysis',

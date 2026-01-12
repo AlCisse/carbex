@@ -321,10 +321,10 @@ class EmissionHelper extends Component
     public function getQuickPromptsProperty(): array
     {
         return [
-            'Quelles sources d\'émission dois-je inclure ?',
-            'Comment trouver mes données de consommation ?',
-            'Quelle unité utiliser ?',
-            'Expliquer les facteurs d\'émission',
+            __('carbex.ai.quick_prompts.emission_sources'),
+            __('carbex.ai.quick_prompts.consumption_data'),
+            __('carbex.ai.quick_prompts.which_unit'),
+            __('carbex.ai.quick_prompts.emission_factors'),
         ];
     }
 

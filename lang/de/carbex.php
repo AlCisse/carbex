@@ -350,6 +350,10 @@ return [
         'reports' => 'Berichte',
         'settings' => 'Einstellungen',
         'help' => 'Hilfe',
+        'notifications' => 'Benachrichtigungen',
+        'bookmarks' => 'Lesezeichen',
+        'my_profile' => 'Mein Profil',
+        'logout' => 'Abmelden',
     ],
 
     'navigation' => [
@@ -926,6 +930,10 @@ return [
         'trial' => 'Testversion',
         'trial_ends' => 'Testphase endet',
         'trial_started' => 'Ihre 15-tägige kostenlose Testphase hat begonnen!',
+        'free_trial' => 'Kostenlose Testversion',
+        'days_remaining' => 'Tage verbleibend',
+        'plan_premium' => 'Premium-Plan',
+        'plan_advanced' => 'Erweiterter Plan',
         'checkout_title' => 'Abonnement abschließen',
         'billing_period' => 'Abrechnungszeitraum',
         'promo_code' => 'Promo-Code',
@@ -1498,6 +1506,16 @@ return [
         'ai_help' => 'KI-Hilfe',
         'close' => 'Schließen',
         'ask_question' => 'Stellen Sie Ihre Frage...',
+        'not_logged_in' => 'Nicht angemeldet',
+        'not_available' => 'KI nicht verfügbar',
+
+        // Quick prompts
+        'quick_prompts' => [
+            'emission_sources' => 'Welche Emissionsquellen soll ich einbeziehen?',
+            'consumption_data' => 'Wie finde ich meine Verbrauchsdaten?',
+            'which_unit' => 'Welche Einheit soll ich verwenden?',
+            'emission_factors' => 'Emissionsfaktoren erklären',
+        ],
 
         // Analysis Page
         'analysis_title' => 'KI-Analyse',
