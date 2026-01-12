@@ -1049,6 +1049,7 @@ return [
     'support' => [
         'title' => 'Carbex Support',
         'online' => 'Online',
+        'online_support' => 'Online support',
         'offline' => 'Offline',
         'clear_chat' => 'Clear conversation',
         'start_conversation' => 'Start the conversation...',

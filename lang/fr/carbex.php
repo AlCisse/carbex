@@ -1219,6 +1219,7 @@ return [
     'support' => [
         'title' => 'Support Carbex',
         'online' => 'En ligne',
+        'online_support' => 'Support en ligne',
         'offline' => 'Hors ligne',
         'clear_chat' => 'Effacer la conversation',
         'start_conversation' => 'Commencez la conversation...',

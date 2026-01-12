@@ -1193,6 +1193,7 @@ return [
     'support' => [
         'title' => 'Carbex Support',
         'online' => 'Online',
+        'online_support' => 'Online-Support',
         'offline' => 'Offline',
         'clear_chat' => 'Gespräch löschen',
         'start_conversation' => 'Gespräch starten...',
