@@ -3,7 +3,7 @@
 
     <x-slot name="footer">
         <p class="text-sm text-gray-600">
-            {{ __('carbex.auth.already_account') }}
+            {{ __('carbex.auth.already_have_account') }}
             <a href="{{ route('login') }}" class="font-semibold text-green-600 hover:text-green-500">
                 {{ __('carbex.auth.login_link') }}
             </a>

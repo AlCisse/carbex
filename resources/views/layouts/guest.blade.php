@@ -54,7 +54,7 @@
         <!-- Language Switcher -->
         <div class="mt-8 flex justify-center space-x-4 text-sm text-gray-500">
             <a href="?lang=fr" class="{{ app()->getLocale() === 'fr' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
-                Francais
+                Français
             </a>
             <span>|</span>
             <a href="?lang=de" class="{{ app()->getLocale() === 'de' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
