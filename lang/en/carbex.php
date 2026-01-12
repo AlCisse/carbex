@@ -297,6 +297,19 @@ return [
         'reset_password' => 'Reset password',
         'send_reset_link' => 'Send reset link',
         'reset_link_sent' => 'A reset link has been sent.',
+        'step_account' => 'Account',
+        'step_organization' => 'Organization',
+        'organization_name' => 'Organization name',
+        'country' => 'Country',
+        'sector' => 'Industry sector',
+        'select_sector' => 'Select a sector',
+        'organization_size' => 'Company size',
+        'select_size' => 'Select a size',
+        'employees' => 'employees',
+        'password_requirements' => 'Minimum 8 characters',
+        'accept_terms_html' => 'I accept the <a href="/legal/terms" class="text-green-600 hover:underline">terms of service</a>',
+        'accept_privacy_html' => 'I accept the <a href="/legal/privacy" class="text-green-600 hover:underline">privacy policy</a>',
+        'create_account' => 'Create my account',
     ],
 
     'nav' => [
@@ -1405,6 +1418,7 @@ return [
 
         'name' => 'Name',
         'code' => 'Code',
+        'code_hint' => 'Optional unique code (e.g., PAR-01)',
         'type' => 'Type',
         'address' => 'Address',
         'city' => 'City',
@@ -1414,6 +1428,26 @@ return [
         'energy_rating' => 'Energy rating',
         'construction_year' => 'Construction year',
         'heating_type' => 'Heating type',
+        'employee_count' => 'Number of employees',
+        'electricity_provider' => 'Electricity provider',
+        'renewable_energy' => 'Renewable energy',
+        'renewable_percentage' => 'Renewable energy percentage',
+        'is_primary' => 'Primary site',
+        'primary' => 'Primary',
+        'set_as_primary' => 'Set as primary site',
+        'edit' => 'Edit site',
+        'delete_title' => 'Delete site',
+        'delete_confirm' => 'Are you sure you want to delete this site? This action cannot be undone.',
+
+        // Site types
+        'types' => [
+            'office' => 'Office',
+            'warehouse' => 'Warehouse',
+            'factory' => 'Factory',
+            'store' => 'Store',
+            'datacenter' => 'Data center',
+            'other' => 'Other',
+        ],
 
         'import' => [
             'title' => 'CSV Site Import',
@@ -1881,6 +1915,119 @@ return [
         'step2_desc' => 'Implement reduction actions to earn points',
         'step3_title' => 'Share your success',
         'step3_desc' => 'Display your badges on your website and social networks',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sectors
+    |--------------------------------------------------------------------------
+    */
+
+    'sectors' => [
+        'technology' => 'Technology',
+        'manufacturing' => 'Manufacturing',
+        'services' => 'Services',
+        'retail' => 'Retail',
+        'healthcare' => 'Healthcare',
+        'finance' => 'Finance',
+        'construction' => 'Construction',
+        'transport' => 'Transport',
+        'hospitality' => 'Hospitality',
+        'other' => 'Other',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cookies Consent (GDPR)
+    |--------------------------------------------------------------------------
+    */
+
+    'cookies' => [
+        'title' => 'Cookie Settings',
+        'description' => 'We use cookies to provide you with the best experience. Some cookies are essential for the site to function, while others help us improve it.',
+        'legal_notice' => 'According to GDPR Art. 7, we need your consent for non-essential cookies.',
+
+        'accept_all' => 'Accept all',
+        'essential_only' => 'Essential only',
+        'customize' => 'Customize',
+        'save_preferences' => 'Save preferences',
+
+        'essential_title' => 'Essential cookies',
+        'essential_desc' => 'These cookies are essential for the website to function. They enable basic features like page navigation and access to secure areas.',
+        'always_active' => 'Always active',
+
+        'functional_title' => 'Functional cookies',
+        'functional_desc' => 'These cookies enable advanced features like language preferences, timezone, and personalized display.',
+
+        'analytics_title' => 'Analytics cookies',
+        'analytics_desc' => 'These cookies help us understand how visitors interact with the website to improve it.',
+
+        'marketing_title' => 'Marketing cookies',
+        'marketing_desc' => 'These cookies are used to make advertising more relevant to you.',
+
+        'privacy_policy' => 'Privacy policy',
+        'legal_notice_link' => 'Legal notice',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | GDPR Data Rights
+    |--------------------------------------------------------------------------
+    */
+
+    'gdpr' => [
+        'title' => 'Privacy Settings',
+        'subtitle' => 'Manage your personal data according to GDPR',
+
+        // Consent Management (Art. 7 GDPR)
+        'consent_title' => 'Consent Management',
+        'consent_description' => 'Manage your consents for different types of data processing',
+        'consent_marketing' => 'Marketing communications',
+        'consent_analytics' => 'Usage analytics',
+        'consent_ai' => 'AI-powered features',
+
+        // Data Export (Art. 20 GDPR)
+        'export_data' => 'Export my data',
+        'export_description' => 'Download all your personal data in a portable format (Art. 20 GDPR)',
+        'export_button' => 'Download my data',
+        'export_processing' => 'Preparing export...',
+        'export_ready' => 'Your data export is ready for download.',
+
+        // Data Deletion (Art. 17 GDPR)
+        'delete_account' => 'Delete my account',
+        'delete_description' => 'Delete your account and all associated data (Art. 17 GDPR - Right to erasure)',
+        'delete_warning' => 'This action cannot be undone. All your data will be permanently deleted.',
+        'delete_button' => 'Permanently delete my account',
+        'delete_confirm_title' => 'Really delete account?',
+        'delete_confirm_message' => 'Please enter "DELETE" to confirm:',
+        'delete_confirm_word' => 'DELETE',
+
+        // Data Access (Art. 15 GDPR)
+        'access_title' => 'Right of access',
+        'access_description' => 'You have the right to access your stored personal data (Art. 15 GDPR)',
+
+        // Data Rectification (Art. 16 GDPR)
+        'rectification_title' => 'Rectification',
+        'rectification_description' => 'You can rectify inaccurate data at any time (Art. 16 GDPR)',
+
+        // Data Portability (Art. 20 GDPR)
+        'portability_title' => 'Data portability',
+        'portability_description' => 'Receive your data in a machine-readable format',
+
+        // Right to Object (Art. 21 GDPR)
+        'object_title' => 'Right to object',
+        'object_description' => 'You can object to the processing of your data (Art. 21 GDPR)',
+
+        // Legal References
+        'legal_basis' => 'Legal basis',
+        'legal_basis_consent' => 'Consent (Art. 6(1)(a) GDPR)',
+        'legal_basis_contract' => 'Contract performance (Art. 6(1)(b) GDPR)',
+        'legal_basis_legal' => 'Legal obligation (Art. 6(1)(c) GDPR)',
+        'legal_basis_legitimate' => 'Legitimate interest (Art. 6(1)(f) GDPR)',
+
+        // Contact
+        'dpo_contact' => 'Data Protection Officer',
+        'dpo_email' => 'dpo@carbex.fr',
     ],
 
 ];
