@@ -46,34 +46,38 @@ test.describe('Gamification & Dashboard Tests', () => {
     });
 
     test('should navigate to AI Analysis page', async ({ page }) => {
-        await page.getByRole('link', { name: /analyse ia/i }).click();
+        // Multi-language support: FR "Analyse IA", EN "AI Analysis", DE "KI-Analyse"
+        await page.getByRole('link', { name: /analyse ia|ai analysis|ki.analyse/i }).click();
         await page.waitForLoadState('networkidle');
 
         // Verify we're on AI analysis page
-        await expect(page.locator('body')).toContainText(/recommandation|analyse|ia/i);
+        await expect(page.locator('body')).toContainText(/recommandation|analyse|analysis|ia|ai|ki/i);
     });
 
     test('should navigate to Suppliers page', async ({ page }) => {
-        await page.getByRole('link', { name: /fournisseurs/i }).click();
+        // Multi-language support: FR "Fournisseurs", EN "Suppliers", DE "Lieferanten"
+        await page.getByRole('link', { name: /fournisseurs|suppliers|lieferanten/i }).click();
         await page.waitForLoadState('networkidle');
 
         // Verify we're on suppliers page
-        await expect(page.locator('body')).toContainText(/fournisseur/i);
+        await expect(page.locator('body')).toContainText(/fournisseur|supplier|lieferant/i);
     });
 
     test('should navigate to Reports page', async ({ page }) => {
-        await page.getByRole('link', { name: /rapports/i }).click();
+        // Multi-language support: FR "Rapports", EN "Reports", DE "Berichte"
+        await page.getByRole('link', { name: /rapports|reports|berichte/i }).click();
         await page.waitForLoadState('networkidle');
 
         // Verify we're on reports page
-        await expect(page.locator('body')).toContainText(/rapport|export/i);
+        await expect(page.locator('body')).toContainText(/rapport|report|bericht|export/i);
     });
 
     test('should navigate to Transition Plan page', async ({ page }) => {
-        await page.getByRole('link', { name: /plan de transition/i }).click();
+        // Multi-language support: FR "Plan de transition", EN "Transition Plan", DE "Übergangsplan"
+        await page.getByRole('link', { name: /plan de transition|transition plan|übergangsplan|transitionsplan/i }).click();
         await page.waitForLoadState('networkidle');
 
         // Verify we're on transition plan page
-        await expect(page.locator('body')).toContainText(/transition|plan|action/i);
+        await expect(page.locator('body')).toContainText(/transition|plan|action|übergang/i);
     });
 });
