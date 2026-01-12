@@ -572,6 +572,15 @@ class EuCountryFactorSeeder extends Seeder
             'ispra' => 'https://www.isprambiente.gov.it/',
         ];
 
+        // Build translations metadata for languages not in main columns
+        $translations = [];
+        foreach (['name_fr', 'name_nl', 'name_es', 'name_it'] as $key) {
+            if (isset($data[$key])) {
+                $lang = str_replace('name_', '', $key);
+                $translations[$lang] = ['name' => $data[$key]];
+            }
+        }
+
         return EmissionFactor::updateOrCreate(
             [
                 'source' => $source,
@@ -584,11 +593,7 @@ class EuCountryFactorSeeder extends Seeder
                 'country' => $country,
                 'name' => $data['name'],
                 'name_en' => $data['name_en'] ?? $data['name'],
-                'name_fr' => $data['name_fr'] ?? null,
                 'name_de' => $data['name_de'] ?? null,
-                'name_nl' => $data['name_nl'] ?? null,
-                'name_es' => $data['name_es'] ?? null,
-                'name_it' => $data['name_it'] ?? null,
                 'factor_kg_co2e' => $data['factor_kg_co2e'],
                 'factor_kg_co2' => $data['factor_kg_co2'] ?? null,
                 'factor_kg_ch4' => $data['factor_kg_ch4'] ?? null,
@@ -596,12 +601,11 @@ class EuCountryFactorSeeder extends Seeder
                 'unit' => $data['unit'],
                 'uncertainty_percent' => $data['uncertainty_percent'] ?? null,
                 'methodology' => $data['methodology'] ?? null,
-                'source' => $source,
                 'source_url' => $sourceUrls[$source] ?? null,
-                'source_id' => $data['source_id'],
                 'valid_from' => now()->startOfYear(),
                 'valid_until' => now()->addYears(2)->endOfYear(),
                 'is_active' => true,
+                'metadata' => ! empty($translations) ? ['translations' => $translations] : null,
             ]
         );
     }
