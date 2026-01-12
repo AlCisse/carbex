@@ -1605,6 +1605,11 @@ return [
         'privacy_description' => 'Ihre Daten bleiben vertraulich und werden nur zur Generierung Ihrer personalisierten Empfehlungen verwendet.',
         'analysis_error' => 'Bei der Analyse ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.',
         'no_assessment' => 'Keine Bewertung gefunden. Bitte erstellen Sie zuerst eine Bewertung.',
+        'no_emission_data' => 'Keine Emissionsdaten verfügbar. Bitte fügen Sie zuerst Emissionen hinzu.',
+        'no_emission_data_title' => 'Keine Emissionsdaten',
+        'no_emission_data_desc' => 'Um KI-Empfehlungen zu generieren, müssen Sie zuerst Ihre CO2-Emissionen erfassen. Fügen Sie Ihre Daten manuell hinzu oder importieren Sie Ihre Banktransaktionen.',
+        'add_emissions' => 'Emissionen hinzufügen',
+        'import_transactions' => 'Transaktionen importieren',
         'assessment_year' => 'Bewertung :year',
 
         'helper' => [

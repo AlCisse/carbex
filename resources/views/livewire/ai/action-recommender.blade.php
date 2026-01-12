@@ -60,6 +60,39 @@
                 </a>
             </div>
 
+        @elseif(!$hasEmissionData)
+            {{-- No Emission Data --}}
+            <div class="text-center py-12">
+                <div class="mx-auto w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-amber-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.ai.no_emission_data_title') }}</h3>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
+                    {{ __('carbex.ai.no_emission_data_desc') }}
+                </p>
+                <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="{{ route('emissions.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        {{ __('carbex.ai.add_emissions') }}
+                    </a>
+                    <a href="{{ route('banking.transactions') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                        {{ __('carbex.ai.import_transactions') }}
+                    </a>
+                </div>
+                @if($assessmentYear)
+                    <p class="mt-4 text-xs text-gray-400 dark:text-gray-500">
+                        {{ __('carbex.ai.assessment_year', ['year' => $assessmentYear]) }}
+                    </p>
+                @endif
+            </div>
+
         @elseif(!$hasAnalyzed)
             {{-- Not yet analyzed --}}
             <div class="text-center py-12">

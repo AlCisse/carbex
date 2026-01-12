@@ -1425,6 +1425,11 @@ return [
         'privacy_description' => 'Your data remains confidential and is only used to generate your personalized recommendations.',
         'analysis_error' => 'An error occurred during analysis. Please try again.',
         'no_assessment' => 'No assessment found. Please create an assessment first.',
+        'no_emission_data' => 'No emission data available. Please add emissions first.',
+        'no_emission_data_title' => 'No emission data',
+        'no_emission_data_desc' => 'To generate AI recommendations, you first need to record your carbon emissions. Add your emission data manually or import your bank transactions.',
+        'add_emissions' => 'Add emissions',
+        'import_transactions' => 'Import transactions',
         'assessment_year' => 'Assessment :year',
 
         'helper' => [

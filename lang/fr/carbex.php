@@ -1697,6 +1697,11 @@ return [
         'privacy_description' => 'Vos données restent confidentielles et ne sont utilisées que pour générer vos recommandations personnalisées.',
         'analysis_error' => 'Une erreur est survenue lors de l\'analyse. Veuillez réessayer.',
         'no_assessment' => 'Aucun bilan trouvé. Veuillez d\'abord créer un bilan.',
+        'no_emission_data' => 'Aucune donnée d\'émission disponible. Veuillez d\'abord ajouter vos émissions.',
+        'no_emission_data_title' => 'Aucune donnée d\'émission',
+        'no_emission_data_desc' => 'Pour générer des recommandations IA, vous devez d\'abord enregistrer vos émissions carbone. Ajoutez vos données manuellement ou importez vos transactions bancaires.',
+        'add_emissions' => 'Ajouter des émissions',
+        'import_transactions' => 'Importer des transactions',
         'assessment_year' => 'Bilan :year',
 
         // Emission Helper

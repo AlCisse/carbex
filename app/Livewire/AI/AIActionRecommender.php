@@ -5,6 +5,7 @@ namespace App\Livewire\AI;
 use App\Models\Action;
 use App\Models\AISetting;
 use App\Models\Assessment;
+use App\Models\EmissionRecord;
 use App\Services\AI\ActionRecommendationEngine;
 use App\Services\AI\AIManager;
 use Livewire\Component;
@@ -48,8 +49,11 @@ class AIActionRecommender extends Component
 
     // Assessment context
     public ?string $assessmentId = null;
-
     public ?int $assessmentYear = null;
+
+    // Emission data check
+    public bool $hasEmissionData = false;
+    public int $emissionRecordsCount = 0;
 
     /**
      * Mount the component.
@@ -58,11 +62,43 @@ class AIActionRecommender extends Component
     {
         $this->assessmentId = $assessmentId;
         $this->loadProviderInfo();
+        $this->checkEmissionData();
 
-        // Si un assessment est fourni, charger automatiquement
-        if ($assessmentId) {
+        // Si un assessment est fourni et qu'il y a des données, charger automatiquement
+        if ($assessmentId && $this->hasEmissionData) {
             $this->analyze();
         }
+    }
+
+    /**
+     * Check if there is emission data available for analysis.
+     */
+    protected function checkEmissionData(): void
+    {
+        $organization = auth()->user()?->organization;
+
+        if (! $organization) {
+            $this->hasEmissionData = false;
+            $this->emissionRecordsCount = 0;
+            return;
+        }
+
+        // Get the assessment to check
+        $assessment = $this->assessmentId
+            ? Assessment::find($this->assessmentId)
+            : $organization->currentAssessment;
+
+        if (! $assessment) {
+            $this->hasEmissionData = false;
+            $this->emissionRecordsCount = 0;
+            return;
+        }
+
+        $this->assessmentYear = $assessment->year;
+
+        // Count emission records for this assessment
+        $this->emissionRecordsCount = EmissionRecord::where('assessment_id', $assessment->id)->count();
+        $this->hasEmissionData = $this->emissionRecordsCount > 0;
     }
 
     /**
@@ -87,6 +123,15 @@ class AIActionRecommender extends Component
         $organization = auth()->user()?->organization;
 
         if (! $organization) {
+            return;
+        }
+
+        // Recheck emission data before analysis
+        $this->checkEmissionData();
+
+        // Block analysis if no emission data
+        if (! $this->hasEmissionData) {
+            session()->flash('error', __('carbex.ai.no_emission_data'));
             return;
         }
 
