@@ -484,10 +484,12 @@ class CsrdComplianceService
 
         $milestones = [];
         foreach ($targets as $target) {
+            // Calculate average reduction across scopes
+            $avgReduction = round(($target->scope_1_reduction + $target->scope_2_reduction + $target->scope_3_reduction) / 3, 1);
             $milestones[] = [
                 'year' => $target->target_year,
-                'target' => $target->target_percentage . '% reduction',
-                'scope' => $target->scope ?? 'All scopes',
+                'target' => $avgReduction . '% reduction',
+                'scope' => 'All scopes',
                 'base_year' => $target->baseline_year,
             ];
         }
