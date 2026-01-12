@@ -554,6 +554,10 @@ return [
 
     'emissions' => [
         'title' => 'Émissions',
+        'activities' => 'Activités',
+        'scope_title' => 'Émissions Scope :scope',
+        'scope_label' => 'Scope :scope',
+        'scope_coming_soon' => 'Détails du Scope :scope à venir prochainement.',
         'total' => 'Total des émissions',
         'scope_1' => 'Scope 1 - Émissions directes',
         'scope_2' => 'Scope 2 - Énergie',

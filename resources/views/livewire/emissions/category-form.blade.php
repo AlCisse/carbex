@@ -4,7 +4,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="text-2xl font-bold text-gray-900">{{ $this->category }} {{ $this->categoryName }}</h1>
-                <p class="mt-1 text-sm text-gray-500">Scope {{ $scope }}</p>
+                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.emissions.scope_label', ['scope' => $scope]) }}</p>
             </div>
             <div class="flex items-center space-x-3">
                 @if(count($sources) > 0)

@@ -472,6 +472,10 @@ return [
 
     'emissions' => [
         'title' => 'Emissions',
+        'activities' => 'Activities',
+        'scope_title' => 'Scope :scope Emissions',
+        'scope_label' => 'Scope :scope',
+        'scope_coming_soon' => 'Scope :scope details coming soon.',
         'total' => 'Total emissions',
         'scope_1' => 'Scope 1 - Direct emissions',
         'scope_2' => 'Scope 2 - Energy',
