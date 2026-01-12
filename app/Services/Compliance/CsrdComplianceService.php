@@ -617,6 +617,79 @@ class CsrdComplianceService
     }
 
     /**
+     * Calculate compliance score for dashboard
+     */
+    public function calculateComplianceScore(Organization $org, int $year): array
+    {
+        $esrs1 = $this->getEsrs1Compliance($org, $year);
+        $esrs2 = $this->getEsrs2Compliance($org, $year);
+        $esrsE1 = $this->getEsrsE1Compliance($org, $year);
+        $materiality = $this->getMaterialityCompliance($org, $year);
+        $taxonomy = $this->getEuTaxonomyCompliance($org, $year);
+        $transition = $this->getTransitionPlanCompliance($org, $year);
+
+        $overallScore = $this->calculateOverallCompliance($org, $year);
+
+        return [
+            'score' => $overallScore,
+            'details' => [
+                'esrs1' => ['score' => $esrs1['score'], 'name' => $esrs1['name']],
+                'esrs2' => ['score' => $esrs2['score'], 'name' => $esrs2['name']],
+                'esrs_e1' => ['score' => $esrsE1['score'], 'name' => $esrsE1['name']],
+                'materiality' => ['score' => $materiality['score'], 'name' => $materiality['name']],
+                'taxonomy' => ['score' => $taxonomy['score'], 'name' => $taxonomy['name']],
+                'transition' => ['score' => $transition['score'], 'name' => $transition['name']],
+            ],
+        ];
+    }
+
+    /**
+     * Get upcoming CSRD deadlines
+     */
+    public function getUpcomingDeadlines(int $year): array
+    {
+        $deadlines = [];
+        $reportingYear = $year + 1;
+
+        $deadlines[] = [
+            'date' => "{$reportingYear}-03-31",
+            'title' => 'ESRS 2 General Disclosures',
+            'description' => 'Complete all mandatory ESRS 2 disclosures (BP, GOV, SBM, IRO)',
+            'priority' => 'high',
+        ];
+
+        $deadlines[] = [
+            'date' => "{$reportingYear}-04-15",
+            'title' => 'Double Materiality Assessment',
+            'description' => 'Finalize double materiality assessment for all ESRS topics',
+            'priority' => 'high',
+        ];
+
+        $deadlines[] = [
+            'date' => "{$reportingYear}-04-30",
+            'title' => 'CSRD Report Submission',
+            'description' => 'Submit sustainability statement as part of management report',
+            'priority' => 'critical',
+        ];
+
+        $deadlines[] = [
+            'date' => "{$reportingYear}-05-31",
+            'title' => 'EU Taxonomy KPIs',
+            'description' => 'Publish Article 8 KPIs (Turnover, CapEx, OpEx)',
+            'priority' => 'medium',
+        ];
+
+        $deadlines[] = [
+            'date' => "{$reportingYear}-06-30",
+            'title' => 'Limited Assurance',
+            'description' => 'Obtain limited assurance on sustainability statement',
+            'priority' => 'high',
+        ];
+
+        return $deadlines;
+    }
+
+    /**
      * Generate CSRD compliance report
      */
     public function generateReport(Organization $org, int $year): array
