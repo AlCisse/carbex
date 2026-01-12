@@ -6,6 +6,7 @@ use App\Models\Action;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 /**
  * Seeder for Action (Plan de transition) model
@@ -156,30 +157,49 @@ class ActionSeeder extends Seeder
                 Action::STATUS_TODO => now()->addMonths(rand(3, 12)),
             };
 
-            Action::updateOrCreate(
-                [
-                    'organization_id' => $organization->id,
-                    'title' => $template['title'],
+            $this->createOrUpdateAction($organization->id, $template['title'], [
+                'description' => $template['description'],
+                'status' => $status,
+                'due_date' => $dueDate,
+                'co2_reduction_percent' => $template['co2_reduction_percent'],
+                'estimated_cost' => $template['estimated_cost'],
+                'difficulty' => $template['difficulty'],
+                'priority' => $template['priority'],
+                'assigned_to' => $user?->id,
+                'metadata' => [
+                    'created_by_seeder' => true,
+                    'scope' => $this->inferScope($template['title']),
                 ],
-                [
-                    'description' => $template['description'],
-                    'status' => $status,
-                    'due_date' => $dueDate,
-                    'co2_reduction_percent' => $template['co2_reduction_percent'],
-                    'estimated_cost' => $template['estimated_cost'],
-                    'difficulty' => $template['difficulty'],
-                    'priority' => $template['priority'],
-                    'assigned_to' => $user?->id,
-                    'metadata' => [
-                        'created_by_seeder' => true,
-                        'scope' => $this->inferScope($template['title']),
-                    ],
-                ]
-            );
+            ]);
         }
 
         $count = count($this->actionTemplates);
         $this->command->info("  Created {$count} actions for: {$organization->name}");
+    }
+
+    /**
+     * Create or update an action with proper UUID handling.
+     */
+    private function createOrUpdateAction(string $organizationId, string $title, array $data): Action
+    {
+        $action = Action::where('organization_id', $organizationId)
+            ->where('title', $title)
+            ->first();
+
+        if ($action) {
+            $action->update($data);
+
+            return $action;
+        }
+
+        $action = new Action(array_merge($data, [
+            'organization_id' => $organizationId,
+            'title' => $title,
+        ]));
+        $action->id = Str::uuid()->toString();
+        $action->save();
+
+        return $action;
     }
 
     /**

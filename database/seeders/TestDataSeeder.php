@@ -6,6 +6,7 @@ use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * TestDataSeeder - Creates test data for development
@@ -32,7 +33,7 @@ class TestDataSeeder extends Seeder
         $organization = Organization::where('slug', 'test-company')->first();
 
         if (! $organization) {
-            $organization = Organization::create([
+            $organization = new Organization([
                 'name' => 'Test Company',
                 'legal_name' => 'Test Company SAS',
                 'slug' => 'test-company',
@@ -45,6 +46,8 @@ class TestDataSeeder extends Seeder
                 'postal_code' => '75001',
                 'status' => 'active',
             ]);
+            $organization->id = Str::uuid()->toString();
+            $organization->save();
             $this->command->info('Created test organization: Test Company');
         }
 

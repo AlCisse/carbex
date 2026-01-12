@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Assessment;
 use App\Models\Organization;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 /**
  * Seeder for Assessment (Bilan) model
@@ -49,92 +50,99 @@ class AssessmentSeeder extends Seeder
         $currentYear = (int) date('Y');
 
         // Assessment 2024 - Completed
-        Assessment::updateOrCreate(
-            [
-                'organization_id' => $organization->id,
-                'year' => $currentYear - 1,
+        $this->createOrUpdateAssessment($organization->id, $currentYear - 1, [
+            'revenue' => 2500000.00,
+            'employee_count' => 45,
+            'status' => Assessment::STATUS_COMPLETED,
+            'progress' => [
+                '1.1' => 'completed',
+                '1.2' => 'completed',
+                '1.4' => 'not_applicable',
+                '1.5' => 'not_applicable',
+                '2.1' => 'completed',
+                '3.1' => 'completed',
+                '3.2' => 'completed',
+                '3.3' => 'completed',
+                '3.5' => 'completed',
+                '4.1' => 'completed',
+                '4.2' => 'completed',
+                '4.3' => 'completed',
+                '4.4' => 'not_applicable',
+                '4.5' => 'completed',
             ],
-            [
-                'revenue' => 2500000.00,
-                'employee_count' => 45,
-                'status' => Assessment::STATUS_COMPLETED,
-                'progress' => [
-                    '1.1' => 'completed',
-                    '1.2' => 'completed',
-                    '1.4' => 'not_applicable',
-                    '1.5' => 'not_applicable',
-                    '2.1' => 'completed',
-                    '3.1' => 'completed',
-                    '3.2' => 'completed',
-                    '3.3' => 'completed',
-                    '3.5' => 'completed',
-                    '4.1' => 'completed',
-                    '4.2' => 'completed',
-                    '4.3' => 'completed',
-                    '4.4' => 'not_applicable',
-                    '4.5' => 'completed',
-                ],
-            ]
-        );
+        ]);
 
         // Assessment 2025 - Active (current year)
-        Assessment::updateOrCreate(
-            [
-                'organization_id' => $organization->id,
-                'year' => $currentYear,
+        $this->createOrUpdateAssessment($organization->id, $currentYear, [
+            'revenue' => 2800000.00,
+            'employee_count' => 50,
+            'status' => Assessment::STATUS_ACTIVE,
+            'progress' => [
+                '1.1' => 'completed',
+                '1.2' => 'pending',
+                '1.4' => 'not_applicable',
+                '1.5' => 'not_applicable',
+                '2.1' => 'completed',
+                '3.1' => 'pending',
+                '3.2' => 'pending',
+                '3.3' => 'pending',
+                '3.5' => 'pending',
+                '4.1' => 'pending',
+                '4.2' => 'pending',
+                '4.3' => 'pending',
+                '4.4' => 'not_applicable',
+                '4.5' => 'pending',
             ],
-            [
-                'revenue' => 2800000.00,
-                'employee_count' => 50,
-                'status' => Assessment::STATUS_ACTIVE,
-                'progress' => [
-                    '1.1' => 'completed',
-                    '1.2' => 'pending',
-                    '1.4' => 'not_applicable',
-                    '1.5' => 'not_applicable',
-                    '2.1' => 'completed',
-                    '3.1' => 'pending',
-                    '3.2' => 'pending',
-                    '3.3' => 'pending',
-                    '3.5' => 'pending',
-                    '4.1' => 'pending',
-                    '4.2' => 'pending',
-                    '4.3' => 'pending',
-                    '4.4' => 'not_applicable',
-                    '4.5' => 'pending',
-                ],
-            ]
-        );
+        ]);
 
         // Assessment 2023 - Completed (historical)
-        Assessment::updateOrCreate(
-            [
-                'organization_id' => $organization->id,
-                'year' => $currentYear - 2,
+        $this->createOrUpdateAssessment($organization->id, $currentYear - 2, [
+            'revenue' => 2200000.00,
+            'employee_count' => 40,
+            'status' => Assessment::STATUS_COMPLETED,
+            'progress' => [
+                '1.1' => 'completed',
+                '1.2' => 'completed',
+                '1.4' => 'not_applicable',
+                '1.5' => 'not_applicable',
+                '2.1' => 'completed',
+                '3.1' => 'completed',
+                '3.2' => 'completed',
+                '3.3' => 'completed',
+                '3.5' => 'completed',
+                '4.1' => 'completed',
+                '4.2' => 'completed',
+                '4.3' => 'completed',
+                '4.4' => 'not_applicable',
+                '4.5' => 'completed',
             ],
-            [
-                'revenue' => 2200000.00,
-                'employee_count' => 40,
-                'status' => Assessment::STATUS_COMPLETED,
-                'progress' => [
-                    '1.1' => 'completed',
-                    '1.2' => 'completed',
-                    '1.4' => 'not_applicable',
-                    '1.5' => 'not_applicable',
-                    '2.1' => 'completed',
-                    '3.1' => 'completed',
-                    '3.2' => 'completed',
-                    '3.3' => 'completed',
-                    '3.5' => 'completed',
-                    '4.1' => 'completed',
-                    '4.2' => 'completed',
-                    '4.3' => 'completed',
-                    '4.4' => 'not_applicable',
-                    '4.5' => 'completed',
-                ],
-            ]
-        );
+        ]);
 
         $this->command->info("  Created 3 assessments for: {$organization->name}");
+    }
+
+    /**
+     * Create or update an assessment with proper UUID handling.
+     */
+    private function createOrUpdateAssessment(string $organizationId, int $year, array $data): Assessment
+    {
+        $assessment = Assessment::where('organization_id', $organizationId)
+            ->where('year', $year)
+            ->first();
+
+        if ($assessment) {
+            $assessment->update($data);
+
+            return $assessment;
+        }
+
+        $assessment = new Assessment(array_merge($data, [
+            'organization_id' => $organizationId,
+            'year' => $year,
+        ]));
+        $assessment->id = Str::uuid()->toString();
+        $assessment->save();
+
+        return $assessment;
     }
 }
