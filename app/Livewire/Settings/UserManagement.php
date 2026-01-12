@@ -39,7 +39,7 @@ class UserManagement extends Component
     public function loadUsers(): void
     {
         $this->users = User::with(['organization'])
-            ->orderByRaw("FIELD(role, 'owner', 'admin', 'manager', 'member', 'viewer')")
+            ->orderByRaw("array_position(ARRAY['owner', 'admin', 'manager', 'member', 'viewer'], role)")
             ->orderBy('name')
             ->get()
             ->map(fn ($user) => [
