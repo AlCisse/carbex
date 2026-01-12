@@ -654,41 +654,46 @@ class CsrdComplianceService
     {
         $deadlines = [];
         $reportingYear = $year + 1;
+        $now = now();
 
-        $deadlines[] = [
-            'date' => "{$reportingYear}-03-31",
-            'title' => 'ESRS 2 General Disclosures',
-            'description' => 'Complete all mandatory ESRS 2 disclosures (BP, GOV, SBM, IRO)',
-            'priority' => 'high',
+        $rawDeadlines = [
+            [
+                'date' => "{$reportingYear}-03-31",
+                'name' => 'ESRS 2 General Disclosures',
+                'description' => 'Complete all mandatory ESRS 2 disclosures (BP, GOV, SBM, IRO)',
+                'priority' => 'high',
+            ],
+            [
+                'date' => "{$reportingYear}-04-15",
+                'name' => 'Double Materiality Assessment',
+                'description' => 'Finalize double materiality assessment for all ESRS topics',
+                'priority' => 'high',
+            ],
+            [
+                'date' => "{$reportingYear}-04-30",
+                'name' => 'CSRD Report Submission',
+                'description' => 'Submit sustainability statement as part of management report',
+                'priority' => 'critical',
+            ],
+            [
+                'date' => "{$reportingYear}-05-31",
+                'name' => 'EU Taxonomy KPIs',
+                'description' => 'Publish Article 8 KPIs (Turnover, CapEx, OpEx)',
+                'priority' => 'medium',
+            ],
+            [
+                'date' => "{$reportingYear}-06-30",
+                'name' => 'Limited Assurance',
+                'description' => 'Obtain limited assurance on sustainability statement',
+                'priority' => 'high',
+            ],
         ];
 
-        $deadlines[] = [
-            'date' => "{$reportingYear}-04-15",
-            'title' => 'Double Materiality Assessment',
-            'description' => 'Finalize double materiality assessment for all ESRS topics',
-            'priority' => 'high',
-        ];
-
-        $deadlines[] = [
-            'date' => "{$reportingYear}-04-30",
-            'title' => 'CSRD Report Submission',
-            'description' => 'Submit sustainability statement as part of management report',
-            'priority' => 'critical',
-        ];
-
-        $deadlines[] = [
-            'date' => "{$reportingYear}-05-31",
-            'title' => 'EU Taxonomy KPIs',
-            'description' => 'Publish Article 8 KPIs (Turnover, CapEx, OpEx)',
-            'priority' => 'medium',
-        ];
-
-        $deadlines[] = [
-            'date' => "{$reportingYear}-06-30",
-            'title' => 'Limited Assurance',
-            'description' => 'Obtain limited assurance on sustainability statement',
-            'priority' => 'high',
-        ];
+        foreach ($rawDeadlines as $deadline) {
+            $deadlineDate = \Carbon\Carbon::parse($deadline['date']);
+            $deadline['days_remaining'] = max(0, $now->diffInDays($deadlineDate, false));
+            $deadlines[] = $deadline;
+        }
 
         return $deadlines;
     }
