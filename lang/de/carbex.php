@@ -1588,6 +1588,8 @@ return [
             'unlimited' => 'Unbegrenzt',
             'remaining' => 'verbleibend',
             'remaining_plural' => 'verbleibend',
+            'quota_daily' => 'Tägliches Kontingent',
+            'quota_monthly' => 'Monatlich',
             'ai_not_available' => 'KI ist in Ihrem Plan nicht verfügbar',
             'upgrade_premium' => 'Auf Premium upgraden',
         ],

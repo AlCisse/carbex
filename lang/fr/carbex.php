@@ -1683,6 +1683,8 @@ return [
             'unlimited' => 'Illimité',
             'remaining' => 'restant',
             'remaining_plural' => 'restants',
+            'quota_daily' => 'Quota journalier',
+            'quota_monthly' => 'Mensuel',
             'ai_not_available' => 'L\'IA n\'est pas disponible sur votre plan',
             'upgrade_premium' => 'Passer à Premium',
         ],

@@ -1408,6 +1408,8 @@ return [
             'unlimited' => 'Unlimited',
             'remaining' => 'remaining',
             'remaining_plural' => 'remaining',
+            'quota_daily' => 'Daily quota',
+            'quota_monthly' => 'Monthly',
             'ai_not_available' => 'AI is not available on your plan',
             'upgrade_premium' => 'Upgrade to Premium',
         ],

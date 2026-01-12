@@ -4,7 +4,7 @@
         wire:click="toggle"
         class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
         style="background-color: #0d9488;"
-        aria-label="Assistant IA"
+        aria-label="{{ __('carbex.ai.chat.assistant_name') }}"
     >
         @if($isOpen)
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,7 +174,7 @@
                             {{ __('carbex.ai.chat.unlimited') }}
                         </span>
                     @else
-                        <span class="flex items-center gap-1" title="Quota journalier: {{ $quota['daily_used'] }}/{{ $quota['daily_limit'] }} | Mensuel: {{ $quota['monthly_used'] }}/{{ $quota['monthly_limit'] }}">
+                        <span class="flex items-center gap-1" title="{{ __('carbex.ai.chat.quota_daily') }}: {{ $quota['daily_used'] }}/{{ $quota['daily_limit'] }} | {{ __('carbex.ai.chat.quota_monthly') }}: {{ $quota['monthly_used'] }}/{{ $quota['monthly_limit'] }}">
                             @php
                                 $remaining = min($quota['daily_remaining'] ?? PHP_INT_MAX, $quota['monthly_remaining'] ?? PHP_INT_MAX);
                                 $isLow = $remaining <= 5;
