@@ -2483,4 +2483,23 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Blog
+    |--------------------------------------------------------------------------
+    */
+
+    'blog' => [
+        'back_to_blog' => 'Zurück zum Blog',
+        'min_read' => 'Min. Lesezeit',
+        'share_article' => 'Diesen Artikel teilen',
+        'share_twitter' => 'Auf Twitter teilen',
+        'share_linkedin' => 'Auf LinkedIn teilen',
+        'copy_link' => 'Link kopieren',
+        'related_articles' => 'Ähnliche Artikel',
+        'cta_title' => 'Bereit, Ihren CO2-Fußabdruck zu messen?',
+        'cta_subtitle' => 'Starten Sie Ihre CO2-Bilanz in wenigen Minuten mit Carbex.',
+        'cta_button' => 'Kostenlose Testversion starten',
+    ],
+
 ];

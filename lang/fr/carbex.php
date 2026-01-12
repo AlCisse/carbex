@@ -2550,4 +2550,23 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Blog
+    |--------------------------------------------------------------------------
+    */
+
+    'blog' => [
+        'back_to_blog' => 'Retour au blog',
+        'min_read' => 'min de lecture',
+        'share_article' => 'Partager cet article',
+        'share_twitter' => 'Partager sur Twitter',
+        'share_linkedin' => 'Partager sur LinkedIn',
+        'copy_link' => 'Copier le lien',
+        'related_articles' => 'Articles similaires',
+        'cta_title' => 'Prêt à mesurer votre empreinte carbone ?',
+        'cta_subtitle' => 'Commencez votre bilan carbone en quelques minutes avec Carbex.',
+        'cta_button' => 'Démarrer l\'essai gratuit',
+    ],
+
 ];

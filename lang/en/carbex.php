@@ -2255,4 +2255,23 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Blog
+    |--------------------------------------------------------------------------
+    */
+
+    'blog' => [
+        'back_to_blog' => 'Back to blog',
+        'min_read' => 'min read',
+        'share_article' => 'Share this article',
+        'share_twitter' => 'Share on Twitter',
+        'share_linkedin' => 'Share on LinkedIn',
+        'copy_link' => 'Copy link',
+        'related_articles' => 'Related articles',
+        'cta_title' => 'Ready to measure your carbon footprint?',
+        'cta_subtitle' => 'Start your carbon assessment in minutes with Carbex.',
+        'cta_button' => 'Start free trial',
+    ],
+
 ];
