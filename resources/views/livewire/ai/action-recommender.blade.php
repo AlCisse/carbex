@@ -186,16 +186,30 @@
                                                     {{ $recommendation['description'] }}
                                                 </p>
                                             </div>
-                                            <button
-                                                type="button"
-                                                wire:click.stop="addSingleAction({{ $index }})"
-                                                class="flex-shrink-0 p-2 text-emerald-600 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 rounded-lg transition-colors"
-                                                title="{{ __('carbex.ai.add_action') }}"
-                                            >
-                                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                                </svg>
-                                            </button>
+                                            <div class="flex items-center gap-1">
+                                                {{-- View Details Button --}}
+                                                <button
+                                                    type="button"
+                                                    wire:click.stop="showDetails({{ $index }})"
+                                                    class="flex-shrink-0 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                                                    title="{{ __('carbex.ai.view_details') }}"
+                                                >
+                                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                </button>
+                                                {{-- Add Action Button --}}
+                                                <button
+                                                    type="button"
+                                                    wire:click.stop="addSingleAction({{ $index }})"
+                                                    class="flex-shrink-0 p-2 text-emerald-600 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 rounded-lg transition-colors"
+                                                    title="{{ __('carbex.ai.add_action') }}"
+                                                >
+                                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                    </svg>
+                                                </button>
+                                            </div>
                                         </div>
 
                                         {{-- Badges --}}
@@ -293,6 +307,148 @@
     @if(session('warning'))
         <div class="mx-6 mb-6 px-4 py-3 bg-yellow-100 border border-yellow-200 text-yellow-800 rounded-lg" role="alert">
             {{ session('warning') }}
+        </div>
+    @endif
+
+    {{-- Detail Modal --}}
+    @if($showDetailModal && $detailRecommendation)
+        <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                {{-- Background overlay --}}
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" wire:click="closeDetails"></div>
+
+                {{-- Centering spacer --}}
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+                {{-- Modal panel --}}
+                <div class="relative inline-block align-bottom bg-white dark:bg-gray-800 rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+                    {{-- Header --}}
+                    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-emerald-600 to-emerald-700">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-white" id="modal-title">
+                                {{ __('carbex.ai.recommendation_details') }}
+                            </h3>
+                            <button type="button" wire:click="closeDetails" class="text-white/80 hover:text-white">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- Content --}}
+                    <div class="px-6 py-5 space-y-5">
+                        {{-- Title --}}
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white">
+                                {{ $detailRecommendation['number'] ?? '' }}. {{ $detailRecommendation['title'] }}
+                            </h4>
+                        </div>
+
+                        {{-- Description --}}
+                        @if(!empty($detailRecommendation['description']))
+                            <div>
+                                <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                    {{ __('carbex.ai.detail.description') }}
+                                </h5>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    {{ $detailRecommendation['description'] }}
+                                </p>
+                            </div>
+                        @endif
+
+                        {{-- Metrics Grid --}}
+                        <div class="grid grid-cols-2 gap-4">
+                            {{-- Impact --}}
+                            @if(isset($detailRecommendation['impact']))
+                                <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-4">
+                                    <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+                                        {{ __('carbex.ai.detail.impact') }}
+                                    </p>
+                                    <p class="text-2xl font-bold text-emerald-700 dark:text-emerald-300 mt-1">
+                                        -{{ $detailRecommendation['impact'] }}%
+                                    </p>
+                                    <p class="text-xs text-emerald-600/70 dark:text-emerald-400/70 mt-1">
+                                        {{ __('carbex.ai.detail.co2_reduction') }}
+                                    </p>
+                                </div>
+                            @endif
+
+                            {{-- Cost --}}
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+                                <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                                    {{ __('carbex.ai.detail.cost') }}
+                                </p>
+                                <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+                                    {{ $detailRecommendation['cost_label'] ?? '€€' }}
+                                </p>
+                                <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                                    {{ __('carbex.ai.detail.investment') }}
+                                </p>
+                            </div>
+
+                            {{-- Difficulty --}}
+                            <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+                                <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                                    {{ __('carbex.ai.detail.difficulty') }}
+                                </p>
+                                <p class="text-lg font-bold mt-1 {{ $this->getDifficultyClass($detailRecommendation['difficulty'] ?? 'medium') }} px-3 py-1 rounded-full inline-block">
+                                    {{ $detailRecommendation['difficulty_label'] ?? ucfirst($detailRecommendation['difficulty'] ?? 'medium') }}
+                                </p>
+                            </div>
+
+                            {{-- Timeline --}}
+                            @if(!empty($detailRecommendation['timeline']))
+                                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                                    <p class="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                                        {{ __('carbex.ai.detail.timeline') }}
+                                    </p>
+                                    <p class="text-lg font-bold text-blue-700 dark:text-blue-300 mt-1">
+                                        {{ $detailRecommendation['timeline'] }}
+                                    </p>
+                                </div>
+                            @endif
+                        </div>
+
+                        {{-- Scopes --}}
+                        @if(!empty($detailRecommendation['scopes']))
+                            <div>
+                                <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                                    {{ __('carbex.ai.detail.affected_scopes') }}
+                                </h5>
+                                <div class="flex gap-2">
+                                    @foreach($detailRecommendation['scopes'] as $scope)
+                                        <span class="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 rounded-full">
+                                            Scope {{ $scope }}
+                                        </span>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- Footer --}}
+                    <div class="px-6 py-4 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3">
+                        <button
+                            type="button"
+                            wire:click="closeDetails"
+                            class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                        >
+                            {{ __('carbex.common.close') }}
+                        </button>
+                        <button
+                            type="button"
+                            wire:click="addSingleAction({{ $detailIndex }})"
+                            class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 transition-colors inline-flex items-center gap-2"
+                        >
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            {{ __('carbex.ai.add_to_plan') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
 </div>

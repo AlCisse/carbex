@@ -41,6 +41,11 @@ class AIActionRecommender extends Component
     // Selection
     public array $selectedRecommendations = [];
 
+    // Detail modal
+    public bool $showDetailModal = false;
+    public ?array $detailRecommendation = null;
+    public ?int $detailIndex = null;
+
     // Assessment context
     public ?string $assessmentId = null;
 
@@ -195,8 +200,33 @@ class AIActionRecommender extends Component
         $engine = app(ActionRecommendationEngine::class);
         $action = $engine->convertToAction($this->recommendations[$index], $organization);
 
+        // Close modal if open
+        $this->closeDetails();
+
         session()->flash('success', __('carbex.ai.action_added', ['title' => $action->title]));
         $this->dispatch('actions-updated');
+    }
+
+    /**
+     * Show recommendation details in modal.
+     */
+    public function showDetails(int $index): void
+    {
+        if (isset($this->recommendations[$index])) {
+            $this->detailRecommendation = $this->recommendations[$index];
+            $this->detailIndex = $index;
+            $this->showDetailModal = true;
+        }
+    }
+
+    /**
+     * Close the detail modal.
+     */
+    public function closeDetails(): void
+    {
+        $this->showDetailModal = false;
+        $this->detailRecommendation = null;
+        $this->detailIndex = null;
     }
 
     /**
