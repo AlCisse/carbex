@@ -53,15 +53,15 @@
 
         <!-- Language Switcher -->
         <div class="mt-8 flex justify-center space-x-4 text-sm text-gray-500">
-            <a href="?lang=fr" class="{{ app()->getLocale() === 'fr' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
-                Français
+            <a href="{{ route('language.switch', 'fr') }}" class="{{ app()->getLocale() === 'fr' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
+                Francais
             </a>
             <span>|</span>
-            <a href="?lang=de" class="{{ app()->getLocale() === 'de' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
+            <a href="{{ route('language.switch', 'de') }}" class="{{ app()->getLocale() === 'de' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
                 Deutsch
             </a>
             <span>|</span>
-            <a href="?lang=en" class="{{ app()->getLocale() === 'en' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
+            <a href="{{ route('language.switch', 'en') }}" class="{{ app()->getLocale() === 'en' ? 'font-semibold text-green-600' : 'hover:text-gray-700' }}">
                 English
             </a>
         </div>

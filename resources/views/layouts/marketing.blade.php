@@ -15,20 +15,27 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Open Graph / Facebook -->
+    @php
+        $pageTitle = View::yieldContent('title', 'Carbex - Bilan Carbone PME');
+        $pageDescription = View::yieldContent('description', 'Plateforme de bilan carbone pour PME europeennes, augmentee par l\'IA.');
+        $ogTitle = View::yieldContent('og_title', $pageTitle);
+        $ogDescription = View::yieldContent('og_description', $pageDescription);
+        $ogImage = View::yieldContent('og_image', asset('images/og-default.png'));
+    @endphp
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('og_title', '@yield('title', 'Carbex - Bilan Carbone PME')')">
-    <meta property="og:description" content="@yield('og_description', '@yield('description', 'Plateforme de bilan carbone pour PME francaises, augmentee par l\'IA.')')">
-    <meta property="og:image" content="@yield('og_image', asset('images/og-default.png'))">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDescription }}">
+    <meta property="og:image" content="{{ $ogImage }}">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Carbex">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@carbex_fr">
-    <meta name="twitter:title" content="@yield('title', 'Carbex - Bilan Carbone PME')">
-    <meta name="twitter:description" content="@yield('description', 'Plateforme de bilan carbone pour PME')">
-    <meta name="twitter:image" content="@yield('og_image', asset('images/og-default.png'))">
+    <meta name="twitter:title" content="{{ $ogTitle }}">
+    <meta name="twitter:description" content="{{ $ogDescription }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
@@ -37,20 +44,20 @@
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@@context": "https://schema.org",
+        "@@type": "SoftwareApplication",
         "name": "Carbex",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "description": "Plateforme SaaS de bilan carbone pour PME, conforme GHG Protocol et ADEME",
         "url": "{{ config('app.url') }}",
         "author": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "Carbex SAS",
             "url": "{{ config('app.url') }}"
         },
         "offers": {
-            "@type": "Offer",
+            "@@type": "Offer",
             "price": "0",
             "priceCurrency": "EUR",
             "description": "Essai gratuit 15 jours"
