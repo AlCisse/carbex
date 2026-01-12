@@ -572,6 +572,12 @@ return [
             'countries' => [
                 'fr' => 'France',
                 'de' => 'Germany',
+                'be' => 'Belgium',
+                'es' => 'Spain',
+                'it' => 'Italy',
+                'nl' => 'Netherlands',
+                'ch' => 'Switzerland',
+                'at' => 'Austria',
                 'eu' => 'European Union',
                 'gb' => 'United Kingdom',
                 'us' => 'United States',

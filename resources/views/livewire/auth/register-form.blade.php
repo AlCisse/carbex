@@ -98,8 +98,10 @@
                 <div class="mt-2">
                     <select wire:model="country" id="country" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-                        <option value="FR">France</option>
-                        <option value="DE">Deutschland</option>
+                        <option value="DE">{{ __('carbex.emission_factors.countries.de') }}</option>
+                        <option value="FR">{{ __('carbex.emission_factors.countries.fr') }}</option>
+                        <option value="AT">{{ __('carbex.emission_factors.countries.at') }}</option>
+                        <option value="CH">{{ __('carbex.emission_factors.countries.ch') }}</option>
                     </select>
                 </div>
             </div>

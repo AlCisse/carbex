@@ -44,7 +44,7 @@
                         {{ $country === 'FR' ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'border-gray-200 dark:border-gray-700' }}">
                     <span class="text-4xl mr-4">🇫🇷</span>
                     <div class="text-left">
-                        <span class="block font-semibold">France</span>
+                        <span class="block font-semibold">{{ __('carbex.emission_factors.countries.fr') }}</span>
                         <span class="text-sm text-gray-500">{{ __('carbex.banking_wizard.via') }} Bridge.io</span>
                     </div>
                 </button>
@@ -54,7 +54,7 @@
                         {{ $country === 'DE' ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'border-gray-200 dark:border-gray-700' }}">
                     <span class="text-4xl mr-4">🇩🇪</span>
                     <div class="text-left">
-                        <span class="block font-semibold">Deutschland</span>
+                        <span class="block font-semibold">{{ __('carbex.emission_factors.countries.de') }}</span>
                         <span class="text-sm text-gray-500">{{ __('carbex.banking_wizard.via') }} Finapi</span>
                     </div>
                 </button>

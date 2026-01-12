@@ -644,6 +644,12 @@ return [
             'countries' => [
                 'fr' => 'Frankreich',
                 'de' => 'Deutschland',
+                'be' => 'Belgien',
+                'es' => 'Spanien',
+                'it' => 'Italien',
+                'nl' => 'Niederlande',
+                'ch' => 'Schweiz',
+                'at' => 'Österreich',
                 'eu' => 'Europäische Union',
                 'gb' => 'Vereinigtes Königreich',
                 'us' => 'Vereinigte Staaten',

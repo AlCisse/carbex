@@ -299,14 +299,15 @@
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.country') }}</label>
                                         <select wire:model="form.country" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
-                                            <option value="FR">France</option>
-                                            <option value="DE">Allemagne</option>
-                                            <option value="BE">Belgique</option>
-                                            <option value="ES">Espagne</option>
-                                            <option value="IT">Italie</option>
-                                            <option value="NL">Pays-Bas</option>
-                                            <option value="GB">Royaume-Uni</option>
-                                            <option value="CH">Suisse</option>
+                                            <option value="DE">{{ __('carbex.emission_factors.countries.de') }}</option>
+                                            <option value="FR">{{ __('carbex.emission_factors.countries.fr') }}</option>
+                                            <option value="AT">{{ __('carbex.emission_factors.countries.at') }}</option>
+                                            <option value="BE">{{ __('carbex.emission_factors.countries.be') }}</option>
+                                            <option value="CH">{{ __('carbex.emission_factors.countries.ch') }}</option>
+                                            <option value="ES">{{ __('carbex.emission_factors.countries.es') }}</option>
+                                            <option value="IT">{{ __('carbex.emission_factors.countries.it') }}</option>
+                                            <option value="NL">{{ __('carbex.emission_factors.countries.nl') }}</option>
+                                            <option value="GB">{{ __('carbex.emission_factors.countries.gb') }}</option>
                                         </select>
                                     </div>
                                     <div>
