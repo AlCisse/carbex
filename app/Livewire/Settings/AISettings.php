@@ -183,6 +183,7 @@ class AISettings extends Component
         Gate::authorize('update', $organization);
 
         $keyProperty = "{$provider}ApiKey";
+        $enabledProperty = "{$provider}Enabled";
         $newKey = $this->$keyProperty;
 
         // Don't save if it's the masked version or empty
@@ -193,6 +194,11 @@ class AISettings extends Component
 
         // Save the API key
         AISetting::setValue("{$provider}_api_key", $newKey);
+
+        // Auto-enable the provider when saving a key
+        $this->$enabledProperty = true;
+        AISetting::setValue("{$provider}_enabled", true);
+
         AISetting::clearCache();
 
         // Reload masked key
