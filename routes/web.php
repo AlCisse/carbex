@@ -106,6 +106,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('settings.sites');
     })->name('settings.sites');
 
+    Route::get('/settings/ai', function () {
+        return view('settings.ai');
+    })->name('settings.ai');
+
     // Site Comparison (T174-T175)
     Route::get('/sites/comparison', App\Livewire\Sites\SiteComparison::class)
         ->name('sites.comparison');
