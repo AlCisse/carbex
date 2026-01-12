@@ -2111,7 +2111,7 @@ return [
 
         // Contact
         'dpo_contact' => 'Data Protection Officer',
-        'dpo_email' => 'dpo@carbex.fr',
+        'dpo_email' => 'dpo@carbex.de',
     ],
 
     /*

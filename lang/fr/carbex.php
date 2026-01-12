@@ -2406,7 +2406,7 @@ return [
 
         // Contact
         'dpo_contact' => 'Délégué à la protection des données',
-        'dpo_email' => 'dpo@carbex.fr',
+        'dpo_email' => 'dpo@carbex.de',
     ],
 
     /*

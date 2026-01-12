@@ -2172,7 +2172,7 @@ return [
 
         // Contact
         'dpo_contact' => 'Datenschutzbeauftragter',
-        'dpo_email' => 'dpo@carbex.fr',
+        'dpo_email' => 'dpo@carbex.de',
     ],
 
     /*
