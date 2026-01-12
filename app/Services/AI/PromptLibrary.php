@@ -47,13 +47,46 @@ PROMPT;
     /**
      * Prompt pour les recommandations d'actions de réduction.
      */
-    public static function actionRecommendation(array $emissions, string $sector, ?int $employeeCount = null): string
+    public static function actionRecommendation(array $emissions, string $sector, ?int $employeeCount = null, ?string $locale = null): string
     {
         $emissionsJson = json_encode($emissions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        $employeeInfo = $employeeCount ? "- Nombre d'employés: {$employeeCount}" : '';
+        $locale = $locale ?? app()->getLocale();
+
+        // Language-specific instructions
+        $languageInstructions = match ($locale) {
+            'de' => [
+                'lang' => 'Deutsch',
+                'respond' => 'WICHTIG: Antworte ausschließlich auf Deutsch.',
+                'employee' => $employeeCount ? "- Anzahl der Mitarbeiter: {$employeeCount}" : '',
+                'difficulty_labels' => 'Einfach / Mittel / Schwierig',
+                'timeline_labels' => 'Kurzfristig (<3 Monate) / Mittelfristig (3-12 Monate) / Langfristig (>12 Monate)',
+            ],
+            'en' => [
+                'lang' => 'English',
+                'respond' => 'IMPORTANT: Respond exclusively in English.',
+                'employee' => $employeeCount ? "- Number of employees: {$employeeCount}" : '',
+                'difficulty_labels' => 'Easy / Medium / Hard',
+                'timeline_labels' => 'Short term (<3 months) / Medium term (3-12 months) / Long term (>12 months)',
+            ],
+            default => [
+                'lang' => 'français',
+                'respond' => 'IMPORTANT: Réponds exclusivement en français.',
+                'employee' => $employeeCount ? "- Nombre d'employés: {$employeeCount}" : '',
+                'difficulty_labels' => 'Facile / Moyen / Difficile',
+                'timeline_labels' => 'Court terme (<3 mois) / Moyen terme (3-12 mois) / Long terme (>12 mois)',
+            ],
+        };
+
+        $lang = $languageInstructions['lang'];
+        $respond = $languageInstructions['respond'];
+        $employeeInfo = $languageInstructions['employee'];
+        $difficultyLabels = $languageInstructions['difficulty_labels'];
+        $timelineLabels = $languageInstructions['timeline_labels'];
 
         return <<<PROMPT
-Tu es l'assistant Carbex spécialisé dans les recommandations de réduction carbone pour les PME françaises.
+{$respond}
+
+Tu es l'assistant Carbex spécialisé dans les recommandations de réduction carbone pour les PME.
 
 **Profil de l'entreprise:**
 - Secteur: {$sector}
@@ -72,19 +105,21 @@ Propose 5 actions de réduction prioritaires, classées par impact potentiel.
 2. **Description** concrète de la mise en œuvre
 3. **Impact estimé**: X% de réduction (sur le scope concerné)
 4. **Coût**: € (faible) / €€ (moyen) / €€€ (élevé)
-5. **Difficulté**: Facile / Moyen / Difficile
-6. **Délai**: Court terme (<3 mois) / Moyen terme (3-12 mois) / Long terme (>12 mois)
+5. **Difficulté**: {$difficultyLabels}
+6. **Délai**: {$timelineLabels}
 7. **Scope(s) concerné(s)**: 1, 2, et/ou 3
 
 **Règles:**
 - Priorise les "quick wins" (impact élevé, faible coût/difficulté)
 - Adapte au secteur d'activité
 - Sois réaliste pour une PME (budget et ressources limités)
-- Mentionne les aides disponibles (CEE, ADEME, etc.) si pertinent
+- Mentionne les aides disponibles si pertinent
 - Évite les actions trop génériques
 
 **Format de réponse:**
 Structure en liste numérotée avec les 7 points pour chaque action.
+
+{$respond}
 PROMPT;
     }
 

@@ -325,8 +325,8 @@ class ActionRecommendationEngine
                 'cost' => 2,
                 'cost_label' => '€€',
                 'difficulty' => 'medium',
-                'difficulty_label' => 'Moyen',
-                'timeline' => 'Moyen terme',
+                'difficulty_label' => __('carbex.difficulty.medium'),
+                'timeline' => __('carbex.timeline.medium_term'),
                 'scopes' => [2],
             ];
         }
@@ -340,8 +340,8 @@ class ActionRecommendationEngine
                 'cost' => 2,
                 'cost_label' => '€€',
                 'difficulty' => 'medium',
-                'difficulty_label' => 'Moyen',
-                'timeline' => 'Court terme',
+                'difficulty_label' => __('carbex.difficulty.medium'),
+                'timeline' => __('carbex.timeline.short_term'),
                 'scopes' => [1],
             ];
         }
@@ -355,8 +355,8 @@ class ActionRecommendationEngine
                 'cost' => 1,
                 'cost_label' => '€',
                 'difficulty' => 'medium',
-                'difficulty_label' => 'Moyen',
-                'timeline' => 'Moyen terme',
+                'difficulty_label' => __('carbex.difficulty.medium'),
+                'timeline' => __('carbex.timeline.medium_term'),
                 'scopes' => [3],
             ];
 
@@ -368,8 +368,8 @@ class ActionRecommendationEngine
                 'cost' => 1,
                 'cost_label' => '€',
                 'difficulty' => 'easy',
-                'difficulty_label' => 'Facile',
-                'timeline' => 'Court terme',
+                'difficulty_label' => __('carbex.difficulty.easy'),
+                'timeline' => __('carbex.timeline.short_term'),
                 'scopes' => [3],
             ];
         }
@@ -382,8 +382,8 @@ class ActionRecommendationEngine
             'cost' => 2,
             'cost_label' => '€€',
             'difficulty' => 'easy',
-            'difficulty_label' => 'Facile',
-            'timeline' => 'Court terme',
+            'difficulty_label' => __('carbex.difficulty.easy'),
+            'timeline' => __('carbex.timeline.short_term'),
             'scopes' => [1, 2],
         ];
 

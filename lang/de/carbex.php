@@ -1662,6 +1662,18 @@ return [
         'energy_efficiency_desc' => 'Umrüstung auf LED-Beleuchtung, Verbesserung der Isolierung und Optimierung von Heizungs-/Kühlsystemen.',
     ],
 
+    'difficulty' => [
+        'easy' => 'Einfach',
+        'medium' => 'Mittel',
+        'hard' => 'Schwierig',
+    ],
+
+    'timeline' => [
+        'short_term' => 'Kurzfristig',
+        'medium_term' => 'Mittelfristig',
+        'long_term' => 'Langfristig',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Sites - Multi-sites Management (T174-T175)

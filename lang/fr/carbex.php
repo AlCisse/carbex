@@ -1757,6 +1757,18 @@ return [
         'energy_efficiency_desc' => 'Passage à l\'éclairage LED, amélioration de l\'isolation et optimisation des systèmes de chauffage/climatisation.',
     ],
 
+    'difficulty' => [
+        'easy' => 'Facile',
+        'medium' => 'Moyen',
+        'hard' => 'Difficile',
+    ],
+
+    'timeline' => [
+        'short_term' => 'Court terme',
+        'medium_term' => 'Moyen terme',
+        'long_term' => 'Long terme',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Sites - Multi-sites Management (T174-T175)

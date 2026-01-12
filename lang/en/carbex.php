@@ -1482,6 +1482,18 @@ return [
         'energy_efficiency_desc' => 'Upgrade to LED lighting, improve insulation, and optimize heating/cooling systems.',
     ],
 
+    'difficulty' => [
+        'easy' => 'Easy',
+        'medium' => 'Medium',
+        'hard' => 'Hard',
+    ],
+
+    'timeline' => [
+        'short_term' => 'Short term',
+        'medium_term' => 'Medium term',
+        'long_term' => 'Long term',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Sites - Multi-sites Management (T174-T175)
