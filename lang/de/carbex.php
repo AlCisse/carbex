@@ -51,6 +51,7 @@ return [
         'view_all' => 'Alle anzeigen',
         'select' => 'Auswählen',
         'inactive' => 'Inaktiv',
+        'active' => 'Aktiv',
         'save' => 'Speichern',
         'cancel' => 'Abbrechen',
         'delete' => 'Löschen',
@@ -1716,11 +1717,39 @@ return [
     ],
 
     'settings' => [
+        'team' => 'Team',
         'navigation_mode' => 'Navigationsmodus',
         'nav_standard' => 'Standardnavigation',
         'nav_standard_desc' => 'Klassisches Menü nach Funktionen',
         'nav_pillars' => '5-Säulen-Navigation',
         'nav_pillars_desc' => 'Organisiert nach strategischen Säulen (TrackZero-Stil)',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users & Roles
+    |--------------------------------------------------------------------------
+    */
+
+    'users' => [
+        'invite' => 'Benutzer einladen',
+        'member' => 'Mitglied',
+        'role' => 'Rolle',
+        'status' => 'Status',
+        'last_login' => 'Letzte Anmeldung',
+        'you' => '(Sie)',
+        'never' => 'Nie',
+        'edit_role' => 'Rolle bearbeiten',
+        'remove' => 'Entfernen',
+        'confirm_remove' => 'Sind Sie sicher, dass Sie diesen Benutzer entfernen möchten?',
+    ],
+
+    'roles' => [
+        'owner' => 'Eigentümer',
+        'admin' => 'Administrator',
+        'manager' => 'Manager',
+        'member' => 'Mitglied',
+        'viewer' => 'Betrachter',
     ],
 
     'compliance' => [
@@ -2097,6 +2126,7 @@ return [
         'phone' => 'Telefon',
         'sector' => 'Branche',
         'annual_spend' => 'Jährliche Ausgaben',
+        'status' => 'Status',
         'data_quality' => 'Datenqualität',
         'country' => 'Land',
         'contact_name' => 'Kontaktname',
@@ -2113,7 +2143,7 @@ return [
         ],
 
         // Status labels
-        'status' => [
+        'statuses' => [
             'pending' => 'Ausstehend',
             'invited' => 'Eingeladen',
             'active' => 'Aktiv',

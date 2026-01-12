@@ -39,6 +39,7 @@ return [
         'view_all' => 'View all',
         'select' => 'Select',
         'inactive' => 'Inactive',
+        'active' => 'Active',
         'save' => 'Save',
         'cancel' => 'Cancel',
         'delete' => 'Delete',
@@ -1568,11 +1569,39 @@ return [
     ],
 
     'settings' => [
+        'team' => 'Team',
         'navigation_mode' => 'Navigation mode',
         'nav_standard' => 'Standard navigation',
         'nav_standard_desc' => 'Classic menu by feature',
         'nav_pillars' => '5 Pillars navigation',
         'nav_pillars_desc' => 'Organized by strategic pillars (TrackZero style)',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users & Roles
+    |--------------------------------------------------------------------------
+    */
+
+    'users' => [
+        'invite' => 'Invite user',
+        'member' => 'Member',
+        'role' => 'Role',
+        'status' => 'Status',
+        'last_login' => 'Last login',
+        'you' => '(you)',
+        'never' => 'Never',
+        'edit_role' => 'Edit role',
+        'remove' => 'Remove',
+        'confirm_remove' => 'Are you sure you want to remove this user?',
+    ],
+
+    'roles' => [
+        'owner' => 'Owner',
+        'admin' => 'Administrator',
+        'manager' => 'Manager',
+        'member' => 'Member',
+        'viewer' => 'Viewer',
     ],
 
     'compliance' => [
@@ -1758,6 +1787,7 @@ return [
         'phone' => 'Phone',
         'sector' => 'Sector',
         'annual_spend' => 'Annual spend',
+        'status' => 'Status',
         'data_quality' => 'Data quality',
         'country' => 'Country',
         'contact_name' => 'Contact name',
@@ -1774,7 +1804,7 @@ return [
         ],
 
         // Status labels
-        'status' => [
+        'statuses' => [
             'pending' => 'Pending',
             'invited' => 'Invited',
             'active' => 'Active',

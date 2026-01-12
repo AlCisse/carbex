@@ -84,10 +84,10 @@
                     class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 >
                     <option value="">{{ __('carbex.suppliers.all_statuses') }}</option>
-                    <option value="pending">{{ __('carbex.suppliers.status.pending') }}</option>
-                    <option value="invited">{{ __('carbex.suppliers.status.invited') }}</option>
-                    <option value="active">{{ __('carbex.suppliers.status.active') }}</option>
-                    <option value="inactive">{{ __('carbex.suppliers.status.inactive') }}</option>
+                    <option value="pending">{{ __('carbex.suppliers.statuses.pending') }}</option>
+                    <option value="invited">{{ __('carbex.suppliers.statuses.invited') }}</option>
+                    <option value="active">{{ __('carbex.suppliers.statuses.active') }}</option>
+                    <option value="inactive">{{ __('carbex.suppliers.statuses.inactive') }}</option>
                 </select>
             </div>
 
@@ -178,7 +178,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $this->getStatusClass($supplier->status) }}">
-                                    {{ __('carbex.suppliers.status.' . $supplier->status) }}
+                                    {{ __('carbex.suppliers.statuses.' . $supplier->status) }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">

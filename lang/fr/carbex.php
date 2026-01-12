@@ -51,6 +51,7 @@ return [
         'view_all' => 'Voir tout',
         'select' => 'Sélectionner',
         'inactive' => 'Inactif',
+        'active' => 'Actif',
         'save' => 'Enregistrer',
         'cancel' => 'Annuler',
         'delete' => 'Supprimer',
@@ -1846,11 +1847,39 @@ return [
     ],
 
     'settings' => [
+        'team' => 'Équipe',
         'navigation_mode' => 'Mode de navigation',
         'nav_standard' => 'Navigation standard',
         'nav_standard_desc' => 'Menu classique par fonctionnalité',
         'nav_pillars' => 'Navigation 5 Piliers',
         'nav_pillars_desc' => 'Organisée par piliers stratégiques (style TrackZero)',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users & Roles
+    |--------------------------------------------------------------------------
+    */
+
+    'users' => [
+        'invite' => 'Inviter un utilisateur',
+        'member' => 'Membre',
+        'role' => 'Rôle',
+        'status' => 'Statut',
+        'last_login' => 'Dernière connexion',
+        'you' => '(vous)',
+        'never' => 'Jamais',
+        'edit_role' => 'Modifier le rôle',
+        'remove' => 'Retirer',
+        'confirm_remove' => 'Êtes-vous sûr de vouloir retirer cet utilisateur ?',
+    ],
+
+    'roles' => [
+        'owner' => 'Propriétaire',
+        'admin' => 'Administrateur',
+        'manager' => 'Gestionnaire',
+        'member' => 'Membre',
+        'viewer' => 'Lecteur',
     ],
 
     'compliance' => [
@@ -2047,6 +2076,7 @@ return [
         'phone' => 'Téléphone',
         'sector' => 'Secteur',
         'annual_spend' => 'Dépenses annuelles',
+        'status' => 'Statut',
         'data_quality' => 'Qualité des données',
         'country' => 'Pays',
         'contact_name' => 'Nom du contact',
@@ -2063,7 +2093,7 @@ return [
         ],
 
         // Status labels
-        'status' => [
+        'statuses' => [
             'pending' => 'En attente',
             'invited' => 'Invité',
             'active' => 'Actif',
