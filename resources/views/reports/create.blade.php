@@ -4,6 +4,6 @@
     </x-slot>
 
     <x-card>
-        <p class="text-gray-500">Report generation form coming soon.</p>
+        <p class="text-gray-500">{{ __('carbex.reports.form_coming_soon') }}</p>
     </x-card>
 </x-layouts.app>

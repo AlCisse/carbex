@@ -639,6 +639,7 @@ return [
         'title' => 'Reports & Exports',
         'subtitle' => 'Generate and download your carbon footprints',
         'generate' => 'Generate',
+        'form_coming_soon' => 'Report generation form coming soon.',
         'generate_report' => 'Generate report',
         'generate_confirm' => 'Generate report for year :year.',
         'download' => 'Download',

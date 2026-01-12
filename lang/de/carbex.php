@@ -729,6 +729,7 @@ return [
         'title' => 'Berichte & Exporte',
         'subtitle' => 'Erstellen und laden Sie Ihre CO2-Bilanzen herunter',
         'generate' => 'Erstellen',
+        'form_coming_soon' => 'Berichterstellungsformular folgt in Kürze.',
         'generate_report' => 'Bericht erstellen',
         'generate_confirm' => 'Bericht für Jahr :year erstellen.',
         'download' => 'Herunterladen',

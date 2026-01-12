@@ -719,6 +719,7 @@ return [
         'title' => 'Rapports & Exports',
         'subtitle' => 'Générez et téléchargez vos bilans carbone dans différents formats',
         'generate' => 'Générer',
+        'form_coming_soon' => 'Formulaire de génération de rapport à venir prochainement.',
         'generate_report' => 'Générer le rapport',
         'generate_confirm' => 'Vous allez générer un rapport pour l\'année :year.',
         'download' => 'Télécharger',
