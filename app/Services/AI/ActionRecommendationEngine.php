@@ -225,6 +225,7 @@ class ActionRecommendationEngine
 
     /**
      * Parse la réponse de l'IA en recommandations structurées.
+     * Supports German, English, and French responses.
      *
      * @return Collection<int, array>
      */
@@ -240,42 +241,84 @@ class ActionRecommendationEngine
             $line = trim($line);
 
             // Détecter le début d'une nouvelle action (numérotée)
+            // Supports: "1. **Title**" or "1. **Titel:**" or "1. **Titre:**"
             if (preg_match('/^(\d+)\.\s*\*\*(.+?)\*\*/', $line, $matches)) {
                 if ($currentAction) {
                     $recommendations[] = $currentAction;
                 }
-                $currentAction = [
-                    'number' => (int) $matches[1],
-                    'title' => trim($matches[2]),
-                    'description' => '',
-                    'impact' => null,
-                    'cost' => null,
-                    'difficulty' => 'medium',
-                    'timeline' => null,
-                    'scopes' => [],
-                ];
+                // Clean up title (remove trailing colon if present)
+                $title = trim($matches[2]);
+                $title = rtrim($title, ':');
+                // Skip if title is just a label like "Titel" or "Title"
+                if (! preg_match('/^(Titel|Title|Titre)$/i', $title)) {
+                    $currentAction = [
+                        'number' => (int) $matches[1],
+                        'title' => $title,
+                        'description' => '',
+                        'impact' => null,
+                        'cost' => null,
+                        'difficulty' => 'medium',
+                        'timeline' => null,
+                        'scopes' => [],
+                    ];
+                } else {
+                    // Title is on the same line after colon or on next line
+                    $currentAction = [
+                        'number' => (int) $matches[1],
+                        'title' => '',
+                        'description' => '',
+                        'impact' => null,
+                        'cost' => null,
+                        'difficulty' => 'medium',
+                        'timeline' => null,
+                        'scopes' => [],
+                    ];
+                }
             } elseif ($currentAction) {
-                // Parser les attributs de l'action
-                if (preg_match('/\*\*Impact.*?\*\*.*?(\d+)%/', $line, $matches)) {
-                    $currentAction['impact'] = (int) $matches[1];
-                } elseif (preg_match('/\*\*Coût.*?\*\*.*?(€+)/', $line, $matches)) {
-                    $currentAction['cost'] = strlen($matches[1]);
-                    $currentAction['cost_label'] = $matches[1];
-                } elseif (preg_match('/\*\*Difficulté.*?\*\*.*?(Facile|Moyen|Difficile)/i', $line, $matches)) {
-                    $currentAction['difficulty'] = strtolower($matches[1]) === 'facile' ? 'easy'
-                        : (strtolower($matches[1]) === 'difficile' ? 'hard' : 'medium');
-                    $currentAction['difficulty_label'] = $matches[1];
-                } elseif (preg_match('/\*\*Délai.*?\*\*.*?(Court terme|Moyen terme|Long terme)/i', $line, $matches)) {
-                    $currentAction['timeline'] = $matches[1];
-                } elseif (preg_match('/\*\*Scope.*?\*\*.*?([123,\s]+)/', $line, $matches)) {
+                // If title is empty, the next non-empty line might be the title
+                if (empty($currentAction['title']) && ! str_starts_with($line, '**') && ! empty($line) && strlen($line) < 100) {
+                    $currentAction['title'] = $line;
+                    continue;
+                }
+
+                // Parse Impact (DE: Impact/Geschätzter Impact, EN: Estimated Impact, FR: Impact estimé)
+                if (preg_match('/\*\*(Impact|Geschätzter Impact|Estimated Impact|Impact estimé).*?\*\*.*?(\d+)%/i', $line, $matches)) {
+                    $currentAction['impact'] = (int) $matches[2];
+                }
+                // Parse Cost (DE: Kosten, EN: Cost, FR: Coût)
+                elseif (preg_match('/\*\*(Kosten|Cost|Coût).*?\*\*.*?(€+)/i', $line, $matches)) {
+                    $currentAction['cost'] = strlen($matches[2]);
+                    $currentAction['cost_label'] = $matches[2];
+                }
+                // Parse Difficulty (DE: Schwierigkeit, EN: Difficulty, FR: Difficulté)
+                elseif (preg_match('/\*\*(Schwierigkeit|Difficulty|Difficulté).*?\*\*.*?(Einfach|Mittel|Schwierig|Easy|Medium|Hard|Facile|Moyen|Difficile)/i', $line, $matches)) {
+                    $diffValue = strtolower($matches[2]);
+                    $currentAction['difficulty'] = match ($diffValue) {
+                        'einfach', 'easy', 'facile' => 'easy',
+                        'schwierig', 'hard', 'difficile' => 'hard',
+                        default => 'medium',
+                    };
+                    $currentAction['difficulty_label'] = $matches[2];
+                }
+                // Parse Timeline (DE: Zeitrahmen, EN: Timeline, FR: Délai)
+                elseif (preg_match('/\*\*(Zeitrahmen|Timeline|Délai).*?\*\*.*?(Kurzfristig|Mittelfristig|Langfristig|Short term|Medium term|Long term|Court terme|Moyen terme|Long terme)/i', $line, $matches)) {
+                    $currentAction['timeline'] = $matches[2];
+                }
+                // Parse Scope (same in all languages)
+                elseif (preg_match('/\*\*Scope.*?\*\*.*?([123,\s]+)/', $line, $matches)) {
                     $currentAction['scopes'] = array_map('intval', preg_split('/[\s,]+/', trim($matches[1])));
-                } elseif (preg_match('/\*\*Description.*?\*\*(.*)/', $line, $matches)) {
-                    $currentAction['description'] = trim($matches[1]);
-                } elseif (! str_starts_with($line, '**') && strlen($line) > 10) {
-                    // Ajouter à la description si c'est du texte libre
-                    if (empty($currentAction['description'])) {
-                        $currentAction['description'] = $line;
-                    }
+                }
+                // Parse Betroffene Scopes (German alternative)
+                elseif (preg_match('/\*\*(Betroffene|Affected).*?Scope.*?\*\*.*?([123,\s]+)/i', $line, $matches)) {
+                    $currentAction['scopes'] = array_map('intval', preg_split('/[\s,]+/', trim($matches[2])));
+                }
+                // Parse Description (DE: Beschreibung, EN: Description, FR: Description)
+                elseif (preg_match('/\*\*(Beschreibung|Description).*?\*\*(.*)/i', $line, $matches)) {
+                    $currentAction['description'] = trim($matches[2]);
+                }
+                // Add free text to description if description is empty
+                elseif (! str_starts_with($line, '**') && strlen($line) > 10 && empty($currentAction['description'])) {
+                    $currentAction['description'] = $line;
                 }
             }
         }
