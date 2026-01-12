@@ -371,9 +371,11 @@ class CsrdComplianceService
         $turnover = $org->annual_turnover ?? 0;
 
         // Check for renewable energy (taxonomy-aligned activity)
+        // Check if any Scope 2 emissions use market-based method (indicates renewable energy certificates)
         $renewableEnergy = $org->emissionRecords()
-            ->whereYear('recorded_at', $year)
-            ->where('is_renewable', true)
+            ->where('year', $year)
+            ->where('scope', 2)
+            ->where('scope_2_method', 'market_based')
             ->exists();
 
         // Estimate taxonomy eligibility (simplified)
