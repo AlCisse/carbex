@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot name="header">
-        <h1 class="text-xl font-semibold text-gray-900">Review Transactions</h1>
+        <h1 class="text-xl font-semibold text-gray-900">{{ __('carbex.transactions.review_title') }}</h1>
     </x-slot>
 
     <div class="space-y-6">

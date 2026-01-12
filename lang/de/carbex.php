@@ -679,6 +679,8 @@ return [
 
     'transactions' => [
         'title' => 'Transaktionen',
+        'import_title' => 'Transaktionen importieren',
+        'review_title' => 'Transaktionen prüfen',
         'total_transactions' => 'Gesamttransaktionen',
         'pending_categorization' => 'Kategorisierung ausstehend',
         'needs_review' => 'Prüfung erforderlich',

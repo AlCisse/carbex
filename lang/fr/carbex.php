@@ -1326,6 +1326,8 @@ return [
 
     'transactions' => [
         'title' => 'Transactions',
+        'import_title' => 'Importer des transactions',
+        'review_title' => 'Vérifier les transactions',
         'total_transactions' => 'Total des transactions',
         'pending_categorization' => 'Catégorisation en attente',
         'needs_review' => 'À vérifier',

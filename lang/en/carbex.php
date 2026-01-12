@@ -595,6 +595,8 @@ return [
 
     'transactions' => [
         'title' => 'Transactions',
+        'import_title' => 'Import Transactions',
+        'review_title' => 'Review Transactions',
         'total_transactions' => 'Total transactions',
         'pending_categorization' => 'Pending categorization',
         'needs_review' => 'Needs review',
