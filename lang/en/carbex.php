@@ -1353,7 +1353,11 @@ return [
     'sites' => [
         'manage_sites' => 'Manage sites',
         'add_site' => 'Add a site',
+        'add' => 'Add a site',
         'employees' => 'employees',
+        'no_sites' => 'No sites configured',
+        'no_sites_desc' => 'Add your different sites to track their carbon emissions individually.',
+        'add_first' => 'Add your first site',
 
         'comparison' => [
             'title' => 'Site Comparison',
@@ -1570,6 +1574,7 @@ return [
 
     'settings' => [
         'team' => 'Team',
+        'sites' => 'Sites',
         'navigation_mode' => 'Navigation mode',
         'nav_standard' => 'Standard navigation',
         'nav_standard_desc' => 'Classic menu by feature',

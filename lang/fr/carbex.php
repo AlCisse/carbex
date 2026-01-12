@@ -1628,7 +1628,11 @@ return [
     'sites' => [
         'manage_sites' => 'Gérer les sites',
         'add_site' => 'Ajouter un site',
+        'add' => 'Ajouter un site',
         'employees' => 'employés',
+        'no_sites' => 'Aucun site configuré',
+        'no_sites_desc' => 'Ajoutez vos différents sites pour suivre leurs émissions carbone individuellement.',
+        'add_first' => 'Ajouter votre premier site',
 
         'comparison' => [
             'title' => 'Comparaison des sites',
@@ -1848,6 +1852,7 @@ return [
 
     'settings' => [
         'team' => 'Équipe',
+        'sites' => 'Sites',
         'navigation_mode' => 'Mode de navigation',
         'nav_standard' => 'Navigation standard',
         'nav_standard_desc' => 'Menu classique par fonctionnalité',

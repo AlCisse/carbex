@@ -1546,7 +1546,11 @@ return [
     'sites' => [
         'manage_sites' => 'Standorte verwalten',
         'add_site' => 'Standort hinzufügen',
+        'add' => 'Standort hinzufügen',
         'employees' => 'Mitarbeiter',
+        'no_sites' => 'Keine Standorte konfiguriert',
+        'no_sites_desc' => 'Fügen Sie Ihre verschiedenen Standorte hinzu, um deren CO2-Emissionen einzeln zu verfolgen.',
+        'add_first' => 'Ersten Standort hinzufügen',
 
         'comparison' => [
             'title' => 'Standortvergleich',
@@ -1718,6 +1722,7 @@ return [
 
     'settings' => [
         'team' => 'Team',
+        'sites' => 'Standorte',
         'navigation_mode' => 'Navigationsmodus',
         'nav_standard' => 'Standardnavigation',
         'nav_standard_desc' => 'Klassisches Menü nach Funktionen',
