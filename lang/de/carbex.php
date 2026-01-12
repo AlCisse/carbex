@@ -2858,6 +2858,49 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Sidebar Navigation
+    |--------------------------------------------------------------------------
+    */
+
+    'sidebar' => [
+        'dashboard' => 'Dashboard',
+        'analysis' => 'Analyse',
+        'documents' => 'Dokumente',
+        'ai_analysis' => 'KI-Analyse',
+        'suppliers' => 'Lieferanten',
+        'transition_plan' => 'Übergangsplan',
+        'reports' => 'Berichte & Exporte',
+        'badges' => 'Abzeichen',
+        'new' => 'NEU',
+
+        // Scope names
+        'scope1_name' => 'Scope 1 - Direkte Emissionen',
+        'scope2_name' => 'Scope 2 - Indirekte energiebezogene Emissionen',
+        'scope3_name' => 'Scope 3 - Sonstige indirekte Emissionen',
+
+        // Scope 1 categories
+        'cat_1_1' => 'Stationäre Verbrennung',
+        'cat_1_2' => 'Mobile Verbrennung',
+        'cat_1_4' => 'Flüchtige Emissionen',
+        'cat_1_5' => 'Biomasse (Böden und Wälder)',
+
+        // Scope 2 categories
+        'cat_2_1' => 'Stromverbrauch',
+
+        // Scope 3 categories
+        'cat_3_1' => 'Vorgelagerter Gütertransport',
+        'cat_3_2' => 'Nachgelagerter Gütertransport',
+        'cat_3_3' => 'Pendlerverkehr',
+        'cat_3_5' => 'Geschäftsreisen',
+        'cat_4_1' => 'Einkauf von Gütern',
+        'cat_4_2' => 'Investitionsgüter',
+        'cat_4_3' => 'Abfallwirtschaft',
+        'cat_4_4' => 'Vorgelagertes Leasing',
+        'cat_4_5' => 'Einkauf von Dienstleistungen',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Filament Admin
     |--------------------------------------------------------------------------
     */

@@ -2925,6 +2925,49 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Sidebar Navigation
+    |--------------------------------------------------------------------------
+    */
+
+    'sidebar' => [
+        'dashboard' => 'Tableau de bord',
+        'analysis' => 'Analyse',
+        'documents' => 'Documents',
+        'ai_analysis' => 'Analyse IA',
+        'suppliers' => 'Fournisseurs',
+        'transition_plan' => 'Plan de transition',
+        'reports' => 'Rapports & exports',
+        'badges' => 'Badges',
+        'new' => 'NEW',
+
+        // Scope names
+        'scope1_name' => 'Scope 1 - Émissions directes',
+        'scope2_name' => 'Scope 2 - Émissions indirectes liées à l\'énergie',
+        'scope3_name' => 'Scope 3 - Autres émissions indirectes',
+
+        // Scope 1 categories
+        'cat_1_1' => 'Sources fixes de combustion',
+        'cat_1_2' => 'Sources mobiles de combustion',
+        'cat_1_4' => 'Émissions fugitives',
+        'cat_1_5' => 'Biomasse (sols et forêts)',
+
+        // Scope 2 categories
+        'cat_2_1' => 'Consommation d\'électricité',
+
+        // Scope 3 categories
+        'cat_3_1' => 'Transport de marchandise amont',
+        'cat_3_2' => 'Transport de marchandise aval',
+        'cat_3_3' => 'Déplacements domicile-travail',
+        'cat_3_5' => 'Déplacements professionnels',
+        'cat_4_1' => 'Achats de biens',
+        'cat_4_2' => 'Immobilisations de biens',
+        'cat_4_3' => 'Gestion des déchets',
+        'cat_4_4' => 'Actifs en leasing amont',
+        'cat_4_5' => 'Achats de services',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Filament Admin
     |--------------------------------------------------------------------------
     */

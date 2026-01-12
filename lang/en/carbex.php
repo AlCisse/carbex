@@ -2630,6 +2630,49 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Sidebar Navigation
+    |--------------------------------------------------------------------------
+    */
+
+    'sidebar' => [
+        'dashboard' => 'Dashboard',
+        'analysis' => 'Analysis',
+        'documents' => 'Documents',
+        'ai_analysis' => 'AI Analysis',
+        'suppliers' => 'Suppliers',
+        'transition_plan' => 'Transition Plan',
+        'reports' => 'Reports & Exports',
+        'badges' => 'Badges',
+        'new' => 'NEW',
+
+        // Scope names
+        'scope1_name' => 'Scope 1 - Direct Emissions',
+        'scope2_name' => 'Scope 2 - Indirect Energy Emissions',
+        'scope3_name' => 'Scope 3 - Other Indirect Emissions',
+
+        // Scope 1 categories
+        'cat_1_1' => 'Stationary Combustion',
+        'cat_1_2' => 'Mobile Combustion',
+        'cat_1_4' => 'Fugitive Emissions',
+        'cat_1_5' => 'Biomass (Soils and Forests)',
+
+        // Scope 2 categories
+        'cat_2_1' => 'Electricity Consumption',
+
+        // Scope 3 categories
+        'cat_3_1' => 'Upstream Goods Transportation',
+        'cat_3_2' => 'Downstream Goods Transportation',
+        'cat_3_3' => 'Employee Commuting',
+        'cat_3_5' => 'Business Travel',
+        'cat_4_1' => 'Purchased Goods',
+        'cat_4_2' => 'Capital Goods',
+        'cat_4_3' => 'Waste Management',
+        'cat_4_4' => 'Upstream Leased Assets',
+        'cat_4_5' => 'Purchased Services',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Filament Admin
     |--------------------------------------------------------------------------
     */

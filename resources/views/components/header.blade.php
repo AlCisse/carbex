@@ -35,6 +35,9 @@
                 </svg>
             </a>
 
+            <!-- Language Selector -->
+            <x-language-selector />
+
             <!-- Divider -->
             <div class="h-6 w-px bg-gray-200"></div>
 
