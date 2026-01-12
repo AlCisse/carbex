@@ -80,9 +80,9 @@ A user connects their company bank account via Open Banking (Bridge for France, 
 
 ---
 
-### User Story 3 - Energy Provider Connection (Priority: P1)
+### User Story 3 - Energy Provider Connection & ISO 50001 (Priority: P1)
 
-A user connects their energy accounts (Enedis for electricity, GRDF for gas in France) to automatically import consumption data for Scope 2 calculations.
+A user connects their energy accounts (Enedis for electricity, GRDF for gas in France) to automatically import consumption data for Scope 2 calculations and ISO 50001 energy management.
 
 **Status**: IMPLEMENTED
 
@@ -92,6 +92,9 @@ A user connects their energy accounts (Enedis for electricity, GRDF for gas in F
 2. **Given** an Enedis connection is active, **When** sync runs, **Then** electricity consumption (kWh) is imported with meter readings
 3. **Given** a GRDF connection is active, **When** sync runs, **Then** gas consumption (m3/kWh) is imported and converted to Scope 2 emissions
 4. **Given** consumption data exists, **When** viewing dashboard, **Then** Scope 2 emissions show real consumption vs estimated
+5. **Given** ISO 50001 compliance required, **When** admin sets energy baseline, **Then** system tracks EnPIs (Energy Performance Indicators) against baseline
+6. **Given** energy targets defined, **When** viewing energy dashboard, **Then** user sees actual vs target with variance analysis
+7. **Given** energy audit scheduled, **When** generating ISO 50001 report, **Then** system exports energy data in audit-ready format
 
 ---
 
@@ -307,59 +310,66 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - **FR-020**: System MUST integrate with GRDF API for gas consumption data ✅
 - **FR-021**: System MUST store energy consumption with meter readings and periods ✅
 
+#### ISO 50001 Energy Management
+- **FR-022**: System MUST support energy baseline definition per site/organization ✅
+- **FR-023**: System MUST calculate EnPIs (Energy Performance Indicators) ✅
+- **FR-024**: System MUST track energy targets with variance analysis ✅
+- **FR-025**: System MUST support energy action plans with progress tracking ✅
+- **FR-026**: System MUST generate ISO 50001 audit-ready reports ✅
+
 #### Manual Data Entry
-- **FR-022**: System MUST provide guided forms for manual emission data entry ✅
-- **FR-023**: System MUST support CSV/Excel file import with predefined templates ✅
-- **FR-024**: System MUST support FEC file import for French accounting data ✅
-- **FR-025**: System MUST process documents via AI/OCR for data extraction ✅
-- **FR-026**: System MUST validate imported data and report errors before saving ✅
+- **FR-027**: System MUST provide guided forms for manual emission data entry ✅
+- **FR-028**: System MUST support CSV/Excel file import with predefined templates ✅
+- **FR-029**: System MUST support FEC file import for French accounting data ✅
+- **FR-030**: System MUST process documents via AI/OCR for data extraction ✅
+- **FR-031**: System MUST validate imported data and report errors before saving ✅
 
 #### Emission Calculation
-- **FR-027**: System MUST calculate Scope 1 emissions (direct combustion, fleet vehicles) ✅
-- **FR-028**: System MUST calculate Scope 2 emissions (electricity, heat) with location and market-based methods ✅
-- **FR-029**: System MUST calculate all 15 Scope 3 categories per GHG Protocol ✅
-- **FR-030**: System MUST use country-specific emission factors (ADEME for FR, UBA for DE) ✅
-- **FR-031**: System MUST support EU country emission factors (AT, CH, BE, NL, ES, IT) ✅
-- **FR-032**: System MUST maintain audit trail of emission factors used per calculation ✅
+- **FR-032**: System MUST calculate Scope 1 emissions (direct combustion, fleet vehicles) ✅
+- **FR-033**: System MUST calculate Scope 2 emissions (electricity, heat) with location and market-based methods ✅
+- **FR-034**: System MUST calculate all 15 Scope 3 categories per GHG Protocol ✅
+- **FR-035**: System MUST use country-specific emission factors (ADEME for FR, UBA for DE) ✅
+- **FR-036**: System MUST support EU country emission factors (AT, CH, BE, NL, ES, IT) ✅
+- **FR-037**: System MUST maintain audit trail of emission factors used per calculation ✅
 
 #### Dashboard & Visualization
-- **FR-033**: System MUST display total emissions in tCO2e on dashboard ✅
-- **FR-034**: System MUST show scope breakdown (Scope 1/2/3) with percentages ✅
-- **FR-035**: System MUST display monthly and yearly trend charts ✅
-- **FR-036**: System MUST allow filtering by site, time period, and scope ✅
-- **FR-037**: System MUST display carbon equivalents (flights, car km, etc.) ✅
+- **FR-038**: System MUST display total emissions in tCO2e on dashboard ✅
+- **FR-039**: System MUST show scope breakdown (Scope 1/2/3) with percentages ✅
+- **FR-040**: System MUST display monthly and yearly trend charts ✅
+- **FR-041**: System MUST allow filtering by site, time period, and scope ✅
+- **FR-042**: System MUST display carbon equivalents (flights, car km, etc.) ✅
 
 #### Reporting
-- **FR-038**: System MUST generate PDF summary reports with configurable sections ✅
-- **FR-039**: System MUST generate Excel exports with detailed data ✅
-- **FR-040**: System MUST include methodology and emission factors in reports ✅
-- **FR-041**: Reports MUST include organization details, period, and scope breakdown ✅
-- **FR-042**: System MUST support CSRD/ESRS 2 report format ✅
+- **FR-043**: System MUST generate PDF summary reports with configurable sections ✅
+- **FR-044**: System MUST generate Excel exports with detailed data ✅
+- **FR-045**: System MUST include methodology and emission factors in reports ✅
+- **FR-046**: Reports MUST include organization details, period, and scope breakdown ✅
+- **FR-047**: System MUST support CSRD/ESRS 2 report format ✅
 
 #### Subscription & Billing
-- **FR-043**: System MUST offer tiered subscription plans (Starter, Pro, Business, Enterprise) ✅
-- **FR-044**: System MUST process payments securely via Stripe ✅
-- **FR-045**: System MUST enforce plan-specific feature limits (sites, users, connections) ✅
-- **FR-046**: System MUST provide 14-day free trial for non-Enterprise plans ✅
-- **FR-047**: System MUST maintain access to data in read-only mode when subscription lapses ✅
+- **FR-048**: System MUST offer tiered subscription plans (Starter, Pro, Business, Enterprise) ✅
+- **FR-049**: System MUST process payments securely via Stripe ✅
+- **FR-050**: System MUST enforce plan-specific feature limits (sites, users, connections) ✅
+- **FR-051**: System MUST provide 14-day free trial for non-Enterprise plans ✅
+- **FR-052**: System MUST maintain access to data in read-only mode when subscription lapses ✅
 
 #### Supplier Management
-- **FR-048**: System MUST allow adding suppliers with contact information ✅
-- **FR-049**: System MUST support supplier invitation via email ✅
-- **FR-050**: System MUST accept supplier emission data submissions ✅
-- **FR-051**: System MUST integrate supplier data into Scope 3 calculations ✅
+- **FR-053**: System MUST allow adding suppliers with contact information ✅
+- **FR-054**: System MUST support supplier invitation via email ✅
+- **FR-055**: System MUST accept supplier emission data submissions ✅
+- **FR-056**: System MUST integrate supplier data into Scope 3 calculations ✅
 
 #### API & Integrations
-- **FR-052**: System MUST provide REST API with JSON responses ✅
-- **FR-053**: System MUST support API key authentication with scopes ✅
-- **FR-054**: System MUST enforce API rate limiting ✅
-- **FR-055**: System MUST support webhook notifications for key events ✅
-- **FR-056**: System MUST provide webhook delivery tracking and retry ✅
+- **FR-057**: System MUST provide REST API with JSON responses ✅
+- **FR-058**: System MUST support API key authentication with scopes ✅
+- **FR-059**: System MUST enforce API rate limiting ✅
+- **FR-060**: System MUST support webhook notifications for key events ✅
+- **FR-061**: System MUST provide webhook delivery tracking and retry ✅
 
 #### Internationalization
-- **FR-057**: System MUST support German (primary), French, and English languages ✅
-- **FR-058**: System MUST display currency, dates, and numbers in locale-appropriate formats ✅
-- **FR-059**: System MUST have NO hardcoded text in any component ✅
+- **FR-062**: System MUST support German (primary), French, and English languages ✅
+- **FR-063**: System MUST display currency, dates, and numbers in locale-appropriate formats ✅
+- **FR-064**: System MUST have NO hardcoded text in any component ✅
 
 ### Key Entities (Implemented)
 
@@ -390,6 +400,11 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - **AIConversation**: Chat history. Attributes: messages, context, user reference
 - **AISetting**: AI configuration. Attributes: provider, model, quotas
 - **UploadedDocument**: Document for processing. Attributes: file path, type, processing status
+- **EnergyBaseline**: ISO 50001 energy baseline. Attributes: site, year, consumption (kWh), normalized factors
+- **EnergyTarget**: ISO 50001 energy target. Attributes: baseline reference, target year, reduction %, EnPI type
+- **Esrs2Disclosure**: CSRD disclosure. Attributes: year, requirement code, content, status, verified date
+- **ClimateTransitionPlan**: CSRD transition plan. Attributes: base year, target year, targets JSON, actions JSON
+- **DoubleMaterialityAssessment**: CSRD materiality. Attributes: year, impact matrix, financial matrix, stakeholder input
 
 ---
 
@@ -530,16 +545,48 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 ## Compliance
 
 ### Regulatory Framework (Supported)
-- **CSRD 2025**: Corporate Sustainability Reporting Directive
-- **ESRS 2**: European Sustainability Reporting Standards
-- **BEGES**: Bilan des Emissions de Gaz a Effet de Serre (France)
-- **LkSG**: Lieferkettensorgfaltspflichtengesetz (German Supply Chain Act)
+
+#### CSRD 2025 (Corporate Sustainability Reporting Directive)
+- **Applicability**: Companies with 250+ employees OR €50M+ revenue OR €25M+ assets
+- **Timeline**: Large companies from FY2024, SMEs from FY2026
+- **Scope**: Double materiality assessment (impact + financial)
+- **Implementation**: Full ESRS disclosure support
+
+#### ESRS (European Sustainability Reporting Standards)
+| Standard | Description | Status |
+|----------|-------------|--------|
+| ESRS 2 | General disclosures | Implemented |
+| ESRS E1 | Climate change | Implemented |
+| ESRS E2 | Pollution | Planned |
+| ESRS E3 | Water & marine resources | Planned |
+| ESRS E4 | Biodiversity | Planned |
+| ESRS E5 | Resource use & circular economy | Planned |
+| ESRS S1-S4 | Social standards | Planned |
+| ESRS G1 | Governance | Implemented |
+
+#### ISO Standards
+- **ISO 14064-1:2018**: GHG quantification with uncertainty tracking
+- **ISO 50001:2018**: Energy management system (EnMS)
+  - Energy baselines and EnPIs (Energy Performance Indicators)
+  - Plan-Do-Check-Act cycle
+  - Energy targets and action plans
+  - Monitoring & measurement
+  - Internal audit support
+
+#### National Regulations
+- **BEGES** (France): Bilan des Emissions de Gaz a Effet de Serre
+- **LkSG** (Germany): Lieferkettensorgfaltspflichtengesetz (Supply Chain Due Diligence)
+- **CSDDD** (EU): Corporate Sustainability Due Diligence Directive
+
+#### Carbon Standards
 - **GHG Protocol**: Scopes 1, 2, 3 (all 15 categories)
-- **ISO 14064-1**: Greenhouse gas accounting standard
-- **EU Taxonomy**: Sustainable activities classification
+- **SBTi**: Science Based Targets initiative alignment
+- **EU Taxonomy**: Sustainable activities classification (Regulation 2020/852)
 
 ### Data Protection
-- **GDPR**: Full compliance with EU data protection
+- **GDPR/DSGVO**: Full compliance with EU data protection
 - **Art. 37(5) DSGVO**: Data Protection Officer (dpo@carbex.de)
 - **Data residency**: EU-only hosting (Scaleway Paris/Amsterdam)
 - **Encryption**: AES-256 at rest, TLS 1.3 in transit
+- **Data retention**: Configurable per organization
+- **Right to erasure**: Automated data deletion workflows
