@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { login } from './helpers/auth';
 
 test('Test submit Add source form on 1.1', async ({ page }) => {
     page.on('console', msg => {
@@ -6,19 +7,12 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
     });
     page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
 
-    // Login
-    await page.goto('/login');
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(1000);
-    await page.locator('#email').fill('test@carbex.fr');
-    await page.locator('#password').fill('password');
-    await page.locator('#password').press('Enter');
-    await page.waitForSelector('aside', { timeout: 30000 });
+    // Use shared login helper
+    await login(page);
 
     // Go to 1.1
     await page.goto('/emissions/1/1.1');
     await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(1000);
 
     // Click Add source button
     console.log('1. Clicking Add source...');
@@ -40,11 +34,10 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
 
     // Search for factor
     console.log('4. Searching for emission factor...');
-    // Wait for the modal/panel to fully appear
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1000);
 
     // Find any visible search input in the modal
-    const searchInput = page.locator('input[type="text"]').filter({ hasText: '' }).locator('visible=true').first();
+    const searchInput = page.locator('input[type="text"][placeholder*="Search"], input[type="search"]').first();
     if (await searchInput.isVisible()) {
         await searchInput.fill('gaz');
         console.log('   Search input filled');
@@ -58,7 +51,6 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
 
     // Click first result in the list
     console.log('5. Selecting first factor...');
-    // The factors are displayed as li elements with cursor-pointer class
     const factorRow = page.locator('li.cursor-pointer, ul li[wire\\:click*="selectFactor"]').first();
     await factorRow.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
     if (await factorRow.isVisible()) {
@@ -69,28 +61,21 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
         await page.keyboard.press('Escape');
     }
 
-    await page.waitForTimeout(1000);
+    // Wait for modal to close
+    await page.waitForTimeout(1500);
+
+    // Ensure the modal overlay is gone before continuing
+    await page.waitForSelector('.fixed.inset-0.bg-gray-500', { state: 'hidden', timeout: 5000 }).catch(() => {});
 
     // Screenshot after selection
     await page.screenshot({ path: 'test-results/after-factor-selection.png', fullPage: true });
 
     // Fill quantity
     console.log('6. Filling quantity...');
-    const quantityInput = page.locator('input').filter({ hasText: '' }).locator('visible=true').last();
-    // Try different selectors for quantity
-    const quantitySelectors = [
-        'input[wire\\:model="quantity"]',
-        'input[type="number"]',
-        'input[placeholder="0.00"]'
-    ];
-
-    for (const selector of quantitySelectors) {
-        const input = page.locator(selector).first();
-        if (await input.isVisible()) {
-            await input.fill('1500');
-            console.log(`   Quantity filled using: ${selector}`);
-            break;
-        }
+    const quantityInput = page.locator('input[type="number"]').first();
+    if (await quantityInput.isVisible()) {
+        await quantityInput.fill('1500');
+        console.log('   Quantity filled');
     }
 
     await page.waitForTimeout(500);
@@ -98,15 +83,10 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
     // Screenshot before submit
     await page.screenshot({ path: 'test-results/before-submit.png', fullPage: true });
 
-    // Submit form
+    // Submit form - use force click to bypass any remaining overlay
     console.log('7. Submitting form...');
-    const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /add source/i });
-    if (await submitBtn.isVisible()) {
-        await submitBtn.click();
-    } else {
-        // Try clicking any visible Add source button
-        await page.locator('button:has-text("Add source")').last().click({ force: true });
-    }
+    const submitBtn = page.getByRole('button', { name: /add source/i }).last();
+    await submitBtn.click({ force: true });
 
     // Wait for response
     await page.waitForTimeout(3000);
@@ -124,6 +104,4 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
     } else {
         console.log('✅ Form submitted!');
     }
-
-    await page.waitForTimeout(2000);
 });

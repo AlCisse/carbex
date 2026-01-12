@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { login } from './helpers/auth';
 
 test.describe('PDF Report Generation', () => {
     test.beforeEach(async ({ page }) => {
@@ -6,21 +7,14 @@ test.describe('PDF Report Generation', () => {
             if (msg.type() === 'error') console.log('ERROR:', msg.text());
         });
 
-        // Login
-        await page.goto('/login');
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
-        await page.locator('#email').fill('test@carbex.fr');
-        await page.locator('#password').fill('password');
-        await page.locator('#password').press('Enter');
-        await page.waitForSelector('aside', { timeout: 30000 });
+        // Use shared login helper
+        await login(page);
     });
 
     test('Reports page loads correctly', async ({ page }) => {
         console.log('1. Navigating to Reports page...');
         await page.goto('/reports');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/reports-page-full.png', fullPage: true });
 
@@ -34,7 +28,6 @@ test.describe('PDF Report Generation', () => {
         console.log('2. Checking for PDF generation buttons...');
         await page.goto('/reports');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Look for PDF/Export buttons
         const pdfButtons = await page.locator('button:has-text("PDF"), button:has-text("pdf"), a:has-text("PDF"), button:has-text("Export"), button:has-text("export"), button:has-text("Générer"), button:has-text("Generate")').all();
@@ -55,7 +48,6 @@ test.describe('PDF Report Generation', () => {
         console.log('3. Testing report generation...');
         await page.goto('/reports');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Try to find and click a generate/export button
         const generateBtn = page.locator('button:has-text("Générer"), button:has-text("Generate"), button:has-text("Export PDF"), button:has-text("Exporter")').first();
@@ -97,7 +89,6 @@ test.describe('PDF Report Generation', () => {
         console.log('4. Checking report templates...');
         await page.goto('/reports');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         const body = await page.locator('body').textContent();
 
@@ -124,7 +115,6 @@ test.describe('PDF Report Generation', () => {
         // Go to emissions page first
         await page.goto('/emissions/1/1.1');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Look for export button on emissions page
         const exportBtn = page.locator('button:has-text("Export"), button:has-text("export"), button:has-text("CSV"), button:has-text("Excel")').first();

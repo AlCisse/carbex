@@ -1,66 +1,22 @@
 import { test, expect } from '@playwright/test';
+import { login } from './helpers/auth';
 
 test.describe('Gamification & Dashboard Tests', () => {
 
     test.beforeEach(async ({ page }) => {
         // Enable console logging for debugging
-        page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+        page.on('console', msg => {
+            if (msg.type() === 'error') console.log('PAGE ERROR:', msg.text());
+        });
         page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
 
-        // Login first
-        await page.goto('/login');
-        await page.waitForLoadState('domcontentloaded');
-        await page.waitForLoadState('networkidle');
-
-        // Wait for Livewire to fully initialize (check for wire:id attribute)
-        await page.waitForFunction(() => {
-            const form = document.querySelector('form[wire\\:submit]');
-            return form !== null;
-        }, { timeout: 10000 });
-
-        // Wait a bit more for Livewire JS to initialize
-        await page.waitForTimeout(1000);
-
-        // Fill email - use direct input manipulation
-        const emailInput = page.locator('#email');
-        await emailInput.click();
-        await emailInput.fill('test@carbex.fr');
-
-        // Trigger input event manually for Livewire
-        await emailInput.dispatchEvent('input');
-        await page.waitForTimeout(200);
-
-        // Fill password
-        const passwordInput = page.locator('#password');
-        await passwordInput.click();
-        await passwordInput.fill('password');
-
-        // Trigger input event for Livewire
-        await passwordInput.dispatchEvent('input');
-        await page.waitForTimeout(500);
-
-        // Submit using Enter key on form
-        await passwordInput.press('Enter');
-
-        // Wait for any of these conditions
-        try {
-            await Promise.race([
-                page.waitForURL('**/dashboard', { timeout: 15000 }),
-                page.waitForSelector('aside', { timeout: 15000 }),
-            ]);
-        } catch (e) {
-            // Take screenshot on failure
-            console.log('Login may have failed, checking page state...');
-        }
-
-        // Additional wait
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
+        // Use shared login helper
+        await login(page);
     });
 
     test('should access dashboard after login', async ({ page }) => {
         // Verify dashboard is loaded - check for sidebar
-        await expect(page.locator('aside')).toBeVisible({ timeout: 10000 });
+        await expect(page.locator('aside')).toBeVisible();
     });
 
     test('should display sidebar navigation', async ({ page }) => {

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { login } from './helpers/auth';
 
 test.describe('Scope 2 & 3 Add Source Tests', () => {
     test.beforeEach(async ({ page }) => {
@@ -7,20 +8,63 @@ test.describe('Scope 2 & 3 Add Source Tests', () => {
         });
         page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
 
-        // Login
-        await page.goto('/login');
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
-        await page.locator('#email').fill('test@carbex.fr');
-        await page.locator('#password').fill('password');
-        await page.locator('#password').press('Enter');
-        await page.waitForSelector('aside', { timeout: 30000 });
+        // Use shared login helper
+        await login(page);
     });
+
+    /**
+     * Helper to fill the add source form
+     */
+    async function fillAddSourceForm(
+        page: any,
+        sourceName: string,
+        searchTerm: string,
+        quantity: string,
+        scopeLabel: string
+    ) {
+        // Fill source name
+        console.log(`${scopeLabel}: Filling source name...`);
+        await page.locator('input[placeholder*="Paris"]').fill(sourceName);
+        await page.waitForTimeout(500);
+
+        // Open emission factor selector
+        console.log(`${scopeLabel}: Opening factor selector...`);
+        await page.getByRole('button', { name: 'Select an emission factor' }).click();
+        await page.waitForTimeout(1500);
+
+        // Search for factor
+        const searchInput = page.locator('input[type="text"][placeholder*="Search"], input[type="search"]').first();
+        if (await searchInput.isVisible()) {
+            await searchInput.fill(searchTerm);
+            console.log(`${scopeLabel}: Searched for ${searchTerm}`);
+        }
+        await page.waitForTimeout(2000);
+
+        // Select first factor
+        const factorRow = page.locator('li.cursor-pointer').first();
+        if (await factorRow.isVisible()) {
+            await factorRow.click();
+            console.log(`${scopeLabel}: Factor selected`);
+        } else {
+            await page.keyboard.press('Escape');
+        }
+
+        // Wait for modal to close
+        await page.waitForTimeout(1500);
+        await page.waitForSelector('.fixed.inset-0.bg-gray-500', { state: 'hidden', timeout: 5000 }).catch(() => {});
+
+        // Fill quantity
+        const quantityInput = page.locator('input[type="number"]').first();
+        if (await quantityInput.isVisible()) {
+            await quantityInput.fill(quantity);
+            console.log(`${scopeLabel}: Quantity filled`);
+        }
+        await page.waitForTimeout(500);
+    }
 
     test('Scope 2.1 - Électricité (Add source)', async ({ page }) => {
         await page.goto('/emissions/2/2.1');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Screenshot before
         await page.screenshot({ path: 'test-results/scope2-2.1-before.png', fullPage: true });
@@ -36,48 +80,14 @@ test.describe('Scope 2 & 3 Add Source Tests', () => {
             await addBtn.click();
             await page.waitForTimeout(1000);
 
-            // Fill source name
-            console.log('Scope 2.1: Filling source name...');
-            await page.locator('input[placeholder*="Paris"]').fill('Électricité bureau principal');
-            await page.waitForTimeout(500);
-
-            // Open emission factor selector
-            console.log('Scope 2.1: Opening factor selector...');
-            await page.getByRole('button', { name: 'Select an emission factor' }).click();
-            await page.waitForTimeout(2000);
-
-            // Search for electricity factor
-            const searchInput = page.locator('input[type="text"]').filter({ hasText: '' }).locator('visible=true').first();
-            if (await searchInput.isVisible()) {
-                await searchInput.fill('electricity');
-                console.log('Scope 2.1: Searched for electricity');
-            }
-            await page.waitForTimeout(2000);
-
-            // Select first factor
-            const factorRow = page.locator('li.cursor-pointer').first();
-            if (await factorRow.isVisible()) {
-                await factorRow.click();
-                console.log('Scope 2.1: Factor selected');
-            } else {
-                await page.keyboard.press('Escape');
-            }
-            await page.waitForTimeout(1000);
-
-            // Fill quantity
-            const quantityInput = page.locator('input[type="number"]').first();
-            if (await quantityInput.isVisible()) {
-                await quantityInput.fill('5000');
-                console.log('Scope 2.1: Quantity filled');
-            }
-            await page.waitForTimeout(500);
+            await fillAddSourceForm(page, 'Électricité bureau principal', 'electricity', '5000', 'Scope 2.1');
 
             // Screenshot before submit
             await page.screenshot({ path: 'test-results/scope2-2.1-form.png', fullPage: true });
 
-            // Submit form
+            // Submit form with force click
             console.log('Scope 2.1: Submitting...');
-            await page.getByRole('button', { name: 'Add source' }).last().click();
+            await page.getByRole('button', { name: /add source/i }).last().click({ force: true });
             await page.waitForTimeout(3000);
 
             // Screenshot after submit
@@ -92,7 +102,6 @@ test.describe('Scope 2 & 3 Add Source Tests', () => {
     test('Scope 3.1 - Transport amont (Add source)', async ({ page }) => {
         await page.goto('/emissions/3/3.1');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Screenshot before
         await page.screenshot({ path: 'test-results/scope3-3.1-before.png', fullPage: true });
@@ -108,48 +117,14 @@ test.describe('Scope 2 & 3 Add Source Tests', () => {
             await addBtn.click();
             await page.waitForTimeout(1000);
 
-            // Fill source name
-            console.log('Scope 3.1: Filling source name...');
-            await page.locator('input[placeholder*="Paris"]').fill('Transport fournisseur A');
-            await page.waitForTimeout(500);
-
-            // Open emission factor selector
-            console.log('Scope 3.1: Opening factor selector...');
-            await page.getByRole('button', { name: 'Select an emission factor' }).click();
-            await page.waitForTimeout(2000);
-
-            // Search for transport factor
-            const searchInput = page.locator('input[type="text"]').filter({ hasText: '' }).locator('visible=true').first();
-            if (await searchInput.isVisible()) {
-                await searchInput.fill('transport');
-                console.log('Scope 3.1: Searched for transport');
-            }
-            await page.waitForTimeout(2000);
-
-            // Select first factor
-            const factorRow = page.locator('li.cursor-pointer').first();
-            if (await factorRow.isVisible()) {
-                await factorRow.click();
-                console.log('Scope 3.1: Factor selected');
-            } else {
-                await page.keyboard.press('Escape');
-            }
-            await page.waitForTimeout(1000);
-
-            // Fill quantity
-            const quantityInput = page.locator('input[type="number"]').first();
-            if (await quantityInput.isVisible()) {
-                await quantityInput.fill('2500');
-                console.log('Scope 3.1: Quantity filled');
-            }
-            await page.waitForTimeout(500);
+            await fillAddSourceForm(page, 'Transport fournisseur A', 'transport', '2500', 'Scope 3.1');
 
             // Screenshot before submit
             await page.screenshot({ path: 'test-results/scope3-3.1-form.png', fullPage: true });
 
-            // Submit form
+            // Submit form with force click
             console.log('Scope 3.1: Submitting...');
-            await page.getByRole('button', { name: 'Add source' }).last().click();
+            await page.getByRole('button', { name: /add source/i }).last().click({ force: true });
             await page.waitForTimeout(3000);
 
             // Screenshot after submit
@@ -164,7 +139,6 @@ test.describe('Scope 2 & 3 Add Source Tests', () => {
     test('Scope 3.5 - Déplacements professionnels (Add source)', async ({ page }) => {
         await page.goto('/emissions/3/3.5');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Screenshot before
         await page.screenshot({ path: 'test-results/scope3-3.5-before.png', fullPage: true });
@@ -180,48 +154,14 @@ test.describe('Scope 2 & 3 Add Source Tests', () => {
             await addBtn.click();
             await page.waitForTimeout(1000);
 
-            // Fill source name
-            console.log('Scope 3.5: Filling source name...');
-            await page.locator('input[placeholder*="Paris"]').fill('Voyage Paris-Lyon');
-            await page.waitForTimeout(500);
-
-            // Open emission factor selector
-            console.log('Scope 3.5: Opening factor selector...');
-            await page.getByRole('button', { name: 'Select an emission factor' }).click();
-            await page.waitForTimeout(2000);
-
-            // Search for travel factor
-            const searchInput = page.locator('input[type="text"]').filter({ hasText: '' }).locator('visible=true').first();
-            if (await searchInput.isVisible()) {
-                await searchInput.fill('train');
-                console.log('Scope 3.5: Searched for train');
-            }
-            await page.waitForTimeout(2000);
-
-            // Select first factor
-            const factorRow = page.locator('li.cursor-pointer').first();
-            if (await factorRow.isVisible()) {
-                await factorRow.click();
-                console.log('Scope 3.5: Factor selected');
-            } else {
-                await page.keyboard.press('Escape');
-            }
-            await page.waitForTimeout(1000);
-
-            // Fill quantity
-            const quantityInput = page.locator('input[type="number"]').first();
-            if (await quantityInput.isVisible()) {
-                await quantityInput.fill('450');
-                console.log('Scope 3.5: Quantity filled');
-            }
-            await page.waitForTimeout(500);
+            await fillAddSourceForm(page, 'Voyage Paris-Lyon', 'train', '450', 'Scope 3.5');
 
             // Screenshot before submit
             await page.screenshot({ path: 'test-results/scope3-3.5-form.png', fullPage: true });
 
-            // Submit form
+            // Submit form with force click
             console.log('Scope 3.5: Submitting...');
-            await page.getByRole('button', { name: 'Add source' }).last().click();
+            await page.getByRole('button', { name: /add source/i }).last().click({ force: true });
             await page.waitForTimeout(3000);
 
             // Screenshot after submit

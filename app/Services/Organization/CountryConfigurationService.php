@@ -9,8 +9,12 @@ class CountryConfigurationService
     /**
      * Get configuration for a specific country.
      */
-    public function getConfig(string $countryCode): array
+    public function getConfig(?string $countryCode): array
     {
+        if (empty($countryCode)) {
+            return $this->getDefaultConfig('');
+        }
+
         return Cache::remember("country_config_{$countryCode}", now()->addHour(), function () use ($countryCode) {
             $config = config("countries.{$countryCode}", []);
 

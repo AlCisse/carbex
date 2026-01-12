@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { login } from './helpers/auth';
 
 test.describe('Full Application Tests', () => {
     test.beforeEach(async ({ page }) => {
@@ -6,21 +7,14 @@ test.describe('Full Application Tests', () => {
             if (msg.type() === 'error') console.log('ERROR:', msg.text());
         });
 
-        // Login
-        await page.goto('/login');
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
-        await page.locator('#email').fill('test@carbex.fr');
-        await page.locator('#password').fill('password');
-        await page.locator('#password').press('Enter');
-        await page.waitForSelector('aside', { timeout: 30000 });
+        // Use shared login helper
+        await login(page);
     });
 
     test('Reports page - Generate report', async ({ page }) => {
         console.log('Testing Reports page...');
         await page.goto('/reports');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/reports-page.png', fullPage: true });
 
@@ -46,7 +40,6 @@ test.describe('Full Application Tests', () => {
         console.log('Testing Transition Plan page...');
         await page.goto('/transition-plan');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/transition-plan-page.png', fullPage: true });
 
@@ -68,7 +61,6 @@ test.describe('Full Application Tests', () => {
         console.log('Testing Suppliers page...');
         await page.goto('/suppliers');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/suppliers-page.png', fullPage: true });
 
@@ -92,9 +84,8 @@ test.describe('Full Application Tests', () => {
 
     test('AI Analysis page', async ({ page }) => {
         console.log('Testing AI Analysis page...');
-        await page.goto('/ai/analysis');
+        await page.goto('/ai-analysis');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/ai-analysis-page.png', fullPage: true });
 
@@ -116,7 +107,6 @@ test.describe('Full Application Tests', () => {
         console.log('Testing Gamification page...');
         await page.goto('/gamification');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/gamification-page.png', fullPage: true });
 
@@ -138,7 +128,6 @@ test.describe('Full Application Tests', () => {
         console.log('Testing Settings page...');
         await page.goto('/settings');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/settings-page.png', fullPage: true });
 
@@ -160,7 +149,6 @@ test.describe('Full Application Tests', () => {
         console.log('Testing Edit emission record...');
         await page.goto('/emissions/1/1.1');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         await page.screenshot({ path: 'test-results/scope1-1-before-edit.png', fullPage: true });
 
@@ -189,7 +177,6 @@ test.describe('Full Application Tests', () => {
         console.log('Testing Delete emission record...');
         await page.goto('/emissions/1/1.1');
         await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
 
         // Look for delete buttons
         const deleteBtns = page.locator('button:has-text("delete"), button:has-text("Delete"), button:has-text("supprimer"), [class*="delete"], svg[class*="trash"]');

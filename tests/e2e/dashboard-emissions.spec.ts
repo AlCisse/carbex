@@ -1,24 +1,18 @@
 import { test, expect } from '@playwright/test';
+import { login } from './helpers/auth';
 
 test('Check emissions display on dashboard', async ({ page }) => {
     page.on('console', msg => {
         if (msg.type() === 'error') console.log('ERROR:', msg.text());
     });
 
-    // Login
-    await page.goto('/login');
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(1000);
-    await page.locator('#email').fill('test@carbex.fr');
-    await page.locator('#password').fill('password');
-    await page.locator('#password').press('Enter');
-    await page.waitForSelector('aside', { timeout: 30000 });
+    // Use shared login helper
+    await login(page);
 
     // Go to dashboard
     console.log('Navigating to dashboard...');
     await page.goto('/dashboard');
     await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(2000);
 
     // Screenshot
     await page.screenshot({ path: 'test-results/dashboard-emissions.png', fullPage: true });
