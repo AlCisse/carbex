@@ -2177,4 +2177,49 @@ return [
         'download_template' => 'Vorlage herunterladen',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Gamification (Abzeichen & Belohnungen)
+    |--------------------------------------------------------------------------
+    */
+
+    'gamification' => [
+        'title' => 'Abzeichen & Belohnungen',
+        'subtitle' => 'Verdienen Sie Abzeichen, während Sie in Ihrer CO2-Reise vorankommen',
+        'total_points' => 'Gesamtpunkte',
+        'badges_earned' => 'Verdiente Abzeichen',
+        'next_level' => 'Nächste Stufe',
+        'points' => 'Punkte',
+        'check_badges' => 'Abzeichen ansehen',
+        'leaderboard' => 'Rangliste',
+        'your_badges' => 'Ihre Abzeichen',
+        'no_badges_available' => 'Derzeit keine Abzeichen verfügbar',
+        'how_it_works' => 'So funktioniert es',
+        'badge_categories' => 'Abzeichen-Kategorien',
+        'level' => [
+            'starter' => 'Anfänger',
+            'bronze' => 'Bronze',
+            'silver' => 'Silber',
+            'gold' => 'Gold',
+            'platinum' => 'Platin',
+        ],
+        'category' => [
+            'all' => 'Alle',
+            'assessment' => 'Bilanz',
+            'assessment_desc' => 'Abzeichen für die Erstellung Ihrer CO2-Bilanz',
+            'reduction' => 'Reduktion',
+            'reduction_desc' => 'Abzeichen für Ihre Emissionsreduzierungsbemühungen',
+            'engagement' => 'Engagement',
+            'engagement_desc' => 'Abzeichen für Ihr Plattform-Engagement',
+            'expert' => 'Experte',
+            'expert_desc' => 'Abzeichen für fortgeschrittene Benutzer',
+        ],
+        'step1_title' => 'Bilanz erstellen',
+        'step1_desc' => 'Geben Sie Ihre Emissionsdaten ein, um Ihre ersten Abzeichen freizuschalten',
+        'step2_title' => 'Emissionen reduzieren',
+        'step2_desc' => 'Führen Sie Reduktionsmaßnahmen durch, um Punkte zu sammeln',
+        'step3_title' => 'Erfolge teilen',
+        'step3_desc' => 'Zeigen Sie Ihre Abzeichen auf Ihrer Website und in sozialen Netzwerken',
+    ],
+
 ];

@@ -1838,4 +1838,49 @@ return [
         'download_template' => 'Download template',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Gamification (Badges & Rewards)
+    |--------------------------------------------------------------------------
+    */
+
+    'gamification' => [
+        'title' => 'Badges & Rewards',
+        'subtitle' => 'Earn badges as you progress in your carbon journey',
+        'total_points' => 'Total points',
+        'badges_earned' => 'Badges earned',
+        'next_level' => 'Next level',
+        'points' => 'points',
+        'check_badges' => 'View badges',
+        'leaderboard' => 'Leaderboard',
+        'your_badges' => 'Your badges',
+        'no_badges_available' => 'No badges available at the moment',
+        'how_it_works' => 'How it works',
+        'badge_categories' => 'Badge categories',
+        'level' => [
+            'starter' => 'Starter',
+            'bronze' => 'Bronze',
+            'silver' => 'Silver',
+            'gold' => 'Gold',
+            'platinum' => 'Platinum',
+        ],
+        'category' => [
+            'all' => 'All',
+            'assessment' => 'Assessment',
+            'assessment_desc' => 'Badges related to completing your carbon assessment',
+            'reduction' => 'Reduction',
+            'reduction_desc' => 'Badges related to your emission reduction efforts',
+            'engagement' => 'Engagement',
+            'engagement_desc' => 'Badges related to your platform engagement',
+            'expert' => 'Expert',
+            'expert_desc' => 'Badges for advanced users',
+        ],
+        'step1_title' => 'Complete your assessment',
+        'step1_desc' => 'Fill in your emission data to unlock your first badges',
+        'step2_title' => 'Reduce your emissions',
+        'step2_desc' => 'Implement reduction actions to earn points',
+        'step3_title' => 'Share your success',
+        'step3_desc' => 'Display your badges on your website and social networks',
+    ],
+
 ];

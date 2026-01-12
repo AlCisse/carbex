@@ -2127,4 +2127,55 @@ return [
         'download_template' => 'Télécharger le modèle',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Gamification
+    |--------------------------------------------------------------------------
+    */
+
+    'gamification' => [
+        'title' => 'Badges & Récompenses',
+        'subtitle' => 'Gagnez des badges en progressant dans votre démarche carbone',
+        'total_points' => 'Points totaux',
+        'badges_earned' => 'Badges obtenus',
+        'next_level' => 'Prochain niveau',
+        'points' => 'points',
+        'check_badges' => 'Voir les badges',
+        'leaderboard' => 'Classement',
+        'your_badges' => 'Vos badges',
+        'no_badges_available' => 'Aucun badge disponible pour le moment',
+        'how_it_works' => 'Comment ça marche',
+        'badge_categories' => 'Catégories de badges',
+
+        // Levels
+        'level' => [
+            'starter' => 'Débutant',
+            'bronze' => 'Bronze',
+            'silver' => 'Argent',
+            'gold' => 'Or',
+            'platinum' => 'Platine',
+        ],
+
+        // Categories
+        'category' => [
+            'all' => 'Tous',
+            'assessment' => 'Bilan',
+            'assessment_desc' => 'Badges liés à la réalisation de votre bilan carbone',
+            'reduction' => 'Réduction',
+            'reduction_desc' => 'Badges liés à vos efforts de réduction des émissions',
+            'engagement' => 'Engagement',
+            'engagement_desc' => 'Badges liés à votre engagement dans la plateforme',
+            'expert' => 'Expert',
+            'expert_desc' => 'Badges pour les utilisateurs avancés',
+        ],
+
+        // Steps
+        'step1_title' => 'Complétez votre bilan',
+        'step1_desc' => 'Remplissez vos données d\'émissions pour débloquer vos premiers badges',
+        'step2_title' => 'Réduisez vos émissions',
+        'step2_desc' => 'Mettez en place des actions de réduction pour gagner des points',
+        'step3_title' => 'Partagez vos succès',
+        'step3_desc' => 'Affichez vos badges sur votre site et réseaux sociaux',
+    ],
+
 ];
