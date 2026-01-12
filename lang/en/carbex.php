@@ -579,6 +579,8 @@ return [
     'banking' => [
         'title' => 'Bank connections',
         'connect' => 'Connect a bank',
+        'callback_title' => 'Bank Connection',
+        'processing_connection' => 'Processing bank connection...',
         'disconnect' => 'Disconnect',
         'refresh' => 'Refresh',
         'last_sync' => 'Last sync',

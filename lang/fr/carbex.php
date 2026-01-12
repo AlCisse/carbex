@@ -667,6 +667,8 @@ return [
     'banking' => [
         'title' => 'Connexions bancaires',
         'connect' => 'Connecter une banque',
+        'callback_title' => 'Connexion bancaire',
+        'processing_connection' => 'Traitement de la connexion bancaire...',
         'disconnect' => 'Déconnecter',
         'refresh' => 'Actualiser',
         'last_sync' => 'Dernière synchronisation',
