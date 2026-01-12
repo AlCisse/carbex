@@ -356,6 +356,7 @@ return [
 
     'dashboard' => [
         'title' => 'Tableau de bord',
+        'add_emission' => 'Ajouter une émission',
         'overview_for' => 'Aperçu de l\'empreinte carbone pour :organization',
         'refresh_data' => 'Actualiser les données',
         'total_emissions' => 'Émissions totales',

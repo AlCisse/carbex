@@ -371,6 +371,7 @@ return [
 
     'dashboard' => [
         'title' => 'Dashboard',
+        'add_emission' => 'Emission hinzufügen',
         'overview_for' => 'CO2-Fußabdruck Übersicht für :organization',
         'refresh_data' => 'Daten aktualisieren',
         'total_emissions' => 'Gesamtemissionen',

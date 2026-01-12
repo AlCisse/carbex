@@ -322,6 +322,7 @@ return [
 
     'dashboard' => [
         'title' => 'Dashboard',
+        'add_emission' => 'Add emission',
         'overview_for' => 'Carbon footprint overview for :organization',
         'refresh_data' => 'Refresh data',
         'total_emissions' => 'Total emissions',
