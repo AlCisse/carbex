@@ -1928,13 +1928,32 @@ return [
     ],
 
     'settings' => [
+        'title' => 'Paramètres',
+        'organization' => 'Paramètres de l\'organisation',
+        'my_company' => 'Mon entreprise',
         'team' => 'Équipe',
+        'users' => 'Utilisateurs',
+        'profile' => 'Profil',
         'sites' => 'Sites',
+        'billing' => 'Abonnement',
         'navigation_mode' => 'Mode de navigation',
         'nav_standard' => 'Navigation standard',
         'nav_standard_desc' => 'Menu classique par fonctionnalité',
         'nav_pillars' => 'Navigation 5 Piliers',
         'nav_pillars_desc' => 'Organisée par piliers stratégiques (style TrackZero)',
+    ],
+
+    'profile' => [
+        'title' => 'Profil',
+        'info' => 'Informations du profil',
+        'name' => 'Nom',
+        'email' => 'Email',
+        'save' => 'Sauvegarder',
+        'password' => 'Mot de passe',
+        'current_password' => 'Mot de passe actuel',
+        'new_password' => 'Nouveau mot de passe',
+        'confirm_password' => 'Confirmer le mot de passe',
+        'change_password' => 'Changer le mot de passe',
     ],
 
     /*

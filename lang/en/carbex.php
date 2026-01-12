@@ -1650,13 +1650,32 @@ return [
     ],
 
     'settings' => [
+        'title' => 'Settings',
+        'organization' => 'Organization settings',
+        'my_company' => 'My company',
         'team' => 'Team',
+        'users' => 'Users',
+        'profile' => 'Profile',
         'sites' => 'Sites',
+        'billing' => 'Subscription',
         'navigation_mode' => 'Navigation mode',
         'nav_standard' => 'Standard navigation',
         'nav_standard_desc' => 'Classic menu by feature',
         'nav_pillars' => '5 Pillars navigation',
         'nav_pillars_desc' => 'Organized by strategic pillars (TrackZero style)',
+    ],
+
+    'profile' => [
+        'title' => 'Profile',
+        'info' => 'Profile information',
+        'name' => 'Name',
+        'email' => 'Email',
+        'save' => 'Save',
+        'password' => 'Password',
+        'current_password' => 'Current password',
+        'new_password' => 'New password',
+        'confirm_password' => 'Confirm password',
+        'change_password' => 'Change password',
     ],
 
     /*
