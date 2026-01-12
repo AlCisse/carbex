@@ -1,18 +1,18 @@
 @extends('layouts.marketing')
 
-@section('title', 'Pour qui ? - Carbex')
-@section('description', 'Carbex s\'adapte a toutes les tailles d\'entreprise : PME, ETI et grandes entreprises. Decouvrez comment notre plateforme repond a vos besoins.')
+@section('title', __('carbex.marketing.for_who.title') . ' - Carbex')
+@section('description', __('carbex.marketing.for_who.description'))
 
 @section('content')
 <!-- Hero -->
 <section class="pt-32 pb-16" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);">
     <div class="max-w-4xl mx-auto px-6 text-center">
-        <p class="text-sm font-medium mb-4" style="color: var(--accent);">Pour qui ?</p>
+        <p class="text-sm font-medium mb-4" style="color: var(--accent);">{{ __('carbex.marketing.for_who.title') }}</p>
         <h1 class="text-4xl lg:text-5xl font-semibold mb-6" style="color: var(--text-primary); letter-spacing: -0.025em;">
-            Une solution pour chaque entreprise
+            {{ __('carbex.marketing.for_who.hero_title') }}
         </h1>
         <p class="text-lg" style="color: var(--text-secondary);">
-            De la PME au grand groupe, Carbex s'adapte a vos besoins et a votre maturite carbone.
+            {{ __('carbex.marketing.for_who.hero_subtitle') }}
         </p>
     </div>
 </section>
@@ -21,8 +21,8 @@
 <section class="py-20" style="background-color: var(--bg-primary);">
     <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-semibold mb-4" style="color: var(--text-primary);">Pourquoi choisir Carbex ?</h2>
-            <p class="text-lg" style="color: var(--text-secondary);">3 bonnes raisons de nous faire confiance</p>
+            <h2 class="text-3xl font-semibold mb-4" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.why_choose.title') }}</h2>
+            <p class="text-lg" style="color: var(--text-secondary);">{{ __('carbex.marketing.for_who.why_choose.subtitle') }}</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -33,9 +33,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold mb-3" style="color: var(--text-primary);">Mesurez votre impact</h3>
+                <h3 class="text-xl font-semibold mb-3" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.why_choose.measure_title') }}</h3>
                 <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                    Realisez facilement votre premier bilan carbone complet (Scope 1, 2, 3), sans expert et sans engagement. Notre assistant IA vous guide a chaque etape.
+                    {{ __('carbex.marketing.for_who.why_choose.measure_desc') }}
                 </p>
             </div>
 
@@ -46,9 +46,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold mb-3" style="color: var(--text-primary);">Pilotez votre transition</h3>
+                <h3 class="text-xl font-semibold mb-3" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.why_choose.drive_title') }}</h3>
                 <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                    Suivez vos emissions dans le temps, fixez des objectifs de reduction alignes SBTi et construisez un plan d'action concret avec des recommandations personnalisees.
+                    {{ __('carbex.marketing.for_who.why_choose.drive_desc') }}
                 </p>
             </div>
 
@@ -59,9 +59,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold mb-3" style="color: var(--text-primary);">Repondez aux obligations</h3>
+                <h3 class="text-xl font-semibold mb-3" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.why_choose.comply_title') }}</h3>
                 <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
-                    Generez automatiquement vos rapports RSE, BEGES, CSRD ou ESG, et demontrez votre conformite aux reglementations francaises et europeennes.
+                    {{ __('carbex.marketing.for_who.why_choose.comply_desc') }}
                 </p>
             </div>
         </div>
@@ -72,8 +72,8 @@
 <section class="py-20" style="background-color: var(--bg-card);">
     <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-semibold mb-4" style="color: var(--text-primary);">Adapte a votre structure</h2>
-            <p class="text-lg" style="color: var(--text-secondary);">Que vous soyez PME, ETI ou grande entreprise</p>
+            <h2 class="text-3xl font-semibold mb-4" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.audiences.title') }}</h2>
+            <p class="text-lg" style="color: var(--text-secondary);">{{ __('carbex.marketing.for_who.audiences.subtitle') }}</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -85,35 +85,35 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-semibold" style="color: var(--text-primary);">PME</h3>
-                    <p class="text-sm" style="color: var(--text-secondary);">10 a 250 salaries</p>
+                    <h3 class="text-2xl font-semibold" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.audiences.sme.title') }}</h3>
+                    <p class="text-sm" style="color: var(--text-secondary);">{{ __('carbex.marketing.for_who.audiences.sme.size') }}</p>
                 </div>
                 <div class="p-6">
                     <p class="text-sm mb-6" style="color: var(--text-secondary);">
-                        Mesurez votre empreinte carbone pour optimiser vos couts, repondre a la reglementation et ameliorer votre image aupres de vos clients.
+                        {{ __('carbex.marketing.for_who.audiences.sme.desc') }}
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Premier bilan en moins d'une journee
+                            {{ __('carbex.marketing.for_who.audiences.sme.feature1') }}
                         </li>
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Pas besoin d'expert carbone
+                            {{ __('carbex.marketing.for_who.audiences.sme.feature2') }}
                         </li>
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Tarifs adaptes
+                            {{ __('carbex.marketing.for_who.audiences.sme.feature3') }}
                         </li>
                     </ul>
                     <a href="{{ route('register') }}" class="btn-primary mt-6 block w-full py-3 text-center text-sm font-medium text-white rounded-xl" style="background-color: var(--accent);">
-                        Demarrer l'essai gratuit
+                        {{ __('carbex.marketing.for_who.audiences.sme.cta') }}
                     </a>
                 </div>
             </div>
@@ -126,35 +126,35 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-semibold" style="color: var(--text-primary);">ETI</h3>
-                    <p class="text-sm" style="color: var(--text-secondary);">250 a 5000 salaries</p>
+                    <h3 class="text-2xl font-semibold" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.audiences.midsize.title') }}</h3>
+                    <p class="text-sm" style="color: var(--text-secondary);">{{ __('carbex.marketing.for_who.audiences.midsize.size') }}</p>
                 </div>
                 <div class="p-6">
                     <p class="text-sm mb-6" style="color: var(--text-secondary);">
-                        Suivez l'impact global de votre organisation, reduisez les emissions sur plusieurs sites et repondez aux demandes de vos clients grands comptes.
+                        {{ __('carbex.marketing.for_who.audiences.midsize.desc') }}
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Gestion multi-sites
+                            {{ __('carbex.marketing.for_who.audiences.midsize.feature1') }}
                         </li>
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Conformite BEGES obligatoire
+                            {{ __('carbex.marketing.for_who.audiences.midsize.feature2') }}
                         </li>
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Reporting automatise
+                            {{ __('carbex.marketing.for_who.audiences.midsize.feature3') }}
                         </li>
                     </ul>
                     <a href="{{ route('register') }}?plan=premium" class="btn-primary mt-6 block w-full py-3 text-center text-sm font-medium text-white rounded-xl" style="background-color: var(--accent);">
-                        Choisir Premium
+                        {{ __('carbex.marketing.for_who.audiences.midsize.cta') }}
                     </a>
                 </div>
             </div>
@@ -167,35 +167,35 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-semibold" style="color: var(--text-primary);">Grandes Entreprises</h3>
-                    <p class="text-sm" style="color: var(--text-secondary);">Plus de 5000 salaries</p>
+                    <h3 class="text-2xl font-semibold" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.audiences.enterprise.title') }}</h3>
+                    <p class="text-sm" style="color: var(--text-secondary);">{{ __('carbex.marketing.for_who.audiences.enterprise.size') }}</p>
                 </div>
                 <div class="p-6">
                     <p class="text-sm mb-6" style="color: var(--text-secondary);">
-                        Gerez votre empreinte carbone mondiale, respectez les normes internationales et optimisez vos strategies de reduction avec un accompagnement dedie.
+                        {{ __('carbex.marketing.for_who.audiences.enterprise.desc') }}
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            CSRD et GRI ready
+                            {{ __('carbex.marketing.for_who.audiences.enterprise.feature1') }}
                         </li>
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            API et integrations
+                            {{ __('carbex.marketing.for_who.audiences.enterprise.feature2') }}
                         </li>
                         <li class="flex items-start gap-2.5 text-sm" style="color: var(--text-secondary);">
                             <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            Support dedie
+                            {{ __('carbex.marketing.for_who.audiences.enterprise.feature3') }}
                         </li>
                     </ul>
                     <a href="/contact" class="mt-6 block w-full py-3 text-center text-sm font-medium rounded-xl border" style="color: var(--text-primary); border-color: var(--border);">
-                        Nous contacter
+                        {{ __('carbex.marketing.for_who.audiences.enterprise.cta') }}
                     </a>
                 </div>
             </div>
@@ -206,7 +206,7 @@
 <!-- Clients de reference (T104) -->
 <section class="py-16" style="background-color: var(--bg-primary);">
     <div class="max-w-6xl mx-auto px-6">
-        <p class="text-center text-sm font-medium mb-10" style="color: var(--text-muted);">Ils nous font confiance</p>
+        <p class="text-center text-sm font-medium mb-10" style="color: var(--text-muted);">{{ __('carbex.marketing.for_who.trust_us') }}</p>
         <div class="flex flex-wrap items-center justify-center gap-12 opacity-60">
             <!-- Placeholder logos -->
             <div class="h-10 flex items-center justify-center px-6 rounded-lg" style="background-color: #f1f5f9;">
@@ -229,7 +229,7 @@
 <section class="py-20" style="background-color: var(--bg-card);">
     <div class="max-w-4xl mx-auto px-6">
         <div class="text-center mb-12">
-            <h2 class="text-2xl font-semibold mb-4" style="color: var(--text-primary);">Ce qu'en disent nos clients</h2>
+            <h2 class="text-2xl font-semibold mb-4" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.testimonial.title') }}</h2>
         </div>
 
         <div class="bg-white rounded-2xl p-8 md:p-12 border relative" style="border-color: var(--border);">
@@ -238,15 +238,15 @@
             </svg>
             <div class="relative">
                 <p class="text-lg md:text-xl leading-relaxed mb-8" style="color: var(--text-secondary);">
-                    "Le support expert nous a ete precieux pour affiner nos interpretations. La possibilite d'importer automatiquement nos FEC et de gerer plusieurs sites a fait toute la difference. C'est un outil robuste et professionnel."
+                    "{{ __('carbex.marketing.for_who.testimonial.quote') }}"
                 </p>
                 <div class="flex items-center gap-4">
                     <div class="w-14 h-14 rounded-full flex items-center justify-center text-lg font-semibold text-white" style="background-color: var(--accent);">
                         AB
                     </div>
                     <div>
-                        <p class="font-semibold" style="color: var(--text-primary);">Aicha Benhamou</p>
-                        <p class="text-sm" style="color: var(--text-muted);">Directrice Developpement Durable — Terres & Saveurs</p>
+                        <p class="font-semibold" style="color: var(--text-primary);">{{ __('carbex.marketing.for_who.testimonial.author') }}</p>
+                        <p class="text-sm" style="color: var(--text-muted);">{{ __('carbex.marketing.for_who.testimonial.role') }}</p>
                     </div>
                 </div>
             </div>
@@ -258,20 +258,20 @@
 <section class="py-20" style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);">
     <div class="max-w-3xl mx-auto px-6 text-center">
         <h2 class="text-3xl font-semibold mb-5" style="color: var(--text-primary);">
-            Pret a mesurer votre empreinte ?
+            {{ __('carbex.marketing.for_who.cta.title') }}
         </h2>
         <p class="text-lg mb-10" style="color: var(--text-secondary);">
-            Commencez gratuitement et decouvrez comment Carbex peut vous aider.
+            {{ __('carbex.marketing.for_who.cta.subtitle') }}
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="{{ route('register') }}" class="btn-primary inline-flex items-center px-6 py-3.5 text-sm font-medium text-white rounded-xl" style="background-color: var(--accent);">
-                Essai gratuit 15 jours
+                {{ __('carbex.marketing.for_who.cta.primary') }}
                 <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
             </a>
             <a href="{{ route('pricing') }}" class="inline-flex items-center px-6 py-3.5 text-sm font-medium rounded-xl border-2" style="color: var(--accent); border-color: var(--accent);">
-                Voir les tarifs
+                {{ __('carbex.marketing.for_who.cta.secondary') }}
             </a>
         </div>
     </div>
