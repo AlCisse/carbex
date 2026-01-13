@@ -26,12 +26,12 @@ class USearchClient
 
     public function __construct()
     {
-        $this->baseUrl = rtrim(config('usearch.url'), '/');
-        $this->apiKey = config('usearch.api_key', '');
-        $this->timeout = config('usearch.timeout', 30);
-        $this->connectTimeout = config('usearch.connect_timeout', 5);
-        $this->retryTimes = config('usearch.retry.times', 3);
-        $this->retrySleepMs = config('usearch.retry.sleep_ms', 100);
+        $this->baseUrl = rtrim(config('usearch.url') ?? 'http://localhost:8001', '/');
+        $this->apiKey = config('usearch.api_key') ?? '';
+        $this->timeout = (int) (config('usearch.timeout') ?? 30);
+        $this->connectTimeout = (int) (config('usearch.connect_timeout') ?? 5);
+        $this->retryTimes = (int) (config('usearch.retry.times') ?? 3);
+        $this->retrySleepMs = (int) (config('usearch.retry.sleep_ms') ?? 100);
     }
 
     /**
