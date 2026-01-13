@@ -65,11 +65,12 @@ class IndexEmissionFactors implements ShouldQueue
             return;
         }
 
-        // Get or create the index
+        // Get or create the index with correct dimensions from config
+        $dimensions = (int) config('usearch.indexes.emission_factors.dimensions', 384);
         $index = VectorIndex::findOrCreateByName(
             'emission_factors',
             VectorIndex::TYPE_FACTORS,
-            1536
+            $dimensions
         );
 
         $index->markAsBuilding();

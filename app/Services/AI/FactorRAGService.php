@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services\AI;
 
 use App\Models\EmissionFactor;
@@ -39,9 +41,19 @@ class FactorRAGService
     protected int $maxResults = 10;
 
     /**
+     * Minimum score for semantic results.
+     */
+    protected float $minSemanticScore = 0.4;
+
+    /**
      * Whether to use semantic search (uSearch).
      */
     protected bool $useSemanticSearch = true;
+
+    /**
+     * Number of indexed factors (cached).
+     */
+    protected ?int $indexedCount = null;
 
     public function __construct(
         AIManager $aiManager,
@@ -55,6 +67,8 @@ class FactorRAGService
         // Check if semantic search is available
         $this->useSemanticSearch = config('usearch.search.hybrid_enabled', true)
             && $this->isSemanticSearchAvailable();
+
+        $this->minSemanticScore = (float) config('usearch.search.default_min_score', 0.4);
     }
 
     /**
@@ -81,7 +95,7 @@ class FactorRAGService
      * falls back to keyword-based search otherwise.
      *
      * @param  string  $query  Natural language query
-     * @param  array  $filters  Optional filters (scope, source, unit, category)
+     * @param  array  $filters  Optional filters (scope, source, unit, category, country)
      * @return Collection<EmissionFactor>
      */
     public function search(string $query, array $filters = []): Collection
@@ -116,6 +130,134 @@ class FactorRAGService
     }
 
     /**
+     * Hybrid search combining semantic and text matching.
+     *
+     * Returns results with scores from both search methods,
+     * ranked by combined relevance.
+     *
+     * @param  string  $query  Natural language query
+     * @param  array  $filters  Optional filters
+     * @param  int  $limit  Maximum results
+     * @return Collection Results with 'factor' and 'score' keys
+     */
+    public function hybridSearch(string $query, array $filters = [], int $limit = 10): Collection
+    {
+        if (!$this->useSemanticSearch || !$this->semanticSearch) {
+            // Fallback to regular search with approximate scores
+            return $this->search($query, $filters)
+                ->take($limit)
+                ->values()
+                ->map(fn ($factor, $index) => [
+                    'factor' => $factor,
+                    'score' => 1 - ($index * 0.05),
+                    'source' => 'text',
+                ]);
+        }
+
+        try {
+            // Use searchFactors which properly loads EmissionFactor models
+            $usearchFilters = $this->buildUsearchFilters($filters);
+
+            $results = $this->semanticSearch->searchFactors(
+                $query,
+                $usearchFilters,
+                $limit,
+                $this->minSemanticScore
+            );
+
+            return $results->map(function ($result) {
+                return [
+                    'factor' => $result['model'] ?? null,
+                    'score' => $result['score'] ?? 0,
+                    'semantic_score' => $result['score'] ?? 0,
+                    'text_score' => 0,
+                    'source' => 'semantic',
+                    'sources' => ['semantic'],
+                ];
+            })->filter(fn ($r) => $r['factor'] !== null)->values();
+
+        } catch (\Exception $e) {
+            Log::warning('Hybrid search failed, falling back to text search', [
+                'query' => $query,
+                'error' => $e->getMessage(),
+            ]);
+
+            return $this->search($query, $filters)
+                ->take($limit)
+                ->values()
+                ->map(fn ($factor, $index) => [
+                    'factor' => $factor,
+                    'score' => 1 - ($index * 0.05),
+                    'source' => 'text',
+                ]);
+        }
+    }
+
+    /**
+     * Autocomplete suggestions using semantic search.
+     *
+     * Returns factor names/descriptions that semantically match the partial query.
+     * Useful for search-as-you-type UI.
+     *
+     * @param  string  $partialQuery  Partial search query (min 2 chars)
+     * @param  int  $limit  Maximum suggestions
+     * @return Collection Suggestions with 'text', 'factor_id', 'score'
+     */
+    public function autocomplete(string $partialQuery, int $limit = 5): Collection
+    {
+        if (strlen($partialQuery) < 2) {
+            return collect();
+        }
+
+        // Use semantic search for intelligent suggestions
+        if ($this->useSemanticSearch && $this->semanticSearch) {
+            try {
+                $results = $this->semanticSearch->searchFactors(
+                    $partialQuery,
+                    [],
+                    $limit
+                );
+
+                return $results->map(function ($result) {
+                    $factor = $result['model'] ?? null;
+
+                    if (!$factor) {
+                        return null;
+                    }
+
+                    return [
+                        'text' => $factor->translated_name,
+                        'factor_id' => $factor->id,
+                        'unit' => $factor->unit,
+                        'scope' => $factor->scope,
+                        'score' => $result['score'] ?? 0,
+                    ];
+                })->filter()->values();
+
+            } catch (\Exception $e) {
+                Log::debug('Semantic autocomplete failed: ' . $e->getMessage());
+            }
+        }
+
+        // Fallback to LIKE query
+        return EmissionFactor::query()
+            ->where('is_active', true)
+            ->where(function ($q) use ($partialQuery) {
+                $q->where('name', 'ILIKE', "%{$partialQuery}%")
+                    ->orWhere('name_en', 'ILIKE', "%{$partialQuery}%");
+            })
+            ->limit($limit)
+            ->get()
+            ->map(fn ($factor) => [
+                'text' => $factor->translated_name,
+                'factor_id' => $factor->id,
+                'unit' => $factor->unit,
+                'scope' => $factor->scope,
+                'score' => 0.5,
+            ]);
+    }
+
+    /**
      * Perform semantic search for emission factors using uSearch.
      *
      * @param  string  $query  Natural language query
@@ -125,18 +267,7 @@ class FactorRAGService
     protected function semanticSearchFactors(string $query, array $filters = []): Collection
     {
         try {
-            // Build uSearch filters from our filters
-            $usearchFilters = [];
-
-            if (isset($filters['scope'])) {
-                $usearchFilters['scope'] = $filters['scope'];
-            }
-            if (isset($filters['source'])) {
-                $usearchFilters['source'] = $filters['source'];
-            }
-            if (isset($filters['country'])) {
-                $usearchFilters['country'] = $filters['country'];
-            }
+            $usearchFilters = $this->buildUsearchFilters($filters);
 
             // Search using semantic search service
             $results = $this->semanticSearch->searchFactors(
@@ -156,6 +287,29 @@ class FactorRAGService
 
             return collect();
         }
+    }
+
+    /**
+     * Build uSearch-compatible filters from application filters.
+     */
+    protected function buildUsearchFilters(array $filters): array
+    {
+        $usearchFilters = [];
+
+        if (isset($filters['scope'])) {
+            $usearchFilters['scope'] = (int) $filters['scope'];
+        }
+        if (isset($filters['source'])) {
+            $usearchFilters['source'] = $filters['source'];
+        }
+        if (isset($filters['country'])) {
+            $usearchFilters['country'] = strtoupper($filters['country']);
+        }
+        if (isset($filters['unit'])) {
+            $usearchFilters['unit'] = $filters['unit'];
+        }
+
+        return $usearchFilters;
     }
 
     /**
@@ -193,24 +347,40 @@ class FactorRAGService
      * Find similar factors to a given factor.
      *
      * Uses semantic similarity via uSearch when available.
+     * Returns factors with similar meaning/context, not just matching attributes.
      *
+     * @param  EmissionFactor  $factor  The reference factor
+     * @param  int  $limit  Maximum results
+     * @param  bool  $excludeSelf  Whether to exclude the input factor
      * @return Collection<EmissionFactor>
      */
-    public function findSimilar(EmissionFactor $factor, int $limit = 5): Collection
+    public function findSimilar(EmissionFactor $factor, int $limit = 5, bool $excludeSelf = true): Collection
     {
         // Try semantic similarity first
         if ($this->useSemanticSearch && $this->semanticSearch) {
             try {
-                $itemId = EmissionFactor::class . ':' . $factor->id;
+                // Build the item ID in the format stored in uSearch
+                $itemId = 'App\\Models\\EmissionFactor:' . $factor->id;
+
                 $results = $this->semanticSearch->findSimilar(
                     'emission_factors',
                     $itemId,
-                    $limit
+                    $limit + ($excludeSelf ? 1 : 0) // Get extra to account for self
                 );
 
                 if ($results->isNotEmpty()) {
-                    $ids = $results->pluck('model_id')->filter();
-                    return EmissionFactor::whereIn('id', $ids)->get();
+                    // model_id is now a UUID string
+                    $ids = $results->pluck('model_id')
+                        ->filter()
+                        ->when($excludeSelf, fn ($c) => $c->reject(fn ($id) => $id === $factor->id))
+                        ->take($limit);
+
+                    if ($ids->isNotEmpty()) {
+                        // Preserve the order from semantic search
+                        $factors = EmissionFactor::whereIn('id', $ids)->get()->keyBy('id');
+
+                        return $ids->map(fn ($id) => $factors->get($id))->filter();
+                    }
                 }
             } catch (\Exception $e) {
                 Log::debug('Semantic findSimilar failed: ' . $e->getMessage());
@@ -221,6 +391,7 @@ class FactorRAGService
         return EmissionFactor::query()
             ->where('id', '!=', $factor->id)
             ->where('scope', $factor->scope)
+            ->where('is_active', true)
             ->where(function ($q) use ($factor) {
                 // Same unit or similar category
                 $q->where('unit', $factor->unit)
@@ -229,6 +400,54 @@ class FactorRAGService
             ->orderByRaw('ABS(factor_kg_co2e - ?) ASC', [$factor->factor_kg_co2e])
             ->limit($limit)
             ->get();
+    }
+
+    /**
+     * Find similar factors with scores.
+     *
+     * Returns factors with their similarity scores for UI display.
+     *
+     * @return Collection Results with 'factor' and 'score' keys
+     */
+    public function findSimilarWithScores(EmissionFactor $factor, int $limit = 5): Collection
+    {
+        if (!$this->useSemanticSearch || !$this->semanticSearch) {
+            // Fallback without scores
+            return $this->findSimilar($factor, $limit)
+                ->map(fn ($f) => ['factor' => $f, 'score' => null]);
+        }
+
+        try {
+            $itemId = 'App\\Models\\EmissionFactor:' . $factor->id;
+
+            $results = $this->semanticSearch->findSimilar(
+                'emission_factors',
+                $itemId,
+                $limit + 1
+            );
+
+            // Filter out self and get models
+            $ids = $results->pluck('model_id')
+                ->reject(fn ($id) => $id === $factor->id)
+                ->take($limit);
+
+            $factors = EmissionFactor::whereIn('id', $ids)->get()->keyBy('id');
+
+            return $results
+                ->reject(fn ($r) => ($r['model_id'] ?? null) === $factor->id)
+                ->take($limit)
+                ->map(function ($r) use ($factors) {
+                    $f = $factors->get($r['model_id'] ?? null);
+                    return $f ? ['factor' => $f, 'score' => $r['score'] ?? 0] : null;
+                })
+                ->filter();
+
+        } catch (\Exception $e) {
+            Log::debug('findSimilarWithScores failed: ' . $e->getMessage());
+
+            return $this->findSimilar($factor, $limit)
+                ->map(fn ($f) => ['factor' => $f, 'score' => null]);
+        }
     }
 
     /**
@@ -540,7 +759,7 @@ PROMPT;
     public function getStats(): array
     {
         return Cache::remember('factor_rag_stats', 3600, function () {
-            return [
+            $stats = [
                 'total_factors' => EmissionFactor::count(),
                 'active_factors' => EmissionFactor::where('is_active', true)->count(),
                 'by_scope' => EmissionFactor::selectRaw('scope, COUNT(*) as count')
@@ -560,6 +779,178 @@ PROMPT;
                     ->pluck('name', 'id')
                     ->toArray(),
             ];
+
+            // Add semantic search stats if available
+            $stats['semantic_search'] = $this->getSemanticSearchStatus();
+
+            return $stats;
         });
+    }
+
+    /**
+     * Get semantic search service status and statistics.
+     */
+    public function getSemanticSearchStatus(): array
+    {
+        $status = [
+            'enabled' => $this->useSemanticSearch,
+            'available' => false,
+            'indexed_factors' => 0,
+            'index_name' => 'emission_factors',
+        ];
+
+        if (!$this->usearchClient) {
+            $status['error'] = 'USearch client not configured';
+            return $status;
+        }
+
+        try {
+            $health = $this->usearchClient->health();
+            $status['available'] = ($health['status'] ?? '') === 'healthy';
+            $status['version'] = $health['version'] ?? null;
+
+            if ($status['available']) {
+                $stats = $this->usearchClient->stats();
+                $indexes = collect($stats['indexes'] ?? []);
+                $factorIndex = $indexes->firstWhere('name', 'emission_factors');
+
+                if ($factorIndex) {
+                    $status['indexed_factors'] = $factorIndex['vector_count'] ?? 0;
+                    $status['dimensions'] = $factorIndex['dimensions'] ?? null;
+                    $status['index_size_bytes'] = $factorIndex['size_bytes'] ?? 0;
+                }
+            }
+        } catch (\Exception $e) {
+            $status['error'] = $e->getMessage();
+        }
+
+        return $status;
+    }
+
+    /**
+     * Get the number of indexed emission factors.
+     */
+    public function getIndexedFactorCount(): int
+    {
+        if ($this->indexedCount !== null) {
+            return $this->indexedCount;
+        }
+
+        try {
+            if ($this->usearchClient && $this->usearchClient->isAvailable()) {
+                $stats = $this->usearchClient->stats();
+                $indexes = collect($stats['indexes'] ?? []);
+                $factorIndex = $indexes->firstWhere('name', 'emission_factors');
+
+                $this->indexedCount = $factorIndex['vector_count'] ?? 0;
+                return $this->indexedCount;
+            }
+        } catch (\Exception $e) {
+            Log::debug('Failed to get indexed count: ' . $e->getMessage());
+        }
+
+        return 0;
+    }
+
+    /**
+     * Check if a specific factor is indexed in uSearch.
+     */
+    public function isFactorIndexed(EmissionFactor $factor): bool
+    {
+        try {
+            // Check if the factor has an embedding record
+            return $factor->embeddings()
+                ->where('is_synced', true)
+                ->exists();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Get recommendations based on a description.
+     *
+     * Uses semantic understanding to find the most relevant factors
+     * for a given emission source description.
+     *
+     * @param  string  $description  Natural language description
+     * @param  int|null  $scope  Optional scope filter (1, 2, or 3)
+     * @param  int  $limit  Maximum recommendations
+     * @return Collection Results with 'factor', 'score', 'reason' keys
+     */
+    public function getRecommendations(
+        string $description,
+        ?int $scope = null,
+        int $limit = 5
+    ): Collection {
+        $filters = $scope ? ['scope' => $scope] : [];
+
+        // Use hybrid search for best results
+        $results = $this->hybridSearch($description, $filters, $limit);
+
+        // Add recommendation reasons based on scores
+        return $results->map(function ($result) use ($description) {
+            $factor = $result['factor'];
+            $score = $result['score'] ?? 0;
+
+            // Generate a simple reason based on match type
+            $reason = $this->generateRecommendationReason($factor, $score, $result['sources'] ?? []);
+
+            return [
+                'factor' => $factor,
+                'score' => $score,
+                'reason' => $reason,
+                'confidence' => $this->scoreToConfidence($score),
+            ];
+        });
+    }
+
+    /**
+     * Generate a recommendation reason for a factor.
+     */
+    protected function generateRecommendationReason(
+        EmissionFactor $factor,
+        float $score,
+        array $sources
+    ): string {
+        if ($score >= 0.8) {
+            return __('Correspondance exacte pour ce type d\'émission');
+        } elseif ($score >= 0.6) {
+            return __('Facteur très pertinent pour cette catégorie');
+        } elseif (in_array('semantic', $sources) && in_array('text', $sources)) {
+            return __('Correspondance sémantique et textuelle');
+        } elseif (in_array('semantic', $sources)) {
+            return __('Facteur sémantiquement similaire');
+        } else {
+            return __('Facteur correspondant aux mots-clés');
+        }
+    }
+
+    /**
+     * Convert a similarity score to a confidence level.
+     */
+    protected function scoreToConfidence(float $score): string
+    {
+        if ($score >= 0.8) {
+            return 'high';
+        } elseif ($score >= 0.6) {
+            return 'medium';
+        } elseif ($score >= 0.4) {
+            return 'low';
+        }
+
+        return 'uncertain';
+    }
+
+    /**
+     * Clear the search cache.
+     */
+    public function clearCache(): void
+    {
+        Cache::forget('factor_rag_stats');
+        $this->indexedCount = null;
+
+        // Note: Individual query caches use prefixed keys
+        // A full cache flush would clear them all
     }
 }

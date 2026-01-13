@@ -140,7 +140,8 @@ return [
         'max_top_k' => 100,
 
         // Default minimum similarity score (0-1)
-        'default_min_score' => 0.5,
+        // Lower for local embeddings (all-MiniLM-L6-v2), higher for OpenAI
+        'default_min_score' => env('USEARCH_MIN_SCORE', 0.35),
 
         // Enable hybrid search (combine text + semantic)
         'hybrid_enabled' => env('USEARCH_HYBRID_ENABLED', true),

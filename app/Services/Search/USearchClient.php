@@ -111,6 +111,9 @@ class USearchClient
     ): array {
         $this->log('search', ['query' => $query, 'index' => $index, 'top_k' => $topK]);
 
+        // Ensure empty array is converted to null (API expects dict or null)
+        $filters = !empty($filters) ? $filters : null;
+
         $response = $this->client()->post('/search', [
             'query' => $query,
             'index' => $index,

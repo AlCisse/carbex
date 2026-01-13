@@ -118,14 +118,19 @@ class SemanticSearchService
      * @param string $query Natural language query
      * @param array $filters Optional filters (scope, category, source)
      * @param int $topK Number of results
+     * @param float|null $minScore Minimum similarity score (defaults to config)
      * @return Collection EmissionFactor results
      */
     public function searchFactors(
         string $query,
         array $filters = [],
-        int $topK = 10
+        int $topK = 10,
+        ?float $minScore = null
     ): Collection {
-        $results = $this->search($query, 'emission_factors', $topK, ['filters' => $filters]);
+        $results = $this->search($query, 'emission_factors', $topK, [
+            'filters' => $filters,
+            'min_score' => $minScore ?? config('usearch.search.default_min_score', 0.35),
+        ]);
 
         // Load actual EmissionFactor models
         $ids = $results->pluck('model_id')->filter();
@@ -327,13 +332,44 @@ class SemanticSearchService
         $id = $result['id'] ?? '';
         $parts = explode(':', $id, 2);
 
+        // model_id can be UUID string or integer
+        $modelId = $parts[1] ?? null;
+
         return [
             'id' => $id,
             'model_type' => $parts[0] ?? null,
-            'model_id' => isset($parts[1]) ? (int) $parts[1] : null,
+            'model_id' => $modelId,
             'score' => $result['score'] ?? 0,
             'metadata' => $result['metadata'] ?? [],
             'source' => 'semantic',
         ];
+    }
+
+    /**
+     * Check if semantic search service is available and healthy.
+     */
+    public function isAvailable(): bool
+    {
+        try {
+            return $this->client->isAvailable();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Get index statistics.
+     */
+    public function getIndexStats(string $index): ?array
+    {
+        try {
+            $stats = $this->client->stats();
+            $indexes = collect($stats['indexes'] ?? []);
+
+            return $indexes->firstWhere('name', $index);
+        } catch (\Exception $e) {
+            Log::error('Failed to get index stats', ['error' => $e->getMessage()]);
+            return null;
+        }
     }
 }
