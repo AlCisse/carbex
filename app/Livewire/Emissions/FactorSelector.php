@@ -3,8 +3,10 @@
 namespace App\Livewire\Emissions;
 
 use App\Models\EmissionFactor;
+use App\Services\AI\FactorRAGService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -37,6 +39,11 @@ class FactorSelector extends Component
     public string $country = '';
     public string $unit = '';
     public int $perPage = 10;
+
+    // Semantic search toggle
+    public bool $useSemanticSearch = true;
+    public string $searchMode = 'text'; // 'text' or 'semantic'
+    protected ?Collection $semanticResults = null;
 
     // Custom factor modal
     public bool $showCustomFactorModal = false;
@@ -112,6 +119,13 @@ class FactorSelector extends Component
         $this->activeTab = 'all';
         $this->country = '';
         $this->unit = '';
+        $this->searchMode = 'text';
+        $this->resetPage();
+    }
+
+    public function toggleSemanticSearch(): void
+    {
+        $this->useSemanticSearch = !$this->useSemanticSearch;
         $this->resetPage();
     }
 
@@ -184,6 +198,68 @@ class FactorSelector extends Component
     }
 
     public function getFactorsProperty(): LengthAwarePaginator
+    {
+        // Use semantic search when enabled and there's a search query
+        if ($this->useSemanticSearch && strlen($this->search) >= 3) {
+            return $this->getSemanticSearchResults();
+        }
+
+        // Fall back to standard ILIKE search
+        $this->searchMode = 'text';
+        return $this->getTextSearchResults();
+    }
+
+    /**
+     * Get results using semantic search via FactorRAGService.
+     */
+    protected function getSemanticSearchResults(): LengthAwarePaginator
+    {
+        $factorRAG = app(FactorRAGService::class);
+
+        // Build filters for semantic search
+        $filters = [];
+        if ($this->activeTab !== 'all') {
+            $filters['source'] = $this->activeTab;
+        }
+        if ($this->country) {
+            $filters['country'] = $this->country;
+        }
+        if ($this->unit) {
+            $filters['unit'] = $this->unit;
+        }
+        if ($this->scope) {
+            $filters['scope'] = $this->scope;
+        }
+
+        // Use hybrid search for best results
+        $results = $factorRAG->hybridSearch($this->search, $filters, 100);
+
+        // Check if semantic search was used
+        $this->searchMode = $results->isNotEmpty() && ($results->first()['source'] ?? 'text') === 'semantic'
+            ? 'semantic'
+            : 'text';
+
+        // Extract factors from results
+        $factors = $results->map(fn ($r) => $r['factor'])->filter();
+
+        // Manual pagination
+        $page = $this->getPage();
+        $total = $factors->count();
+        $items = $factors->forPage($page, $this->perPage)->values();
+
+        return new LengthAwarePaginator(
+            $items,
+            $total,
+            $this->perPage,
+            $page,
+            ['path' => request()->url(), 'pageName' => 'page']
+        );
+    }
+
+    /**
+     * Get results using standard ILIKE text search.
+     */
+    protected function getTextSearchResults(): LengthAwarePaginator
     {
         $query = EmissionFactor::query()->active();
 
@@ -273,6 +349,8 @@ class FactorSelector extends Component
             'sourceCounts' => $this->sourceCounts,
             'countries' => $this->countries,
             'units' => $this->units,
+            'searchMode' => $this->searchMode,
+            'useSemanticSearch' => $this->useSemanticSearch,
         ]);
     }
 }

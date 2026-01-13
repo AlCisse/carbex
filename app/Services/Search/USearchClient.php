@@ -311,10 +311,8 @@ class USearchClient
     ): array {
         $this->log('createIndex', ['name' => $name, 'dimensions' => $dimensions]);
 
-        $response = $this->client()->post("/indexes/{$name}", [
-            'dimensions' => $dimensions,
-            'metric' => $metric,
-        ]);
+        // API expects dimensions and metric as query parameters
+        $response = $this->client()->post("/indexes/{$name}?dimensions={$dimensions}&metric={$metric}");
 
         $response->throw();
         return $response->json();

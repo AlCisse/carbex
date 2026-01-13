@@ -80,20 +80,60 @@
 
                 <!-- Search and Filters -->
                 <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                    <!-- Semantic Search Toggle & Status -->
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <!-- Semantic Search Toggle -->
+                            <button
+                                wire:click="toggleSemanticSearch"
+                                type="button"
+                                class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {{ $useSemanticSearch ? 'bg-green-600' : 'bg-gray-200' }}"
+                            >
+                                <span class="sr-only">{{ __('carbex.emissions.factors.toggle_semantic') }}</span>
+                                <span class="inline-block w-4 h-4 transform transition-transform bg-white rounded-full {{ $useSemanticSearch ? 'translate-x-6' : 'translate-x-1' }}"></span>
+                            </button>
+                            <span class="text-sm text-gray-600">
+                                {{ __('carbex.emissions.factors.semantic_search') }}
+                            </span>
+                        </div>
+                        <!-- Search Mode Indicator -->
+                        @if($search && strlen($search) >= 3)
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $searchMode === 'semantic' ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800' }}">
+                                @if($searchMode === 'semantic')
+                                    <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                    {{ __('carbex.emissions.factors.mode_semantic') }}
+                                @else
+                                    <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3M17 16l4-4m0 0l-4-4m4 4H14" />
+                                    </svg>
+                                    {{ __('carbex.emissions.factors.mode_text') }}
+                                @endif
+                            </span>
+                        @endif
+                    </div>
+
                     <div class="flex flex-col sm:flex-row gap-4">
                         <!-- Search -->
                         <div class="flex-1">
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
+                                    @if($useSemanticSearch)
+                                        <svg class="h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        </svg>
+                                    @else
+                                        <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    @endif
                                 </div>
                                 <input
                                     wire:model.live.debounce.300ms="search"
                                     type="text"
-                                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                                    placeholder="{{ __('carbex.emissions.factors.search_placeholder') }}"
+                                    class="block w-full pl-10 pr-3 py-2 border rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 sm:text-sm {{ $useSemanticSearch ? 'border-purple-300 focus:ring-purple-500 focus:border-purple-500' : 'border-gray-300 focus:ring-green-500 focus:border-green-500' }}"
+                                    placeholder="{{ $useSemanticSearch ? __('carbex.emissions.factors.semantic_placeholder') : __('carbex.emissions.factors.search_placeholder') }}"
                                 >
                             </div>
                         </div>
