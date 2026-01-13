@@ -123,20 +123,38 @@ class OnboardingWizard extends Component
                 $slug = $baseSlug . '-' . $counter++;
             }
 
+            // Map size to database enum
+            $size = match ($this->size) {
+                '1-10' => 'micro',
+                '11-50' => 'small',
+                '51-250' => 'medium',
+                '251-500', '500+' => 'large',
+                default => $this->size ?: null,
+            };
+
             $organization = Organization::create([
                 'name' => $this->company_name,
                 'slug' => $slug,
                 'siret' => $this->siret,
                 'sector' => $this->sector,
-                'size' => $this->size,
+                'size' => $size,
             ]);
             $user->update(['organization_id' => $organization->id]);
         } else {
+            // Map size to database enum
+            $size = match ($this->size) {
+                '1-10' => 'micro',
+                '11-50' => 'small',
+                '51-250' => 'medium',
+                '251-500', '500+' => 'large',
+                default => $this->size ?: null,
+            };
+
             $user->organization->update([
                 'name' => $this->company_name,
                 'siret' => $this->siret,
                 'sector' => $this->sector,
-                'size' => $this->size,
+                'size' => $size,
             ]);
         }
     }

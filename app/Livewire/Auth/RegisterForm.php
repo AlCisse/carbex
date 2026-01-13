@@ -89,6 +89,20 @@ class RegisterForm extends Component
         $this->step--;
     }
 
+    /**
+     * Map form size values to database enum values.
+     */
+    protected function mapOrganizationSize(?string $size): ?string
+    {
+        return match ($size) {
+            '1-10' => 'micro',
+            '11-50' => 'small',
+            '51-250' => 'medium',
+            '251-500', '500+' => 'large',
+            default => $size,
+        };
+    }
+
     public function register(): void
     {
         $this->validate();
@@ -107,7 +121,7 @@ class RegisterForm extends Component
             'slug' => $slug,
             'country' => $this->country,
             'sector' => $this->sector ?: null,
-            'size' => $this->organization_size ?: null,
+            'size' => $this->mapOrganizationSize($this->organization_size ?: null),
             'fiscal_year_start_month' => 1,
             'default_currency' => 'EUR',
             'timezone' => $this->country === 'FR' ? 'Europe/Paris' : 'Europe/Berlin',

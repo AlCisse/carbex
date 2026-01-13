@@ -31,13 +31,22 @@ class AuthController extends Controller
             $slug = $baseSlug . '-' . $counter++;
         }
 
+        // Map size to database enum
+        $size = match ($validated['organization_size'] ?? null) {
+            '1-10' => 'micro',
+            '11-50' => 'small',
+            '51-250' => 'medium',
+            '251-500', '500+' => 'large',
+            default => $validated['organization_size'] ?? null,
+        };
+
         // Create organization
         $organization = Organization::create([
             'name' => $validated['organization_name'],
             'slug' => $slug,
             'country' => $validated['country'],
             'sector' => $validated['sector'] ?? null,
-            'size' => $validated['organization_size'] ?? null,
+            'size' => $size,
             'fiscal_year_start_month' => 1,
             'default_currency' => $validated['country'] === 'FR' ? 'EUR' : 'EUR',
             'timezone' => $validated['country'] === 'FR' ? 'Europe/Paris' : 'Europe/Berlin',
