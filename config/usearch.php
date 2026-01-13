@@ -74,22 +74,22 @@ return [
     */
     'indexes' => [
         'emission_factors' => [
-            'dimensions' => 1536,
+            'dimensions' => (int) env('VECTOR_DIMENSIONS', 384),
             'metric' => 'cos',
             'description' => 'Emission factors for carbon calculations',
         ],
         'transactions' => [
-            'dimensions' => 1536,
+            'dimensions' => (int) env('VECTOR_DIMENSIONS', 384),
             'metric' => 'cos',
             'description' => 'Bank transactions for categorization',
         ],
         'documents' => [
-            'dimensions' => 1536,
+            'dimensions' => (int) env('VECTOR_DIMENSIONS', 384),
             'metric' => 'cos',
             'description' => 'Uploaded documents for AI extraction',
         ],
         'actions' => [
-            'dimensions' => 1536,
+            'dimensions' => (int) env('VECTOR_DIMENSIONS', 384),
             'metric' => 'cos',
             'description' => 'Reduction actions for recommendations',
         ],

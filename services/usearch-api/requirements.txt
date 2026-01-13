@@ -13,9 +13,8 @@ numpy>=1.26.0,<2.0
 # HTTP Client (for embedding APIs)
 httpx==0.28.1
 
-# Optional: Local embeddings
-# sentence-transformers==3.3.1
-# torch>=2.0.0
+# Local embeddings (for development without API keys)
+sentence-transformers==3.3.1
 
 # Testing
 pytest==8.3.4

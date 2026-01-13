@@ -47,6 +47,7 @@ services:
       MEILISEARCH_KEY: masterKey
       USEARCH_URL: http://usearch:8001
       USEARCH_API_KEY: ${USEARCH_API_KEY:-carbex-usearch-dev-key}
+      VECTOR_DIMENSIONS: ${VECTOR_DIMENSIONS:-384}
     depends_on:
       postgres:
         condition: service_healthy
@@ -127,12 +128,12 @@ services:
       DEBUG: "false"
       USEARCH_API_KEY: ${USEARCH_API_KEY:-carbex-usearch-dev-key}
       CORS_ORIGINS: http://localhost,http://localhost:8000,http://nginx
-      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-openai}
-      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       INDEX_PATH: /data/indexes
-      VECTOR_DIMENSIONS: 1536
+      VECTOR_DIMENSIONS: ${VECTOR_DIMENSIONS:-384}
     volumes:
       - usearch_data:/data/indexes
     healthcheck:

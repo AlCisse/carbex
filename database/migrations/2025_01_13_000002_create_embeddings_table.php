@@ -20,7 +20,7 @@ return new class extends Migration
         Schema::create('embeddings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vector_index_id')->constrained('vector_indices')->cascadeOnDelete();
-            $table->morphs('embeddable'); // embeddable_type, embeddable_id
+            $table->uuidMorphs('embeddable'); // embeddable_type, embeddable_id (UUID for EmissionFactor compatibility)
             $table->string('content_hash', 64)->comment('SHA256 hash of embedded content for change detection');
             $table->unsignedInteger('dimensions')->default(1536);
             $table->string('model', 64)->nullable()->comment('Embedding model used');
