@@ -376,6 +376,15 @@ return [
         'invitation_invalid' => 'Cette invitation est invalide ou a expire.',
         'invitation_accepted' => 'Invitation acceptee ! Bienvenue dans votre equipe.',
         'account_exists' => 'Vous avez deja un compte. Cliquez ci-dessous pour rejoindre cette organisation.',
+        // Email verification
+        'verify_email_title' => 'Vérifiez votre adresse e-mail',
+        'verify_email_subtitle' => 'Merci de votre inscription !',
+        'verify_email_message' => 'Avant de commencer, veuillez vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer. Si vous n\'avez pas reçu l\'e-mail, nous vous en enverrons un autre avec plaisir.',
+        'verification_link_sent' => 'Un nouveau lien de vérification a été envoyé à l\'adresse e-mail que vous avez fournie lors de l\'inscription.',
+        'resend_verification' => 'Renvoyer l\'e-mail de vérification',
+        'wrong_email' => 'Mauvaise adresse e-mail ?',
+        'register_new' => 'Créer un nouveau compte',
+        'logout' => 'Se déconnecter',
     ],
 
     /*

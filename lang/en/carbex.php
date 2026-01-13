@@ -354,6 +354,15 @@ return [
         'invitation_invalid' => 'This invitation is invalid or has expired.',
         'invitation_accepted' => 'Invitation accepted! Welcome to your team.',
         'account_exists' => 'You already have an account. Click below to join this organization.',
+        // Email verification
+        'verify_email_title' => 'Verify your email address',
+        'verify_email_subtitle' => 'Thanks for signing up!',
+        'verify_email_message' => 'Before getting started, please verify your email address by clicking on the link we just emailed to you. If you didn\'t receive the email, we will gladly send you another.',
+        'verification_link_sent' => 'A new verification link has been sent to the email address you provided during registration.',
+        'resend_verification' => 'Resend verification email',
+        'wrong_email' => 'Wrong email address?',
+        'register_new' => 'Create a new account',
+        'logout' => 'Log out',
     ],
 
     'nav' => [

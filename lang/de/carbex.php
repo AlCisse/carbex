@@ -378,6 +378,15 @@ return [
         'invitation_invalid' => 'Diese Einladung ist ungultig oder abgelaufen.',
         'invitation_accepted' => 'Einladung angenommen! Willkommen in Ihrem Team.',
         'account_exists' => 'Sie haben bereits ein Konto. Klicken Sie unten, um dieser Organisation beizutreten.',
+        // E-Mail-Verifizierung
+        'verify_email_title' => 'E-Mail-Adresse bestätigen',
+        'verify_email_subtitle' => 'Danke für Ihre Registrierung!',
+        'verify_email_message' => 'Bevor Sie beginnen, bestätigen Sie bitte Ihre E-Mail-Adresse, indem Sie auf den Link klicken, den wir Ihnen gerade gesendet haben. Falls Sie die E-Mail nicht erhalten haben, senden wir Ihnen gerne eine neue.',
+        'verification_link_sent' => 'Ein neuer Bestätigungslink wurde an die E-Mail-Adresse gesendet, die Sie bei der Registrierung angegeben haben.',
+        'resend_verification' => 'Bestätigungs-E-Mail erneut senden',
+        'wrong_email' => 'Falsche E-Mail-Adresse?',
+        'register_new' => 'Neues Konto erstellen',
+        'logout' => 'Abmelden',
     ],
 
     /*
