@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\WebhookController;
 use App\Http\Controllers\Api\ApiKeyController;
+use App\Http\Controllers\Api\SemanticSearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -199,6 +200,23 @@ Route::prefix('v1')->group(function () {
             Route::get('/conversations', [\App\Http\Controllers\Api\AIController::class, 'listConversations']);
             Route::get('/conversations/{id}', [\App\Http\Controllers\Api\AIController::class, 'getConversation']);
             Route::delete('/conversations/{id}', [\App\Http\Controllers\Api\AIController::class, 'deleteConversation']);
+        });
+
+        // Semantic Search (uSearch)
+        Route::prefix('search')->group(function () {
+            // Public health check
+            Route::get('/health', [SemanticSearchController::class, 'health']);
+
+            // Search endpoints
+            Route::post('/semantic', [SemanticSearchController::class, 'search']);
+            Route::get('/semantic/factors', [SemanticSearchController::class, 'searchFactors']);
+            Route::post('/hybrid', [SemanticSearchController::class, 'hybridSearch']);
+            Route::get('/similar/{index}/{id}', [SemanticSearchController::class, 'findSimilar'])
+                ->where('id', '.*'); // Allow special chars in ID
+
+            // Index management
+            Route::get('/indexes', [SemanticSearchController::class, 'listIndexes']);
+            Route::post('/indexes/{index}/reindex', [SemanticSearchController::class, 'reindex']);
         });
 
         // Outgoing Webhooks Management

@@ -3,29 +3,30 @@
 namespace App\Services\AI;
 
 use App\Models\EmissionFactor;
+use App\Services\Search\SemanticSearchService;
+use App\Services\Search\USearchClient;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * FactorRAGService
  *
- * Service de Retrieval-Augmented Generation pour les facteurs d'émission ADEME.
- * Permet une recherche sémantique parmi les 20 000+ facteurs d'émission.
- *
- * Note: Cette implémentation utilise une approche hybride:
- * - Recherche textuelle PostgreSQL (full-text search + trigrams)
+ * Service de Retrieval-Augmented Generation pour les facteurs d'émission.
+ * Utilise une recherche hybride combinant:
+ * - Recherche sémantique via uSearch (embeddings vectoriels)
+ * - Recherche textuelle via Meilisearch
  * - Classification par catégories et tags
- * - Cache des résultats fréquents
  *
- * Pour une vraie recherche sémantique avec embeddings:
- * - Installer pgvector extension
- * - Générer des embeddings via OpenAI/Anthropic
- * - Stocker dans une colonne vector(1536)
+ * La recherche sémantique permet des requêtes en langage naturel
+ * comme "consommation électrique bureau" ou "transport marchandises camion".
  */
 class FactorRAGService
 {
     protected AIManager $aiManager;
+    protected ?SemanticSearchService $semanticSearch = null;
+    protected ?USearchClient $usearchClient = null;
 
     /**
      * Cache TTL in seconds (24 hours).
@@ -37,13 +38,47 @@ class FactorRAGService
      */
     protected int $maxResults = 10;
 
-    public function __construct(AIManager $aiManager)
-    {
+    /**
+     * Whether to use semantic search (uSearch).
+     */
+    protected bool $useSemanticSearch = true;
+
+    public function __construct(
+        AIManager $aiManager,
+        ?SemanticSearchService $semanticSearch = null,
+        ?USearchClient $usearchClient = null
+    ) {
         $this->aiManager = $aiManager;
+        $this->semanticSearch = $semanticSearch;
+        $this->usearchClient = $usearchClient;
+
+        // Check if semantic search is available
+        $this->useSemanticSearch = config('usearch.search.hybrid_enabled', true)
+            && $this->isSemanticSearchAvailable();
+    }
+
+    /**
+     * Check if uSearch semantic search is available.
+     */
+    protected function isSemanticSearchAvailable(): bool
+    {
+        if (!$this->usearchClient) {
+            return false;
+        }
+
+        try {
+            return $this->usearchClient->isAvailable();
+        } catch (\Exception $e) {
+            Log::debug('uSearch not available: ' . $e->getMessage());
+            return false;
+        }
     }
 
     /**
      * Search emission factors with semantic matching.
+     *
+     * Uses hybrid search (semantic + text) when uSearch is available,
+     * falls back to keyword-based search otherwise.
      *
      * @param  string  $query  Natural language query
      * @param  array  $filters  Optional filters (scope, source, unit, category)
@@ -59,17 +94,68 @@ class FactorRAGService
             return EmissionFactor::whereIn('id', $cached)->get();
         }
 
-        // Extract keywords and intent from query
+        // Use semantic search if available
+        if ($this->useSemanticSearch && $this->semanticSearch) {
+            $results = $this->semanticSearchFactors($query, $filters);
+
+            if ($results->isNotEmpty()) {
+                Cache::put($cacheKey, $results->pluck('id')->toArray(), $this->cacheTtl);
+                return $results;
+            }
+        }
+
+        // Fallback to keyword-based search
         $keywords = $this->extractKeywords($query);
         $intent = $this->detectIntent($query);
-
-        // Build and execute search query
         $results = $this->executeSearch($keywords, $intent, $filters);
 
         // Cache results
         Cache::put($cacheKey, $results->pluck('id')->toArray(), $this->cacheTtl);
 
         return $results;
+    }
+
+    /**
+     * Perform semantic search for emission factors using uSearch.
+     *
+     * @param  string  $query  Natural language query
+     * @param  array  $filters  Filters to apply
+     * @return Collection<EmissionFactor>
+     */
+    protected function semanticSearchFactors(string $query, array $filters = []): Collection
+    {
+        try {
+            // Build uSearch filters from our filters
+            $usearchFilters = [];
+
+            if (isset($filters['scope'])) {
+                $usearchFilters['scope'] = $filters['scope'];
+            }
+            if (isset($filters['source'])) {
+                $usearchFilters['source'] = $filters['source'];
+            }
+            if (isset($filters['country'])) {
+                $usearchFilters['country'] = $filters['country'];
+            }
+
+            // Search using semantic search service
+            $results = $this->semanticSearch->searchFactors(
+                $query,
+                $usearchFilters,
+                $this->maxResults
+            );
+
+            // Extract the models from results
+            return $results->map(fn ($r) => $r['model'] ?? null)->filter();
+
+        } catch (\Exception $e) {
+            Log::warning('Semantic search failed, falling back to keyword search', [
+                'query' => $query,
+                'error' => $e->getMessage(),
+            ]);
+
+            return collect();
+        }
     }
 
     /**
@@ -106,10 +192,32 @@ class FactorRAGService
     /**
      * Find similar factors to a given factor.
      *
+     * Uses semantic similarity via uSearch when available.
+     *
      * @return Collection<EmissionFactor>
      */
     public function findSimilar(EmissionFactor $factor, int $limit = 5): Collection
     {
+        // Try semantic similarity first
+        if ($this->useSemanticSearch && $this->semanticSearch) {
+            try {
+                $itemId = EmissionFactor::class . ':' . $factor->id;
+                $results = $this->semanticSearch->findSimilar(
+                    'emission_factors',
+                    $itemId,
+                    $limit
+                );
+
+                if ($results->isNotEmpty()) {
+                    $ids = $results->pluck('model_id')->filter();
+                    return EmissionFactor::whereIn('id', $ids)->get();
+                }
+            } catch (\Exception $e) {
+                Log::debug('Semantic findSimilar failed: ' . $e->getMessage());
+            }
+        }
+
+        // Fallback to attribute-based similarity
         return EmissionFactor::query()
             ->where('id', '!=', $factor->id)
             ->where('scope', $factor->scope)

@@ -44,6 +44,7 @@ Carbex is a SaaS platform that automates carbon footprint calculation for Europe
 | Public API & Webhooks | DONE | 100% |
 | Admin Panel (Filament) | DONE | 100% |
 | i18n (DE/FR/EN) | DONE | 100% |
+| Semantic Search (uSearch) | PLANNED | 0% |
 
 ---
 
@@ -264,9 +265,24 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 
 ---
 
-### Edge Cases
+### User Story 15 - Semantic Search with uSearch (Priority: P1)
 
-- What happens when a bank connection expires or is revoked? System notifies admin and marks data as stale.
+An organization uses natural language queries to search emission factors, transactions, and documents with semantic understanding, improving accuracy over keyword-based search.
+
+**Status**: PLANNED
+
+**Acceptance Scenarios**:
+
+1. **Given** a user searches "electricity consumption office building", **When** semantic search runs, **Then** relevant Scope 2 electricity factors are returned even without exact keyword matches
+2. **Given** 20,000+ emission factors in database, **When** user searches in natural language (FR/EN/DE), **Then** results are returned in under 100ms with semantic relevance ranking
+3. **Given** a transaction description "SNCF Paris Lyon", **When** AI categorization uses semantic search, **Then** it finds related Scope 3 Cat. 6 (Business Travel - Rail) factors with 95%+ accuracy
+4. **Given** an uploaded invoice in PDF, **When** OCR extracts text, **Then** semantic search matches extracted items to appropriate emission factors
+5. **Given** similar factors exist (e.g., "Diesel car" vs "Diesel truck"), **When** searching, **Then** semantic similarity scores distinguish between them accurately
+6. **Given** multilingual emission factors (FR/EN/DE), **When** searching in any language, **Then** cross-lingual semantic matching returns relevant results regardless of source language
+
+---
+
+### Edge Cases
 - How does system handle duplicate transactions from bank and accounting import? Deduplication based on date, amount, and merchant.
 - What happens when a user uploads malformed CSV? System validates format, reports specific errors, and rejects invalid rows.
 - How does system handle transactions in foreign currencies? Convert to organization's base currency using exchange rate at transaction date.
@@ -371,6 +387,16 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - **FR-063**: System MUST display currency, dates, and numbers in locale-appropriate formats ✅
 - **FR-064**: System MUST have NO hardcoded text in any component ✅
 
+#### Semantic Search (uSearch)
+- **FR-065**: System MUST generate vector embeddings for all emission factors using AI providers
+- **FR-066**: System MUST provide semantic search API via uSearch microservice with sub-100ms response time
+- **FR-067**: System MUST support natural language queries in FR/EN/DE with cross-lingual matching
+- **FR-068**: System MUST index transactions for semantic categorization assistance
+- **FR-069**: System MUST provide similarity scoring (0-1) for search results
+- **FR-070**: System MUST support hybrid search combining keyword (Meilisearch) + semantic (uSearch) results
+- **FR-071**: System MUST automatically re-index embeddings when emission factors are updated
+- **FR-072**: System MUST cache frequent embedding queries in Redis for performance
+
 ### Key Entities (Implemented)
 
 - **Organization**: Company using the platform. Attributes: name, country, sector, employee count, subscription plan, default currency, settings
@@ -405,6 +431,8 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - **Esrs2Disclosure**: CSRD disclosure. Attributes: year, requirement code, content, status, verified date
 - **ClimateTransitionPlan**: CSRD transition plan. Attributes: base year, target year, targets JSON, actions JSON
 - **DoubleMaterialityAssessment**: CSRD materiality. Attributes: year, impact matrix, financial matrix, stakeholder input
+- **VectorIndex**: uSearch index metadata. Attributes: name, type (factors/transactions/documents), vector_count, dimensions, last_sync, status
+- **Embedding**: Vector embedding for searchable entities. Attributes: embeddable_type, embeddable_id, vector (binary), model, created_at
 
 ---
 
@@ -435,11 +463,20 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - **Database**: MySQL 8.0 / PostgreSQL
 - **Cache**: Redis
 - **Queue**: Laravel Horizon (Redis-backed)
-- **Search**: Laravel Scout (Meilisearch)
+- **Search**: Laravel Scout (Meilisearch) + uSearch (semantic/vector)
 - **Admin**: Filament 3.x
 - **Payments**: Laravel Cashier (Stripe)
 - **PDF**: DomPDF / Browsershot
 - **Testing**: PHPUnit + Pest + Playwright (E2E)
+
+### Semantic Search Architecture (uSearch)
+- **Vector Engine**: uSearch (unum-cloud) - 100x faster than FAISS
+- **Microservice**: Python/FastAPI exposing uSearch via HTTP API
+- **Embeddings**: Generated via AI providers (Claude/OpenAI text-embedding-3-small)
+- **Index Storage**: Memory-mapped files for persistence, Redis for hot cache
+- **Dimensions**: 1536 (OpenAI) or 1024 (Claude) dimensional vectors
+- **Algorithm**: HNSW (Hierarchical Navigable Small World) with custom metrics
+- **Scalability**: Supports 1B+ vectors per index, sub-100ms queries
 
 ### External Services (Integrated)
 - **Open Banking FR**: Bridge API
@@ -491,6 +528,10 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - ✅ German, French, English language support
 - ✅ Admin panel (Filament)
 
+### In Progress (Phase 1.5)
+- 🔄 Semantic Search with uSearch (vector similarity search)
+- 🔄 Enhanced RAG for emission factor lookup
+
 ### Future Phases
 - Mobile applications (Phase 2)
 - BEGES official regulatory format (Phase 2)
@@ -509,11 +550,16 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - Enedis DataConnect API
 - GRDF ADICT API
 - Claude API (Anthropic)
-- OpenAI API (GPT-4)
+- OpenAI API (GPT-4 + text-embedding-3-small)
 - Google AI (Gemini)
 - DeepSeek API
 - Stripe (payments)
 - Postmark (email)
+
+### Vector Search Infrastructure
+- uSearch (unum-cloud) - HNSW vector similarity search engine
+- Python/FastAPI microservice for uSearch API exposure
+- Redis for embedding cache and hot vectors
 
 ### Data Sources
 - ADEME Base Empreinte (FR emission factors)
@@ -525,6 +571,7 @@ Users interact with an AI assistant that helps with data entry, answers carbon a
 - EU-based cloud hosting (Scaleway/OVH) for GDPR compliance
 - Redis for caching and queues
 - S3-compatible object storage
+- Docker containers for uSearch microservice (Python 3.11+)
 
 ---
 

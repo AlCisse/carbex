@@ -45,6 +45,8 @@ services:
       MAIL_PORT: 1025
       MEILISEARCH_HOST: http://meilisearch:7700
       MEILISEARCH_KEY: masterKey
+      USEARCH_URL: http://usearch:8001
+      USEARCH_API_KEY: ${USEARCH_API_KEY:-carbex-usearch-dev-key}
     depends_on:
       postgres:
         condition: service_healthy
@@ -91,7 +93,7 @@ services:
     networks:
       - carbex-network
 
-  # Meilisearch 1.11 - Emission Factor Search
+  # Meilisearch 1.11 - Emission Factor Search (Text)
   meilisearch:
     image: getmeili/meilisearch:v1.11
     container_name: carbex-meilisearch
@@ -108,6 +110,37 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - carbex-network
+
+  # uSearch API - Semantic Vector Search
+  usearch:
+    build:
+      context: ./services/usearch-api
+      dockerfile: Dockerfile
+    container_name: carbex-usearch
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      PORT: 8001
+      DEBUG: "false"
+      USEARCH_API_KEY: ${USEARCH_API_KEY:-carbex-usearch-dev-key}
+      CORS_ORIGINS: http://localhost,http://localhost:8000,http://nginx
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-openai}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      INDEX_PATH: /data/indexes
+      VECTOR_DIMENSIONS: 1536
+    volumes:
+      - usearch_data:/data/indexes
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8001/health').raise_for_status()"]
+      interval: 30s
+      timeout: 10s
+      start_period: 10s
+      retries: 3
     networks:
       - carbex-network
 
@@ -146,6 +179,8 @@ volumes:
   redis_data:
     driver: local
   meilisearch_data:
+    driver: local
+  usearch_data:
     driver: local
 
 networks:

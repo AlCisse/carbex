@@ -71,6 +71,7 @@ class TestDataSeeder extends Seeder
         // Run dependent seeders
         $this->call([
             AssessmentSeeder::class,
+            EmissionRecordSeeder::class,
             ActionSeeder::class,
             ReductionTargetSeeder::class,
         ]);

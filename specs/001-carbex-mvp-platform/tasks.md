@@ -1149,6 +1149,288 @@
 
 ---
 
+# PHASE 11: Recherche Sémantique (uSearch)
+
+> **Source**: [uSearch (unum-cloud)](https://github.com/unum-cloud/usearch) - Moteur de recherche vectorielle 100x plus rapide que FAISS
+> **Objectif**: Améliorer la recherche de facteurs d'émission et la catégorisation IA avec la recherche sémantique
+
+## 11.1 Infrastructure uSearch
+
+- [ ] T183 🔴 **Créer microservice Python/FastAPI** pour uSearch
+  ```
+  services/usearch-api/
+  ├── main.py           # FastAPI app
+  ├── routes/
+  │   ├── search.py     # Endpoints recherche
+  │   └── index.py      # Endpoints indexation
+  ├── services/
+  │   ├── usearch_engine.py  # Wrapper uSearch
+  │   └── embedding.py       # Génération embeddings
+  ├── requirements.txt
+  └── Dockerfile
+  ```
+
+- [ ] T184 🔴 **Configurer uSearch** dans le microservice
+  - Algorithm: HNSW (Hierarchical Navigable Small World)
+  - Dimensions: 1536 (OpenAI) ou 1024 (Claude)
+  - Metric: Cosine similarity
+  - Memory-mapped index pour persistance
+
+- [ ] T185 🔴 **Créer Dockerfile uSearch** dans `docker/usearch/Dockerfile`
+  ```dockerfile
+  FROM python:3.11-slim
+  RUN pip install usearch fastapi uvicorn openai anthropic
+  # ...
+  ```
+
+- [ ] T186 🔴 **Ajouter service uSearch** dans `docker-compose.yml`
+  ```yaml
+  usearch:
+    build: ./docker/usearch
+    ports:
+      - "8001:8000"
+    volumes:
+      - usearch_data:/app/data
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+  ```
+
+## 11.2 Base de Données Embeddings
+
+- [ ] T187 🔴 **Créer migration vector_indices** dans `database/migrations/`
+  ```php
+  - id (uuid)
+  - name (string) // 'emission_factors', 'transactions', 'documents'
+  - type (enum: factors, transactions, documents)
+  - vector_count (integer)
+  - dimensions (integer) // 1536 ou 1024
+  - model (string) // 'text-embedding-3-small', 'claude-3-haiku'
+  - last_sync_at (timestamp)
+  - status (enum: building, ready, error)
+  - metadata (json)
+  ```
+
+- [ ] T188 🔴 **Créer migration embeddings** dans `database/migrations/`
+  ```php
+  - id (uuid)
+  - embeddable_type (string) // 'EmissionFactor', 'Transaction'
+  - embeddable_id (uuid)
+  - vector (binary) // Stockage compact du vecteur
+  - model (string)
+  - text_hash (string) // Pour détecter les changements
+  - created_at (timestamp)
+  ```
+
+- [ ] T189 🔴 **Créer model VectorIndex** dans `app/Models/VectorIndex.php`
+  - Relations: embeddings
+  - Scopes: ready, ofType
+  - Methods: rebuild, getStats
+
+- [ ] T190 🔴 **Créer model Embedding** dans `app/Models/Embedding.php`
+  - Relations: embeddable (morphTo)
+  - Trait: HasEmbedding pour models indexables
+
+## 11.3 Service Laravel pour uSearch
+
+- [ ] T191 🔴 **Créer config/usearch.php** avec paramètres
+  ```php
+  return [
+      'api_url' => env('USEARCH_API_URL', 'http://usearch:8000'),
+      'timeout' => 30,
+      'embedding_model' => env('EMBEDDING_MODEL', 'text-embedding-3-small'),
+      'dimensions' => 1536,
+      'indexes' => [
+          'emission_factors' => [
+              'model' => EmissionFactor::class,
+              'fields' => ['name', 'name_en', 'name_de', 'description'],
+          ],
+          'transactions' => [
+              'model' => Transaction::class,
+              'fields' => ['description', 'clean_description', 'counterparty_name'],
+          ],
+      ],
+  ];
+  ```
+
+- [ ] T192 🔴 **Créer USearchClient** dans `app/Services/Search/USearchClient.php`
+  ```php
+  class USearchClient
+  {
+      public function search(string $index, string $query, int $limit = 10): array;
+      public function addVector(string $index, string $id, array $vector): void;
+      public function removeVector(string $index, string $id): void;
+      public function rebuildIndex(string $index): void;
+      public function getIndexStats(string $index): array;
+  }
+  ```
+
+- [ ] T193 🔴 **Créer EmbeddingService** dans `app/Services/Search/EmbeddingService.php`
+  ```php
+  class EmbeddingService
+  {
+      public function generate(string $text): array; // Retourne vecteur 1536-dim
+      public function generateBatch(array $texts): array;
+      public function getModel(): string;
+  }
+  ```
+
+- [ ] T194 🔴 **Créer SemanticSearchService** dans `app/Services/Search/SemanticSearchService.php`
+  ```php
+  class SemanticSearchService
+  {
+      public function searchFactors(string $query, array $filters = []): Collection;
+      public function searchTransactions(string $query, int $organizationId): Collection;
+      public function findSimilar(Model $model, int $limit = 5): Collection;
+      public function hybridSearch(string $query, string $index): Collection; // Meilisearch + uSearch
+  }
+  ```
+
+## 11.4 Indexation des Facteurs d'Émission
+
+- [ ] T195 🔴 **Créer job IndexEmissionFactors** dans `app/Jobs/IndexEmissionFactors.php`
+  - Batch processing (500 facteurs à la fois)
+  - Génération embeddings via OpenAI
+  - Stockage dans uSearch index
+  - Progress tracking
+
+- [ ] T196 🔴 **Créer commande artisan** `php artisan usearch:index-factors`
+  - Option --fresh pour réindexer tout
+  - Option --chunk pour taille batch
+  - Progress bar
+
+- [ ] T197 🟠 **Créer trait HasEmbedding** dans `app/Models/Concerns/HasEmbedding.php`
+  ```php
+  trait HasEmbedding
+  {
+      public function embedding(): MorphOne;
+      public function getEmbeddableText(): string;
+      public function updateEmbedding(): void;
+      public static function bootHasEmbedding(): void; // Auto-update on save
+  }
+  ```
+
+- [ ] T198 🟠 **Ajouter HasEmbedding** aux models
+  - EmissionFactor
+  - Transaction
+  - UploadedDocument
+
+## 11.5 Intégration dans FactorRAGService
+
+- [ ] T199 🔴 **Améliorer FactorRAGService** avec recherche sémantique
+  ```php
+  // Avant: recherche ILIKE PostgreSQL
+  // Après: recherche hybride (sémantique + textuelle)
+  public function search(string $query, array $filters = []): Collection
+  {
+      // 1. Recherche sémantique uSearch
+      $semanticResults = $this->semanticSearch->searchFactors($query);
+
+      // 2. Recherche textuelle Meilisearch
+      $textResults = EmissionFactor::search($query)->get();
+
+      // 3. Fusion et ranking
+      return $this->mergeResults($semanticResults, $textResults);
+  }
+  ```
+
+- [ ] T200 🟠 **Créer méthode findSimilarFactors** dans FactorRAGService
+  - Trouve facteurs similaires à un facteur donné
+  - Utilise distance cosine dans uSearch
+
+- [ ] T201 🟠 **Améliorer aiEnhancedSearch** avec contexte sémantique
+  - Utilise embeddings pour meilleur contexte RAG
+  - Améliore la précision des suggestions
+
+## 11.6 Interface Utilisateur
+
+- [ ] T202 🟠 **Améliorer FactorSelector** avec recherche sémantique
+  - Indicateur "Recherche sémantique activée"
+  - Affichage score de similarité (0-100%)
+  - Suggestions "Vous vouliez peut-être..."
+
+- [ ] T203 🟠 **Créer Livewire SemanticSearchResults** dans `app/Livewire/Search/SemanticSearchResults.php`
+  - Affichage résultats avec scores
+  - Highlighting des termes matchés
+  - Filtres avancés
+
+- [ ] T204 🟠 [P] **Créer view semantic-search-results** dans `resources/views/livewire/search/semantic-search-results.blade.php`
+
+- [ ] T205 🟡 **Ajouter recherche sémantique globale** dans header
+  - Recherche unifiée (facteurs, transactions, documents)
+  - Raccourci clavier (Cmd+K / Ctrl+K)
+  - Modal résultats avec catégories
+
+## 11.7 API Endpoints
+
+- [ ] T206 🟠 **Créer SemanticSearchController** dans `app/Http/Controllers/Api/SemanticSearchController.php`
+  ```php
+  // GET /api/v1/search/semantic
+  public function search(Request $request): JsonResponse;
+
+  // GET /api/v1/search/similar/{type}/{id}
+  public function similar(string $type, string $id): JsonResponse;
+
+  // POST /api/v1/search/hybrid
+  public function hybrid(Request $request): JsonResponse;
+  ```
+
+- [ ] T207 🟠 **Ajouter routes API** dans `routes/api.php`
+  ```php
+  Route::prefix('search')->group(function () {
+      Route::get('semantic', [SemanticSearchController::class, 'search']);
+      Route::get('similar/{type}/{id}', [SemanticSearchController::class, 'similar']);
+      Route::post('hybrid', [SemanticSearchController::class, 'hybrid']);
+  });
+  ```
+
+- [ ] T208 🟡 **Documenter API** avec Scramble
+  - Endpoints search/semantic
+  - Paramètres (query, filters, limit)
+  - Exemples de réponses
+
+## 11.8 Monitoring & Performance
+
+- [ ] T209 🟡 **Créer dashboard admin uSearch** dans Filament
+  - Stats index (nb vecteurs, taille, dernière sync)
+  - Performance (temps moyen requête)
+  - Actions (rebuild, clear cache)
+
+- [ ] T210 🟡 **Créer commande health check** `php artisan usearch:health`
+  - Vérifie connexion au microservice
+  - Vérifie état des index
+  - Retourne status code pour monitoring
+
+- [ ] T211 🟡 **Ajouter métriques Prometheus** pour uSearch
+  - usearch_query_duration_seconds
+  - usearch_index_size_vectors
+  - usearch_embedding_generation_duration
+
+## 11.9 Tests
+
+- [ ] T212 🟠 **Tests Unit EmbeddingService**
+  - Test génération embedding
+  - Test batch processing
+  - Mock OpenAI API
+
+- [ ] T213 🟠 **Tests Unit SemanticSearchService**
+  - Test recherche facteurs
+  - Test recherche hybride
+  - Test findSimilar
+
+- [ ] T214 🟠 **Tests Feature SemanticSearchController**
+  - Test endpoint /search/semantic
+  - Test authentification API
+  - Test rate limiting
+
+- [ ] T215 🟡 **Tests Integration uSearch**
+  - Test connexion microservice
+  - Test indexation complète
+  - Test performance (<100ms)
+
+**Checkpoint Semantic Search**: [ ] Phase 11 - Recherche sémantique uSearch (T183-T215)
+
+---
+
 # Résumé
 
 ## Statistiques
@@ -1165,12 +1447,19 @@
 | Phase 8: Site Marketing Public | 22 | 22 | ✅ Complété |
 | Phase 9: Intelligence Artificielle | 43 | 43 | ✅ Complété |
 | Phase 10: Fonctionnalités Avancées (TrackZero) | 17 | 17 | ✅ Complété |
-| **Total** | **182** | **182** | **100%** |
+| Phase 11: Recherche Sémantique (uSearch) | 33 | 0 | 🆕 À faire |
+| **Total** | **215** | **182** | **85%** |
 
 ## Prochaines Actions
 
 1. **Phases 1-10**: ✅ Complétées (182/182 tâches)
-2. **MVP Carbex**: 🎉 **TERMINÉ**
+2. **Phase 11**: 🆕 Recherche Sémantique uSearch (33 tâches à faire)
+
+### Priorités Phase 11:
+1. T183-T186: Infrastructure microservice Python/FastAPI
+2. T187-T190: Migrations et models pour embeddings
+3. T191-T194: Services Laravel (USearchClient, EmbeddingService, SemanticSearchService)
+4. T199-T201: Intégration dans FactorRAGService
 
 ### Suggestions pour la suite:
 - Déploiement en production sur OVH

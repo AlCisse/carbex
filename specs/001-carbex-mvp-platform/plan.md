@@ -34,6 +34,7 @@ Carbex est une solution SaaS de comptabilite carbone pour les PME europeennes, *
 | Phase 15 | i18n (DE/EN/FR) | DONE | 100% |
 | Phase 16 | Testing & QA | DONE | 100% |
 | **Total MVP** | **All Phases** | **DONE** | **100%** |
+| Phase 17 | Semantic Search (uSearch) | PLANNED | 0% |
 
 ---
 
@@ -45,7 +46,7 @@ Carbex est une solution SaaS de comptabilite carbone pour les PME europeennes, *
 - **Auth**: Laravel Sanctum 4.x
 - **Admin**: Filament 3.x
 - **Queue**: Laravel Horizon
-- **Search**: Laravel Scout + Meilisearch
+- **Search**: Laravel Scout + Meilisearch (text) + uSearch (semantic)
 - **Payments**: Laravel Cashier (Stripe)
 
 ### Frontend
@@ -58,6 +59,12 @@ Carbex est une solution SaaS de comptabilite carbone pour les PME europeennes, *
 - **Primary**: PostgreSQL 16 / MySQL 8.0
 - **Cache/Queue**: Redis 7.4+
 - **Search**: Meilisearch 1.11+
+
+### Microservices
+- **uSearch API**: Python 3.11+ / FastAPI
+  - Vector engine: uSearch (unum-cloud) - HNSW algorithm
+  - Embeddings: OpenAI text-embedding-3-small (1536 dims) / Claude (1024 dims)
+  - Performance: sub-100ms queries, 1B+ vectors per index
 
 ### External Integrations
 - **Open Banking FR**: Bridge.io (PSD2)
@@ -436,6 +443,22 @@ SupplierEmission
 └── Relationships: supplier
 ```
 
+### Vector Search (Phase 17)
+
+```
+VectorIndex
+├── id, name, type (factors/transactions/documents)
+├── vector_count, dimensions
+├── last_sync_at, status
+└── Relationships: embeddings
+
+Embedding
+├── id, embeddable_type, embeddable_id
+├── vector_index_id, vector (binary)
+├── content_hash, metadata (JSON)
+└── Relationships: vectorIndex, embeddable (polymorphic)
+```
+
 ### API & Webhooks
 
 ```
@@ -599,6 +622,17 @@ GET           /api/v1/webhooks/{id}/deliveries
 POST          /api/v1/webhooks/{id}/test
 ```
 
+### Semantic Search (Phase 17)
+
+```
+POST          /api/v1/search/semantic          # Natural language search
+GET           /api/v1/search/semantic/factors  # Search emission factors
+POST          /api/v1/search/hybrid            # Combined text + semantic
+GET           /api/v1/search/similar/{id}      # Find similar items
+GET           /api/v1/search/indexes           # List vector indexes
+POST          /api/v1/search/indexes/reindex   # Trigger reindexing
+```
+
 ---
 
 ## Services Layer (Implemented)
@@ -617,6 +651,15 @@ POST          /api/v1/webhooks/{id}/test
 | `ActionRecommendationEngine` | Reduction suggestions |
 | `PromptLibrary` | System prompts |
 | `FactorRAGService` | RAG for emission factors |
+
+### Semantic Search Services (Phase 17)
+
+| Service | Description |
+|---------|-------------|
+| `USearchClient` | HTTP client for uSearch microservice |
+| `EmbeddingService` | Multi-provider embedding generation |
+| `SemanticSearchService` | Hybrid search orchestration |
+| `VectorIndexManager` | Index lifecycle management |
 
 ### Carbon Services
 
@@ -726,6 +769,15 @@ POST          /api/v1/webhooks/{id}/test
 
 ## Next Steps (Post-MVP)
 
+### Phase 17 - Semantic Search (Priority)
+
+- [ ] Python/FastAPI microservice with uSearch
+- [ ] Embedding generation (OpenAI/Claude)
+- [ ] Laravel services (USearchClient, SemanticSearchService)
+- [ ] Hybrid search (Meilisearch + uSearch)
+- [ ] Factor search enhancement in FactorRAGService
+- [ ] Admin dashboard for index monitoring
+
 ### Phase 2 - Q1 2025
 
 - [ ] Mobile PWA application
@@ -756,7 +808,8 @@ POST          /api/v1/webhooks/{id}/test
 | Metric | Target | Current |
 |--------|--------|---------|
 | Dashboard load | < 2s | Achieved |
-| Search response | < 50ms | Achieved |
+| Text search response | < 50ms | Achieved |
+| Semantic search response | < 100ms | Phase 17 |
 | PDF generation | < 30s | Achieved |
 | API response (p95) | < 200ms | Achieved |
 | Uptime | 99.9% | Achieved |
@@ -775,7 +828,8 @@ POST          /api/v1/webhooks/{id}/test
 │  ├── Nginx                                                  │
 │  ├── PostgreSQL 16                                         │
 │  ├── Redis 7                                               │
-│  ├── MeiliSearch                                           │
+│  ├── MeiliSearch (text search)                             │
+│  ├── uSearch API (Python/FastAPI - semantic search)        │
 │  ├── Horizon (Queue Worker)                                │
 │  └── Prometheus + Grafana (Monitoring)                     │
 ├─────────────────────────────────────────────────────────────┤
@@ -799,4 +853,4 @@ POST          /api/v1/webhooks/{id}/test
 
 > **Document generated**: January 2025
 > **MVP Status**: COMPLETE (100%)
-> **Next milestone**: Phase 2 (Mobile PWA)
+> **Next milestone**: Phase 17 (Semantic Search with uSearch)

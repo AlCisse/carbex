@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasEmbedding;
 use App\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Laravel\Scout\Searchable;
 
 class EmissionFactor extends Model
 {
-    use HasFactory, HasUuid, Searchable;
+    use HasFactory, HasUuid, Searchable, HasEmbedding;
 
     protected $fillable = [
         'category_id',
@@ -174,5 +175,56 @@ class EmissionFactor extends Model
     public function scopeForUnit($query, string $unit)
     {
         return $query->where('unit', $unit);
+    }
+
+    // =========================================================================
+    // HasEmbedding Implementation
+    // =========================================================================
+
+    /**
+     * Get the text content to be embedded for semantic search.
+     * Combines multilingual names, description, and key attributes.
+     */
+    public function getEmbeddableContent(): string
+    {
+        $parts = array_filter([
+            $this->name,
+            $this->name_en,
+            $this->name_de,
+            $this->description,
+            $this->unit ? "unit: {$this->unit}" : null,
+            $this->scope ? "scope {$this->scope}" : null,
+            $this->country ? "country: {$this->country}" : null,
+            $this->sector ? "sector: {$this->sector}" : null,
+            $this->methodology,
+        ]);
+
+        return implode(' | ', $parts);
+    }
+
+    /**
+     * Get the index name for emission factor embeddings.
+     */
+    public function getEmbeddingIndexName(): string
+    {
+        return 'emission_factors';
+    }
+
+    /**
+     * Get metadata to store with the embedding.
+     */
+    public function getEmbeddingMetadata(): array
+    {
+        return [
+            'model_type' => self::class,
+            'model_id' => $this->id,
+            'source' => $this->source,
+            'scope' => $this->scope,
+            'country' => $this->country,
+            'unit' => $this->unit,
+            'factor_kg_co2e' => (float) $this->factor_kg_co2e,
+            'category_id' => $this->category_id,
+            'is_active' => $this->is_active,
+        ];
     }
 }
