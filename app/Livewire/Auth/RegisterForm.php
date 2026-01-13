@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -92,9 +93,18 @@ class RegisterForm extends Component
     {
         $this->validate();
 
+        // Generate unique slug from organization name
+        $baseSlug = Str::slug($this->organization_name);
+        $slug = $baseSlug;
+        $counter = 1;
+        while (Organization::where('slug', $slug)->exists()) {
+            $slug = $baseSlug . '-' . $counter++;
+        }
+
         // Create organization
         $organization = Organization::create([
             'name' => $this->organization_name,
+            'slug' => $slug,
             'country' => $this->country,
             'sector' => $this->sector ?: null,
             'size' => $this->organization_size ?: null,

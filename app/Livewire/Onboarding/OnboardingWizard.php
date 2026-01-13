@@ -7,6 +7,7 @@ namespace App\Livewire\Onboarding;
 use App\Models\Organization;
 use App\Models\Site;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -114,8 +115,17 @@ class OnboardingWizard extends Component
         }
 
         if (!$user->organization_id) {
+            // Generate unique slug
+            $baseSlug = Str::slug($this->company_name);
+            $slug = $baseSlug;
+            $counter = 1;
+            while (Organization::where('slug', $slug)->exists()) {
+                $slug = $baseSlug . '-' . $counter++;
+            }
+
             $organization = Organization::create([
                 'name' => $this->company_name,
+                'slug' => $slug,
                 'siret' => $this->siret,
                 'sector' => $this->sector,
                 'size' => $this->size,

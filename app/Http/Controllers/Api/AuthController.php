@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -22,9 +23,18 @@ class AuthController extends Controller
     {
         $validated = $request->validated();
 
+        // Generate unique slug
+        $baseSlug = Str::slug($validated['organization_name']);
+        $slug = $baseSlug;
+        $counter = 1;
+        while (Organization::where('slug', $slug)->exists()) {
+            $slug = $baseSlug . '-' . $counter++;
+        }
+
         // Create organization
         $organization = Organization::create([
             'name' => $validated['organization_name'],
+            'slug' => $slug,
             'country' => $validated['country'],
             'sector' => $validated['sector'] ?? null,
             'size' => $validated['organization_size'] ?? null,
