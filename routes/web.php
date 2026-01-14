@@ -77,6 +77,26 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
+Route::post('/email/verification-notification', function () {
+    request()->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/email/verify/{id}/{hash}', function (string $id, string $hash) {
+    $user = \App\Models\User::findOrFail($id);
+
+    if (! hash_equals(sha1($user->getEmailForVerification()), $hash)) {
+        throw new \Illuminate\Auth\Access\AuthorizationException;
+    }
+
+    if (! $user->hasVerifiedEmail()) {
+        $user->markEmailAsVerified();
+        event(new \Illuminate\Auth\Events\Verified($user));
+    }
+
+    return redirect()->route('dashboard')->with('verified', true);
+})->middleware(['signed'])->name('verification.verify');
+
 // Onboarding (auth required, but no email verification)
 Route::middleware(['auth'])->group(function () {
     Route::get('/onboarding', App\Livewire\Onboarding\OnboardingWizard::class)
