@@ -15,7 +15,6 @@ return [
     'app_name' => 'Carbex',
     'tagline' => 'Automatische CO2-Bilanz für KMU',
     'welcome' => 'Willkommen bei Carbex',
-    'dashboard' => 'Dashboard',
     'settings' => 'Einstellungen',
     'profile' => 'Profil',
     'logout' => 'Abmelden',
@@ -102,7 +101,7 @@ return [
     'home' => [
         'title' => 'Carbex - CO2-Bilanz-Plattform für KMU',
         'meta_description' => 'Steuern Sie Ihren CO2-Fußabdruck und treffen Sie wirkungsvolle Entscheidungen. Die KI-Plattform, die CO2-Verpflichtungen in strategische Entscheidungen für KMU verwandelt.',
-        'badge' => 'Carbon Intelligence for SMEs',
+        'badge' => 'CO₂-Intelligenz für KMU',
         'csrd_badge' => 'CSRD 2025 konform',
 
         // Navigation
@@ -130,6 +129,13 @@ return [
             'total_footprint' => 'Gesamtfußabdruck',
             'vs_previous_year' => 'vs. Vorjahr',
             'monthly_evolution' => 'Monatliche Entwicklung',
+            'months' => [
+                'jan' => 'Jan',
+                'feb' => 'Feb',
+                'mar' => 'Mär',
+                'apr' => 'Apr',
+                'may' => 'Mai',
+            ],
         ],
 
         // Features section
@@ -388,7 +394,7 @@ return [
         'accept_terms_html' => 'Ich akzeptiere die <a href="/terms" class="text-green-600 hover:underline">Nutzungsbedingungen</a>',
         'accept_privacy_html' => 'Ich akzeptiere die <a href="/privacy" class="text-green-600 hover:underline">Datenschutzrichtlinie</a>',
         'create_account' => 'Konto erstellen',
-        'password_requirements' => 'Mindestens 8 Zeichen',
+        'password_requirements' => 'Min. 8 Zeichen mit Groß-, Kleinbuchstaben, Zahl und Symbol',
         // Einladung
         'accept_invitation_title' => 'Treten Sie Ihrem Team bei',
         'accept_invitation_subtitle' => 'Sie wurden eingeladen, als :email beizutreten',

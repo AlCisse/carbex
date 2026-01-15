@@ -15,7 +15,6 @@ return [
     'app_name' => 'Carbex',
     'tagline' => 'Bilan carbone automatique pour PME',
     'welcome' => 'Bienvenue sur Carbex',
-    'dashboard' => 'Tableau de bord',
     'settings' => 'Paramètres',
     'profile' => 'Profil',
     'logout' => 'Déconnexion',
@@ -67,6 +66,11 @@ return [
         'unit' => 'Unité',
         'amount_optional' => 'Montant (optionnel)',
         'calculating' => 'Calcul...',
+        'actions' => 'Actions',
+        'close' => 'Fermer',
+        'confirm' => 'Confirmer',
+        'yes' => 'Oui',
+        'no' => 'Non',
     ],
 
     /*
@@ -97,7 +101,7 @@ return [
     'home' => [
         'title' => 'Carbex - Plateforme de Bilan Carbone pour PME',
         'meta_description' => 'Pilotez votre empreinte carbone et décidez avec impact. La plateforme IA qui transforme les obligations carbone en décisions stratégiques pour les PME.',
-        'badge' => 'Carbon Intelligence for SMEs',
+        'badge' => 'Intelligence Carbone pour PME',
         'csrd_badge' => 'Conforme CSRD 2025',
 
         // Navigation
@@ -125,6 +129,13 @@ return [
             'total_footprint' => 'Empreinte totale',
             'vs_previous_year' => 'vs année précédente',
             'monthly_evolution' => 'Évolution mensuelle',
+            'months' => [
+                'jan' => 'Jan',
+                'feb' => 'Fév',
+                'mar' => 'Mar',
+                'apr' => 'Avr',
+                'may' => 'Mai',
+            ],
         ],
 
         // Features section
@@ -383,7 +394,7 @@ return [
         'organization_size' => 'Taille de l\'entreprise',
         'select_size' => 'Selectionnez une taille',
         'employees' => 'employes',
-        'password_requirements' => 'Minimum 8 caracteres',
+        'password_requirements' => 'Min. 8 caractères avec majuscule, minuscule, chiffre et symbole',
         'accept_terms_html' => 'J\'accepte les <a href="/legal/terms" class="text-green-600 hover:underline">conditions d\'utilisation</a>',
         'accept_privacy_html' => 'J\'accepte la <a href="/legal/privacy" class="text-green-600 hover:underline">politique de confidentialite</a>',
         'create_account' => 'Creer mon compte',
@@ -1333,28 +1344,6 @@ return [
         'email_placeholder' => 'jean@entreprise.fr',
         'submit_request' => 'Envoyer ma demande',
         'contact_submitted' => 'Merci :name ! Nous avons bien reçu votre demande et vous répondrons à :email dans les 24h.',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Common UI Elements
-    |--------------------------------------------------------------------------
-    */
-
-    'common' => [
-        'loading' => 'Chargement...',
-        'saving' => 'Enregistrement...',
-        'processing' => 'Traitement...',
-        'view_details' => 'Voir les détails',
-        'actions' => 'Actions',
-        'save' => 'Sauvegarder',
-        'cancel' => 'Annuler',
-        'edit' => 'Modifier',
-        'delete' => 'Supprimer',
-        'close' => 'Fermer',
-        'confirm' => 'Confirmer',
-        'yes' => 'Oui',
-        'no' => 'Non',
     ],
 
     /*

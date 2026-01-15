@@ -184,7 +184,7 @@
                         <x-logo variant="premium" />
                     </a>
                     <span class="hidden lg:block text-xs font-medium px-2 py-1 rounded-full" style="background-color: var(--accent-light); color: var(--accent);">
-                        Carbon Intelligence for SMEs
+                        {{ __('carbex.home.badge') }}
                     </span>
                 </div>
 
@@ -197,7 +197,7 @@
                 <div class="flex items-center space-x-4">
                     <x-language-selector />
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn-primary px-4 py-2 text-sm font-medium text-white rounded-lg" style="background-color: var(--accent);">{{ __('carbex.dashboard') }}</a>
+                        <a href="{{ route('dashboard') }}" class="btn-primary px-4 py-2 text-sm font-medium text-white rounded-lg" style="background-color: var(--accent);">{{ __('carbex.nav.dashboard') }}</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('carbex.home.nav.login') }}</a>
                         <a href="{{ route('register') }}" class="btn-primary px-4 py-2 text-sm font-semibold text-white rounded-lg" style="background-color: var(--accent);">{{ __('carbex.home.nav.start') }}</a>
@@ -318,35 +318,35 @@
                                                 <div class="w-4 rounded-t bar-animate" style="height: 80%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-100" style="height: 65%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">Jan</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.jan') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-100" style="height: 85%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-200" style="height: 60%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">Fév</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.feb') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-200" style="height: 75%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-300" style="height: 55%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">Mar</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.mar') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-300" style="height: 90%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-400" style="height: 50%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">Avr</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.apr') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-400" style="height: 70%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-500" style="height: 45%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">Mai</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.may') }}</span>
                                         </div>
                                     </div>
                                 </div>

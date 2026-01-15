@@ -9,7 +9,6 @@ return [
     'app_name' => 'Carbex',
     'tagline' => 'Automatic carbon footprint for SMEs',
     'welcome' => 'Welcome to Carbex',
-    'dashboard' => 'Dashboard',
     'settings' => 'Settings',
     'profile' => 'Profile',
     'logout' => 'Logout',
@@ -118,6 +117,13 @@ return [
             'total_footprint' => 'Total footprint',
             'vs_previous_year' => 'vs previous year',
             'monthly_evolution' => 'Monthly evolution',
+            'months' => [
+                'jan' => 'Jan',
+                'feb' => 'Feb',
+                'mar' => 'Mar',
+                'apr' => 'Apr',
+                'may' => 'May',
+            ],
         ],
 
         // Features section
@@ -361,7 +367,7 @@ return [
         'organization_size' => 'Company size',
         'select_size' => 'Select a size',
         'employees' => 'employees',
-        'password_requirements' => 'Minimum 8 characters',
+        'password_requirements' => 'Min. 8 characters with uppercase, lowercase, number and symbol',
         'accept_terms_html' => 'I accept the <a href="/legal/terms" class="text-green-600 hover:underline">terms of service</a>',
         'accept_privacy_html' => 'I accept the <a href="/legal/privacy" class="text-green-600 hover:underline">privacy policy</a>',
         'create_account' => 'Create my account',
