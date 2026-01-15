@@ -150,7 +150,7 @@
             <!-- Terms and Privacy -->
             <div class="space-y-3 pt-4">
                 <div class="flex items-start">
-                    <input wire:model="accept_terms" id="accept_terms" name="accept_terms" type="checkbox"
+                    <input wire:model.live="accept_terms" id="accept_terms" name="accept_terms" type="checkbox"
                         class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600 mt-0.5">
                     <label for="accept_terms" class="ml-3 text-sm text-gray-600">
                         {!! __('carbex.auth.accept_terms_html') !!} *
@@ -159,7 +159,7 @@
                 @error('accept_terms')<p class="text-sm text-red-600">{{ $message }}</p>@enderror
 
                 <div class="flex items-start">
-                    <input wire:model="accept_privacy" id="accept_privacy" name="accept_privacy" type="checkbox"
+                    <input wire:model.live="accept_privacy" id="accept_privacy" name="accept_privacy" type="checkbox"
                         class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600 mt-0.5">
                     <label for="accept_privacy" class="ml-3 text-sm text-gray-600">
                         {!! __('carbex.auth.accept_privacy_html') !!} *
@@ -182,7 +182,7 @@
             <button type="submit"
                 class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
                 wire:loading.attr="disabled"
-                @if($step === 2 && (!$accept_terms || !$accept_privacy)) disabled @endif>
+                {{ $step === 2 && (!$accept_terms || !$accept_privacy) ? 'disabled' : '' }}>
                 <span wire:loading.remove>
                     {{ $step === 2 ? __('carbex.auth.create_account') : __('carbex.common.next') }}
                 </span>
