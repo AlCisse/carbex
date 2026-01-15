@@ -98,10 +98,10 @@
                 <div class="mt-2">
                     <select wire:model="country" id="country" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-                        <option value="DE">{{ __('carbex.emission_factors.countries.de') }}</option>
-                        <option value="FR">{{ __('carbex.emission_factors.countries.fr') }}</option>
-                        <option value="AT">{{ __('carbex.emission_factors.countries.at') }}</option>
-                        <option value="CH">{{ __('carbex.emission_factors.countries.ch') }}</option>
+                        <option value="DE">{{ __('carbex.countries.DE') }}</option>
+                        <option value="FR">{{ __('carbex.countries.FR') }}</option>
+                        <option value="AT">{{ __('carbex.countries.AT') }}</option>
+                        <option value="CH">{{ __('carbex.countries.CH') }}</option>
                     </select>
                 </div>
             </div>
@@ -115,9 +115,16 @@
                     <select wire:model="sector" id="sector"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
                         <option value="">{{ __('carbex.auth.select_sector') }}</option>
-                        @foreach(config('countries.sectors', []) as $key => $sector)
-                        <option value="{{ $key }}">{{ __("carbex.sectors.{$key}") }}</option>
-                        @endforeach
+                        <option value="manufacturing">{{ __('carbex.sectors.manufacturing') }}</option>
+                        <option value="services">{{ __('carbex.sectors.services') }}</option>
+                        <option value="technology">{{ __('carbex.sectors.technology') }}</option>
+                        <option value="retail">{{ __('carbex.sectors.retail') }}</option>
+                        <option value="construction">{{ __('carbex.sectors.construction') }}</option>
+                        <option value="transport">{{ __('carbex.sectors.transport') }}</option>
+                        <option value="finance">{{ __('carbex.sectors.finance') }}</option>
+                        <option value="healthcare">{{ __('carbex.sectors.healthcare') }}</option>
+                        <option value="hospitality">{{ __('carbex.sectors.hospitality') }}</option>
+                        <option value="other">{{ __('carbex.sectors.other') }}</option>
                     </select>
                 </div>
             </div>
@@ -173,8 +180,9 @@
             @endif
 
             <button type="submit"
-                class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 disabled:opacity-50"
-                wire:loading.attr="disabled">
+                class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                wire:loading.attr="disabled"
+                @if($step === 2 && (!$accept_terms || !$accept_privacy)) disabled @endif>
                 <span wire:loading.remove>
                     {{ $step === 2 ? __('carbex.auth.create_account') : __('carbex.common.next') }}
                 </span>
