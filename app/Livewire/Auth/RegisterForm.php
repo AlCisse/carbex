@@ -65,9 +65,9 @@ class RegisterForm extends Component
     public function messages(): array
     {
         return [
-            'email.unique' => __('auth.email_taken'),
-            'accept_terms.accepted' => __('auth.terms_required'),
-            'accept_privacy.accepted' => __('auth.privacy_required'),
+            'email.unique' => __('carbex.auth.email_taken'),
+            'accept_terms.accepted' => __('carbex.auth.terms_required'),
+            'accept_privacy.accepted' => __('carbex.auth.privacy_required'),
         ];
     }
 

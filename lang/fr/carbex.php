@@ -404,6 +404,10 @@ return [
         'wrong_email' => 'Mauvaise adresse e-mail ?',
         'register_new' => 'Créer un nouveau compte',
         'logout' => 'Se déconnecter',
+        // Validation errors
+        'email_taken' => 'Cette adresse e-mail est deja utilisee.',
+        'terms_required' => 'Vous devez accepter les conditions d\'utilisation.',
+        'privacy_required' => 'Vous devez accepter la politique de confidentialite.',
     ],
 
     /*

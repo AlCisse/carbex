@@ -382,6 +382,10 @@ return [
         'wrong_email' => 'Wrong email address?',
         'register_new' => 'Create a new account',
         'logout' => 'Log out',
+        // Validation errors
+        'email_taken' => 'This email address is already in use.',
+        'terms_required' => 'You must accept the terms of service.',
+        'privacy_required' => 'You must accept the privacy policy.',
     ],
 
     'nav' => [

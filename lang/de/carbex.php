@@ -406,6 +406,10 @@ return [
         'wrong_email' => 'Falsche E-Mail-Adresse?',
         'register_new' => 'Neues Konto erstellen',
         'logout' => 'Abmelden',
+        // Validierungsfehler
+        'email_taken' => 'Diese E-Mail-Adresse wird bereits verwendet.',
+        'terms_required' => 'Sie mussen die Nutzungsbedingungen akzeptieren.',
+        'privacy_required' => 'Sie mussen die Datenschutzrichtlinie akzeptieren.',
     ],
 
     /*
