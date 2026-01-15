@@ -1066,14 +1066,39 @@ return [
             'free' => [
                 'name' => 'Gratuit',
                 'description' => 'Pour découvrir la plateforme',
+                'duration' => '15 jours',
+                'features' => [
+                    '1 utilisateur',
+                    '1 site',
+                    'Saisie manuelle uniquement',
+                    'Rapport PDF basique',
+                    'Support par email',
+                ],
             ],
             'premium' => [
                 'name' => 'Premium',
                 'description' => 'Pour les PME',
+                'features' => [
+                    'Jusqu\'à 5 utilisateurs',
+                    'Jusqu\'à 3 sites',
+                    'Import bancaire automatique',
+                    'Tous les exports (Word, Excel, PDF)',
+                    'Déclarations ADEME et GHG',
+                    'Support prioritaire',
+                ],
             ],
             'advanced' => [
                 'name' => 'Avancé',
                 'description' => 'Pour les grandes entreprises',
+                'features' => [
+                    'Utilisateurs illimités',
+                    'Sites illimités',
+                    'Toutes les fonctionnalités Premium',
+                    'Accès API complet',
+                    'Module fournisseurs Scope 3',
+                    'Support dédié',
+                    'Formation personnalisée',
+                ],
             ],
         ],
 

@@ -28,24 +28,14 @@ class PlanSelector extends Component
     public ?float $discountPercent = null;
 
     /**
-     * Available plans configuration.
+     * Available plans configuration (prices only, texts come from translations).
      */
-    public array $plans = [
+    public array $plansConfig = [
         'free' => [
-            'name' => 'Gratuit',
             'price_monthly' => 0,
             'price_annual' => 0,
-            'description' => 'Pour découvrir la plateforme',
-            'duration' => '15 jours',
             'stripe_price_monthly' => null,
             'stripe_price_annual' => null,
-            'features' => [
-                '1 utilisateur',
-                '1 site',
-                'Saisie manuelle uniquement',
-                'Rapport PDF basique',
-                'Support par email',
-            ],
             'limits' => [
                 'users' => 1,
                 'sites' => 1,
@@ -53,20 +43,10 @@ class PlanSelector extends Component
             ],
         ],
         'premium' => [
-            'name' => 'Premium',
             'price_monthly' => 40,
             'price_annual' => 400,
-            'description' => 'Pour les PME',
             'stripe_price_monthly' => 'price_premium_monthly',
             'stripe_price_annual' => 'price_premium_annual',
-            'features' => [
-                'Jusqu\'à 5 utilisateurs',
-                'Jusqu\'à 3 sites',
-                'Import bancaire automatique',
-                'Tous les exports (Word, Excel, PDF)',
-                'Déclarations ADEME et GHG',
-                'Support prioritaire',
-            ],
             'limits' => [
                 'users' => 5,
                 'sites' => 3,
@@ -75,21 +55,10 @@ class PlanSelector extends Component
             'popular' => true,
         ],
         'advanced' => [
-            'name' => 'Avancé',
             'price_monthly' => 120,
             'price_annual' => 1200,
-            'description' => 'Pour les grandes entreprises',
             'stripe_price_monthly' => 'price_advanced_monthly',
             'stripe_price_annual' => 'price_advanced_annual',
-            'features' => [
-                'Utilisateurs illimités',
-                'Sites illimités',
-                'Toutes les fonctionnalités Premium',
-                'Accès API complet',
-                'Module fournisseurs Scope 3',
-                'Support dédié',
-                'Formation personnalisée',
-            ],
             'limits' => [
                 'users' => null,
                 'sites' => null,
@@ -97,6 +66,24 @@ class PlanSelector extends Component
             ],
         ],
     ];
+
+    /**
+     * Get plans with translated texts.
+     */
+    #[Computed]
+    public function plans(): array
+    {
+        $plans = [];
+        foreach ($this->plansConfig as $key => $config) {
+            $plans[$key] = array_merge($config, [
+                'name' => __("carbex.billing.plans.{$key}.name"),
+                'description' => __("carbex.billing.plans.{$key}.description"),
+                'duration' => $key === 'free' ? __('carbex.billing.plans.free.duration') : null,
+                'features' => __("carbex.billing.plans.{$key}.features"),
+            ]);
+        }
+        return $plans;
+    }
 
     /**
      * Valid promo codes (in production, these would come from database/Stripe).
@@ -199,7 +186,7 @@ class PlanSelector extends Component
             'discount_percent' => $this->discountPercent,
             'final' => $finalPrice,
             'annual_savings' => $annualSavings,
-            'period_label' => $this->billingPeriod === 'annual' ? '/an' : '/mois',
+            'period_label' => '/' . ($this->billingPeriod === 'annual' ? __('carbex.billing.year') : __('carbex.billing.month')),
         ];
     }
 
@@ -318,6 +305,8 @@ class PlanSelector extends Component
 
     public function render(): View
     {
-        return view('livewire.billing.plan-selector');
+        return view('livewire.billing.plan-selector', [
+            'plans' => $this->plans,
+        ]);
     }
 }
