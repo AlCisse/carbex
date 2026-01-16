@@ -160,6 +160,17 @@ CARBEX
 │   ├── CSRD/ESRS disclosures
 │   └── Regulatory templates
 │
+├── CSRD (Compliance Dashboard)
+│   ├── CSRD Dashboard (/csrd)
+│   │   ├── Overall Compliance Score
+│   │   ├── ESRS 2 Progress Tracking
+│   │   ├── Transition Plan Status
+│   │   └── EU Taxonomy Alignment
+│   ├── ESRS 2 Disclosures (/csrd/esrs2)
+│   ├── Climate Transition Plan (/csrd/transition-plan)
+│   ├── EU Taxonomy Report (/csrd/taxonomy)
+│   └── Due Diligence LkSG/CSDDD (/csrd/due-diligence)
+│
 └── PARAMETRES (Settings)
     ├── Organization
     ├── Sites
@@ -187,13 +198,19 @@ app/
 │   └── Requests/               # Form requests
 ├── Jobs/                       # Queue jobs (15+)
 ├── Listeners/                  # Event listeners
-├── Livewire/                   # Livewire components (55+)
+├── Livewire/                   # Livewire components (60+)
 │   ├── AI/                     # AI assistant, document uploader
 │   ├── Assessments/            # Carbon assessments
 │   ├── Auth/                   # Authentication forms
 │   ├── Banking/                # Bank connections, transactions
 │   ├── Billing/                # Subscriptions, invoices
 │   ├── Components/             # Reusable components
+│   ├── Csrd/                   # CSRD Compliance Dashboard
+│   │   ├── CsrdDashboard       # Main compliance dashboard
+│   │   ├── Esrs2Manager        # ESRS 2 disclosures management
+│   │   ├── TransitionPlanEditor # Climate transition plan
+│   │   ├── TaxonomyReport      # EU Taxonomy reporting
+│   │   └── DueDiligence        # LkSG/CSDDD compliance
 │   ├── Dashboard/              # KPIs, charts, trends
 │   ├── DataEntry/              # Manual emission entry
 │   ├── Emissions/              # Scope 1/2/3 management
@@ -400,6 +417,30 @@ Esrs2Disclosure
 ├── disclosure_requirement (E1-DR1, etc.)
 ├── content (JSON), status
 ├── verified_at, verifier
+└── Relationships: organization
+
+ClimateTransitionPlan
+├── id, organization_id
+├── base_year, target_year
+├── temperature_target (1.5C/2C)
+├── status (draft/approved)
+├── targets (JSON), actions (JSON)
+└── Relationships: organization
+
+TaxonomyReport
+├── id, organization_id, year
+├── turnover_aligned_percent
+├── capex_aligned_percent
+├── opex_aligned_percent
+├── activities (JSON)
+└── Relationships: organization
+
+DueDiligenceAssessment
+├── id, organization_id, year
+├── lksg_status, csddd_status
+├── compliance_score
+├── identified_risks (JSON)
+├── suppliers_assessed, complaints_received
 └── Relationships: organization
 
 EnergyBaseline (ISO 50001)

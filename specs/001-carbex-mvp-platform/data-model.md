@@ -17,13 +17,13 @@
 | **Energy** | EnergyConnection, EnergyConsumption, EnergyBaseline, EnergyTarget | 4 |
 | **AI** | AIConversation, AISetting, UploadedDocument | 3 |
 | **Suppliers** | Supplier, SupplierInvitation, SupplierProduct, SupplierEmission | 4 |
-| **Compliance** | Esrs2Disclosure, ClimateTransitionPlan, DoubleMaterialityAssessment | 3 |
+| **Compliance** | Esrs2Disclosure, ClimateTransitionPlan, DoubleMaterialityAssessment, TaxonomyReport, DueDiligenceAssessment | 5 |
 | **Planning** | Action, ReductionTarget | 2 |
 | **API** | ApiKey, Webhook, WebhookDelivery | 3 |
 | **Auth** | SsoConfiguration, SsoLoginAttempt | 2 |
 | **Billing** | Subscription, Invoice | 2 |
 | **Reports** | Report, BlogPost | 2 |
-| **Total** | | **37** |
+| **Total** | | **39** |
 
 ---
 
@@ -129,6 +129,15 @@
 │  │  │ content     │    │ targets[]   │    │ impact_matrix│                 │    │
 │  │  │ status      │    │ actions[]   │    │ financial_matrix│              │    │
 │  │  └─────────────┘    └─────────────┘    └─────────────┘                  │    │
+│  │                                                                         │    │
+│  │  ┌─────────────┐    ┌─────────────┐                                     │    │
+│  │  │TaxonomyReport│   │DueDiligenceAssessment│                            │    │
+│  │  │             │    │             │                                     │    │
+│  │  │ year        │    │ year        │                                     │    │
+│  │  │ turnover_%  │    │ lksg_status │                                     │    │
+│  │  │ capex_%     │    │ csddd_status│                                     │    │
+│  │  │ opex_%      │    │ risk_score  │                                     │    │
+│  │  └─────────────┘    └─────────────┘                                     │    │
 │  └─────────────────────────────────────────────────────────────────────────┘    │
 │                                                                                  │
 │  ┌─────────────────────────────────────────────────────────────────────────┐    │
@@ -910,6 +919,94 @@ Schema::create('double_materiality_assessments', function (Blueprint $table) {
 });
 ```
 
+### TaxonomyReport
+
+EU Taxonomy alignment report for CSRD compliance.
+
+```php
+Schema::create('taxonomy_reports', function (Blueprint $table) {
+    $table->uuid('id')->primary();
+    $table->uuid('organization_id');
+    $table->year('year');
+    $table->decimal('turnover_aligned_percent', 5, 2)->nullable();
+    $table->decimal('capex_aligned_percent', 5, 2)->nullable();
+    $table->decimal('opex_aligned_percent', 5, 2)->nullable();
+    $table->decimal('turnover_eligible_percent', 5, 2)->nullable();
+    $table->decimal('capex_eligible_percent', 5, 2)->nullable();
+    $table->decimal('opex_eligible_percent', 5, 2)->nullable();
+    $table->json('eligible_activities')->nullable();       // List of eligible activities
+    $table->json('aligned_activities')->nullable();        // List of aligned activities
+    $table->enum('status', ['draft', 'review', 'approved', 'published'])->default('draft');
+    $table->timestamps();
+
+    $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
+    $table->unique(['organization_id', 'year']);
+});
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| turnover_aligned_percent | decimal | % of turnover from taxonomy-aligned activities |
+| capex_aligned_percent | decimal | % of CapEx taxonomy-aligned |
+| opex_aligned_percent | decimal | % of OpEx taxonomy-aligned |
+| eligible_activities | JSON | List of taxonomy-eligible economic activities |
+| aligned_activities | JSON | List of fully aligned activities with DNSH criteria |
+
+### DueDiligenceAssessment
+
+LkSG (German Supply Chain Act) and CSDDD (EU Due Diligence) compliance assessment.
+
+```php
+Schema::create('due_diligence_assessments', function (Blueprint $table) {
+    $table->uuid('id')->primary();
+    $table->uuid('organization_id');
+    $table->year('year');
+
+    // LkSG (German Supply Chain Due Diligence Act)
+    $table->enum('lksg_status', ['not_applicable', 'pending', 'in_progress', 'compliant', 'non_compliant'])->default('not_applicable');
+    $table->decimal('lksg_progress_percent', 5, 2)->nullable();
+    $table->json('lksg_measures')->nullable();             // Implemented measures
+
+    // CSDDD (EU Corporate Sustainability Due Diligence Directive)
+    $table->enum('csddd_status', ['not_applicable', 'pending', 'in_progress', 'compliant', 'non_compliant'])->default('not_applicable');
+    $table->decimal('csddd_progress_percent', 5, 2)->nullable();
+    $table->json('csddd_measures')->nullable();
+
+    // Risk assessments
+    $table->decimal('supplier_risk_score', 5, 2)->nullable();    // 0-100
+    $table->json('human_rights_assessment')->nullable();
+    $table->json('environmental_assessment')->nullable();
+    $table->unsignedInteger('suppliers_assessed')->default(0);
+    $table->unsignedInteger('high_risk_suppliers')->default(0);
+
+    $table->text('notes')->nullable();
+    $table->timestamps();
+
+    $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('cascade');
+    $table->unique(['organization_id', 'year']);
+});
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| lksg_status | enum | German Supply Chain Act compliance status |
+| csddd_status | enum | EU Due Diligence Directive status |
+| supplier_risk_score | decimal | Overall supply chain risk score (0-100) |
+| human_rights_assessment | JSON | Human rights due diligence findings |
+| environmental_assessment | JSON | Environmental due diligence findings |
+| suppliers_assessed | uint | Number of suppliers assessed |
+| high_risk_suppliers | uint | Number of high-risk suppliers identified |
+
+**LkSG/CSDDD Status Values**:
+
+| Status | Description |
+|--------|-------------|
+| not_applicable | Regulation does not apply to this organization |
+| pending | Assessment not yet started |
+| in_progress | Due diligence measures being implemented |
+| compliant | All requirements met |
+| non_compliant | Compliance gaps identified |
+
 ---
 
 ## Planning Entities
@@ -1236,16 +1333,16 @@ Schema::create('reports', function (Blueprint $table) {
 | Energy | 4 |
 | Suppliers | 4 |
 | AI | 3 |
-| Compliance | 3 |
+| Compliance | 5 |
 | Planning | 2 |
 | API/Webhooks | 3 |
 | SSO | 2 |
 | Billing | 2 |
 | Reports | 2 |
-| **Total** | **44** |
+| **Total** | **46** |
 
 ---
 
 > **Document generated**: January 2025
 > **Database**: PostgreSQL 16 / MySQL 8.0
-> **Total Entities**: 37
+> **Total Entities**: 39

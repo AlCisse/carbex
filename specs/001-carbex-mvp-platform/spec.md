@@ -45,6 +45,7 @@ Carbex is a SaaS platform that automates carbon footprint calculation for Europe
 | Admin Panel (Filament) | DONE | 100% |
 | i18n (DE/FR/EN) | DONE | 100% |
 | Semantic Search (uSearch) | PLANNED | 0% |
+| CSRD Compliance Dashboard | DONE | 100% |
 
 ---
 
@@ -282,6 +283,24 @@ An organization uses natural language queries to search emission factors, transa
 
 ---
 
+### User Story 16 - CSRD Compliance Dashboard (Priority: P1)
+
+An organization views their CSRD (Corporate Sustainability Reporting Directive) compliance status through a dedicated dashboard showing ESRS 2 disclosures, climate transition plan progress, EU taxonomy alignment, and due diligence (LkSG/CSDDD) status.
+
+**Status**: IMPLEMENTED
+
+**Acceptance Scenarios**:
+
+1. **Given** an organization subject to CSRD, **When** they access the CSRD dashboard, **Then** they see their overall compliance score as a percentage with progress indicators
+2. **Given** ESRS 2 disclosures exist, **When** viewing the dashboard, **Then** user sees completion status for each disclosure requirement (GOV-1, SBM-1, E1-1, etc.) with draft/approved/published status
+3. **Given** a climate transition plan exists, **When** viewing the dashboard, **Then** user sees base year, target year, temperature pathway (1.5°C/2°C), and progress toward targets
+4. **Given** EU Taxonomy reporting required, **When** viewing the dashboard, **Then** user sees turnover/CapEx/OpEx alignment percentages and eligible activities
+5. **Given** LkSG (German Supply Chain Act) applies, **When** viewing the dashboard, **Then** user sees due diligence status with supplier risk assessment progress
+6. **Given** CSDDD (EU Due Diligence) applies, **When** viewing the dashboard, **Then** user sees compliance status with environmental and human rights due diligence requirements
+7. **Given** dashboard data exists, **When** user switches language (DE/EN/FR), **Then** all CSRD dashboard content displays in the selected language
+
+---
+
 ### Edge Cases
 - How does system handle duplicate transactions from bank and accounting import? Deduplication based on date, amount, and merchant.
 - What happens when a user uploads malformed CSV? System validates format, reports specific errors, and rejects invalid rows.
@@ -397,6 +416,15 @@ An organization uses natural language queries to search emission factors, transa
 - **FR-071**: System MUST automatically re-index embeddings when emission factors are updated
 - **FR-072**: System MUST cache frequent embedding queries in Redis for performance
 
+#### CSRD Compliance Dashboard
+- **FR-073**: System MUST display overall CSRD compliance score with progress indicators ✅
+- **FR-074**: System MUST track ESRS 2 disclosure requirements with status (draft/review/approved/published) ✅
+- **FR-075**: System MUST display climate transition plan progress with base year, target year, and pathway ✅
+- **FR-076**: System MUST show EU Taxonomy alignment percentages (turnover/CapEx/OpEx) ✅
+- **FR-077**: System MUST track LkSG (German Supply Chain Act) due diligence status ✅
+- **FR-078**: System MUST track CSDDD (EU Due Diligence Directive) compliance status ✅
+- **FR-079**: System MUST support full i18n for CSRD dashboard (DE/EN/FR) ✅
+
 ### Key Entities (Implemented)
 
 - **Organization**: Company using the platform. Attributes: name, country, sector, employee count, subscription plan, default currency, settings
@@ -431,6 +459,8 @@ An organization uses natural language queries to search emission factors, transa
 - **Esrs2Disclosure**: CSRD disclosure. Attributes: year, requirement code, content, status, verified date
 - **ClimateTransitionPlan**: CSRD transition plan. Attributes: base year, target year, targets JSON, actions JSON
 - **DoubleMaterialityAssessment**: CSRD materiality. Attributes: year, impact matrix, financial matrix, stakeholder input
+- **TaxonomyReport**: EU Taxonomy alignment report. Attributes: year, turnover_aligned_percent, capex_aligned_percent, opex_aligned_percent, eligible_activities, aligned_activities
+- **DueDiligenceAssessment**: LkSG/CSDDD due diligence assessment. Attributes: year, lksg_status, csddd_status, supplier_risk_score, human_rights_assessment, environmental_assessment
 - **VectorIndex**: uSearch index metadata. Attributes: name, type (factors/transactions/documents), vector_count, dimensions, last_sync, status
 - **Embedding**: Vector embedding for searchable entities. Attributes: embeddable_type, embeddable_id, vector (binary), model, created_at
 
