@@ -171,6 +171,10 @@ services:
     shm_size: 2gb
     environment:
       SE_NODE_MAX_SESSIONS: 2
+    extra_hosts:
+      - "nginx:172.20.0.2"
+    depends_on:
+      - nginx
     networks:
       - carbex-network
 

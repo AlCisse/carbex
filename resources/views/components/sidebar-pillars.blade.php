@@ -10,7 +10,7 @@
         </div>
         <div class="ml-6 space-y-1">
             <a href="{{ route('dashboard') }}" class="@if(request()->routeIs('dashboard')) bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 @else text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 @endif flex items-center px-3 py-2 text-sm rounded-lg">
-                {{ __('carbex.dashboard') }}
+                {{ __('carbex.nav.dashboard') }}
             </a>
             <a href="{{ route('emissions') }}" class="@if(request()->routeIs('emissions*')) bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 @else text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 @endif flex items-center px-3 py-2 text-sm rounded-lg">
                 {{ __('carbex.nav.scopes') }}

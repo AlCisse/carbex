@@ -101,6 +101,15 @@ Route::get('/email/verify/{id}/{hash}', function (string $id, string $hash) {
 Route::middleware(['auth'])->group(function () {
     Route::get('/onboarding', App\Livewire\Onboarding\OnboardingWizard::class)
         ->name('onboarding');
+
+    // Logout (must be accessible to unverified users too)
+    Route::post('/logout', function () {
+        auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect('/');
+    })->name('logout');
 });
 
 // Authenticated routes
@@ -270,15 +279,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         $report->recordDownload();
         return \Illuminate\Support\Facades\Storage::download($report->file_path, basename($report->file_path));
     })->name('reports.download');
-
-    // Logout
-    Route::post('/logout', function () {
-        auth()->logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-
-        return redirect('/');
-    })->name('logout');
 });
 
 // Accept invitation (special route)

@@ -52,7 +52,7 @@ class RegisterForm extends Component
                 Password::min(8)->mixedCase()->numbers()->symbols(),
             ],
             'organization_name' => ['required', 'string', 'max:255'],
-            'country' => ['required', 'string', 'in:FR,DE'],
+            'country' => ['required', 'string', 'in:FR,DE,AT,CH'],
             'sector' => ['nullable', 'string', 'max:255'],
             'organization_size' => ['nullable', 'string', 'in:1-10,11-50,51-250,251-500,500+'],
             'accept_terms' => ['required', 'accepted'],
@@ -103,6 +103,32 @@ class RegisterForm extends Component
         };
     }
 
+    /**
+     * Get timezone for country code.
+     */
+    protected function getTimezoneForCountry(string $country): string
+    {
+        return match ($country) {
+            'FR' => 'Europe/Paris',
+            'DE' => 'Europe/Berlin',
+            'AT' => 'Europe/Vienna',
+            'CH' => 'Europe/Zurich',
+            default => 'Europe/Berlin',
+        };
+    }
+
+    /**
+     * Get locale for country code.
+     */
+    protected function getLocaleForCountry(string $country): string
+    {
+        return match ($country) {
+            'FR' => 'fr',
+            'DE', 'AT', 'CH' => 'de',
+            default => 'en',
+        };
+    }
+
     public function register(): void
     {
         $this->validate();
@@ -124,7 +150,7 @@ class RegisterForm extends Component
             'size' => $this->mapOrganizationSize($this->organization_size ?: null),
             'fiscal_year_start_month' => 1,
             'default_currency' => 'EUR',
-            'timezone' => $this->country === 'FR' ? 'Europe/Paris' : 'Europe/Berlin',
+            'timezone' => $this->getTimezoneForCountry($this->country),
             'settings' => [
                 'onboarding_completed' => false,
                 'setup_step' => 1,
@@ -140,7 +166,7 @@ class RegisterForm extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'role' => 'owner',
-            'locale' => $this->country === 'FR' ? 'fr' : 'de',
+            'locale' => $this->getLocaleForCountry($this->country),
             'timezone' => $organization->timezone,
             'is_active' => true,
         ]);
