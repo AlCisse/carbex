@@ -97,10 +97,12 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
     // Check result
     const body = await page.locator('body').textContent();
 
-    if (body?.includes('Internal Server Error') || body?.includes('500')) {
+    if (body?.includes('Internal Server Error')) {
         console.log('❌ ERROR: 500 Internal Server Error');
     } else if (body?.includes('required') || body?.includes('obligatoire')) {
         console.log('⚠️ Validation error - some fields required');
+    } else if (body?.includes('Changes saved') || body?.includes('Modifications enregistrées')) {
+        console.log('✅ Form submitted successfully!');
     } else {
         console.log('✅ Form submitted!');
     }

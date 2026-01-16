@@ -128,9 +128,9 @@ class SsoConfiguration extends Model
     }
 
     /**
-     * Get attribute value from SAML attributes.
+     * Extract attribute value from SAML attributes.
      */
-    public function getAttribute(array $samlAttributes, string $field): ?string
+    public function extractSamlAttribute(array $samlAttributes, string $field): ?string
     {
         $mapping = $this->attribute_mapping ?? config("saml2.attribute_mapping.{$field}", []);
 

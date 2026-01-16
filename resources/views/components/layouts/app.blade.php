@@ -16,9 +16,17 @@
     @livewireStyles
 </head>
 <body class="h-full bg-gray-50 font-sans antialiased">
+    @php
+        $navigationMode = auth()->user()?->organization?->settings['navigation_mode'] ?? 'scopes';
+    @endphp
+
     <div class="min-h-full">
         <!-- Sidebar -->
-        <x-sidebar :currentScope="$currentScope ?? null" :currentCategory="$currentCategory ?? null" />
+        @if($navigationMode === 'pillars')
+            <x-sidebar-pillars :currentPillar="$currentPillar ?? null" :currentSection="$currentSection ?? null" />
+        @else
+            <x-sidebar :currentScope="$currentScope ?? null" :currentCategory="$currentCategory ?? null" />
+        @endif
 
         <!-- Main Content -->
         <div class="pl-64">

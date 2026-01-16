@@ -36,6 +36,9 @@ class OrganizationSettings extends Component
     public string $default_currency = 'EUR';
     public $logo = null;
 
+    // Display settings
+    public string $navigation_mode = 'scopes';
+
     // Country config
     public array $countryConfig = [];
 
@@ -58,6 +61,7 @@ class OrganizationSettings extends Component
         $this->postal_code = $this->organization->postal_code;
         $this->fiscal_year_start_month = $this->organization->fiscal_year_start_month ?? 1;
         $this->default_currency = $this->organization->default_currency ?? 'EUR';
+        $this->navigation_mode = $this->organization->settings['navigation_mode'] ?? 'scopes';
 
         $this->countryConfig = app(CountryConfigurationService::class)
             ->getConfig($this->organization->country);
@@ -82,6 +86,7 @@ class OrganizationSettings extends Component
             'fiscal_year_start_month' => 'required|integer|min:1|max:12',
             'default_currency' => 'required|string|size:3',
             'logo' => 'nullable|image|max:2048',
+            'navigation_mode' => 'required|string|in:scopes,pillars',
         ];
     }
 
@@ -107,6 +112,9 @@ class OrganizationSettings extends Component
             'postal_code' => $this->postal_code,
             'fiscal_year_start_month' => $this->fiscal_year_start_month,
             'default_currency' => $this->default_currency,
+            'settings' => array_merge($this->organization->settings ?? [], [
+                'navigation_mode' => $this->navigation_mode,
+            ]),
         ];
 
         if ($this->logo) {

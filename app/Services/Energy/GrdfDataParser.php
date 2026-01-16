@@ -90,7 +90,7 @@ class GrdfDataParser
         string $granularity
     ): ?array {
         $date = $this->parseDate($reading);
-        $consumption = $this->parseConsumption($reading);
+        $consumption = $this->parseConsumptionValues($reading);
 
         if (!$date || $consumption === null) {
             return null;
@@ -164,7 +164,7 @@ class GrdfDataParser
      *
      * @return array{m3: ?float, kwh: ?float}
      */
-    private function parseConsumption(array $reading): array
+    private function parseConsumptionValues(array $reading): array
     {
         $m3 = null;
         $kwh = null;

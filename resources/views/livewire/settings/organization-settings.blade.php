@@ -214,6 +214,71 @@
             </div>
         </x-card>
 
+        <!-- Display Settings -->
+        <x-card>
+            <x-slot name="header">
+                <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.organization.display_settings') }}</h2>
+                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.organization.display_settings_desc') }}</p>
+            </x-slot>
+
+            <div class="space-y-6">
+                <!-- Navigation Mode -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3">
+                        {{ __('carbex.organization.navigation_mode') }}
+                    </label>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <!-- Scopes Navigation -->
+                        <label class="relative flex cursor-pointer rounded-lg border p-4 shadow-sm focus:outline-none {{ $navigation_mode === 'scopes' ? 'border-emerald-500 ring-2 ring-emerald-500' : 'border-gray-300' }}">
+                            <input type="radio" wire:model.live="navigation_mode" value="scopes" class="sr-only">
+                            <span class="flex flex-1">
+                                <span class="flex flex-col">
+                                    <span class="flex items-center">
+                                        <svg class="h-6 w-6 {{ $navigation_mode === 'scopes' ? 'text-emerald-600' : 'text-gray-400' }} mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                        </svg>
+                                        <span class="block text-sm font-medium text-gray-900">{{ __('carbex.navigation.mode.scopes') }}</span>
+                                    </span>
+                                    <span class="mt-1 flex items-center text-sm text-gray-500">
+                                        {{ __('carbex.organization.navigation_scopes_desc') }}
+                                    </span>
+                                </span>
+                            </span>
+                            @if($navigation_mode === 'scopes')
+                                <svg class="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                                </svg>
+                            @endif
+                        </label>
+
+                        <!-- 5 Pillars Navigation -->
+                        <label class="relative flex cursor-pointer rounded-lg border p-4 shadow-sm focus:outline-none {{ $navigation_mode === 'pillars' ? 'border-emerald-500 ring-2 ring-emerald-500' : 'border-gray-300' }}">
+                            <input type="radio" wire:model.live="navigation_mode" value="pillars" class="sr-only">
+                            <span class="flex flex-1">
+                                <span class="flex flex-col">
+                                    <span class="flex items-center">
+                                        <svg class="h-6 w-6 {{ $navigation_mode === 'pillars' ? 'text-emerald-600' : 'text-gray-400' }} mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+                                        </svg>
+                                        <span class="block text-sm font-medium text-gray-900">{{ __('carbex.navigation.mode.pillars') }}</span>
+                                        <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">NEW</span>
+                                    </span>
+                                    <span class="mt-1 flex items-center text-sm text-gray-500">
+                                        {{ __('carbex.organization.navigation_pillars_desc') }}
+                                    </span>
+                                </span>
+                            </span>
+                            @if($navigation_mode === 'pillars')
+                                <svg class="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                                </svg>
+                            @endif
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </x-card>
+
         <!-- Country Configuration (Read-only) -->
         <x-card>
             <x-slot name="header">

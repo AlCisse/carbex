@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Emission;
+use App\Models\EmissionRecord;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
 
@@ -14,10 +14,10 @@ class EmissionsByCountryChart extends ChartWidget
 
     protected function getData(): array
     {
-        $data = Emission::query()
-            ->join('organizations', 'emissions.organization_id', '=', 'organizations.id')
-            ->select('organizations.country', DB::raw('SUM(emissions.co2_kg) / 1000 as total_tonnes'))
-            ->whereYear('emissions.date', now()->year)
+        $data = EmissionRecord::query()
+            ->join('organizations', 'emission_records.organization_id', '=', 'organizations.id')
+            ->select('organizations.country', DB::raw('SUM(emission_records.co2e_kg) / 1000 as total_tonnes'))
+            ->whereYear('emission_records.date', now()->year)
             ->groupBy('organizations.country')
             ->orderByDesc('total_tonnes')
             ->limit(8)

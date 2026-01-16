@@ -325,7 +325,6 @@ class BadgeService
     {
         return ReductionTarget::where('organization_id', $organization->id)
             ->where('is_sbti_aligned', true)
-            ->where('status', 'active')
             ->exists();
     }
 
