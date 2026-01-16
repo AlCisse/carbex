@@ -21,21 +21,24 @@ class CategoryForm extends Component
     public string $sourceQuantity = '';
     public ?array $selectedFactor = null;
 
-    protected array $categoryNames = [
-        '1.1' => 'Sources fixes de combustion',
-        '1.2' => 'Sources mobiles de combustion',
-        '1.4' => 'Émissions fugitives',
-        '1.5' => 'Biomasse (sols et forêts)',
-        '2.1' => 'Consommation d\'électricité',
-        '3.1' => 'Transport de marchandise amont',
-        '3.2' => 'Transport de marchandise aval',
-        '3.3' => 'Déplacements domicile-travail',
-        '3.5' => 'Déplacements professionnels',
-        '4.1' => 'Achats de biens',
-        '4.2' => 'Immobilisations de biens',
-        '4.3' => 'Gestion des déchets',
-        '4.4' => 'Actifs en leasing amont',
-        '4.5' => 'Achats de services',
+    /**
+     * Category codes mapped to translation keys.
+     */
+    protected array $categoryTranslationKeys = [
+        '1.1' => 'carbex.emissions.categories.1_1',
+        '1.2' => 'carbex.emissions.categories.1_2',
+        '1.4' => 'carbex.emissions.categories.1_4',
+        '1.5' => 'carbex.emissions.categories.1_5',
+        '2.1' => 'carbex.emissions.categories.2_1',
+        '3.1' => 'carbex.emissions.categories.3_1',
+        '3.2' => 'carbex.emissions.categories.3_2',
+        '3.3' => 'carbex.emissions.categories.3_3',
+        '3.5' => 'carbex.emissions.categories.3_5',
+        '4.1' => 'carbex.emissions.categories.4_1',
+        '4.2' => 'carbex.emissions.categories.4_2',
+        '4.3' => 'carbex.emissions.categories.4_3',
+        '4.4' => 'carbex.emissions.categories.4_4',
+        '4.5' => 'carbex.emissions.categories.4_5',
     ];
 
     public function mount(int $scope, string $category): void
@@ -69,7 +72,13 @@ class CategoryForm extends Component
 
     public function getCategoryNameProperty(): string
     {
-        return $this->categoryNames[$this->category] ?? __('carbex.emissions.categories.unknown');
+        $translationKey = $this->categoryTranslationKeys[$this->category] ?? null;
+
+        if ($translationKey) {
+            return __($translationKey);
+        }
+
+        return __('carbex.emissions.categories.unknown');
     }
 
     public function getTotalEmissionsProperty(): float
