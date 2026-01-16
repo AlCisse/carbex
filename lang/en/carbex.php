@@ -3030,4 +3030,60 @@ return [
         'modify_contact' => 'To modify your data, please contact :organization.',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | CSRD Dashboard
+    |--------------------------------------------------------------------------
+    */
+
+    'csrd_dashboard' => [
+        'title' => 'CSRD Compliance Dashboard',
+        'subtitle' => 'Corporate Sustainability Reporting Directive (EU) 2022/2464',
+        'applicable' => 'CSRD Applicable',
+        'organization_classified' => 'Your organization is classified as',
+        'first_reporting_year' => 'First reporting year',
+        'may_not_apply' => 'CSRD May Not Apply Yet',
+        'voluntary_adoption' => 'Based on current thresholds, CSRD reporting may not be mandatory for your organization. However, voluntary adoption is recommended.',
+        'overall_compliance' => 'Overall Compliance',
+        'esrs2_disclosures' => 'ESRS 2 Disclosures',
+        'manage_disclosures' => 'Manage Disclosures',
+        'transition_plan' => 'Transition Plan',
+        'not_created' => 'Not Created',
+        'edit_plan' => 'Edit Plan',
+        'eu_taxonomy' => 'EU Taxonomy',
+        'aligned' => 'Aligned',
+        'not_reported' => 'Not Reported',
+        'edit_report' => 'Edit Report',
+        'overview' => 'Overview',
+        'deadlines' => 'Deadlines',
+        'due_diligence_lksg' => 'Due Diligence (LkSG)',
+        'esrs2_general_disclosures' => 'ESRS 2 General Disclosures',
+        'view_all_disclosures' => 'View All Disclosures',
+        'quick_actions' => 'Quick Actions',
+        'manage_general_disclosures' => 'Manage general disclosures',
+        'climate_transition_plan' => 'Climate Transition Plan',
+        'esrs_e1_requirements' => 'ESRS E1-1 requirements',
+        'eu_taxonomy_report' => 'EU Taxonomy Report',
+        'article8_disclosure' => 'Article 8 disclosure',
+        'value_chain_due_diligence' => 'Value Chain Due Diligence',
+        'lksg_csddd_compliance' => 'LkSG / CSDDD compliance',
+        'upcoming_deadlines' => 'Upcoming CSRD Deadlines',
+        'days_remaining' => 'days remaining',
+        'no_upcoming_deadlines' => 'No upcoming deadlines',
+        'due_diligence_status' => 'Value Chain Due Diligence Status',
+        'lksg_german_law' => 'LkSG (German Supply Chain Act) / CSDDD compliance',
+        'compliance_score' => 'Compliance Score',
+        'risks_identified' => 'Risks Identified',
+        'suppliers_assessed' => 'Suppliers Assessed',
+        'complaints_resolved' => 'Complaints Resolved',
+        'manage_due_diligence' => 'Manage Due Diligence',
+        'start_assessment' => 'Start Due Diligence Assessment',
+
+        // ESRS 2 Categories
+        'basis_preparation' => 'Basis for Preparation',
+        'governance' => 'Governance',
+        'strategy_business_model' => 'Strategy & Business Model',
+        'impacts_risks_opportunities' => 'Impacts, Risks, Opportunities',
+    ],
+
 ];

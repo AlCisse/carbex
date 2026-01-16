@@ -3259,4 +3259,60 @@ return [
         'modify_contact' => 'Um Ihre Daten zu ändern, wenden Sie sich bitte an :organization.',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | CSRD Dashboard
+    |--------------------------------------------------------------------------
+    */
+
+    'csrd_dashboard' => [
+        'title' => 'CSRD-Compliance-Dashboard',
+        'subtitle' => 'Corporate Sustainability Reporting Directive (EU) 2022/2464',
+        'applicable' => 'CSRD anwendbar',
+        'organization_classified' => 'Ihr Unternehmen ist eingestuft als',
+        'first_reporting_year' => 'Erstes Berichtsjahr',
+        'may_not_apply' => 'CSRD möglicherweise noch nicht anwendbar',
+        'voluntary_adoption' => 'Basierend auf aktuellen Schwellenwerten ist die CSRD-Berichterstattung für Ihr Unternehmen möglicherweise nicht verpflichtend. Eine freiwillige Einführung wird jedoch empfohlen.',
+        'overall_compliance' => 'Gesamtkonformität',
+        'esrs2_disclosures' => 'ESRS 2 Offenlegungen',
+        'manage_disclosures' => 'Offenlegungen verwalten',
+        'transition_plan' => 'Übergangsplan',
+        'not_created' => 'Nicht erstellt',
+        'edit_plan' => 'Plan bearbeiten',
+        'eu_taxonomy' => 'EU-Taxonomie',
+        'aligned' => 'Konform',
+        'not_reported' => 'Nicht berichtet',
+        'edit_report' => 'Bericht bearbeiten',
+        'overview' => 'Übersicht',
+        'deadlines' => 'Fristen',
+        'due_diligence_lksg' => 'Sorgfaltspflicht (LkSG)',
+        'esrs2_general_disclosures' => 'ESRS 2 Allgemeine Offenlegungen',
+        'view_all_disclosures' => 'Alle Offenlegungen anzeigen',
+        'quick_actions' => 'Schnellaktionen',
+        'manage_general_disclosures' => 'Allgemeine Offenlegungen verwalten',
+        'climate_transition_plan' => 'Klima-Übergangsplan',
+        'esrs_e1_requirements' => 'ESRS E1-1 Anforderungen',
+        'eu_taxonomy_report' => 'EU-Taxonomie-Bericht',
+        'article8_disclosure' => 'Artikel 8 Offenlegung',
+        'value_chain_due_diligence' => 'Lieferketten-Sorgfaltspflicht',
+        'lksg_csddd_compliance' => 'LkSG / CSDDD-Konformität',
+        'upcoming_deadlines' => 'Bevorstehende CSRD-Fristen',
+        'days_remaining' => 'Tage verbleibend',
+        'no_upcoming_deadlines' => 'Keine bevorstehenden Fristen',
+        'due_diligence_status' => 'Status der Lieferketten-Sorgfaltspflicht',
+        'lksg_german_law' => 'LkSG (Lieferkettensorgfaltspflichtengesetz) / CSDDD-Konformität',
+        'compliance_score' => 'Konformitätsbewertung',
+        'risks_identified' => 'Identifizierte Risiken',
+        'suppliers_assessed' => 'Bewertete Lieferanten',
+        'complaints_resolved' => 'Gelöste Beschwerden',
+        'manage_due_diligence' => 'Sorgfaltspflicht verwalten',
+        'start_assessment' => 'Sorgfaltspflicht-Bewertung starten',
+
+        // ESRS 2 Categories
+        'basis_preparation' => 'Grundlage der Erstellung',
+        'governance' => 'Governance',
+        'strategy_business_model' => 'Strategie & Geschäftsmodell',
+        'impacts_risks_opportunities' => 'Auswirkungen, Risiken, Chancen',
+    ],
+
 ];

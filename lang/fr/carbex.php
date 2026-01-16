@@ -3298,4 +3298,60 @@ return [
         'modify_contact' => 'Pour modifier vos données, veuillez contacter :organization.',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | CSRD Dashboard
+    |--------------------------------------------------------------------------
+    */
+
+    'csrd_dashboard' => [
+        'title' => 'Tableau de bord de conformité CSRD',
+        'subtitle' => 'Corporate Sustainability Reporting Directive (UE) 2022/2464',
+        'applicable' => 'CSRD applicable',
+        'organization_classified' => 'Votre organisation est classée comme',
+        'first_reporting_year' => 'Première année de reporting',
+        'may_not_apply' => 'La CSRD peut ne pas encore s\'appliquer',
+        'voluntary_adoption' => 'Sur la base des seuils actuels, le reporting CSRD peut ne pas être obligatoire pour votre organisation. Cependant, une adoption volontaire est recommandée.',
+        'overall_compliance' => 'Conformité globale',
+        'esrs2_disclosures' => 'Informations ESRS 2',
+        'manage_disclosures' => 'Gérer les informations',
+        'transition_plan' => 'Plan de transition',
+        'not_created' => 'Non créé',
+        'edit_plan' => 'Modifier le plan',
+        'eu_taxonomy' => 'Taxonomie UE',
+        'aligned' => 'Aligné',
+        'not_reported' => 'Non reporté',
+        'edit_report' => 'Modifier le rapport',
+        'overview' => 'Aperçu',
+        'deadlines' => 'Échéances',
+        'due_diligence_lksg' => 'Devoir de vigilance (LkSG)',
+        'esrs2_general_disclosures' => 'Informations générales ESRS 2',
+        'view_all_disclosures' => 'Voir toutes les informations',
+        'quick_actions' => 'Actions rapides',
+        'manage_general_disclosures' => 'Gérer les informations générales',
+        'climate_transition_plan' => 'Plan de transition climatique',
+        'esrs_e1_requirements' => 'Exigences ESRS E1-1',
+        'eu_taxonomy_report' => 'Rapport Taxonomie UE',
+        'article8_disclosure' => 'Divulgation Article 8',
+        'value_chain_due_diligence' => 'Devoir de vigilance chaîne de valeur',
+        'lksg_csddd_compliance' => 'Conformité LkSG / CSDDD',
+        'upcoming_deadlines' => 'Échéances CSRD à venir',
+        'days_remaining' => 'jours restants',
+        'no_upcoming_deadlines' => 'Aucune échéance à venir',
+        'due_diligence_status' => 'Statut du devoir de vigilance',
+        'lksg_german_law' => 'LkSG (Loi allemande sur la chaîne d\'approvisionnement) / Conformité CSDDD',
+        'compliance_score' => 'Score de conformité',
+        'risks_identified' => 'Risques identifiés',
+        'suppliers_assessed' => 'Fournisseurs évalués',
+        'complaints_resolved' => 'Réclamations résolues',
+        'manage_due_diligence' => 'Gérer le devoir de vigilance',
+        'start_assessment' => 'Démarrer l\'évaluation du devoir de vigilance',
+
+        // ESRS 2 Categories
+        'basis_preparation' => 'Base de préparation',
+        'governance' => 'Gouvernance',
+        'strategy_business_model' => 'Stratégie & Modèle d\'affaires',
+        'impacts_risks_opportunities' => 'Impacts, Risques, Opportunités',
+    ],
+
 ];
