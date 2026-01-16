@@ -34,8 +34,8 @@ test.describe('Scope 1 Detailed Tests', () => {
         expect(body).not.toContain('Internal Server Error');
         // Removed: 500 check causes false positives with quantities like 1500
 
-        // Check page has expected content
-        await expect(page.locator('body')).toContainText(/combustion|émission|source/i);
+        // Multilingual: FR (combustion/émission/source), EN (combustion/emission/source), DE (Verbrennung/Emission/Quelle)
+        await expect(page.locator('body')).toContainText(/combustion|émission|emission|source|Verbrennung|Quelle/i);
 
         console.log('✅ 1.1 OK');
     });
@@ -51,7 +51,8 @@ test.describe('Scope 1 Detailed Tests', () => {
         expect(body).not.toContain('Internal Server Error');
         // Removed: 500 check causes false positives with quantities like 1500
 
-        await expect(page.locator('body')).toContainText(/mobile|véhicule|transport|émission/i);
+        // Multilingual: FR (mobile/véhicule/transport), EN (mobile/vehicle/transport), DE (Fahrzeug/Transport/mobil)
+        await expect(page.locator('body')).toContainText(/mobile|mobil|véhicule|vehicle|Fahrzeug|transport|émission|emission/i);
 
         console.log('✅ 1.2 OK');
     });
@@ -67,7 +68,8 @@ test.describe('Scope 1 Detailed Tests', () => {
         expect(body).not.toContain('Internal Server Error');
         // Removed: 500 check causes false positives with quantities like 1500
 
-        await expect(page.locator('body')).toContainText(/fugitif|fuite|émission/i);
+        // Multilingual: FR (fugitif/fuite), EN (fugitive/leak), DE (flüchtig/Leck/Kältemittel)
+        await expect(page.locator('body')).toContainText(/fugitif|fuite|fugitive|leak|flüchtig|Leck|Kältemittel|émission|emission/i);
 
         console.log('✅ 1.4 OK');
     });
@@ -83,7 +85,8 @@ test.describe('Scope 1 Detailed Tests', () => {
         expect(body).not.toContain('Internal Server Error');
         // Removed: 500 check causes false positives with quantities like 1500
 
-        await expect(page.locator('body')).toContainText(/biomasse|sol|forêt|émission/i);
+        // Multilingual: FR (biomasse/sol/forêt), EN (biomass/land/forest), DE (Biomasse/Boden/Wald/Land)
+        await expect(page.locator('body')).toContainText(/biomasse|biomass|sol|land|forêt|forest|Boden|Wald|émission|emission/i);
 
         console.log('✅ 1.5 OK');
     });
