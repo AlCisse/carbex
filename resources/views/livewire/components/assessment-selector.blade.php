@@ -61,7 +61,7 @@
                     </svg>
                     {{ __('carbex.assessments.manage') }}
                 </a>
-                <a href="{{ route('transition-plan.trajectory') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <a href="{{ route('trajectory') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <svg class="inline-block mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
