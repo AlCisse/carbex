@@ -1887,6 +1887,7 @@ return [
         'nav_standard_desc' => 'Classic menu by feature',
         'nav_pillars' => '5 Pillars navigation',
         'nav_pillars_desc' => 'Organized by strategic pillars (TrackZero style)',
+
         'ai' => [
             'title' => 'AI Configuration',
             'status' => 'AI Status',

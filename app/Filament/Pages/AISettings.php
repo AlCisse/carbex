@@ -64,11 +64,11 @@ class AISettings extends Page
                             ->label('Activer')
                             ->helperText('Les clés API sont stockées dans les secrets Docker'),
                         Forms\Components\Select::make('anthropic_model')
-                            ->label('Modèle par défaut')
+                            ->label(__('carbex.settings.ai.model'))
                             ->options([
-                                'claude-sonnet-4-20250514' => 'Claude Sonnet 4 (Recommandé)',
+                                'claude-sonnet-4-20250514' => 'Claude Sonnet 4 ★',
                                 'claude-3-5-sonnet-20241022' => 'Claude 3.5 Sonnet',
-                                'claude-3-haiku-20240307' => 'Claude 3 Haiku (Économique)',
+                                'claude-3-haiku-20240307' => 'Claude 3 Haiku',
                                 'claude-3-opus-20240229' => 'Claude 3 Opus (Premium)',
                             ])
                             ->visible(fn (Forms\Get $get) => $get('anthropic_enabled')),
@@ -85,12 +85,12 @@ class AISettings extends Page
                         Forms\Components\Toggle::make('openai_enabled')
                             ->label('Activer'),
                         Forms\Components\Select::make('openai_model')
-                            ->label('Modèle par défaut')
+                            ->label(__('carbex.settings.ai.model'))
                             ->options([
-                                'gpt-4o' => 'GPT-4o (Recommandé)',
-                                'gpt-4o-mini' => 'GPT-4o Mini (Économique)',
+                                'gpt-4o' => 'GPT-4o ★',
+                                'gpt-4o-mini' => 'GPT-4o Mini',
                                 'gpt-4-turbo' => 'GPT-4 Turbo',
-                                'gpt-3.5-turbo' => 'GPT-3.5 Turbo (Économique)',
+                                'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
                             ])
                             ->visible(fn (Forms\Get $get) => $get('openai_enabled')),
                         Forms\Components\Placeholder::make('openai_status')
@@ -106,10 +106,10 @@ class AISettings extends Page
                         Forms\Components\Toggle::make('google_enabled')
                             ->label('Activer'),
                         Forms\Components\Select::make('google_model')
-                            ->label('Modèle par défaut')
+                            ->label(__('carbex.settings.ai.model'))
                             ->options([
-                                'gemini-1.5-pro' => 'Gemini 1.5 Pro (Recommandé)',
-                                'gemini-1.5-flash' => 'Gemini 1.5 Flash (Rapide)',
+                                'gemini-1.5-pro' => 'Gemini 1.5 Pro ★',
+                                'gemini-1.5-flash' => 'Gemini 1.5 Flash',
                                 'gemini-pro' => 'Gemini Pro',
                             ])
                             ->visible(fn (Forms\Get $get) => $get('google_enabled')),
@@ -126,9 +126,9 @@ class AISettings extends Page
                         Forms\Components\Toggle::make('deepseek_enabled')
                             ->label('Activer'),
                         Forms\Components\Select::make('deepseek_model')
-                            ->label('Modèle par défaut')
+                            ->label(__('carbex.settings.ai.model'))
                             ->options([
-                                'deepseek-chat' => 'DeepSeek Chat (Recommandé)',
+                                'deepseek-chat' => 'DeepSeek Chat ★',
                                 'deepseek-coder' => 'DeepSeek Coder',
                             ])
                             ->visible(fn (Forms\Get $get) => $get('deepseek_enabled')),
