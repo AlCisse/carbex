@@ -295,6 +295,43 @@ return [
         ],
     ],
 
+    // Footer (Root-Ebene für marketing-footer Komponente)
+    'footer' => [
+        'tagline' => 'CO2-Bilanz für KMU',
+        'description' => 'CO2-Bilanz-Plattform für deutsche KMU. Einfach, präzise und KI-gestützt.',
+        'product' => 'Produkt',
+        'resources' => 'Ressourcen',
+        'documentation' => 'Dokumentation',
+        'csrd_guide' => 'CSRD-Leitfaden',
+        'legal' => 'Rechtliches',
+        'privacy' => 'Datenschutz',
+        'terms' => 'AGB',
+        'compliance' => 'ADEME · GHG Protocol · DSGVO',
+        'information' => 'Informationen',
+        'terms_sale' => 'AGB',
+        'terms_use' => 'Nutzungsbedingungen',
+        'commitments' => 'Unsere Verpflichtungen',
+        'legal_notice' => 'Impressum',
+        'contact' => 'Kontakt',
+        'blog' => 'Blog',
+        'guides' => 'Praktische Leitfäden',
+        'carbon_footprint' => 'Unternehmens-CO2-Bilanz',
+        'csrd_regulation' => 'CSRD-Verordnung',
+        'discover' => 'Entdecken',
+        'features' => 'Funktionen',
+        'for_whom' => 'Für wen?',
+        'pricing' => 'Preise',
+        'free_trial' => 'Kostenlose Testversion',
+        'company' => 'Unternehmen',
+        'partnership' => 'Partnerschaft',
+        'careers' => 'Karriere',
+        'press' => 'Presse',
+        'gdpr' => 'DSGVO',
+        'compliant' => 'Konform',
+        'all_rights_reserved' => 'Alle Rechte vorbehalten.',
+        'cookies' => 'Cookies',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Data Entry / Manual Entry
@@ -447,6 +484,10 @@ return [
         'settings' => 'Einstellungen',
         'profile' => 'Profil',
         'logout' => 'Abmelden',
+        'mode' => [
+            'scopes' => 'Scope-Navigation',
+            'pillars' => 'Säulen-Navigation',
+        ],
     ],
 
     /*
@@ -626,6 +667,9 @@ return [
 
     'emissions' => [
         'title' => 'Emissionen',
+        'import' => 'Importieren',
+        'import_title' => 'Emissionsdaten importieren',
+        'import_description' => 'Laden Sie eine CSV- oder Excel-Datei hoch, um Ihre Emissionsdaten in großen Mengen zu importieren.',
         'activities' => 'Aktivitäten',
         'scope_title' => 'Scope :scope Emissionen',
         'scope_label' => 'Scope :scope',
@@ -987,6 +1031,11 @@ return [
         'fiscal_settings_desc' => 'Geschäftsjahr und Referenzwährung',
         'country_config' => 'Länderkonfiguration',
         'country_config_desc' => 'Einstellungen basierend auf Ihrem Unternehmensland',
+        'display_settings' => 'Anzeigeeinstellungen',
+        'display_settings_desc' => 'Passen Sie die Darstellung der Informationen in Ihrem Dashboard an',
+        'navigation_mode' => 'Navigationsmodus',
+        'navigation_scopes_desc' => 'Nach Emissionsbereichen navigieren (Scope 1, 2, 3)',
+        'navigation_pillars_desc' => 'Nach strategischen Säulen navigieren (5-Säulen-Stil)',
         'currencies' => [
             'eur' => 'EUR - Euro',
             'chf' => 'CHF - Schweizer Franken',
@@ -1819,6 +1868,13 @@ return [
         'no_sites_desc' => 'Fügen Sie Ihre verschiedenen Standorte hinzu, um deren CO2-Emissionen einzeln zu verfolgen.',
         'add_first' => 'Ersten Standort hinzufügen',
 
+        'import' => [
+            'csv' => 'CSV importieren',
+            'csv_file' => 'CSV-Datei',
+            'title' => 'Standorte importieren',
+            'description' => 'Laden Sie eine CSV-Datei hoch, um mehrere Standorte auf einmal zu importieren.',
+        ],
+
         // Site fields
         'name' => 'Name',
         'code' => 'Code',
@@ -2112,6 +2168,7 @@ return [
         'last_login' => 'Letzte Anmeldung',
         'you' => '(Sie)',
         'never' => 'Nie',
+        'pending' => 'Ausstehend',
         'edit_role' => 'Rolle bearbeiten',
         'remove' => 'Entfernen',
         'confirm_remove' => 'Sind Sie sicher, dass Sie diesen Benutzer entfernen möchten?',
@@ -2782,6 +2839,28 @@ return [
                 'monthly_payment_q' => 'Wie funktioniert die monatliche Zahlung?',
                 'monthly_payment_a' => 'Die monatliche Zahlung wird jeden Monat automatisch abgebucht. Sie können jederzeit ohne Gebühren oder Strafen kündigen. Das Abonnement bleibt bis zum Ende des bezahlten Monats aktiv.',
             ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Emission Factors
+    |--------------------------------------------------------------------------
+    */
+
+    'emission_factors' => [
+        'countries' => [
+            'fr' => 'Frankreich',
+            'de' => 'Deutschland',
+            'at' => 'Österreich',
+            'be' => 'Belgien',
+            'ch' => 'Schweiz',
+            'es' => 'Spanien',
+            'it' => 'Italien',
+            'nl' => 'Niederlande',
+            'gb' => 'Vereinigtes Königreich',
+            'eu' => 'Europäische Union',
+            'us' => 'Vereinigte Staaten',
         ],
     ],
 

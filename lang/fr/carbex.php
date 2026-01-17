@@ -295,6 +295,43 @@ return [
         ],
     ],
 
+    // Footer (niveau racine pour le composant marketing-footer)
+    'footer' => [
+        'tagline' => 'Bilan carbone pour PME',
+        'description' => 'Plateforme de bilan carbone pour PME. Simple, précis et assisté par l\'IA.',
+        'product' => 'Produit',
+        'resources' => 'Ressources',
+        'documentation' => 'Documentation',
+        'csrd_guide' => 'Guide CSRD',
+        'legal' => 'Légal',
+        'privacy' => 'Confidentialité',
+        'terms' => 'CGU',
+        'compliance' => 'ADEME · GHG Protocol · RGPD',
+        'information' => 'Informations',
+        'terms_sale' => 'CGV',
+        'terms_use' => 'CGU',
+        'commitments' => 'Nos engagements',
+        'legal_notice' => 'Mentions légales',
+        'contact' => 'Contact',
+        'blog' => 'Blog',
+        'guides' => 'Guides pratiques',
+        'carbon_footprint' => 'Bilan carbone entreprise',
+        'csrd_regulation' => 'Réglementation CSRD',
+        'discover' => 'Découvrir',
+        'features' => 'Fonctionnalités',
+        'for_whom' => 'Pour qui ?',
+        'pricing' => 'Tarifs',
+        'free_trial' => 'Essai gratuit',
+        'company' => 'Entreprise',
+        'partnership' => 'Partenariat',
+        'careers' => 'Carrières',
+        'press' => 'Presse',
+        'gdpr' => 'RGPD',
+        'compliant' => 'Conforme',
+        'all_rights_reserved' => 'Tous droits réservés.',
+        'cookies' => 'Cookies',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Data Entry / Manual Entry
@@ -450,6 +487,10 @@ return [
         'settings' => 'Paramètres',
         'profile' => 'Profil',
         'logout' => 'Déconnexion',
+        'mode' => [
+            'scopes' => 'Navigation par scopes',
+            'pillars' => 'Navigation par piliers',
+        ],
     ],
 
     /*
@@ -641,6 +682,9 @@ return [
 
     'emissions' => [
         'title' => 'Émissions',
+        'import' => 'Importer',
+        'import_title' => 'Importer des données d\'émissions',
+        'import_description' => 'Téléchargez un fichier CSV ou Excel pour importer vos données d\'émissions en masse.',
         'activities' => 'Activités',
         'scope_title' => 'Émissions Scope :scope',
         'scope_label' => 'Scope :scope',
@@ -994,6 +1038,11 @@ return [
         'fiscal_settings_desc' => 'Année fiscale et devise de référence',
         'country_config' => 'Configuration pays',
         'country_config_desc' => 'Ces paramètres sont déterminés par le pays de votre organisation',
+        'display_settings' => 'Paramètres d\'affichage',
+        'display_settings_desc' => 'Personnalisez l\'affichage des informations dans votre tableau de bord',
+        'navigation_mode' => 'Mode de navigation',
+        'navigation_scopes_desc' => 'Naviguer par scopes d\'émissions (Scope 1, 2, 3)',
+        'navigation_pillars_desc' => 'Naviguer par piliers stratégiques (style 5 Piliers)',
         'currencies' => [
             'eur' => 'EUR - Euro',
             'chf' => 'CHF - Franc suisse',
@@ -1967,6 +2016,7 @@ return [
 
         // Import (T176)
         'import' => [
+            'csv' => 'Importer CSV',
             'title' => 'Import CSV de sites',
             'description' => 'Importez plusieurs sites à la fois depuis un fichier CSV.',
             'upload_file' => 'Téléverser le fichier',
@@ -2214,6 +2264,7 @@ return [
         'last_login' => 'Dernière connexion',
         'you' => '(vous)',
         'never' => 'Jamais',
+        'pending' => 'En attente',
         'edit_role' => 'Modifier le rôle',
         'remove' => 'Retirer',
         'confirm_remove' => 'Êtes-vous sûr de vouloir retirer cet utilisateur ?',
@@ -2821,6 +2872,28 @@ return [
                 'monthly_payment_q' => 'Comment fonctionne le paiement mensuel ?',
                 'monthly_payment_a' => 'Le paiement mensuel est prélevé automatiquement chaque mois. Vous pouvez annuler à tout moment, sans frais ni pénalité. L\'abonnement reste actif jusqu\'à la fin du mois payé.',
             ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Emission Factors
+    |--------------------------------------------------------------------------
+    */
+
+    'emission_factors' => [
+        'countries' => [
+            'fr' => 'France',
+            'de' => 'Allemagne',
+            'at' => 'Autriche',
+            'be' => 'Belgique',
+            'ch' => 'Suisse',
+            'es' => 'Espagne',
+            'it' => 'Italie',
+            'nl' => 'Pays-Bas',
+            'gb' => 'Royaume-Uni',
+            'eu' => 'Union européenne',
+            'us' => 'États-Unis',
         ],
     ],
 

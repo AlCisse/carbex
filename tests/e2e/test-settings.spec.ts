@@ -25,7 +25,7 @@ test.describe('Settings Pages', () => {
         }
         
         // Check for raw translation keys
-        const rawKeys = body?.match(/carbex\.[a-z_\.]+/gi)?.filter(k => k !== 'carbex.fr');
+        const rawKeys = body?.match(/carbex\.[a-z_\.]+/gi)?.filter(k => !['carbex.fr', 'carbex.com', 'carbex.de', 'carbex.io', 'carbex.eu'].includes(k));
         if (rawKeys && rawKeys.length > 0) {
             console.log('⚠️ Missing translations:', [...new Set(rawKeys)].slice(0, 5));
         }
