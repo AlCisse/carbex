@@ -35,6 +35,15 @@ class AISettings extends Page implements HasForms
     public string $googleApiKey = '';
     public string $deepseekApiKey = '';
 
+    // Subscription model assignments
+    public string $freeModel = '';
+    public string $starterModel = '';
+    public string $professionalModel = '';
+    public string $enterpriseModel = '';
+
+    // Plan configuration
+    public array $subscriptionPlans = [];
+
     public function mount(): void
     {
         $settings = AISetting::getAllSettings();
@@ -51,11 +60,6 @@ class AISettings extends Page implements HasForms
             'deepseek_model' => $settings['deepseek_model'] ?? 'deepseek-chat',
             'max_tokens' => $settings['max_tokens'] ?? 4096,
             'temperature' => $settings['temperature'] ?? '0.7',
-            // Subscription model assignments
-            'free_model' => $settings['free_model'] ?? 'gemini-2.0-flash-lite',
-            'starter_model' => $settings['starter_model'] ?? 'gpt-4o-mini',
-            'professional_model' => $settings['professional_model'] ?? 'claude-sonnet-4-20250514',
-            'enterprise_model' => $settings['enterprise_model'] ?? 'claude-sonnet-4-20250514',
         ]);
 
         // Load masked API keys
@@ -63,6 +67,53 @@ class AISettings extends Page implements HasForms
         $this->openaiApiKey = $this->getMaskedKey('openai');
         $this->googleApiKey = $this->getMaskedKey('google');
         $this->deepseekApiKey = $this->getMaskedKey('deepseek');
+
+        // Load subscription model assignments
+        $this->freeModel = $settings['free_model'] ?? 'gemini-2.0-flash-lite';
+        $this->starterModel = $settings['starter_model'] ?? 'gpt-4o-mini';
+        $this->professionalModel = $settings['professional_model'] ?? 'claude-sonnet-4-20250514';
+        $this->enterpriseModel = $settings['enterprise_model'] ?? 'claude-sonnet-4-20250514';
+
+        // Build subscription plans data
+        $this->subscriptionPlans = $this->buildSubscriptionPlans();
+    }
+
+    protected function buildSubscriptionPlans(): array
+    {
+        return [
+            'free' => [
+                'name' => 'Gratuit',
+                'description' => 'Essai gratuit - Fonctionnalités de base',
+                'color' => 'gray',
+                'icon' => 'gift',
+                'tokens' => '50K tokens/mois',
+                'requests' => '100 requêtes/mois',
+            ],
+            'starter' => [
+                'name' => 'Starter',
+                'description' => 'Pour les petites équipes',
+                'color' => 'blue',
+                'icon' => 'rocket',
+                'tokens' => '200K tokens/mois',
+                'requests' => '500 requêtes/mois',
+            ],
+            'professional' => [
+                'name' => 'Professional',
+                'description' => 'Pour les entreprises en croissance',
+                'color' => 'purple',
+                'icon' => 'briefcase',
+                'tokens' => '1M tokens/mois',
+                'requests' => '2,500 requêtes/mois',
+            ],
+            'enterprise' => [
+                'name' => 'Enterprise',
+                'description' => 'Solution sur mesure',
+                'color' => 'amber',
+                'icon' => 'building-office',
+                'tokens' => 'Illimité',
+                'requests' => 'Illimité',
+            ],
+        ];
     }
 
     protected function getMaskedKey(string $provider): string
@@ -94,32 +145,6 @@ class AISettings extends Page implements HasForms
                                 'google' => 'Google (Gemini)',
                                 'deepseek' => 'DeepSeek',
                             ])
-                            ->required(),
-                    ]),
-
-                Section::make('Modèles par abonnement')
-                    ->description('Configurez le modèle IA attribué à chaque type d\'abonnement.')
-                    ->icon('heroicon-o-credit-card')
-                    ->schema([
-                        Select::make('free_model')
-                            ->label('Plan Gratuit')
-                            ->options($this->getAllModelsOptions())
-                            ->helperText('Modèle économique recommandé')
-                            ->required(),
-                        Select::make('starter_model')
-                            ->label('Plan Starter')
-                            ->options($this->getAllModelsOptions())
-                            ->helperText('Bon rapport qualité/prix')
-                            ->required(),
-                        Select::make('professional_model')
-                            ->label('Plan Professional')
-                            ->options($this->getAllModelsOptions())
-                            ->helperText('Modèle performant')
-                            ->required(),
-                        Select::make('enterprise_model')
-                            ->label('Plan Enterprise')
-                            ->options($this->getAllModelsOptions())
-                            ->helperText('Meilleur modèle disponible')
                             ->required(),
                     ]),
 
@@ -397,6 +422,38 @@ class AISettings extends Page implements HasForms
                 'deepseek-coder' => 'DeepSeek Coder',
             ],
         ];
+    }
+
+    public function getFlatModelsOptions(): array
+    {
+        $flat = [];
+        foreach ($this->getAllModelsOptions() as $group => $models) {
+            foreach ($models as $key => $label) {
+                $flat[$key] = $label;
+            }
+        }
+        return $flat;
+    }
+
+    public function getModelLabel(string $modelKey): string
+    {
+        $options = $this->getFlatModelsOptions();
+        return $options[$modelKey] ?? $modelKey;
+    }
+
+    public function saveSubscriptionModel(string $plan, string $model): void
+    {
+        $property = "{$plan}Model";
+        $this->$property = $model;
+
+        AISetting::setValue("{$plan}_model", $model);
+        AISetting::clearCache();
+
+        Notification::make()
+            ->title('Modèle mis à jour')
+            ->body("Le modèle pour le plan " . ucfirst($plan) . " a été changé.")
+            ->success()
+            ->send();
     }
 
     protected function getFormActions(): array
