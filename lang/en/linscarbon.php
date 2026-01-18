@@ -3537,4 +3537,170 @@ return [
         ],
     ],
 
+    // =========================================================================
+    // COMPANY PAGES
+    // =========================================================================
+    'company' => [
+        'label' => 'Company',
+
+        'partnership' => [
+            'title' => 'Become a Partner',
+            'meta_description' => 'Join the LinsCarbon partner program and help your clients reduce their carbon footprint.',
+            'subtitle' => 'Support your clients in their ecological transition with our carbon footprint solution.',
+
+            'consultants_title' => 'CSR & Sustainability Consultants',
+            'consultants_desc' => 'Integrate LinsCarbon into your consulting missions to offer comprehensive support.',
+            'consultants_benefit1' => 'Access to preferential rates',
+            'consultants_benefit2' => 'Certified training included',
+            'consultants_benefit3' => 'Customized co-branding',
+
+            'software_title' => 'Software Publishers',
+            'software_desc' => 'Integrate our APIs into your existing accounting or ERP solutions.',
+            'software_benefit1' => 'Complete and documented REST API',
+            'software_benefit2' => 'Dedicated technical support',
+            'software_benefit3' => 'Real-time webhooks',
+
+            'resellers_title' => 'Resellers & Distributors',
+            'resellers_desc' => 'Offer LinsCarbon to your customers and develop a new revenue stream.',
+            'resellers_benefit1' => 'Attractive commissions',
+            'resellers_benefit2' => 'Marketing materials provided',
+            'resellers_benefit3' => 'Dedicated partner portal',
+
+            'accountants_title' => 'Accountants',
+            'accountants_desc' => 'Offer an automated carbon footprint service based on accounting data.',
+            'accountants_benefit1' => 'Direct import from your software',
+            'accountants_benefit2' => 'CSRD-compliant reports',
+            'accountants_benefit3' => 'Regulatory guidance',
+
+            'cta_title' => 'Ready to join our program?',
+            'cta_desc' => 'Contact us to discuss partnership opportunities.',
+            'cta_button' => 'Become a partner',
+        ],
+
+        'careers' => [
+            'title' => 'Join Us',
+            'meta_description' => 'Discover career opportunities at LinsCarbon and participate in the ecological transition.',
+            'subtitle' => 'Build with us the tools of tomorrow for a decarbonized economy.',
+
+            'why_join' => 'Why Join Us?',
+            'value1_title' => 'Environmental Impact',
+            'value1_desc' => 'Contribute directly to CO₂ emission reduction by helping thousands of companies.',
+            'value2_title' => 'Technological Innovation',
+            'value2_desc' => 'Work on cutting-edge technologies: AI, Open Banking, and data analysis.',
+            'value3_title' => 'Total Flexibility',
+            'value3_desc' => '100% remote work, flexible hours, and respected work-life balance.',
+
+            'benefits_title' => 'Our Benefits',
+            'benefit_remote' => '100% flexible remote work',
+            'benefit_equity' => 'Equity participation (stock options)',
+            'benefit_learning' => 'Unlimited training budget',
+            'benefit_hardware' => 'Premium equipment of your choice',
+            'benefit_vacation' => 'Unlimited vacation',
+            'benefit_team' => 'Regular team buildings',
+
+            'open_positions' => 'Open Positions',
+            'job1_title' => 'Senior Full-Stack Developer (Laravel/Livewire)',
+            'job2_title' => 'Carbon Expert & CSR Consultant',
+            'job3_title' => 'B2B Business Developer (Germany)',
+            'location_remote' => 'Remote (Europe)',
+            'full_time' => 'Full-time',
+            'apply' => 'Apply',
+
+            'spontaneous_title' => 'Spontaneous Application',
+            'spontaneous_desc' => 'No position matches your profile? Send us your application!',
+            'spontaneous_button' => 'Send my application',
+        ],
+
+        'press' => [
+            'title' => 'Press Room',
+            'meta_description' => 'Press resources and news from LinsCarbon, the carbon footprint platform for SMEs.',
+            'subtitle' => 'All the resources to talk about LinsCarbon in your publications.',
+
+            'contact_title' => 'Press Contact',
+            'contact_desc' => 'For any interview or information request, contact our communications team.',
+
+            'about_title' => 'About LinsCarbon',
+            'about_p1' => 'LinsCarbon is a SaaS platform that enables European SMEs to automatically calculate and reduce their carbon footprint through Open Banking and artificial intelligence.',
+            'about_p2' => 'Founded in 2024, our mission is to make carbon accounting accessible to all companies, regardless of size, by automating 80% of the data collection and calculation work.',
+
+            'stat_founded' => 'Year Founded',
+            'stat_countries' => 'European Countries Covered',
+            'stat_compliant' => 'CSRD/GHG Compliant',
+
+            'kit_title' => 'Media Kit',
+            'logos_title' => 'Logos and Visuals',
+            'logos_desc' => 'High-definition logos (PNG, SVG, EPS) for all your media.',
+            'factsheet_title' => 'Company Fact Sheet',
+            'factsheet_desc' => 'Key information, figures, and presentation of LinsCarbon.',
+            'download' => 'Download',
+
+            'news_title' => 'Recent News',
+            'news1_date' => 'January 2026',
+            'news1_title' => 'LinsCarbon Launches Enterprise Offering for Large SMEs',
+            'news1_excerpt' => 'New offering including API, white label, and dedicated support for companies with over 250 employees.',
+            'news2_date' => 'December 2025',
+            'news2_title' => 'Expansion into the German Market',
+            'news2_excerpt' => 'LinsCarbon expands to Germany with an offering tailored to LkSG requirements and Mittelstand SMEs.',
+
+            'interview_title' => 'Interview Request',
+            'interview_desc' => 'Our experts are available to answer your questions about carbon footprint and CSRD.',
+            'interview_button' => 'Request an Interview',
+        ],
+    ],
+
+    // =========================================================================
+    // FEATURES PAGE
+    // =========================================================================
+    'features' => [
+        'page_title' => 'Features',
+        'meta_description' => 'Discover all the features of LinsCarbon to automate your carbon footprint.',
+        'label' => 'Platform',
+        'title' => 'Everything for Your Carbon Footprint',
+        'subtitle' => 'A complete solution to measure, understand, and reduce your carbon footprint in full compliance.',
+
+        'measure' => [
+            'badge' => 'Measure',
+            'title' => 'Automatic Data Collection',
+            'desc' => 'Import your accounting data or connect your bank accounts for automated collection.',
+            'import' => 'PDF, Excel, and ERP import',
+            'factors' => '+20,000 ADEME/UBA emission factors',
+            'scopes' => 'Automatic Scope 1, 2, and 3 calculation',
+            'banking' => 'Secure Open Banking (PSD2)',
+        ],
+
+        'ai' => [
+            'badge' => 'Analyze',
+            'title' => 'Integrated Artificial Intelligence',
+            'desc' => 'Our AI categorizes your transactions and answers your questions in natural language.',
+            'categorization' => 'Automatic expense categorization',
+            'recommendations' => 'Personalized recommendations',
+            'questions' => 'AI chat for your carbon questions',
+            'providers' => 'Multi-providers (Claude, GPT, Gemini)',
+        ],
+
+        'action' => [
+            'badge' => 'Act',
+            'title' => 'Concrete Transition Plan',
+            'desc' => 'Set your reduction targets and track your path to carbon neutrality.',
+            'trajectory' => 'Customized 2030/2050 trajectory',
+            'roi' => 'ROI calculation for reduction actions',
+            'priorities' => 'Prioritization by impact and feasibility',
+            'tracking' => 'Real-time progress tracking',
+        ],
+
+        'compliance' => [
+            'badge' => 'Compliance',
+            'title' => 'Regulatory Reports',
+            'desc' => 'Generate reports compliant with international standards and European regulations.',
+            'csrd' => 'CSRD 2025 compliant',
+            'ghg' => 'GHG Protocol methodology',
+            'export' => 'PDF, Word, and Excel export',
+            'audit' => 'Traceability for audit',
+        ],
+
+        'cta_title' => 'Ready to Start?',
+        'cta_desc' => 'Create your account for free and start your carbon footprint in 10 minutes.',
+        'cta_button' => 'Free Trial',
+    ],
+
 ];

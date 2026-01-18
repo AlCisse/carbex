@@ -3765,4 +3765,170 @@ return [
         ],
     ],
 
+    // =========================================================================
+    // COMPANY PAGES
+    // =========================================================================
+    'company' => [
+        'label' => 'Unternehmen',
+
+        'partnership' => [
+            'title' => 'Partner werden',
+            'meta_description' => 'Treten Sie dem LinsCarbon-Partnerprogramm bei und helfen Sie Ihren Kunden, ihren CO₂-Fußabdruck zu reduzieren.',
+            'subtitle' => 'Unterstützen Sie Ihre Kunden bei der ökologischen Transformation mit unserer CO₂-Bilanz-Lösung.',
+
+            'consultants_title' => 'CSR- & Nachhaltigkeitsberater',
+            'consultants_desc' => 'Integrieren Sie LinsCarbon in Ihre Beratungsprojekte für umfassende Unterstützung.',
+            'consultants_benefit1' => 'Zugang zu Vorzugskonditionen',
+            'consultants_benefit2' => 'Zertifizierte Schulung inklusive',
+            'consultants_benefit3' => 'Individuelles Co-Branding',
+
+            'software_title' => 'Softwareanbieter',
+            'software_desc' => 'Integrieren Sie unsere APIs in Ihre bestehenden Buchhaltungs- oder ERP-Lösungen.',
+            'software_benefit1' => 'Vollständige und dokumentierte REST-API',
+            'software_benefit2' => 'Dedizierter technischer Support',
+            'software_benefit3' => 'Echtzeit-Webhooks',
+
+            'resellers_title' => 'Wiederverkäufer & Distributoren',
+            'resellers_desc' => 'Bieten Sie LinsCarbon Ihren Kunden an und erschließen Sie eine neue Einnahmequelle.',
+            'resellers_benefit1' => 'Attraktive Provisionen',
+            'resellers_benefit2' => 'Marketingmaterialien bereitgestellt',
+            'resellers_benefit3' => 'Dediziertes Partnerportal',
+
+            'accountants_title' => 'Steuerberater & Wirtschaftsprüfer',
+            'accountants_desc' => 'Bieten Sie einen automatisierten CO₂-Bilanz-Service basierend auf Buchhaltungsdaten.',
+            'accountants_benefit1' => 'Direktimport aus Ihrer Software',
+            'accountants_benefit2' => 'CSRD-konforme Berichte',
+            'accountants_benefit3' => 'Regulatorische Begleitung',
+
+            'cta_title' => 'Bereit für unser Partnerprogramm?',
+            'cta_desc' => 'Kontaktieren Sie uns, um Partnerschaftsmöglichkeiten zu besprechen.',
+            'cta_button' => 'Partner werden',
+        ],
+
+        'careers' => [
+            'title' => 'Karriere bei uns',
+            'meta_description' => 'Entdecken Sie Karrieremöglichkeiten bei LinsCarbon und gestalten Sie die ökologische Transformation mit.',
+            'subtitle' => 'Bauen Sie mit uns die Werkzeuge von morgen für eine dekarbonisierte Wirtschaft.',
+
+            'why_join' => 'Warum zu uns?',
+            'value1_title' => 'Umweltauswirkung',
+            'value1_desc' => 'Tragen Sie direkt zur CO₂-Reduktion bei, indem Sie Tausenden von Unternehmen helfen.',
+            'value2_title' => 'Technologische Innovation',
+            'value2_desc' => 'Arbeiten Sie mit modernsten Technologien: KI, Open Banking und Datenanalyse.',
+            'value3_title' => 'Maximale Flexibilität',
+            'value3_desc' => '100% Remote-Arbeit, flexible Arbeitszeiten und respektierte Work-Life-Balance.',
+
+            'benefits_title' => 'Unsere Vorteile',
+            'benefit_remote' => '100% flexible Remote-Arbeit',
+            'benefit_equity' => 'Kapitalbeteiligung (Aktienoptionen)',
+            'benefit_learning' => 'Unbegrenztes Weiterbildungsbudget',
+            'benefit_hardware' => 'Premium-Ausstattung nach Wahl',
+            'benefit_vacation' => 'Unbegrenzter Urlaub',
+            'benefit_team' => 'Regelmäßige Teamevents',
+
+            'open_positions' => 'Offene Stellen',
+            'job1_title' => 'Senior Full-Stack Entwickler (Laravel/Livewire)',
+            'job2_title' => 'Carbon-Experte & CSR-Berater',
+            'job3_title' => 'B2B Business Developer (Deutschland)',
+            'location_remote' => 'Remote (Europa)',
+            'full_time' => 'Vollzeit',
+            'apply' => 'Bewerben',
+
+            'spontaneous_title' => 'Initiativbewerbung',
+            'spontaneous_desc' => 'Keine passende Stelle gefunden? Senden Sie uns Ihre Bewerbung!',
+            'spontaneous_button' => 'Bewerbung senden',
+        ],
+
+        'press' => [
+            'title' => 'Pressbereich',
+            'meta_description' => 'Presseressourcen und Neuigkeiten von LinsCarbon, der CO₂-Bilanz-Plattform für KMU.',
+            'subtitle' => 'Alle Ressourcen für Ihre Berichterstattung über LinsCarbon.',
+
+            'contact_title' => 'Pressekontakt',
+            'contact_desc' => 'Für Interview- oder Informationsanfragen kontaktieren Sie unser Kommunikationsteam.',
+
+            'about_title' => 'Über LinsCarbon',
+            'about_p1' => 'LinsCarbon ist eine SaaS-Plattform, die es europäischen KMU ermöglicht, ihren CO₂-Fußabdruck automatisch zu berechnen und zu reduzieren – durch Open Banking und künstliche Intelligenz.',
+            'about_p2' => '2024 gegründet, ist unsere Mission, die CO₂-Bilanzierung für alle Unternehmen zugänglich zu machen, unabhängig von ihrer Größe, indem wir 80% der Datenerfassung und Berechnung automatisieren.',
+
+            'stat_founded' => 'Gründungsjahr',
+            'stat_countries' => 'Europäische Länder abgedeckt',
+            'stat_compliant' => 'CSRD/GHG-konform',
+
+            'kit_title' => 'Pressematerial',
+            'logos_title' => 'Logos und Bildmaterial',
+            'logos_desc' => 'Hochauflösende Logos (PNG, SVG, EPS) für alle Ihre Medien.',
+            'factsheet_title' => 'Unternehmensfaktblatt',
+            'factsheet_desc' => 'Wichtige Informationen, Zahlen und Präsentation von LinsCarbon.',
+            'download' => 'Herunterladen',
+
+            'news_title' => 'Aktuelle Nachrichten',
+            'news1_date' => 'Januar 2026',
+            'news1_title' => 'LinsCarbon startet Enterprise-Angebot für größere KMU',
+            'news1_excerpt' => 'Neues Angebot mit API, White Label und dediziertem Support für Unternehmen mit über 250 Mitarbeitern.',
+            'news2_date' => 'Dezember 2025',
+            'news2_title' => 'Expansion in den deutschen Markt',
+            'news2_excerpt' => 'LinsCarbon expandiert nach Deutschland mit einem Angebot, das auf LkSG-Anforderungen und Mittelstands-KMU zugeschnitten ist.',
+
+            'interview_title' => 'Interview-Anfrage',
+            'interview_desc' => 'Unsere Experten stehen für Ihre Fragen zu CO₂-Bilanz und CSRD zur Verfügung.',
+            'interview_button' => 'Interview anfragen',
+        ],
+    ],
+
+    // =========================================================================
+    // FEATURES PAGE
+    // =========================================================================
+    'features' => [
+        'page_title' => 'Funktionen',
+        'meta_description' => 'Entdecken Sie alle Funktionen von LinsCarbon zur Automatisierung Ihrer CO₂-Bilanz.',
+        'label' => 'Plattform',
+        'title' => 'Alles für Ihre CO₂-Bilanz',
+        'subtitle' => 'Eine vollständige Lösung zum Messen, Verstehen und Reduzieren Ihres CO₂-Fußabdrucks in voller Konformität.',
+
+        'measure' => [
+            'badge' => 'Messen',
+            'title' => 'Automatische Datenerfassung',
+            'desc' => 'Importieren Sie Ihre Buchhaltungsdaten oder verbinden Sie Ihre Bankkonten für automatisierte Erfassung.',
+            'import' => 'PDF-, Excel- und ERP-Import',
+            'factors' => '+20.000 ADEME/UBA-Emissionsfaktoren',
+            'scopes' => 'Automatische Scope 1, 2 und 3 Berechnung',
+            'banking' => 'Sicheres Open Banking (PSD2)',
+        ],
+
+        'ai' => [
+            'badge' => 'Analysieren',
+            'title' => 'Integrierte künstliche Intelligenz',
+            'desc' => 'Unsere KI kategorisiert Ihre Transaktionen und beantwortet Ihre Fragen in natürlicher Sprache.',
+            'categorization' => 'Automatische Ausgabenkategorisierung',
+            'recommendations' => 'Personalisierte Empfehlungen',
+            'questions' => 'KI-Chat für Ihre CO₂-Fragen',
+            'providers' => 'Multi-Provider (Claude, GPT, Gemini)',
+        ],
+
+        'action' => [
+            'badge' => 'Handeln',
+            'title' => 'Konkreter Transformationsplan',
+            'desc' => 'Setzen Sie Ihre Reduktionsziele und verfolgen Sie Ihren Weg zur Klimaneutralität.',
+            'trajectory' => 'Individuelle 2030/2050-Trajektorie',
+            'roi' => 'ROI-Berechnung für Reduktionsmaßnahmen',
+            'priorities' => 'Priorisierung nach Wirkung und Machbarkeit',
+            'tracking' => 'Echtzeit-Fortschrittsverfolgung',
+        ],
+
+        'compliance' => [
+            'badge' => 'Konformität',
+            'title' => 'Regulatorische Berichte',
+            'desc' => 'Erstellen Sie Berichte, die internationalen Standards und europäischen Vorschriften entsprechen.',
+            'csrd' => 'CSRD 2025 konform',
+            'ghg' => 'GHG-Protocol-Methodik',
+            'export' => 'PDF-, Word- und Excel-Export',
+            'audit' => 'Rückverfolgbarkeit für Audits',
+        ],
+
+        'cta_title' => 'Bereit zum Start?',
+        'cta_desc' => 'Erstellen Sie Ihr Konto kostenlos und starten Sie Ihre CO₂-Bilanz in 10 Minuten.',
+        'cta_button' => 'Kostenlos testen',
+    ],
+
 ];

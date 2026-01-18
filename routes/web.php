@@ -50,6 +50,14 @@ Route::get('/mentions-legales', fn () => view('marketing.legal.mentions'))->name
 Route::get('/nos-engagements', fn () => view('marketing.legal.engagements'))->name('engagements');
 Route::get('/confidentialite', fn () => view('marketing.legal.confidentialite'))->name('confidentialite');
 
+// Discover pages
+Route::get('/fonctionnalites', fn () => view('marketing.features'))->name('features');
+
+// Company pages
+Route::get('/partenariat', fn () => view('marketing.company.partnership'))->name('partnership');
+Route::get('/carrieres', fn () => view('marketing.company.careers'))->name('careers');
+Route::get('/presse', fn () => view('marketing.company.press'))->name('press');
+
 // SEO
 Route::get('/sitemap.xml', [\App\Http\Controllers\SeoController::class, 'sitemap'])->name('sitemap');
 Route::get('/robots.txt', [\App\Http\Controllers\SeoController::class, 'robots'])->name('robots');

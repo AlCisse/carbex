@@ -52,7 +52,7 @@
             <div>
                 <p class="text-sm font-semibold mb-4" style="color: var(--text-primary);">{{ __('linscarbon.footer.discover') }}</p>
                 <ul class="space-y-2.5 text-sm" style="color: var(--text-secondary);">
-                    <li><a href="/#features" class="hover:underline">{{ __('linscarbon.footer.features') }}</a></li>
+                    <li><a href="{{ route('features') }}" class="hover:underline">{{ __('linscarbon.footer.features') }}</a></li>
                     <li><a href="{{ route('pour-qui') }}" class="hover:underline">{{ __('linscarbon.footer.for_whom') }}</a></li>
                     <li><a href="{{ route('pricing') }}" class="hover:underline">{{ __('linscarbon.footer.pricing') }}</a></li>
                     <li><a href="{{ route('register') }}" class="hover:underline">{{ __('linscarbon.footer.free_trial') }}</a></li>
@@ -63,9 +63,9 @@
             <div>
                 <p class="text-sm font-semibold mb-4" style="color: var(--text-primary);">{{ __('linscarbon.footer.company') }}</p>
                 <ul class="space-y-2.5 text-sm" style="color: var(--text-secondary);">
-                    <li><a href="/partenariat" class="hover:underline">{{ __('linscarbon.footer.partnership') }}</a></li>
-                    <li><a href="/carrieres" class="hover:underline">{{ __('linscarbon.footer.careers') }}</a></li>
-                    <li><a href="/presse" class="hover:underline">{{ __('linscarbon.footer.press') }}</a></li>
+                    <li><a href="{{ route('partnership') }}" class="hover:underline">{{ __('linscarbon.footer.partnership') }}</a></li>
+                    <li><a href="{{ route('careers') }}" class="hover:underline">{{ __('linscarbon.footer.careers') }}</a></li>
+                    <li><a href="{{ route('press') }}" class="hover:underline">{{ __('linscarbon.footer.press') }}</a></li>
                 </ul>
             </div>
         </div>

@@ -3805,4 +3805,170 @@ return [
         ],
     ],
 
+    // =========================================================================
+    // COMPANY PAGES
+    // =========================================================================
+    'company' => [
+        'label' => 'Entreprise',
+
+        'partnership' => [
+            'title' => 'Devenez partenaire',
+            'meta_description' => 'Rejoignez le programme partenaire LinsCarbon et aidez vos clients à réduire leur empreinte carbone.',
+            'subtitle' => 'Accompagnez vos clients dans leur transition écologique avec notre solution de bilan carbone.',
+
+            'consultants_title' => 'Consultants RSE & Développement Durable',
+            'consultants_desc' => 'Intégrez LinsCarbon dans vos missions de conseil pour offrir un accompagnement complet.',
+            'consultants_benefit1' => 'Accès à des tarifs préférentiels',
+            'consultants_benefit2' => 'Formation certifiante incluse',
+            'consultants_benefit3' => 'Co-branding personnalisé',
+
+            'software_title' => 'Éditeurs de logiciels',
+            'software_desc' => 'Intégrez nos API dans vos solutions comptables ou ERP existantes.',
+            'software_benefit1' => 'API REST complète et documentée',
+            'software_benefit2' => 'Support technique dédié',
+            'software_benefit3' => 'Webhooks temps réel',
+
+            'resellers_title' => 'Revendeurs & Distributeurs',
+            'resellers_desc' => 'Proposez LinsCarbon à vos clients et développez une nouvelle source de revenus.',
+            'resellers_benefit1' => 'Commissions attractives',
+            'resellers_benefit2' => 'Matériel marketing fourni',
+            'resellers_benefit3' => 'Portail partenaire dédié',
+
+            'accountants_title' => 'Experts-comptables',
+            'accountants_desc' => 'Proposez un service de bilan carbone automatisé basé sur les données comptables.',
+            'accountants_benefit1' => 'Import direct depuis vos logiciels',
+            'accountants_benefit2' => 'Rapports conformes CSRD',
+            'accountants_benefit3' => 'Accompagnement réglementaire',
+
+            'cta_title' => 'Prêt à rejoindre notre programme ?',
+            'cta_desc' => 'Contactez-nous pour discuter des opportunités de partenariat.',
+            'cta_button' => 'Devenir partenaire',
+        ],
+
+        'careers' => [
+            'title' => 'Rejoignez-nous',
+            'meta_description' => 'Découvrez les opportunités de carrière chez LinsCarbon et participez à la transition écologique.',
+            'subtitle' => 'Construisez avec nous les outils de demain pour une économie décarbonée.',
+
+            'why_join' => 'Pourquoi nous rejoindre ?',
+            'value1_title' => 'Impact environnemental',
+            'value1_desc' => 'Contribuez directement à la réduction des émissions de CO₂ en aidant des milliers d\'entreprises.',
+            'value2_title' => 'Innovation technologique',
+            'value2_desc' => 'Travaillez sur des technologies de pointe : IA, Open Banking, et analyse de données.',
+            'value3_title' => 'Flexibilité totale',
+            'value3_desc' => 'Télétravail à 100%, horaires flexibles et équilibre vie pro/perso respecté.',
+
+            'benefits_title' => 'Nos avantages',
+            'benefit_remote' => 'Télétravail 100% flexible',
+            'benefit_equity' => 'Participation au capital (BSPCE)',
+            'benefit_learning' => 'Budget formation illimité',
+            'benefit_hardware' => 'Équipement premium au choix',
+            'benefit_vacation' => 'Congés illimités',
+            'benefit_team' => 'Team buildings réguliers',
+
+            'open_positions' => 'Postes ouverts',
+            'job1_title' => 'Développeur Full-Stack Senior (Laravel/Livewire)',
+            'job2_title' => 'Expert Carbone & Consultant RSE',
+            'job3_title' => 'Business Developer B2B (Allemagne)',
+            'location_remote' => 'Remote (Europe)',
+            'full_time' => 'CDI - Temps plein',
+            'apply' => 'Postuler',
+
+            'spontaneous_title' => 'Candidature spontanée',
+            'spontaneous_desc' => 'Aucun poste ne correspond à votre profil ? Envoyez-nous votre candidature !',
+            'spontaneous_button' => 'Envoyer ma candidature',
+        ],
+
+        'press' => [
+            'title' => 'Espace presse',
+            'meta_description' => 'Ressources presse et actualités de LinsCarbon, la plateforme de bilan carbone pour PME.',
+            'subtitle' => 'Toutes les ressources pour parler de LinsCarbon dans vos publications.',
+
+            'contact_title' => 'Contact presse',
+            'contact_desc' => 'Pour toute demande d\'interview ou d\'information, contactez notre équipe communication.',
+
+            'about_title' => 'À propos de LinsCarbon',
+            'about_p1' => 'LinsCarbon est une plateforme SaaS qui permet aux PME européennes de calculer et réduire leur empreinte carbone automatiquement, grâce à l\'Open Banking et l\'intelligence artificielle.',
+            'about_p2' => 'Fondée en 2024, notre mission est de rendre le bilan carbone accessible à toutes les entreprises, quelle que soit leur taille, en automatisant 80% du travail de collecte et de calcul.',
+
+            'stat_founded' => 'Année de création',
+            'stat_countries' => 'Pays européens couverts',
+            'stat_compliant' => 'Conforme CSRD/GHG',
+
+            'kit_title' => 'Kit média',
+            'logos_title' => 'Logos et visuels',
+            'logos_desc' => 'Logos en haute définition (PNG, SVG, EPS) pour tous vos supports.',
+            'factsheet_title' => 'Fiche entreprise',
+            'factsheet_desc' => 'Informations clés, chiffres et présentation de LinsCarbon.',
+            'download' => 'Télécharger',
+
+            'news_title' => 'Actualités récentes',
+            'news1_date' => 'Janvier 2026',
+            'news1_title' => 'LinsCarbon lance son offre Enterprise pour les grandes PME',
+            'news1_excerpt' => 'Nouvelle offre incluant API, marque blanche et support dédié pour les entreprises de plus de 250 employés.',
+            'news2_date' => 'Décembre 2025',
+            'news2_title' => 'Expansion sur le marché allemand',
+            'news2_excerpt' => 'LinsCarbon s\'étend en Allemagne avec une offre adaptée aux exigences LkSG et aux PME du Mittelstand.',
+
+            'interview_title' => 'Demande d\'interview',
+            'interview_desc' => 'Nos experts sont disponibles pour répondre à vos questions sur le bilan carbone et la CSRD.',
+            'interview_button' => 'Demander une interview',
+        ],
+    ],
+
+    // =========================================================================
+    // FEATURES PAGE
+    // =========================================================================
+    'features' => [
+        'page_title' => 'Fonctionnalités',
+        'meta_description' => 'Découvrez toutes les fonctionnalités de LinsCarbon pour automatiser votre bilan carbone.',
+        'label' => 'Plateforme',
+        'title' => 'Tout pour votre bilan carbone',
+        'subtitle' => 'Une solution complète pour mesurer, comprendre et réduire votre empreinte carbone en toute conformité.',
+
+        'measure' => [
+            'badge' => 'Mesurer',
+            'title' => 'Collecte automatique des données',
+            'desc' => 'Importez vos données comptables ou connectez vos comptes bancaires pour une collecte automatisée.',
+            'import' => 'Import PDF, Excel et ERP',
+            'factors' => '+20 000 facteurs d\'émission ADEME/UBA',
+            'scopes' => 'Calcul automatique Scope 1, 2 et 3',
+            'banking' => 'Open Banking (PSD2) sécurisé',
+        ],
+
+        'ai' => [
+            'badge' => 'Analyser',
+            'title' => 'Intelligence artificielle intégrée',
+            'desc' => 'Notre IA classe vos transactions et répond à vos questions en langage naturel.',
+            'categorization' => 'Catégorisation automatique des dépenses',
+            'recommendations' => 'Recommandations personnalisées',
+            'questions' => 'Chat IA pour vos questions carbone',
+            'providers' => 'Multi-providers (Claude, GPT, Gemini)',
+        ],
+
+        'action' => [
+            'badge' => 'Agir',
+            'title' => 'Plan de transition concret',
+            'desc' => 'Définissez vos objectifs de réduction et suivez votre trajectoire vers la neutralité carbone.',
+            'trajectory' => 'Trajectoire 2030/2050 personnalisée',
+            'roi' => 'Calcul ROI des actions de réduction',
+            'priorities' => 'Priorisation par impact et faisabilité',
+            'tracking' => 'Suivi en temps réel des progrès',
+        ],
+
+        'compliance' => [
+            'badge' => 'Conformité',
+            'title' => 'Rapports réglementaires',
+            'desc' => 'Générez des rapports conformes aux standards internationaux et aux réglementations européennes.',
+            'csrd' => 'Conformité CSRD 2025',
+            'ghg' => 'Méthodologie GHG Protocol',
+            'export' => 'Export PDF, Word et Excel',
+            'audit' => 'Traçabilité pour audit',
+        ],
+
+        'cta_title' => 'Prêt à démarrer ?',
+        'cta_desc' => 'Créez votre compte gratuitement et commencez votre bilan carbone en 10 minutes.',
+        'cta_button' => 'Essai gratuit',
+    ],
+
 ];
