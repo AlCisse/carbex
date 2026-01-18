@@ -2004,6 +2004,9 @@ return [
             'upgrade_title' => 'Need more tokens?',
             'upgrade_desc' => 'Upgrade your plan to increase AI limits and unlock more features.',
             'view_plans' => 'View plans',
+            'your_model' => 'Your AI Model',
+            'your_model_desc' => 'The AI model assigned to your subscription',
+            'model_for_plan' => 'Model for :plan plan',
         ],
     ],
 

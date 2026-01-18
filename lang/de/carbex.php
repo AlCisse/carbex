@@ -2152,6 +2152,9 @@ return [
             'upgrade_title' => 'Mehr Tokens benötigt?',
             'upgrade_desc' => 'Upgraden Sie Ihren Plan, um KI-Limits zu erhöhen und mehr Funktionen freizuschalten.',
             'view_plans' => 'Pläne ansehen',
+            'your_model' => 'Ihr KI-Modell',
+            'your_model_desc' => 'Das Ihrem Abonnement zugewiesene KI-Modell',
+            'model_for_plan' => 'Modell für :plan Plan',
         ],
     ],
 

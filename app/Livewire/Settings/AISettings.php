@@ -27,6 +27,10 @@ class AISettings extends Component
     public array $usageStats = [];
     public array $subscriptionLimits = [];
 
+    // Assigned model for subscription
+    public string $assignedModel = '';
+    public string $assignedModelLabel = '';
+
     public function mount(): void
     {
         $this->loadAdminSettings();
@@ -103,6 +107,12 @@ class AISettings extends Component
 
     protected function getSubscriptionAILimits(?object $subscription): array
     {
+        $plan = $subscription?->plan ?? 'free';
+
+        // Get model assigned by admin for this plan
+        $this->assignedModel = AISetting::getValue("{$plan}_model", 'gemini-2.0-flash-lite');
+        $this->assignedModelLabel = $this->getModelLabel($this->assignedModel);
+
         if (!$subscription) {
             // Free tier / Trial
             return [
@@ -145,6 +155,38 @@ class AISettings extends Component
                 'features' => ['chat_widget'],
             ],
         };
+    }
+
+    protected function getModelLabel(string $model): string
+    {
+        $models = [
+            // Anthropic
+            'claude-sonnet-4-20250514' => 'Claude Sonnet 4',
+            'claude-3-5-sonnet-20241022' => 'Claude 3.5 Sonnet',
+            'claude-3-5-haiku-20241022' => 'Claude 3.5 Haiku',
+            'claude-3-haiku-20240307' => 'Claude 3 Haiku',
+            'claude-3-opus-20240229' => 'Claude 3 Opus',
+            // OpenAI
+            'gpt-4.5-preview' => 'GPT-4.5 Preview',
+            'gpt-4o' => 'GPT-4o',
+            'gpt-4o-mini' => 'GPT-4o Mini',
+            'o3-mini' => 'o3-mini',
+            'o1' => 'o1',
+            'o1-mini' => 'o1-mini',
+            'gpt-4-turbo' => 'GPT-4 Turbo',
+            'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
+            // Google
+            'gemini-2.0-flash' => 'Gemini 2.0 Flash',
+            'gemini-2.0-flash-lite' => 'Gemini 2.0 Flash Lite',
+            'gemini-1.5-pro' => 'Gemini 1.5 Pro',
+            'gemini-1.5-flash' => 'Gemini 1.5 Flash',
+            'gemini-pro' => 'Gemini Pro',
+            // DeepSeek
+            'deepseek-chat' => 'DeepSeek Chat',
+            'deepseek-coder' => 'DeepSeek Coder',
+        ];
+
+        return $models[$model] ?? $model;
     }
 
     protected function calculateUsagePercent(?object $usage): ?float

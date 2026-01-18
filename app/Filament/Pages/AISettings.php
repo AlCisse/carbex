@@ -46,11 +46,16 @@ class AISettings extends Page implements HasForms
             'openai_enabled' => $settings['openai_enabled'] ?? false,
             'openai_model' => $settings['openai_model'] ?? 'gpt-4o',
             'google_enabled' => $settings['google_enabled'] ?? false,
-            'google_model' => $settings['google_model'] ?? 'gemini-1.5-pro',
+            'google_model' => $settings['google_model'] ?? 'gemini-2.0-flash',
             'deepseek_enabled' => $settings['deepseek_enabled'] ?? false,
             'deepseek_model' => $settings['deepseek_model'] ?? 'deepseek-chat',
             'max_tokens' => $settings['max_tokens'] ?? 4096,
             'temperature' => $settings['temperature'] ?? '0.7',
+            // Subscription model assignments
+            'free_model' => $settings['free_model'] ?? 'gemini-2.0-flash-lite',
+            'starter_model' => $settings['starter_model'] ?? 'gpt-4o-mini',
+            'professional_model' => $settings['professional_model'] ?? 'claude-sonnet-4-20250514',
+            'enterprise_model' => $settings['enterprise_model'] ?? 'claude-sonnet-4-20250514',
         ]);
 
         // Load masked API keys
@@ -89,6 +94,32 @@ class AISettings extends Page implements HasForms
                                 'google' => 'Google (Gemini)',
                                 'deepseek' => 'DeepSeek',
                             ])
+                            ->required(),
+                    ]),
+
+                Section::make('Modèles par abonnement')
+                    ->description('Configurez le modèle IA attribué à chaque type d\'abonnement.')
+                    ->icon('heroicon-o-credit-card')
+                    ->schema([
+                        Select::make('free_model')
+                            ->label('Plan Gratuit')
+                            ->options($this->getAllModelsOptions())
+                            ->helperText('Modèle économique recommandé')
+                            ->required(),
+                        Select::make('starter_model')
+                            ->label('Plan Starter')
+                            ->options($this->getAllModelsOptions())
+                            ->helperText('Bon rapport qualité/prix')
+                            ->required(),
+                        Select::make('professional_model')
+                            ->label('Plan Professional')
+                            ->options($this->getAllModelsOptions())
+                            ->helperText('Modèle performant')
+                            ->required(),
+                        Select::make('enterprise_model')
+                            ->label('Plan Enterprise')
+                            ->options($this->getAllModelsOptions())
+                            ->helperText('Meilleur modèle disponible')
                             ->required(),
                     ]),
 
@@ -332,6 +363,40 @@ class AISettings extends Page implements HasForms
         }
 
         return '❌ Clé API non configurée';
+    }
+
+    protected function getAllModelsOptions(): array
+    {
+        return [
+            'Anthropic (Claude)' => [
+                'claude-sonnet-4-20250514' => 'Claude Sonnet 4 ★',
+                'claude-3-5-sonnet-20241022' => 'Claude 3.5 Sonnet',
+                'claude-3-5-haiku-20241022' => 'Claude 3.5 Haiku',
+                'claude-3-haiku-20240307' => 'Claude 3 Haiku',
+                'claude-3-opus-20240229' => 'Claude 3 Opus (Premium)',
+            ],
+            'OpenAI (GPT)' => [
+                'gpt-4.5-preview' => 'GPT-4.5 Preview (Premium)',
+                'gpt-4o' => 'GPT-4o',
+                'gpt-4o-mini' => 'GPT-4o Mini',
+                'o3-mini' => 'o3-mini (Reasoning)',
+                'o1' => 'o1 (Reasoning Premium)',
+                'o1-mini' => 'o1-mini (Reasoning)',
+                'gpt-4-turbo' => 'GPT-4 Turbo',
+                'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
+            ],
+            'Google (Gemini)' => [
+                'gemini-2.0-flash' => 'Gemini 2.0 Flash',
+                'gemini-2.0-flash-lite' => 'Gemini 2.0 Flash Lite',
+                'gemini-1.5-pro' => 'Gemini 1.5 Pro',
+                'gemini-1.5-flash' => 'Gemini 1.5 Flash',
+                'gemini-pro' => 'Gemini Pro',
+            ],
+            'DeepSeek' => [
+                'deepseek-chat' => 'DeepSeek Chat',
+                'deepseek-coder' => 'DeepSeek Coder',
+            ],
+        ];
     }
 
     protected function getFormActions(): array

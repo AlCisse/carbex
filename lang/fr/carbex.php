@@ -2255,6 +2255,9 @@ return [
             'upgrade_title' => 'Besoin de plus de tokens ?',
             'upgrade_desc' => 'Passez à un plan supérieur pour augmenter vos limites IA et débloquer plus de fonctionnalités.',
             'view_plans' => 'Voir les plans',
+            'your_model' => 'Votre modèle IA',
+            'your_model_desc' => 'Le modèle IA attribué à votre abonnement',
+            'model_for_plan' => 'Modèle pour le plan :plan',
         ],
     ],
 
