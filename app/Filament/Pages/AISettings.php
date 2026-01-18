@@ -4,13 +4,22 @@ namespace App\Filament\Pages;
 
 use App\Models\AISetting;
 use App\Services\AI\AIManager;
-use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Get;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Filament\Schemas\Schema;
+use Filament\Actions\Action;
 
-class AISettings extends Page
+class AISettings extends Page implements HasForms
 {
+    use InteractsWithForms;
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cpu-chip';
     protected static ?string $navigationLabel = 'Configuration IA';
     protected static string | \UnitEnum | null $navigationGroup = 'Paramètres';
@@ -38,14 +47,14 @@ class AISettings extends Page
         ]);
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $form): Schema
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Provider par défaut')
+                Section::make('Provider par défaut')
                     ->description('Sélectionnez le provider IA utilisé par défaut pour l\'assistant.')
                     ->schema([
-                        Forms\Components\Select::make('default_provider')
+                        Select::make('default_provider')
                             ->label('Provider principal')
                             ->options([
                                 'anthropic' => 'Anthropic (Claude)',
@@ -56,14 +65,14 @@ class AISettings extends Page
                             ->required(),
                     ]),
 
-                Forms\Components\Section::make('Anthropic (Claude)')
+                Section::make('Anthropic (Claude)')
                     ->description('Configuration pour Claude AI')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\Toggle::make('anthropic_enabled')
+                        Toggle::make('anthropic_enabled')
                             ->label('Activer')
                             ->helperText('Les clés API sont stockées dans les secrets Docker'),
-                        Forms\Components\Select::make('anthropic_model')
+                        Select::make('anthropic_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
                                 'claude-sonnet-4-20250514' => 'Claude Sonnet 4 ★',
@@ -71,20 +80,20 @@ class AISettings extends Page
                                 'claude-3-haiku-20240307' => 'Claude 3 Haiku',
                                 'claude-3-opus-20240229' => 'Claude 3 Opus (Premium)',
                             ])
-                            ->visible(fn (Forms\Get $get) => $get('anthropic_enabled')),
-                        Forms\Components\Placeholder::make('anthropic_status')
+                            ->visible(fn (Get $get) => $get('anthropic_enabled')),
+                        Placeholder::make('anthropic_status')
                             ->label('Statut')
                             ->content(fn () => $this->getProviderStatus('anthropic')),
                     ]),
 
-                Forms\Components\Section::make('OpenAI (GPT)')
+                Section::make('OpenAI (GPT)')
                     ->description('Configuration pour GPT')
                     ->collapsible()
                     ->collapsed()
                     ->schema([
-                        Forms\Components\Toggle::make('openai_enabled')
+                        Toggle::make('openai_enabled')
                             ->label('Activer'),
-                        Forms\Components\Select::make('openai_model')
+                        Select::make('openai_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
                                 'gpt-4o' => 'GPT-4o ★',
@@ -92,62 +101,62 @@ class AISettings extends Page
                                 'gpt-4-turbo' => 'GPT-4 Turbo',
                                 'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
                             ])
-                            ->visible(fn (Forms\Get $get) => $get('openai_enabled')),
-                        Forms\Components\Placeholder::make('openai_status')
+                            ->visible(fn (Get $get) => $get('openai_enabled')),
+                        Placeholder::make('openai_status')
                             ->label('Statut')
                             ->content(fn () => $this->getProviderStatus('openai')),
                     ]),
 
-                Forms\Components\Section::make('Google (Gemini)')
+                Section::make('Google (Gemini)')
                     ->description('Configuration pour Gemini')
                     ->collapsible()
                     ->collapsed()
                     ->schema([
-                        Forms\Components\Toggle::make('google_enabled')
+                        Toggle::make('google_enabled')
                             ->label('Activer'),
-                        Forms\Components\Select::make('google_model')
+                        Select::make('google_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
                                 'gemini-1.5-pro' => 'Gemini 1.5 Pro ★',
                                 'gemini-1.5-flash' => 'Gemini 1.5 Flash',
                                 'gemini-pro' => 'Gemini Pro',
                             ])
-                            ->visible(fn (Forms\Get $get) => $get('google_enabled')),
-                        Forms\Components\Placeholder::make('google_status')
+                            ->visible(fn (Get $get) => $get('google_enabled')),
+                        Placeholder::make('google_status')
                             ->label('Statut')
                             ->content(fn () => $this->getProviderStatus('google')),
                     ]),
 
-                Forms\Components\Section::make('DeepSeek')
+                Section::make('DeepSeek')
                     ->description('Configuration pour DeepSeek')
                     ->collapsible()
                     ->collapsed()
                     ->schema([
-                        Forms\Components\Toggle::make('deepseek_enabled')
+                        Toggle::make('deepseek_enabled')
                             ->label('Activer'),
-                        Forms\Components\Select::make('deepseek_model')
+                        Select::make('deepseek_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
                                 'deepseek-chat' => 'DeepSeek Chat ★',
                                 'deepseek-coder' => 'DeepSeek Coder',
                             ])
-                            ->visible(fn (Forms\Get $get) => $get('deepseek_enabled')),
-                        Forms\Components\Placeholder::make('deepseek_status')
+                            ->visible(fn (Get $get) => $get('deepseek_enabled')),
+                        Placeholder::make('deepseek_status')
                             ->label('Statut')
                             ->content(fn () => $this->getProviderStatus('deepseek')),
                     ]),
 
-                Forms\Components\Section::make('Paramètres avancés')
+                Section::make('Paramètres avancés')
                     ->collapsible()
                     ->collapsed()
                     ->schema([
-                        Forms\Components\TextInput::make('max_tokens')
+                        TextInput::make('max_tokens')
                             ->label('Tokens maximum')
                             ->numeric()
                             ->minValue(256)
                             ->maxValue(8192)
                             ->helperText('Nombre maximum de tokens par réponse'),
-                        Forms\Components\TextInput::make('temperature')
+                        TextInput::make('temperature')
                             ->label('Température')
                             ->helperText('0.0 = déterministe, 1.0 = créatif'),
                     ]),
@@ -199,7 +208,7 @@ class AISettings extends Page
     protected function getFormActions(): array
     {
         return [
-            Forms\Components\Actions\Action::make('save')
+            Action::make('save')
                 ->label('Sauvegarder')
                 ->submit('save'),
         ];

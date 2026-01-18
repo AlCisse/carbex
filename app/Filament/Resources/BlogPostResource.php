@@ -5,6 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\BlogPostResource\Pages;
 use App\Models\BlogPost;
 use App\Models\User;
+use Filament\Actions\Action;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -191,19 +195,17 @@ class BlogPostResource extends Resource
                     ->relationship('author', 'name'),
             ])
             ->actions([
-                Tables\Actions\Action::make('view_site')
+                Action::make('view_site')
                     ->label('Voir')
                     ->icon('heroicon-o-eye')
                     ->url(fn (BlogPost $record): string => route('blog.show', $record->slug))
                     ->openUrlInNewTab()
                     ->visible(fn (BlogPost $record): bool => $record->isPublished()),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                DeleteBulkAction::make(),
             ]);
     }
 
