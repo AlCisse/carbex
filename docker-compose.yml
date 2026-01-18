@@ -24,7 +24,8 @@ services:
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html:cached
+      - vendor_data:/var/www/html/vendor
     environment:
       APP_ENV: local
       APP_DEBUG: "true"
@@ -186,6 +187,8 @@ volumes:
   meilisearch_data:
     driver: local
   usearch_data:
+    driver: local
+  vendor_data:
     driver: local
 
 networks:
