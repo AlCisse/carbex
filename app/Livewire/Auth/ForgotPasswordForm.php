@@ -9,7 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.guest')]
-#[Title('Mot de passe oublie - Carbex')]
+#[Title('Mot de passe oublie - LinsCarbon')]
 class ForgotPasswordForm extends Component
 {
     #[Rule('required|email')]

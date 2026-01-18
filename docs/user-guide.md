@@ -1,4 +1,4 @@
-# Guide Utilisateur Carbex
+# Guide Utilisateur LinsCarbon
 
 > Plateforme de Bilan Carbone pour PME Européennes
 
@@ -23,7 +23,7 @@
 
 ### Création de compte
 
-1. Rendez-vous sur [carbex.app](https://carbex.app)
+1. Rendez-vous sur [linscarbon.app](https://linscarbon.app)
 2. Cliquez sur **Créer un compte**
 3. Renseignez vos informations :
    - Email professionnel
@@ -97,7 +97,7 @@ Le tableau de bord présente une vue synthétique de votre empreinte carbone.
 
 ### Périmètre organisationnel
 
-Carbex supporte deux approches :
+LinsCarbon supporte deux approches :
 
 - **Contrôle opérationnel** : 100% des émissions des sites que vous contrôlez
 - **Part du capital** : Émissions au prorata de votre participation
@@ -200,7 +200,7 @@ Le calcul des émissions est automatique selon les facteurs d'émission.
 
 ### Catégorisation automatique
 
-Carbex catégorise automatiquement vos transactions :
+LinsCarbon catégorise automatiquement vos transactions :
 
 - **IA intégrée** : Analyse du libellé et du marchand
 - **Codes MCC** : Classification par code marchand
@@ -217,7 +217,7 @@ Pour corriger une catégorie :
 
 ### Fonctionnalités
 
-L'assistant IA Carbex vous aide à :
+L'assistant IA LinsCarbon vous aide à :
 
 - **Analyser** vos données carbone
 - **Répondre** à vos questions sur la conformité
@@ -390,7 +390,7 @@ Configurez vos préférences IA :
 
 ### Général
 
-**Q : Carbex est-il conforme au RGPD ?**
+**Q : LinsCarbon est-il conforme au RGPD ?**
 > Oui, vos données sont hébergées en Europe (OVH France) et chiffrées. Vous pouvez exporter ou supprimer vos données à tout moment.
 
 **Q : Puis-je essayer gratuitement ?**
@@ -429,16 +429,16 @@ Configurez vos préférences IA :
 
 ### Contact
 
-- **Email** : support@carbex.app
+- **Email** : support@linscarbon.app
 - **Chat** : Icône en bas à droite (heures ouvrées)
-- **Documentation** : docs.carbex.app
+- **Documentation** : docs.linscarbon.app
 
 ### Ressources
 
-- [Centre d'aide](https://help.carbex.app)
-- [Tutoriels vidéo](https://carbex.app/tutorials)
-- [Blog](https://carbex.app/blog)
-- [Webinaires](https://carbex.app/webinars)
+- [Centre d'aide](https://help.linscarbon.app)
+- [Tutoriels vidéo](https://linscarbon.app/tutorials)
+- [Blog](https://linscarbon.app/blog)
+- [Webinaires](https://linscarbon.app/webinars)
 
 ---
 

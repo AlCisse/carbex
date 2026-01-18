@@ -19,10 +19,10 @@ use Livewire\Component;
  *
  * Part of Phase 10: Extended regulatory compliance (T177-T179).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T177-T179
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T177-T179
  */
 #[Layout('layouts.app')]
-#[Title('Conformité réglementaire - Carbex')]
+#[Title('Conformité réglementaire - LinsCarbon')]
 class ComplianceChecklist extends Component
 {
     public string $selectedFramework = 'all';
@@ -103,7 +103,7 @@ class ComplianceChecklist extends Component
                 'code' => 'csrd',
                 'name' => 'CSRD / ESRS',
                 'full_name' => 'Corporate Sustainability Reporting Directive',
-                'description' => __('carbex.compliance.frameworks.csrd_desc'),
+                'description' => __('linscarbon.compliance.frameworks.csrd_desc'),
                 'applicable' => $this->organizationProfile['has_csrd_obligation'] ?? false,
                 'icon' => 'document-text',
                 'color' => 'blue',
@@ -112,7 +112,7 @@ class ComplianceChecklist extends Component
                 'code' => 'iso14064',
                 'name' => 'ISO 14064-1',
                 'full_name' => 'Greenhouse Gas Accounting & Verification',
-                'description' => __('carbex.compliance.frameworks.iso14064_desc'),
+                'description' => __('linscarbon.compliance.frameworks.iso14064_desc'),
                 'applicable' => true,
                 'icon' => 'shield-check',
                 'color' => 'green',
@@ -121,7 +121,7 @@ class ComplianceChecklist extends Component
                 'code' => 'iso14001',
                 'name' => 'ISO 14001',
                 'full_name' => 'Environmental Management System',
-                'description' => __('carbex.compliance.frameworks.iso14001_desc'),
+                'description' => __('linscarbon.compliance.frameworks.iso14001_desc'),
                 'applicable' => true,
                 'icon' => 'cog',
                 'color' => 'teal',
@@ -130,7 +130,7 @@ class ComplianceChecklist extends Component
                 'code' => 'beges',
                 'name' => 'BEGES',
                 'full_name' => 'Bilan des Émissions de GES',
-                'description' => __('carbex.compliance.frameworks.beges_desc'),
+                'description' => __('linscarbon.compliance.frameworks.beges_desc'),
                 'applicable' => ($this->organizationProfile['country'] ?? '') === 'FR'
                     && ($this->organizationProfile['employee_count'] ?? 0) >= 500,
                 'icon' => 'chart-bar',
@@ -140,7 +140,7 @@ class ComplianceChecklist extends Component
                 'code' => 'ghg',
                 'name' => 'GHG Protocol',
                 'full_name' => 'Greenhouse Gas Protocol',
-                'description' => __('carbex.compliance.frameworks.ghg_desc'),
+                'description' => __('linscarbon.compliance.frameworks.ghg_desc'),
                 'applicable' => true,
                 'icon' => 'globe',
                 'color' => 'emerald',
@@ -188,50 +188,50 @@ class ComplianceChecklist extends Component
             'items' => [
                 [
                     'code' => 'E1-1',
-                    'title' => __('carbex.compliance.csrd.e1_1'),
-                    'description' => __('carbex.compliance.csrd.e1_1_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_1'),
+                    'description' => __('linscarbon.compliance.csrd.e1_1_desc'),
                     'completed' => $hasTargets,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'E1-2',
-                    'title' => __('carbex.compliance.csrd.e1_2'),
-                    'description' => __('carbex.compliance.csrd.e1_2_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_2'),
+                    'description' => __('linscarbon.compliance.csrd.e1_2_desc'),
                     'completed' => $hasActions,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'E1-4',
-                    'title' => __('carbex.compliance.csrd.e1_4'),
-                    'description' => __('carbex.compliance.csrd.e1_4_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_4'),
+                    'description' => __('linscarbon.compliance.csrd.e1_4_desc'),
                     'completed' => $hasScope1 && $hasScope2,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'E1-5',
-                    'title' => __('carbex.compliance.csrd.e1_5'),
-                    'description' => __('carbex.compliance.csrd.e1_5_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_5'),
+                    'description' => __('linscarbon.compliance.csrd.e1_5_desc'),
                     'completed' => false, // Would need energy consumption data
                     'priority' => 'medium',
                 ],
                 [
                     'code' => 'E1-6',
-                    'title' => __('carbex.compliance.csrd.e1_6'),
-                    'description' => __('carbex.compliance.csrd.e1_6_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_6'),
+                    'description' => __('linscarbon.compliance.csrd.e1_6_desc'),
                     'completed' => $hasScope1 && $hasScope2 && $hasScope3,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'E1-7',
-                    'title' => __('carbex.compliance.csrd.e1_7'),
-                    'description' => __('carbex.compliance.csrd.e1_7_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_7'),
+                    'description' => __('linscarbon.compliance.csrd.e1_7_desc'),
                     'completed' => false, // Would need carbon credit data
                     'priority' => 'low',
                 ],
                 [
                     'code' => 'E1-9',
-                    'title' => __('carbex.compliance.csrd.e1_9'),
-                    'description' => __('carbex.compliance.csrd.e1_9_desc'),
+                    'title' => __('linscarbon.compliance.csrd.e1_9'),
+                    'description' => __('linscarbon.compliance.csrd.e1_9_desc'),
                     'completed' => false, // Would need financial impact data
                     'priority' => 'medium',
                 ],
@@ -250,43 +250,43 @@ class ComplianceChecklist extends Component
             'items' => [
                 [
                     'code' => '4.1',
-                    'title' => __('carbex.compliance.iso14064.boundaries'),
-                    'description' => __('carbex.compliance.iso14064.boundaries_desc'),
+                    'title' => __('linscarbon.compliance.iso14064.boundaries'),
+                    'description' => __('linscarbon.compliance.iso14064.boundaries_desc'),
                     'completed' => $organization?->sites()->count() > 0,
                     'priority' => 'high',
                 ],
                 [
                     'code' => '4.2',
-                    'title' => __('carbex.compliance.iso14064.sources'),
-                    'description' => __('carbex.compliance.iso14064.sources_desc'),
+                    'title' => __('linscarbon.compliance.iso14064.sources'),
+                    'description' => __('linscarbon.compliance.iso14064.sources_desc'),
                     'completed' => $hasScope1,
                     'priority' => 'high',
                 ],
                 [
                     'code' => '5.1',
-                    'title' => __('carbex.compliance.iso14064.quantification'),
-                    'description' => __('carbex.compliance.iso14064.quantification_desc'),
+                    'title' => __('linscarbon.compliance.iso14064.quantification'),
+                    'description' => __('linscarbon.compliance.iso14064.quantification_desc'),
                     'completed' => $hasAssessment,
                     'priority' => 'high',
                 ],
                 [
                     'code' => '5.2',
-                    'title' => __('carbex.compliance.iso14064.emission_factors'),
-                    'description' => __('carbex.compliance.iso14064.emission_factors_desc'),
+                    'title' => __('linscarbon.compliance.iso14064.emission_factors'),
+                    'description' => __('linscarbon.compliance.iso14064.emission_factors_desc'),
                     'completed' => true, // Using ADEME factors
                     'priority' => 'medium',
                 ],
                 [
                     'code' => '6.1',
-                    'title' => __('carbex.compliance.iso14064.documentation'),
-                    'description' => __('carbex.compliance.iso14064.documentation_desc'),
+                    'title' => __('linscarbon.compliance.iso14064.documentation'),
+                    'description' => __('linscarbon.compliance.iso14064.documentation_desc'),
                     'completed' => $organization?->reports()->count() > 0,
                     'priority' => 'medium',
                 ],
                 [
                     'code' => '7.1',
-                    'title' => __('carbex.compliance.iso14064.verification'),
-                    'description' => __('carbex.compliance.iso14064.verification_desc'),
+                    'title' => __('linscarbon.compliance.iso14064.verification'),
+                    'description' => __('linscarbon.compliance.iso14064.verification_desc'),
                     'completed' => false, // Would need external verification
                     'priority' => 'low',
                 ],
@@ -305,43 +305,43 @@ class ComplianceChecklist extends Component
             'items' => [
                 [
                     'code' => '4.1',
-                    'title' => __('carbex.compliance.iso14001.context'),
-                    'description' => __('carbex.compliance.iso14001.context_desc'),
+                    'title' => __('linscarbon.compliance.iso14001.context'),
+                    'description' => __('linscarbon.compliance.iso14001.context_desc'),
                     'completed' => $organization !== null,
                     'priority' => 'high',
                 ],
                 [
                     'code' => '6.1.2',
-                    'title' => __('carbex.compliance.iso14001.aspects'),
-                    'description' => __('carbex.compliance.iso14001.aspects_desc'),
+                    'title' => __('linscarbon.compliance.iso14001.aspects'),
+                    'description' => __('linscarbon.compliance.iso14001.aspects_desc'),
                     'completed' => $hasAssessment,
                     'priority' => 'high',
                 ],
                 [
                     'code' => '6.2',
-                    'title' => __('carbex.compliance.iso14001.objectives'),
-                    'description' => __('carbex.compliance.iso14001.objectives_desc'),
+                    'title' => __('linscarbon.compliance.iso14001.objectives'),
+                    'description' => __('linscarbon.compliance.iso14001.objectives_desc'),
                     'completed' => $hasTargets,
                     'priority' => 'high',
                 ],
                 [
                     'code' => '8.1',
-                    'title' => __('carbex.compliance.iso14001.operational_control'),
-                    'description' => __('carbex.compliance.iso14001.operational_control_desc'),
+                    'title' => __('linscarbon.compliance.iso14001.operational_control'),
+                    'description' => __('linscarbon.compliance.iso14001.operational_control_desc'),
                     'completed' => $hasActions,
                     'priority' => 'medium',
                 ],
                 [
                     'code' => '9.1',
-                    'title' => __('carbex.compliance.iso14001.monitoring'),
-                    'description' => __('carbex.compliance.iso14001.monitoring_desc'),
+                    'title' => __('linscarbon.compliance.iso14001.monitoring'),
+                    'description' => __('linscarbon.compliance.iso14001.monitoring_desc'),
                     'completed' => $hasAssessment,
                     'priority' => 'medium',
                 ],
                 [
                     'code' => '10.2',
-                    'title' => __('carbex.compliance.iso14001.continual_improvement'),
-                    'description' => __('carbex.compliance.iso14001.continual_improvement_desc'),
+                    'title' => __('linscarbon.compliance.iso14001.continual_improvement'),
+                    'description' => __('linscarbon.compliance.iso14001.continual_improvement_desc'),
                     'completed' => $hasTargets && $hasActions,
                     'priority' => 'high',
                 ],
@@ -360,29 +360,29 @@ class ComplianceChecklist extends Component
             'items' => [
                 [
                     'code' => 'ART-1',
-                    'title' => __('carbex.compliance.beges.scope12'),
-                    'description' => __('carbex.compliance.beges.scope12_desc'),
+                    'title' => __('linscarbon.compliance.beges.scope12'),
+                    'description' => __('linscarbon.compliance.beges.scope12_desc'),
                     'completed' => $hasScope1 && $hasScope2,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'ART-2',
-                    'title' => __('carbex.compliance.beges.action_plan'),
-                    'description' => __('carbex.compliance.beges.action_plan_desc'),
+                    'title' => __('linscarbon.compliance.beges.action_plan'),
+                    'description' => __('linscarbon.compliance.beges.action_plan_desc'),
                     'completed' => $organization?->actions()->count() > 0,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'ART-3',
-                    'title' => __('carbex.compliance.beges.publication'),
-                    'description' => __('carbex.compliance.beges.publication_desc'),
+                    'title' => __('linscarbon.compliance.beges.publication'),
+                    'description' => __('linscarbon.compliance.beges.publication_desc'),
                     'completed' => false, // Would need ADEME publication
                     'priority' => 'medium',
                 ],
                 [
                     'code' => 'ART-4',
-                    'title' => __('carbex.compliance.beges.update'),
-                    'description' => __('carbex.compliance.beges.update_desc'),
+                    'title' => __('linscarbon.compliance.beges.update'),
+                    'description' => __('linscarbon.compliance.beges.update_desc'),
                     'completed' => $organization?->assessments()->count() >= 2,
                     'priority' => 'medium',
                 ],
@@ -401,29 +401,29 @@ class ComplianceChecklist extends Component
             'items' => [
                 [
                     'code' => 'SCOPE1',
-                    'title' => __('carbex.compliance.ghg.scope1'),
-                    'description' => __('carbex.compliance.ghg.scope1_desc'),
+                    'title' => __('linscarbon.compliance.ghg.scope1'),
+                    'description' => __('linscarbon.compliance.ghg.scope1_desc'),
                     'completed' => $hasScope1,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'SCOPE2',
-                    'title' => __('carbex.compliance.ghg.scope2'),
-                    'description' => __('carbex.compliance.ghg.scope2_desc'),
+                    'title' => __('linscarbon.compliance.ghg.scope2'),
+                    'description' => __('linscarbon.compliance.ghg.scope2_desc'),
                     'completed' => $hasScope2,
                     'priority' => 'high',
                 ],
                 [
                     'code' => 'SCOPE3',
-                    'title' => __('carbex.compliance.ghg.scope3'),
-                    'description' => __('carbex.compliance.ghg.scope3_desc'),
+                    'title' => __('linscarbon.compliance.ghg.scope3'),
+                    'description' => __('linscarbon.compliance.ghg.scope3_desc'),
                     'completed' => $hasScope3,
                     'priority' => 'medium',
                 ],
                 [
                     'code' => 'BOUNDARY',
-                    'title' => __('carbex.compliance.ghg.boundary'),
-                    'description' => __('carbex.compliance.ghg.boundary_desc'),
+                    'title' => __('linscarbon.compliance.ghg.boundary'),
+                    'description' => __('linscarbon.compliance.ghg.boundary_desc'),
                     'completed' => $organization?->sites()->count() > 0,
                     'priority' => 'high',
                 ],
@@ -441,9 +441,9 @@ class ComplianceChecklist extends Component
         if ($this->organizationProfile['has_csrd_obligation'] ?? false) {
             $this->deadlines[] = [
                 'framework' => 'CSRD',
-                'title' => __('carbex.compliance.deadlines.csrd_report'),
+                'title' => __('linscarbon.compliance.deadlines.csrd_report'),
                 'date' => Carbon::create($currentYear + 1, 1, 1),
-                'description' => __('carbex.compliance.deadlines.csrd_report_desc'),
+                'description' => __('linscarbon.compliance.deadlines.csrd_report_desc'),
                 'urgent' => true,
             ];
         }
@@ -453,9 +453,9 @@ class ComplianceChecklist extends Component
             && ($this->organizationProfile['employee_count'] ?? 0) >= 500) {
             $this->deadlines[] = [
                 'framework' => 'BEGES',
-                'title' => __('carbex.compliance.deadlines.beges_update'),
+                'title' => __('linscarbon.compliance.deadlines.beges_update'),
                 'date' => Carbon::create($currentYear + 1, 12, 31),
-                'description' => __('carbex.compliance.deadlines.beges_update_desc'),
+                'description' => __('linscarbon.compliance.deadlines.beges_update_desc'),
                 'urgent' => false,
             ];
         }

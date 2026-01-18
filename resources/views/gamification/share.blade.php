@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $badge->name }} - {{ $organization->name }} | Carbex</title>
+    <title>{{ $badge->name }} - {{ $organization->name }} | LinsCarbon</title>
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="{{ __('carbex.gamification.badge_og_title', ['organization' => $organization->name, 'badge' => $badge->name]) }}">
+    <meta property="og:title" content="{{ __('linscarbon.gamification.badge_og_title', ['organization' => $organization->name, 'badge' => $badge->name]) }}">
     <meta property="og:description" content="{{ $badge->description }}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ asset('images/badges/' . $badge->code . '.png') }}">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ __('carbex.gamification.badge_og_title', ['organization' => $organization->name, 'badge' => $badge->name]) }}">
+    <meta name="twitter:title" content="{{ __('linscarbon.gamification.badge_og_title', ['organization' => $organization->name, 'badge' => $badge->name]) }}">
     <meta name="twitter:description" content="{{ $badge->description }}">
 
     @vite(['resources/css/app.css'])
@@ -49,20 +49,20 @@
 
             {{-- Content --}}
             <div class="p-8 text-center">
-                <p class="text-slate-500 dark:text-slate-400 text-sm mb-2">{{ __('carbex.gamification.badge_earned_by') }}</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-2">{{ __('linscarbon.gamification.badge_earned_by') }}</p>
                 <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">{{ $organization->name }}</h2>
 
                 <div class="flex items-center justify-center gap-2 text-sm text-slate-500 dark:text-slate-400">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>{{ __('carbex.gamification.earned_on') }} {{ \Carbon\Carbon::parse($earned_at)->format('d/m/Y') }}</span>
+                    <span>{{ __('linscarbon.gamification.earned_on') }} {{ \Carbon\Carbon::parse($earned_at)->format('d/m/Y') }}</span>
                 </div>
 
                 <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
                     <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">
                         <span class="text-emerald-800 dark:text-emerald-300 font-medium">+{{ $badge->points }}</span>
-                        <span class="text-emerald-600 dark:text-emerald-400 text-sm">{{ __('carbex.gamification.points') }}</span>
+                        <span class="text-emerald-600 dark:text-emerald-400 text-sm">{{ __('linscarbon.gamification.points') }}</span>
                     </div>
                 </div>
             </div>
@@ -71,18 +71,18 @@
             <div class="px-8 pb-8">
                 <a href="{{ route('home') }}"
                    class="block w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-center rounded-lg font-medium transition-colors">
-                    {{ __('carbex.gamification.discover_carbex') }}
+                    {{ __('linscarbon.gamification.discover_linscarbon') }}
                 </a>
             </div>
         </div>
 
-        {{-- Logo Carbex --}}
+        {{-- Logo LinsCarbon --}}
         <div class="mt-6 text-center">
             <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-slate-400 hover:text-emerald-600 transition-colors">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                 </svg>
-                <span class="font-semibold">Carbex</span>
+                <span class="font-semibold">LinsCarbon</span>
             </a>
         </div>
     </div>

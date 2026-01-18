@@ -77,9 +77,9 @@ class UserInvitation extends Notification implements ShouldQueue
     protected function getSubject(string $locale): string
     {
         return match ($locale) {
-            'fr' => "Invitation a rejoindre {$this->organization->name} sur Carbex",
-            'de' => "Einladung zu {$this->organization->name} auf Carbex",
-            default => "Invitation to join {$this->organization->name} on Carbex",
+            'fr' => "Invitation a rejoindre {$this->organization->name} sur LinsCarbon",
+            'de' => "Einladung zu {$this->organization->name} auf LinsCarbon",
+            default => "Invitation to join {$this->organization->name} on LinsCarbon",
         };
     }
 
@@ -102,12 +102,12 @@ class UserInvitation extends Notification implements ShouldQueue
      */
     protected function getIntroLine(string $locale): string
     {
-        $inviterName = $this->invitedBy?->name ?? __('carbex.common.someone');
+        $inviterName = $this->invitedBy?->name ?? __('linscarbon.common.someone');
 
         return match ($locale) {
-            'fr' => "{$inviterName} vous invite a rejoindre l'equipe sur Carbex, la plateforme de suivi d'empreinte carbone.",
-            'de' => "{$inviterName} ladt Sie ein, dem Team auf Carbex beizutreten, der Plattform zur CO2-Fussabdruck-Verfolgung.",
-            default => "{$inviterName} has invited you to join the team on Carbex, the carbon footprint tracking platform.",
+            'fr' => "{$inviterName} vous invite a rejoindre l'equipe sur LinsCarbon, la plateforme de suivi d'empreinte carbone.",
+            'de' => "{$inviterName} ladt Sie ein, dem Team auf LinsCarbon beizutreten, der Plattform zur CO2-Fussabdruck-Verfolgung.",
+            default => "{$inviterName} has invited you to join the team on LinsCarbon, the carbon footprint tracking platform.",
         };
     }
 
@@ -165,9 +165,9 @@ class UserInvitation extends Notification implements ShouldQueue
     protected function getSalutation(string $locale): string
     {
         return match ($locale) {
-            'fr' => 'L\'equipe Carbex',
-            'de' => 'Das Carbex-Team',
-            default => 'The Carbex Team',
+            'fr' => 'L\'equipe LinsCarbon',
+            'de' => 'Das LinsCarbon-Team',
+            default => 'The LinsCarbon Team',
         };
     }
 

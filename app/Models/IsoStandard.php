@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * Represents ISO environmental and quality standards.
  *
  * Tasks T177 - Phase 10 (TrackZero Features)
- * Constitution Carbex v3.0 - Section 8 (Conformité)
+ * Constitution LinsCarbon v3.0 - Section 8 (Conformité)
  *
  * @property string $id
  * @property string $code
@@ -114,10 +114,10 @@ class IsoStandard extends Model
     public function getCategoryLabelAttribute(): string
     {
         return match ($this->category) {
-            self::CATEGORY_ENVIRONMENTAL => __('carbex.compliance.iso_categories.environmental'),
-            self::CATEGORY_ENERGY => __('carbex.compliance.iso_categories.energy'),
-            self::CATEGORY_QUALITY => __('carbex.compliance.iso_categories.quality'),
-            self::CATEGORY_CARBON => __('carbex.compliance.iso_categories.carbon'),
+            self::CATEGORY_ENVIRONMENTAL => __('linscarbon.compliance.iso_categories.environmental'),
+            self::CATEGORY_ENERGY => __('linscarbon.compliance.iso_categories.energy'),
+            self::CATEGORY_QUALITY => __('linscarbon.compliance.iso_categories.quality'),
+            self::CATEGORY_CARBON => __('linscarbon.compliance.iso_categories.carbon'),
             default => $this->category,
         };
     }

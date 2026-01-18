@@ -3,16 +3,16 @@
     <div class="sm:flex sm:items-center sm:justify-between">
         <div>
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                {{ __('carbex.sites.comparison.title') }}
+                {{ __('linscarbon.sites.comparison.title') }}
             </h1>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {{ __('carbex.sites.comparison.subtitle') }}
+                {{ __('linscarbon.sites.comparison.subtitle') }}
             </p>
         </div>
         <div class="mt-4 sm:mt-0">
             <a href="{{ route('settings.sites') }}" class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-200 dark:ring-gray-700 dark:hover:bg-gray-700">
                 <x-heroicon-o-cog-6-tooth class="h-5 w-5" />
-                {{ __('carbex.sites.manage_sites') }}
+                {{ __('linscarbon.sites.manage_sites') }}
             </a>
         </div>
     </div>
@@ -26,7 +26,7 @@
                     <x-heroicon-o-building-office-2 class="h-6 w-6 text-green-600 dark:text-green-400" />
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.sites.comparison.total_sites') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.sites.comparison.total_sites') }}</p>
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $this->sites->count() }}</p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <x-heroicon-o-cloud class="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.sites.comparison.total_emissions') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.sites.comparison.total_emissions') }}</p>
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ number_format($this->totalEmissions, 1) }} <span class="text-sm font-normal text-gray-500">t CO₂e</span></p>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <x-heroicon-o-arrow-trending-up class="h-6 w-6 text-amber-600 dark:text-amber-400" />
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.sites.comparison.top_emitter') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.sites.comparison.top_emitter') }}</p>
                     @if($this->topEmitter)
                         <p class="text-lg font-bold text-gray-900 dark:text-white truncate" title="{{ $this->topEmitter['name'] }}">{{ Str::limit($this->topEmitter['name'], 20) }}</p>
                         <p class="text-sm text-gray-500">{{ number_format($this->topEmitter['total_co2e_tonnes'], 1) }} t CO₂e</p>
@@ -70,7 +70,7 @@
                     <x-heroicon-o-chart-bar class="h-6 w-6 text-purple-600 dark:text-purple-400" />
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.sites.comparison.average_per_site') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.sites.comparison.average_per_site') }}</p>
                     <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ number_format($this->averagePerSite, 1) }} <span class="text-sm font-normal text-gray-500">t CO₂e</span></p>
                 </div>
             </div>
@@ -82,7 +82,7 @@
         <div class="flex flex-wrap items-center gap-4">
             {{-- Year Filter --}}
             <div>
-                <label for="year" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('carbex.sites.comparison.year') }}</label>
+                <label for="year" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('linscarbon.sites.comparison.year') }}</label>
                 <select wire:model.live="selectedYear" id="year" class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
                     @foreach($this->availableYears as $year)
                         <option value="{{ $year }}">{{ $year }}</option>
@@ -92,9 +92,9 @@
 
             {{-- Scope Filter --}}
             <div>
-                <label for="scope" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('carbex.sites.comparison.scope') }}</label>
+                <label for="scope" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('linscarbon.sites.comparison.scope') }}</label>
                 <select wire:model.live="selectedScope" id="scope" class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="">{{ __('carbex.sites.comparison.all_scopes') }}</option>
+                    <option value="">{{ __('linscarbon.sites.comparison.all_scopes') }}</option>
                     <option value="1">Scope 1</option>
                     <option value="2">Scope 2</option>
                     <option value="3">Scope 3</option>
@@ -103,24 +103,24 @@
 
             {{-- Metric Filter --}}
             <div>
-                <label for="metric" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('carbex.sites.comparison.metric') }}</label>
+                <label for="metric" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('linscarbon.sites.comparison.metric') }}</label>
                 <select wire:model.live="comparisonMetric" id="metric" class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="total">{{ __('carbex.sites.comparison.metric_total') }}</option>
-                    <option value="per_m2">{{ __('carbex.sites.comparison.metric_per_m2') }}</option>
-                    <option value="per_employee">{{ __('carbex.sites.comparison.metric_per_employee') }}</option>
+                    <option value="total">{{ __('linscarbon.sites.comparison.metric_total') }}</option>
+                    <option value="per_m2">{{ __('linscarbon.sites.comparison.metric_per_m2') }}</option>
+                    <option value="per_employee">{{ __('linscarbon.sites.comparison.metric_per_employee') }}</option>
                 </select>
             </div>
 
             {{-- Sort By --}}
             <div>
-                <label for="sort" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('carbex.sites.comparison.sort_by') }}</label>
+                <label for="sort" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">{{ __('linscarbon.sites.comparison.sort_by') }}</label>
                 <select wire:model.live="sortBy" id="sort" class="rounded-lg border-gray-300 text-sm shadow-sm focus:border-green-500 focus:ring-green-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="emissions_desc">{{ __('carbex.sites.comparison.sort_emissions_desc') }}</option>
-                    <option value="emissions_asc">{{ __('carbex.sites.comparison.sort_emissions_asc') }}</option>
-                    <option value="name_asc">{{ __('carbex.sites.comparison.sort_name_asc') }}</option>
-                    <option value="name_desc">{{ __('carbex.sites.comparison.sort_name_desc') }}</option>
-                    <option value="intensity_desc">{{ __('carbex.sites.comparison.sort_intensity_desc') }}</option>
-                    <option value="intensity_asc">{{ __('carbex.sites.comparison.sort_intensity_asc') }}</option>
+                    <option value="emissions_desc">{{ __('linscarbon.sites.comparison.sort_emissions_desc') }}</option>
+                    <option value="emissions_asc">{{ __('linscarbon.sites.comparison.sort_emissions_asc') }}</option>
+                    <option value="name_asc">{{ __('linscarbon.sites.comparison.sort_name_asc') }}</option>
+                    <option value="name_desc">{{ __('linscarbon.sites.comparison.sort_name_desc') }}</option>
+                    <option value="intensity_desc">{{ __('linscarbon.sites.comparison.sort_intensity_desc') }}</option>
+                    <option value="intensity_asc">{{ __('linscarbon.sites.comparison.sort_intensity_asc') }}</option>
                 </select>
             </div>
         </div>
@@ -128,17 +128,17 @@
 
     {{-- Chart --}}
     <div class="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
-        <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ __('carbex.sites.comparison.chart_title') }}</h2>
+        <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">{{ __('linscarbon.sites.comparison.chart_title') }}</h2>
         @if($this->sites->count() > 0)
             <div id="site-comparison-chart" wire:ignore></div>
         @else
             <div class="flex flex-col items-center justify-center py-12 text-center">
                 <x-heroicon-o-building-office class="h-12 w-12 text-gray-400" />
-                <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.sites.comparison.no_sites') }}</h3>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.sites.comparison.no_sites_description') }}</p>
+                <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.sites.comparison.no_sites') }}</h3>
+                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.sites.comparison.no_sites_description') }}</p>
                 <a href="{{ route('settings.sites') }}" class="mt-4 inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700">
                     <x-heroicon-o-plus class="h-5 w-5" />
-                    {{ __('carbex.sites.add_site') }}
+                    {{ __('linscarbon.sites.add_site') }}
                 </a>
             </div>
         @endif
@@ -148,14 +148,14 @@
     @if($this->siteEmissions->count() > 0)
     <div class="rounded-lg bg-white shadow dark:bg-gray-800">
         <div class="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{ __('carbex.sites.comparison.table_title') }}</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{ __('linscarbon.sites.comparison.table_title') }}</h2>
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead class="bg-gray-50 dark:bg-gray-900/50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                            {{ __('carbex.sites.comparison.site') }}
+                            {{ __('linscarbon.sites.comparison.site') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                             Scope 1
@@ -167,13 +167,13 @@
                             Scope 3
                         </th>
                         <th scope="col" class="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                            {{ __('carbex.sites.comparison.total') }}
+                            {{ __('linscarbon.sites.comparison.total') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                            {{ __('carbex.sites.comparison.intensity') }}
+                            {{ __('linscarbon.sites.comparison.intensity') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                            {{ __('carbex.sites.comparison.share') }}
+                            {{ __('linscarbon.sites.comparison.share') }}
                         </th>
                     </tr>
                 </thead>
@@ -201,7 +201,7 @@
                                             &bull; {{ number_format($site['floor_area_m2']) }} m²
                                         @endif
                                         @if($site['employee_count'])
-                                            &bull; {{ $site['employee_count'] }} {{ __('carbex.sites.employees') }}
+                                            &bull; {{ $site['employee_count'] }} {{ __('linscarbon.sites.employees') }}
                                         @endif
                                     </p>
                                 </div>
@@ -248,7 +248,7 @@
                 <tfoot class="bg-gray-50 dark:bg-gray-900/50">
                     <tr>
                         <td class="whitespace-nowrap px-6 py-4 font-bold text-gray-900 dark:text-white">
-                            {{ __('carbex.sites.comparison.total') }}
+                            {{ __('linscarbon.sites.comparison.total') }}
                         </td>
                         <td class="whitespace-nowrap px-6 py-4 text-right font-bold text-gray-900 dark:text-white">
                             {{ number_format($this->siteEmissions->sum('scope_1') / 1000, 2) }} t
@@ -276,7 +276,7 @@
     <div class="rounded-lg bg-white p-6 shadow dark:bg-gray-800">
         <h2 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
             <x-heroicon-o-light-bulb class="inline-block h-5 w-5 mr-2 text-amber-500" />
-            {{ __('carbex.sites.comparison.recommendations') }}
+            {{ __('linscarbon.sites.comparison.recommendations') }}
         </h2>
         <div class="grid gap-4 md:grid-cols-2">
             @foreach($this->recommendations as $siteId => $data)
@@ -374,7 +374,7 @@ function initSiteComparisonChart() {
         },
         yaxis: {
             title: {
-                text: '{{ __("carbex.sites.comparison.emissions_unit") }}',
+                text: '{{ __("linscarbon.sites.comparison.emissions_unit") }}',
                 style: {
                     color: '#6B7280',
                     fontSize: '12px'

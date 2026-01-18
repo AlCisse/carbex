@@ -19,12 +19,12 @@
                         <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white {{ $this->isOnline ? 'bg-green-400' : 'bg-gray-400' }}"></span>
                     </div>
                     <div class="ml-3">
-                        <h3 class="font-semibold text-sm">{{ __('carbex.support.title') }}</h3>
+                        <h3 class="font-semibold text-sm">{{ __('linscarbon.support.title') }}</h3>
                         <p class="text-xs text-green-200">{{ $this->statusLabel }}</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-1">
-                    <button wire:click="clearChat" class="p-1.5 hover:bg-white/10 rounded-lg transition" title="{{ __('carbex.support.clear_chat') }}">
+                    <button wire:click="clearChat" class="p-1.5 hover:bg-white/10 rounded-lg transition" title="{{ __('linscarbon.support.clear_chat') }}">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
@@ -48,34 +48,34 @@
                     </div>
                 @empty
                     <div class="text-center text-gray-500 text-sm py-8">
-                        {{ __('carbex.support.start_conversation') }}
+                        {{ __('linscarbon.support.start_conversation') }}
                     </div>
                 @endforelse
 
                 <!-- Contact Form -->
                 @if($showContactForm)
                     <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                        <h4 class="font-medium text-gray-900 mb-3">{{ __('carbex.support.contact_form_title') }}</h4>
+                        <h4 class="font-medium text-gray-900 mb-3">{{ __('linscarbon.support.contact_form_title') }}</h4>
                         <div class="space-y-3">
                             <div>
-                                <label class="block text-xs font-medium text-gray-700 mb-1">{{ __('carbex.support.your_name') }}</label>
+                                <label class="block text-xs font-medium text-gray-700 mb-1">{{ __('linscarbon.support.your_name') }}</label>
                                 <input type="text"
                                        wire:model="userName"
                                        class="w-full text-sm border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
-                                       placeholder="{{ __('carbex.support.name_placeholder') }}">
+                                       placeholder="{{ __('linscarbon.support.name_placeholder') }}">
                                 @error('userName') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
                             </div>
                             <div>
-                                <label class="block text-xs font-medium text-gray-700 mb-1">{{ __('carbex.support.your_email') }}</label>
+                                <label class="block text-xs font-medium text-gray-700 mb-1">{{ __('linscarbon.support.your_email') }}</label>
                                 <input type="email"
                                        wire:model="userEmail"
                                        class="w-full text-sm border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
-                                       placeholder="{{ __('carbex.support.email_placeholder') }}">
+                                       placeholder="{{ __('linscarbon.support.email_placeholder') }}">
                                 @error('userEmail') <span class="text-xs text-red-500">{{ $message }}</span> @enderror
                             </div>
                             <button wire:click="submitContactForm"
                                     class="w-full bg-green-600 text-white text-sm font-medium py-2 rounded-lg hover:bg-green-700 transition">
-                                {{ __('carbex.support.submit_request') }}
+                                {{ __('linscarbon.support.submit_request') }}
                             </button>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
             <!-- Quick Responses (show when no messages or few messages) -->
             @if(count($messages) <= 1)
                 <div class="px-4 pb-2 bg-gray-50">
-                    <p class="text-xs text-gray-500 mb-2">{{ __('carbex.support.quick_help') }}</p>
+                    <p class="text-xs text-gray-500 mb-2">{{ __('linscarbon.support.quick_help') }}</p>
                     <div class="flex flex-wrap gap-2">
                         @foreach($quickResponses as $key => $label)
                             <button wire:click="quickResponse('{{ $key }}')"
@@ -103,7 +103,7 @@
                     <input type="text"
                            wire:model="message"
                            class="flex-1 text-sm border-gray-300 rounded-full px-4 py-2 focus:ring-green-500 focus:border-green-500"
-                           placeholder="{{ __('carbex.support.message_placeholder') }}"
+                           placeholder="{{ __('linscarbon.support.message_placeholder') }}"
                            autocomplete="off">
                     <button type="submit"
                             class="p-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition flex-shrink-0 disabled:opacity-50"

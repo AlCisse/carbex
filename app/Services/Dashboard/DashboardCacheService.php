@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
  */
 class DashboardCacheService
 {
-    private const CACHE_PREFIX = 'carbex_dashboard_';
+    private const CACHE_PREFIX = 'linscarbon_dashboard_';
 
     /**
      * Default TTL in seconds (5 minutes).

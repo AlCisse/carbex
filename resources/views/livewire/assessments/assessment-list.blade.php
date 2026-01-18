@@ -18,14 +18,14 @@
     <!-- Header -->
     <div class="flex items-center justify-between mb-6">
         <div>
-            <h2 class="text-lg font-semibold text-gray-900">{{ __('carbex.assessments.title') }}</h2>
-            <p class="mt-1 text-sm text-gray-500">{{ __('carbex.assessments.subtitle') }}</p>
+            <h2 class="text-lg font-semibold text-gray-900">{{ __('linscarbon.assessments.title') }}</h2>
+            <p class="mt-1 text-sm text-gray-500">{{ __('linscarbon.assessments.subtitle') }}</p>
         </div>
         <button wire:click="openCreateModal" type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
             <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
-            {{ __('carbex.assessments.new') }}
+            {{ __('linscarbon.assessments.new') }}
         </button>
     </div>
 
@@ -35,22 +35,22 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{ __('carbex.assessments.year') }}
+                        {{ __('linscarbon.assessments.year') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{ __('carbex.assessments.revenue') }}
+                        {{ __('linscarbon.assessments.revenue') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{ __('carbex.assessments.employees') }}
+                        {{ __('linscarbon.assessments.employees') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{ __('carbex.assessments.status') }}
+                        {{ __('linscarbon.assessments.status') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{ __('carbex.assessments.progress') }}
+                        {{ __('linscarbon.assessments.progress') }}
                     </th>
                     <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        {{ __('carbex.common.actions') }}
+                        {{ __('linscarbon.common.actions') }}
                     </th>
                 </tr>
             </thead>
@@ -82,15 +82,15 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             @if($assessment->isActive())
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    {{ __('carbex.assessments.status_active') }}
+                                    {{ __('linscarbon.assessments.status_active') }}
                                 </span>
                             @elseif($assessment->isCompleted())
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    {{ __('carbex.assessments.status_completed') }}
+                                    {{ __('linscarbon.assessments.status_completed') }}
                                 </span>
                             @else
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                                    {{ __('carbex.assessments.status_draft') }}
+                                    {{ __('linscarbon.assessments.status_draft') }}
                                 </span>
                             @endif
                         </td>
@@ -105,19 +105,19 @@
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-end space-x-2">
                                 @if(!$assessment->isActive())
-                                    <button wire:click="activateAssessment('{{ $assessment->id }}')" class="text-green-600 hover:text-green-900" title="{{ __('carbex.assessments.activate') }}">
+                                    <button wire:click="activateAssessment('{{ $assessment->id }}')" class="text-green-600 hover:text-green-900" title="{{ __('linscarbon.assessments.activate') }}">
                                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                     </button>
                                 @endif
-                                <button wire:click="openEditModal('{{ $assessment->id }}')" class="text-indigo-600 hover:text-indigo-900" title="{{ __('carbex.common.edit') }}">
+                                <button wire:click="openEditModal('{{ $assessment->id }}')" class="text-indigo-600 hover:text-indigo-900" title="{{ __('linscarbon.common.edit') }}">
                                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </button>
                                 @if($assessment->isDraft())
-                                    <button wire:click="deleteAssessment('{{ $assessment->id }}')" wire:confirm="{{ __('carbex.assessments.confirm_delete') }}" class="text-red-600 hover:text-red-900" title="{{ __('carbex.common.delete') }}">
+                                    <button wire:click="deleteAssessment('{{ $assessment->id }}')" wire:confirm="{{ __('linscarbon.assessments.confirm_delete') }}" class="text-red-600 hover:text-red-900" title="{{ __('linscarbon.common.delete') }}">
                                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
@@ -132,9 +132,9 @@
                             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
-                            <p class="mt-2">{{ __('carbex.assessments.empty') }}</p>
+                            <p class="mt-2">{{ __('linscarbon.assessments.empty') }}</p>
                             <button wire:click="openCreateModal" class="mt-3 text-green-600 hover:text-green-700 font-medium">
-                                {{ __('carbex.assessments.create_first') }}
+                                {{ __('linscarbon.assessments.create_first') }}
                             </button>
                         </td>
                     </tr>
@@ -155,13 +155,13 @@
                 <form wire:submit="save">
                     <div>
                         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                            {{ $editingId ? __('carbex.assessments.edit') : __('carbex.assessments.new') }}
+                            {{ $editingId ? __('linscarbon.assessments.edit') : __('linscarbon.assessments.new') }}
                         </h3>
                         <div class="mt-4 space-y-4">
                             <!-- Year -->
                             <div>
                                 <label for="year" class="block text-sm font-medium text-gray-700">
-                                    {{ __('carbex.assessments.year') }} <span class="text-red-500">*</span>
+                                    {{ __('linscarbon.assessments.year') }} <span class="text-red-500">*</span>
                                 </label>
                                 <select wire:model="year" id="year" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm" @if($editingId) disabled @endif>
                                     @foreach($availableYears as $y)
@@ -174,7 +174,7 @@
                             <!-- Revenue -->
                             <div>
                                 <label for="revenue" class="block text-sm font-medium text-gray-700">
-                                    {{ __('carbex.assessments.revenue') }}
+                                    {{ __('linscarbon.assessments.revenue') }}
                                 </label>
                                 <div class="mt-1 relative rounded-md shadow-sm">
                                     <input wire:model="revenue" type="number" step="0.01" id="revenue" class="block w-full pr-12 rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500 sm:text-sm" placeholder="1000000">
@@ -188,7 +188,7 @@
                             <!-- Employee Count -->
                             <div>
                                 <label for="employeeCount" class="block text-sm font-medium text-gray-700">
-                                    {{ __('carbex.assessments.employees') }}
+                                    {{ __('linscarbon.assessments.employees') }}
                                 </label>
                                 <input wire:model="employeeCount" type="number" id="employeeCount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm" placeholder="50">
                                 @error('employeeCount') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
@@ -197,10 +197,10 @@
                     </div>
                     <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
                         <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm">
-                            {{ __('carbex.common.save') }}
+                            {{ __('linscarbon.common.save') }}
                         </button>
                         <button type="button" wire:click="closeModal" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:col-start-1 sm:text-sm">
-                            {{ __('carbex.common.cancel') }}
+                            {{ __('linscarbon.common.cancel') }}
                         </button>
                     </div>
                 </form>

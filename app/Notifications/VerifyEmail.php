@@ -72,9 +72,9 @@ class VerifyEmail extends BaseVerifyEmail implements ShouldQueue
     protected function getSubject(string $locale): string
     {
         return match ($locale) {
-            'fr' => 'Vérifiez votre adresse email - Carbex',
-            'de' => 'Bestätigen Sie Ihre E-Mail-Adresse - Carbex',
-            default => 'Verify Your Email Address - Carbex',
+            'fr' => 'Vérifiez votre adresse email - LinsCarbon',
+            'de' => 'Bestätigen Sie Ihre E-Mail-Adresse - LinsCarbon',
+            default => 'Verify Your Email Address - LinsCarbon',
         };
     }
 
@@ -98,9 +98,9 @@ class VerifyEmail extends BaseVerifyEmail implements ShouldQueue
     protected function getIntroLine(string $locale): string
     {
         return match ($locale) {
-            'fr' => 'Merci de vous être inscrit sur Carbex ! Veuillez cliquer sur le bouton ci-dessous pour vérifier votre adresse email et activer votre compte.',
-            'de' => 'Vielen Dank für Ihre Registrierung bei Carbex! Bitte klicken Sie auf die Schaltfläche unten, um Ihre E-Mail-Adresse zu bestätigen und Ihr Konto zu aktivieren.',
-            default => 'Thank you for signing up for Carbex! Please click the button below to verify your email address and activate your account.',
+            'fr' => 'Merci de vous être inscrit sur LinsCarbon ! Veuillez cliquer sur le bouton ci-dessous pour vérifier votre adresse email et activer votre compte.',
+            'de' => 'Vielen Dank für Ihre Registrierung bei LinsCarbon! Bitte klicken Sie auf die Schaltfläche unten, um Ihre E-Mail-Adresse zu bestätigen und Ihr Konto zu aktivieren.',
+            default => 'Thank you for signing up for LinsCarbon! Please click the button below to verify your email address and activate your account.',
         };
     }
 
@@ -134,9 +134,9 @@ class VerifyEmail extends BaseVerifyEmail implements ShouldQueue
     protected function getSalutation(string $locale): string
     {
         return match ($locale) {
-            'fr' => 'L\'équipe Carbex',
-            'de' => 'Das Carbex-Team',
-            default => 'The Carbex Team',
+            'fr' => 'L\'équipe LinsCarbon',
+            'de' => 'Das LinsCarbon-Team',
+            default => 'The LinsCarbon Team',
         };
     }
 }

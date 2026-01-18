@@ -1,4 +1,4 @@
-# Carbex Development Guidelines
+# LinsCarbon Development Guidelines
 
 > Carbon footprint SaaS platform for European SMEs
 > **Priority Market**: Germany (DE)
@@ -272,8 +272,8 @@ php artisan model:prune
 ### Translations
 
 - **NO hardcoded text** - German market requires full i18n
-- All text must use `__('carbex.section.key')` pattern
-- Translation files in `lang/{de,en,fr}/carbex.php`
+- All text must use `__('linscarbon.section.key')` pattern
+- Translation files in `lang/{de,en,fr}/linscarbon.php`
 - German (de) is the primary language
 
 ### Database
@@ -290,7 +290,7 @@ Key environment variables (see `.env.example`):
 ```env
 # Database
 DB_CONNECTION=mysql
-DB_DATABASE=carbex
+DB_DATABASE=linscarbon
 
 # Cache & Queue
 CACHE_DRIVER=redis

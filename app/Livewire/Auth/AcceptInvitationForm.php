@@ -13,7 +13,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.guest')]
-#[Title('Accepter l\'invitation - Carbex')]
+#[Title('Accepter l\'invitation - LinsCarbon')]
 class AcceptInvitationForm extends Component
 {
     #[Locked]
@@ -107,7 +107,7 @@ class AcceptInvitationForm extends Component
         Auth::login($user);
         session()->regenerate();
 
-        session()->flash('success', __('carbex.auth.invitation_accepted'));
+        session()->flash('success', __('linscarbon.auth.invitation_accepted'));
 
         $this->redirect(route('dashboard'), navigate: true);
     }

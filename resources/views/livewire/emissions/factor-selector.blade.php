@@ -39,10 +39,10 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900" id="modal-title">
-                                {{ __('carbex.emissions.factors.title') }}
+                                {{ __('linscarbon.emissions.factors.title') }}
                             </h3>
                             <p class="mt-1 text-sm text-gray-500">
-                                {{ __('carbex.emissions.factors.subtitle', ['count' => number_format($totalCount, 0, ',', ' ')]) }}
+                                {{ __('linscarbon.emissions.factors.subtitle', ['count' => number_format($totalCount, 0, ',', ' ')]) }}
                             </p>
                         </div>
                         <button
@@ -50,7 +50,7 @@
                             type="button"
                             class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500"
                         >
-                            <span class="sr-only">{{ __('carbex.cancel') }}</span>
+                            <span class="sr-only">{{ __('linscarbon.cancel') }}</span>
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
@@ -89,11 +89,11 @@
                                 type="button"
                                 class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 {{ $useSemanticSearch ? 'bg-green-600' : 'bg-gray-200' }}"
                             >
-                                <span class="sr-only">{{ __('carbex.emissions.factors.toggle_semantic') }}</span>
+                                <span class="sr-only">{{ __('linscarbon.emissions.factors.toggle_semantic') }}</span>
                                 <span class="inline-block w-4 h-4 transform transition-transform bg-white rounded-full {{ $useSemanticSearch ? 'translate-x-6' : 'translate-x-1' }}"></span>
                             </button>
                             <span class="text-sm text-gray-600">
-                                {{ __('carbex.emissions.factors.semantic_search') }}
+                                {{ __('linscarbon.emissions.factors.semantic_search') }}
                             </span>
                         </div>
                         <!-- Search Mode Indicator -->
@@ -103,12 +103,12 @@
                                     <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                     </svg>
-                                    {{ __('carbex.emissions.factors.mode_semantic') }}
+                                    {{ __('linscarbon.emissions.factors.mode_semantic') }}
                                 @else
                                     <svg class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3M17 16l4-4m0 0l-4-4m4 4H14" />
                                     </svg>
-                                    {{ __('carbex.emissions.factors.mode_text') }}
+                                    {{ __('linscarbon.emissions.factors.mode_text') }}
                                 @endif
                             </span>
                         @endif
@@ -133,7 +133,7 @@
                                     wire:model.live.debounce.300ms="search"
                                     type="text"
                                     class="block w-full pl-10 pr-3 py-2 border rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 sm:text-sm {{ $useSemanticSearch ? 'border-purple-300 focus:ring-purple-500 focus:border-purple-500' : 'border-gray-300 focus:ring-green-500 focus:border-green-500' }}"
-                                    placeholder="{{ $useSemanticSearch ? __('carbex.emissions.factors.semantic_placeholder') : __('carbex.emissions.factors.search_placeholder') }}"
+                                    placeholder="{{ $useSemanticSearch ? __('linscarbon.emissions.factors.semantic_placeholder') : __('linscarbon.emissions.factors.search_placeholder') }}"
                                 >
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                             <svg class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
-                            {{ __('carbex.emissions.factors.reset') }}
+                            {{ __('linscarbon.emissions.factors.reset') }}
                         </button>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                                                 {{ number_format($factor->factor_kg_co2e, 4, ',', ' ') }}
                                             </p>
                                             <p class="text-xs text-gray-500">
-                                                {{ __('carbex.emissions.factors.kg_co2e_per') }} {{ $factor->unit }}
+                                                {{ __('linscarbon.emissions.factors.kg_co2e_per') }} {{ $factor->unit }}
                                             </p>
                                         </div>
                                     </div>
@@ -222,8 +222,8 @@
                             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.emissions.factors.no_results') }}</h3>
-                            <p class="mt-1 text-sm text-gray-500">{{ __('carbex.emissions.factors.no_results_hint') }}</p>
+                            <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('linscarbon.emissions.factors.no_results') }}</h3>
+                            <p class="mt-1 text-sm text-gray-500">{{ __('linscarbon.emissions.factors.no_results_hint') }}</p>
                         </div>
                     @endif
                 </div>
@@ -232,13 +232,13 @@
                 @if($factors->hasPages())
                     <div class="px-6 py-3 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
                         <p class="text-sm text-gray-700">
-                            {{ __('carbex.emissions.factors.showing') }}
+                            {{ __('linscarbon.emissions.factors.showing') }}
                             <span class="font-medium">{{ $factors->firstItem() }}</span>
-                            {{ __('carbex.emissions.factors.to') }}
+                            {{ __('linscarbon.emissions.factors.to') }}
                             <span class="font-medium">{{ $factors->lastItem() }}</span>
-                            {{ __('carbex.emissions.factors.of') }}
+                            {{ __('linscarbon.emissions.factors.of') }}
                             <span class="font-medium">{{ number_format($factors->total(), 0, ',', ' ') }}</span>
-                            {{ __('carbex.emissions.factors.results') }}
+                            {{ __('linscarbon.emissions.factors.results') }}
                         </p>
                         <div>
                             {{ $factors->links() }}
@@ -256,14 +256,14 @@
                         <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
-                        {{ __('carbex.emissions.factors.create_custom') }}
+                        {{ __('linscarbon.emissions.factors.create_custom') }}
                     </button>
                     <button
                         wire:click="close"
                         type="button"
                         class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                     >
-                        {{ __('carbex.cancel') }}
+                        {{ __('linscarbon.cancel') }}
                     </button>
                 </div>
             </div>
@@ -313,21 +313,21 @@
                     <div class="bg-white px-6 pt-5 pb-4 border-b border-gray-200">
                         <div class="flex items-center justify-between">
                             <h3 class="text-lg font-semibold text-gray-900" id="custom-factor-title">
-                                {{ __('carbex.emissions.factors.custom.title') }}
+                                {{ __('linscarbon.emissions.factors.custom.title') }}
                             </h3>
                             <button
                                 wire:click="closeCustomFactorModal"
                                 type="button"
                                 class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500"
                             >
-                                <span class="sr-only">{{ __('carbex.cancel') }}</span>
+                                <span class="sr-only">{{ __('linscarbon.cancel') }}</span>
                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
                         <p class="mt-1 text-sm text-gray-500">
-                            {{ __('carbex.emissions.factors.custom.subtitle') }}
+                            {{ __('linscarbon.emissions.factors.custom.subtitle') }}
                         </p>
                     </div>
 
@@ -336,14 +336,14 @@
                         <!-- Name -->
                         <div>
                             <label for="customName" class="block text-sm font-medium text-gray-700">
-                                {{ __('carbex.emissions.factors.custom.name') }} <span class="text-red-500">*</span>
+                                {{ __('linscarbon.emissions.factors.custom.name') }} <span class="text-red-500">*</span>
                             </label>
                             <input
                                 wire:model="customName"
                                 type="text"
                                 id="customName"
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm @error('customName') border-red-300 @enderror"
-                                placeholder="{{ __('carbex.emissions.factors.custom.name_placeholder') }}"
+                                placeholder="{{ __('linscarbon.emissions.factors.custom.name_placeholder') }}"
                             >
                             @error('customName')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -353,14 +353,14 @@
                         <!-- Description -->
                         <div>
                             <label for="customDescription" class="block text-sm font-medium text-gray-700">
-                                {{ __('carbex.emissions.factors.custom.description') }}
+                                {{ __('linscarbon.emissions.factors.custom.description') }}
                             </label>
                             <textarea
                                 wire:model="customDescription"
                                 id="customDescription"
                                 rows="3"
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                                placeholder="{{ __('carbex.emissions.factors.custom.description_placeholder') }}"
+                                placeholder="{{ __('linscarbon.emissions.factors.custom.description_placeholder') }}"
                             ></textarea>
                         </div>
 
@@ -368,7 +368,7 @@
                             <!-- Unit -->
                             <div>
                                 <label for="customUnit" class="block text-sm font-medium text-gray-700">
-                                    {{ __('carbex.emissions.factors.custom.unit') }} <span class="text-red-500">*</span>
+                                    {{ __('linscarbon.emissions.factors.custom.unit') }} <span class="text-red-500">*</span>
                                 </label>
                                 <select
                                     wire:model="customUnit"
@@ -377,10 +377,10 @@
                                 >
                                     <option value="kWh">kWh</option>
                                     <option value="MWh">MWh</option>
-                                    <option value="L">{{ __('carbex.emissions.factors.units.liter') }}</option>
+                                    <option value="L">{{ __('linscarbon.emissions.factors.units.liter') }}</option>
                                     <option value="m3">m³</option>
                                     <option value="kg">kg</option>
-                                    <option value="t">{{ __('carbex.emissions.factors.units.tonne') }}</option>
+                                    <option value="t">{{ __('linscarbon.emissions.factors.units.tonne') }}</option>
                                     <option value="km">km</option>
                                     <option value="tkm">tonne.km</option>
                                     <option value="EUR">Euro</option>
@@ -394,7 +394,7 @@
                             <!-- Factor Value -->
                             <div>
                                 <label for="customFactorValue" class="block text-sm font-medium text-gray-700">
-                                    {{ __('carbex.emissions.factors.custom.value') }} <span class="text-red-500">*</span>
+                                    {{ __('linscarbon.emissions.factors.custom.value') }} <span class="text-red-500">*</span>
                                 </label>
                                 <div class="mt-1 relative rounded-md shadow-sm">
                                     <input
@@ -426,7 +426,7 @@
                                 </div>
                                 <div class="ml-3">
                                     <p class="text-sm text-blue-700">
-                                        {{ __('carbex.emissions.factors.custom.info') }}
+                                        {{ __('linscarbon.emissions.factors.custom.info') }}
                                     </p>
                                 </div>
                             </div>
@@ -440,7 +440,7 @@
                             type="button"
                             class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                         >
-                            {{ __('carbex.cancel') }}
+                            {{ __('linscarbon.cancel') }}
                         </button>
                         <button
                             type="submit"
@@ -449,7 +449,7 @@
                             <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            {{ __('carbex.emissions.factors.custom.create') }}
+                            {{ __('linscarbon.emissions.factors.custom.create') }}
                         </button>
                     </div>
                 </form>

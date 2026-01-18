@@ -1,4 +1,4 @@
-# Carbex Developer Guide
+# LinsCarbon Developer Guide
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@
 
 ## Project Overview
 
-Carbex is a multi-tenant SaaS platform for carbon footprint tracking and management. It enables organizations to:
+LinsCarbon is a multi-tenant SaaS platform for carbon footprint tracking and management. It enables organizations to:
 
 - Connect bank accounts and automatically categorize transactions
 - Calculate GHG emissions (Scope 1, 2, and 3) following the GHG Protocol
@@ -37,7 +37,7 @@ Carbex is a multi-tenant SaaS platform for carbon footprint tracking and managem
 
 ### Multi-Tenant Design
 
-Carbex uses a single-database multi-tenant architecture with the `organization_id` column for tenant isolation.
+LinsCarbon uses a single-database multi-tenant architecture with the `organization_id` column for tenant isolation.
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -99,8 +99,8 @@ app/Services/
 
 ```bash
 # Clone repository
-git clone https://github.com/your-org/carbex.git
-cd carbex
+git clone https://github.com/your-org/linscarbon.git
+cd linscarbon
 
 # Install PHP dependencies
 composer install
@@ -153,8 +153,8 @@ APP_DEBUG=true
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=carbex
-DB_USERNAME=carbex
+DB_DATABASE=linscarbon
+DB_USERNAME=linscarbon
 DB_PASSWORD=secret
 
 # Redis
@@ -433,6 +433,6 @@ php artisan scribe:generate
 
 ## Support
 
-- **Documentation**: https://docs.carbex.app
-- **Issues**: https://github.com/your-org/carbex/issues
-- **Email**: dev@carbex.app
+- **Documentation**: https://docs.linscarbon.app
+- **Issues**: https://github.com/your-org/linscarbon/issues
+- **Email**: dev@linscarbon.app

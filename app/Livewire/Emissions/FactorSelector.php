@@ -14,7 +14,7 @@ use Livewire\WithPagination;
 /**
  * FactorSelector - Modal de recherche des facteurs d'émission (20 000+)
  *
- * Conforme à la constitution Carbex v3.0:
+ * Conforme à la constitution LinsCarbon v3.0:
  * - Section 2.7: Base de Données des Facteurs d'Émission
  * - 4 onglets sources (ADEME, IMPACTS, EF Reference, Données Primaires)
  * - Filtres: Catégories, Localisation, Unité
@@ -54,11 +54,11 @@ class FactorSelector extends Component
 
     // Source tabs as per constitution 2.7
     public array $tabs = [
-        'all' => 'carbex.emissions.factors.tabs.all',
-        'ademe' => 'carbex.emissions.factors.tabs.ademe',
-        'uba' => 'carbex.emissions.factors.tabs.uba',
-        'ghg_protocol' => 'carbex.emissions.factors.tabs.ghg',
-        'custom' => 'carbex.emissions.factors.tabs.custom',
+        'all' => 'linscarbon.emissions.factors.tabs.all',
+        'ademe' => 'linscarbon.emissions.factors.tabs.ademe',
+        'uba' => 'linscarbon.emissions.factors.tabs.uba',
+        'ghg_protocol' => 'linscarbon.emissions.factors.tabs.ghg',
+        'custom' => 'linscarbon.emissions.factors.tabs.custom',
     ];
 
     protected $queryString = [
@@ -315,25 +315,25 @@ class FactorSelector extends Component
     public function getCountriesProperty(): array
     {
         return [
-            '' => __('carbex.emissions.factors.filters.all_countries'),
-            'FR' => __('carbex.emissions.factors.countries.fr'),
-            'DE' => __('carbex.emissions.factors.countries.de'),
-            'EU' => __('carbex.emissions.factors.countries.eu'),
-            'GB' => __('carbex.emissions.factors.countries.gb'),
-            'US' => __('carbex.emissions.factors.countries.us'),
+            '' => __('linscarbon.emissions.factors.filters.all_countries'),
+            'FR' => __('linscarbon.emissions.factors.countries.fr'),
+            'DE' => __('linscarbon.emissions.factors.countries.de'),
+            'EU' => __('linscarbon.emissions.factors.countries.eu'),
+            'GB' => __('linscarbon.emissions.factors.countries.gb'),
+            'US' => __('linscarbon.emissions.factors.countries.us'),
         ];
     }
 
     public function getUnitsProperty(): array
     {
         return [
-            '' => __('carbex.emissions.factors.filters.all_units'),
+            '' => __('linscarbon.emissions.factors.filters.all_units'),
             'kWh' => 'kWh',
             'MWh' => 'MWh',
-            'L' => __('carbex.emissions.factors.units.liter'),
+            'L' => __('linscarbon.emissions.factors.units.liter'),
             'm3' => 'm³',
             'kg' => 'kg',
-            't' => __('carbex.emissions.factors.units.tonne'),
+            't' => __('linscarbon.emissions.factors.units.tonne'),
             'km' => 'km',
             'tkm' => 'tonne.km',
             'EUR' => 'Euro',

@@ -1,4 +1,4 @@
-# Carbex Deployment Runbook
+# LinsCarbon Deployment Runbook
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@
 
 ## Overview
 
-This runbook covers the deployment of Carbex to production environments. The application is designed to run on any container-based infrastructure (Docker, Kubernetes) or traditional VPS/cloud servers.
+This runbook covers the deployment of LinsCarbon to production environments. The application is designed to run on any container-based infrastructure (Docker, Kubernetes) or traditional VPS/cloud servers.
 
 ### Deployment Architecture
 
@@ -141,8 +141,8 @@ services:
   postgres:
     image: postgres:15-alpine
     environment:
-      POSTGRES_DB: carbex
-      POSTGRES_USER: carbex
+      POSTGRES_DB: linscarbon
+      POSTGRES_USER: linscarbon
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -177,11 +177,11 @@ sudo nano /etc/php/8.2/fpm/pool.d/www.conf
 # Set: pm = dynamic, pm.max_children = 50
 
 # Configure nginx
-sudo nano /etc/nginx/sites-available/carbex
+sudo nano /etc/nginx/sites-available/linscarbon
 # See nginx configuration below
 
 # Configure supervisor for queue workers
-sudo nano /etc/supervisor/conf.d/carbex-worker.conf
+sudo nano /etc/supervisor/conf.d/linscarbon-worker.conf
 ```
 
 ---
@@ -267,11 +267,11 @@ php artisan route:cache
 
 ```env
 # Application
-APP_NAME=Carbex
+APP_NAME=LinsCarbon
 APP_ENV=production
 APP_KEY=base64:YOUR_APP_KEY_HERE
 APP_DEBUG=false
-APP_URL=https://app.carbex.app
+APP_URL=https://app.linscarbon.app
 
 # Logging
 LOG_CHANNEL=stack
@@ -281,8 +281,8 @@ LOG_LEVEL=warning
 DB_CONNECTION=pgsql
 DB_HOST=your-db-host
 DB_PORT=5432
-DB_DATABASE=carbex_production
-DB_USERNAME=carbex
+DB_DATABASE=linscarbon_production
+DB_USERNAME=linscarbon
 DB_PASSWORD=your-secure-password
 
 # Redis
@@ -300,8 +300,8 @@ FILESYSTEM_DISK=s3
 AWS_ACCESS_KEY_ID=your-access-key
 AWS_SECRET_ACCESS_KEY=your-secret-key
 AWS_DEFAULT_REGION=eu-west-3
-AWS_BUCKET=carbex-production
-AWS_URL=https://cdn.carbex.app
+AWS_BUCKET=linscarbon-production
+AWS_URL=https://cdn.linscarbon.app
 
 # Mail
 MAIL_MAILER=smtp
@@ -310,8 +310,8 @@ MAIL_PORT=587
 MAIL_USERNAME=apikey
 MAIL_PASSWORD=your-sendgrid-api-key
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@carbex.app
-MAIL_FROM_NAME="Carbex"
+MAIL_FROM_ADDRESS=noreply@linscarbon.app
+MAIL_FROM_NAME="LinsCarbon"
 
 # Banking Integration
 BRIDGE_API_URL=https://api.bridgeapi.io
@@ -353,7 +353,7 @@ FORCE_HTTPS=true
 
 ```bash
 # Check application health
-curl -s https://app.carbex.app/api/health | jq .
+curl -s https://app.linscarbon.app/api/health | jq .
 
 # Expected response:
 {
@@ -368,12 +368,12 @@ curl -s https://app.carbex.app/api/health | jq .
 
 ```bash
 # Test authentication
-curl -X POST https://app.carbex.app/api/v1/auth/login \
+curl -X POST https://app.linscarbon.app/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"password"}'
 
 # Test API endpoints
-curl https://app.carbex.app/api/v1/emissions \
+curl https://app.linscarbon.app/api/v1/emissions \
   -H "Authorization: Bearer $TOKEN"
 ```
 
@@ -384,7 +384,7 @@ curl https://app.carbex.app/api/v1/emissions \
 tail -f storage/logs/laravel.log
 
 # Queue worker logs
-tail -f /var/log/supervisor/carbex-worker*.log
+tail -f /var/log/supervisor/linscarbon-worker*.log
 
 # nginx access logs
 tail -f /var/log/nginx/access.log
@@ -474,8 +474,8 @@ Configure alerts in `config/sentry.php` and Sentry dashboard for:
 
 Configure external monitoring (UptimeRobot, Pingdom) for:
 
-- `https://app.carbex.app/api/health`
-- `https://app.carbex.app/login`
+- `https://app.linscarbon.app/api/health`
+- `https://app.linscarbon.app/login`
 
 ---
 
@@ -502,7 +502,7 @@ tail -f storage/logs/laravel.log
 sudo supervisorctl status
 
 # Restart workers
-sudo supervisorctl restart carbex-worker:*
+sudo supervisorctl restart linscarbon-worker:*
 
 # Check failed jobs
 php artisan queue:failed
@@ -549,8 +549,8 @@ chown -R www-data:www-data storage/
 
 | Role | Contact |
 |------|---------|
-| DevOps Lead | devops@carbex.app |
-| Backend Lead | backend@carbex.app |
+| DevOps Lead | devops@linscarbon.app |
+| Backend Lead | backend@linscarbon.app |
 | On-Call | +33 X XX XX XX XX |
 
 ---

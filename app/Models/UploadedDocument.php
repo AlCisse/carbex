@@ -458,25 +458,25 @@ class UploadedDocument extends Model
     public static function getDocumentTypes(): array
     {
         return [
-            self::TYPE_INVOICE => __('carbex.documents.types.invoice'),
-            self::TYPE_ENERGY_BILL => __('carbex.documents.types.energy_bill'),
-            self::TYPE_FUEL_RECEIPT => __('carbex.documents.types.fuel_receipt'),
-            self::TYPE_TRANSPORT_INVOICE => __('carbex.documents.types.transport_invoice'),
-            self::TYPE_PURCHASE_ORDER => __('carbex.documents.types.purchase_order'),
-            self::TYPE_BANK_STATEMENT => __('carbex.documents.types.bank_statement'),
-            self::TYPE_EXPENSE_REPORT => __('carbex.documents.types.expense_report'),
-            self::TYPE_OTHER => __('carbex.documents.types.other'),
+            self::TYPE_INVOICE => __('linscarbon.documents.types.invoice'),
+            self::TYPE_ENERGY_BILL => __('linscarbon.documents.types.energy_bill'),
+            self::TYPE_FUEL_RECEIPT => __('linscarbon.documents.types.fuel_receipt'),
+            self::TYPE_TRANSPORT_INVOICE => __('linscarbon.documents.types.transport_invoice'),
+            self::TYPE_PURCHASE_ORDER => __('linscarbon.documents.types.purchase_order'),
+            self::TYPE_BANK_STATEMENT => __('linscarbon.documents.types.bank_statement'),
+            self::TYPE_EXPENSE_REPORT => __('linscarbon.documents.types.expense_report'),
+            self::TYPE_OTHER => __('linscarbon.documents.types.other'),
         ];
     }
 
     public static function getProcessingStatuses(): array
     {
         return [
-            self::STATUS_PENDING => __('carbex.documents.statuses.pending'),
-            self::STATUS_PROCESSING => __('carbex.documents.statuses.processing'),
-            self::STATUS_COMPLETED => __('carbex.documents.statuses.completed'),
-            self::STATUS_FAILED => __('carbex.documents.statuses.failed'),
-            self::STATUS_NEEDS_REVIEW => __('carbex.documents.statuses.needs_review'),
+            self::STATUS_PENDING => __('linscarbon.documents.statuses.pending'),
+            self::STATUS_PROCESSING => __('linscarbon.documents.statuses.processing'),
+            self::STATUS_COMPLETED => __('linscarbon.documents.statuses.completed'),
+            self::STATUS_FAILED => __('linscarbon.documents.statuses.failed'),
+            self::STATUS_NEEDS_REVIEW => __('linscarbon.documents.statuses.needs_review'),
         ];
     }
 }

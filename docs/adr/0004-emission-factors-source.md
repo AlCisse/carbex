@@ -101,7 +101,7 @@ class EmissionCalculator
 
 ```bash
 # Commande artisan pour import Base Carbone
-php artisan carbex:import-emission-factors
+php artisan linscarbon:import-emission-factors
 
 # Source: API Base Carbone ou fichier CSV
 # Fréquence: Mensuelle (cron)

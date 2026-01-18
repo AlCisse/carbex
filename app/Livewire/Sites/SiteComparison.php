@@ -17,7 +17,7 @@ use Livewire\Component;
  *
  * Part of Phase 10: Multi-sites management (T174-T175).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T174
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T174
  */
 #[Layout('components.layouts.app')]
 #[Title('Site Comparison')]
@@ -215,7 +215,7 @@ class SiteComparison extends Component
 
             return [
                 [
-                    'name' => __("carbex.ghg_scopes.{$this->selectedScope}.name"),
+                    'name' => __("linscarbon.ghg_scopes.{$this->selectedScope}.name"),
                     'data' => $value,
                 ],
             ];
@@ -224,15 +224,15 @@ class SiteComparison extends Component
         // Show all scopes stacked
         return [
             [
-                'name' => __('carbex.ghg_scopes.1.name'),
+                'name' => __('linscarbon.ghg_scopes.1.name'),
                 'data' => $this->getMetricData($siteEmissions, 'scope_1'),
             ],
             [
-                'name' => __('carbex.ghg_scopes.2.name'),
+                'name' => __('linscarbon.ghg_scopes.2.name'),
                 'data' => $this->getMetricData($siteEmissions, 'scope_2'),
             ],
             [
-                'name' => __('carbex.ghg_scopes.3.name'),
+                'name' => __('linscarbon.ghg_scopes.3.name'),
                 'data' => $this->getMetricData($siteEmissions, 'scope_3'),
             ],
         ];
@@ -271,7 +271,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'warning',
                 'icon' => 'exclamation-triangle',
-                'message' => __('carbex.sites.recommendations.high_emitter', [
+                'message' => __('linscarbon.sites.recommendations.high_emitter', [
                     'percent' => round((($total - $avgPerSite) / $avgPerSite) * 100),
                 ]),
             ]);
@@ -282,7 +282,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'info',
                 'icon' => 'fire',
-                'message' => __('carbex.sites.recommendations.scope1_heavy'),
+                'message' => __('linscarbon.sites.recommendations.scope1_heavy'),
             ]);
         }
 
@@ -291,7 +291,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'info',
                 'icon' => 'bolt',
-                'message' => __('carbex.sites.recommendations.scope2_heavy'),
+                'message' => __('linscarbon.sites.recommendations.scope2_heavy'),
             ]);
         }
 
@@ -300,7 +300,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'warning',
                 'icon' => 'building',
-                'message' => __('carbex.sites.recommendations.high_intensity'),
+                'message' => __('linscarbon.sites.recommendations.high_intensity'),
             ]);
         }
 
@@ -309,7 +309,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'suggestion',
                 'icon' => 'information-circle',
-                'message' => __('carbex.sites.recommendations.missing_area'),
+                'message' => __('linscarbon.sites.recommendations.missing_area'),
             ]);
         }
 
@@ -318,7 +318,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'suggestion',
                 'icon' => 'users',
-                'message' => __('carbex.sites.recommendations.missing_employees'),
+                'message' => __('linscarbon.sites.recommendations.missing_employees'),
             ]);
         }
 
@@ -327,7 +327,7 @@ class SiteComparison extends Component
             $recommendations->push([
                 'type' => 'success',
                 'icon' => 'check-circle',
-                'message' => __('carbex.sites.recommendations.good_performance'),
+                'message' => __('linscarbon.sites.recommendations.good_performance'),
             ]);
         }
 

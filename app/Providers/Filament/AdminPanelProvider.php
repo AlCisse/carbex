@@ -36,31 +36,31 @@ class AdminPanelProvider extends PanelProvider
                 'info' => Color::Sky,
             ])
             ->font('Inter')
-            ->brandName('Carbex Admin')
+            ->brandName('LinsCarbon Admin')
             ->brandLogo(asset('images/logo.svg'))
             ->brandLogoHeight('2rem')
             ->favicon(asset('favicon.ico'))
             ->navigationGroups([
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.dashboard'))
+                    ->label(__('linscarbon.admin.navigation.dashboard'))
                     ->icon('heroicon-o-home'),
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.organizations'))
+                    ->label(__('linscarbon.admin.navigation.organizations'))
                     ->icon('heroicon-o-building-office-2'),
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.users'))
+                    ->label(__('linscarbon.admin.navigation.users'))
                     ->icon('heroicon-o-users'),
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.carbon_data'))
+                    ->label(__('linscarbon.admin.navigation.carbon_data'))
                     ->icon('heroicon-o-calculator'),
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.finance'))
+                    ->label(__('linscarbon.admin.navigation.finance'))
                     ->icon('heroicon-o-currency-euro'),
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.content'))
+                    ->label(__('linscarbon.admin.navigation.content'))
                     ->icon('heroicon-o-document-text'),
                 NavigationGroup::make()
-                    ->label(__('carbex.admin.navigation.settings'))
+                    ->label(__('linscarbon.admin.navigation.settings'))
                     ->icon('heroicon-o-cog-6-tooth')
                     ->collapsed(),
             ])

@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
  * Service de gamification pour gérer l'attribution et le suivi des badges.
  * Évalue automatiquement les critères d'obtention et attribue les badges.
  *
- * Constitution Carbex v3.0 - Section 9.9 (Gamification)
+ * Constitution LinsCarbon v3.0 - Section 9.9 (Gamification)
  */
 class BadgeService
 {
@@ -461,12 +461,12 @@ class BadgeService
     protected function getLevelName(int $level): string
     {
         return match ($level) {
-            5 => __('carbex.gamification.level.champion'),
-            4 => __('carbex.gamification.level.expert'),
-            3 => __('carbex.gamification.level.advanced'),
-            2 => __('carbex.gamification.level.intermediate'),
-            1 => __('carbex.gamification.level.beginner'),
-            default => __('carbex.gamification.level.starter'),
+            5 => __('linscarbon.gamification.level.champion'),
+            4 => __('linscarbon.gamification.level.expert'),
+            3 => __('linscarbon.gamification.level.advanced'),
+            2 => __('linscarbon.gamification.level.intermediate'),
+            1 => __('linscarbon.gamification.level.beginner'),
+            default => __('linscarbon.gamification.level.starter'),
         };
     }
 

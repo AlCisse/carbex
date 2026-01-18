@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ __('carbex.home.title') }}</title>
-    <meta name="description" content="{{ __('carbex.home.meta_description') }}">
+    <title>{{ __('linscarbon.home.title') }}</title>
+    <meta name="description" content="{{ __('linscarbon.home.meta_description') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -184,23 +184,23 @@
                         <x-logo variant="premium" />
                     </a>
                     <span class="hidden lg:block text-xs font-medium px-2 py-1 rounded-full" style="background-color: var(--accent-light); color: var(--accent);">
-                        {{ __('carbex.home.badge') }}
+                        {{ __('linscarbon.home.badge') }}
                     </span>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('carbex.home.nav.features') }}</a>
-                    <a href="#pricing" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('carbex.home.nav.pricing') }}</a>
-                    <a href="#" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('carbex.home.nav.resources') }}</a>
+                    <a href="#features" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('linscarbon.home.nav.features') }}</a>
+                    <a href="#pricing" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('linscarbon.home.nav.pricing') }}</a>
+                    <a href="#" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('linscarbon.home.nav.resources') }}</a>
                 </div>
 
                 <div class="flex items-center space-x-4">
                     <x-language-selector />
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn-primary px-4 py-2 text-sm font-medium text-white rounded-lg" style="background-color: var(--accent);">{{ __('carbex.nav.dashboard') }}</a>
+                        <a href="{{ route('dashboard') }}" class="btn-primary px-4 py-2 text-sm font-medium text-white rounded-lg" style="background-color: var(--accent);">{{ __('linscarbon.nav.dashboard') }}</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('carbex.home.nav.login') }}</a>
-                        <a href="{{ route('register') }}" class="btn-primary px-4 py-2 text-sm font-semibold text-white rounded-lg" style="background-color: var(--accent);">{{ __('carbex.home.nav.start') }}</a>
+                        <a href="{{ route('login') }}" class="text-sm font-medium hover:text-teal-600 transition-colors" style="color: var(--text-secondary);">{{ __('linscarbon.home.nav.login') }}</a>
+                        <a href="{{ route('register') }}" class="btn-primary px-4 py-2 text-sm font-semibold text-white rounded-lg" style="background-color: var(--accent);">{{ __('linscarbon.home.nav.start') }}</a>
                     @endauth
                 </div>
             </div>
@@ -216,35 +216,35 @@
                     <div>
                         <div class="inline-flex items-center rounded-full text-xs font-semibold" style="background-color: var(--accent-light); color: var(--accent); padding: 6px 12px; margin-bottom: 24px;">
                             <span class="w-2 h-2 rounded-full" style="background-color: var(--accent); margin-right: 8px;"></span>
-                            {{ __('carbex.home.csrd_badge') }}
+                            {{ __('linscarbon.home.csrd_badge') }}
                         </div>
 
                         <h1 class="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1]" style="color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 24px;">
-                            {{ __('carbex.home.hero.title_line1') }}<br>{{ __('carbex.home.hero.title_line2') }}
+                            {{ __('linscarbon.home.hero.title_line1') }}<br>{{ __('linscarbon.home.hero.title_line2') }}
                         </h1>
 
                         <p class="text-lg leading-relaxed" style="color: var(--text-secondary); margin-bottom: 32px; max-width: 420px;">
-                            {{ __('carbex.home.hero.subtitle') }}
+                            {{ __('linscarbon.home.hero.subtitle') }}
                         </p>
 
                         <div class="flex flex-wrap items-center" style="gap: 16px; margin-bottom: 16px;">
                             <a href="{{ route('register') }}" class="inline-flex items-center text-sm font-semibold text-white rounded-xl" style="background-color: var(--accent); padding: 14px 24px;">
-                                {{ __('carbex.home.hero.cta_primary') }}
+                                {{ __('linscarbon.home.hero.cta_primary') }}
                                 <svg class="w-4 h-4" style="margin-left: 8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </a>
                             <a href="#features" class="inline-flex items-center text-sm font-semibold rounded-xl border-2" style="color: var(--text-secondary); border-color: var(--border); padding: 12px 20px;">
-                                {{ __('carbex.home.hero.cta_secondary') }}
+                                {{ __('linscarbon.home.hero.cta_secondary') }}
                             </a>
                         </div>
 
                         <p class="text-xs" style="color: var(--text-muted); margin-bottom: 32px;">
-                            {{ __('carbex.home.hero.no_commitment') }}
+                            {{ __('linscarbon.home.hero.no_commitment') }}
                         </p>
 
                         <div class="flex flex-wrap items-center text-xs" style="color: var(--text-muted); gap: 20px;">
-                            {{ __('carbex.home.hero.badges') }}
+                            {{ __('linscarbon.home.hero.badges') }}
                         </div>
                     </div>
 
@@ -255,7 +255,7 @@
                                 <!-- Header -->
                                 <div class="flex items-center justify-between mb-10">
                                     <div>
-                                        <p class="text-xs font-medium uppercase tracking-wider mb-1" style="color: var(--text-muted);">{{ __('carbex.home.preview.total_footprint') }}</p>
+                                        <p class="text-xs font-medium uppercase tracking-wider mb-1" style="color: var(--text-muted);">{{ __('linscarbon.home.preview.total_footprint') }}</p>
                                         <p class="text-4xl font-bold animate-count" style="color: var(--text-primary);">2,847 <span class="text-base font-medium" style="color: var(--text-muted);">tCO₂e</span></p>
                                     </div>
                                     <div class="indicator-arrow flex flex-col items-end gap-1 px-3 py-2 rounded-lg cursor-default" style="background-color: #dcfce7;">
@@ -265,7 +265,7 @@
                                             </svg>
                                             -12%
                                         </div>
-                                        <span class="text-[10px] font-medium" style="color: #15803d;">{{ __('carbex.home.preview.vs_previous_year') }}</span>
+                                        <span class="text-[10px] font-medium" style="color: #15803d;">{{ __('linscarbon.home.preview.vs_previous_year') }}</span>
                                     </div>
                                 </div>
 
@@ -306,7 +306,7 @@
                                 <!-- Chart -->
                                 <div class="p-5 rounded-xl" style="background-color: #f8fafc;">
                                     <div class="flex items-center justify-between mb-4">
-                                        <p class="text-xs font-semibold" style="color: var(--text-secondary);">{{ __('carbex.home.preview.monthly_evolution') }}</p>
+                                        <p class="text-xs font-semibold" style="color: var(--text-secondary);">{{ __('linscarbon.home.preview.monthly_evolution') }}</p>
                                         <div class="flex items-center gap-4 text-xs" style="color: var(--text-muted);">
                                             <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background: linear-gradient(135deg, var(--accent), #14b8a6);"></span> 2024</span>
                                             <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background-color: #cbd5e1;"></span> 2023</span>
@@ -318,35 +318,35 @@
                                                 <div class="w-4 rounded-t bar-animate" style="height: 80%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-100" style="height: 65%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.jan') }}</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('linscarbon.home.preview.months.jan') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-100" style="height: 85%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-200" style="height: 60%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.feb') }}</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('linscarbon.home.preview.months.feb') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-200" style="height: 75%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-300" style="height: 55%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.mar') }}</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('linscarbon.home.preview.months.mar') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-300" style="height: 90%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-400" style="height: 50%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.apr') }}</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('linscarbon.home.preview.months.apr') }}</span>
                                         </div>
                                         <div class="flex-1 flex flex-col items-center gap-1.5">
                                             <div class="w-full flex gap-1 items-end justify-center h-16">
                                                 <div class="w-4 rounded-t bar-animate delay-400" style="height: 70%; background-color: #cbd5e1;"></div>
                                                 <div class="w-4 rounded-t bar-animate delay-500" style="height: 45%; background: linear-gradient(180deg, var(--accent), #14b8a6);"></div>
                                             </div>
-                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('carbex.home.preview.months.may') }}</span>
+                                            <span class="text-[10px] font-medium" style="color: var(--text-muted);">{{ __('linscarbon.home.preview.months.may') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -363,10 +363,10 @@
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center" style="margin-bottom: 80px;">
                     <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 20px;">
-                        {{ __('carbex.home.features.title') }}
+                        {{ __('linscarbon.home.features.title') }}
                     </h2>
                     <p class="text-lg" style="color: var(--text-secondary);">
-                        {{ __('carbex.home.features.subtitle') }}
+                        {{ __('linscarbon.home.features.subtitle') }}
                     </p>
                 </div>
 
@@ -376,22 +376,22 @@
                         <div class="flex items-start" style="gap: 24px;">
                             <div class="step-number flex-shrink-0">1</div>
                             <div>
-                                <h3 class="text-2xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.features.step1.title') }}</h3>
+                                <h3 class="text-2xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.features.step1.title') }}</h3>
                                 <p class="text-base leading-relaxed" style="color: var(--text-secondary); margin-bottom: 24px;">
-                                    {{ __('carbex.home.features.step1.description') }}
+                                    {{ __('linscarbon.home.features.step1.description') }}
                                 </p>
                                 <ul style="display: flex; flex-direction: column; gap: 16px;">
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step1.item1') }}
+                                        {{ __('linscarbon.home.features.step1.item1') }}
                                     </li>
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step1.item2') }}
+                                        {{ __('linscarbon.home.features.step1.item2') }}
                                     </li>
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step1.item3') }}
+                                        {{ __('linscarbon.home.features.step1.item3') }}
                                     </li>
                                 </ul>
                             </div>
@@ -410,20 +410,20 @@
                                         <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" /></svg>
                                     </div>
                                     <div class="flex-1">
-                                        <p class="text-sm font-medium" style="color: var(--text-primary);">{{ __('carbex.home.features.upload.file1_name') }}</p>
-                                        <p class="text-xs" style="color: var(--text-muted); margin-top: 4px;">{{ __('carbex.home.features.upload.file1_category') }}</p>
+                                        <p class="text-sm font-medium" style="color: var(--text-primary);">{{ __('linscarbon.home.features.upload.file1_name') }}</p>
+                                        <p class="text-xs" style="color: var(--text-muted); margin-top: 4px;">{{ __('linscarbon.home.features.upload.file1_category') }}</p>
                                     </div>
-                                    <span class="text-xs font-medium rounded" style="background-color: #dcfce7; color: #16a34a; padding: 6px 10px;">{{ __('carbex.home.features.upload.file1_status') }}</span>
+                                    <span class="text-xs font-medium rounded" style="background-color: #dcfce7; color: #16a34a; padding: 6px 10px;">{{ __('linscarbon.home.features.upload.file1_status') }}</span>
                                 </div>
                                 <div class="flex items-center rounded-lg" style="background-color: var(--bg-primary); padding: 16px; gap: 16px;">
                                     <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: #dbeafe;">
                                         <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" /></svg>
                                     </div>
                                     <div class="flex-1">
-                                        <p class="text-sm font-medium" style="color: var(--text-primary);">{{ __('carbex.home.features.upload.file2_name') }}</p>
-                                        <p class="text-xs" style="color: var(--text-muted); margin-top: 4px;">{{ __('carbex.home.features.upload.file2_category') }}</p>
+                                        <p class="text-sm font-medium" style="color: var(--text-primary);">{{ __('linscarbon.home.features.upload.file2_name') }}</p>
+                                        <p class="text-xs" style="color: var(--text-muted); margin-top: 4px;">{{ __('linscarbon.home.features.upload.file2_category') }}</p>
                                     </div>
-                                    <span class="text-xs font-medium rounded" style="background-color: #fef3c7; color: #d97706; padding: 6px 10px;">{{ __('carbex.home.features.upload.file2_status') }}</span>
+                                    <span class="text-xs font-medium rounded" style="background-color: #fef3c7; color: #d97706; padding: 6px 10px;">{{ __('linscarbon.home.features.upload.file2_status') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -440,13 +440,13 @@
                                 </svg>
                             </div>
                             <div class="rounded-xl" style="background-color: var(--bg-primary); padding: 20px;">
-                                <p class="text-sm" style="color: var(--text-secondary); margin-bottom: 16px;">{{ __('carbex.home.features.step2.ai_question') }}</p>
+                                <p class="text-sm" style="color: var(--text-secondary); margin-bottom: 16px;">{{ __('linscarbon.home.features.step2.ai_question') }}</p>
                                 <div class="rounded-lg" style="background-color: white; padding: 16px;">
                                     <p class="text-sm leading-relaxed" style="color: var(--text-primary);">
-                                        {{ __('carbex.home.features.step2.ai_answer_title') }}<br><br>
-                                        <strong>1.</strong> {{ __('carbex.home.features.step2.ai_answer1') }}<br>
-                                        <strong>2.</strong> {{ __('carbex.home.features.step2.ai_answer2') }}<br>
-                                        <strong>3.</strong> {{ __('carbex.home.features.step2.ai_answer3') }}
+                                        {{ __('linscarbon.home.features.step2.ai_answer_title') }}<br><br>
+                                        <strong>1.</strong> {{ __('linscarbon.home.features.step2.ai_answer1') }}<br>
+                                        <strong>2.</strong> {{ __('linscarbon.home.features.step2.ai_answer2') }}<br>
+                                        <strong>3.</strong> {{ __('linscarbon.home.features.step2.ai_answer3') }}
                                     </p>
                                 </div>
                             </div>
@@ -456,22 +456,22 @@
                         <div class="flex items-start" style="gap: 24px;">
                             <div class="step-number flex-shrink-0">2</div>
                             <div>
-                                <h3 class="text-2xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.features.step2.title') }}</h3>
+                                <h3 class="text-2xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.features.step2.title') }}</h3>
                                 <p class="text-base leading-relaxed" style="color: var(--text-secondary); margin-bottom: 24px;">
-                                    {{ __('carbex.home.features.step2.description') }}
+                                    {{ __('linscarbon.home.features.step2.description') }}
                                 </p>
                                 <ul style="display: flex; flex-direction: column; gap: 16px;">
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step2.item1') }}
+                                        {{ __('linscarbon.home.features.step2.item1') }}
                                     </li>
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step2.item2') }}
+                                        {{ __('linscarbon.home.features.step2.item2') }}
                                     </li>
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step2.item3') }}
+                                        {{ __('linscarbon.home.features.step2.item3') }}
                                     </li>
                                 </ul>
                             </div>
@@ -485,22 +485,22 @@
                         <div class="flex items-start" style="gap: 24px;">
                             <div class="step-number flex-shrink-0">3</div>
                             <div>
-                                <h3 class="text-2xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.features.step3.title') }}</h3>
+                                <h3 class="text-2xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.features.step3.title') }}</h3>
                                 <p class="text-base leading-relaxed" style="color: var(--text-secondary); margin-bottom: 24px;">
-                                    {{ __('carbex.home.features.step3.description') }}
+                                    {{ __('linscarbon.home.features.step3.description') }}
                                 </p>
                                 <ul style="display: flex; flex-direction: column; gap: 16px;">
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step3.item1') }}
+                                        {{ __('linscarbon.home.features.step3.item1') }}
                                     </li>
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step3.item2') }}
+                                        {{ __('linscarbon.home.features.step3.item2') }}
                                     </li>
                                     <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 12px;">
                                         <svg class="w-5 h-5 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                        {{ __('carbex.home.features.step3.item3') }}
+                                        {{ __('linscarbon.home.features.step3.item3') }}
                                     </li>
                                 </ul>
                             </div>
@@ -516,17 +516,17 @@
                             <div style="display: flex; flex-direction: column; gap: 16px;">
                                 <div class="rounded-xl" style="background-color: var(--bg-primary); padding: 20px; border-left: 4px solid var(--accent);">
                                     <div class="flex items-center justify-between" style="margin-bottom: 12px;">
-                                        <p class="text-sm font-semibold" style="color: var(--text-primary);">{{ __('carbex.home.features.step3.action1_title') }}</p>
-                                        <span class="text-xs font-bold rounded" style="background-color: #dcfce7; color: #16a34a; padding: 6px 10px;">{{ __('carbex.home.features.step3.action1_impact') }}</span>
+                                        <p class="text-sm font-semibold" style="color: var(--text-primary);">{{ __('linscarbon.home.features.step3.action1_title') }}</p>
+                                        <span class="text-xs font-bold rounded" style="background-color: #dcfce7; color: #16a34a; padding: 6px 10px;">{{ __('linscarbon.home.features.step3.action1_impact') }}</span>
                                     </div>
-                                    <p class="text-xs" style="color: var(--text-muted);">{{ __('carbex.home.features.step3.action1_details') }}</p>
+                                    <p class="text-xs" style="color: var(--text-muted);">{{ __('linscarbon.home.features.step3.action1_details') }}</p>
                                 </div>
                                 <div class="rounded-xl" style="background-color: var(--bg-primary); padding: 20px;">
                                     <div class="flex items-center justify-between" style="margin-bottom: 12px;">
-                                        <p class="text-sm font-semibold" style="color: var(--text-primary);">{{ __('carbex.home.features.step3.action2_title') }}</p>
-                                        <span class="text-xs font-bold rounded" style="background-color: #dbeafe; color: #2563eb; padding: 6px 10px;">{{ __('carbex.home.features.step3.action2_impact') }}</span>
+                                        <p class="text-sm font-semibold" style="color: var(--text-primary);">{{ __('linscarbon.home.features.step3.action2_title') }}</p>
+                                        <span class="text-xs font-bold rounded" style="background-color: #dbeafe; color: #2563eb; padding: 6px 10px;">{{ __('linscarbon.home.features.step3.action2_impact') }}</span>
                                     </div>
-                                    <p class="text-xs" style="color: var(--text-muted);">{{ __('carbex.home.features.step3.action2_details') }}</p>
+                                    <p class="text-xs" style="color: var(--text-muted);">{{ __('linscarbon.home.features.step3.action2_details') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -540,25 +540,25 @@
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center" style="margin-bottom: 60px;">
                     <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">
-                        {{ __('carbex.home.stats.title') }}
+                        {{ __('linscarbon.home.stats.title') }}
                     </h2>
                     <p class="text-lg" style="color: var(--text-secondary);">
-                        {{ __('carbex.home.stats.subtitle') }}
+                        {{ __('linscarbon.home.stats.subtitle') }}
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-3" style="gap: 32px;">
                     <div class="text-center rounded-2xl" style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 48px 32px;">
-                        <p class="text-5xl lg:text-6xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.stats.stat1_value') }}</p>
-                        <p class="text-sm" style="color: var(--text-secondary);">{{ __('carbex.home.stats.stat1_label') }}</p>
+                        <p class="text-5xl lg:text-6xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.stats.stat1_value') }}</p>
+                        <p class="text-sm" style="color: var(--text-secondary);">{{ __('linscarbon.home.stats.stat1_label') }}</p>
                     </div>
                     <div class="text-center rounded-2xl" style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 48px 32px;">
-                        <p class="text-5xl lg:text-6xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.stats.stat2_value') }}</p>
-                        <p class="text-sm" style="color: var(--text-secondary);">{{ __('carbex.home.stats.stat2_label') }}</p>
+                        <p class="text-5xl lg:text-6xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.stats.stat2_value') }}</p>
+                        <p class="text-sm" style="color: var(--text-secondary);">{{ __('linscarbon.home.stats.stat2_label') }}</p>
                     </div>
                     <div class="text-center rounded-2xl" style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 48px 32px;">
-                        <p class="text-5xl lg:text-6xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.stats.stat3_value') }}</p>
-                        <p class="text-sm" style="color: var(--text-secondary);">{{ __('carbex.home.stats.stat3_label') }}</p>
+                        <p class="text-5xl lg:text-6xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.stats.stat3_value') }}</p>
+                        <p class="text-sm" style="color: var(--text-secondary);">{{ __('linscarbon.home.stats.stat3_label') }}</p>
                     </div>
                 </div>
             </div>
@@ -569,113 +569,113 @@
             <div class="max-w-5xl mx-auto px-6">
                 <div class="text-center" style="margin-bottom: 60px;">
                     <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">
-                        {{ __('carbex.home.pricing.title') }}
+                        {{ __('linscarbon.home.pricing.title') }}
                     </h2>
                     <p class="text-lg" style="color: var(--text-secondary);">
-                        {{ __('carbex.home.pricing.subtitle') }}
+                        {{ __('linscarbon.home.pricing.subtitle') }}
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4" style="gap: 20px;">
                     <!-- Gratuit -->
                     <div class="bg-white rounded-2xl border" style="border-color: var(--border); padding: 28px;">
-                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('carbex.home.pricing.free.name') }}</p>
-                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('carbex.home.pricing.free.price') }}</p>
-                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('carbex.home.pricing.free.period') }}</p>
+                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('linscarbon.home.pricing.free.name') }}</p>
+                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('linscarbon.home.pricing.free.price') }}</p>
+                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('linscarbon.home.pricing.free.period') }}</p>
                         <ul style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.free.feature1') }}
+                                {{ __('linscarbon.home.pricing.free.feature1') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.free.feature2') }}
+                                {{ __('linscarbon.home.pricing.free.feature2') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-muted); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.free.feature3') }}
+                                {{ __('linscarbon.home.pricing.free.feature3') }}
                             </li>
                         </ul>
                         <a href="{{ route('register') }}" class="block w-full text-center text-sm font-semibold rounded-xl border-2" style="color: var(--text-secondary); border-color: var(--border); padding: 12px;">
-                            {{ __('carbex.home.pricing.free.cta') }}
+                            {{ __('linscarbon.home.pricing.free.cta') }}
                         </a>
                     </div>
 
                     <!-- Premium Mensuel -->
                     <div class="bg-white rounded-2xl border" style="border-color: var(--border); padding: 28px;">
-                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('carbex.home.pricing.premium_monthly.name') }}</p>
-                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('carbex.home.pricing.premium_monthly.price') }}</p>
-                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('carbex.home.pricing.premium_monthly.period') }}</p>
+                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('linscarbon.home.pricing.premium_monthly.name') }}</p>
+                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('linscarbon.home.pricing.premium_monthly.price') }}</p>
+                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('linscarbon.home.pricing.premium_monthly.period') }}</p>
                         <ul style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.premium_monthly.feature1') }}
+                                {{ __('linscarbon.home.pricing.premium_monthly.feature1') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.premium_monthly.feature2') }}
+                                {{ __('linscarbon.home.pricing.premium_monthly.feature2') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.premium_monthly.feature3') }}
+                                {{ __('linscarbon.home.pricing.premium_monthly.feature3') }}
                             </li>
                         </ul>
                         <a href="{{ route('register') }}" class="block w-full text-center text-sm font-semibold text-white rounded-xl" style="background-color: var(--accent); padding: 12px;">
-                            {{ __('carbex.home.pricing.premium_monthly.cta') }}
+                            {{ __('linscarbon.home.pricing.premium_monthly.cta') }}
                         </a>
                     </div>
 
                     <!-- Premium Annuel -->
                     <div class="bg-white rounded-2xl border-2 relative" style="border-color: var(--accent); padding: 28px;">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                            <span class="text-xs font-bold text-white rounded-full" style="background: var(--accent); padding: 5px 12px;">{{ __('carbex.home.pricing.premium_annual.discount') }}</span>
+                            <span class="text-xs font-bold text-white rounded-full" style="background: var(--accent); padding: 5px 12px;">{{ __('linscarbon.home.pricing.premium_annual.discount') }}</span>
                         </div>
-                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('carbex.home.pricing.premium_annual.name') }}</p>
-                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('carbex.home.pricing.premium_annual.price') }}</p>
-                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('carbex.home.pricing.premium_annual.period') }}</p>
+                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('linscarbon.home.pricing.premium_annual.name') }}</p>
+                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('linscarbon.home.pricing.premium_annual.price') }}</p>
+                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('linscarbon.home.pricing.premium_annual.period') }}</p>
                         <ul style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.premium_annual.feature1') }}
+                                {{ __('linscarbon.home.pricing.premium_annual.feature1') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.premium_annual.feature2') }}
+                                {{ __('linscarbon.home.pricing.premium_annual.feature2') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.premium_annual.feature3') }}
+                                {{ __('linscarbon.home.pricing.premium_annual.feature3') }}
                             </li>
                         </ul>
                         <a href="{{ route('register') }}" class="block w-full text-center text-sm font-semibold text-white rounded-xl" style="background-color: var(--accent); padding: 12px;">
-                            {{ __('carbex.home.pricing.premium_annual.cta') }}
+                            {{ __('linscarbon.home.pricing.premium_annual.cta') }}
                         </a>
                     </div>
 
                     <!-- Entreprise -->
                     <div class="bg-white rounded-2xl border relative" style="border-color: var(--border); padding: 28px;">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                            <span class="text-xs font-bold text-white rounded-full" style="background: #f59e0b; padding: 5px 12px;">{{ __('carbex.home.pricing.enterprise.discount') }}</span>
+                            <span class="text-xs font-bold text-white rounded-full" style="background: #f59e0b; padding: 5px 12px;">{{ __('linscarbon.home.pricing.enterprise.discount') }}</span>
                         </div>
-                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('carbex.home.pricing.enterprise.name') }}</p>
-                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('carbex.home.pricing.enterprise.price') }}</p>
-                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('carbex.home.pricing.enterprise.period') }}</p>
+                        <p class="text-sm font-semibold uppercase" style="color: var(--text-muted); margin-bottom: 8px;">{{ __('linscarbon.home.pricing.enterprise.name') }}</p>
+                        <p class="text-4xl font-bold" style="color: var(--text-primary);">{{ __('linscarbon.home.pricing.enterprise.price') }}</p>
+                        <p class="text-sm" style="color: var(--text-muted); margin-bottom: 20px;">{{ __('linscarbon.home.pricing.enterprise.period') }}</p>
                         <ul style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.enterprise.feature1') }}
+                                {{ __('linscarbon.home.pricing.enterprise.feature1') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.enterprise.feature2') }}
+                                {{ __('linscarbon.home.pricing.enterprise.feature2') }}
                             </li>
                             <li class="flex items-center text-sm" style="color: var(--text-secondary); gap: 10px;">
                                 <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                                {{ __('carbex.home.pricing.enterprise.feature3') }}
+                                {{ __('linscarbon.home.pricing.enterprise.feature3') }}
                             </li>
                         </ul>
                         <a href="{{ route('register') }}" class="block w-full text-center text-sm font-semibold rounded-xl border-2" style="color: var(--text-secondary); border-color: var(--border); padding: 12px;">
-                            {{ __('carbex.home.pricing.enterprise.cta') }}
+                            {{ __('linscarbon.home.pricing.enterprise.cta') }}
                         </a>
                     </div>
                 </div>
@@ -686,19 +686,19 @@
         <section style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 100px 0;">
             <div class="max-w-2xl mx-auto px-6 text-center">
                 <h2 class="text-3xl lg:text-4xl font-bold" style="color: var(--text-primary); margin-bottom: 16px;">
-                    {{ __('carbex.home.cta.title') }}
+                    {{ __('linscarbon.home.cta.title') }}
                 </h2>
                 <p class="text-lg" style="color: var(--text-secondary); margin-bottom: 32px;">
-                    {{ __('carbex.home.cta.subtitle') }}
+                    {{ __('linscarbon.home.cta.subtitle') }}
                 </p>
                 <a href="{{ route('register') }}" class="inline-flex items-center text-base font-semibold text-white rounded-xl" style="background-color: var(--accent); padding: 16px 32px; margin-bottom: 20px;">
-                    {{ __('carbex.home.cta.button') }}
+                    {{ __('linscarbon.home.cta.button') }}
                     <svg class="w-5 h-5" style="margin-left: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </a>
                 <p class="text-sm" style="color: var(--text-muted);">
-                    {{ __('carbex.home.cta.note') }}
+                    {{ __('linscarbon.home.cta.note') }}
                 </p>
             </div>
         </section>
@@ -712,34 +712,34 @@
                     <a href="/" class="block" style="margin-bottom: 16px;">
                         <x-logo variant="premium" />
                     </a>
-                    <p class="text-sm" style="color: var(--text-muted);">{{ __('carbex.home.footer.tagline') }}</p>
+                    <p class="text-sm" style="color: var(--text-muted);">{{ __('linscarbon.home.footer.tagline') }}</p>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.footer.product') }}</p>
+                    <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.footer.product') }}</p>
                     <ul style="display: flex; flex-direction: column; gap: 12px;" class="text-sm">
-                        <li><a href="#features" style="color: var(--text-secondary);">{{ __('carbex.home.nav.features') }}</a></li>
-                        <li><a href="#pricing" style="color: var(--text-secondary);">{{ __('carbex.home.nav.pricing') }}</a></li>
+                        <li><a href="#features" style="color: var(--text-secondary);">{{ __('linscarbon.home.nav.features') }}</a></li>
+                        <li><a href="#pricing" style="color: var(--text-secondary);">{{ __('linscarbon.home.nav.pricing') }}</a></li>
                     </ul>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.footer.resources') }}</p>
+                    <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.footer.resources') }}</p>
                     <ul style="display: flex; flex-direction: column; gap: 12px;" class="text-sm">
-                        <li><a href="#" style="color: var(--text-secondary);">{{ __('carbex.home.footer.documentation') }}</a></li>
-                        <li><a href="#" style="color: var(--text-secondary);">{{ __('carbex.home.footer.csrd_guide') }}</a></li>
+                        <li><a href="#" style="color: var(--text-secondary);">{{ __('linscarbon.home.footer.documentation') }}</a></li>
+                        <li><a href="#" style="color: var(--text-secondary);">{{ __('linscarbon.home.footer.csrd_guide') }}</a></li>
                     </ul>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.footer.legal') }}</p>
+                    <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('linscarbon.home.footer.legal') }}</p>
                     <ul style="display: flex; flex-direction: column; gap: 12px;" class="text-sm">
-                        <li><a href="{{ route('confidentialite') }}" style="color: var(--text-secondary);">{{ __('carbex.home.footer.privacy') }}</a></li>
-                        <li><a href="{{ route('cgu') }}" style="color: var(--text-secondary);">{{ __('carbex.home.footer.terms') }}</a></li>
+                        <li><a href="{{ route('confidentialite') }}" style="color: var(--text-secondary);">{{ __('linscarbon.home.footer.privacy') }}</a></li>
+                        <li><a href="{{ route('cgu') }}" style="color: var(--text-secondary);">{{ __('linscarbon.home.footer.terms') }}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t flex flex-col md:flex-row items-center justify-between" style="border-color: var(--border); padding-top: 24px; gap: 16px;">
-                <p class="text-sm" style="color: var(--text-muted);">© {{ date('Y') }} Carbex</p>
+                <p class="text-sm" style="color: var(--text-muted);">© {{ date('Y') }} LinsCarbon</p>
                 <div class="flex items-center" style="gap: 16px;">
-                    <span class="text-xs" style="color: var(--text-muted);">{{ __('carbex.home.footer.compliance') }}</span>
+                    <span class="text-xs" style="color: var(--text-muted);">{{ __('linscarbon.home.footer.compliance') }}</span>
                 </div>
             </div>
         </div>

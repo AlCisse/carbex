@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Log;
  *
  * Part of Phase 10: Employee engagement module (T182).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T182
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T182
  */
 class SendChallengeReminders extends Command
 {
-    protected $signature = 'carbex:send-challenge-reminders
+    protected $signature = 'linscarbon:send-challenge-reminders
                             {--dry-run : Preview without sending}';
 
     protected $description = 'Send reminders for active challenges nearing completion';
@@ -25,31 +25,31 @@ class SendChallengeReminders extends Command
     protected array $challenges = [
         'no_car_week' => [
             'id' => 'no_car_week',
-            'title' => 'carbex.engage.challenges.no_car_week',
+            'title' => 'linscarbon.engage.challenges.no_car_week',
             'points' => 100,
             'duration_days' => 7,
         ],
         'meatless_monday' => [
             'id' => 'meatless_monday',
-            'title' => 'carbex.engage.challenges.meatless_monday',
+            'title' => 'linscarbon.engage.challenges.meatless_monday',
             'points' => 50,
             'duration_days' => 28,
         ],
         'zero_waste_lunch' => [
             'id' => 'zero_waste_lunch',
-            'title' => 'carbex.engage.challenges.zero_waste_lunch',
+            'title' => 'linscarbon.engage.challenges.zero_waste_lunch',
             'points' => 75,
             'duration_days' => 14,
         ],
         'energy_saver' => [
             'id' => 'energy_saver',
-            'title' => 'carbex.engage.challenges.energy_saver',
+            'title' => 'linscarbon.engage.challenges.energy_saver',
             'points' => 150,
             'duration_days' => 30,
         ],
         'digital_detox' => [
             'id' => 'digital_detox',
-            'title' => 'carbex.engage.challenges.digital_detox',
+            'title' => 'linscarbon.engage.challenges.digital_detox',
             'points' => 60,
             'duration_days' => 7,
         ],

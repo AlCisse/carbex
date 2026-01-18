@@ -10,7 +10,7 @@ use Livewire\Component;
 /**
  * ChatWidget - Live chat support widget
  *
- * Constitution Carbex v3.0 - Section 6.4, T083
+ * Constitution LinsCarbon v3.0 - Section 6.4, T083
  */
 class ChatWidget extends Component
 {
@@ -66,7 +66,7 @@ class ChatWidget extends Component
         $this->isOpen = ! $this->isOpen;
 
         if ($this->isOpen && empty($this->messages)) {
-            $this->addBotMessage(__('carbex.support.welcome_message'));
+            $this->addBotMessage(__('linscarbon.support.welcome_message'));
         }
     }
 
@@ -106,15 +106,15 @@ class ChatWidget extends Component
     public function quickResponse(string $key): void
     {
         $responses = [
-            'pricing' => __('carbex.support.response_pricing'),
-            'import' => __('carbex.support.response_import'),
-            'report' => __('carbex.support.response_report'),
-            'emissions' => __('carbex.support.response_emissions'),
-            'support' => __('carbex.support.response_support'),
+            'pricing' => __('linscarbon.support.response_pricing'),
+            'import' => __('linscarbon.support.response_import'),
+            'report' => __('linscarbon.support.response_report'),
+            'emissions' => __('linscarbon.support.response_emissions'),
+            'support' => __('linscarbon.support.response_support'),
         ];
 
         $this->addUserMessage($this->quickResponses[$key] ?? $key);
-        $this->addBotMessage($responses[$key] ?? __('carbex.support.default_response'));
+        $this->addBotMessage($responses[$key] ?? __('linscarbon.support.default_response'));
         $this->saveMessages();
 
         if ($key === 'support') {
@@ -133,7 +133,7 @@ class ChatWidget extends Component
         ]);
 
         // In production, this would create a support ticket or send an email
-        $this->addBotMessage(__('carbex.support.contact_submitted', [
+        $this->addBotMessage(__('linscarbon.support.contact_submitted', [
             'name' => $this->userName,
             'email' => $this->userEmail,
         ]));
@@ -160,7 +160,7 @@ class ChatWidget extends Component
         session(['chat_conversation_id' => $this->conversationId]);
         session()->forget("chat_messages_{$this->conversationId}");
 
-        $this->addBotMessage(__('carbex.support.welcome_message'));
+        $this->addBotMessage(__('linscarbon.support.welcome_message'));
         $this->saveMessages();
     }
 
@@ -201,27 +201,27 @@ class ChatWidget extends Component
         // In production, this could use AI or connect to a support system
         $response = match (true) {
             str_contains($lowerMessage, 'tarif') || str_contains($lowerMessage, 'prix') || str_contains($lowerMessage, 'abonnement')
-                => __('carbex.support.response_pricing'),
+                => __('linscarbon.support.response_pricing'),
 
             str_contains($lowerMessage, 'import') || str_contains($lowerMessage, 'banque') || str_contains($lowerMessage, 'csv')
-                => __('carbex.support.response_import'),
+                => __('linscarbon.support.response_import'),
 
             str_contains($lowerMessage, 'rapport') || str_contains($lowerMessage, 'export') || str_contains($lowerMessage, 'ademe')
-                => __('carbex.support.response_report'),
+                => __('linscarbon.support.response_report'),
 
             str_contains($lowerMessage, 'emission') || str_contains($lowerMessage, 'scope') || str_contains($lowerMessage, 'facteur')
-                => __('carbex.support.response_emissions'),
+                => __('linscarbon.support.response_emissions'),
 
             str_contains($lowerMessage, 'contact') || str_contains($lowerMessage, 'humain') || str_contains($lowerMessage, 'agent')
                 => $this->handleContactRequest(),
 
             str_contains($lowerMessage, 'merci') || str_contains($lowerMessage, 'parfait') || str_contains($lowerMessage, 'super')
-                => __('carbex.support.response_thanks'),
+                => __('linscarbon.support.response_thanks'),
 
             str_contains($lowerMessage, 'bonjour') || str_contains($lowerMessage, 'salut') || str_contains($lowerMessage, 'hello')
-                => __('carbex.support.response_greeting'),
+                => __('linscarbon.support.response_greeting'),
 
-            default => __('carbex.support.default_response'),
+            default => __('linscarbon.support.default_response'),
         };
 
         $this->addBotMessage($response);
@@ -234,7 +234,7 @@ class ChatWidget extends Component
     {
         $this->showContactForm = true;
 
-        return __('carbex.support.response_support');
+        return __('linscarbon.support.response_support');
     }
 
     /**
@@ -265,7 +265,7 @@ class ChatWidget extends Component
     #[Computed]
     public function statusLabel(): string
     {
-        return $this->isOnline ? __('carbex.support.online') : __('carbex.support.offline');
+        return $this->isOnline ? __('linscarbon.support.online') : __('linscarbon.support.offline');
     }
 
     public function render(): View

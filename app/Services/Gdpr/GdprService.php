@@ -39,8 +39,8 @@ class GdprService
                 'format_version' => '1.0',
                 'gdpr_article' => 'Art. 20 GDPR - Right to data portability',
                 'bdsg_reference' => '§ 20 BDSG',
-                'data_controller' => 'Carbex SAS',
-                'contact' => 'dpo@carbex.fr',
+                'data_controller' => 'LinsCarbon SAS',
+                'contact' => 'dpo@linscarbon.fr',
             ],
             'personal_data' => [
                 'user' => [
@@ -176,7 +176,7 @@ class GdprService
             // Anonymize personal data
             $user->update([
                 'name' => 'Anonymisierter Benutzer',
-                'email' => $anonymizedId . '@anonymized.carbex.local',
+                'email' => $anonymizedId . '@anonymized.linscarbon.local',
                 'password' => bcrypt(Str::random(64)),
                 'notification_preferences' => null,
                 'remember_token' => null,
@@ -239,12 +239,12 @@ class GdprService
             'terms' => [
                 'accepted' => $user->terms_accepted_at !== null,
                 'accepted_at' => $user->terms_accepted_at?->toIso8601String(),
-                'version' => config('carbex.terms_version', '1.0'),
+                'version' => config('linscarbon.terms_version', '1.0'),
             ],
             'privacy' => [
                 'accepted' => $user->privacy_accepted_at !== null,
                 'accepted_at' => $user->privacy_accepted_at?->toIso8601String(),
-                'version' => config('carbex.privacy_version', '1.0'),
+                'version' => config('linscarbon.privacy_version', '1.0'),
             ],
             'marketing' => [
                 'accepted' => $user->marketing_consent ?? false,

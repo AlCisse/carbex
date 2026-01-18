@@ -21,7 +21,7 @@ use Livewire\Component;
  * Dashboard for monitoring CSRD and ISO compliance status.
  *
  * Tasks T178 - Phase 10 (TrackZero Features)
- * Constitution Carbex v3.0 - Section 8 (Conformité)
+ * Constitution LinsCarbon v3.0 - Section 8 (Conformité)
  */
 #[Layout('components.layouts.app')]
 #[Title('Compliance Monitor')]
@@ -168,9 +168,9 @@ class ComplianceMonitor extends Component
     public function csrdCategories(): array
     {
         return [
-            CsrdFramework::CATEGORY_ENVIRONMENT => __('carbex.compliance.categories.environment'),
-            CsrdFramework::CATEGORY_SOCIAL => __('carbex.compliance.categories.social'),
-            CsrdFramework::CATEGORY_GOVERNANCE => __('carbex.compliance.categories.governance'),
+            CsrdFramework::CATEGORY_ENVIRONMENT => __('linscarbon.compliance.categories.environment'),
+            CsrdFramework::CATEGORY_SOCIAL => __('linscarbon.compliance.categories.social'),
+            CsrdFramework::CATEGORY_GOVERNANCE => __('linscarbon.compliance.categories.governance'),
         ];
     }
 
@@ -178,10 +178,10 @@ class ComplianceMonitor extends Component
     public function isoCategories(): array
     {
         return [
-            IsoStandard::CATEGORY_ENVIRONMENTAL => __('carbex.compliance.iso_categories.environmental'),
-            IsoStandard::CATEGORY_ENERGY => __('carbex.compliance.iso_categories.energy'),
-            IsoStandard::CATEGORY_CARBON => __('carbex.compliance.iso_categories.carbon'),
-            IsoStandard::CATEGORY_QUALITY => __('carbex.compliance.iso_categories.quality'),
+            IsoStandard::CATEGORY_ENVIRONMENTAL => __('linscarbon.compliance.iso_categories.environmental'),
+            IsoStandard::CATEGORY_ENERGY => __('linscarbon.compliance.iso_categories.energy'),
+            IsoStandard::CATEGORY_CARBON => __('linscarbon.compliance.iso_categories.carbon'),
+            IsoStandard::CATEGORY_QUALITY => __('linscarbon.compliance.iso_categories.quality'),
         ];
     }
 
@@ -234,7 +234,7 @@ class ComplianceMonitor extends Component
 
         $this->dispatch('notify', [
             'type' => 'success',
-            'message' => __('carbex.compliance.status_updated'),
+            'message' => __('linscarbon.compliance.status_updated'),
         ]);
     }
 
@@ -261,7 +261,7 @@ class ComplianceMonitor extends Component
 
         $this->dispatch('notify', [
             'type' => 'success',
-            'message' => __('carbex.compliance.status_updated'),
+            'message' => __('linscarbon.compliance.status_updated'),
         ]);
     }
 
@@ -323,10 +323,10 @@ class ComplianceMonitor extends Component
             ComplianceTask::where('id', $this->editingTaskId)
                 ->where('organization_id', $this->organization->id)
                 ->update($data);
-            $message = __('carbex.compliance.task_updated');
+            $message = __('linscarbon.compliance.task_updated');
         } else {
             ComplianceTask::create($data);
-            $message = __('carbex.compliance.task_created');
+            $message = __('linscarbon.compliance.task_created');
         }
 
         $this->closeTaskModal();
@@ -348,7 +348,7 @@ class ComplianceMonitor extends Component
 
             $this->dispatch('notify', [
                 'type' => 'success',
-                'message' => __('carbex.compliance.task_completed'),
+                'message' => __('linscarbon.compliance.task_completed'),
             ]);
         }
     }
@@ -363,7 +363,7 @@ class ComplianceMonitor extends Component
 
             $this->dispatch('notify', [
                 'type' => 'success',
-                'message' => __('carbex.compliance.task_deleted'),
+                'message' => __('linscarbon.compliance.task_deleted'),
             ]);
         }
     }

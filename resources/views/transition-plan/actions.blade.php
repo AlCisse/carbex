@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot name="header">
-        <h1 class="text-xl font-semibold text-gray-900">{{ __('carbex.transition_plan.actions') }}</h1>
+        <h1 class="text-xl font-semibold text-gray-900">{{ __('linscarbon.transition_plan.actions') }}</h1>
     </x-slot>
 
     <div class="space-y-6">

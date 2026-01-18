@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 | API Routes
 |--------------------------------------------------------------------------
 |
-| API v1 routes for Carbex platform
+| API v1 routes for LinsCarbon platform
 | All routes are prefixed with /api/v1
 |
 */

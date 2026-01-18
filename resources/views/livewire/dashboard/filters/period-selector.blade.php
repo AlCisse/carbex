@@ -40,7 +40,7 @@
 
             {{-- Quarterly Options --}}
             <div class="border-t dark:border-gray-700 my-2 pt-2">
-                <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase">{{ __('carbex.dashboard.quarters') }}</p>
+                <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase">{{ __('linscarbon.dashboard.quarters') }}</p>
                 <div class="grid grid-cols-2 gap-1">
                     @foreach(['q1', 'q2', 'q3', 'q4'] as $quarter)
                         <button
@@ -76,13 +76,13 @@
                     class="w-full text-left px-3 py-2 text-sm rounded-md transition
                         {{ $preset === 'custom' ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700' }}"
                 >
-                    {{ __('carbex.dashboard.custom_range') }}
+                    {{ __('linscarbon.dashboard.custom_range') }}
                 </button>
 
                 @if($showCustom)
                     <div class="mt-3 px-3 space-y-3">
                         <div>
-                            <label class="block text-xs font-medium text-gray-500 mb-1">{{ __('carbex.dashboard.start_date') }}</label>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">{{ __('linscarbon.dashboard.start_date') }}</label>
                             <input
                                 type="date"
                                 wire:model="startDate"
@@ -90,7 +90,7 @@
                             >
                         </div>
                         <div>
-                            <label class="block text-xs font-medium text-gray-500 mb-1">{{ __('carbex.dashboard.end_date') }}</label>
+                            <label class="block text-xs font-medium text-gray-500 mb-1">{{ __('linscarbon.dashboard.end_date') }}</label>
                             <input
                                 type="date"
                                 wire:model="endDate"
@@ -102,7 +102,7 @@
                             @click="open = false"
                             class="w-full px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition"
                         >
-                            {{ __('carbex.dashboard.apply') }}
+                            {{ __('linscarbon.dashboard.apply') }}
                         </button>
                     </div>
                 @endif

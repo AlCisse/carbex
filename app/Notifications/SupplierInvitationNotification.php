@@ -42,7 +42,7 @@ class SupplierInvitationNotification extends Notification implements ShouldQueue
             ->line("Les données demandées incluent :")
             ->line($this->formatRequestedData())
             ->line("Vos données seront traitées de manière confidentielle conformément à notre politique de confidentialité.")
-            ->salutation("Cordialement,\nL'équipe Carbex");
+            ->salutation("Cordialement,\nL'équipe LinsCarbon");
 
         return $message;
     }

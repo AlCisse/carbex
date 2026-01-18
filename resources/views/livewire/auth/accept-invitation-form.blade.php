@@ -1,7 +1,7 @@
 <div>
     @if (!$isValid)
         <x-slot name="heading">
-            {{ __('carbex.auth.invitation_invalid_title') }}
+            {{ __('linscarbon.auth.invitation_invalid_title') }}
         </x-slot>
 
         <div class="rounded-md bg-red-50 p-4">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="ml-3">
                     <p class="text-sm font-medium text-red-800">
-                        {{ __('carbex.auth.invitation_invalid') }}
+                        {{ __('linscarbon.auth.invitation_invalid') }}
                     </p>
                 </div>
             </div>
@@ -21,16 +21,16 @@
 
         <div class="mt-6 text-center">
             <a href="{{ route('login') }}" class="font-semibold text-green-600 hover:text-green-500">
-                {{ __('carbex.auth.back_to_login') }}
+                {{ __('linscarbon.auth.back_to_login') }}
             </a>
         </div>
     @else
         <x-slot name="heading">
-            {{ __('carbex.auth.accept_invitation_title') }}
+            {{ __('linscarbon.auth.accept_invitation_title') }}
         </x-slot>
 
         <x-slot name="subheading">
-            {{ __('carbex.auth.accept_invitation_subtitle', ['email' => $invitation['email'] ?? '']) }}
+            {{ __('linscarbon.auth.accept_invitation_subtitle', ['email' => $invitation['email'] ?? '']) }}
         </x-slot>
 
         @if ($userExists)
@@ -43,7 +43,7 @@
                     </div>
                     <div class="ml-3">
                         <p class="text-sm text-blue-700">
-                            {{ __('carbex.auth.account_exists') }}
+                            {{ __('linscarbon.auth.account_exists') }}
                         </p>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <!-- First Name -->
                 <div>
                     <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">
-                        {{ __('carbex.auth.first_name') }}
+                        {{ __('linscarbon.auth.first_name') }}
                     </label>
                     <div class="mt-2">
                         <input wire:model="first_name" id="first_name" name="first_name" type="text" autocomplete="given-name" required
@@ -69,7 +69,7 @@
                 <!-- Last Name -->
                 <div>
                     <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">
-                        {{ __('carbex.auth.last_name') }}
+                        {{ __('linscarbon.auth.last_name') }}
                     </label>
                     <div class="mt-2">
                         <input wire:model="last_name" id="last_name" name="last_name" type="text" autocomplete="family-name" required
@@ -83,7 +83,7 @@
                 <!-- Password -->
                 <div>
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
-                        {{ __('carbex.auth.password') }}
+                        {{ __('linscarbon.auth.password') }}
                     </label>
                     <div class="mt-2">
                         <input wire:model="password" id="password" name="password" type="password" autocomplete="new-password" required
@@ -97,7 +97,7 @@
                 <!-- Confirm Password -->
                 <div>
                     <label for="password_confirmation" class="block text-sm font-medium leading-6 text-gray-900">
-                        {{ __('carbex.auth.confirm_password') }}
+                        {{ __('linscarbon.auth.confirm_password') }}
                     </label>
                     <div class="mt-2">
                         <input wire:model="password_confirmation" id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required
@@ -111,8 +111,8 @@
                 <button type="submit"
                     class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 disabled:opacity-50"
                     wire:loading.attr="disabled">
-                    <span wire:loading.remove>{{ __('carbex.auth.accept_invitation_button') }}</span>
-                    <span wire:loading>{{ __('carbex.common.loading') }}</span>
+                    <span wire:loading.remove>{{ __('linscarbon.auth.accept_invitation_button') }}</span>
+                    <span wire:loading>{{ __('linscarbon.common.loading') }}</span>
                 </button>
             </div>
         </form>

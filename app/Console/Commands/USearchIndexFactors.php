@@ -31,7 +31,7 @@ class USearchIndexFactors extends Command
      */
     public function handle(USearchClient $client): int
     {
-        $this->info('Carbex uSearch - Emission Factor Indexer');
+        $this->info('LinsCarbon uSearch - Emission Factor Indexer');
         $this->line('');
 
         // Check uSearch availability

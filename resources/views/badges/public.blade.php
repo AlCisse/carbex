@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $badgeName }} - {{ $organization->name }} | Carbex</title>
+    <title>{{ $badgeName }} - {{ $organization->name }} | LinsCarbon</title>
 
     <!-- SEO Meta -->
-    <meta name="description" content="{{ __('carbex.promote.seo_description', ['organization' => $organization->name, 'badge' => $badgeName]) }}">
+    <meta name="description" content="{{ __('linscarbon.promote.seo_description', ['organization' => $organization->name, 'badge' => $badgeName]) }}">
     <meta property="og:title" content="{{ $badgeName }} - {{ $organization->name }}">
     <meta property="og:description" content="{{ $badgeDescription }}">
     <meta property="og:type" content="website">
@@ -26,10 +26,10 @@
                             <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
                         </svg>
                     </div>
-                    <span class="text-xl font-bold text-gray-900 dark:text-white">Carbex</span>
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">LinsCarbon</span>
                 </a>
                 <a href="{{ url('/') }}" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium">
-                    {{ __('carbex.promote.learn_more') }}
+                    {{ __('linscarbon.promote.learn_more') }}
                 </a>
             </div>
         </header>
@@ -58,7 +58,7 @@
                         <!-- Organization -->
                         <div class="text-center mb-6">
                             <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                                {{ __('carbex.promote.awarded_to') }}
+                                {{ __('linscarbon.promote.awarded_to') }}
                             </p>
                             <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
                                 {{ $organization->name }}
@@ -78,13 +78,13 @@
                         <!-- Date & Verification -->
                         <div class="flex items-center justify-center space-x-4 text-sm">
                             <span class="text-gray-500 dark:text-gray-400">
-                                {{ __('carbex.promote.earned_on') }} {{ $earned_at->format('d/m/Y') }}
+                                {{ __('linscarbon.promote.earned_on') }} {{ $earned_at->format('d/m/Y') }}
                             </span>
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 text-xs font-medium">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                 </svg>
-                                {{ __('carbex.promote.verified') }}
+                                {{ __('linscarbon.promote.verified') }}
                             </span>
                         </div>
                     </div>
@@ -96,10 +96,10 @@
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                <span>{{ __('carbex.promote.verified_by_carbex') }}</span>
+                                <span>{{ __('linscarbon.promote.verified_by_linscarbon') }}</span>
                             </div>
                             <a href="{{ url('/') }}" class="text-emerald-600 hover:text-emerald-700 text-sm font-medium">
-                                carbex.io
+                                linscarbon.io
                             </a>
                         </div>
                     </div>
@@ -108,10 +108,10 @@
                 <!-- CTA -->
                 <div class="mt-8 text-center">
                     <p class="text-gray-600 dark:text-gray-400 mb-4">
-                        {{ __('carbex.promote.cta_text') }}
+                        {{ __('linscarbon.promote.cta_text') }}
                     </p>
                     <a href="{{ url('/') }}" class="inline-flex items-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all">
-                        {{ __('carbex.promote.start_free') }}
+                        {{ __('linscarbon.promote.start_free') }}
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
@@ -122,7 +122,7 @@
 
         <!-- Footer -->
         <footer class="py-4 px-6 text-center text-sm text-gray-500 dark:text-gray-400">
-            &copy; {{ date('Y') }} Carbex. {{ __('carbex.promote.all_rights_reserved') }}
+            &copy; {{ date('Y') }} LinsCarbon. {{ __('linscarbon.promote.all_rights_reserved') }}
         </footer>
     </div>
 </body>

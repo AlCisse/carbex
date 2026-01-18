@@ -39,23 +39,23 @@ class SiteComparisonTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(SiteComparison::class)
             ->assertStatus(200)
-            ->assertSee(__('carbex.sites.comparison.title'));
+            ->assertSee(__('linscarbon.sites.comparison.title'));
     }
 
     public function test_component_shows_filters(): void
     {
         Livewire::actingAs($this->user)
             ->test(SiteComparison::class)
-            ->assertSee(__('carbex.sites.comparison.year'))
-            ->assertSee(__('carbex.sites.comparison.scope'))
-            ->assertSee(__('carbex.sites.comparison.metric'));
+            ->assertSee(__('linscarbon.sites.comparison.year'))
+            ->assertSee(__('linscarbon.sites.comparison.scope'))
+            ->assertSee(__('linscarbon.sites.comparison.metric'));
     }
 
     public function test_component_shows_empty_state_without_sites(): void
     {
         Livewire::actingAs($this->user)
             ->test(SiteComparison::class)
-            ->assertSee(__('carbex.sites.comparison.no_sites'));
+            ->assertSee(__('linscarbon.sites.comparison.no_sites'));
     }
 
     // ==================== Sites Data ====================
@@ -450,8 +450,8 @@ class SiteComparisonTest extends TestCase
 
         // Should have recommendations for missing area and employees
         $messages = $siteRecs->pluck('message')->toArray();
-        $this->assertContains(__('carbex.sites.recommendations.missing_area'), $messages);
-        $this->assertContains(__('carbex.sites.recommendations.missing_employees'), $messages);
+        $this->assertContains(__('linscarbon.sites.recommendations.missing_area'), $messages);
+        $this->assertContains(__('linscarbon.sites.recommendations.missing_employees'), $messages);
     }
 
     // ==================== Route Test ====================

@@ -1,26 +1,26 @@
 {{-- Methodology Partial for PDF Reports --}}
 <div class="methodology-section">
-    <h2 class="section-title">{{ __('carbex.methodology.title') }}</h2>
+    <h2 class="section-title">{{ __('linscarbon.methodology.title') }}</h2>
 
     {{-- Calculation Standards --}}
     <div class="subsection">
-        <h3>{{ __('carbex.methodology.calculation_standards') }}</h3>
+        <h3>{{ __('linscarbon.methodology.calculation_standards') }}</h3>
         <table>
             <tbody>
                 <tr>
-                    <td><strong>{{ __('carbex.methodology.primary_standard') }}</strong></td>
+                    <td><strong>{{ __('linscarbon.methodology.primary_standard') }}</strong></td>
                     <td>{{ $methodology['standard'] ?? 'GHG Protocol Corporate Standard' }}</td>
                 </tr>
                 <tr>
-                    <td><strong>{{ __('carbex.methodology.consolidation_approach') }}</strong></td>
-                    <td>{{ $methodology['consolidation_approach'] ?? __('carbex.methodology.operational_control') }}</td>
+                    <td><strong>{{ __('linscarbon.methodology.consolidation_approach') }}</strong></td>
+                    <td>{{ $methodology['consolidation_approach'] ?? __('linscarbon.methodology.operational_control') }}</td>
                 </tr>
                 <tr>
-                    <td><strong>{{ __('carbex.methodology.base_year') }}</strong></td>
+                    <td><strong>{{ __('linscarbon.methodology.base_year') }}</strong></td>
                     <td>{{ $methodology['base_year'] ?? date('Y') }}</td>
                 </tr>
                 <tr>
-                    <td><strong>{{ __('carbex.methodology.reporting_period') }}</strong></td>
+                    <td><strong>{{ __('linscarbon.methodology.reporting_period') }}</strong></td>
                     <td>{{ $methodology['period_start'] ?? '' }} - {{ $methodology['period_end'] ?? '' }}</td>
                 </tr>
             </tbody>
@@ -29,13 +29,13 @@
 
     {{-- Emission Factor Sources --}}
     <div class="subsection">
-        <h3>{{ __('carbex.methodology.emission_factor_sources') }}</h3>
+        <h3>{{ __('linscarbon.methodology.emission_factor_sources') }}</h3>
         <table>
             <thead>
                 <tr>
-                    <th>{{ __('carbex.methodology.source') }}</th>
-                    <th>{{ __('carbex.methodology.version') }}</th>
-                    <th>{{ __('carbex.methodology.applied_to') }}</th>
+                    <th>{{ __('linscarbon.methodology.source') }}</th>
+                    <th>{{ __('linscarbon.methodology.version') }}</th>
+                    <th>{{ __('linscarbon.methodology.applied_to') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,17 +50,17 @@
                     <tr>
                         <td>ADEME Base Carbone</td>
                         <td>2024</td>
-                        <td>{{ __('carbex.methodology.all_french_operations') }}</td>
+                        <td>{{ __('linscarbon.methodology.all_french_operations') }}</td>
                     </tr>
                     <tr>
                         <td>DEFRA UK GHG Conversion Factors</td>
                         <td>2024</td>
-                        <td>{{ __('carbex.methodology.uk_operations') }}</td>
+                        <td>{{ __('linscarbon.methodology.uk_operations') }}</td>
                     </tr>
                     <tr>
                         <td>IEA Emission Factors</td>
                         <td>2023</td>
-                        <td>{{ __('carbex.methodology.other_countries') }}</td>
+                        <td>{{ __('linscarbon.methodology.other_countries') }}</td>
                     </tr>
                 @endif
             </tbody>
@@ -69,44 +69,44 @@
 
     {{-- Scope Definitions --}}
     <div class="subsection">
-        <h3>{{ __('carbex.methodology.scope_definitions') }}</h3>
+        <h3>{{ __('linscarbon.methodology.scope_definitions') }}</h3>
         <div class="scope-definitions">
             <div class="scope-definition">
-                <h4><span class="badge badge-green">Scope 1</span> {{ __('carbex.methodology.direct_emissions') }}</h4>
-                <p>{{ __('carbex.methodology.scope1_desc') }}</p>
+                <h4><span class="badge badge-green">Scope 1</span> {{ __('linscarbon.methodology.direct_emissions') }}</h4>
+                <p>{{ __('linscarbon.methodology.scope1_desc') }}</p>
                 <ul>
-                    <li>{{ __('carbex.methodology.company_vehicles') }}</li>
-                    <li>{{ __('carbex.methodology.onsite_fuel') }}</li>
-                    <li>{{ __('carbex.methodology.fugitive_emissions') }}</li>
-                    <li>{{ __('carbex.methodology.process_emissions') }}</li>
+                    <li>{{ __('linscarbon.methodology.company_vehicles') }}</li>
+                    <li>{{ __('linscarbon.methodology.onsite_fuel') }}</li>
+                    <li>{{ __('linscarbon.methodology.fugitive_emissions') }}</li>
+                    <li>{{ __('linscarbon.methodology.process_emissions') }}</li>
                 </ul>
             </div>
 
             <div class="scope-definition">
-                <h4><span class="badge badge-blue">Scope 2</span> {{ __('carbex.methodology.energy_indirect') }}</h4>
-                <p>{{ __('carbex.methodology.scope2_desc') }}</p>
+                <h4><span class="badge badge-blue">Scope 2</span> {{ __('linscarbon.methodology.energy_indirect') }}</h4>
+                <p>{{ __('linscarbon.methodology.scope2_desc') }}</p>
                 <ul>
-                    <li>{{ __('carbex.methodology.purchased_electricity') }}</li>
-                    <li>{{ __('carbex.methodology.district_heating') }}</li>
-                    <li>{{ __('carbex.methodology.steam') }}</li>
+                    <li>{{ __('linscarbon.methodology.purchased_electricity') }}</li>
+                    <li>{{ __('linscarbon.methodology.district_heating') }}</li>
+                    <li>{{ __('linscarbon.methodology.steam') }}</li>
                 </ul>
-                <p><em>{{ __('carbex.methodology.location_based_note') }}</em></p>
+                <p><em>{{ __('linscarbon.methodology.location_based_note') }}</em></p>
             </div>
 
             <div class="scope-definition">
-                <h4><span class="badge badge-purple">Scope 3</span> {{ __('carbex.methodology.value_chain') }}</h4>
-                <p>{{ __('carbex.methodology.scope3_desc') }}</p>
+                <h4><span class="badge badge-purple">Scope 3</span> {{ __('linscarbon.methodology.value_chain') }}</h4>
+                <p>{{ __('linscarbon.methodology.scope3_desc') }}</p>
                 <ul>
                     @if(isset($methodology['scope_3_categories']))
                         @foreach($methodology['scope_3_categories'] as $category)
                             <li>{{ $category }}</li>
                         @endforeach
                     @else
-                        <li>{{ __('carbex.methodology.cat1_purchased') }}</li>
-                        <li>{{ __('carbex.methodology.cat5_waste') }}</li>
-                        <li>{{ __('carbex.methodology.cat6_travel') }}</li>
-                        <li>{{ __('carbex.methodology.cat7_commuting') }}</li>
-                        <li>{{ __('carbex.methodology.cat8_leased') }}</li>
+                        <li>{{ __('linscarbon.methodology.cat1_purchased') }}</li>
+                        <li>{{ __('linscarbon.methodology.cat5_waste') }}</li>
+                        <li>{{ __('linscarbon.methodology.cat6_travel') }}</li>
+                        <li>{{ __('linscarbon.methodology.cat7_commuting') }}</li>
+                        <li>{{ __('linscarbon.methodology.cat8_leased') }}</li>
                     @endif
                 </ul>
             </div>
@@ -115,14 +115,14 @@
 
     {{-- Data Quality --}}
     <div class="subsection">
-        <h3>{{ __('carbex.methodology.data_quality_assessment') }}</h3>
+        <h3>{{ __('linscarbon.methodology.data_quality_assessment') }}</h3>
         <table>
             <thead>
                 <tr>
-                    <th>{{ __('carbex.methodology.data_type') }}</th>
-                    <th>{{ __('carbex.methodology.source') }}</th>
-                    <th>{{ __('carbex.methodology.quality_score') }}</th>
-                    <th>{{ __('carbex.methodology.coverage') }}</th>
+                    <th>{{ __('linscarbon.methodology.data_type') }}</th>
+                    <th>{{ __('linscarbon.methodology.source') }}</th>
+                    <th>{{ __('linscarbon.methodology.quality_score') }}</th>
+                    <th>{{ __('linscarbon.methodology.coverage') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -140,20 +140,20 @@
                 @endforeach
                 @if(empty($methodology['data_quality']))
                     <tr>
-                        <td>{{ __('carbex.methodology.energy_consumption') }}</td>
-                        <td>{{ __('carbex.methodology.invoices_meters') }}</td>
+                        <td>{{ __('linscarbon.methodology.energy_consumption') }}</td>
+                        <td>{{ __('linscarbon.methodology.invoices_meters') }}</td>
                         <td><span class="quality-badge quality-high">95%</span></td>
                         <td>100%</td>
                     </tr>
                     <tr>
-                        <td>{{ __('carbex.methodology.business_travel') }}</td>
-                        <td>{{ __('carbex.methodology.bank_transactions') }}</td>
+                        <td>{{ __('linscarbon.methodology.business_travel') }}</td>
+                        <td>{{ __('linscarbon.methodology.bank_transactions') }}</td>
                         <td><span class="quality-badge quality-high">85%</span></td>
                         <td>90%</td>
                     </tr>
                     <tr>
-                        <td>{{ __('carbex.methodology.purchased_goods') }}</td>
-                        <td>{{ __('carbex.methodology.spend_based') }}</td>
+                        <td>{{ __('linscarbon.methodology.purchased_goods') }}</td>
+                        <td>{{ __('linscarbon.methodology.spend_based') }}</td>
                         <td><span class="quality-badge quality-medium">60%</span></td>
                         <td>75%</td>
                     </tr>
@@ -164,29 +164,29 @@
 
     {{-- Uncertainty & Limitations --}}
     <div class="subsection">
-        <h3>{{ __('carbex.methodology.uncertainty_limitations') }}</h3>
+        <h3>{{ __('linscarbon.methodology.uncertainty_limitations') }}</h3>
         <div class="methodology-box">
-            <p>{{ __('carbex.methodology.uncertainty_factors') }}</p>
+            <p>{{ __('linscarbon.methodology.uncertainty_factors') }}</p>
             <ul>
-                <li>{{ __('carbex.methodology.uncertainty_1') }}</li>
-                <li>{{ __('carbex.methodology.uncertainty_2') }}</li>
-                <li>{{ __('carbex.methodology.uncertainty_3') }}</li>
+                <li>{{ __('linscarbon.methodology.uncertainty_1') }}</li>
+                <li>{{ __('linscarbon.methodology.uncertainty_2') }}</li>
+                <li>{{ __('linscarbon.methodology.uncertainty_3') }}</li>
             </ul>
-            <p><strong>{{ __('carbex.methodology.estimated_uncertainty') }}:</strong> ± {{ $methodology['uncertainty_percent'] ?? 15 }}%</p>
+            <p><strong>{{ __('linscarbon.methodology.estimated_uncertainty') }}:</strong> ± {{ $methodology['uncertainty_percent'] ?? 15 }}%</p>
         </div>
     </div>
 
     {{-- Exclusions --}}
     @if(!empty($methodology['exclusions']))
         <div class="subsection">
-            <h3>{{ __('carbex.methodology.exclusions') }}</h3>
-            <p>{{ __('carbex.methodology.exclusions_desc') }}</p>
+            <h3>{{ __('linscarbon.methodology.exclusions') }}</h3>
+            <p>{{ __('linscarbon.methodology.exclusions_desc') }}</p>
             <ul>
                 @foreach($methodology['exclusions'] as $exclusion)
                     <li>
                         <strong>{{ $exclusion['item'] }}:</strong>
                         {{ $exclusion['reason'] }}
-                        ({{ __('carbex.methodology.estimated_impact') }}: {{ $exclusion['impact'] ?? '< 1%' }})
+                        ({{ __('linscarbon.methodology.estimated_impact') }}: {{ $exclusion['impact'] ?? '< 1%' }})
                     </li>
                 @endforeach
             </ul>
@@ -195,19 +195,19 @@
 
     {{-- Verification Statement --}}
     <div class="verification-box">
-        <h4>{{ __('carbex.methodology.verification_statement') }}</h4>
+        <h4>{{ __('linscarbon.methodology.verification_statement') }}</h4>
         @if(isset($methodology['verification']))
             <p>
-                {{ __('carbex.methodology.verified_by') }}
+                {{ __('linscarbon.methodology.verified_by') }}
                 <strong>{{ $methodology['verification']['verifier'] }}</strong>
-                {{ __('carbex.methodology.to_standard') }}
+                {{ __('linscarbon.methodology.to_standard') }}
                 <strong>{{ $methodology['verification']['standard'] }}</strong>.
             </p>
-            <p>{{ __('carbex.methodology.verification_date') }}: {{ $methodology['verification']['date'] }}</p>
+            <p>{{ __('linscarbon.methodology.verification_date') }}: {{ $methodology['verification']['date'] }}</p>
         @else
             <p>
-                {{ __('carbex.methodology.ghg_prepared') }}
-                {{ __('carbex.methodology.verification_recommended') }}
+                {{ __('linscarbon.methodology.ghg_prepared') }}
+                {{ __('linscarbon.methodology.verification_recommended') }}
             </p>
         @endif
     </div>

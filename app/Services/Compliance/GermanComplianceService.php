@@ -51,7 +51,7 @@ class GermanComplianceService
         $users = $org->users;
         $hasConsentTracking = $users->every(fn ($u) => $u->terms_accepted_at !== null);
         $hasPrivacyPolicy = true; // Assumed from legal pages
-        $hasDpoContact = true; // dpo@carbex.fr defined
+        $hasDpoContact = true; // dpo@linscarbon.fr defined
 
         return [
             'name' => 'BDSG (Bundesdatenschutzgesetz)',

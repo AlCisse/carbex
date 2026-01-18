@@ -1,5 +1,5 @@
 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6" dusk="progress-circle">
-    <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('carbex.dashboard.progress_title') }}</h3>
+    <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('linscarbon.dashboard.progress_title') }}</h3>
 
     <div class="flex items-center justify-center mb-6">
         <!-- SVG Circle Progress -->
@@ -31,7 +31,7 @@
             <!-- Center text -->
             <div class="absolute inset-0 flex flex-col items-center justify-center">
                 <span class="text-3xl font-bold text-gray-900">{{ $progress['percentage'] }}%</span>
-                <span class="text-sm text-gray-500">{{ __('carbex.dashboard.completed') }}</span>
+                <span class="text-sm text-gray-500">{{ __('linscarbon.dashboard.completed') }}</span>
             </div>
         </div>
     </div>
@@ -40,9 +40,9 @@
     <div class="text-center mb-6">
         <p class="text-sm text-gray-600">
             <span class="font-semibold text-gray-900">{{ $progress['completed'] }}</span>
-            {{ __('carbex.dashboard.of') }}
+            {{ __('linscarbon.dashboard.of') }}
             <span class="font-semibold text-gray-900">{{ $progress['applicable_total'] }}</span>
-            {{ __('carbex.dashboard.categories') }}
+            {{ __('linscarbon.dashboard.categories') }}
         </p>
     </div>
 
@@ -50,16 +50,16 @@
     <div class="flex justify-center space-x-6 text-sm">
         <div class="flex items-center">
             <span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span>
-            <span class="text-gray-600">{{ __('carbex.dashboard.legend_completed') }} ({{ $progress['completed'] }})</span>
+            <span class="text-gray-600">{{ __('linscarbon.dashboard.legend_completed') }} ({{ $progress['completed'] }})</span>
         </div>
         <div class="flex items-center">
             <span class="w-3 h-3 rounded-full bg-yellow-400 mr-2"></span>
-            <span class="text-gray-600">{{ __('carbex.dashboard.legend_todo') }} ({{ $progress['in_progress'] }})</span>
+            <span class="text-gray-600">{{ __('linscarbon.dashboard.legend_todo') }} ({{ $progress['in_progress'] }})</span>
         </div>
         @if($progress['not_applicable'] > 0)
         <div class="flex items-center">
             <span class="w-3 h-3 rounded-full bg-gray-300 mr-2"></span>
-            <span class="text-gray-600">{{ __('carbex.dashboard.legend_na') }} ({{ $progress['not_applicable'] }})</span>
+            <span class="text-gray-600">{{ __('linscarbon.dashboard.legend_na') }} ({{ $progress['not_applicable'] }})</span>
         </div>
         @endif
     </div>

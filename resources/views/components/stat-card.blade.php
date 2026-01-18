@@ -45,7 +45,7 @@
                 @else
                 <span class="text-gray-500">{{ $change }}</span>
                 @endif
-                <span class="ml-2 text-gray-500">{{ __('carbex.common.vs_previous_period') }}</span>
+                <span class="ml-2 text-gray-500">{{ __('linscarbon.common.vs_previous_period') }}</span>
             </div>
         </div>
         @endif

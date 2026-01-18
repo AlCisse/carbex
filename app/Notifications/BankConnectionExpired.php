@@ -45,7 +45,7 @@ class BankConnectionExpired extends Notification implements ShouldQueue
                 ->line('Die Verbindung ist möglicherweise abgelaufen oder erfordert eine erneute Authentifizierung.')
                 ->action('Verbindung erneuern', url('/banking'))
                 ->line('Um weiterhin Ihre Transaktionen automatisch zu importieren, verbinden Sie bitte Ihre Bank erneut.')
-                ->salutation('Mit freundlichen Grüßen, Carbex Team');
+                ->salutation('Mit freundlichen Grüßen, LinsCarbon Team');
         }
 
         return (new MailMessage)
@@ -55,7 +55,7 @@ class BankConnectionExpired extends Notification implements ShouldQueue
             ->line('La connexion a peut-être expiré ou nécessite une nouvelle authentification.')
             ->action('Reconnecter ma banque', url('/banking'))
             ->line('Pour continuer à importer automatiquement vos transactions, veuillez reconnecter votre banque.')
-            ->salutation('Cordialement, L\'équipe Carbex');
+            ->salutation('Cordialement, L\'équipe LinsCarbon');
     }
 
     /**

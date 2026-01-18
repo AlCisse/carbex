@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Carbex - Emission Factors Configuration
+ * LinsCarbon - Emission Factors Configuration
  *
  * Configuration for emission factor sources, categories,
  * and calculation parameters for carbon footprint calculation.
@@ -376,7 +376,7 @@ return [
     'cache' => [
         'enabled' => true,
         'ttl' => 86400,        // 24 hours
-        'prefix' => 'carbex_ef_',
+        'prefix' => 'linscarbon_ef_',
     ],
 
 ];

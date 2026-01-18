@@ -10,7 +10,7 @@ use Illuminate\Database\Seeder;
  *
  * Seed les badges de gamification prédéfinis.
  *
- * Constitution Carbex v3.0 - Section 9.9 (Gamification)
+ * Constitution LinsCarbon v3.0 - Section 9.9 (Gamification)
  */
 class BadgeSeeder extends Seeder
 {

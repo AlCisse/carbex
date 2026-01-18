@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
  *
  * Gère l'affichage public des badges partagés.
  *
- * Constitution Carbex v3.0 - Section 9.9 (Gamification)
+ * Constitution LinsCarbon v3.0 - Section 9.9 (Gamification)
  * Tasks T171 - Phase 10 (TrackZero Features)
  */
 class BadgeShareController extends Controller
@@ -101,7 +101,7 @@ class BadgeShareController extends Controller
                 'country' => $organization->country,
             ],
             'earned_at' => $pivot->earned_at,
-            'verified_by' => 'Carbex',
+            'verified_by' => 'LinsCarbon',
         ]);
     }
 }

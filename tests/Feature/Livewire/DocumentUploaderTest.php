@@ -43,7 +43,7 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->assertStatus(200)
-            ->assertSee(__('carbex.documents.title'));
+            ->assertSee(__('linscarbon.documents.title'));
     }
 
     public function test_component_shows_upload_form(): void
@@ -51,14 +51,14 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->assertSet('showUploadForm', true)
-            ->assertSee(__('carbex.documents.drop_files'));
+            ->assertSee(__('linscarbon.documents.drop_files'));
     }
 
     public function test_component_shows_empty_state_when_no_documents(): void
     {
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
-            ->assertSee(__('carbex.documents.no_documents'));
+            ->assertSee(__('linscarbon.documents.no_documents'));
     }
 
     public function test_component_lists_organization_documents(): void
@@ -84,7 +84,7 @@ class DocumentUploaderTest extends TestCase
             ->set('documentType', 'invoice')
             ->call('upload')
             ->assertHasNoErrors()
-            ->assertSet('successMessage', __('carbex.documents.upload_success'));
+            ->assertSet('successMessage', __('linscarbon.documents.upload_success'));
 
         $this->assertDatabaseHas('uploaded_documents', [
             'organization_id' => $this->organization->id,
@@ -147,7 +147,7 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->call('upload')
-            ->assertSet('errorMessage', __('carbex.documents.file_required'));
+            ->assertSet('errorMessage', __('linscarbon.documents.file_required'));
     }
 
     public function test_can_select_document_for_preview(): void
@@ -211,7 +211,7 @@ class DocumentUploaderTest extends TestCase
             ->set('correctedData.supplier_name', 'Corrected Name')
             ->call('validateDocument')
             ->assertSet('showValidationModal', false)
-            ->assertSet('successMessage', __('carbex.documents.validation_success'));
+            ->assertSet('successMessage', __('linscarbon.documents.validation_success'));
 
         $document->refresh();
         $this->assertTrue($document->is_validated);
@@ -243,7 +243,7 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->call('reprocess', $document->id)
-            ->assertSet('successMessage', __('carbex.documents.reprocessing'));
+            ->assertSet('successMessage', __('linscarbon.documents.reprocessing'));
 
         $document->refresh();
         $this->assertEquals('processing', $document->processing_status);
@@ -261,7 +261,7 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->call('reprocess', $document->id)
-            ->assertSet('errorMessage', __('carbex.documents.cannot_reprocess'));
+            ->assertSet('errorMessage', __('linscarbon.documents.cannot_reprocess'));
     }
 
     public function test_can_delete_document(): void
@@ -275,7 +275,7 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->call('deleteDocument', $documentId)
-            ->assertSet('successMessage', __('carbex.documents.deleted'));
+            ->assertSet('successMessage', __('linscarbon.documents.deleted'));
 
         $this->assertSoftDeleted('uploaded_documents', ['id' => $documentId]);
     }
@@ -323,7 +323,7 @@ class DocumentUploaderTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
             ->assertSee('processing-doc.pdf')
-            ->assertSee(__('carbex.documents.processing'));
+            ->assertSee(__('linscarbon.documents.processing'));
     }
 
     public function test_shows_confidence_for_completed_documents(): void
@@ -350,7 +350,7 @@ class DocumentUploaderTest extends TestCase
 
         Livewire::actingAs($this->user)
             ->test(DocumentUploader::class)
-            ->assertSee(__('carbex.documents.validated'));
+            ->assertSee(__('linscarbon.documents.validated'));
     }
 
     public function test_auto_refresh_for_processing_documents(): void

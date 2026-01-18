@@ -1,6 +1,6 @@
 @extends('layouts.marketing')
 
-@section('title', 'Blog - Carbex')
+@section('title', 'Blog - LinsCarbon')
 @section('description', 'Actualites, conseils et guides sur le bilan carbone, la strategie climat et la decarbonation des entreprises.')
 
 @section('content')
@@ -47,7 +47,7 @@
                             <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium text-white" style="background-color: var(--accent);">
                                 {{ substr($featuredPost->author->name ?? 'C', 0, 1) }}
                             </div>
-                            <span class="text-sm" style="color: var(--text-secondary);">{{ $featuredPost->author->name ?? 'Carbex' }}</span>
+                            <span class="text-sm" style="color: var(--text-secondary);">{{ $featuredPost->author->name ?? 'LinsCarbon' }}</span>
                         </div>
                         <span class="text-sm" style="color: var(--text-muted);">{{ $featuredPost->reading_time }} min de lecture</span>
                     </div>

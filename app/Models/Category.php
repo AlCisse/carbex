@@ -68,7 +68,7 @@ class Category extends Model
      */
     public function searchableAs(): string
     {
-        return config('scout.prefix', 'carbex_') . 'categories';
+        return config('scout.prefix', 'linscarbon_') . 'categories';
     }
 
     /**

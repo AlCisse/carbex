@@ -6,7 +6,7 @@ Accepté
 
 ## Contexte
 
-Carbex nécessite une interface utilisateur réactive avec:
+LinsCarbon nécessite une interface utilisateur réactive avec:
 - Des tableaux de bord avec mise à jour en temps réel
 - Des formulaires multi-étapes complexes (onboarding, saisie d'émissions)
 - Des graphiques interactifs

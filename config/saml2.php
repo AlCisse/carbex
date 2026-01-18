@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SAML2 / SSO Configuration for Carbex
+ * SAML2 / SSO Configuration for LinsCarbon
  *
  * Supports multiple Identity Providers (IdP) per organization.
  * Compatible with Azure AD, Okta, Google Workspace, OneLogin, etc.
@@ -24,7 +24,7 @@ return [
     | Service Provider (SP) Settings
     |--------------------------------------------------------------------------
     |
-    | These are the settings for Carbex as a Service Provider
+    | These are the settings for LinsCarbon as a Service Provider
     |
     */
 
@@ -183,19 +183,19 @@ return [
     | Role Mapping
     |--------------------------------------------------------------------------
     |
-    | Map IdP groups/roles to Carbex roles
+    | Map IdP groups/roles to LinsCarbon roles
     |
     */
 
     'role_mapping' => [
         'default_role' => 'member',
         'admin_groups' => [
-            'Carbex-Admins',
+            'LinsCarbon-Admins',
             'Application-Admins',
             'Admin',
         ],
         'manager_groups' => [
-            'Carbex-Managers',
+            'LinsCarbon-Managers',
             'Managers',
         ],
     ],

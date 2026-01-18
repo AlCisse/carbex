@@ -1,25 +1,25 @@
 @extends('layouts.marketing')
 
-@section('title', __('carbex.marketing.contact.title') . ' - Carbex')
-@section('description', __('carbex.marketing.contact.description'))
+@section('title', __('linscarbon.marketing.contact.title') . ' - LinsCarbon')
+@section('description', __('linscarbon.marketing.contact.description'))
 
 @section('content')
 <section class="pt-32 pb-20" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);">
     <div class="max-w-4xl mx-auto px-6">
         <div class="text-center mb-12">
-            <p class="text-sm font-medium mb-4" style="color: var(--accent);">{{ __('carbex.marketing.contact.title') }}</p>
+            <p class="text-sm font-medium mb-4" style="color: var(--accent);">{{ __('linscarbon.marketing.contact.title') }}</p>
             <h1 class="text-4xl font-semibold mb-6" style="color: var(--text-primary); letter-spacing: -0.025em;">
-                {{ __('carbex.marketing.contact.hero_title') }}
+                {{ __('linscarbon.marketing.contact.hero_title') }}
             </h1>
             <p class="text-lg" style="color: var(--text-secondary);">
-                {{ __('carbex.marketing.contact.hero_subtitle') }}
+                {{ __('linscarbon.marketing.contact.hero_subtitle') }}
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-12">
             <!-- Contact Info -->
             <div>
-                <h2 class="text-xl font-semibold mb-6" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.contact_us') }}</h2>
+                <h2 class="text-xl font-semibold mb-6" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.contact_us') }}</h2>
 
                 <div class="space-y-6">
                     <div class="flex items-start gap-4">
@@ -29,8 +29,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.email') }}</p>
-                            <a href="mailto:contact@carbex.fr" class="text-sm hover:underline" style="color: var(--accent);">contact@carbex.fr</a>
+                            <p class="font-medium" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.email') }}</p>
+                            <a href="mailto:contact@linscarbon.fr" class="text-sm hover:underline" style="color: var(--accent);">contact@linscarbon.fr</a>
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.phone') }}</p>
+                            <p class="font-medium" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.phone') }}</p>
                             <a href="tel:+33123456789" class="text-sm hover:underline" style="color: var(--accent);">+33 1 23 45 67 89</a>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.address') }}</p>
+                            <p class="font-medium" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.address') }}</p>
                             <p class="text-sm" style="color: var(--text-secondary);">
                                 123 Avenue de la Republique<br>
                                 75011 Paris, France
@@ -64,65 +64,65 @@
                 </div>
 
                 <div class="mt-10 p-6 rounded-xl" style="background-color: #f0fdfa;">
-                    <h3 class="font-medium mb-2" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.hours') }}</h3>
+                    <h3 class="font-medium mb-2" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.hours') }}</h3>
                     <p class="text-sm" style="color: var(--text-secondary);">
-                        {{ __('carbex.marketing.contact.hours_weekdays') }}<br>
-                        {{ __('carbex.marketing.contact.hours_premium') }}
+                        {{ __('linscarbon.marketing.contact.hours_weekdays') }}<br>
+                        {{ __('linscarbon.marketing.contact.hours_premium') }}
                     </p>
                 </div>
             </div>
 
             <!-- Contact Form -->
             <div class="bg-white rounded-2xl p-8 border" style="border-color: var(--border);">
-                <h2 class="text-xl font-semibold mb-6" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.send_message') }}</h2>
+                <h2 class="text-xl font-semibold mb-6" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.send_message') }}</h2>
 
                 <form action="#" method="POST" class="space-y-5">
                     @csrf
                     <div>
-                        <label for="name" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.form.name') }}</label>
+                        <label for="name" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.form.name') }}</label>
                         <input type="text" id="name" name="name" required
                                class="w-full px-4 py-2.5 rounded-lg border text-sm focus:outline-none focus:ring-2"
                                style="border-color: var(--border); focus:ring-color: var(--accent-light); focus:border-color: var(--accent);">
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.form.email') }}</label>
+                        <label for="email" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.form.email') }}</label>
                         <input type="email" id="email" name="email" required
                                class="w-full px-4 py-2.5 rounded-lg border text-sm focus:outline-none focus:ring-2"
                                style="border-color: var(--border);">
                     </div>
 
                     <div>
-                        <label for="company" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.form.company') }}</label>
+                        <label for="company" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.form.company') }}</label>
                         <input type="text" id="company" name="company"
                                class="w-full px-4 py-2.5 rounded-lg border text-sm focus:outline-none focus:ring-2"
                                style="border-color: var(--border);">
                     </div>
 
                     <div>
-                        <label for="subject" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.form.subject') }}</label>
+                        <label for="subject" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.form.subject') }}</label>
                         <select id="subject" name="subject" required
                                 class="w-full px-4 py-2.5 rounded-lg border text-sm focus:outline-none focus:ring-2"
                                 style="border-color: var(--border);">
-                            <option value="">{{ __('carbex.marketing.contact.form.select_subject') }}</option>
-                            <option value="demo">{{ __('carbex.marketing.contact.subjects.demo') }}</option>
-                            <option value="pricing">{{ __('carbex.marketing.contact.subjects.pricing') }}</option>
-                            <option value="enterprise">{{ __('carbex.marketing.contact.subjects.enterprise') }}</option>
-                            <option value="partnership">{{ __('carbex.marketing.contact.subjects.partnership') }}</option>
-                            <option value="support">{{ __('carbex.marketing.contact.subjects.support') }}</option>
-                            <option value="other">{{ __('carbex.marketing.contact.subjects.other') }}</option>
+                            <option value="">{{ __('linscarbon.marketing.contact.form.select_subject') }}</option>
+                            <option value="demo">{{ __('linscarbon.marketing.contact.subjects.demo') }}</option>
+                            <option value="pricing">{{ __('linscarbon.marketing.contact.subjects.pricing') }}</option>
+                            <option value="enterprise">{{ __('linscarbon.marketing.contact.subjects.enterprise') }}</option>
+                            <option value="partnership">{{ __('linscarbon.marketing.contact.subjects.partnership') }}</option>
+                            <option value="support">{{ __('linscarbon.marketing.contact.subjects.support') }}</option>
+                            <option value="other">{{ __('linscarbon.marketing.contact.subjects.other') }}</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="message" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('carbex.marketing.contact.form.message') }}</label>
+                        <label for="message" class="block text-sm font-medium mb-1.5" style="color: var(--text-primary);">{{ __('linscarbon.marketing.contact.form.message') }}</label>
                         <textarea id="message" name="message" rows="4" required
                                   class="w-full px-4 py-2.5 rounded-lg border text-sm focus:outline-none focus:ring-2 resize-none"
                                   style="border-color: var(--border);"></textarea>
                     </div>
 
                     <button type="submit" class="btn-primary w-full py-3 text-sm font-medium text-white rounded-lg" style="background-color: var(--accent);">
-                        {{ __('carbex.marketing.contact.form.send') }}
+                        {{ __('linscarbon.marketing.contact.form.send') }}
                     </button>
                 </form>
             </div>

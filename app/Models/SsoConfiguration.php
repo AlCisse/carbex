@@ -146,7 +146,7 @@ class SsoConfiguration extends Model
     }
 
     /**
-     * Map SAML groups to Carbex role.
+     * Map SAML groups to LinsCarbon role.
      */
     public function mapRole(array $groups): string
     {

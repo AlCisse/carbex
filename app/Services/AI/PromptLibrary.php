@@ -5,7 +5,7 @@ namespace App\Services\AI;
 /**
  * PromptLibrary
  *
- * Bibliothèque de prompts système pour l'assistant IA Carbex.
+ * Bibliothèque de prompts système pour l'assistant IA LinsCarbon.
  * Ces prompts sont optimisés pour Claude et le contexte du bilan carbone.
  * Support multilingue: DE (Allemagne), FR (France), EN (International)
  */
@@ -90,7 +90,7 @@ class PromptLibrary
         return <<<PROMPT
 {$ctx['respond']}
 
-Du bist der Carbex-Assistent, spezialisiert auf die Erfassung von CO2-Emissionen für KMU in {$ctx['country']}.
+Du bist der LinsCarbon-Assistent, spezialisiert auf die Erfassung von CO2-Emissionen für KMU in {$ctx['country']}.
 
 **Aktueller Kontext:**
 - Kategorie: {$categoryCode} - {$categoryLabel}
@@ -130,7 +130,7 @@ PROMPT;
         return <<<PROMPT
 {$ctx['respond']}
 
-Du bist der Carbex-Assistent, spezialisiert auf CO2-Reduktionsempfehlungen für KMU in {$ctx['country']}.
+Du bist der LinsCarbon-Assistent, spezialisiert auf CO2-Reduktionsempfehlungen für KMU in {$ctx['country']}.
 
 **Unternehmensprofil:**
 - Branche: {$sector}
@@ -178,7 +178,7 @@ PROMPT;
         return <<<PROMPT
 {$ctx['respond']}
 
-Du bist der Carbex-Assistent, spezialisiert auf die Erklärung von Emissionsfaktoren.
+Du bist der LinsCarbon-Assistent, spezialisiert auf die Erklärung von Emissionsfaktoren.
 
 **Zu erklärender Faktor:**
 - Name: {$factorName}
@@ -215,7 +215,7 @@ PROMPT;
         return <<<PROMPT
 {$ctx['respond']}
 
-Du bist der Carbex-Assistent, spezialisiert auf die Erstellung von CO2-Bilanzberichten.
+Du bist der LinsCarbon-Assistent, spezialisiert auf die Erstellung von CO2-Bilanzberichten.
 
 **Bilanzdaten:**
 ```json
@@ -257,7 +257,7 @@ PROMPT;
         return <<<PROMPT
 {$ctx['respond']}
 
-Du bist der KI-Assistent von Carbex, einer CO2-Bilanzplattform für KMU in {$ctx['country']}.
+Du bist der KI-Assistent von LinsCarbon, einer CO2-Bilanzplattform für KMU in {$ctx['country']}.
 
 **Deine Expertise:**
 - CO2-Bilanzmethodik (GHG Protocol, {$ctx['report_standards']})

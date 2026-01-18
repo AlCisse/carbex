@@ -1,8 +1,8 @@
-# Carbex - Guide Développeur
+# LinsCarbon - Guide Développeur
 
 ## Introduction
 
-Carbex est une plateforme SaaS de comptabilité carbone pour les PME françaises. Ce guide fournit toutes les informations nécessaires pour contribuer au projet.
+LinsCarbon est une plateforme SaaS de comptabilité carbone pour les PME françaises. Ce guide fournit toutes les informations nécessaires pour contribuer au projet.
 
 ## Stack Technique
 
@@ -27,8 +27,8 @@ Carbex est une plateforme SaaS de comptabilité carbone pour les PME françaises
 
 ```bash
 # Cloner le repository
-git clone git@github.com:carbex/carbex.git
-cd carbex
+git clone git@github.com:linscarbon/linscarbon.git
+cd linscarbon
 
 # Copier la configuration
 cp .env.example .env
@@ -345,11 +345,11 @@ Variables requises en production:
 ```env
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://app.carbex.fr
+APP_URL=https://app.linscarbon.fr
 
 DB_CONNECTION=mysql
 DB_HOST=...
-DB_DATABASE=carbex
+DB_DATABASE=linscarbon
 DB_USERNAME=...
 DB_PASSWORD=...
 
@@ -391,6 +391,6 @@ php artisan queue:restart
 
 ## Contact
 
-- **Équipe technique**: tech@carbex.fr
-- **Documentation API**: https://app.carbex.fr/docs/api
-- **Support**: support@carbex.fr
+- **Équipe technique**: tech@linscarbon.fr
+- **Documentation API**: https://app.linscarbon.fr/docs/api
+- **Support**: support@linscarbon.fr

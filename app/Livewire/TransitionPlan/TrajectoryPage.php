@@ -10,7 +10,7 @@ use Livewire\Component;
 /**
  * TrajectoryPage - Gestion de la trajectoire de réduction SBTi
  *
- * Constitution Carbex v3.0 - Section 2.9, T068
+ * Constitution LinsCarbon v3.0 - Section 2.9, T068
  */
 class TrajectoryPage extends Component
 {
@@ -133,11 +133,11 @@ class TrajectoryPage extends Component
             $target = ReductionTarget::find($this->editingId);
             if ($target && $target->organization_id === auth()->user()->organization_id) {
                 $target->update($data);
-                session()->flash('message', __('carbex.messages.updated'));
+                session()->flash('message', __('linscarbon.messages.updated'));
             }
         } else {
             ReductionTarget::create($data);
-            session()->flash('message', __('carbex.messages.created'));
+            session()->flash('message', __('linscarbon.messages.created'));
         }
 
         $this->closeModal();
@@ -149,7 +149,7 @@ class TrajectoryPage extends Component
 
         if ($target && $target->organization_id === auth()->user()->organization_id) {
             $target->delete();
-            session()->flash('message', __('carbex.messages.deleted'));
+            session()->flash('message', __('linscarbon.messages.deleted'));
         }
     }
 

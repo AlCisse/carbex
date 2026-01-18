@@ -97,7 +97,7 @@ class SiteImport extends Component
         $handle = fopen($path, 'r');
 
         if (! $handle) {
-            $this->addError('csvFile', __('carbex.sites.import.file_read_error'));
+            $this->addError('csvFile', __('linscarbon.sites.import.file_read_error'));
 
             return;
         }
@@ -163,7 +163,7 @@ class SiteImport extends Component
         }
 
         if (! isset($this->columnMapping['name'])) {
-            $this->addError('mapping', __('carbex.sites.import.name_required'));
+            $this->addError('mapping', __('linscarbon.sites.import.name_required'));
 
             return;
         }
@@ -177,7 +177,7 @@ class SiteImport extends Component
         $handle = fopen($path, 'r');
 
         if (! $handle) {
-            $this->addError('csvFile', __('carbex.sites.import.file_read_error'));
+            $this->addError('csvFile', __('linscarbon.sites.import.file_read_error'));
             $this->isProcessing = false;
 
             return;
@@ -217,7 +217,7 @@ class SiteImport extends Component
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Site import failed', ['error' => $e->getMessage()]);
-            $this->addError('import', __('carbex.sites.import.import_failed'));
+            $this->addError('import', __('linscarbon.sites.import.import_failed'));
         }
 
         fclose($handle);
@@ -226,7 +226,7 @@ class SiteImport extends Component
 
         $this->dispatch('notify', [
             'type' => $this->importedCount > 0 ? 'success' : 'warning',
-            'message' => __('carbex.sites.import.result', [
+            'message' => __('linscarbon.sites.import.result', [
                 'imported' => $this->importedCount,
                 'skipped' => $this->skippedCount,
             ]),
@@ -253,7 +253,7 @@ class SiteImport extends Component
         if (! empty($data['code']) && $this->existingSiteCodes->contains($data['code'])) {
             $this->importErrors[] = [
                 'row' => $rowNumber,
-                'message' => __('carbex.sites.import.duplicate_code', ['code' => $data['code']]),
+                'message' => __('linscarbon.sites.import.duplicate_code', ['code' => $data['code']]),
             ];
 
             return false;
@@ -302,7 +302,7 @@ class SiteImport extends Component
         } catch (\Exception $e) {
             $this->importErrors[] = [
                 'row' => $rowNumber,
-                'message' => __('carbex.sites.import.create_failed'),
+                'message' => __('linscarbon.sites.import.create_failed'),
             ];
             Log::error('Site creation failed', ['row' => $rowNumber, 'error' => $e->getMessage()]);
 
@@ -349,7 +349,7 @@ class SiteImport extends Component
             fputcsv($handle, $headers, ';');
             fputcsv($handle, $example, ';');
             fclose($handle);
-        }, 'carbex-sites-template.csv', [
+        }, 'linscarbon-sites-template.csv', [
             'Content-Type' => 'text/csv',
         ]);
     }

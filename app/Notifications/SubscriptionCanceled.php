@@ -31,9 +31,9 @@ class SubscriptionCanceled extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject(__('Your Carbex Subscription Has Been Canceled'))
+            ->subject(__('Your LinsCarbon Subscription Has Been Canceled'))
             ->greeting(__('Hello :name,', ['name' => $notifiable->name]))
-            ->line(__('Your Carbex subscription has been canceled.'))
+            ->line(__('Your LinsCarbon subscription has been canceled.'))
             ->line(__('**Important information:**'))
             ->line('• ' . __('Your data will be retained for 30 days'))
             ->line('• ' . __('You can reactivate your subscription at any time'))

@@ -11,7 +11,7 @@ use Livewire\Component;
 /**
  * ActionList - Actions de réduction du plan de transition
  *
- * Constitution Carbex v3.0 - Section 2.8, T062-T063
+ * Constitution LinsCarbon v3.0 - Section 2.8, T062-T063
  */
 class ActionList extends Component
 {
@@ -143,11 +143,11 @@ class ActionList extends Component
             $action = Action::find($this->editingId);
             if ($action && $action->organization_id === auth()->user()->organization_id) {
                 $action->update($data);
-                session()->flash('message', __('carbex.messages.updated'));
+                session()->flash('message', __('linscarbon.messages.updated'));
             }
         } else {
             Action::create($data);
-            session()->flash('message', __('carbex.messages.created'));
+            session()->flash('message', __('linscarbon.messages.created'));
         }
 
         $this->closeModal();
@@ -161,7 +161,7 @@ class ActionList extends Component
             $action->status = $status;
             $action->save();
 
-            session()->flash('message', __('carbex.actions.status_updated'));
+            session()->flash('message', __('linscarbon.actions.status_updated'));
         }
     }
 
@@ -171,7 +171,7 @@ class ActionList extends Component
 
         if ($action && $action->organization_id === auth()->user()->organization_id) {
             $action->delete();
-            session()->flash('message', __('carbex.messages.deleted'));
+            session()->flash('message', __('linscarbon.messages.deleted'));
         }
     }
 

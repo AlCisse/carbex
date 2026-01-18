@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Routes for Carbex web application (Livewire-based)
+| Routes for LinsCarbon web application (Livewire-based)
 | Authentication is handled by Livewire components
 |
 */

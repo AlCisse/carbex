@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
  * Service IA pour générer des recommandations d'actions de réduction carbone.
  * Analyse le bilan d'une organisation et propose des actions prioritaires.
  *
- * Constitution Carbex v3.0 - Section 2.8 (Plan de transition)
+ * Constitution LinsCarbon v3.0 - Section 2.8 (Plan de transition)
  */
 class ActionRecommendationEngine
 {
@@ -94,8 +94,8 @@ class ActionRecommendationEngine
 
         $insights[] = [
             'type' => 'dominant_scope',
-            'title' => __('carbex.insights.dominant_scope'),
-            'message' => __('carbex.insights.dominant_scope_message', [
+            'title' => __('linscarbon.insights.dominant_scope'),
+            'message' => __('linscarbon.insights.dominant_scope_message', [
                 'scope' => $dominantScope,
                 'percent' => $dominantPercent,
             ]),
@@ -112,8 +112,8 @@ class ActionRecommendationEngine
             if ($scope3Percent > 60) {
                 $insights[] = [
                     'type' => 'scope3_dominant',
-                    'title' => __('carbex.insights.scope3_title'),
-                    'message' => __('carbex.insights.scope3_message', ['percent' => $scope3Percent]),
+                    'title' => __('linscarbon.insights.scope3_title'),
+                    'message' => __('linscarbon.insights.scope3_message', ['percent' => $scope3Percent]),
                     'severity' => 'info',
                     'action' => 'focus_suppliers',
                 ];
@@ -126,8 +126,8 @@ class ActionRecommendationEngine
             $intensity = ($emissions['total'] / 1000) / ($revenue / 1000000); // tCO2e / M€
             $insights[] = [
                 'type' => 'carbon_intensity',
-                'title' => __('carbex.insights.intensity_title'),
-                'message' => __('carbex.insights.intensity_message', [
+                'title' => __('linscarbon.insights.intensity_title'),
+                'message' => __('linscarbon.insights.intensity_message', [
                     'value' => number_format($intensity, 1),
                 ]),
                 'value' => $intensity,
@@ -362,14 +362,14 @@ class ActionRecommendationEngine
         if (($emissions['scope_2'] ?? 0) > 0) {
             $recommendations[] = [
                 'number' => 1,
-                'title' => __('carbex.recommendations.renewable_energy'),
-                'description' => __('carbex.recommendations.renewable_energy_desc'),
+                'title' => __('linscarbon.recommendations.renewable_energy'),
+                'description' => __('linscarbon.recommendations.renewable_energy_desc'),
                 'impact' => 30,
                 'cost' => 2,
                 'cost_label' => '€€',
                 'difficulty' => 'medium',
-                'difficulty_label' => __('carbex.difficulty.medium'),
-                'timeline' => __('carbex.timeline.medium_term'),
+                'difficulty_label' => __('linscarbon.difficulty.medium'),
+                'timeline' => __('linscarbon.timeline.medium_term'),
                 'scopes' => [2],
             ];
         }
@@ -377,14 +377,14 @@ class ActionRecommendationEngine
         if (($emissions['scope_1'] ?? 0) > 0) {
             $recommendations[] = [
                 'number' => 2,
-                'title' => __('carbex.recommendations.fleet_optimization'),
-                'description' => __('carbex.recommendations.fleet_optimization_desc'),
+                'title' => __('linscarbon.recommendations.fleet_optimization'),
+                'description' => __('linscarbon.recommendations.fleet_optimization_desc'),
                 'impact' => 20,
                 'cost' => 2,
                 'cost_label' => '€€',
                 'difficulty' => 'medium',
-                'difficulty_label' => __('carbex.difficulty.medium'),
-                'timeline' => __('carbex.timeline.short_term'),
+                'difficulty_label' => __('linscarbon.difficulty.medium'),
+                'timeline' => __('linscarbon.timeline.short_term'),
                 'scopes' => [1],
             ];
         }
@@ -392,41 +392,41 @@ class ActionRecommendationEngine
         if (($emissions['scope_3'] ?? 0) > 0) {
             $recommendations[] = [
                 'number' => 3,
-                'title' => __('carbex.recommendations.supplier_engagement'),
-                'description' => __('carbex.recommendations.supplier_engagement_desc'),
+                'title' => __('linscarbon.recommendations.supplier_engagement'),
+                'description' => __('linscarbon.recommendations.supplier_engagement_desc'),
                 'impact' => 15,
                 'cost' => 1,
                 'cost_label' => '€',
                 'difficulty' => 'medium',
-                'difficulty_label' => __('carbex.difficulty.medium'),
-                'timeline' => __('carbex.timeline.medium_term'),
+                'difficulty_label' => __('linscarbon.difficulty.medium'),
+                'timeline' => __('linscarbon.timeline.medium_term'),
                 'scopes' => [3],
             ];
 
             $recommendations[] = [
                 'number' => 4,
-                'title' => __('carbex.recommendations.remote_work'),
-                'description' => __('carbex.recommendations.remote_work_desc'),
+                'title' => __('linscarbon.recommendations.remote_work'),
+                'description' => __('linscarbon.recommendations.remote_work_desc'),
                 'impact' => 10,
                 'cost' => 1,
                 'cost_label' => '€',
                 'difficulty' => 'easy',
-                'difficulty_label' => __('carbex.difficulty.easy'),
-                'timeline' => __('carbex.timeline.short_term'),
+                'difficulty_label' => __('linscarbon.difficulty.easy'),
+                'timeline' => __('linscarbon.timeline.short_term'),
                 'scopes' => [3],
             ];
         }
 
         $recommendations[] = [
             'number' => count($recommendations) + 1,
-            'title' => __('carbex.recommendations.energy_efficiency'),
-            'description' => __('carbex.recommendations.energy_efficiency_desc'),
+            'title' => __('linscarbon.recommendations.energy_efficiency'),
+            'description' => __('linscarbon.recommendations.energy_efficiency_desc'),
             'impact' => 15,
             'cost' => 2,
             'cost_label' => '€€',
             'difficulty' => 'easy',
-            'difficulty_label' => __('carbex.difficulty.easy'),
-            'timeline' => __('carbex.timeline.short_term'),
+            'difficulty_label' => __('linscarbon.difficulty.easy'),
+            'timeline' => __('linscarbon.timeline.short_term'),
             'scopes' => [1, 2],
         ];
 

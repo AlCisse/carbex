@@ -6,7 +6,7 @@ Accepté
 
 ## Contexte
 
-Carbex est un SaaS multi-tenant où chaque organisation:
+LinsCarbon est un SaaS multi-tenant où chaque organisation:
 - Doit avoir ses données isolées des autres
 - Peut avoir plusieurs utilisateurs et sites
 - Doit pouvoir être facturée indépendamment

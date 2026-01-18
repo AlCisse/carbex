@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Action (Plan de transition) - Reduction actions for transition planning
  *
- * Constitution Carbex v3.0 - Section 7, 2.8
+ * Constitution LinsCarbon v3.0 - Section 7, 2.8
  *
  * @property string $id
  * @property string $organization_id
@@ -183,9 +183,9 @@ class Action extends Model
     public function getStatusLabelAttribute(): string
     {
         return match ($this->status) {
-            self::STATUS_TODO => __('carbex.actions.status.todo'),
-            self::STATUS_IN_PROGRESS => __('carbex.actions.status.in_progress'),
-            self::STATUS_COMPLETED => __('carbex.actions.status.completed'),
+            self::STATUS_TODO => __('linscarbon.actions.status.todo'),
+            self::STATUS_IN_PROGRESS => __('linscarbon.actions.status.in_progress'),
+            self::STATUS_COMPLETED => __('linscarbon.actions.status.completed'),
             default => $this->status,
         };
     }
@@ -196,9 +196,9 @@ class Action extends Model
     public function getDifficultyLabelAttribute(): string
     {
         return match ($this->difficulty) {
-            self::DIFFICULTY_EASY => __('carbex.actions.difficulty.easy'),
-            self::DIFFICULTY_MEDIUM => __('carbex.actions.difficulty.medium'),
-            self::DIFFICULTY_HARD => __('carbex.actions.difficulty.hard'),
+            self::DIFFICULTY_EASY => __('linscarbon.actions.difficulty.easy'),
+            self::DIFFICULTY_MEDIUM => __('linscarbon.actions.difficulty.medium'),
+            self::DIFFICULTY_HARD => __('linscarbon.actions.difficulty.hard'),
             default => $this->difficulty,
         };
     }

@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      *
      * ReductionTarget (Trajectoire SBTi) - Reduction targets aligned with SBTi
-     * Constitution Carbex v3.0 - Section 7, 2.9
+     * Constitution LinsCarbon v3.0 - Section 7, 2.9
      *
      * SBTi Recommendations:
      * - Scope 1 & 2: Minimum 4.2% annual reduction

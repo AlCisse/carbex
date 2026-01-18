@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-xl font-semibold text-gray-900 dark:text-white">{{ __('carbex.compliance.title') }}</h1>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.compliance.subtitle') }}</p>
+                <h1 class="text-xl font-semibold text-gray-900 dark:text-white">{{ __('linscarbon.compliance.title') }}</h1>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.compliance.subtitle') }}</p>
             </div>
             <div class="flex items-center space-x-2">
-                <span class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.compliance.overall') }}:</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.compliance.overall') }}:</span>
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
                     @if($this->getOverallCompletion() >= 75) bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
                     @elseif($this->getOverallCompletion() >= 50) bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200
@@ -25,14 +25,14 @@
                 <div>
                     <h2 class="text-lg font-medium text-gray-900 dark:text-white">{{ $organizationProfile['name'] ?? '-' }}</h2>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ __('carbex.sectors.' . ($organizationProfile['sector'] ?? 'other')) }} -
-                        {{ $organizationProfile['employee_count'] ?? 0 }} {{ __('carbex.auth.employees') }}
+                        {{ __('linscarbon.sectors.' . ($organizationProfile['sector'] ?? 'other')) }} -
+                        {{ $organizationProfile['employee_count'] ?? 0 }} {{ __('linscarbon.auth.employees') }}
                     </p>
                 </div>
                 <div class="text-right">
                     @if($organizationProfile['has_csrd_obligation'] ?? false)
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                            {{ __('carbex.compliance.csrd_applicable') }}
+                            {{ __('linscarbon.compliance.csrd_applicable') }}
                         </span>
                     @endif
                 </div>
@@ -43,7 +43,7 @@
         @if(count($deadlines) > 0)
         <x-card>
             <x-slot name="header">
-                <h2 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.compliance.upcoming_deadlines') }}</h2>
+                <h2 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.compliance.upcoming_deadlines') }}</h2>
             </x-slot>
 
             <div class="space-y-3">
@@ -142,7 +142,7 @@
                 <div class="flex items-center justify-between">
                     <h2 class="text-lg font-medium text-gray-900 dark:text-white">{{ $frameworkData['name'] }}</h2>
                     <span class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ collect($frameworkData['items'])->where('completed', true)->count() }}/{{ count($frameworkData['items']) }} {{ __('carbex.compliance.completed') }}
+                        {{ collect($frameworkData['items'])->where('completed', true)->count() }}/{{ count($frameworkData['items']) }} {{ __('linscarbon.compliance.completed') }}
                     </span>
                 </div>
             </x-slot>

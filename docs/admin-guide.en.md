@@ -1,6 +1,6 @@
-# Carbex Administrator Guide
+# LinsCarbon Administrator Guide
 
-> Technical documentation for Carbex platform administrators
+> Technical documentation for LinsCarbon platform administrators
 
 ---
 
@@ -25,8 +25,8 @@
 ### Access URL
 
 ```
-Production : https://carbex.app/admin
-Staging    : https://staging.carbex.app/admin
+Production : https://linscarbon.app/admin
+Staging    : https://staging.linscarbon.app/admin
 Local      : http://localhost:8000/admin
 ```
 
@@ -570,7 +570,7 @@ php artisan down --secret="admin-secret-token"
 
 Admin access during maintenance:
 ```
-https://carbex.app/admin-secret-token
+https://linscarbon.app/admin-secret-token
 ```
 
 Disable:
@@ -586,9 +586,9 @@ php artisan up
 
 | Role | Contact |
 |------|---------|
-| Lead Dev | dev@carbex.app |
-| DevOps | ops@carbex.app |
-| N2 Support | support@carbex.app |
+| Lead Dev | dev@linscarbon.app |
+| DevOps | ops@linscarbon.app |
+| N2 Support | support@linscarbon.app |
 
 ### Escalation
 

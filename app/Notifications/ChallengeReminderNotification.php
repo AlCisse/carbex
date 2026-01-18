@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notification;
  *
  * Part of Phase 10: Employee engagement module (T182).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T182
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T182
  */
 class ChallengeReminderNotification extends Notification implements ShouldQueue
 {
@@ -37,28 +37,28 @@ class ChallengeReminderNotification extends Notification implements ShouldQueue
         $points = $this->challenge['points'] ?? 0;
 
         $mail = (new MailMessage)
-            ->subject(__('carbex.notifications.challenge_reminder.subject', ['challenge' => $challengeTitle]))
-            ->greeting(__('carbex.notifications.challenge_reminder.greeting', ['name' => $notifiable->name]));
+            ->subject(__('linscarbon.notifications.challenge_reminder.subject', ['challenge' => $challengeTitle]))
+            ->greeting(__('linscarbon.notifications.challenge_reminder.greeting', ['name' => $notifiable->name]));
 
         if ($this->daysRemaining <= 1) {
-            $mail->line(__('carbex.notifications.challenge_reminder.last_day', ['challenge' => $challengeTitle]));
+            $mail->line(__('linscarbon.notifications.challenge_reminder.last_day', ['challenge' => $challengeTitle]));
         } else {
-            $mail->line(__('carbex.notifications.challenge_reminder.days_left', [
+            $mail->line(__('linscarbon.notifications.challenge_reminder.days_left', [
                 'challenge' => $challengeTitle,
                 'days' => $this->daysRemaining,
             ]));
         }
 
-        $mail->line(__('carbex.notifications.challenge_reminder.points_reminder', ['points' => $points]))
-            ->action(__('carbex.notifications.challenge_reminder.cta'), route('engage.employees'))
-            ->line(__('carbex.notifications.challenge_reminder.encouragement'));
+        $mail->line(__('linscarbon.notifications.challenge_reminder.points_reminder', ['points' => $points]))
+            ->action(__('linscarbon.notifications.challenge_reminder.cta'), route('engage.employees'))
+            ->line(__('linscarbon.notifications.challenge_reminder.encouragement'));
 
-        return $mail->salutation(__('carbex.notifications.challenge_reminder.salutation'));
+        return $mail->salutation(__('linscarbon.notifications.challenge_reminder.salutation'));
     }
 
     protected function getChallengeTitle(string $locale): string
     {
-        $key = 'carbex.engage.challenges.' . $this->challenge['id'];
+        $key = 'linscarbon.engage.challenges.' . $this->challenge['id'];
 
         return __($key);
     }

@@ -55,7 +55,7 @@ return [
     */
 
     'default_labels' => [
-        'app' => env('APP_NAME', 'carbex'),
+        'app' => env('APP_NAME', 'linscarbon'),
         'env' => env('APP_ENV', 'production'),
     ],
 
@@ -88,64 +88,64 @@ return [
 
     'metrics' => [
         // Business metrics
-        'carbex_emissions_calculated_total' => [
+        'linscarbon_emissions_calculated_total' => [
             'type' => 'counter',
             'help' => 'Total number of emissions calculated',
             'labels' => ['scope', 'country'],
         ],
 
-        'carbex_transactions_processed_total' => [
+        'linscarbon_transactions_processed_total' => [
             'type' => 'counter',
             'help' => 'Total number of transactions processed',
             'labels' => ['status', 'source'],
         ],
 
-        'carbex_bank_syncs_total' => [
+        'linscarbon_bank_syncs_total' => [
             'type' => 'counter',
             'help' => 'Total number of bank synchronizations',
             'labels' => ['provider', 'status'],
         ],
 
-        'carbex_reports_generated_total' => [
+        'linscarbon_reports_generated_total' => [
             'type' => 'counter',
             'help' => 'Total number of reports generated',
             'labels' => ['type', 'format'],
         ],
 
-        'carbex_api_requests_total' => [
+        'linscarbon_api_requests_total' => [
             'type' => 'counter',
             'help' => 'Total API requests',
             'labels' => ['endpoint', 'method', 'status'],
         ],
 
         // Gauge metrics
-        'carbex_active_organizations' => [
+        'linscarbon_active_organizations' => [
             'type' => 'gauge',
             'help' => 'Number of active organizations',
             'labels' => ['plan'],
         ],
 
-        'carbex_pending_transactions' => [
+        'linscarbon_pending_transactions' => [
             'type' => 'gauge',
             'help' => 'Number of transactions pending review',
             'labels' => [],
         ],
 
-        'carbex_queue_size' => [
+        'linscarbon_queue_size' => [
             'type' => 'gauge',
             'help' => 'Current queue size',
             'labels' => ['queue'],
         ],
 
         // Histogram metrics
-        'carbex_emission_calculation_duration_seconds' => [
+        'linscarbon_emission_calculation_duration_seconds' => [
             'type' => 'histogram',
             'help' => 'Duration of emission calculations',
             'labels' => ['scope'],
             'buckets' => [0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10],
         ],
 
-        'carbex_report_generation_duration_seconds' => [
+        'linscarbon_report_generation_duration_seconds' => [
             'type' => 'histogram',
             'help' => 'Duration of report generation',
             'labels' => ['type'],

@@ -88,10 +88,10 @@ class ComplianceTask extends Model
     public function getStatusLabelAttribute(): string
     {
         return match ($this->status) {
-            self::STATUS_PENDING => __('carbex.compliance.task_status.pending'),
-            self::STATUS_IN_PROGRESS => __('carbex.compliance.task_status.in_progress'),
-            self::STATUS_COMPLETED => __('carbex.compliance.task_status.completed'),
-            self::STATUS_OVERDUE => __('carbex.compliance.task_status.overdue'),
+            self::STATUS_PENDING => __('linscarbon.compliance.task_status.pending'),
+            self::STATUS_IN_PROGRESS => __('linscarbon.compliance.task_status.in_progress'),
+            self::STATUS_COMPLETED => __('linscarbon.compliance.task_status.completed'),
+            self::STATUS_OVERDUE => __('linscarbon.compliance.task_status.overdue'),
             default => $this->status,
         };
     }
@@ -116,10 +116,10 @@ class ComplianceTask extends Model
     public function getPriorityLabelAttribute(): string
     {
         return match ($this->priority) {
-            self::PRIORITY_LOW => __('carbex.compliance.priority.low'),
-            self::PRIORITY_MEDIUM => __('carbex.compliance.priority.medium'),
-            self::PRIORITY_HIGH => __('carbex.compliance.priority.high'),
-            self::PRIORITY_CRITICAL => __('carbex.compliance.priority.critical'),
+            self::PRIORITY_LOW => __('linscarbon.compliance.priority.low'),
+            self::PRIORITY_MEDIUM => __('linscarbon.compliance.priority.medium'),
+            self::PRIORITY_HIGH => __('linscarbon.compliance.priority.high'),
+            self::PRIORITY_CRITICAL => __('linscarbon.compliance.priority.critical'),
             default => $this->priority,
         };
     }

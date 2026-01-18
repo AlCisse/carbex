@@ -12,7 +12,7 @@ use Livewire\Component;
  *
  * Affiche les badges et le score de gamification d'une organisation.
  *
- * Constitution Carbex v3.0 - Section 9.9 (Gamification)
+ * Constitution LinsCarbon v3.0 - Section 9.9 (Gamification)
  */
 class BadgeDisplay extends Component
 {

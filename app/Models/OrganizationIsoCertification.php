@@ -73,10 +73,10 @@ class OrganizationIsoCertification extends Model
     public function getStatusLabelAttribute(): string
     {
         return match ($this->status) {
-            self::STATUS_NOT_CERTIFIED => __('carbex.compliance.cert_status.not_certified'),
-            self::STATUS_IN_PROGRESS => __('carbex.compliance.cert_status.in_progress'),
-            self::STATUS_CERTIFIED => __('carbex.compliance.cert_status.certified'),
-            self::STATUS_EXPIRED => __('carbex.compliance.cert_status.expired'),
+            self::STATUS_NOT_CERTIFIED => __('linscarbon.compliance.cert_status.not_certified'),
+            self::STATUS_IN_PROGRESS => __('linscarbon.compliance.cert_status.in_progress'),
+            self::STATUS_CERTIFIED => __('linscarbon.compliance.cert_status.certified'),
+            self::STATUS_EXPIRED => __('linscarbon.compliance.cert_status.expired'),
             default => $this->status,
         };
     }

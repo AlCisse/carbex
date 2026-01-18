@@ -14,7 +14,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.guest')]
-#[Title('Se connecter - Carbex')]
+#[Title('Se connecter - LinsCarbon')]
 class LoginForm extends Component
 {
     #[Rule('required|email')]

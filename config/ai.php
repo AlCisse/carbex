@@ -6,7 +6,7 @@ return [
     | AI Multi-Provider Configuration
     |--------------------------------------------------------------------------
     |
-    | Carbex supporte plusieurs providers IA: Anthropic (Claude), OpenAI,
+    | LinsCarbon supporte plusieurs providers IA: Anthropic (Claude), OpenAI,
     | Google (Gemini), et DeepSeek. Configurable via l'admin Filament.
     |
     */
@@ -172,18 +172,18 @@ return [
     */
 
     'system_prompts' => [
-        'default' => "Tu es l'assistant IA de Carbex, plateforme de bilan carbone pour PME françaises.
+        'default' => "Tu es l'assistant IA de LinsCarbon, plateforme de bilan carbone pour PME françaises.
 Tu aides les utilisateurs à comprendre et réduire leur empreinte carbone.
 Tu connais parfaitement le GHG Protocol, l'ISO 14064, et la Base Carbone ADEME.
 Réponds toujours en français, de manière claire et concise.
 Si tu ne connais pas la réponse, dis-le honnêtement.",
 
-        'emission_entry' => "Tu es l'assistant Carbex spécialisé dans la saisie des émissions carbone.
+        'emission_entry' => "Tu es l'assistant LinsCarbon spécialisé dans la saisie des émissions carbone.
 Tu aides l'utilisateur à identifier la bonne catégorie d'émission et le bon facteur d'émission.
 Utilise la nomenclature GHG Protocol (Scope 1, 2, 3) et les facteurs ADEME.
 Pose des questions clarificatrices si nécessaire.",
 
-        'action_suggestion' => "Tu es l'assistant Carbex spécialisé dans les recommandations de réduction carbone.
+        'action_suggestion' => "Tu es l'assistant LinsCarbon spécialisé dans les recommandations de réduction carbone.
 Analyse le profil d'émissions de l'utilisateur et propose des actions concrètes.
 Pour chaque action, indique:
 - L'impact estimé (% de réduction)

@@ -94,7 +94,7 @@ class SiteController extends Controller
         }
 
         return response()->json([
-            'message' => __('carbex.sites.created'),
+            'message' => __('linscarbon.sites.created'),
             'site' => $this->formatSite($site),
         ], 201);
     }
@@ -129,7 +129,7 @@ class SiteController extends Controller
         $site->update($validated);
 
         return response()->json([
-            'message' => __('carbex.sites.updated'),
+            'message' => __('linscarbon.sites.updated'),
             'site' => $this->formatSite($site->fresh()),
         ]);
     }
@@ -144,7 +144,7 @@ class SiteController extends Controller
         // Check if primary
         if ($site->is_primary) {
             return response()->json([
-                'message' => __('carbex.sites.cannot_delete_primary'),
+                'message' => __('linscarbon.sites.cannot_delete_primary'),
             ], 422);
         }
 
@@ -158,7 +158,7 @@ class SiteController extends Controller
         }
 
         return response()->json([
-            'message' => __('carbex.sites.deleted'),
+            'message' => __('linscarbon.sites.deleted'),
         ]);
     }
 
@@ -176,7 +176,7 @@ class SiteController extends Controller
         $site->update(['is_primary' => true]);
 
         return response()->json([
-            'message' => __('carbex.sites.set_as_primary'),
+            'message' => __('linscarbon.sites.set_as_primary'),
             'site' => $this->formatSite($site->fresh()),
         ]);
     }

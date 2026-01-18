@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notification;
  *
  * Part of Phase 10: Employee engagement module (T182).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T182
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T182
  */
 class EngagementMilestoneNotification extends Notification implements ShouldQueue
 {
@@ -51,8 +51,8 @@ class EngagementMilestoneNotification extends Notification implements ShouldQueu
             default => $this->buildGenericMail($mail, $notifiable),
         };
 
-        $mail->action(__('carbex.notifications.milestone.cta'), route('engage.employees'))
-            ->salutation(__('carbex.notifications.milestone.salutation'));
+        $mail->action(__('linscarbon.notifications.milestone.cta'), route('engage.employees'))
+            ->salutation(__('linscarbon.notifications.milestone.salutation'));
 
         return $mail;
     }
@@ -61,19 +61,19 @@ class EngagementMilestoneNotification extends Notification implements ShouldQueu
     {
         $score = $this->data['score'] ?? 0;
 
-        $mail->subject(__('carbex.notifications.milestone.quiz_subject'))
-            ->greeting(__('carbex.notifications.milestone.quiz_greeting', ['name' => $notifiable->name]))
-            ->line(__('carbex.notifications.milestone.quiz_score', ['score' => $score]));
+        $mail->subject(__('linscarbon.notifications.milestone.quiz_subject'))
+            ->greeting(__('linscarbon.notifications.milestone.quiz_greeting', ['name' => $notifiable->name]))
+            ->line(__('linscarbon.notifications.milestone.quiz_score', ['score' => $score]));
 
         if ($score >= 80) {
-            $mail->line(__('carbex.notifications.milestone.quiz_excellent'));
+            $mail->line(__('linscarbon.notifications.milestone.quiz_excellent'));
         } elseif ($score >= 60) {
-            $mail->line(__('carbex.notifications.milestone.quiz_good'));
+            $mail->line(__('linscarbon.notifications.milestone.quiz_good'));
         } else {
-            $mail->line(__('carbex.notifications.milestone.quiz_improve'));
+            $mail->line(__('linscarbon.notifications.milestone.quiz_improve'));
         }
 
-        $mail->line(__('carbex.notifications.milestone.quiz_points', ['points' => 25]));
+        $mail->line(__('linscarbon.notifications.milestone.quiz_points', ['points' => 25]));
     }
 
     protected function buildChallengeCompletedMail(MailMessage $mail, object $notifiable): void
@@ -81,11 +81,11 @@ class EngagementMilestoneNotification extends Notification implements ShouldQueu
         $challengeTitle = $this->data['challenge_title'] ?? 'Challenge';
         $points = $this->data['points'] ?? 0;
 
-        $mail->subject(__('carbex.notifications.milestone.challenge_subject', ['challenge' => $challengeTitle]))
-            ->greeting(__('carbex.notifications.milestone.challenge_greeting', ['name' => $notifiable->name]))
-            ->line(__('carbex.notifications.milestone.challenge_completed', ['challenge' => $challengeTitle]))
-            ->line(__('carbex.notifications.milestone.challenge_points', ['points' => $points]))
-            ->line(__('carbex.notifications.milestone.challenge_impact'));
+        $mail->subject(__('linscarbon.notifications.milestone.challenge_subject', ['challenge' => $challengeTitle]))
+            ->greeting(__('linscarbon.notifications.milestone.challenge_greeting', ['name' => $notifiable->name]))
+            ->line(__('linscarbon.notifications.milestone.challenge_completed', ['challenge' => $challengeTitle]))
+            ->line(__('linscarbon.notifications.milestone.challenge_points', ['points' => $points]))
+            ->line(__('linscarbon.notifications.milestone.challenge_impact'));
     }
 
     protected function buildPointsMilestoneMail(MailMessage $mail, object $notifiable): void
@@ -93,28 +93,28 @@ class EngagementMilestoneNotification extends Notification implements ShouldQueu
         $points = $this->data['points'] ?? 0;
         $milestone = $this->data['milestone'] ?? $points;
 
-        $mail->subject(__('carbex.notifications.milestone.points_subject', ['milestone' => $milestone]))
-            ->greeting(__('carbex.notifications.milestone.points_greeting', ['name' => $notifiable->name]))
-            ->line(__('carbex.notifications.milestone.points_reached', ['milestone' => $milestone]))
-            ->line(__('carbex.notifications.milestone.points_total', ['points' => $points]))
-            ->line(__('carbex.notifications.milestone.points_keep_going'));
+        $mail->subject(__('linscarbon.notifications.milestone.points_subject', ['milestone' => $milestone]))
+            ->greeting(__('linscarbon.notifications.milestone.points_greeting', ['name' => $notifiable->name]))
+            ->line(__('linscarbon.notifications.milestone.points_reached', ['milestone' => $milestone]))
+            ->line(__('linscarbon.notifications.milestone.points_total', ['points' => $points]))
+            ->line(__('linscarbon.notifications.milestone.points_keep_going'));
     }
 
     protected function buildLeaderboardMail(MailMessage $mail, object $notifiable): void
     {
         $rank = $this->data['rank'] ?? 1;
 
-        $mail->subject(__('carbex.notifications.milestone.leaderboard_subject', ['rank' => $rank]))
-            ->greeting(__('carbex.notifications.milestone.leaderboard_greeting', ['name' => $notifiable->name]))
-            ->line(__('carbex.notifications.milestone.leaderboard_rank', ['rank' => $rank]))
-            ->line(__('carbex.notifications.milestone.leaderboard_message'));
+        $mail->subject(__('linscarbon.notifications.milestone.leaderboard_subject', ['rank' => $rank]))
+            ->greeting(__('linscarbon.notifications.milestone.leaderboard_greeting', ['name' => $notifiable->name]))
+            ->line(__('linscarbon.notifications.milestone.leaderboard_rank', ['rank' => $rank]))
+            ->line(__('linscarbon.notifications.milestone.leaderboard_message'));
     }
 
     protected function buildGenericMail(MailMessage $mail, object $notifiable): void
     {
-        $mail->subject(__('carbex.notifications.milestone.generic_subject'))
-            ->greeting(__('carbex.notifications.milestone.generic_greeting', ['name' => $notifiable->name]))
-            ->line(__('carbex.notifications.milestone.generic_message'));
+        $mail->subject(__('linscarbon.notifications.milestone.generic_subject'))
+            ->greeting(__('linscarbon.notifications.milestone.generic_greeting', ['name' => $notifiable->name]))
+            ->line(__('linscarbon.notifications.milestone.generic_message'));
     }
 
     public function toArray(object $notifiable): array

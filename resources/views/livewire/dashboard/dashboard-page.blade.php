@@ -4,10 +4,10 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                    {{ __('carbex.dashboard.title') }}
+                    {{ __('linscarbon.dashboard.title') }}
                 </h1>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    {{ __('carbex.dashboard.overview_for', ['organization' => auth()->user()->organization->name ?? '']) }}
+                    {{ __('linscarbon.dashboard.overview_for', ['organization' => auth()->user()->organization->name ?? '']) }}
                 </p>
             </div>
 
@@ -22,7 +22,7 @@
                     wire:click="refreshDashboard"
                     wire:loading.attr="disabled"
                     class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
-                    title="{{ __('carbex.dashboard.refresh_data') }}"
+                    title="{{ __('linscarbon.dashboard.refresh_data') }}"
                 >
                     <x-heroicon-o-arrow-path
                         class="w-5 h-5"
@@ -62,11 +62,11 @@
     <div class="mb-6 flex flex-wrap gap-3" dusk="quick-actions">
         <a href="{{ route('emissions') }}" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition">
             <x-heroicon-s-plus class="w-4 h-4 mr-2" />
-            {{ __('carbex.dashboard.add_emission') }}
+            {{ __('linscarbon.dashboard.add_emission') }}
         </a>
         <a href="{{ route('banking.connect') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
             <x-heroicon-s-building-library class="w-4 h-4 mr-2" />
-            {{ __('carbex.banking.connect') }}
+            {{ __('linscarbon.banking.connect') }}
         </a>
     </div>
 
@@ -110,10 +110,10 @@
         <x-slot name="header">
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    {{ __('carbex.dashboard.recent_transactions') }}
+                    {{ __('linscarbon.dashboard.recent_transactions') }}
                 </h3>
                 <a href="{{ route('transactions.index') }}" class="text-sm text-green-600 hover:text-green-700 dark:text-green-400">
-                    {{ __('carbex.common.view_all') }}
+                    {{ __('linscarbon.common.view_all') }}
                     <x-heroicon-s-arrow-right class="w-4 h-4 inline ml-1" />
                 </a>
             </div>
@@ -125,19 +125,19 @@
                     <thead>
                         <tr>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                {{ __('carbex.transactions.date') }}
+                                {{ __('linscarbon.transactions.date') }}
                             </th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                {{ __('carbex.transactions.description') }}
+                                {{ __('linscarbon.transactions.description') }}
                             </th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                {{ __('carbex.transactions.category') }}
+                                {{ __('linscarbon.transactions.category') }}
                             </th>
                             <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                {{ __('carbex.transactions.amount') }}
+                                {{ __('linscarbon.transactions.amount') }}
                             </th>
                             <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                {{ __('carbex.transactions.emissions') }}
+                                {{ __('linscarbon.transactions.emissions') }}
                             </th>
                         </tr>
                     </thead>
@@ -184,14 +184,14 @@
             <div class="text-center py-8">
                 <x-heroicon-o-banknotes class="w-12 h-12 mx-auto text-gray-400 mb-4" />
                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    {{ __('carbex.dashboard.no_transactions') }}
+                    {{ __('linscarbon.dashboard.no_transactions') }}
                 </h4>
                 <p class="text-gray-500 mb-4">
-                    {{ __('carbex.dashboard.connect_bank_prompt') }}
+                    {{ __('linscarbon.dashboard.connect_bank_prompt') }}
                 </p>
                 <a href="{{ route('banking.connect') }}" class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition">
                     <x-heroicon-s-plus class="w-4 h-4 mr-2" />
-                    {{ __('carbex.banking.connect') }}
+                    {{ __('linscarbon.banking.connect') }}
                 </a>
             </div>
         @endif

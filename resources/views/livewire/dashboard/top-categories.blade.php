@@ -3,7 +3,7 @@
         <x-slot name="header">
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    {{ __('carbex.dashboard.top_categories') }}
+                    {{ __('linscarbon.dashboard.top_categories') }}
                 </h3>
                 <div class="flex items-center space-x-2">
                     {{-- View Mode Toggle --}}
@@ -12,7 +12,7 @@
                             wire:click="setViewMode('treemap')"
                             class="px-3 py-1 text-sm rounded-md transition
                                 {{ $viewMode === 'treemap' ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white' : 'text-gray-500 hover:text-gray-700' }}"
-                            title="{{ __('carbex.dashboard.treemap') }}"
+                            title="{{ __('linscarbon.dashboard.treemap') }}"
                         >
                             <x-heroicon-s-squares-2x2 class="w-4 h-4" />
                         </button>
@@ -20,7 +20,7 @@
                             wire:click="setViewMode('bar')"
                             class="px-3 py-1 text-sm rounded-md transition
                                 {{ $viewMode === 'bar' ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white' : 'text-gray-500 hover:text-gray-700' }}"
-                            title="{{ __('carbex.dashboard.bar_chart') }}"
+                            title="{{ __('linscarbon.dashboard.bar_chart') }}"
                         >
                             <x-heroicon-s-chart-bar class="w-4 h-4" />
                         </button>
@@ -106,7 +106,7 @@
 
                             this.chart = new ApexCharts(this.$refs.chart, {
                                 series: [{
-                                    name: '{{ __('carbex.emissions.title') }}',
+                                    name: '{{ __('linscarbon.emissions.title') }}',
                                     data: categories.map(c => c.value)
                                 }],
                                 chart: {
@@ -208,7 +208,7 @@
                                         {{ $category['name'] }}
                                     </span>
                                     <span class="text-xs text-gray-500">
-                                        Scope {{ $category['scope'] }} &bull; {{ $category['count'] }} {{ __('carbex.dashboard.transactions') }}
+                                        Scope {{ $category['scope'] }} &bull; {{ $category['count'] }} {{ __('linscarbon.dashboard.transactions') }}
                                     </span>
                                 </div>
                             </div>
@@ -228,10 +228,10 @@
             <div class="text-center py-12">
                 <x-heroicon-o-rectangle-group class="w-12 h-12 mx-auto text-gray-400 mb-4" />
                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    {{ __('carbex.dashboard.no_category_data') }}
+                    {{ __('linscarbon.dashboard.no_category_data') }}
                 </h4>
                 <p class="text-gray-500">
-                    {{ __('carbex.dashboard.category_data_hint') }}
+                    {{ __('linscarbon.dashboard.category_data_hint') }}
                 </p>
             </div>
         @endif

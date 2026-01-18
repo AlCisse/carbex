@@ -14,7 +14,7 @@ use PhpOffice\PhpWord\Style\Font;
 /**
  * Word Report Generator - Generates complete carbon footprint reports in DOCX format
  *
- * Constitution Carbex v3.0 - Section 5.2, T073
+ * Constitution LinsCarbon v3.0 - Section 5.2, T073
  *
  * Report structure:
  * - Cover page
@@ -125,12 +125,12 @@ class WordReportGenerator
     {
         // Document properties
         $properties = $this->phpWord->getDocInfo();
-        $properties->setCreator('Carbex');
-        $properties->setCompany('Carbex SAS');
+        $properties->setCreator('LinsCarbon');
+        $properties->setCompany('LinsCarbon SAS');
         $properties->setTitle('Bilan Carbone');
-        $properties->setDescription('Rapport de bilan carbone généré par Carbex');
+        $properties->setDescription('Rapport de bilan carbone généré par LinsCarbon');
         $properties->setCategory('Environnement');
-        $properties->setLastModifiedBy('Carbex');
+        $properties->setLastModifiedBy('LinsCarbon');
 
         // Define styles
         foreach ($this->styles as $name => $style) {
@@ -230,7 +230,7 @@ class WordReportGenerator
         );
 
         $section->addText(
-            'Généré par Carbex - www.carbex.fr',
+            'Généré par LinsCarbon - www.linscarbon.fr',
             ['name' => 'Arial', 'size' => 9, 'color' => '999999'],
             'pTitle'
         );
@@ -571,7 +571,7 @@ class WordReportGenerator
         } else {
             $section->addText(
                 'Aucune action de réduction n\'a encore été définie. ' .
-                'Utilisez la plateforme Carbex pour créer votre plan de transition.',
+                'Utilisez la plateforme LinsCarbon pour créer votre plan de transition.',
                 'body',
                 'pBody'
             );

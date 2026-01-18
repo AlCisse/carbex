@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
  * Service IA pour générer des narratifs intelligents dans les rapports de bilan carbone.
  * Produit des analyses contextuelles, des résumés exécutifs et des recommandations personnalisées.
  *
- * Constitution Carbex v3.0 - Section 9.7 (Génération Automatique de Rapports)
+ * Constitution LinsCarbon v3.0 - Section 9.7 (Génération Automatique de Rapports)
  */
 class ReportNarrativeGenerator
 {
@@ -203,7 +203,7 @@ PROMPT;
         $current = $this->buildAssessmentData($currentAssessment);
 
         if (! $previousAssessment) {
-            return __('carbex.reports.no_previous_year');
+            return __('linscarbon.reports.no_previous_year');
         }
 
         $previous = $this->buildAssessmentData($previousAssessment);
@@ -325,7 +325,7 @@ PROMPT;
         $scope3Percent = $data['total_emissions'] > 0 ? round(($data['scope_3'] / $data['total_emissions']) * 100) : 0;
 
         return sprintf(
-            __('carbex.reports.fallback_summary'),
+            __('linscarbon.reports.fallback_summary'),
             $data['organization_name'],
             $data['year'],
             $totalTonnes,
@@ -344,13 +344,13 @@ PROMPT;
         $totalTonnes = round($total / 1000, 1);
 
         $scopeNames = [
-            1 => __('carbex.scopes.1.name'),
-            2 => __('carbex.scopes.2.name'),
-            3 => __('carbex.scopes.3.name'),
+            1 => __('linscarbon.scopes.1.name'),
+            2 => __('linscarbon.scopes.2.name'),
+            3 => __('linscarbon.scopes.3.name'),
         ];
 
         return sprintf(
-            __('carbex.reports.fallback_scope_analysis'),
+            __('linscarbon.reports.fallback_scope_analysis'),
             $scopeNames[$scope] ?? "Scope {$scope}",
             $totalTonnes,
             count($emissions)
@@ -366,7 +366,7 @@ PROMPT;
         $inProgress = count(array_filter($actions, fn ($a) => $a['status'] === 'in_progress'));
 
         return sprintf(
-            __('carbex.reports.fallback_conclusion'),
+            __('linscarbon.reports.fallback_conclusion'),
             $data['organization_name'],
             $actionCount,
             $inProgress
@@ -382,12 +382,12 @@ PROMPT;
             ? round($data['total_emissions'] / 1000 / $data['employee_count'], 2)
             : 0;
 
-        $position = $intensity <= $benchmark['best'] ? __('carbex.reports.excellent')
-            : ($intensity <= $benchmark['average'] ? __('carbex.reports.good')
-                : __('carbex.reports.improvement_needed'));
+        $position = $intensity <= $benchmark['best'] ? __('linscarbon.reports.excellent')
+            : ($intensity <= $benchmark['average'] ? __('linscarbon.reports.good')
+                : __('linscarbon.reports.improvement_needed'));
 
         return sprintf(
-            __('carbex.reports.fallback_benchmark'),
+            __('linscarbon.reports.fallback_benchmark'),
             $intensity,
             $benchmark['average'],
             $position
@@ -403,9 +403,9 @@ PROMPT;
         $percent = abs($evolution['total']['percent']);
 
         $message = match ($direction) {
-            'baisse' => __('carbex.reports.trend_decrease', ['percent' => $percent]),
-            'hausse' => __('carbex.reports.trend_increase', ['percent' => $percent]),
-            default => __('carbex.reports.trend_stable'),
+            'baisse' => __('linscarbon.reports.trend_decrease', ['percent' => $percent]),
+            'hausse' => __('linscarbon.reports.trend_increase', ['percent' => $percent]),
+            default => __('linscarbon.reports.trend_stable'),
         };
 
         return $message;

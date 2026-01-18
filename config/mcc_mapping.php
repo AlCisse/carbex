@@ -4,7 +4,7 @@
  * MCC (Merchant Category Code) to Emission Category Mapping
  *
  * This configuration maps standard Merchant Category Codes used in bank transactions
- * to Carbex emission categories for automatic transaction categorization.
+ * to LinsCarbon emission categories for automatic transaction categorization.
  *
  * Each MCC is mapped to:
  * - category: The emission category (matches emission_factors table)

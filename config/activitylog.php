@@ -47,9 +47,9 @@ return [
     'database_connection' => env('ACTIVITY_LOGGER_DB_CONNECTION'),
 
     /*
-     * Carbex-specific activity log settings
+     * LinsCarbon-specific activity log settings
      */
-    'carbex' => [
+    'linscarbon' => [
         /*
          * Log names for different types of activities
          */

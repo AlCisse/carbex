@@ -3,7 +3,7 @@
         <x-slot name="header">
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    {{ __('carbex.dashboard.emission_trends') }}
+                    {{ __('linscarbon.dashboard.emission_trends') }}
                 </h3>
                 <div class="flex items-center space-x-2">
                     {{-- Chart Type Toggle --}}
@@ -189,10 +189,10 @@
             <div class="text-center py-12">
                 <x-heroicon-o-chart-bar class="w-12 h-12 mx-auto text-gray-400 mb-4" />
                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    {{ __('carbex.dashboard.no_trend_data') }}
+                    {{ __('linscarbon.dashboard.no_trend_data') }}
                 </h4>
                 <p class="text-gray-500">
-                    {{ __('carbex.dashboard.trend_data_hint') }}
+                    {{ __('linscarbon.dashboard.trend_data_hint') }}
                 </p>
             </div>
         @endif

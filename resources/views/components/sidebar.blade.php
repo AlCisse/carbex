@@ -17,35 +17,35 @@
 @php
     $scopes = [
         1 => [
-            'name' => __('carbex.sidebar.scope1_name'),
+            'name' => __('linscarbon.sidebar.scope1_name'),
             'icon' => 'fire',
             'categories' => [
-                ['code' => '1.1', 'name' => __('carbex.sidebar.cat_1_1')],
-                ['code' => '1.2', 'name' => __('carbex.sidebar.cat_1_2')],
-                ['code' => '1.4', 'name' => __('carbex.sidebar.cat_1_4')],
-                ['code' => '1.5', 'name' => __('carbex.sidebar.cat_1_5')],
+                ['code' => '1.1', 'name' => __('linscarbon.sidebar.cat_1_1')],
+                ['code' => '1.2', 'name' => __('linscarbon.sidebar.cat_1_2')],
+                ['code' => '1.4', 'name' => __('linscarbon.sidebar.cat_1_4')],
+                ['code' => '1.5', 'name' => __('linscarbon.sidebar.cat_1_5')],
             ],
         ],
         2 => [
-            'name' => __('carbex.sidebar.scope2_name'),
+            'name' => __('linscarbon.sidebar.scope2_name'),
             'icon' => 'bolt',
             'categories' => [
-                ['code' => '2.1', 'name' => __('carbex.sidebar.cat_2_1')],
+                ['code' => '2.1', 'name' => __('linscarbon.sidebar.cat_2_1')],
             ],
         ],
         3 => [
-            'name' => __('carbex.sidebar.scope3_name'),
+            'name' => __('linscarbon.sidebar.scope3_name'),
             'icon' => 'globe',
             'categories' => [
-                ['code' => '3.1', 'name' => __('carbex.sidebar.cat_3_1')],
-                ['code' => '3.2', 'name' => __('carbex.sidebar.cat_3_2')],
-                ['code' => '3.3', 'name' => __('carbex.sidebar.cat_3_3')],
-                ['code' => '3.5', 'name' => __('carbex.sidebar.cat_3_5')],
-                ['code' => '4.1', 'name' => __('carbex.sidebar.cat_4_1')],
-                ['code' => '4.2', 'name' => __('carbex.sidebar.cat_4_2')],
-                ['code' => '4.3', 'name' => __('carbex.sidebar.cat_4_3')],
-                ['code' => '4.4', 'name' => __('carbex.sidebar.cat_4_4')],
-                ['code' => '4.5', 'name' => __('carbex.sidebar.cat_4_5')],
+                ['code' => '3.1', 'name' => __('linscarbon.sidebar.cat_3_1')],
+                ['code' => '3.2', 'name' => __('linscarbon.sidebar.cat_3_2')],
+                ['code' => '3.3', 'name' => __('linscarbon.sidebar.cat_3_3')],
+                ['code' => '3.5', 'name' => __('linscarbon.sidebar.cat_3_5')],
+                ['code' => '4.1', 'name' => __('linscarbon.sidebar.cat_4_1')],
+                ['code' => '4.2', 'name' => __('linscarbon.sidebar.cat_4_2')],
+                ['code' => '4.3', 'name' => __('linscarbon.sidebar.cat_4_3')],
+                ['code' => '4.4', 'name' => __('linscarbon.sidebar.cat_4_4')],
+                ['code' => '4.5', 'name' => __('linscarbon.sidebar.cat_4_5')],
             ],
         ],
     ];
@@ -73,7 +73,7 @@
             <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
-            {{ __('carbex.sidebar.dashboard') }}
+            {{ __('linscarbon.sidebar.dashboard') }}
         </a>
 
         <!-- Scopes -->
@@ -126,7 +126,7 @@
             <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            {{ __('carbex.sidebar.analysis') }}
+            {{ __('linscarbon.sidebar.analysis') }}
         </a>
 
         <!-- Documents IA -->
@@ -136,8 +136,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <span class="flex items-center">
-                {{ __('carbex.sidebar.documents') }}
-                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-green-600 text-white">{{ __('carbex.common.ai') }}</span>
+                {{ __('linscarbon.sidebar.documents') }}
+                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-green-600 text-white">{{ __('linscarbon.common.ai') }}</span>
             </span>
         </a>
 
@@ -148,8 +148,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
             <span class="flex items-center">
-                {{ __('carbex.sidebar.ai_analysis') }}
-                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-emerald-600 text-white">{{ __('carbex.sidebar.new') }}</span>
+                {{ __('linscarbon.sidebar.ai_analysis') }}
+                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-emerald-600 text-white">{{ __('linscarbon.sidebar.new') }}</span>
             </span>
         </a>
 
@@ -159,7 +159,7 @@
             <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
-            {{ __('carbex.sidebar.suppliers') }}
+            {{ __('linscarbon.sidebar.suppliers') }}
         </a>
 
         <!-- Plan de transition -->
@@ -168,7 +168,7 @@
             <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg>
-            {{ __('carbex.sidebar.transition_plan') }}
+            {{ __('linscarbon.sidebar.transition_plan') }}
         </a>
 
         <!-- CSRD Compliance -->
@@ -189,7 +189,7 @@
             <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            {{ __('carbex.sidebar.reports') }}
+            {{ __('linscarbon.sidebar.reports') }}
         </a>
 
         <!-- Badges & Engagement -->
@@ -199,8 +199,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
             <span class="flex items-center">
-                {{ __('carbex.sidebar.badges') }}
-                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-purple-600 text-white">{{ __('carbex.sidebar.new') }}</span>
+                {{ __('linscarbon.sidebar.badges') }}
+                <span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-purple-600 text-white">{{ __('linscarbon.sidebar.new') }}</span>
             </span>
         </a>
     </nav>

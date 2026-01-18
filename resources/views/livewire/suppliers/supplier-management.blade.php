@@ -3,8 +3,8 @@
     <div class="mb-6">
         <div class="flex items-center justify-between">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ __('carbex.suppliers.title') }}</h2>
-                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ __('carbex.suppliers.description') }}</p>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ __('linscarbon.suppliers.title') }}</h2>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ __('linscarbon.suppliers.description') }}</p>
             </div>
             <div class="flex items-center gap-3">
                 <button
@@ -15,7 +15,7 @@
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                     </svg>
-                    {{ __('carbex.suppliers.import_csv') }}
+                    {{ __('linscarbon.suppliers.import_csv') }}
                 </button>
                 <button
                     type="button"
@@ -25,7 +25,7 @@
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
-                    {{ __('carbex.suppliers.add_supplier') }}
+                    {{ __('linscarbon.suppliers.add_supplier') }}
                 </button>
             </div>
         </div>
@@ -34,23 +34,23 @@
     {{-- Stats Cards --}}
     <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
         <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.suppliers.stats.total') }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.suppliers.stats.total') }}</p>
             <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $stats['total'] ?? 0 }}</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.suppliers.stats.active') }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.suppliers.stats.active') }}</p>
             <p class="text-2xl font-bold text-green-600 dark:text-green-400">{{ $stats['active'] ?? 0 }}</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.suppliers.stats.with_data') }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.suppliers.stats.with_data') }}</p>
             <p class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ $stats['with_data'] ?? 0 }}</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.suppliers.stats.pending') }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.suppliers.stats.pending') }}</p>
             <p class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{{ $stats['pending_data'] ?? 0 }}</p>
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.suppliers.stats.total_spend') }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.suppliers.stats.total_spend') }}</p>
             <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $this->formatCurrency($stats['total_spend'] ?? 0) }}</p>
         </div>
     </div>
@@ -60,7 +60,7 @@
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
             {{-- Search --}}
             <div class="md:col-span-2">
-                <label for="search" class="sr-only">{{ __('carbex.search') }}</label>
+                <label for="search" class="sr-only">{{ __('linscarbon.search') }}</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,7 +72,7 @@
                         wire:model.live.debounce.300ms="search"
                         id="search"
                         class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                        placeholder="{{ __('carbex.suppliers.search_placeholder') }}"
+                        placeholder="{{ __('linscarbon.suppliers.search_placeholder') }}"
                     >
                 </div>
             </div>
@@ -83,11 +83,11 @@
                     wire:model.live="statusFilter"
                     class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 >
-                    <option value="">{{ __('carbex.suppliers.all_statuses') }}</option>
-                    <option value="pending">{{ __('carbex.suppliers.statuses.pending') }}</option>
-                    <option value="invited">{{ __('carbex.suppliers.statuses.invited') }}</option>
-                    <option value="active">{{ __('carbex.suppliers.statuses.active') }}</option>
-                    <option value="inactive">{{ __('carbex.suppliers.statuses.inactive') }}</option>
+                    <option value="">{{ __('linscarbon.suppliers.all_statuses') }}</option>
+                    <option value="pending">{{ __('linscarbon.suppliers.statuses.pending') }}</option>
+                    <option value="invited">{{ __('linscarbon.suppliers.statuses.invited') }}</option>
+                    <option value="active">{{ __('linscarbon.suppliers.statuses.active') }}</option>
+                    <option value="inactive">{{ __('linscarbon.suppliers.statuses.inactive') }}</option>
                 </select>
             </div>
 
@@ -97,11 +97,11 @@
                     wire:model.live="dataQualityFilter"
                     class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 >
-                    <option value="">{{ __('carbex.suppliers.all_quality') }}</option>
-                    <option value="none">{{ __('carbex.suppliers.quality.none') }}</option>
-                    <option value="estimated">{{ __('carbex.suppliers.quality.estimated') }}</option>
-                    <option value="supplier_specific">{{ __('carbex.suppliers.quality.supplier_specific') }}</option>
-                    <option value="verified">{{ __('carbex.suppliers.quality.verified') }}</option>
+                    <option value="">{{ __('linscarbon.suppliers.all_quality') }}</option>
+                    <option value="none">{{ __('linscarbon.suppliers.quality.none') }}</option>
+                    <option value="estimated">{{ __('linscarbon.suppliers.quality.estimated') }}</option>
+                    <option value="supplier_specific">{{ __('linscarbon.suppliers.quality.supplier_specific') }}</option>
+                    <option value="verified">{{ __('linscarbon.suppliers.quality.verified') }}</option>
                 </select>
             </div>
 
@@ -112,7 +112,7 @@
                     wire:click="resetFilters"
                     class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
-                    {{ __('carbex.reset_filters') }}
+                    {{ __('linscarbon.reset_filters') }}
                 </button>
             </div>
         </div>
@@ -125,19 +125,19 @@
                 <thead class="bg-gray-50 dark:bg-gray-900">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            {{ __('carbex.suppliers.name') }}
+                            {{ __('linscarbon.suppliers.name') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            {{ __('carbex.suppliers.sector') }}
+                            {{ __('linscarbon.suppliers.sector') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            {{ __('carbex.suppliers.annual_spend') }}
+                            {{ __('linscarbon.suppliers.annual_spend') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            {{ __('carbex.users.status') }}
+                            {{ __('linscarbon.users.status') }}
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                            {{ __('carbex.suppliers.data_quality') }}
+                            {{ __('linscarbon.suppliers.data_quality') }}
                         </th>
                         <th scope="col" class="relative px-6 py-3">
                             <span class="sr-only">Actions</span>
@@ -178,12 +178,12 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $this->getStatusClass($supplier->status) }}">
-                                    {{ __('carbex.suppliers.statuses.' . $supplier->status) }}
+                                    {{ __('linscarbon.suppliers.statuses.' . $supplier->status) }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $this->getQualityClass($supplier->data_quality) }}">
-                                    {{ __('carbex.suppliers.quality.' . $supplier->data_quality) }}
+                                    {{ __('linscarbon.suppliers.quality.' . $supplier->data_quality) }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -192,7 +192,7 @@
                                         <button
                                             wire:click="openInviteModal('{{ $supplier->id }}')"
                                             class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
-                                            title="{{ __('carbex.suppliers.invite') }}"
+                                            title="{{ __('linscarbon.suppliers.invite') }}"
                                         >
                                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -202,7 +202,7 @@
                                     <button
                                         wire:click="edit('{{ $supplier->id }}')"
                                         class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                                        title="{{ __('carbex.edit') }}"
+                                        title="{{ __('linscarbon.edit') }}"
                                     >
                                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -210,9 +210,9 @@
                                     </button>
                                     <button
                                         wire:click="delete('{{ $supplier->id }}')"
-                                        wire:confirm="{{ __('carbex.suppliers.confirm_delete') }}"
+                                        wire:confirm="{{ __('linscarbon.suppliers.confirm_delete') }}"
                                         class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
-                                        title="{{ __('carbex.delete') }}"
+                                        title="{{ __('linscarbon.delete') }}"
                                     >
                                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -227,7 +227,7 @@
                                 <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                 </svg>
-                                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.suppliers.empty') }}</p>
+                                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.suppliers.empty') }}</p>
                                 <button
                                     type="button"
                                     wire:click="create"
@@ -236,7 +236,7 @@
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
-                                    {{ __('carbex.suppliers.add_first') }}
+                                    {{ __('linscarbon.suppliers.add_first') }}
                                 </button>
                             </td>
                         </tr>
@@ -263,57 +263,57 @@
                     <form wire:submit="save">
                         <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                                {{ $editingId ? __('carbex.suppliers.edit_supplier') : __('carbex.suppliers.add_supplier') }}
+                                {{ $editingId ? __('linscarbon.suppliers.edit_supplier') : __('linscarbon.suppliers.add_supplier') }}
                             </h3>
 
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.name') }} *</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.name') }} *</label>
                                     <input type="text" wire:model="form.name" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" required>
                                     @error('form.name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.email') }}</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.email') }}</label>
                                         <input type="email" wire:model="form.email" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.phone') }}</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.phone') }}</label>
                                         <input type="text" wire:model="form.phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
                                     </div>
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.contact_name') }}</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.contact_name') }}</label>
                                         <input type="text" wire:model="form.contact_name" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.contact_email') }}</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.contact_email') }}</label>
                                         <input type="email" wire:model="form.contact_email" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
                                     </div>
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.country') }}</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.country') }}</label>
                                         <select wire:model="form.country" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
-                                            <option value="DE">{{ __('carbex.emission_factors.countries.de') }}</option>
-                                            <option value="FR">{{ __('carbex.emission_factors.countries.fr') }}</option>
-                                            <option value="AT">{{ __('carbex.emission_factors.countries.at') }}</option>
-                                            <option value="BE">{{ __('carbex.emission_factors.countries.be') }}</option>
-                                            <option value="CH">{{ __('carbex.emission_factors.countries.ch') }}</option>
-                                            <option value="ES">{{ __('carbex.emission_factors.countries.es') }}</option>
-                                            <option value="IT">{{ __('carbex.emission_factors.countries.it') }}</option>
-                                            <option value="NL">{{ __('carbex.emission_factors.countries.nl') }}</option>
-                                            <option value="GB">{{ __('carbex.emission_factors.countries.gb') }}</option>
+                                            <option value="DE">{{ __('linscarbon.emission_factors.countries.de') }}</option>
+                                            <option value="FR">{{ __('linscarbon.emission_factors.countries.fr') }}</option>
+                                            <option value="AT">{{ __('linscarbon.emission_factors.countries.at') }}</option>
+                                            <option value="BE">{{ __('linscarbon.emission_factors.countries.be') }}</option>
+                                            <option value="CH">{{ __('linscarbon.emission_factors.countries.ch') }}</option>
+                                            <option value="ES">{{ __('linscarbon.emission_factors.countries.es') }}</option>
+                                            <option value="IT">{{ __('linscarbon.emission_factors.countries.it') }}</option>
+                                            <option value="NL">{{ __('linscarbon.emission_factors.countries.nl') }}</option>
+                                            <option value="GB">{{ __('linscarbon.emission_factors.countries.gb') }}</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.sector') }}</label>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.sector') }}</label>
                                         <select wire:model="form.sector" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
-                                            <option value="">{{ __('carbex.select') }}</option>
+                                            <option value="">{{ __('linscarbon.select') }}</option>
                                             @foreach($this->sectors as $code => $name)
                                                 <option value="{{ $code }}">{{ $name }}</option>
                                             @endforeach
@@ -322,7 +322,7 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.annual_spend') }}</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.annual_spend') }}</label>
                                     <div class="mt-1 relative rounded-lg shadow-sm">
                                         <input type="number" step="0.01" wire:model="form.annual_spend" class="block w-full px-3 py-2 pr-12 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
                                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
@@ -332,7 +332,7 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.notes') }}</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.notes') }}</label>
                                     <textarea wire:model="form.notes" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"></textarea>
                                 </div>
                             </div>
@@ -340,10 +340,10 @@
 
                         <div class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-3">
                             <button type="submit" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-emerald-600 text-base font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:w-auto sm:text-sm">
-                                {{ $editingId ? __('carbex.save') : __('carbex.create') }}
+                                {{ $editingId ? __('linscarbon.save') : __('linscarbon.create') }}
                             </button>
                             <button type="button" wire:click="closeModal" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:mt-0 sm:w-auto sm:text-sm">
-                                {{ __('carbex.cancel') }}
+                                {{ __('linscarbon.cancel') }}
                             </button>
                         </div>
                     </form>
@@ -362,17 +362,17 @@
                     <form wire:submit="sendInvitation">
                         <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                                {{ __('carbex.suppliers.send_invitation') }}
+                                {{ __('linscarbon.suppliers.send_invitation') }}
                             </h3>
 
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.due_date') }}</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.due_date') }}</label>
                                     <input type="date" wire:model="inviteForm.due_date" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" required>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('carbex.suppliers.message') }}</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('linscarbon.suppliers.message') }}</label>
                                     <textarea wire:model="inviteForm.message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"></textarea>
                                 </div>
                             </div>
@@ -380,10 +380,10 @@
 
                         <div class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-3">
                             <button type="submit" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:w-auto sm:text-sm">
-                                {{ __('carbex.suppliers.send') }}
+                                {{ __('linscarbon.suppliers.send') }}
                             </button>
                             <button type="button" wire:click="closeModal" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm">
-                                {{ __('carbex.cancel') }}
+                                {{ __('linscarbon.cancel') }}
                             </button>
                         </div>
                     </form>
@@ -402,21 +402,21 @@
                     <form wire:submit="importCsv">
                         <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                                {{ __('carbex.suppliers.import_csv') }}
+                                {{ __('linscarbon.suppliers.import_csv') }}
                             </h3>
 
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('carbex.suppliers.csv_file') }}</label>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{{ __('linscarbon.suppliers.csv_file') }}</label>
                                     <input type="file" wire:model="csvFile" accept=".csv,.txt" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 dark:file:bg-emerald-900/30 dark:file:text-emerald-400">
                                     @error('csvFile') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{{ __('carbex.suppliers.csv_format') }}</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{{ __('linscarbon.suppliers.csv_format') }}</p>
                                     <code class="text-xs text-gray-500">name;email;contact_name;country;sector;annual_spend</code>
                                     <button type="button" wire:click="downloadTemplate" class="mt-2 text-sm text-emerald-600 hover:text-emerald-700">
-                                        {{ __('carbex.suppliers.download_template') }}
+                                        {{ __('linscarbon.suppliers.download_template') }}
                                     </button>
                                 </div>
                             </div>
@@ -424,11 +424,11 @@
 
                         <div class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse gap-3">
                             <button type="submit" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-emerald-600 text-base font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:w-auto sm:text-sm" wire:loading.attr="disabled">
-                                <span wire:loading.remove wire:target="importCsv">{{ __('carbex.import') }}</span>
-                                <span wire:loading wire:target="importCsv">{{ __('carbex.importing') }}</span>
+                                <span wire:loading.remove wire:target="importCsv">{{ __('linscarbon.import') }}</span>
+                                <span wire:loading wire:target="importCsv">{{ __('linscarbon.importing') }}</span>
                             </button>
                             <button type="button" wire:click="closeModal" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-800 text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:mt-0 sm:w-auto sm:text-sm">
-                                {{ __('carbex.cancel') }}
+                                {{ __('linscarbon.cancel') }}
                             </button>
                         </div>
                     </form>

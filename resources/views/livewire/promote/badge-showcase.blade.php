@@ -3,10 +3,10 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                {{ __('carbex.promote.title') }}
+                {{ __('linscarbon.promote.title') }}
             </h1>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {{ __('carbex.promote.subtitle') }}
+                {{ __('linscarbon.promote.subtitle') }}
             </p>
         </div>
         <div class="mt-4 md:mt-0 flex items-center space-x-2 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-2 rounded-lg">
@@ -14,7 +14,7 @@
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
             </svg>
             <span class="font-semibold text-emerald-700 dark:text-emerald-300">
-                {{ $this->totalPoints }} {{ __('carbex.promote.points') }}
+                {{ $this->totalPoints }} {{ __('linscarbon.promote.points') }}
             </span>
         </div>
     </div>
@@ -26,13 +26,13 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
             </svg>
             <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">
-                {{ __('carbex.promote.no_badges') }}
+                {{ __('linscarbon.promote.no_badges') }}
             </h3>
             <p class="mt-2 text-gray-500 dark:text-gray-400">
-                {{ __('carbex.promote.no_badges_hint') }}
+                {{ __('linscarbon.promote.no_badges_hint') }}
             </p>
             <a href="{{ route('dashboard') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium">
-                {{ __('carbex.promote.start_assessment') }}
+                {{ __('linscarbon.promote.start_assessment') }}
             </a>
         </div>
     @else
@@ -41,7 +41,7 @@
             <div class="lg:col-span-1">
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                        {{ __('carbex.promote.your_badges') }}
+                        {{ __('linscarbon.promote.your_badges') }}
                     </h2>
                     <div class="grid grid-cols-2 gap-3">
                         @foreach($this->earnedBadges as $badge)
@@ -104,7 +104,7 @@
                                         {{ $this->selectedBadge['points'] }} pts
                                     </span>
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">
-                                        {{ __('carbex.promote.earned') }} {{ \Carbon\Carbon::parse($this->selectedBadge['earned_at'])->format('d/m/Y') }}
+                                        {{ __('linscarbon.promote.earned') }} {{ \Carbon\Carbon::parse($this->selectedBadge['earned_at'])->format('d/m/Y') }}
                                     </span>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                         <!-- Action Buttons -->
                         <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                             <h4 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-                                {{ __('carbex.promote.share_badge') }}
+                                {{ __('linscarbon.promote.share_badge') }}
                             </h4>
                             <div class="flex flex-wrap gap-3">
                                 <!-- Share on LinkedIn -->
@@ -146,7 +146,7 @@
                                     <svg x-show="copied" class="w-4 h-4 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                                     </svg>
-                                    <span x-text="copied ? '{{ __('carbex.promote.copied') }}' : '{{ __('carbex.promote.copy_link') }}'"></span>
+                                    <span x-text="copied ? '{{ __('linscarbon.promote.copied') }}' : '{{ __('linscarbon.promote.copy_link') }}'"></span>
                                 </button>
 
                                 <!-- Embed Code -->
@@ -157,7 +157,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                                     </svg>
-                                    {{ __('carbex.promote.embed') }}
+                                    {{ __('linscarbon.promote.embed') }}
                                 </button>
                             </div>
                         </div>
@@ -165,7 +165,7 @@
                         <!-- Download Section -->
                         <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                             <h4 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-                                {{ __('carbex.promote.download_assets') }}
+                                {{ __('linscarbon.promote.download_assets') }}
                             </h4>
                             <div class="flex flex-wrap gap-3">
                                 <button
@@ -175,7 +175,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                                     </svg>
-                                    {{ __('carbex.promote.download_badge') }}
+                                    {{ __('linscarbon.promote.download_badge') }}
                                 </button>
 
                                 <button
@@ -185,7 +185,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                     </svg>
-                                    {{ __('carbex.promote.email_signature') }}
+                                    {{ __('linscarbon.promote.email_signature') }}
                                 </button>
 
                                 <button
@@ -195,7 +195,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
-                                    {{ __('carbex.promote.social_kit') }}
+                                    {{ __('linscarbon.promote.social_kit') }}
                                 </button>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                 <div class="relative bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-lg w-full p-6 z-10">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            {{ __('carbex.promote.embed_badge') }}
+                            {{ __('linscarbon.promote.embed_badge') }}
                         </h3>
                         <button wire:click="closeEmbedModal" class="text-gray-400 hover:text-gray-600">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -226,7 +226,7 @@
                     <!-- Size Options -->
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            {{ __('carbex.promote.embed_size') }}
+                            {{ __('linscarbon.promote.embed_size') }}
                         </label>
                         <div class="flex gap-2">
                             @foreach(['small' => 'S', 'medium' => 'M', 'large' => 'L'] as $size => $label)
@@ -243,7 +243,7 @@
                     <!-- Embed Code -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            {{ __('carbex.promote.embed_code') }}
+                            {{ __('linscarbon.promote.embed_code') }}
                         </label>
                         <div class="relative">
                             <textarea
@@ -279,7 +279,7 @@
                 <div class="relative bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-lg w-full p-6 z-10">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            {{ __('carbex.promote.download_badge') }}
+                            {{ __('linscarbon.promote.download_badge') }}
                         </h3>
                         <button wire:click="closeDownloadModal" class="text-gray-400 hover:text-gray-600">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -291,7 +291,7 @@
                     <!-- Format Options -->
                     <div class="mb-6">
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            {{ __('carbex.promote.format') }}
+                            {{ __('linscarbon.promote.format') }}
                         </label>
                         <div class="grid grid-cols-3 gap-3">
                             @foreach(['png' => 'PNG', 'svg' => 'SVG', 'pdf' => 'PDF'] as $format => $label)
@@ -309,7 +309,7 @@
                         wire:click="downloadBadge"
                         class="w-full px-4 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium"
                     >
-                        {{ __('carbex.promote.download') }}
+                        {{ __('linscarbon.promote.download') }}
                     </button>
                 </div>
             </div>

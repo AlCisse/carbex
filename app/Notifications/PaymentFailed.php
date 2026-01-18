@@ -36,7 +36,7 @@ class PaymentFailed extends Notification implements ShouldQueue
             ->greeting(__('Hello :name,', ['name' => $notifiable->name]))
             ->line(__('We were unable to process your subscription payment.'))
             ->line('**' . __('Amount') . '**: ' . number_format($this->invoice->amount_due / 100, 2, ',', ' ') . ' €')
-            ->line(__('Please update your payment method to maintain access to your Carbex account.'))
+            ->line(__('Please update your payment method to maintain access to your LinsCarbon account.'))
             ->action(__('Update Payment Method'), url('/settings/billing'))
             ->line(__('If you need assistance, please contact our support team.'))
             ->salutation(__('Best regards,') . "\n" . config('app.name'));

@@ -79,7 +79,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Carbex Subscription Plans
+    | LinsCarbon Subscription Plans
     |--------------------------------------------------------------------------
     |
     | Define the available subscription plans with their Stripe price IDs,

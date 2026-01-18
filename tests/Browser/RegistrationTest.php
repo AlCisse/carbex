@@ -12,11 +12,11 @@ class RegistrationTest extends DuskTestCase
      */
     public function testUserCanRegister(): void
     {
-        $email = 'dusk_test_' . time() . '@carbex.io';
+        $email = 'dusk_test_' . time() . '@linscarbon.io';
 
         $this->browse(function (Browser $browser) use ($email) {
             $browser->visit('/register')
-                    ->assertSee('Carbex')
+                    ->assertSee('LinsCarbon')
                     // Step 1: User info
                     ->type('name', 'Dusk Test User')
                     ->type('email', $email)

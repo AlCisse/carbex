@@ -20,7 +20,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
 
         // Configure notification settings
         Horizon::routeSmsNotificationsTo('');
-        Horizon::routeMailNotificationsTo(config('mail.admin', 'admin@carbex.app'));
+        Horizon::routeMailNotificationsTo(config('mail.admin', 'admin@linscarbon.app'));
         Horizon::routeSlackNotificationsTo(env('HORIZON_SLACK_WEBHOOK_URL', ''), '#alerts');
 
         // Tag jobs with useful metadata
@@ -66,7 +66,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
 
             // Only allow owners and admins to access Horizon
             return $user->isAdmin() || in_array($user->email, [
-                'admin@carbex.app',
+                'admin@linscarbon.app',
                 // Add other admin emails here
             ]);
         });

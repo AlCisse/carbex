@@ -135,11 +135,11 @@ class Report extends Model
     {
         return match ($this->type) {
             'beges' => 'BEGES',
-            'ghg_inventory' => __('carbex.reports.ghg_inventory'),
-            'carbon_footprint' => __('carbex.reports.carbon_footprint'),
-            'scope_breakdown' => __('carbex.reports.scope_breakdown'),
-            'category_analysis' => __('carbex.reports.category_analysis'),
-            'period_comparison' => __('carbex.reports.period_comparison'),
+            'ghg_inventory' => __('linscarbon.reports.ghg_inventory'),
+            'carbon_footprint' => __('linscarbon.reports.carbon_footprint'),
+            'scope_breakdown' => __('linscarbon.reports.scope_breakdown'),
+            'category_analysis' => __('linscarbon.reports.category_analysis'),
+            'period_comparison' => __('linscarbon.reports.period_comparison'),
             default => ucfirst(str_replace('_', ' ', $this->type)),
         };
     }

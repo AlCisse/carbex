@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
  *
  * Creates:
  * - Test organization
- * - Test user (test@carbex.fr / password)
+ * - Test user (test@linscarbon.fr / password)
  * - Assessments (2023, 2024, 2025)
  * - Actions (10 reduction actions)
  * - Reduction targets (4 SBTi trajectories)
@@ -52,12 +52,12 @@ class TestDataSeeder extends Seeder
         }
 
         // Create test user if not exists
-        $user = User::where('email', 'test@carbex.fr')->first();
+        $user = User::where('email', 'test@linscarbon.fr')->first();
 
         if (! $user) {
             $user = User::create([
                 'organization_id' => $organization->id,
-                'email' => 'test@carbex.fr',
+                'email' => 'test@linscarbon.fr',
                 'password' => Hash::make('password'),
                 'first_name' => 'Test',
                 'last_name' => 'User',
@@ -65,7 +65,7 @@ class TestDataSeeder extends Seeder
                 'role' => 'owner',
                 'email_verified_at' => now(),
             ]);
-            $this->command->info('Created test user: test@carbex.fr / password');
+            $this->command->info('Created test user: test@linscarbon.fr / password');
         }
 
         // Run dependent seeders
@@ -82,7 +82,7 @@ class TestDataSeeder extends Seeder
         $this->command->info('=================================');
         $this->command->newLine();
         $this->command->info('Login credentials:');
-        $this->command->info('  Email: test@carbex.fr');
+        $this->command->info('  Email: test@linscarbon.fr');
         $this->command->info('  Password: password');
         $this->command->newLine();
     }

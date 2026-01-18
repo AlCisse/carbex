@@ -1,10 +1,10 @@
 <div>
     <x-slot name="heading">
-        {{ __('carbex.auth.register_title') }}
+        {{ __('linscarbon.auth.register_title') }}
     </x-slot>
 
     <x-slot name="subheading">
-        {{ __('carbex.auth.register_subtitle') }}
+        {{ __('linscarbon.auth.register_subtitle') }}
     </x-slot>
 
     <!-- Progress Steps -->
@@ -12,12 +12,12 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center">
                 <span class="flex h-8 w-8 items-center justify-center rounded-full {{ $step >= 1 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600' }}">1</span>
-                <span class="ml-2 text-sm font-medium {{ $step >= 1 ? 'text-green-600' : 'text-gray-500' }}">{{ __('carbex.auth.step_account') }}</span>
+                <span class="ml-2 text-sm font-medium {{ $step >= 1 ? 'text-green-600' : 'text-gray-500' }}">{{ __('linscarbon.auth.step_account') }}</span>
             </div>
             <div class="flex-1 mx-4 h-0.5 {{ $step >= 2 ? 'bg-green-600' : 'bg-gray-200' }}"></div>
             <div class="flex items-center">
                 <span class="flex h-8 w-8 items-center justify-center rounded-full {{ $step >= 2 ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600' }}">2</span>
-                <span class="ml-2 text-sm font-medium {{ $step >= 2 ? 'text-green-600' : 'text-gray-500' }}">{{ __('carbex.auth.step_organization') }}</span>
+                <span class="ml-2 text-sm font-medium {{ $step >= 2 ? 'text-green-600' : 'text-gray-500' }}">{{ __('linscarbon.auth.step_organization') }}</span>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <!-- Name -->
             <div>
                 <label for="name" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.name') }} *
+                    {{ __('linscarbon.auth.name') }} *
                 </label>
                 <div class="mt-2">
                     <input wire:model="name" id="name" name="name" type="text" required
@@ -41,7 +41,7 @@
             <!-- Email -->
             <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.email') }} *
+                    {{ __('linscarbon.auth.email') }} *
                 </label>
                 <div class="mt-2">
                     <input wire:model="email" id="email" name="email" type="email" required
@@ -53,20 +53,20 @@
             <!-- Password -->
             <div>
                 <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.password') }} *
+                    {{ __('linscarbon.auth.password') }} *
                 </label>
                 <div class="mt-2">
                     <input wire:model="password" id="password" name="password" type="password" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6 @error('password') ring-red-300 @enderror">
                 </div>
-                <p class="mt-1 text-xs text-gray-500">{{ __('carbex.auth.password_requirements') }}</p>
+                <p class="mt-1 text-xs text-gray-500">{{ __('linscarbon.auth.password_requirements') }}</p>
                 @error('password')<p class="mt-2 text-sm text-red-600">{{ $message }}</p>@enderror
             </div>
 
             <!-- Confirm Password -->
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.confirm_password') }} *
+                    {{ __('linscarbon.auth.confirm_password') }} *
                 </label>
                 <div class="mt-2">
                     <input wire:model="password_confirmation" id="password_confirmation" name="password_confirmation" type="password" required
@@ -81,7 +81,7 @@
             <!-- Organization Name -->
             <div>
                 <label for="organization_name" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.organization_name') }} *
+                    {{ __('linscarbon.auth.organization_name') }} *
                 </label>
                 <div class="mt-2">
                     <input wire:model="organization_name" id="organization_name" name="organization_name" type="text" required
@@ -93,15 +93,15 @@
             <!-- Country -->
             <div>
                 <label for="country" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.country') }} *
+                    {{ __('linscarbon.auth.country') }} *
                 </label>
                 <div class="mt-2">
                     <select wire:model="country" id="country" required
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-                        <option value="DE">{{ __('carbex.countries.DE') }}</option>
-                        <option value="FR">{{ __('carbex.countries.FR') }}</option>
-                        <option value="AT">{{ __('carbex.countries.AT') }}</option>
-                        <option value="CH">{{ __('carbex.countries.CH') }}</option>
+                        <option value="DE">{{ __('linscarbon.countries.DE') }}</option>
+                        <option value="FR">{{ __('linscarbon.countries.FR') }}</option>
+                        <option value="AT">{{ __('linscarbon.countries.AT') }}</option>
+                        <option value="CH">{{ __('linscarbon.countries.CH') }}</option>
                     </select>
                 </div>
             </div>
@@ -109,22 +109,22 @@
             <!-- Sector -->
             <div>
                 <label for="sector" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.sector') }}
+                    {{ __('linscarbon.auth.sector') }}
                 </label>
                 <div class="mt-2">
                     <select wire:model="sector" id="sector"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-                        <option value="">{{ __('carbex.auth.select_sector') }}</option>
-                        <option value="manufacturing">{{ __('carbex.sectors.manufacturing') }}</option>
-                        <option value="services">{{ __('carbex.sectors.services') }}</option>
-                        <option value="technology">{{ __('carbex.sectors.technology') }}</option>
-                        <option value="retail">{{ __('carbex.sectors.retail') }}</option>
-                        <option value="construction">{{ __('carbex.sectors.construction') }}</option>
-                        <option value="transport">{{ __('carbex.sectors.transport') }}</option>
-                        <option value="finance">{{ __('carbex.sectors.finance') }}</option>
-                        <option value="healthcare">{{ __('carbex.sectors.healthcare') }}</option>
-                        <option value="hospitality">{{ __('carbex.sectors.hospitality') }}</option>
-                        <option value="other">{{ __('carbex.sectors.other') }}</option>
+                        <option value="">{{ __('linscarbon.auth.select_sector') }}</option>
+                        <option value="manufacturing">{{ __('linscarbon.sectors.manufacturing') }}</option>
+                        <option value="services">{{ __('linscarbon.sectors.services') }}</option>
+                        <option value="technology">{{ __('linscarbon.sectors.technology') }}</option>
+                        <option value="retail">{{ __('linscarbon.sectors.retail') }}</option>
+                        <option value="construction">{{ __('linscarbon.sectors.construction') }}</option>
+                        <option value="transport">{{ __('linscarbon.sectors.transport') }}</option>
+                        <option value="finance">{{ __('linscarbon.sectors.finance') }}</option>
+                        <option value="healthcare">{{ __('linscarbon.sectors.healthcare') }}</option>
+                        <option value="hospitality">{{ __('linscarbon.sectors.hospitality') }}</option>
+                        <option value="other">{{ __('linscarbon.sectors.other') }}</option>
                     </select>
                 </div>
             </div>
@@ -132,17 +132,17 @@
             <!-- Organization Size -->
             <div>
                 <label for="organization_size" class="block text-sm font-medium leading-6 text-gray-900">
-                    {{ __('carbex.auth.organization_size') }}
+                    {{ __('linscarbon.auth.organization_size') }}
                 </label>
                 <div class="mt-2">
                     <select wire:model="organization_size" id="organization_size"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-                        <option value="">{{ __('carbex.auth.select_size') }}</option>
-                        <option value="1-10">1-10 {{ __('carbex.auth.employees') }}</option>
-                        <option value="11-50">11-50 {{ __('carbex.auth.employees') }}</option>
-                        <option value="51-250">51-250 {{ __('carbex.auth.employees') }}</option>
-                        <option value="251-500">251-500 {{ __('carbex.auth.employees') }}</option>
-                        <option value="500+">500+ {{ __('carbex.auth.employees') }}</option>
+                        <option value="">{{ __('linscarbon.auth.select_size') }}</option>
+                        <option value="1-10">1-10 {{ __('linscarbon.auth.employees') }}</option>
+                        <option value="11-50">11-50 {{ __('linscarbon.auth.employees') }}</option>
+                        <option value="51-250">51-250 {{ __('linscarbon.auth.employees') }}</option>
+                        <option value="251-500">251-500 {{ __('linscarbon.auth.employees') }}</option>
+                        <option value="500+">500+ {{ __('linscarbon.auth.employees') }}</option>
                     </select>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                     <input wire:model.live="accept_terms" id="accept_terms" name="accept_terms" type="checkbox"
                         class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600 mt-0.5">
                     <label for="accept_terms" class="ml-3 text-sm text-gray-600">
-                        {!! __('carbex.auth.accept_terms_html') !!} *
+                        {!! __('linscarbon.auth.accept_terms_html') !!} *
                     </label>
                 </div>
                 @error('accept_terms')<p class="text-sm text-red-600">{{ $message }}</p>@enderror
@@ -162,7 +162,7 @@
                     <input wire:model.live="accept_privacy" id="accept_privacy" name="accept_privacy" type="checkbox"
                         class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600 mt-0.5">
                     <label for="accept_privacy" class="ml-3 text-sm text-gray-600">
-                        {!! __('carbex.auth.accept_privacy_html') !!} *
+                        {!! __('linscarbon.auth.accept_privacy_html') !!} *
                     </label>
                 </div>
                 @error('accept_privacy')<p class="text-sm text-red-600">{{ $message }}</p>@enderror
@@ -175,7 +175,7 @@
             @if($step > 1)
             <button type="button" wire:click="previousStep"
                 class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                {{ __('carbex.common.back') }}
+                {{ __('linscarbon.common.back') }}
             </button>
             @endif
 
@@ -184,9 +184,9 @@
                 wire:loading.attr="disabled"
                 {{ $step === 2 && (!$accept_terms || !$accept_privacy) ? 'disabled' : '' }}>
                 <span wire:loading.remove>
-                    {{ $step === 2 ? __('carbex.auth.create_account') : __('carbex.common.next') }}
+                    {{ $step === 2 ? __('linscarbon.auth.create_account') : __('linscarbon.common.next') }}
                 </span>
-                <span wire:loading>{{ __('carbex.common.loading') }}</span>
+                <span wire:loading>{{ __('linscarbon.common.loading') }}</span>
             </button>
         </div>
     </form>

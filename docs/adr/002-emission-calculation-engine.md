@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Carbex needs to calculate greenhouse gas emissions from various data sources:
+LinsCarbon needs to calculate greenhouse gas emissions from various data sources:
 
 - Bank transactions (spend-based)
 - Energy consumption data (activity-based)

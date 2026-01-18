@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Assessment (Bilan) - Annual carbon assessment entity
  *
- * Constitution Carbex v3.0 - Section 7, 2.10
+ * Constitution LinsCarbon v3.0 - Section 7, 2.10
  *
  * @property string $id
  * @property string $organization_id

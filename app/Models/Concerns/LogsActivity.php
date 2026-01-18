@@ -70,7 +70,7 @@ trait LogsActivity
         }
 
         // Remove sensitive attributes
-        $excluded = config('activitylog.carbex.excluded_attributes', []);
+        $excluded = config('activitylog.linscarbon.excluded_attributes', []);
         foreach (['old', 'attributes'] as $key) {
             if (isset($properties[$key])) {
                 $properties[$key] = array_diff_key($properties[$key], array_flip($excluded));
@@ -110,7 +110,7 @@ trait LogsActivity
     protected static function getLogName(): string
     {
         $modelName = class_basename(static::class);
-        $logNames = config('activitylog.carbex.log_names', []);
+        $logNames = config('activitylog.linscarbon.log_names', []);
 
         return match ($modelName) {
             'Transaction' => $logNames['transactions'] ?? 'default',
@@ -146,7 +146,7 @@ trait LogsActivity
         return [
             'log_name' => static::getLogName(),
             'log_only_dirty' => true,
-            'log_attributes_to_ignore' => config('activitylog.carbex.excluded_attributes', []),
+            'log_attributes_to_ignore' => config('activitylog.linscarbon.excluded_attributes', []),
         ];
     }
 }

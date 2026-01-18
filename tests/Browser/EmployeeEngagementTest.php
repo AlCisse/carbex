@@ -38,11 +38,11 @@ class EmployeeEngagementTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
-                ->assertSee(__('carbex.engage.title'))
-                ->assertSee(__('carbex.engage.tabs.quiz'))
-                ->assertSee(__('carbex.engage.tabs.calculator'))
-                ->assertSee(__('carbex.engage.tabs.challenges'))
-                ->assertSee(__('carbex.engage.tabs.leaderboard'));
+                ->assertSee(__('linscarbon.engage.title'))
+                ->assertSee(__('linscarbon.engage.tabs.quiz'))
+                ->assertSee(__('linscarbon.engage.tabs.calculator'))
+                ->assertSee(__('linscarbon.engage.tabs.challenges'))
+                ->assertSee(__('linscarbon.engage.tabs.leaderboard'));
         });
     }
 
@@ -51,7 +51,7 @@ class EmployeeEngagementTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
-                ->assertSee(__('carbex.engage.quiz.question'))
+                ->assertSee(__('linscarbon.engage.quiz.question'))
                 ->assertSee('1 / 5');
         });
     }
@@ -83,8 +83,8 @@ class EmployeeEngagementTest extends DuskTestCase
             }
 
             // Should see quiz completed
-            $browser->waitForText(__('carbex.engage.quiz.completed'))
-                ->assertSee(__('carbex.engage.quiz.completed'))
+            $browser->waitForText(__('linscarbon.engage.quiz.completed'))
+                ->assertSee(__('linscarbon.engage.quiz.completed'))
                 ->assertSee('%');
         });
     }
@@ -103,7 +103,7 @@ class EmployeeEngagementTest extends DuskTestCase
             }
 
             // Reset quiz
-            $browser->waitForText(__('carbex.engage.quiz.retry'))
+            $browser->waitForText(__('linscarbon.engage.quiz.retry'))
                 ->click('button[wire\\:click="resetQuiz"]')
                 ->waitForText('1 / 5')
                 ->assertSee('1 / 5');
@@ -116,9 +116,9 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
                 ->click('button[wire\\:click="setActiveTab(\'calculator\')"]')
-                ->waitForText(__('carbex.engage.calculator.title'))
-                ->assertSee(__('carbex.engage.calculator.title'))
-                ->assertSee(__('carbex.engage.calculator.commute_distance'));
+                ->waitForText(__('linscarbon.engage.calculator.title'))
+                ->assertSee(__('linscarbon.engage.calculator.title'))
+                ->assertSee(__('linscarbon.engage.calculator.commute_distance'));
         });
     }
 
@@ -128,16 +128,16 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
                 ->click('button[wire\\:click="setActiveTab(\'calculator\')"]')
-                ->waitForText(__('carbex.engage.calculator.title'))
+                ->waitForText(__('linscarbon.engage.calculator.title'))
                 // Fill in some values
                 ->type('input[wire\\:model="calculatorInputs.commute_km"]', '25')
                 ->select('select[wire\\:model="calculatorInputs.commute_mode"]', 'car_petrol')
                 ->select('select[wire\\:model="calculatorInputs.diet"]', 'mixed')
                 // Calculate
                 ->click('button[wire\\:click="calculateFootprint"]')
-                ->waitForText(__('carbex.engage.calculator.your_footprint'))
-                ->assertSee(__('carbex.engage.calculator.tonnes_year'))
-                ->assertSee(__('carbex.engage.calculator.breakdown'));
+                ->waitForText(__('linscarbon.engage.calculator.your_footprint'))
+                ->assertSee(__('linscarbon.engage.calculator.tonnes_year'))
+                ->assertSee(__('linscarbon.engage.calculator.breakdown'));
         });
     }
 
@@ -147,10 +147,10 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
                 ->click('button[wire\\:click="setActiveTab(\'challenges\')"]')
-                ->waitForText(__('carbex.engage.challenges.no_car_week'))
-                ->assertSee(__('carbex.engage.challenges.no_car_week'))
-                ->assertSee(__('carbex.engage.challenges.meatless_monday'))
-                ->assertSee(__('carbex.engage.challenges.join'));
+                ->waitForText(__('linscarbon.engage.challenges.no_car_week'))
+                ->assertSee(__('linscarbon.engage.challenges.no_car_week'))
+                ->assertSee(__('linscarbon.engage.challenges.meatless_monday'))
+                ->assertSee(__('linscarbon.engage.challenges.join'));
         });
     }
 
@@ -160,12 +160,12 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
                 ->click('button[wire\\:click="setActiveTab(\'challenges\')"]')
-                ->waitForText(__('carbex.engage.challenges.no_car_week'))
+                ->waitForText(__('linscarbon.engage.challenges.no_car_week'))
                 // Click join on the first challenge
                 ->click('button[wire\\:click="joinChallenge(\'no_car_week\')"]')
-                ->waitForText(__('carbex.engage.challenges.mark_complete'))
-                ->assertSee(__('carbex.engage.challenges.mark_complete'))
-                ->assertSee(__('carbex.engage.challenges.leave'));
+                ->waitForText(__('linscarbon.engage.challenges.mark_complete'))
+                ->assertSee(__('linscarbon.engage.challenges.mark_complete'))
+                ->assertSee(__('linscarbon.engage.challenges.leave'));
         });
     }
 
@@ -175,9 +175,9 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
                 ->click('button[wire\\:click="setActiveTab(\'leaderboard\')"]')
-                ->waitForText(__('carbex.engage.leaderboard.title'))
-                ->assertSee(__('carbex.engage.leaderboard.title'))
-                ->assertSee(__('carbex.engage.leaderboard.participate'));
+                ->waitForText(__('linscarbon.engage.leaderboard.title'))
+                ->assertSee(__('linscarbon.engage.leaderboard.title'))
+                ->assertSee(__('linscarbon.engage.leaderboard.participate'));
         });
     }
 
@@ -187,12 +187,12 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
                 ->click('button[wire\\:click="setActiveTab(\'leaderboard\')"]')
-                ->waitForText(__('carbex.engage.leaderboard.participate'))
+                ->waitForText(__('linscarbon.engage.leaderboard.participate'))
                 // Toggle participation
                 ->click('button[wire\\:click="toggleLeaderboardParticipation"]')
                 ->pause(500)
                 // Should now show rank info
-                ->assertSee(__('carbex.engage.leaderboard.your_rank'));
+                ->assertSee(__('linscarbon.engage.leaderboard.your_rank'));
         });
     }
 
@@ -201,7 +201,7 @@ class EmployeeEngagementTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
                 ->visit('/engage/employees')
-                ->assertSee(__('carbex.engage.your_points'));
+                ->assertSee(__('linscarbon.engage.your_points'));
         });
     }
 
@@ -211,7 +211,7 @@ class EmployeeEngagementTest extends DuskTestCase
             $browser->loginAs($this->user)
                 ->resize(375, 812) // iPhone X
                 ->visit('/engage/employees')
-                ->assertSee(__('carbex.engage.tabs.quiz'))
+                ->assertSee(__('linscarbon.engage.tabs.quiz'))
                 // Tabs should be scrollable on mobile
                 ->assertPresent('nav[aria-label="Tabs"]');
         });

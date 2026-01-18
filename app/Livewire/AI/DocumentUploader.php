@@ -135,9 +135,9 @@ class DocumentUploader extends Component
                 'mimes:pdf,jpeg,jpg,png,webp,heic,xlsx,xls,csv',
             ],
         ], [
-            'file.required' => __('carbex.documents.file_required'),
-            'file.max' => __('carbex.documents.file_too_large'),
-            'file.mimes' => __('carbex.documents.invalid_type'),
+            'file.required' => __('linscarbon.documents.file_required'),
+            'file.max' => __('linscarbon.documents.file_too_large'),
+            'file.mimes' => __('linscarbon.documents.invalid_type'),
         ]);
     }
 
@@ -147,7 +147,7 @@ class DocumentUploader extends Component
         $this->successMessage = null;
 
         if (!$this->file) {
-            $this->errorMessage = __('carbex.documents.file_required');
+            $this->errorMessage = __('linscarbon.documents.file_required');
             return;
         }
 
@@ -187,10 +187,10 @@ class DocumentUploader extends Component
             // Reload documents
             $this->loadDocuments();
 
-            $this->successMessage = __('carbex.documents.upload_success');
+            $this->successMessage = __('linscarbon.documents.upload_success');
 
         } catch (\Exception $e) {
-            $this->errorMessage = __('carbex.documents.upload_error') . ': ' . $e->getMessage();
+            $this->errorMessage = __('linscarbon.documents.upload_error') . ': ' . $e->getMessage();
         }
     }
 
@@ -256,7 +256,7 @@ class DocumentUploader extends Component
         $this->closeValidation();
         $this->loadDocuments();
 
-        $this->successMessage = __('carbex.documents.validation_success');
+        $this->successMessage = __('linscarbon.documents.validation_success');
     }
 
     public function closeValidation(): void
@@ -271,7 +271,7 @@ class DocumentUploader extends Component
         $document = UploadedDocument::find($documentId);
 
         if (!$document || !$document->canBeReprocessed()) {
-            $this->errorMessage = __('carbex.documents.cannot_reprocess');
+            $this->errorMessage = __('linscarbon.documents.cannot_reprocess');
             return;
         }
 
@@ -279,7 +279,7 @@ class DocumentUploader extends Component
         ProcessDocumentExtraction::dispatch($document);
 
         $this->loadDocuments();
-        $this->successMessage = __('carbex.documents.reprocessing');
+        $this->successMessage = __('linscarbon.documents.reprocessing');
     }
 
     public function createEmission(string $documentId): void
@@ -311,7 +311,7 @@ class DocumentUploader extends Component
         $document->delete();
 
         $this->loadDocuments();
-        $this->successMessage = __('carbex.documents.deleted');
+        $this->successMessage = __('linscarbon.documents.deleted');
     }
 
     #[On('document-processed')]

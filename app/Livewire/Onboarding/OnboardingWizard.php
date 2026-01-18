@@ -14,7 +14,7 @@ use Livewire\Attributes\Url;
 use Livewire\Component;
 
 #[Layout('components.layouts.app')]
-#[Title('Onboarding - Carbex')]
+#[Title('Onboarding - LinsCarbon')]
 class OnboardingWizard extends Component
 {
     #[Url]

@@ -12,7 +12,7 @@ use Livewire\Component;
 /**
  * TrajectoryChart - ApexCharts visualization of emission trajectory
  *
- * Constitution Carbex v3.0 - Section 2.9, T069
+ * Constitution LinsCarbon v3.0 - Section 2.9, T069
  *
  * Displays:
  * - X-axis: years
@@ -170,13 +170,13 @@ class TrajectoryChart extends Component
             'categories' => $years,
             'series' => [
                 [
-                    'name' => __('carbex.trajectory.actual_emissions'),
+                    'name' => __('linscarbon.trajectory.actual_emissions'),
                     'type' => 'line',
                     'data' => $actualData,
                     'color' => '#059669', // green-600
                 ],
                 [
-                    'name' => __('carbex.trajectory.target_trajectory'),
+                    'name' => __('linscarbon.trajectory.target_trajectory'),
                     'type' => 'line',
                     'data' => $targetData,
                     'color' => '#DC2626', // red-600 (dashed line in view)
@@ -184,17 +184,17 @@ class TrajectoryChart extends Component
             ],
             'scopeSeries' => [
                 [
-                    'name' => 'Scope 1 ' . __('carbex.trajectory.target'),
+                    'name' => 'Scope 1 ' . __('linscarbon.trajectory.target'),
                     'data' => $scope1Target,
                     'color' => '#F97316', // orange-500
                 ],
                 [
-                    'name' => 'Scope 2 ' . __('carbex.trajectory.target'),
+                    'name' => 'Scope 2 ' . __('linscarbon.trajectory.target'),
                     'data' => $scope2Target,
                     'color' => '#EAB308', // yellow-500
                 ],
                 [
-                    'name' => 'Scope 3 ' . __('carbex.trajectory.target'),
+                    'name' => 'Scope 3 ' . __('linscarbon.trajectory.target'),
                     'data' => $scope3Target,
                     'color' => '#3B82F6', // blue-500
                 ],

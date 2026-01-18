@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Carbex - Plateforme de Bilan Carbone pour PME')</title>
-    <meta name="description" content="@yield('description', 'Mesurez, comprenez et reduisez l\'empreinte carbone de votre entreprise avec Carbex. Outil SaaS conforme GHG Protocol, ISO 14064 et ADEME.')">
+    <title>@yield('title', 'LinsCarbon - Plateforme de Bilan Carbone pour PME')</title>
+    <meta name="description" content="@yield('description', 'Mesurez, comprenez et reduisez l\'empreinte carbone de votre entreprise avec LinsCarbon. Outil SaaS conforme GHG Protocol, ISO 14064 et ADEME.')">
     <meta name="keywords" content="bilan carbone, empreinte carbone, PME, GHG Protocol, ADEME, CSRD, emissions CO2, RSE, decarbonation">
-    <meta name="author" content="Carbex SAS">
+    <meta name="author" content="LinsCarbon SAS">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}">
 
@@ -16,7 +16,7 @@
 
     <!-- Open Graph / Facebook -->
     @php
-        $pageTitle = View::yieldContent('title', 'Carbex - Bilan Carbone PME');
+        $pageTitle = View::yieldContent('title', 'LinsCarbon - Bilan Carbone PME');
         $pageDescription = View::yieldContent('description', 'Plateforme de bilan carbone pour PME europeennes, augmentee par l\'IA.');
         $ogTitle = View::yieldContent('og_title', $pageTitle);
         $ogDescription = View::yieldContent('og_description', $pageDescription);
@@ -28,11 +28,11 @@
     <meta property="og:description" content="{{ $ogDescription }}">
     <meta property="og:image" content="{{ $ogImage }}">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:site_name" content="Carbex">
+    <meta property="og:site_name" content="LinsCarbon">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@carbex_fr">
+    <meta name="twitter:site" content="@linscarbon_fr">
     <meta name="twitter:title" content="{{ $ogTitle }}">
     <meta name="twitter:description" content="{{ $ogDescription }}">
     <meta name="twitter:image" content="{{ $ogImage }}">
@@ -46,14 +46,14 @@
     {
         "@@context": "https://schema.org",
         "@@type": "SoftwareApplication",
-        "name": "Carbex",
+        "name": "LinsCarbon",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "description": "Plateforme SaaS de bilan carbone pour PME, conforme GHG Protocol et ADEME",
         "url": "{{ config('app.url') }}",
         "author": {
             "@@type": "Organization",
-            "name": "Carbex SAS",
+            "name": "LinsCarbon SAS",
             "url": "{{ config('app.url') }}"
         },
         "offers": {

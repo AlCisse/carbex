@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Carbex generates various carbon footprint reports:
+LinsCarbon generates various carbon footprint reports:
 - Annual BEGES reports (French regulatory)
 - CSRD/ESG reports (EU regulatory)
 - Custom carbon footprint summaries

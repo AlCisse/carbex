@@ -321,10 +321,10 @@ class EmissionHelper extends Component
     public function getQuickPromptsProperty(): array
     {
         return [
-            __('carbex.ai.quick_prompts.emission_sources'),
-            __('carbex.ai.quick_prompts.consumption_data'),
-            __('carbex.ai.quick_prompts.which_unit'),
-            __('carbex.ai.quick_prompts.emission_factors'),
+            __('linscarbon.ai.quick_prompts.emission_sources'),
+            __('linscarbon.ai.quick_prompts.consumption_data'),
+            __('linscarbon.ai.quick_prompts.which_unit'),
+            __('linscarbon.ai.quick_prompts.emission_factors'),
         ];
     }
 

@@ -4,22 +4,22 @@
         <button wire:click="$set('filter', 'all')"
             class="p-4 rounded-lg text-left transition {{ $filter === 'all' ? 'bg-green-50 dark:bg-green-900/20 border-2 border-green-500' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-green-300' }}">
             <span class="block text-2xl font-bold text-gray-900 dark:text-white">{{ number_format($this->stats['total']) }}</span>
-            <span class="text-sm text-gray-500">{{ __('carbex.transactions.total_transactions') }}</span>
+            <span class="text-sm text-gray-500">{{ __('linscarbon.transactions.total_transactions') }}</span>
         </button>
         <button wire:click="$set('filter', 'pending')"
             class="p-4 rounded-lg text-left transition {{ $filter === 'pending' ? 'bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-500' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-yellow-300' }}">
             <span class="block text-2xl font-bold text-yellow-600">{{ number_format($this->stats['pending']) }}</span>
-            <span class="text-sm text-gray-500">{{ __('carbex.transactions.pending_categorization') }}</span>
+            <span class="text-sm text-gray-500">{{ __('linscarbon.transactions.pending_categorization') }}</span>
         </button>
         <button wire:click="$set('filter', 'low_confidence')"
             class="p-4 rounded-lg text-left transition {{ $filter === 'low_confidence' ? 'bg-orange-50 dark:bg-orange-900/20 border-2 border-orange-500' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-orange-300' }}">
             <span class="block text-2xl font-bold text-orange-600">{{ number_format($this->stats['low_confidence']) }}</span>
-            <span class="text-sm text-gray-500">{{ __('carbex.transactions.needs_review') }}</span>
+            <span class="text-sm text-gray-500">{{ __('linscarbon.transactions.needs_review') }}</span>
         </button>
         <button wire:click="$set('filter', 'validated')"
             class="p-4 rounded-lg text-left transition {{ $filter === 'validated' ? 'bg-green-50 dark:bg-green-900/20 border-2 border-green-500' : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-green-300' }}">
             <span class="block text-2xl font-bold text-green-600">{{ number_format($this->stats['validated']) }}</span>
-            <span class="text-sm text-gray-500">{{ __('carbex.transactions.validated') }}</span>
+            <span class="text-sm text-gray-500">{{ __('linscarbon.transactions.validated') }}</span>
         </button>
     </div>
 
@@ -32,7 +32,7 @@
                     <input
                         type="search"
                         wire:model.live.debounce.300ms="search"
-                        placeholder="{{ __('carbex.transactions.search_placeholder') }}"
+                        placeholder="{{ __('linscarbon.transactions.search_placeholder') }}"
                         class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-green-500 focus:border-green-500"
                     >
                 </div>
@@ -42,7 +42,7 @@
                     wire:model.live="categoryId"
                     class="rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-green-500 focus:border-green-500"
                 >
-                    <option value="">{{ __('carbex.transactions.all_categories') }}</option>
+                    <option value="">{{ __('linscarbon.transactions.all_categories') }}</option>
                     @php $currentScope = null; @endphp
                     @foreach($this->categories as $category)
                         @if($currentScope !== $category->scope)
@@ -60,7 +60,7 @@
                     wire:model.live="scope"
                     class="rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-green-500 focus:border-green-500"
                 >
-                    <option value="">{{ __('carbex.transactions.all_scopes') }}</option>
+                    <option value="">{{ __('linscarbon.transactions.all_scopes') }}</option>
                     <option value="1">Scope 1</option>
                     <option value="2">Scope 2</option>
                     <option value="3">Scope 3</option>
@@ -91,20 +91,20 @@
             @if(count($selected) > 0)
                 <div class="flex items-center gap-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <span class="text-sm font-medium text-green-700 dark:text-green-400">
-                        {{ count($selected) }} {{ __('carbex.transactions.selected') }}
+                        {{ count($selected) }} {{ __('linscarbon.transactions.selected') }}
                     </span>
                     <button
                         wire:click="bulkValidate"
                         class="px-3 py-1 text-sm bg-green-600 hover:bg-green-700 text-white rounded transition"
                     >
-                        {{ __('carbex.transactions.validate_all') }}
+                        {{ __('linscarbon.transactions.validate_all') }}
                     </button>
                     <div class="relative" x-data="{ open: false }">
                         <button
                             @click="open = !open"
                             class="px-3 py-1 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded transition"
                         >
-                            {{ __('carbex.transactions.categorize_as') }}
+                            {{ __('linscarbon.transactions.categorize_as') }}
                         </button>
                         <div
                             x-show="open"
@@ -146,29 +146,29 @@
                         </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700"
                             wire:click="sortBy('date')">
-                            {{ __('carbex.transactions.date') }}
+                            {{ __('linscarbon.transactions.date') }}
                             @if($sortField === 'date')
                                 <x-heroicon-s-chevron-{{ $sortDirection === 'asc' ? 'up' : 'down' }} class="w-4 h-4 inline" />
                             @endif
                         </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                            {{ __('carbex.transactions.description') }}
+                            {{ __('linscarbon.transactions.description') }}
                         </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                            {{ __('carbex.transactions.category') }}
+                            {{ __('linscarbon.transactions.category') }}
                         </th>
                         <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700"
                             wire:click="sortBy('amount')">
-                            {{ __('carbex.transactions.amount') }}
+                            {{ __('linscarbon.transactions.amount') }}
                             @if($sortField === 'amount')
                                 <x-heroicon-s-chevron-{{ $sortDirection === 'asc' ? 'up' : 'down' }} class="w-4 h-4 inline" />
                             @endif
                         </th>
                         <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                            {{ __('carbex.transactions.emissions') }}
+                            {{ __('linscarbon.transactions.emissions') }}
                         </th>
                         <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">
-                            {{ __('carbex.transactions.actions') }}
+                            {{ __('linscarbon.transactions.actions') }}
                         </th>
                     </tr>
                 </thead>
@@ -201,7 +201,7 @@
                                             wire:model="editCategoryId"
                                             class="text-sm rounded border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-green-500"
                                         >
-                                            <option value="">{{ __('carbex.transactions.select') }}</option>
+                                            <option value="">{{ __('linscarbon.transactions.select') }}</option>
                                             @foreach($this->categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
@@ -226,7 +226,7 @@
                                         >
                                             {{ $transaction->category->name }}
                                             @if($transaction->confidence && $transaction->confidence < 0.8)
-                                                <x-heroicon-s-exclamation-triangle class="w-3 h-3 ml-1 text-yellow-500" title="{{ __('carbex.transactions.low_confidence') }}" />
+                                                <x-heroicon-s-exclamation-triangle class="w-3 h-3 ml-1 text-yellow-500" title="{{ __('linscarbon.transactions.low_confidence') }}" />
                                             @endif
                                         </span>
                                     @else
@@ -234,7 +234,7 @@
                                             wire:click="startEdit('{{ $transaction->id }}')"
                                             class="text-sm text-gray-400 hover:text-gray-600"
                                         >
-                                            {{ __('carbex.transactions.add_category') }}
+                                            {{ __('linscarbon.transactions.add_category') }}
                                         </button>
                                     @endif
                                 @endif
@@ -255,14 +255,14 @@
                                         <button
                                             wire:click="validateTransaction('{{ $transaction->id }}')"
                                             class="p-1 text-green-600 hover:text-green-700"
-                                            title="{{ __('carbex.transactions.validate') }}"
+                                            title="{{ __('linscarbon.transactions.validate') }}"
                                         >
                                             <x-heroicon-o-check-circle class="w-5 h-5" />
                                         </button>
                                     @endif
 
                                     @if($transaction->validated_at)
-                                        <span class="p-1 text-green-500" title="{{ __('carbex.transactions.validated') }}">
+                                        <span class="p-1 text-green-500" title="{{ __('linscarbon.transactions.validated') }}">
                                             <x-heroicon-s-check-badge class="w-5 h-5" />
                                         </span>
                                     @endif
@@ -271,7 +271,7 @@
                                         <button
                                             wire:click="createMerchantRule('{{ $transaction->id }}')"
                                             class="p-1 text-blue-600 hover:text-blue-700"
-                                            title="{{ __('carbex.transactions.create_rule') }}"
+                                            title="{{ __('linscarbon.transactions.create_rule') }}"
                                         >
                                             <x-heroicon-o-bookmark class="w-5 h-5" />
                                         </button>
@@ -280,9 +280,9 @@
                                     @if(!$transaction->is_excluded)
                                         <button
                                             wire:click="excludeTransaction('{{ $transaction->id }}')"
-                                            wire:confirm="{{ __('carbex.transactions.exclude_confirm') }}"
+                                            wire:confirm="{{ __('linscarbon.transactions.exclude_confirm') }}"
                                             class="p-1 text-gray-400 hover:text-red-600"
-                                            title="{{ __('carbex.transactions.exclude') }}"
+                                            title="{{ __('linscarbon.transactions.exclude') }}"
                                         >
                                             <x-heroicon-o-eye-slash class="w-5 h-5" />
                                         </button>
@@ -290,7 +290,7 @@
                                         <button
                                             wire:click="includeTransaction('{{ $transaction->id }}')"
                                             class="p-1 text-gray-400 hover:text-green-600"
-                                            title="{{ __('carbex.transactions.include') }}"
+                                            title="{{ __('linscarbon.transactions.include') }}"
                                         >
                                             <x-heroicon-o-eye class="w-5 h-5" />
                                         </button>
@@ -302,7 +302,7 @@
                         <tr>
                             <td colspan="7" class="px-4 py-12 text-center text-gray-500">
                                 <x-heroicon-o-document-magnifying-glass class="w-12 h-12 mx-auto text-gray-400 mb-4" />
-                                <p>{{ __('carbex.transactions.no_transactions') }}</p>
+                                <p>{{ __('linscarbon.transactions.no_transactions') }}</p>
                             </td>
                         </tr>
                     @endforelse

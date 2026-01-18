@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Carbex - Open Banking Configuration
+ * LinsCarbon - Open Banking Configuration
  *
  * Configuration for Open Banking providers (PSD2 compliant)
  * - Bridge (France)
@@ -294,7 +294,7 @@ return [
             'accounts' => 300,       // 5 minutes
             'transactions' => 60,    // 1 minute
         ],
-        'prefix' => 'carbex_banking_',
+        'prefix' => 'linscarbon_banking_',
     ],
 
     /*

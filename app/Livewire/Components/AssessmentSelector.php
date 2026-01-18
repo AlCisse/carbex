@@ -10,7 +10,7 @@ use Livewire\Component;
 /**
  * AssessmentSelector - Header dropdown for switching between assessments
  *
- * Constitution Carbex v3.0 - Section 2.10 (T048)
+ * Constitution LinsCarbon v3.0 - Section 2.10 (T048)
  */
 class AssessmentSelector extends Component
 {

@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      *
      * Action (Plan de transition) - Reduction actions for transition planning
-     * Constitution Carbex v3.0 - Section 7, 2.8
+     * Constitution LinsCarbon v3.0 - Section 7, 2.8
      */
     public function up(): void
     {

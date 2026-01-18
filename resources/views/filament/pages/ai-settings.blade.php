@@ -4,7 +4,7 @@
 
         <div class="flex justify-end gap-4 mt-6">
             <x-filament::button type="submit">
-                {{ __('carbex.filament.save_configuration') }}
+                {{ __('linscarbon.filament.save_configuration') }}
             </x-filament::button>
         </div>
     </form>
@@ -95,10 +95,10 @@
     <!-- API Keys Configuration Section -->
     <x-filament::section class="mt-8">
         <x-slot name="heading">
-            {{ __('carbex.filament.api_keys_configuration') }}
+            {{ __('linscarbon.filament.api_keys_configuration') }}
         </x-slot>
         <x-slot name="description">
-            {{ __('carbex.filament.api_keys_description') }}
+            {{ __('linscarbon.filament.api_keys_description') }}
         </x-slot>
 
         <div class="space-y-6">

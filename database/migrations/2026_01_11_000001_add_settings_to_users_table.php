@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
  *
  * Part of Phase 10: Employee engagement module (T180-T182).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T180-T182
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T180-T182
  */
 return new class extends Migration
 {

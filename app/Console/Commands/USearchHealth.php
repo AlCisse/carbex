@@ -34,7 +34,7 @@ class USearchHealth extends Command
             return $isHealthy ? self::SUCCESS : self::FAILURE;
         }
 
-        $this->info('Carbex uSearch Health Check');
+        $this->info('LinsCarbon uSearch Health Check');
         $this->line('============================');
         $this->line('');
 

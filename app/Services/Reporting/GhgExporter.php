@@ -17,7 +17,7 @@ use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 /**
  * GHG Protocol Exporter - Export in WBCSD/WRI format
  *
- * Constitution Carbex v3.0 - Section 5.4, T075
+ * Constitution LinsCarbon v3.0 - Section 5.4, T075
  *
  * Generates Excel file conforming to GHG Protocol Corporate Standard:
  * - Organizational boundary

@@ -71,10 +71,10 @@ class OrganizationCsrdCompliance extends Model
     public function getStatusLabelAttribute(): string
     {
         return match ($this->status) {
-            self::STATUS_NOT_STARTED => __('carbex.compliance.status.not_started'),
-            self::STATUS_IN_PROGRESS => __('carbex.compliance.status.in_progress'),
-            self::STATUS_COMPLIANT => __('carbex.compliance.status.compliant'),
-            self::STATUS_NON_COMPLIANT => __('carbex.compliance.status.non_compliant'),
+            self::STATUS_NOT_STARTED => __('linscarbon.compliance.status.not_started'),
+            self::STATUS_IN_PROGRESS => __('linscarbon.compliance.status.in_progress'),
+            self::STATUS_COMPLIANT => __('linscarbon.compliance.status.compliant'),
+            self::STATUS_NON_COMPLIANT => __('linscarbon.compliance.status.non_compliant'),
             default => $this->status,
         };
     }

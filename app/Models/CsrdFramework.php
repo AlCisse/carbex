@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * Represents CSRD disclosure requirements and ESRS standards.
  *
  * Tasks T177 - Phase 10 (TrackZero Features)
- * Constitution Carbex v3.0 - Section 8 (Conformité)
+ * Constitution LinsCarbon v3.0 - Section 8 (Conformité)
  *
  * @property string $id
  * @property string $code
@@ -125,9 +125,9 @@ class CsrdFramework extends Model
     public function getCategoryLabelAttribute(): string
     {
         return match ($this->category) {
-            self::CATEGORY_ENVIRONMENT => __('carbex.compliance.categories.environment'),
-            self::CATEGORY_SOCIAL => __('carbex.compliance.categories.social'),
-            self::CATEGORY_GOVERNANCE => __('carbex.compliance.categories.governance'),
+            self::CATEGORY_ENVIRONMENT => __('linscarbon.compliance.categories.environment'),
+            self::CATEGORY_SOCIAL => __('linscarbon.compliance.categories.social'),
+            self::CATEGORY_GOVERNANCE => __('linscarbon.compliance.categories.governance'),
             default => $this->category,
         };
     }

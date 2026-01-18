@@ -2,7 +2,7 @@
 
 ## Overview
 
-Carbex uses Cloudflare as a Web Application Firewall (WAF) and CDN to protect against common attacks and improve performance.
+LinsCarbon uses Cloudflare as a Web Application Firewall (WAF) and CDN to protect against common attacks and improve performance.
 
 ## Setup Checklist
 
@@ -16,8 +16,8 @@ Carbex uses Cloudflare as a Web Application Firewall (WAF) and CDN to protect ag
 Type    Name            Content              Proxy
 A       @               <server_ip>          ✅ Proxied
 A       app             <server_ip>          ✅ Proxied
-CNAME   www             carbex.eu            ✅ Proxied
-MX      @               mail.carbex.eu       ❌ DNS only
+CNAME   www             linscarbon.eu            ✅ Proxied
+MX      @               mail.linscarbon.eu       ❌ DNS only
 ```
 
 ### 2. SSL/TLS Settings
@@ -76,7 +76,7 @@ Navigate to **Rules > Page Rules**:
 
 #### Cache Static Assets
 ```
-URL: *carbex.eu/build/*
+URL: *linscarbon.eu/build/*
 Settings:
   - Cache Level: Cache Everything
   - Edge Cache TTL: 1 month
@@ -85,7 +85,7 @@ Settings:
 
 #### Bypass Cache for API
 ```
-URL: *carbex.eu/api/*
+URL: *linscarbon.eu/api/*
 Settings:
   - Cache Level: Bypass
   - Security Level: High
@@ -93,7 +93,7 @@ Settings:
 
 #### Bypass Cache for Livewire
 ```
-URL: *carbex.eu/livewire/*
+URL: *linscarbon.eu/livewire/*
 Settings:
   - Cache Level: Bypass
 ```

@@ -1,10 +1,10 @@
-# Carbex API Documentation
+# LinsCarbon API Documentation
 
 ## Overview
 
-The Carbex API provides programmatic access to carbon footprint tracking and management features. The API follows RESTful conventions and uses JSON for request/response bodies.
+The LinsCarbon API provides programmatic access to carbon footprint tracking and management features. The API follows RESTful conventions and uses JSON for request/response bodies.
 
-**Base URL:** `https://api.carbex.app/api/v1`
+**Base URL:** `https://api.linscarbon.app/api/v1`
 
 **API Version:** v1
 
@@ -276,6 +276,6 @@ Official SDKs coming soon:
 
 ## Support
 
-- Documentation: https://docs.carbex.app
-- API Status: https://status.carbex.app
-- Email: api-support@carbex.app
+- Documentation: https://docs.linscarbon.app
+- API Status: https://status.linscarbon.app
+- Email: api-support@linscarbon.app

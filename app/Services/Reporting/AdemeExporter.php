@@ -16,7 +16,7 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 /**
  * ADEME Exporter - Export compatible with bilans-ges.ademe.fr
  *
- * Constitution Carbex v3.0 - Section 5.3, T074
+ * Constitution LinsCarbon v3.0 - Section 5.3, T074
  *
  * Generates Excel file in ADEME BEGES format:
  * - Organization identification
@@ -164,7 +164,7 @@ class AdemeExporter
             ['', ''],
             ['Année de reporting', $year],
             ['Date de génération', now()->format('d/m/Y')],
-            ['Outil utilisé', 'Carbex (www.carbex.fr)'],
+            ['Outil utilisé', 'LinsCarbon (www.linscarbon.fr)'],
         ];
 
         $row = 3;

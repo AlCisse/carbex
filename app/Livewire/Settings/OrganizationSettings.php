@@ -11,7 +11,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
-#[Title('Parametres Organisation - Carbex')]
+#[Title('Parametres Organisation - LinsCarbon')]
 class OrganizationSettings extends Component
 {
     use WithFileUploads;
@@ -124,7 +124,7 @@ class OrganizationSettings extends Component
 
         $this->organization->update($data);
 
-        session()->flash('success', __('carbex.organization.updated'));
+        session()->flash('success', __('linscarbon.organization.updated'));
     }
 
     public function render()

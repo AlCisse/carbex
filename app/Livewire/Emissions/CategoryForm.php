@@ -25,20 +25,20 @@ class CategoryForm extends Component
      * Category codes mapped to translation keys.
      */
     protected array $categoryTranslationKeys = [
-        '1.1' => 'carbex.emissions.categories.1_1',
-        '1.2' => 'carbex.emissions.categories.1_2',
-        '1.4' => 'carbex.emissions.categories.1_4',
-        '1.5' => 'carbex.emissions.categories.1_5',
-        '2.1' => 'carbex.emissions.categories.2_1',
-        '3.1' => 'carbex.emissions.categories.3_1',
-        '3.2' => 'carbex.emissions.categories.3_2',
-        '3.3' => 'carbex.emissions.categories.3_3',
-        '3.5' => 'carbex.emissions.categories.3_5',
-        '4.1' => 'carbex.emissions.categories.4_1',
-        '4.2' => 'carbex.emissions.categories.4_2',
-        '4.3' => 'carbex.emissions.categories.4_3',
-        '4.4' => 'carbex.emissions.categories.4_4',
-        '4.5' => 'carbex.emissions.categories.4_5',
+        '1.1' => 'linscarbon.emissions.categories.1_1',
+        '1.2' => 'linscarbon.emissions.categories.1_2',
+        '1.4' => 'linscarbon.emissions.categories.1_4',
+        '1.5' => 'linscarbon.emissions.categories.1_5',
+        '2.1' => 'linscarbon.emissions.categories.2_1',
+        '3.1' => 'linscarbon.emissions.categories.3_1',
+        '3.2' => 'linscarbon.emissions.categories.3_2',
+        '3.3' => 'linscarbon.emissions.categories.3_3',
+        '3.5' => 'linscarbon.emissions.categories.3_5',
+        '4.1' => 'linscarbon.emissions.categories.4_1',
+        '4.2' => 'linscarbon.emissions.categories.4_2',
+        '4.3' => 'linscarbon.emissions.categories.4_3',
+        '4.4' => 'linscarbon.emissions.categories.4_4',
+        '4.5' => 'linscarbon.emissions.categories.4_5',
     ];
 
     public function mount(int $scope, string $category): void
@@ -60,10 +60,10 @@ class CategoryForm extends Component
 
         $this->sources = $records->map(fn ($record) => [
             'id' => $record->id,
-            'name' => $record->notes ?? __('carbex.emissions.source'),
+            'name' => $record->notes ?? __('linscarbon.emissions.source'),
             'quantity' => $record->quantity,
             'unit' => $record->unit,
-            'factor_name' => $record->emissionFactor?->translated_name ?? __('carbex.emissions.factor'),
+            'factor_name' => $record->emissionFactor?->translated_name ?? __('linscarbon.emissions.factor'),
             'factor_id' => $record->emission_factor_id,
             'factor_kg_co2e' => $record->factor_value ?? $record->emissionFactor?->factor_kg_co2e ?? 0,
             'emissions_kg' => $record->co2e_kg,
@@ -78,7 +78,7 @@ class CategoryForm extends Component
             return __($translationKey);
         }
 
-        return __('carbex.emissions.categories.unknown');
+        return __('linscarbon.emissions.categories.unknown');
     }
 
     public function getTotalEmissionsProperty(): float
@@ -124,9 +124,9 @@ class CategoryForm extends Component
             'sourceQuantity' => 'required|numeric|min:0',
             'selectedFactor' => 'required|array',
         ], [
-            'sourceName.required' => __('carbex.emissions.validation.name_required'),
-            'sourceQuantity.required' => __('carbex.emissions.validation.quantity_required'),
-            'selectedFactor.required' => __('carbex.emissions.validation.factor_required'),
+            'sourceName.required' => __('linscarbon.emissions.validation.name_required'),
+            'sourceQuantity.required' => __('linscarbon.emissions.validation.quantity_required'),
+            'selectedFactor.required' => __('linscarbon.emissions.validation.factor_required'),
         ]);
 
         $factorValue = (float) $this->selectedFactor['factor_kg_co2e'];
@@ -175,7 +175,7 @@ class CategoryForm extends Component
 
         $this->loadSources();
         $this->cancelSourceForm();
-        session()->flash('message', __('carbex.messages.saved'));
+        session()->flash('message', __('linscarbon.messages.saved'));
     }
 
     public function editSource(string $sourceId): void
@@ -202,13 +202,13 @@ class CategoryForm extends Component
             ->delete();
 
         $this->loadSources();
-        session()->flash('message', __('carbex.messages.deleted'));
+        session()->flash('message', __('linscarbon.messages.deleted'));
     }
 
     public function markAsCompleted(): void
     {
         // TODO: Mark category as completed in assessment
-        session()->flash('message', __('carbex.emissions.category_completed'));
+        session()->flash('message', __('linscarbon.emissions.category_completed'));
     }
 
     public function render()

@@ -84,7 +84,7 @@ class EmissionFactor extends Model
      */
     public function searchableAs(): string
     {
-        return config('scout.prefix', 'carbex_') . 'emission_factors';
+        return config('scout.prefix', 'linscarbon_') . 'emission_factors';
     }
 
     /**

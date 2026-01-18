@@ -6,7 +6,7 @@ declare(strict_types=1);
  * uSearch Semantic Search Configuration
  *
  * Configuration for the uSearch vector search microservice
- * used for semantic/AI-powered search in Carbex.
+ * used for semantic/AI-powered search in LinsCarbon.
  */
 
 return [

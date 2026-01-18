@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Carbex is a SaaS platform serving multiple organizations. We need to decide on a multi-tenancy strategy that balances:
+LinsCarbon is a SaaS platform serving multiple organizations. We need to decide on a multi-tenancy strategy that balances:
 
 - Data isolation and security
 - Operational complexity

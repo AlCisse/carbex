@@ -1,10 +1,10 @@
 <x-layouts.guest>
     <x-slot name="heading">
-        {{ __('carbex.auth.verify_email_title') }}
+        {{ __('linscarbon.auth.verify_email_title') }}
     </x-slot>
 
     <x-slot name="subheading">
-        {{ __('carbex.auth.verify_email_subtitle') }}
+        {{ __('linscarbon.auth.verify_email_subtitle') }}
     </x-slot>
 
     <div class="text-center">
@@ -16,13 +16,13 @@
         </div>
 
         <p class="mt-6 text-sm text-gray-600">
-            {{ __('carbex.auth.verify_email_message') }}
+            {{ __('linscarbon.auth.verify_email_message') }}
         </p>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mt-4 rounded-md bg-green-50 p-4">
                 <p class="text-sm font-medium text-green-800">
-                    {{ __('carbex.auth.verification_link_sent') }}
+                    {{ __('linscarbon.auth.verification_link_sent') }}
                 </p>
             </div>
         @endif
@@ -33,7 +33,7 @@
                 @csrf
                 <button type="submit"
                     class="flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
-                    {{ __('carbex.auth.resend_verification') }}
+                    {{ __('linscarbon.auth.resend_verification') }}
                 </button>
             </form>
 
@@ -42,7 +42,7 @@
                 @csrf
                 <button type="submit"
                     class="flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                    {{ __('carbex.auth.logout') }}
+                    {{ __('linscarbon.auth.logout') }}
                 </button>
             </form>
         </div>
@@ -50,9 +50,9 @@
 
     <x-slot name="footer">
         <p class="text-center text-sm text-gray-500">
-            {{ __('carbex.auth.wrong_email') }}
+            {{ __('linscarbon.auth.wrong_email') }}
             <a href="{{ route('register') }}" class="font-semibold text-green-600 hover:text-green-500">
-                {{ __('carbex.auth.register_new') }}
+                {{ __('linscarbon.auth.register_new') }}
             </a>
         </p>
     </x-slot>

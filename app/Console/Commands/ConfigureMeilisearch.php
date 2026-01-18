@@ -77,9 +77,9 @@ class ConfigureMeilisearch extends Command
         $this->warn('Resetting indexes...');
 
         $indexes = [
-            config('scout.prefix', 'carbex_') . 'emission_factors',
-            config('scout.prefix', 'carbex_') . 'categories',
-            config('scout.prefix', 'carbex_') . 'transactions',
+            config('scout.prefix', 'linscarbon_') . 'emission_factors',
+            config('scout.prefix', 'linscarbon_') . 'categories',
+            config('scout.prefix', 'linscarbon_') . 'transactions',
         ];
 
         foreach ($indexes as $indexName) {

@@ -420,7 +420,7 @@ class FinapiService implements BankingProviderInterface
 
         return Cache::remember($cacheKey, 3500, function () use ($organizationId) {
             $clientToken = $this->getClientToken();
-            $userId = 'carbex_' . $organizationId;
+            $userId = 'linscarbon_' . $organizationId;
             $password = hash('sha256', $organizationId . config('app.key'));
 
             // Try to get token for existing user
@@ -444,7 +444,7 @@ class FinapiService implements BankingProviderInterface
             $this->request('POST', '/users', [
                 'id' => $userId,
                 'password' => $password,
-                'email' => $userId . '@carbex.local',
+                'email' => $userId . '@linscarbon.local',
                 'phone' => null,
                 'isAutoUpdateEnabled' => true,
             ], $clientToken);

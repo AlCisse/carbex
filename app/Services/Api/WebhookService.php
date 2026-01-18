@@ -188,7 +188,7 @@ class WebhookService
                         'X-Webhook-Timestamp' => $timestamp,
                         'X-Webhook-Signature' => "v1={$signature}",
                         'X-Webhook-Delivery-Id' => $delivery->id,
-                        'User-Agent' => 'Carbex-Webhook/1.0',
+                        'User-Agent' => 'LinsCarbon-Webhook/1.0',
                     ]
                 ))
                 ->post($webhook->url, [
@@ -266,7 +266,7 @@ class WebhookService
     {
         $testPayload = [
             'test' => true,
-            'message' => 'This is a test webhook from Carbex.',
+            'message' => 'This is a test webhook from LinsCarbon.',
             'webhook_id' => $webhook->id,
             'organization_id' => $webhook->organization_id,
         ];

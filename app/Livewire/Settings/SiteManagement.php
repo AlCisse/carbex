@@ -10,7 +10,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
-#[Title('Gestion des sites - Carbex')]
+#[Title('Gestion des sites - LinsCarbon')]
 class SiteManagement extends Component
 {
     use WithFileUploads;
@@ -167,7 +167,7 @@ class SiteManagement extends Component
             $site = Site::findOrFail($this->editingSiteId);
             Gate::authorize('update', $site);
             $site->update($data);
-            $message = __('carbex.sites.updated');
+            $message = __('linscarbon.sites.updated');
         } else {
             Gate::authorize('create', Site::class);
             $data['is_primary'] = $this->is_primary;
@@ -179,7 +179,7 @@ class SiteManagement extends Component
                 $subscription->increment('sites_used');
             }
 
-            $message = __('carbex.sites.created');
+            $message = __('linscarbon.sites.created');
         }
 
         // Handle primary site
@@ -218,7 +218,7 @@ class SiteManagement extends Component
         Gate::authorize('delete', $site);
 
         if ($site->is_primary) {
-            session()->flash('error', __('carbex.sites.cannot_delete_primary'));
+            session()->flash('error', __('linscarbon.sites.cannot_delete_primary'));
             $this->cancelDelete();
 
             return;
@@ -234,7 +234,7 @@ class SiteManagement extends Component
 
         $this->cancelDelete();
         $this->loadSites();
-        session()->flash('success', __('carbex.sites.deleted'));
+        session()->flash('success', __('linscarbon.sites.deleted'));
     }
 
     public function setPrimary(string $siteId): void
@@ -246,7 +246,7 @@ class SiteManagement extends Component
         $site->update(['is_primary' => true]);
 
         $this->loadSites();
-        session()->flash('success', __('carbex.sites.set_as_primary'));
+        session()->flash('success', __('linscarbon.sites.set_as_primary'));
     }
 
     // CSV Import Methods
@@ -294,7 +294,7 @@ class SiteManagement extends Component
         $handle = fopen($path, 'r');
 
         if ($handle === false) {
-            $this->importErrors[] = __('carbex.sites.import.file_read_error');
+            $this->importErrors[] = __('linscarbon.sites.import.file_read_error');
 
             return;
         }
@@ -302,7 +302,7 @@ class SiteManagement extends Component
         // Read header row
         $header = fgetcsv($handle, 0, ';');
         if (! $header) {
-            $this->importErrors[] = __('carbex.sites.import.empty_file');
+            $this->importErrors[] = __('linscarbon.sites.import.empty_file');
             fclose($handle);
 
             return;
@@ -316,7 +316,7 @@ class SiteManagement extends Component
         $missingColumns = array_diff($requiredColumns, $header);
 
         if (! empty($missingColumns)) {
-            $this->importErrors[] = __('carbex.sites.import.missing_columns', [
+            $this->importErrors[] = __('linscarbon.sites.import.missing_columns', [
                 'columns' => implode(', ', $missingColumns),
             ]);
             fclose($handle);
@@ -359,7 +359,7 @@ class SiteManagement extends Component
         fclose($handle);
 
         if (empty($this->importPreview)) {
-            $this->importErrors[] = __('carbex.sites.import.no_valid_rows');
+            $this->importErrors[] = __('linscarbon.sites.import.no_valid_rows');
         }
     }
 
@@ -420,7 +420,7 @@ class SiteManagement extends Component
                 ->exists();
 
             if ($exists) {
-                $this->importErrors[] = __('carbex.sites.import.duplicate', ['name' => $row['name']]);
+                $this->importErrors[] = __('linscarbon.sites.import.duplicate', ['name' => $row['name']]);
 
                 continue;
             }
@@ -459,7 +459,7 @@ class SiteManagement extends Component
         $this->closeImportModal();
 
         if ($this->importedCount > 0) {
-            session()->flash('success', __('carbex.sites.import.success', ['count' => $this->importedCount]));
+            session()->flash('success', __('linscarbon.sites.import.success', ['count' => $this->importedCount]));
         }
 
         if (! empty($this->importErrors)) {
@@ -471,7 +471,7 @@ class SiteManagement extends Component
     {
         $headers = [
             'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="carbex_sites_template.csv"',
+            'Content-Disposition' => 'attachment; filename="linscarbon_sites_template.csv"',
         ];
 
         $columns = [
@@ -508,7 +508,7 @@ class SiteManagement extends Component
             fputcsv($output, $columns, ';');
             fputcsv($output, $exampleRow, ';');
             fclose($output);
-        }, 'carbex_sites_template.csv', $headers);
+        }, 'linscarbon_sites_template.csv', $headers);
     }
 
     public function render()

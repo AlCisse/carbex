@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Log;
  *
  * Part of Phase 10: Employee engagement module (T182).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T182
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T182
  */
 class SendEngagementNewsletter extends Command
 {
-    protected $signature = 'carbex:send-engagement-newsletter
+    protected $signature = 'linscarbon:send-engagement-newsletter
                             {--org= : Send only to a specific organization ID}
                             {--dry-run : Preview without sending}';
 

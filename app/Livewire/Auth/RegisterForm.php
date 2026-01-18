@@ -14,7 +14,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.guest')]
-#[Title('Creer un compte - Carbex')]
+#[Title('Creer un compte - LinsCarbon')]
 class RegisterForm extends Component
 {
     // User fields
@@ -65,9 +65,9 @@ class RegisterForm extends Component
     public function messages(): array
     {
         return [
-            'email.unique' => __('carbex.auth.email_taken'),
-            'accept_terms.accepted' => __('carbex.auth.terms_required'),
-            'accept_privacy.accepted' => __('carbex.auth.privacy_required'),
+            'email.unique' => __('linscarbon.auth.email_taken'),
+            'accept_terms.accepted' => __('linscarbon.auth.terms_required'),
+            'accept_privacy.accepted' => __('linscarbon.auth.privacy_required'),
         ];
     }
 

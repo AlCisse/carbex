@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 /**
  * Migration for badges and user_badges tables
  *
- * Constitution Carbex v3.0 - Section 9.9 (Gamification)
+ * Constitution LinsCarbon v3.0 - Section 9.9 (Gamification)
  */
 return new class extends Migration
 {

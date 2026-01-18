@@ -1,12 +1,12 @@
 <div dusk="site-filter">
-    <label for="site-filter" class="sr-only">{{ __('carbex.dashboard.filter_by_site') }}</label>
+    <label for="site-filter" class="sr-only">{{ __('linscarbon.dashboard.filter_by_site') }}</label>
     <select
         id="site-filter"
         wire:model.live="selectedSite"
         class="block w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 text-sm focus:ring-green-500 focus:border-green-500"
         dusk="site-options"
     >
-        <option value="">{{ __('carbex.dashboard.all_sites') }}</option>
+        <option value="">{{ __('linscarbon.dashboard.all_sites') }}</option>
         @foreach($this->sites as $site)
             <option value="{{ $site->id }}">
                 {{ $site->name }}

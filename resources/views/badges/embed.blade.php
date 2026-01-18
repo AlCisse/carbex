@@ -107,7 +107,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        .carbex-logo {
+        .linscarbon-logo {
             display: flex;
             align-items: center;
             gap: 6px;
@@ -115,10 +115,10 @@
             color: #6b7280;
             text-decoration: none;
         }
-        .carbex-logo:hover {
+        .linscarbon-logo:hover {
             color: #059669;
         }
-        .carbex-logo-icon {
+        .linscarbon-logo-icon {
             width: 20px;
             height: 20px;
             background: #10b981;
@@ -127,7 +127,7 @@
             align-items: center;
             justify-content: center;
         }
-        .carbex-logo-icon svg {
+        .linscarbon-logo-icon svg {
             width: 12px;
             height: 12px;
             color: white;
@@ -158,33 +158,33 @@
         </div>
 
         <div class="badge-body">
-            <p class="org-label">{{ __('carbex.promote.awarded_to') }}</p>
+            <p class="org-label">{{ __('linscarbon.promote.awarded_to') }}</p>
             <h2 class="org-name">{{ $organization->name }}</h2>
             @if($organization->country)
                 <p class="org-country">{{ $organization->country }}</p>
             @endif
 
-            <p class="badge-date">{{ __('carbex.promote.earned_on') }} {{ $earned_at->format('d/m/Y') }}</p>
+            <p class="badge-date">{{ __('linscarbon.promote.earned_on') }} {{ $earned_at->format('d/m/Y') }}</p>
 
             <span class="verified-badge">
                 <svg fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                 </svg>
-                {{ __('carbex.promote.verified') }}
+                {{ __('linscarbon.promote.verified') }}
             </span>
         </div>
 
         <div class="badge-footer">
-            <a href="{{ url('/') }}" target="_blank" class="carbex-logo">
-                <span class="carbex-logo-icon">
+            <a href="{{ url('/') }}" target="_blank" class="linscarbon-logo">
+                <span class="linscarbon-logo-icon">
                     <svg fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
                     </svg>
                 </span>
-                Carbex
+                LinsCarbon
             </a>
             <a href="{{ route('badge.public', ['token' => $share_token]) }}" target="_blank" class="verify-link">
-                {{ __('carbex.promote.verify') }}
+                {{ __('linscarbon.promote.verify') }}
             </a>
         </div>
     </div>

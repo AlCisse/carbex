@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      *
      * Assessment (Bilan) - Annual carbon assessment entity
-     * Constitution Carbex v3.0 - Section 7, 2.10
+     * Constitution LinsCarbon v3.0 - Section 7, 2.10
      */
     public function up(): void
     {

@@ -2,7 +2,7 @@
     <x-card>
         <x-slot name="header">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                {{ __('carbex.dashboard.emissions_by_site') }}
+                {{ __('linscarbon.dashboard.emissions_by_site') }}
             </h3>
         </x-slot>
 
@@ -17,7 +17,7 @@
 
                         this.chart = new ApexCharts(this.$refs.chart, {
                             series: [{
-                                name: '{{ __('carbex.dashboard.emissions') }}',
+                                name: '{{ __('linscarbon.dashboard.emissions') }}',
                                 data: sites.map(s => s.value)
                             }],
                             chart: {
@@ -122,10 +122,10 @@
             <div class="text-center py-12">
                 <x-heroicon-o-building-office-2 class="w-12 h-12 mx-auto text-gray-400 mb-4" />
                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    {{ __('carbex.dashboard.no_site_data') }}
+                    {{ __('linscarbon.dashboard.no_site_data') }}
                 </h4>
                 <p class="text-gray-500">
-                    {{ __('carbex.dashboard.add_sites_prompt') }}
+                    {{ __('linscarbon.dashboard.add_sites_prompt') }}
                 </p>
             </div>
         @endif

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ __('carbex.reports.pdf.carbon_footprint_report') }} - {{ $report['organization']['name'] }}</title>
+    <title>{{ __('linscarbon.reports.pdf.carbon_footprint_report') }} - {{ $report['organization']['name'] }}</title>
     <style>
         * {
             margin: 0;
@@ -141,20 +141,20 @@
     <div class="container">
         {{-- Header --}}
         <div class="header">
-            <h1>{{ __('carbex.reports.pdf.carbon_footprint_report') }}</h1>
+            <h1>{{ __('linscarbon.reports.pdf.carbon_footprint_report') }}</h1>
             <div class="subtitle">{{ $report['organization']['name'] }}</div>
             <div class="period">{{ $report['report']['period']['label'] }}</div>
         </div>
 
         {{-- Executive Summary --}}
         <div class="section">
-            <h2 class="section-title">{{ __('carbex.reports.pdf.executive_summary') }}</h2>
+            <h2 class="section-title">{{ __('linscarbon.reports.pdf.executive_summary') }}</h2>
 
             <div class="summary-grid">
                 <div class="summary-card total">
                     <div class="value">{{ number_format($report['summary']['total_emissions']['tonnes'], 1) }}</div>
                     <div class="unit">t CO₂e</div>
-                    <div class="label">{{ __('carbex.dashboard.total_emissions') }}</div>
+                    <div class="label">{{ __('linscarbon.dashboard.total_emissions') }}</div>
                 </div>
                 <div class="summary-card scope-1">
                     <div class="value">{{ number_format($report['summary']['scope_1']['tonnes'], 2) }}</div>
@@ -176,14 +176,14 @@
             {{-- Comparison with previous period --}}
             @if(isset($report['comparison']))
                 <p>
-                    {{ __('carbex.reports.pdf.compared_to_previous') }}:
+                    {{ __('linscarbon.reports.pdf.compared_to_previous') }}:
                     <strong class="{{ $report['comparison']['change_direction'] === 'decrease' ? 'trend-down' : 'trend-up' }}">
                         @if($report['comparison']['change_direction'] === 'decrease')
-                            ↓ {{ abs($report['comparison']['change_percent']) }}% {{ __('carbex.reports.pdf.reduction') }}
+                            ↓ {{ abs($report['comparison']['change_percent']) }}% {{ __('linscarbon.reports.pdf.reduction') }}
                         @elseif($report['comparison']['change_direction'] === 'increase')
-                            ↑ {{ $report['comparison']['change_percent'] }}% {{ __('carbex.reports.pdf.increase') }}
+                            ↑ {{ $report['comparison']['change_percent'] }}% {{ __('linscarbon.reports.pdf.increase') }}
                         @else
-                            {{ __('carbex.reports.pdf.stable') }}
+                            {{ __('linscarbon.reports.pdf.stable') }}
                         @endif
                     </strong>
                 </p>
@@ -192,13 +192,13 @@
 
         {{-- Scope Breakdown --}}
         <div class="section">
-            <h2 class="section-title">{{ __('carbex.reports.pdf.emissions_by_scope') }}</h2>
+            <h2 class="section-title">{{ __('linscarbon.reports.pdf.emissions_by_scope') }}</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>{{ __('carbex.reports.pdf.scope') }}</th>
-                        <th>{{ __('carbex.reports.pdf.description') }}</th>
-                        <th class="text-right">{{ __('carbex.reports.pdf.emissions') }}</th>
+                        <th>{{ __('linscarbon.reports.pdf.scope') }}</th>
+                        <th>{{ __('linscarbon.reports.pdf.description') }}</th>
+                        <th class="text-right">{{ __('linscarbon.reports.pdf.emissions') }}</th>
                         <th class="text-right">%</th>
                     </tr>
                 </thead>
@@ -212,9 +212,9 @@
                             </td>
                             <td>
                                 @switch($scope['scope'])
-                                    @case(1) {{ __('carbex.reports.pdf.direct_emissions') }} @break
-                                    @case(2) {{ __('carbex.reports.pdf.indirect_energy_emissions') }} @break
-                                    @case(3) {{ __('carbex.reports.pdf.value_chain_emissions') }} @break
+                                    @case(1) {{ __('linscarbon.reports.pdf.direct_emissions') }} @break
+                                    @case(2) {{ __('linscarbon.reports.pdf.indirect_energy_emissions') }} @break
+                                    @case(3) {{ __('linscarbon.reports.pdf.value_chain_emissions') }} @break
                                 @endswitch
                             </td>
                             <td class="text-right">{{ number_format($scope['value'], 2) }} t</td>
@@ -227,15 +227,15 @@
 
         {{-- Top Categories --}}
         <div class="section">
-            <h2 class="section-title">{{ __('carbex.reports.pdf.top_categories') }}</h2>
+            <h2 class="section-title">{{ __('linscarbon.reports.pdf.top_categories') }}</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>{{ __('carbex.reports.pdf.category') }}</th>
-                        <th>{{ __('carbex.reports.pdf.scope') }}</th>
-                        <th class="text-right">{{ __('carbex.reports.pdf.emissions') }}</th>
+                        <th>{{ __('linscarbon.reports.pdf.category') }}</th>
+                        <th>{{ __('linscarbon.reports.pdf.scope') }}</th>
+                        <th class="text-right">{{ __('linscarbon.reports.pdf.emissions') }}</th>
                         <th class="text-right">%</th>
-                        <th class="text-right">{{ __('carbex.reports.pdf.records') }}</th>
+                        <th class="text-right">{{ __('linscarbon.reports.pdf.records') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -259,13 +259,13 @@
         {{-- Sites Comparison --}}
         @if(isset($report['sites']) && count($report['sites']) > 0)
             <div class="section">
-                <h2 class="section-title">{{ __('carbex.reports.pdf.emissions_by_site') }}</h2>
+                <h2 class="section-title">{{ __('linscarbon.reports.pdf.emissions_by_site') }}</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>{{ __('carbex.reports.pdf.site') }}</th>
-                            <th>{{ __('carbex.reports.pdf.location') }}</th>
-                            <th class="text-right">{{ __('carbex.reports.pdf.emissions') }}</th>
+                            <th>{{ __('linscarbon.reports.pdf.site') }}</th>
+                            <th>{{ __('linscarbon.reports.pdf.location') }}</th>
+                            <th class="text-right">{{ __('linscarbon.reports.pdf.emissions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -283,17 +283,17 @@
 
         {{-- Methodology --}}
         <div class="methodology-box">
-            <h4>{{ __('carbex.reports.pdf.methodology') }}</h4>
+            <h4>{{ __('linscarbon.reports.pdf.methodology') }}</h4>
             <p>
-                <strong>{{ __('carbex.reports.pdf.standard') }}:</strong> {{ $report['methodology']['standard'] }}<br>
-                <strong>{{ __('carbex.reports.pdf.emission_factors') }}:</strong> {{ $report['methodology']['emission_source']['name'] }} ({{ $report['methodology']['emission_source']['version'] }})<br>
-                <strong>{{ __('carbex.reports.pdf.note') }}:</strong> {{ $report['methodology']['uncertainty'] }}
+                <strong>{{ __('linscarbon.reports.pdf.standard') }}:</strong> {{ $report['methodology']['standard'] }}<br>
+                <strong>{{ __('linscarbon.reports.pdf.emission_factors') }}:</strong> {{ $report['methodology']['emission_source']['name'] }} ({{ $report['methodology']['emission_source']['version'] }})<br>
+                <strong>{{ __('linscarbon.reports.pdf.note') }}:</strong> {{ $report['methodology']['uncertainty'] }}
             </p>
         </div>
 
         {{-- Footer --}}
         <div class="footer">
-            {{ __('carbex.reports.pdf.report_generated_on') }} {{ now()->format('d/m/Y H:i') }} |
+            {{ __('linscarbon.reports.pdf.report_generated_on') }} {{ now()->format('d/m/Y H:i') }} |
             {{ config('app.name') }} - {{ config('app.url') }}
         </div>
     </div>

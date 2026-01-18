@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Carbex exposes a REST API for:
+LinsCarbon exposes a REST API for:
 - Web application (SPA via Inertia.js)
 - Mobile applications (future)
 - External integrations (API keys)
@@ -30,7 +30,7 @@ We need a versioning strategy that:
    - Cons: URL pollution, harder to sunset
 
 2. **Header Versioning**
-   - `Accept: application/vnd.carbex.v1+json`
+   - `Accept: application/vnd.linscarbon.v1+json`
    - Pros: Clean URLs, flexible
    - Cons: Not visible in browser, harder debugging
 
@@ -111,7 +111,7 @@ All API responses follow a consistent format:
     "deprecation_notice": {
       "message": "This endpoint is deprecated. Use /v2/emissions instead.",
       "sunset_date": "2025-06-01",
-      "migration_guide": "https://docs.carbex.app/api/migration/v1-to-v2"
+      "migration_guide": "https://docs.linscarbon.app/api/migration/v1-to-v2"
     }
   }
 }

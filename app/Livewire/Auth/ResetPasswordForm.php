@@ -14,7 +14,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.guest')]
-#[Title('Reinitialiser le mot de passe - Carbex')]
+#[Title('Reinitialiser le mot de passe - LinsCarbon')]
 class ResetPasswordForm extends Component
 {
     #[Locked]

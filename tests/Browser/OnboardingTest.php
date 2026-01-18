@@ -19,7 +19,7 @@ class OnboardingTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->assertSee('Carbex')
+                ->assertSee('LinsCarbon')
                 ->assertSee('Kostenlos starten');
         });
     }

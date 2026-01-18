@@ -38,17 +38,17 @@ class EmployeeEngagementTest extends TestCase
         Livewire::actingAs($this->user)
             ->test(EmployeeEngagement::class)
             ->assertStatus(200)
-            ->assertSee(__('carbex.engage.title'));
+            ->assertSee(__('linscarbon.engage.title'));
     }
 
     public function test_component_shows_tabs(): void
     {
         Livewire::actingAs($this->user)
             ->test(EmployeeEngagement::class)
-            ->assertSee(__('carbex.engage.tabs.quiz'))
-            ->assertSee(__('carbex.engage.tabs.calculator'))
-            ->assertSee(__('carbex.engage.tabs.challenges'))
-            ->assertSee(__('carbex.engage.tabs.leaderboard'));
+            ->assertSee(__('linscarbon.engage.tabs.quiz'))
+            ->assertSee(__('linscarbon.engage.tabs.calculator'))
+            ->assertSee(__('linscarbon.engage.tabs.challenges'))
+            ->assertSee(__('linscarbon.engage.tabs.leaderboard'));
     }
 
     public function test_can_switch_tabs(): void

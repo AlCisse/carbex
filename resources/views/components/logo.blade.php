@@ -37,6 +37,6 @@
     @endif
 
     @if($showText)
-        <span class="{{ $s['text'] }} font-bold {{ $textColor }} {{ $textClass }}" style="{{ $textStyle }}">Carbex</span>
+        <span class="{{ $s['text'] }} font-bold {{ $textColor }} {{ $textClass }}" style="{{ $textStyle }}">LinsCarbon</span>
     @endif
 </div>

@@ -10,7 +10,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.app')]
-#[Title('Gestion de l\'equipe - Carbex')]
+#[Title('Gestion de l\'equipe - LinsCarbon')]
 class UserManagement extends Component
 {
     public $users = [];
@@ -92,7 +92,7 @@ class UserManagement extends Component
         // Check subscription limits
         $subscription = auth()->user()->organization->subscription;
         if ($subscription && ! $subscription->canAddUser()) {
-            session()->flash('error', __('carbex.subscription.users_limit_reached'));
+            session()->flash('error', __('linscarbon.subscription.users_limit_reached'));
             $this->closeInviteForm();
 
             return;
@@ -108,7 +108,7 @@ class UserManagement extends Component
 
         $this->closeInviteForm();
         $this->loadUsers();
-        session()->flash('success', __('carbex.users.invitation_sent'));
+        session()->flash('success', __('linscarbon.users.invitation_sent'));
     }
 
     public function resendInvitation(string $userId, UserInvitationService $invitationService): void
@@ -118,7 +118,7 @@ class UserManagement extends Component
 
         $invitationService->resendInvitation($user, auth()->user());
 
-        session()->flash('success', __('carbex.users.invitation_resent'));
+        session()->flash('success', __('linscarbon.users.invitation_resent'));
     }
 
     public function openEditForm(string $userId): void
@@ -162,7 +162,7 @@ class UserManagement extends Component
 
         $this->closeEditForm();
         $this->loadUsers();
-        session()->flash('success', __('carbex.users.updated'));
+        session()->flash('success', __('linscarbon.users.updated'));
     }
 
     public function confirmDelete(string $userId): void
@@ -199,7 +199,7 @@ class UserManagement extends Component
 
         $this->cancelDelete();
         $this->loadUsers();
-        session()->flash('success', __('carbex.users.deleted'));
+        session()->flash('success', __('linscarbon.users.deleted'));
     }
 
     public function toggleActive(string $userId): void
@@ -211,18 +211,18 @@ class UserManagement extends Component
 
         $this->loadUsers();
         session()->flash('success', $user->is_active
-            ? __('carbex.users.activated')
-            : __('carbex.users.deactivated'));
+            ? __('linscarbon.users.activated')
+            : __('linscarbon.users.deactivated'));
     }
 
     public function getRoleLabel(string $role): string
     {
         return match ($role) {
-            'owner' => __('carbex.roles.owner'),
-            'admin' => __('carbex.roles.admin'),
-            'manager' => __('carbex.roles.manager'),
-            'member' => __('carbex.roles.member'),
-            'viewer' => __('carbex.roles.viewer'),
+            'owner' => __('linscarbon.roles.owner'),
+            'admin' => __('linscarbon.roles.admin'),
+            'manager' => __('linscarbon.roles.manager'),
+            'member' => __('linscarbon.roles.member'),
+            'viewer' => __('linscarbon.roles.viewer'),
             default => ucfirst($role),
         };
     }

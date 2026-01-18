@@ -3,7 +3,7 @@
         <x-slot name="header">
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    {{ __('carbex.dashboard.emissions_by_scope') }}
+                    {{ __('linscarbon.dashboard.emissions_by_scope') }}
                 </h3>
                 <span class="text-sm text-gray-500">
                     {{ number_format($this->total, 1) }} t CO₂e
@@ -50,7 +50,7 @@
                                                     },
                                                     total: {
                                                         show: true,
-                                                        label: '{{ __('carbex.dashboard.total') }}',
+                                                        label: '{{ __('linscarbon.dashboard.total') }}',
                                                         fontSize: '14px',
                                                         color: '#6B7280',
                                                         formatter: function(w) {
@@ -111,7 +111,7 @@
                                 <div class="w-4 h-4 rounded-full mr-3" style="background-color: {{ $scope['color'] }}"></div>
                                 <div>
                                     <span class="font-medium text-gray-900 dark:text-white">{{ $scope['label'] }}</span>
-                                    <span class="block text-xs text-gray-500">{{ $scope['count'] }} {{ __('carbex.dashboard.records') }}</span>
+                                    <span class="block text-xs text-gray-500">{{ $scope['count'] }} {{ __('linscarbon.dashboard.records') }}</span>
                                 </div>
                             </div>
                             <div class="text-right">
@@ -128,15 +128,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-500 dark:text-gray-400">
                     <div>
                         <span class="font-medium text-green-600 dark:text-green-400">Scope 1:</span>
-                        {{ __('carbex.dashboard.scope1_desc') }}
+                        {{ __('linscarbon.dashboard.scope1_desc') }}
                     </div>
                     <div>
                         <span class="font-medium text-blue-600 dark:text-blue-400">Scope 2:</span>
-                        {{ __('carbex.dashboard.scope2_desc') }}
+                        {{ __('linscarbon.dashboard.scope2_desc') }}
                     </div>
                     <div>
                         <span class="font-medium text-purple-600 dark:text-purple-400">Scope 3:</span>
-                        {{ __('carbex.dashboard.scope3_desc') }}
+                        {{ __('linscarbon.dashboard.scope3_desc') }}
                     </div>
                 </div>
             </div>
@@ -144,10 +144,10 @@
             <div class="text-center py-12">
                 <x-heroicon-o-chart-pie class="w-12 h-12 mx-auto text-gray-400 mb-4" />
                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    {{ __('carbex.dashboard.no_data') }}
+                    {{ __('linscarbon.dashboard.no_data') }}
                 </h4>
                 <p class="text-gray-500">
-                    {{ __('carbex.dashboard.connect_bank_prompt') }}
+                    {{ __('linscarbon.dashboard.connect_bank_prompt') }}
                 </p>
             </div>
         @endif

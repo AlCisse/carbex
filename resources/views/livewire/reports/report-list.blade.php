@@ -26,11 +26,11 @@
     <div class="mb-6">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-2xl font-bold text-gray-900">{{ __('carbex.reports.title') }}</h1>
-                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.reports.subtitle') }}</p>
+                <h1 class="text-2xl font-bold text-gray-900">{{ __('linscarbon.reports.title') }}</h1>
+                <p class="mt-1 text-sm text-gray-500">{{ __('linscarbon.reports.subtitle') }}</p>
             </div>
             <div>
-                <label for="year-select" class="sr-only">{{ __('carbex.reports.select_year') }}</label>
+                <label for="year-select" class="sr-only">{{ __('linscarbon.reports.select_year') }}</label>
                 <select
                     id="year-select"
                     wire:model.live="selectedYear"
@@ -80,7 +80,7 @@
                         <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        {{ __('carbex.reports.generate') }}
+                        {{ __('linscarbon.reports.generate') }}
                     </button>
                 </div>
             </div>
@@ -90,7 +90,7 @@
     <!-- Reports History -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-200">
-            <h2 class="text-lg font-semibold text-gray-900">{{ __('carbex.reports.history') }}</h2>
+            <h2 class="text-lg font-semibold text-gray-900">{{ __('linscarbon.reports.history') }}</h2>
         </div>
 
         @if($this->reports->count() > 0)
@@ -129,7 +129,7 @@
                                     @endif
                                     @if($report->download_count > 0)
                                         <span>&bull;</span>
-                                        <span>{{ $report->download_count }} {{ __('carbex.reports.downloads') }}</span>
+                                        <span>{{ $report->download_count }} {{ __('linscarbon.reports.downloads') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                             <!-- Status Badge -->
                             @if($report->status === 'completed')
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    {{ __('carbex.reports.status_completed') }}
+                                    {{ __('linscarbon.reports.status_completed') }}
                                 </span>
                             @elseif($report->status === 'generating')
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
@@ -146,15 +146,15 @@
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
-                                    {{ __('carbex.reports.status_generating') }}
+                                    {{ __('linscarbon.reports.status_generating') }}
                                 </span>
                             @elseif($report->status === 'pending')
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    {{ __('carbex.reports.status_pending') }}
+                                    {{ __('linscarbon.reports.status_pending') }}
                                 </span>
                             @elseif($report->status === 'failed')
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                    {{ __('carbex.reports.status_failed') }}
+                                    {{ __('linscarbon.reports.status_failed') }}
                                 </span>
                             @endif
 
@@ -164,16 +164,16 @@
                                     <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                     </svg>
-                                    {{ __('carbex.reports.download') }}
+                                    {{ __('linscarbon.reports.download') }}
                                 </a>
                             @endif
 
                             <!-- Delete Button -->
                             <button
                                 wire:click="deleteReport('{{ $report->id }}')"
-                                wire:confirm="{{ __('carbex.reports.confirm_delete') }}"
+                                wire:confirm="{{ __('linscarbon.reports.confirm_delete') }}"
                                 class="text-red-600 hover:text-red-900 p-1.5"
-                                title="{{ __('carbex.common.delete') }}"
+                                title="{{ __('linscarbon.common.delete') }}"
                             >
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -188,8 +188,8 @@
                 <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.reports.no_reports') }}</h3>
-                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.reports.no_reports_desc') }}</p>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('linscarbon.reports.no_reports') }}</h3>
+                <p class="mt-1 text-sm text-gray-500">{{ __('linscarbon.reports.no_reports_desc') }}</p>
             </div>
         @endif
     </div>
@@ -211,11 +211,11 @@
                         </div>
                         <div class="mt-3 text-center sm:mt-5">
                             <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                                {{ __('carbex.reports.generate_report') }}
+                                {{ __('linscarbon.reports.generate_report') }}
                             </h3>
                             <div class="mt-2">
                                 <p class="text-sm text-gray-500">
-                                    {{ __('carbex.reports.generate_confirm', ['year' => $selectedYear]) }}
+                                    {{ __('linscarbon.reports.generate_confirm', ['year' => $selectedYear]) }}
                                 </p>
                             </div>
 
@@ -223,7 +223,7 @@
                             <div class="mt-4 bg-gray-50 rounded-lg p-4 text-left">
                                 <dl class="space-y-2 text-sm">
                                     <div class="flex justify-between">
-                                        <dt class="text-gray-500">{{ __('carbex.reports.type') }}:</dt>
+                                        <dt class="text-gray-500">{{ __('linscarbon.reports.type') }}:</dt>
                                         <dd class="font-medium text-gray-900">
                                             @php
                                                 $selectedType = collect($this->reportTypes)->firstWhere('id', $generateType);
@@ -232,13 +232,13 @@
                                         </dd>
                                     </div>
                                     <div class="flex justify-between">
-                                        <dt class="text-gray-500">{{ __('carbex.reports.format') }}:</dt>
+                                        <dt class="text-gray-500">{{ __('linscarbon.reports.format') }}:</dt>
                                         <dd class="font-medium text-gray-900 uppercase">
                                             {{ $selectedType['format'] ?? '-' }}
                                         </dd>
                                     </div>
                                     <div class="flex justify-between">
-                                        <dt class="text-gray-500">{{ __('carbex.reports.period') }}:</dt>
+                                        <dt class="text-gray-500">{{ __('linscarbon.reports.period') }}:</dt>
                                         <dd class="font-medium text-gray-900">01/01/{{ $selectedYear }} - 31/12/{{ $selectedYear }}</dd>
                                     </div>
                                 </dl>
@@ -252,13 +252,13 @@
                             type="button"
                             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:col-start-2 sm:text-sm disabled:opacity-50"
                         >
-                            <span wire:loading.remove wire:target="generate">{{ __('carbex.reports.generate') }}</span>
+                            <span wire:loading.remove wire:target="generate">{{ __('linscarbon.reports.generate') }}</span>
                             <span wire:loading wire:target="generate" class="flex items-center">
                                 <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
                                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
-                                {{ __('carbex.reports.generating') }}
+                                {{ __('linscarbon.reports.generating') }}
                             </span>
                         </button>
                         <button
@@ -266,7 +266,7 @@
                             type="button"
                             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:col-start-1 sm:text-sm"
                         >
-                            {{ __('carbex.common.cancel') }}
+                            {{ __('linscarbon.common.cancel') }}
                         </button>
                     </div>
                 </div>

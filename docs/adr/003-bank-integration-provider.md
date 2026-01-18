@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-Carbex needs to connect to users' bank accounts to automatically fetch transactions for carbon footprint calculation. This requires integration with a banking data aggregation service.
+LinsCarbon needs to connect to users' bank accounts to automatically fetch transactions for carbon footprint calculation. This requires integration with a banking data aggregation service.
 
 ### Requirements
 
@@ -50,7 +50,7 @@ We chose **Bridge** as our primary banking data provider.
 
 ```
 ┌─────────────────┐         ┌─────────────────┐
-│   Carbex App    │         │    Bridge API   │
+│   LinsCarbon App    │         │    Bridge API   │
 │                 │         │                 │
 │  ┌───────────┐  │         │  ┌───────────┐  │
 │  │  OAuth    │──┼─────────┼─▶│  Connect  │  │

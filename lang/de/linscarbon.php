@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Carbex - German Translations
+ * LinsCarbon - German Translations
  */
 
 return [
@@ -12,9 +12,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'app_name' => 'Carbex',
+    'app_name' => 'LinsCarbon',
     'tagline' => 'Automatische CO2-Bilanz für KMU',
-    'welcome' => 'Willkommen bei Carbex',
+    'welcome' => 'Willkommen bei LinsCarbon',
     'settings' => 'Einstellungen',
     'profile' => 'Profil',
     'logout' => 'Abmelden',
@@ -99,7 +99,7 @@ return [
     */
 
     'home' => [
-        'title' => 'Carbex - CO2-Bilanz-Plattform für KMU',
+        'title' => 'LinsCarbon - CO2-Bilanz-Plattform für KMU',
         'meta_description' => 'Steuern Sie Ihren CO2-Fußabdruck und treffen Sie wirkungsvolle Entscheidungen. Die KI-Plattform, die CO2-Verpflichtungen in strategische Entscheidungen für KMU verwandelt.',
         'badge' => 'CO₂-Intelligenz für KMU',
         'csrd_badge' => 'CSRD 2025 konform',
@@ -627,7 +627,7 @@ return [
         'video1_title' => 'Was ist eine CO2-Bilanz?',
         'video1_desc' => 'Grundlagen der Treibhausgasemissionen verstehen',
         'video2_title' => 'Konto einrichten',
-        'video2_desc' => 'Schnellstart-Anleitung mit Carbex',
+        'video2_desc' => 'Schnellstart-Anleitung mit LinsCarbon',
         'video3_title' => 'Reduktionsziele definieren',
         'video3_desc' => 'SBTi-Strategien und Best Practices',
         'coming_soon' => 'Demnächst verfügbar',
@@ -1382,7 +1382,7 @@ return [
     */
 
     'support' => [
-        'title' => 'Carbex Support',
+        'title' => 'LinsCarbon Support',
         'online' => 'Online',
         'online_support' => 'Online-Support',
         'offline' => 'Offline',
@@ -1791,7 +1791,7 @@ return [
             'frequent_questions' => 'Häufige Fragen',
         ],
         'chat' => [
-            'assistant_name' => 'Carbex Assistent',
+            'assistant_name' => 'LinsCarbon Assistent',
             'subtitle' => 'KI - CO2-Bilanz',
             'new_conversation' => 'Neues Gespräch',
             'welcome' => 'Hallo! Ich bin Ihr Assistent.',
@@ -2323,7 +2323,7 @@ return [
         'link_copied' => 'Link kopiert!',
         'share_on_linkedin' => 'Auf LinkedIn teilen',
         'share_on_twitter' => 'Auf X (Twitter) teilen',
-        'linkedin_summary' => 'Wir sind stolz, das Abzeichen :badge für unsere CO2-Managementbemühungen erhalten zu haben. Verifiziert von Carbex.',
+        'linkedin_summary' => 'Wir sind stolz, das Abzeichen :badge für unsere CO2-Managementbemühungen erhalten zu haben. Verifiziert von LinsCarbon.',
         'twitter_text' => 'Wir haben das Abzeichen :badge für unser CO2-Engagement erhalten! #CarbonNeutral #Nachhaltigkeit',
 
         // Embed modal
@@ -2349,7 +2349,7 @@ return [
         // Public badge page
         'awarded_to' => 'Verliehen an',
         'verified' => 'Verifiziert',
-        'verified_by_carbex' => 'Verifiziert von Carbex',
+        'verified_by_linscarbon' => 'Verifiziert von LinsCarbon',
         'verify' => 'Überprüfen',
         'learn_more' => 'Mehr erfahren',
         'cta_text' => 'Auch Sie können Ihren CO2-Fußabdruck messen und reduzieren.',
@@ -2357,7 +2357,7 @@ return [
         'all_rights_reserved' => 'Alle Rechte vorbehalten.',
 
         // Email signature & SEO
-        'seo_description' => ':organization hat das Abzeichen :badge für sein CO2-Engagement erhalten. Verifiziert von Carbex.',
+        'seo_description' => ':organization hat das Abzeichen :badge für sein CO2-Engagement erhalten. Verifiziert von LinsCarbon.',
         'carbon_badge' => 'CO2-Abzeichen',
         'our_organization' => 'Unsere Organisation',
         'view_badge' => 'Abzeichen ansehen',
@@ -2506,7 +2506,7 @@ return [
 
         // Contact
         'dpo_contact' => 'Datenschutzbeauftragter',
-        'dpo_email' => 'dpo@carbex.de',
+        'dpo_email' => 'dpo@linscarbon.de',
     ],
 
     /*
@@ -2673,7 +2673,7 @@ return [
         'badge_og_title' => ':organization hat das Abzeichen :badge erhalten',
         'badge_earned_by' => 'Abzeichen verdient von',
         'earned_on' => 'Verdient am',
-        'discover_carbex' => 'Carbex entdecken',
+        'discover_linscarbon' => 'LinsCarbon entdecken',
     ],
 
     /*
@@ -2685,13 +2685,13 @@ return [
     'marketing' => [
         'for_who' => [
             'title' => 'Für wen?',
-            'description' => 'Carbex passt sich an alle Unternehmensgrößen an: KMU, Mittelstand und Großunternehmen. Entdecken Sie, wie unsere Plattform Ihre Bedürfnisse erfüllt.',
+            'description' => 'LinsCarbon passt sich an alle Unternehmensgrößen an: KMU, Mittelstand und Großunternehmen. Entdecken Sie, wie unsere Plattform Ihre Bedürfnisse erfüllt.',
             'hero_title' => 'Eine Lösung für jedes Unternehmen',
-            'hero_subtitle' => 'Vom KMU bis zum Großkonzern – Carbex passt sich an Ihre Bedürfnisse und Ihre CO2-Reife an.',
+            'hero_subtitle' => 'Vom KMU bis zum Großkonzern – LinsCarbon passt sich an Ihre Bedürfnisse und Ihre CO2-Reife an.',
             'trust_us' => 'Sie vertrauen uns',
 
             'why_choose' => [
-                'title' => 'Warum Carbex wählen?',
+                'title' => 'Warum LinsCarbon wählen?',
                 'subtitle' => '3 gute Gründe, uns zu vertrauen',
                 'measure_title' => 'Messen Sie Ihre Auswirkungen',
                 'measure_desc' => 'Erstellen Sie einfach Ihre erste vollständige CO2-Bilanz (Scope 1, 2, 3), ohne Experte und ohne Verpflichtung. Unser KI-Assistent begleitet Sie bei jedem Schritt.',
@@ -2742,14 +2742,14 @@ return [
 
             'cta' => [
                 'title' => 'Bereit, Ihren Fußabdruck zu messen?',
-                'subtitle' => 'Starten Sie kostenlos und entdecken Sie, wie Carbex Ihnen helfen kann.',
+                'subtitle' => 'Starten Sie kostenlos und entdecken Sie, wie LinsCarbon Ihnen helfen kann.',
                 'primary' => '15 Tage kostenlose Testversion',
                 'secondary' => 'Preise anzeigen',
             ],
         ],
         'contact' => [
             'title' => 'Kontakt',
-            'description' => 'Kontaktieren Sie das Carbex-Team bei Fragen zu unserer CO2-Bilanz-Plattform.',
+            'description' => 'Kontaktieren Sie das LinsCarbon-Team bei Fragen zu unserer CO2-Bilanz-Plattform.',
             'hero_title' => 'Sprechen wir über Ihr Projekt',
             'hero_subtitle' => 'Unser Team ist hier, um Ihre Fragen zu beantworten und Sie zu begleiten.',
             'contact_us' => 'Kontaktieren Sie uns',
@@ -2896,7 +2896,7 @@ return [
         'copy_link' => 'Link kopieren',
         'related_articles' => 'Ähnliche Artikel',
         'cta_title' => 'Bereit, Ihren CO2-Fußabdruck zu messen?',
-        'cta_subtitle' => 'Starten Sie Ihre CO2-Bilanz in wenigen Minuten mit Carbex.',
+        'cta_subtitle' => 'Starten Sie Ihre CO2-Bilanz in wenigen Minuten mit LinsCarbon.',
         'cta_button' => 'Kostenlose Testversion starten',
     ],
 
@@ -2914,11 +2914,11 @@ return [
         // Legal Notice (Impressum)
         'mentions' => [
             'title' => 'Impressum',
-            'meta_description' => 'Impressum und Datenschutzerklärung von Carbex, der CO2-Bilanzplattform für Unternehmen.',
+            'meta_description' => 'Impressum und Datenschutzerklärung von LinsCarbon, der CO2-Bilanzplattform für Unternehmen.',
 
             'section1_title' => '1. Angaben gemäß § 5 TMG',
-            'site_edited_by' => 'Die Website carbex.de wird betrieben von:',
-            'company_name' => 'Carbex GmbH',
+            'site_edited_by' => 'Die Website linscarbon.de wird betrieben von:',
+            'company_name' => 'LinsCarbon GmbH',
             'company_type' => 'Gesellschaft mit beschränkter Haftung',
             'capital' => 'Stammkapital: 25.000 EUR',
             'address' => 'Geschäftsadresse: Musterstraße 123, 10115 Berlin, Deutschland',
@@ -2936,7 +2936,7 @@ return [
 
             'section3_title' => '3. Datenschutzerklärung',
             'section3_1_title' => '3.1 Verantwortlicher',
-            'section3_1_text' => 'Carbex GmbH ist verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website gemäß der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG).',
+            'section3_1_text' => 'LinsCarbon GmbH ist verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website gemäß der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG).',
             'section3_2_title' => '3.2 Erhobene Daten',
             'section3_2_text' => 'Wir erheben folgende Daten:',
             'data_id' => 'Identifikationsdaten: Name, Vorname, geschäftliche E-Mail-Adresse',
@@ -2991,14 +2991,14 @@ return [
             'section4_3_text' => 'Sie können Ihre Cookie-Präferenzen über das Einwilligungsbanner oder Ihre Browsereinstellungen verwalten.',
 
             'section5_title' => '5. Geistiges Eigentum',
-            'section5_text1' => 'Alle Inhalte der Website (Texte, Bilder, Logos, Quellcode) sind urheberrechtlich geschützt und gehören der Carbex GmbH. Jede Vervielfältigung ohne Genehmigung ist untersagt.',
-            'section5_text2' => 'Die Marken "Carbex" und "CO2-Bilanz" sind eingetragen. Logos von Partnern und Kunden werden mit deren Genehmigung verwendet.',
+            'section5_text1' => 'Alle Inhalte der Website (Texte, Bilder, Logos, Quellcode) sind urheberrechtlich geschützt und gehören der LinsCarbon GmbH. Jede Vervielfältigung ohne Genehmigung ist untersagt.',
+            'section5_text2' => 'Die Marken "LinsCarbon" und "CO2-Bilanz" sind eingetragen. Logos von Partnern und Kunden werden mit deren Genehmigung verwendet.',
 
             'section6_title' => '6. Haftungsbeschränkung',
-            'section6_text' => 'Carbex bemüht sich, genaue und aktuelle Informationen bereitzustellen. Wir können jedoch keine Fehlerfreiheit garantieren. Die Emissionsberechnungen dienen der Orientierung und stellen keine professionelle Beratung dar.',
+            'section6_text' => 'LinsCarbon bemüht sich, genaue und aktuelle Informationen bereitzustellen. Wir können jedoch keine Fehlerfreiheit garantieren. Die Emissionsberechnungen dienen der Orientierung und stellen keine professionelle Beratung dar.',
 
             'section7_title' => '7. Externe Links',
-            'section7_text' => 'Diese Website kann Links zu Websites Dritter enthalten. Carbex ist nicht verantwortlich für deren Inhalte.',
+            'section7_text' => 'Diese Website kann Links zu Websites Dritter enthalten. LinsCarbon ist nicht verantwortlich für deren Inhalte.',
 
             'section8_title' => '8. Anwendbares Recht',
             'section8_text' => 'Dieses Impressum unterliegt deutschem Recht. Bei Streitigkeiten sind die Gerichte in Berlin zuständig.',
@@ -3007,16 +3007,16 @@ return [
             'section9_text' => 'Bei Fragen zu diesem Impressum oder zum Schutz Ihrer Daten:',
             'contact_legal' => 'E-Mail',
             'contact_dpo_label' => 'Datenschutzbeauftragter',
-            'contact_mail' => 'Post: Carbex GmbH - Rechtsabteilung, Musterstraße 123, 10115 Berlin',
+            'contact_mail' => 'Post: LinsCarbon GmbH - Rechtsabteilung, Musterstraße 123, 10115 Berlin',
         ],
 
         // Terms of Use (AGB)
         'cgu' => [
             'title' => 'Nutzungsbedingungen',
-            'meta_description' => 'Nutzungsbedingungen der Carbex-Plattform, SaaS-Tool für CO2-Bilanzen.',
+            'meta_description' => 'Nutzungsbedingungen der LinsCarbon-Plattform, SaaS-Tool für CO2-Bilanzen.',
 
             'article1_title' => 'Artikel 1 - Definitionen',
-            'def_platform' => 'Plattform: Die Carbex-Webanwendung, erreichbar unter app.carbex.de',
+            'def_platform' => 'Plattform: Die LinsCarbon-Webanwendung, erreichbar unter app.linscarbon.de',
             'def_user' => 'Nutzer: Jede Person, die auf die Plattform zugreift',
             'def_account' => 'Konto: Persönlicher Bereich des Nutzers auf der Plattform',
             'def_organization' => 'Organisation: Juristische Person (Unternehmen), für die die CO2-Bilanz erstellt wird',
@@ -3055,29 +3055,29 @@ return [
 
             'article5_title' => 'Artikel 5 - Daten und Inhalte',
             'article5_1_title' => '5.1 Nutzerdaten',
-            'article5_1_text' => 'Der Nutzer bleibt Eigentümer der auf der Plattform eingegebenen Daten. Carbex darf diese Daten nur zur Bereitstellung des Dienstes und, in anonymisierter Form, zur Verbesserung seiner Algorithmen verwenden.',
+            'article5_1_text' => 'Der Nutzer bleibt Eigentümer der auf der Plattform eingegebenen Daten. LinsCarbon darf diese Daten nur zur Bereitstellung des Dienstes und, in anonymisierter Form, zur Verbesserung seiner Algorithmen verwenden.',
             'article5_2_title' => '5.2 Emissionsfaktoren',
-            'article5_2_text' => 'Die Emissionsfaktoren stammen aus offiziellen Quellen (Umweltbundesamt, IPCC usw.). Carbex garantiert nicht deren Genauigkeit und empfiehlt dem Nutzer, sie für regulatorische Zwecke zu überprüfen.',
+            'article5_2_text' => 'Die Emissionsfaktoren stammen aus offiziellen Quellen (Umweltbundesamt, IPCC usw.). LinsCarbon garantiert nicht deren Genauigkeit und empfiehlt dem Nutzer, sie für regulatorische Zwecke zu überprüfen.',
             'article5_3_title' => '5.3 Datensicherung',
-            'article5_3_text' => 'Carbex führt regelmäßige Datensicherungen durch. Dem Nutzer wird jedoch empfohlen, seine Daten regelmäßig zu exportieren.',
+            'article5_3_text' => 'LinsCarbon führt regelmäßige Datensicherungen durch. Dem Nutzer wird jedoch empfohlen, seine Daten regelmäßig zu exportieren.',
 
             'article6_title' => 'Artikel 6 - KI-Assistent',
             'article6_text' => 'Die Plattform integriert einen KI-basierten Assistenten. Die vom KI bereitgestellten Vorschläge und Empfehlungen sind indikativ und stellen keine professionelle Beratung dar. Der Nutzer bleibt allein verantwortlich für Entscheidungen auf Basis dieser Vorschläge.',
 
             'article7_title' => 'Artikel 7 - Verfügbarkeit',
-            'article7_text' => 'Carbex bemüht sich um eine kontinuierliche Verfügbarkeit der Plattform. Unterbrechungen können jedoch für Wartungsarbeiten oder bei höherer Gewalt auftreten. Carbex wird die Nutzer soweit möglich informieren.',
+            'article7_text' => 'LinsCarbon bemüht sich um eine kontinuierliche Verfügbarkeit der Plattform. Unterbrechungen können jedoch für Wartungsarbeiten oder bei höherer Gewalt auftreten. LinsCarbon wird die Nutzer soweit möglich informieren.',
 
             'article8_title' => 'Artikel 8 - Geistiges Eigentum',
-            'article8_text' => 'Alle Elemente der Plattform (Code, Design, Texte, Algorithmen) sind urheberrechtlich geschützt und gehören der Carbex GmbH. Jede nicht autorisierte Vervielfältigung ist untersagt.',
+            'article8_text' => 'Alle Elemente der Plattform (Code, Design, Texte, Algorithmen) sind urheberrechtlich geschützt und gehören der LinsCarbon GmbH. Jede nicht autorisierte Vervielfältigung ist untersagt.',
 
             'article9_title' => 'Artikel 9 - Haftungsbeschränkung',
-            'article9_text' => 'Carbex stellt die Plattform "wie besehen" bereit. Carbex haftet in keinem Fall für indirekte Schäden, Datenverlust oder entgangenen Gewinn im Zusammenhang mit der Nutzung der Plattform.',
+            'article9_text' => 'LinsCarbon stellt die Plattform "wie besehen" bereit. LinsCarbon haftet in keinem Fall für indirekte Schäden, Datenverlust oder entgangenen Gewinn im Zusammenhang mit der Nutzung der Plattform.',
 
             'article10_title' => 'Artikel 10 - Sperrung und Kündigung',
-            'article10_text' => 'Carbex behält sich das Recht vor, den Zugang eines Nutzers bei Verstoß gegen diese AGB nach vorheriger Benachrichtigung zu sperren oder zu kündigen, außer in dringenden Fällen.',
+            'article10_text' => 'LinsCarbon behält sich das Recht vor, den Zugang eines Nutzers bei Verstoß gegen diese AGB nach vorheriger Benachrichtigung zu sperren oder zu kündigen, außer in dringenden Fällen.',
 
             'article11_title' => 'Artikel 11 - Änderung der AGB',
-            'article11_text' => 'Carbex kann diese AGB jederzeit ändern. Die Nutzer werden über wesentliche Änderungen informiert. Die fortgesetzte Nutzung nach Benachrichtigung gilt als Annahme.',
+            'article11_text' => 'LinsCarbon kann diese AGB jederzeit ändern. Die Nutzer werden über wesentliche Änderungen informiert. Die fortgesetzte Nutzung nach Benachrichtigung gilt als Annahme.',
 
             'article12_title' => 'Artikel 12 - Kontakt',
             'article12_text' => 'Bei Fragen zu diesen AGB kontaktieren Sie uns unter:',
@@ -3086,14 +3086,14 @@ return [
         // Terms of Sale (AGB)
         'cgv' => [
             'title' => 'Allgemeine Geschäftsbedingungen',
-            'meta_description' => 'Allgemeine Geschäftsbedingungen der Carbex-Plattform, SaaS-Tool für CO2-Bilanzen für Unternehmen.',
+            'meta_description' => 'Allgemeine Geschäftsbedingungen der LinsCarbon-Plattform, SaaS-Tool für CO2-Bilanzen für Unternehmen.',
 
             'article1_title' => 'Artikel 1 - Gegenstand',
-            'article1_text1' => 'Diese Allgemeinen Geschäftsbedingungen (AGB) regeln die vertraglichen Beziehungen zwischen der Carbex GmbH (nachfolgend "Carbex") und jedem Geschäftskunden (nachfolgend "Kunde"), der die Dienste der Carbex-Plattform abonnieren möchte.',
-            'article1_text2' => 'Carbex bietet eine SaaS-Lösung (Software as a Service) für CO2-Bilanzen und Treibhausgasmanagement gemäß GHG Protocol, ISO 14064 und Umweltbundesamt-Standards.',
+            'article1_text1' => 'Diese Allgemeinen Geschäftsbedingungen (AGB) regeln die vertraglichen Beziehungen zwischen der LinsCarbon GmbH (nachfolgend "LinsCarbon") und jedem Geschäftskunden (nachfolgend "Kunde"), der die Dienste der LinsCarbon-Plattform abonnieren möchte.',
+            'article1_text2' => 'LinsCarbon bietet eine SaaS-Lösung (Software as a Service) für CO2-Bilanzen und Treibhausgasmanagement gemäß GHG Protocol, ISO 14064 und Umweltbundesamt-Standards.',
 
             'article2_title' => 'Artikel 2 - Angebotene Dienste',
-            'article2_text' => 'Carbex bietet folgende Dienste:',
+            'article2_text' => 'LinsCarbon bietet folgende Dienste:',
             'service_assessment' => 'Erstellung von CO2-Bilanzen (Scope 1, 2 und 3)',
             'service_factors' => 'Zugang zur Umweltbundesamt-Datenbank und Emissionsfaktoren',
             'service_dashboard' => 'Dashboards und Emissionsanalysen',
@@ -3118,8 +3118,8 @@ return [
             'article4_2_title' => '4.2 Kündigung',
             'article4_2_text' => 'Der Kunde kann sein Abonnement jederzeit über seinen Kundenbereich kündigen. Die Kündigung wird zum Ende der aktuellen Abrechnungsperiode wirksam. Eine anteilige Rückerstattung erfolgt nicht.',
 
-            'article5_title' => 'Artikel 5 - Pflichten von Carbex',
-            'article5_text' => 'Carbex verpflichtet sich zu:',
+            'article5_title' => 'Artikel 5 - Pflichten von LinsCarbon',
+            'article5_text' => 'LinsCarbon verpflichtet sich zu:',
             'obligation_access' => 'Kontinuierlichem Zugang zur Plattform (Verfügbarkeitsziel 99,5%)',
             'obligation_security' => 'Aufrechterhaltung von Sicherheit und Vertraulichkeit der Daten',
             'obligation_support' => 'Technischem Support gemäß abonniertem Plan',
@@ -3133,29 +3133,29 @@ return [
             'client_payment' => 'Fristgerechter Zahlung der fälligen Beträge',
 
             'article7_title' => 'Artikel 7 - Geistiges Eigentum',
-            'article7_text' => 'Die Carbex-Plattform, ihr Quellcode, ihre Algorithmen, ihr Design und ihre Inhalte sind ausschließliches Eigentum der Carbex GmbH. Der Kunde erhält lediglich ein nicht-exklusives und nicht übertragbares Nutzungsrecht für die Dauer seines Abonnements.',
+            'article7_text' => 'Die LinsCarbon-Plattform, ihr Quellcode, ihre Algorithmen, ihr Design und ihre Inhalte sind ausschließliches Eigentum der LinsCarbon GmbH. Der Kunde erhält lediglich ein nicht-exklusives und nicht übertragbares Nutzungsrecht für die Dauer seines Abonnements.',
 
             'article8_title' => 'Artikel 8 - Haftung',
-            'article8_text1' => 'Die von Carbex bereitgestellten Emissionsberechnungen basieren auf den vom Kunden eingegebenen Daten und offiziellen Emissionsfaktoren. Carbex haftet nicht für die Genauigkeit der Ergebnisse bei fehlerhaften Kundendaten.',
-            'article8_text2' => 'Die Haftung von Carbex ist auf den Betrag der tatsächlich erhaltenen Abonnementgebühren der letzten 12 Monate beschränkt.',
+            'article8_text1' => 'Die von LinsCarbon bereitgestellten Emissionsberechnungen basieren auf den vom Kunden eingegebenen Daten und offiziellen Emissionsfaktoren. LinsCarbon haftet nicht für die Genauigkeit der Ergebnisse bei fehlerhaften Kundendaten.',
+            'article8_text2' => 'Die Haftung von LinsCarbon ist auf den Betrag der tatsächlich erhaltenen Abonnementgebühren der letzten 12 Monate beschränkt.',
 
             'article9_title' => 'Artikel 9 - Datenschutz',
-            'article9_text' => 'Carbex verpflichtet sich zur Einhaltung der geltenden Datenschutzvorschriften (DSGVO, BDSG). Weitere Informationen finden Sie in unserer',
+            'article9_text' => 'LinsCarbon verpflichtet sich zur Einhaltung der geltenden Datenschutzvorschriften (DSGVO, BDSG). Weitere Informationen finden Sie in unserer',
             'privacy_policy' => 'Datenschutzerklärung',
 
             'article10_title' => 'Artikel 10 - Anwendbares Recht und Streitigkeiten',
             'article10_text' => 'Diese AGB unterliegen deutschem Recht. Bei Streitigkeiten verpflichten sich die Parteien, eine gütliche Lösung zu suchen. Andernfalls sind die Gerichte in Berlin ausschließlich zuständig.',
 
             'article11_title' => 'Artikel 11 - Änderung der AGB',
-            'article11_text' => 'Carbex behält sich das Recht vor, diese AGB zu ändern. Änderungen werden den Kunden mindestens 30 Tage vor Inkrafttreten per E-Mail mitgeteilt.',
+            'article11_text' => 'LinsCarbon behält sich das Recht vor, diese AGB zu ändern. Änderungen werden den Kunden mindestens 30 Tage vor Inkrafttreten per E-Mail mitgeteilt.',
         ],
 
         // Commitments
         'engagements' => [
             'title' => 'Unsere Verpflichtungen',
-            'meta_description' => 'Erfahren Sie mehr über die Verpflichtungen von Carbex in Bezug auf Transparenz, Datensicherheit und Umweltverantwortung.',
+            'meta_description' => 'Erfahren Sie mehr über die Verpflichtungen von LinsCarbon in Bezug auf Transparenz, Datensicherheit und Umweltverantwortung.',
             'label' => 'Unsere Werte',
-            'hero_subtitle' => 'Bei Carbex glauben wir, dass die ökologische Transformation durch Transparenz, Zugänglichkeit und konkretes Handeln erfolgt.',
+            'hero_subtitle' => 'Bei LinsCarbon glauben wir, dass die ökologische Transformation durch Transparenz, Zugänglichkeit und konkretes Handeln erfolgt.',
 
             // Cards
             'security_title' => 'Datensicherheit',
@@ -3171,7 +3171,7 @@ return [
             'transparency_trace' => 'Vollständige Nachverfolgbarkeit',
 
             'neutrality_title' => 'CO2-Neutralität',
-            'neutrality_text' => 'Wir praktizieren, was wir predigen. Carbex misst und kompensiert seine eigenen Emissionen jedes Jahr.',
+            'neutrality_text' => 'Wir praktizieren, was wir predigen. LinsCarbon misst und kompensiert seine eigenen Emissionen jedes Jahr.',
             'neutrality_annual' => 'Veröffentlichter Jahres-CO2-Bericht',
             'neutrality_hosting' => 'CO2-armes Hosting',
             'neutrality_offset' => 'Zertifizierte Kompensation',
@@ -3202,17 +3202,17 @@ return [
         // Privacy Policy (Datenschutzerklärung)
         'privacy' => [
             'title' => 'Datenschutzerklärung',
-            'meta_description' => 'Datenschutzerklärung von Carbex. Erfahren Sie, wie wir Ihre personenbezogenen Daten DSGVO-konform erheben, verwenden und schützen.',
+            'meta_description' => 'Datenschutzerklärung von LinsCarbon. Erfahren Sie, wie wir Ihre personenbezogenen Daten DSGVO-konform erheben, verwenden und schützen.',
 
-            'intro' => 'Die Carbex GmbH (nachfolgend "Carbex", "wir", "uns") verpflichtet sich zum Schutz der Privatsphäre ihrer Nutzer. Diese Datenschutzerklärung erläutert, wie wir Ihre personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG) erheben, verwenden, speichern und schützen.',
+            'intro' => 'Die LinsCarbon GmbH (nachfolgend "LinsCarbon", "wir", "uns") verpflichtet sich zum Schutz der Privatsphäre ihrer Nutzer. Diese Datenschutzerklärung erläutert, wie wir Ihre personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG) erheben, verwenden, speichern und schützen.',
 
             // Article 1
             'article1_title' => '1. Verantwortlicher',
             'article1_text' => 'Verantwortlicher für die Verarbeitung Ihrer personenbezogenen Daten ist:',
-            'company_name' => 'Firmenname: Carbex GmbH',
+            'company_name' => 'Firmenname: LinsCarbon GmbH',
             'company_address' => 'Adresse: Musterstraße 123, 10115 Berlin, Deutschland',
-            'company_email' => 'E-Mail: contact@carbex.app',
-            'dpo_contact' => 'Datenschutzbeauftragter (DSB): privacy@carbex.app',
+            'company_email' => 'E-Mail: contact@linscarbon.app',
+            'dpo_contact' => 'Datenschutzbeauftragter (DSB): privacy@linscarbon.app',
 
             // Article 2
             'article2_title' => '2. Erhobene Daten',
@@ -3258,7 +3258,7 @@ return [
             // Article 5
             'article5_title' => '5. Datenempfänger',
             'article5_text' => 'Ihre Daten können an folgende Empfänger weitergegeben werden:',
-            'recipient_team' => 'Carbex-Team: Zugang beschränkt auf autorisiertes Personal',
+            'recipient_team' => 'LinsCarbon-Team: Zugang beschränkt auf autorisiertes Personal',
             'recipient_hosting' => 'Hosting-Anbieter: Hetzner (Server in Deutschland, ISO 27001 zertifiziert)',
             'recipient_payment' => 'Zahlung: Stripe (sichere Zahlungsabwicklung)',
             'recipient_banking' => 'Bankaggregation: Bridge (Frankreich), FinAPI (Deutschland) - PSD2-zertifiziert',

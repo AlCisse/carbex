@@ -10,7 +10,7 @@ use Livewire\Component;
 /**
  * AssessmentList - Liste des bilans annuels
  *
- * Constitution Carbex v3.0 - Section 2.10
+ * Constitution LinsCarbon v3.0 - Section 2.10
  */
 class AssessmentList extends Component
 {
@@ -106,11 +106,11 @@ class AssessmentList extends Component
             $assessment = Assessment::find($this->editingId);
             if ($assessment && $assessment->organization_id === auth()->user()->organization_id) {
                 $assessment->update($data);
-                session()->flash('message', __('carbex.messages.updated'));
+                session()->flash('message', __('linscarbon.messages.updated'));
             }
         } else {
             Assessment::create($data);
-            session()->flash('message', __('carbex.messages.created'));
+            session()->flash('message', __('linscarbon.messages.created'));
         }
 
         $this->closeModal();
@@ -129,7 +129,7 @@ class AssessmentList extends Component
             $assessment->status = Assessment::STATUS_ACTIVE;
             $assessment->save();
 
-            session()->flash('message', __('carbex.assessments.activated'));
+            session()->flash('message', __('linscarbon.assessments.activated'));
         }
     }
 
@@ -141,7 +141,7 @@ class AssessmentList extends Component
             // Only allow deletion of draft assessments
             if ($assessment->isDraft()) {
                 $assessment->delete();
-                session()->flash('message', __('carbex.messages.deleted'));
+                session()->flash('message', __('linscarbon.messages.deleted'));
             }
         }
     }

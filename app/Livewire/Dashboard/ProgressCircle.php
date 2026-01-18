@@ -10,7 +10,7 @@ use Livewire\Component;
 /**
  * ProgressCircle - Circular progress indicator for assessment completion
  *
- * Constitution Carbex v3.0 - Section 3.2, T049
+ * Constitution LinsCarbon v3.0 - Section 3.2, T049
  *
  * Displays:
  * - SVG circle with % progression

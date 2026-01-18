@@ -34,7 +34,7 @@ class SupplierReminderNotification extends Notification implements ShouldQueue
             ->action('Compléter maintenant', $this->invitation->getPortalUrl())
             ->line("Votre participation est essentielle pour nous aider à mesurer et réduire notre empreinte carbone collective.")
             ->line("Si vous avez des questions, n'hésitez pas à contacter {$this->invitation->invitedBy->name} à {$this->invitation->invitedBy->email}.")
-            ->salutation("Cordialement,\nL'équipe Carbex");
+            ->salutation("Cordialement,\nL'équipe LinsCarbon");
     }
 
     public function toArray(object $notifiable): array

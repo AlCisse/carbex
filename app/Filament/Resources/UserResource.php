@@ -29,90 +29,90 @@ class UserResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make(__('carbex.admin.users.personal_info'))
+                Forms\Components\Section::make(__('linscarbon.admin.users.personal_info'))
                     ->schema([
                         Forms\Components\TextInput::make('first_name')
-                            ->label(__('carbex.admin.users.first_name'))
+                            ->label(__('linscarbon.admin.users.first_name'))
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('last_name')
-                            ->label(__('carbex.admin.users.last_name'))
+                            ->label(__('linscarbon.admin.users.last_name'))
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('name')
-                            ->label(__('carbex.admin.users.display_name'))
+                            ->label(__('linscarbon.admin.users.display_name'))
                             ->required()
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('email')
-                            ->label(__('carbex.admin.users.email'))
+                            ->label(__('linscarbon.admin.users.email'))
                             ->email()
                             ->required()
                             ->unique(ignoreRecord: true)
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('phone')
-                            ->label(__('carbex.admin.users.phone'))
+                            ->label(__('linscarbon.admin.users.phone'))
                             ->tel()
                             ->maxLength(20),
 
                         Forms\Components\TextInput::make('job_title')
-                            ->label(__('carbex.admin.users.job_title'))
+                            ->label(__('linscarbon.admin.users.job_title'))
                             ->maxLength(255),
 
                         Forms\Components\TextInput::make('department')
-                            ->label(__('carbex.admin.users.department'))
+                            ->label(__('linscarbon.admin.users.department'))
                             ->maxLength(255),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('carbex.admin.users.organization_role'))
+                Forms\Components\Section::make(__('linscarbon.admin.users.organization_role'))
                     ->schema([
                         Forms\Components\Select::make('organization_id')
-                            ->label(__('carbex.admin.users.organization'))
+                            ->label(__('linscarbon.admin.users.organization'))
                             ->relationship('organization', 'name')
                             ->searchable()
                             ->preload(),
 
                         Forms\Components\Select::make('role')
-                            ->label(__('carbex.admin.users.role'))
+                            ->label(__('linscarbon.admin.users.role'))
                             ->options([
-                                'owner' => __('carbex.admin.users.roles.owner'),
-                                'admin' => __('carbex.admin.users.roles.admin'),
-                                'manager' => __('carbex.admin.users.roles.manager'),
-                                'member' => __('carbex.admin.users.roles.member'),
-                                'viewer' => __('carbex.admin.users.roles.viewer'),
+                                'owner' => __('linscarbon.admin.users.roles.owner'),
+                                'admin' => __('linscarbon.admin.users.roles.admin'),
+                                'manager' => __('linscarbon.admin.users.roles.manager'),
+                                'member' => __('linscarbon.admin.users.roles.member'),
+                                'viewer' => __('linscarbon.admin.users.roles.viewer'),
                             ])
                             ->required(),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('carbex.admin.users.security'))
+                Forms\Components\Section::make(__('linscarbon.admin.users.security'))
                     ->schema([
                         Forms\Components\TextInput::make('password')
-                            ->label(__('carbex.admin.users.password'))
+                            ->label(__('linscarbon.admin.users.password'))
                             ->password()
                             ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                             ->dehydrated(fn (?string $state): bool => filled($state))
                             ->required(fn (string $operation): bool => $operation === 'create'),
 
                         Forms\Components\Toggle::make('is_active')
-                            ->label(__('carbex.admin.users.is_active'))
+                            ->label(__('linscarbon.admin.users.is_active'))
                             ->default(true),
 
                         Forms\Components\Toggle::make('two_factor_enabled')
-                            ->label(__('carbex.admin.users.two_factor'))
+                            ->label(__('linscarbon.admin.users.two_factor'))
                             ->disabled(),
 
                         Forms\Components\DateTimePicker::make('email_verified_at')
-                            ->label(__('carbex.admin.users.email_verified_at')),
+                            ->label(__('linscarbon.admin.users.email_verified_at')),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('carbex.admin.users.preferences'))
+                Forms\Components\Section::make(__('linscarbon.admin.users.preferences'))
                     ->schema([
                         Forms\Components\Select::make('locale')
-                            ->label(__('carbex.admin.users.locale'))
+                            ->label(__('linscarbon.admin.users.locale'))
                             ->options([
                                 'de' => 'Deutsch',
                                 'en' => 'English',
@@ -121,7 +121,7 @@ class UserResource extends Resource
                             ->default('de'),
 
                         Forms\Components\Select::make('timezone')
-                            ->label(__('carbex.admin.users.timezone'))
+                            ->label(__('linscarbon.admin.users.timezone'))
                             ->options([
                                 'Europe/Berlin' => 'Europe/Berlin',
                                 'Europe/Paris' => 'Europe/Paris',
@@ -142,22 +142,22 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('carbex.admin.users.name'))
+                    ->label(__('linscarbon.admin.users.name'))
                     ->searchable()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('email')
-                    ->label(__('carbex.admin.users.email'))
+                    ->label(__('linscarbon.admin.users.email'))
                     ->searchable()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('organization.name')
-                    ->label(__('carbex.admin.users.organization'))
+                    ->label(__('linscarbon.admin.users.organization'))
                     ->searchable()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('role')
-                    ->label(__('carbex.admin.users.role'))
+                    ->label(__('linscarbon.admin.users.role'))
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'owner' => 'danger',
@@ -168,21 +168,21 @@ class UserResource extends Resource
                     }),
 
                 Tables\Columns\IconColumn::make('is_active')
-                    ->label(__('carbex.admin.users.is_active'))
+                    ->label(__('linscarbon.admin.users.is_active'))
                     ->boolean(),
 
                 Tables\Columns\IconColumn::make('two_factor_enabled')
-                    ->label(__('carbex.admin.users.two_factor'))
+                    ->label(__('linscarbon.admin.users.two_factor'))
                     ->boolean(),
 
                 Tables\Columns\TextColumn::make('last_login_at')
-                    ->label(__('carbex.admin.users.last_login'))
+                    ->label(__('linscarbon.admin.users.last_login'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('carbex.admin.users.created_at'))
+                    ->label(__('linscarbon.admin.users.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -195,18 +195,18 @@ class UserResource extends Resource
 
                 Tables\Filters\SelectFilter::make('role')
                     ->options([
-                        'owner' => __('carbex.admin.users.roles.owner'),
-                        'admin' => __('carbex.admin.users.roles.admin'),
-                        'manager' => __('carbex.admin.users.roles.manager'),
-                        'member' => __('carbex.admin.users.roles.member'),
-                        'viewer' => __('carbex.admin.users.roles.viewer'),
+                        'owner' => __('linscarbon.admin.users.roles.owner'),
+                        'admin' => __('linscarbon.admin.users.roles.admin'),
+                        'manager' => __('linscarbon.admin.users.roles.manager'),
+                        'member' => __('linscarbon.admin.users.roles.member'),
+                        'viewer' => __('linscarbon.admin.users.roles.viewer'),
                     ]),
 
                 Tables\Filters\TernaryFilter::make('is_active')
-                    ->label(__('carbex.admin.users.is_active')),
+                    ->label(__('linscarbon.admin.users.is_active')),
 
                 Tables\Filters\TernaryFilter::make('two_factor_enabled')
-                    ->label(__('carbex.admin.users.two_factor')),
+                    ->label(__('linscarbon.admin.users.two_factor')),
             ])
             ->actions([
                 ViewAction::make(),
@@ -241,16 +241,16 @@ class UserResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('carbex.admin.navigation.users');
+        return __('linscarbon.admin.navigation.users');
     }
 
     public static function getModelLabel(): string
     {
-        return __('carbex.admin.users.singular');
+        return __('linscarbon.admin.users.singular');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('carbex.admin.users.plural');
+        return __('linscarbon.admin.users.plural');
     }
 }

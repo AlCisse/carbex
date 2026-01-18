@@ -6,7 +6,7 @@ Accepté
 
 ## Contexte
 
-Carbex doit générer des rapports de bilan carbone:
+LinsCarbon doit générer des rapports de bilan carbone:
 - Formats multiples: PDF, Excel, BEGES XML
 - Personnalisation par template
 - Génération potentiellement longue (>30s)

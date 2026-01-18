@@ -16,7 +16,7 @@ use Livewire\Component;
  * Composant Livewire pour afficher et gérer les recommandations d'actions IA.
  * Analyse automatiquement le bilan et propose des actions de réduction prioritaires.
  *
- * Constitution Carbex v3.0 - Section 2.8 (Plan de transition)
+ * Constitution LinsCarbon v3.0 - Section 2.8 (Plan de transition)
  */
 class AIActionRecommender extends Component
 {
@@ -131,7 +131,7 @@ class AIActionRecommender extends Component
 
         // Block analysis if no emission data
         if (! $this->hasEmissionData) {
-            session()->flash('error', __('carbex.ai.no_emission_data'));
+            session()->flash('error', __('linscarbon.ai.no_emission_data'));
             return;
         }
 
@@ -141,7 +141,7 @@ class AIActionRecommender extends Component
             : $organization->currentAssessment;
 
         if (! $assessment) {
-            session()->flash('error', __('carbex.ai.no_assessment'));
+            session()->flash('error', __('linscarbon.ai.no_assessment'));
 
             return;
         }
@@ -160,7 +160,7 @@ class AIActionRecommender extends Component
             $this->hasAnalyzed = true;
         } catch (\Exception $e) {
             report($e);
-            session()->flash('error', __('carbex.ai.analysis_error'));
+            session()->flash('error', __('linscarbon.ai.analysis_error'));
         } finally {
             $this->isLoading = false;
         }
@@ -198,7 +198,7 @@ class AIActionRecommender extends Component
     public function addToTransitionPlan(): void
     {
         if (empty($this->selectedRecommendations)) {
-            session()->flash('warning', __('carbex.ai.no_selection'));
+            session()->flash('warning', __('linscarbon.ai.no_selection'));
 
             return;
         }
@@ -221,7 +221,7 @@ class AIActionRecommender extends Component
 
         $this->selectedRecommendations = [];
 
-        session()->flash('success', trans_choice('carbex.ai.actions_added', $addedCount, ['count' => $addedCount]));
+        session()->flash('success', trans_choice('linscarbon.ai.actions_added', $addedCount, ['count' => $addedCount]));
 
         // Dispatch event pour mettre à jour la liste des actions
         $this->dispatch('actions-updated');
@@ -248,7 +248,7 @@ class AIActionRecommender extends Component
         // Close modal if open
         $this->closeDetails();
 
-        session()->flash('success', __('carbex.ai.action_added', ['title' => $action->title]));
+        session()->flash('success', __('linscarbon.ai.action_added', ['title' => $action->title]));
         $this->dispatch('actions-updated');
     }
 

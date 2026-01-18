@@ -41,7 +41,7 @@ class StaleDataWarningNotification extends Notification implements ShouldQueue
         $message = (new MailMessage)
             ->subject("Action Required: Your emission data hasn't been updated in {$daysSinceSync} days")
             ->greeting("Hello {$notifiable->name},")
-            ->line("We noticed that your organization's emission data in Carbex hasn't been updated recently.")
+            ->line("We noticed that your organization's emission data in LinsCarbon hasn't been updated recently.")
             ->line("**Last sync:** {$daysSinceSync} days ago");
 
         if (!empty($staleConnections)) {

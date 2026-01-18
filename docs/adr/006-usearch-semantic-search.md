@@ -2,11 +2,11 @@
 
 **Date**: 2026-01-13
 **Statut**: Accepte
-**Decideurs**: Equipe Carbex
+**Decideurs**: Equipe LinsCarbon
 
 ## Contexte
 
-La plateforme Carbex necessite une recherche efficace des facteurs d'emission parmi plus de 15,000 entrees provenant de sources multiples (ADEME, UBA, GHG Protocol). Les utilisateurs formulent souvent des requetes en langage naturel qui ne correspondent pas exactement aux noms des facteurs dans la base de donnees.
+La plateforme LinsCarbon necessite une recherche efficace des facteurs d'emission parmi plus de 15,000 entrees provenant de sources multiples (ADEME, UBA, GHG Protocol). Les utilisateurs formulent souvent des requetes en langage naturel qui ne correspondent pas exactement aux noms des facteurs dans la base de donnees.
 
 Exemples de problemes avec la recherche textuelle :
 - "transport avion" ne trouve pas "Aviation - vol long courrier"

@@ -19,7 +19,7 @@ use Livewire\WithPagination;
  * Composant Livewire pour la gestion des fournisseurs Scope 3.
  * Permet de lister, inviter, et suivre la collecte des données fournisseurs.
  *
- * Constitution Carbex v3.0 - Section 9.6 (Module Fournisseurs)
+ * Constitution LinsCarbon v3.0 - Section 9.6 (Module Fournisseurs)
  */
 class SupplierManagement extends Component
 {
@@ -151,25 +151,25 @@ class SupplierManagement extends Component
     public function sectors(): array
     {
         return [
-            'A' => __('carbex.sectors.agriculture'),
-            'B' => __('carbex.sectors.mining'),
-            'C' => __('carbex.sectors.manufacturing'),
-            'D' => __('carbex.sectors.electricity'),
-            'E' => __('carbex.sectors.water'),
-            'F' => __('carbex.sectors.construction'),
-            'G' => __('carbex.sectors.wholesale'),
-            'H' => __('carbex.sectors.transport'),
-            'I' => __('carbex.sectors.accommodation'),
-            'J' => __('carbex.sectors.information'),
-            'K' => __('carbex.sectors.finance'),
-            'L' => __('carbex.sectors.real_estate'),
-            'M' => __('carbex.sectors.professional'),
-            'N' => __('carbex.sectors.administrative'),
-            'O' => __('carbex.sectors.public'),
-            'P' => __('carbex.sectors.education'),
-            'Q' => __('carbex.sectors.health'),
-            'R' => __('carbex.sectors.arts'),
-            'S' => __('carbex.sectors.other'),
+            'A' => __('linscarbon.sectors.agriculture'),
+            'B' => __('linscarbon.sectors.mining'),
+            'C' => __('linscarbon.sectors.manufacturing'),
+            'D' => __('linscarbon.sectors.electricity'),
+            'E' => __('linscarbon.sectors.water'),
+            'F' => __('linscarbon.sectors.construction'),
+            'G' => __('linscarbon.sectors.wholesale'),
+            'H' => __('linscarbon.sectors.transport'),
+            'I' => __('linscarbon.sectors.accommodation'),
+            'J' => __('linscarbon.sectors.information'),
+            'K' => __('linscarbon.sectors.finance'),
+            'L' => __('linscarbon.sectors.real_estate'),
+            'M' => __('linscarbon.sectors.professional'),
+            'N' => __('linscarbon.sectors.administrative'),
+            'O' => __('linscarbon.sectors.public'),
+            'P' => __('linscarbon.sectors.education'),
+            'Q' => __('linscarbon.sectors.health'),
+            'R' => __('linscarbon.sectors.arts'),
+            'S' => __('linscarbon.sectors.other'),
         ];
     }
 
@@ -238,12 +238,12 @@ class SupplierManagement extends Component
 
         if ($this->editingId) {
             Supplier::where('id', $this->editingId)->update($data);
-            session()->flash('success', __('carbex.suppliers.updated'));
+            session()->flash('success', __('linscarbon.suppliers.updated'));
         } else {
             $data['status'] = Supplier::STATUS_PENDING;
             $data['data_quality'] = Supplier::QUALITY_NONE;
             Supplier::create($data);
-            session()->flash('success', __('carbex.suppliers.created'));
+            session()->flash('success', __('linscarbon.suppliers.created'));
         }
 
         $this->closeModal();
@@ -259,7 +259,7 @@ class SupplierManagement extends Component
             ->where('organization_id', auth()->user()->organization_id)
             ->delete();
 
-        session()->flash('success', __('carbex.suppliers.deleted'));
+        session()->flash('success', __('linscarbon.suppliers.deleted'));
         $this->loadStats();
     }
 
@@ -270,7 +270,7 @@ class SupplierManagement extends Component
     {
         $this->inviteForm = [
             'supplier_id' => $supplierId,
-            'message' => __('carbex.suppliers.default_invite_message'),
+            'message' => __('linscarbon.suppliers.default_invite_message'),
             'due_date' => now()->addDays(30)->format('Y-m-d'),
         ];
         $this->showInviteModal = true;
@@ -301,7 +301,7 @@ class SupplierManagement extends Component
 
         $supplier->update(['status' => Supplier::STATUS_INVITED]);
 
-        session()->flash('success', __('carbex.suppliers.invitation_sent', ['name' => $supplier->name]));
+        session()->flash('success', __('linscarbon.suppliers.invitation_sent', ['name' => $supplier->name]));
 
         $this->showInviteModal = false;
         $this->loadStats();
@@ -366,11 +366,11 @@ class SupplierManagement extends Component
         $this->loadStats();
 
         if ($imported > 0) {
-            session()->flash('success', trans_choice('carbex.suppliers.imported', $imported, ['count' => $imported]));
+            session()->flash('success', trans_choice('linscarbon.suppliers.imported', $imported, ['count' => $imported]));
         }
 
         if (count($errors) > 0) {
-            session()->flash('warning', __('carbex.suppliers.import_errors', ['count' => count($errors)]));
+            session()->flash('warning', __('linscarbon.suppliers.import_errors', ['count' => count($errors)]));
         }
     }
 

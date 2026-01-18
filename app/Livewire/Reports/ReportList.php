@@ -18,7 +18,7 @@ use Livewire\Component;
 /**
  * ReportList - Reports dashboard with generation and history
  *
- * Constitution Carbex v3.0 - Section 5.1, T070-T071
+ * Constitution LinsCarbon v3.0 - Section 5.1, T070-T071
  *
  * Features:
  * - 3 report types: Word, ADEME, GHG
@@ -62,24 +62,24 @@ class ReportList extends Component
         return [
             [
                 'id' => 'carbon_footprint',
-                'name' => __('carbex.reports.carbon_footprint'),
-                'description' => __('carbex.reports.carbon_footprint_desc'),
+                'name' => __('linscarbon.reports.carbon_footprint'),
+                'description' => __('linscarbon.reports.carbon_footprint_desc'),
                 'format' => 'docx',
                 'icon' => 'document-text',
                 'color' => 'blue',
             ],
             [
                 'id' => 'ademe',
-                'name' => __('carbex.reports.ademe'),
-                'description' => __('carbex.reports.ademe_desc'),
+                'name' => __('linscarbon.reports.ademe'),
+                'description' => __('linscarbon.reports.ademe_desc'),
                 'format' => 'xlsx',
                 'icon' => 'table-cells',
                 'color' => 'green',
             ],
             [
                 'id' => 'ghg',
-                'name' => __('carbex.reports.ghg'),
-                'description' => __('carbex.reports.ghg_desc'),
+                'name' => __('linscarbon.reports.ghg'),
+                'description' => __('linscarbon.reports.ghg_desc'),
                 'format' => 'xlsx',
                 'icon' => 'globe-europe-africa',
                 'color' => 'purple',
@@ -172,13 +172,13 @@ class ReportList extends Component
                 ]);
             }
 
-            session()->flash('message', __('carbex.reports.generation_started'));
+            session()->flash('message', __('linscarbon.reports.generation_started'));
 
             $this->closeGenerateModal();
             unset($this->reports);
         } catch (\Exception $e) {
             \Log::error('Report generation failed: ' . $e->getMessage());
-            session()->flash('error', __('carbex.reports.generation_failed') . ': ' . $e->getMessage());
+            session()->flash('error', __('linscarbon.reports.generation_failed') . ': ' . $e->getMessage());
         } finally {
             $this->generating = false;
         }
@@ -194,7 +194,7 @@ class ReportList extends Component
         if ($report && $report->organization_id === auth()->user()->organization_id) {
             $report->deleteFile();
             $report->delete();
-            session()->flash('message', __('carbex.messages.deleted'));
+            session()->flash('message', __('linscarbon.messages.deleted'));
             unset($this->reports);
         }
     }

@@ -1,6 +1,6 @@
 # Architecture Decision Records (ADR)
 
-This directory contains Architecture Decision Records for the Carbex project.
+This directory contains Architecture Decision Records for the LinsCarbon project.
 
 ## What are ADRs?
 

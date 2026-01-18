@@ -110,10 +110,10 @@ class EmissionRecord extends Model
     public function getSourceLabelAttribute(): string
     {
         return match ($this->source_type) {
-            'transaction' => __('carbex.emission_sources.transaction'),
-            'activity' => __('carbex.emission_sources.activity'),
-            'manual' => __('carbex.emission_sources.manual'),
-            'import' => __('carbex.emission_sources.import'),
+            'transaction' => __('linscarbon.emission_sources.transaction'),
+            'activity' => __('linscarbon.emission_sources.activity'),
+            'manual' => __('linscarbon.emission_sources.manual'),
+            'import' => __('linscarbon.emission_sources.import'),
             default => $this->source_type,
         };
     }
@@ -124,9 +124,9 @@ class EmissionRecord extends Model
     public function getScopeLabelAttribute(): string
     {
         return match ($this->scope) {
-            1 => __('carbex.ghg_scopes.1.name'),
-            2 => __('carbex.ghg_scopes.2.name'),
-            3 => __('carbex.ghg_scopes.3.name'),
+            1 => __('linscarbon.ghg_scopes.1.name'),
+            2 => __('linscarbon.ghg_scopes.2.name'),
+            3 => __('linscarbon.ghg_scopes.3.name'),
             default => "Scope {$this->scope}",
         };
     }

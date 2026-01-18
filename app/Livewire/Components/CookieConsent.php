@@ -26,7 +26,7 @@ class CookieConsent extends Component
     public function mount(): void
     {
         // Check if consent already given
-        $consent = request()->cookie('carbex_cookie_consent');
+        $consent = request()->cookie('linscarbon_cookie_consent');
 
         if ($consent) {
             $this->showBanner = false;
@@ -95,7 +95,7 @@ class CookieConsent extends Component
         ];
 
         // 365 days cookie duration
-        Cookie::queue('carbex_cookie_consent', json_encode($consent), 60 * 24 * 365);
+        Cookie::queue('linscarbon_cookie_consent', json_encode($consent), 60 * 24 * 365);
 
         // Update user preferences if logged in
         if (auth()->check()) {

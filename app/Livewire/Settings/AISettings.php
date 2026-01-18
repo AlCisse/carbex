@@ -10,7 +10,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.app')]
-#[Title('AI Settings - Carbex')]
+#[Title('AI Settings - LinsCarbon')]
 class AISettings extends Component
 {
     // Read-only provider info from admin
@@ -117,7 +117,7 @@ class AISettings extends Component
             // Free tier / Trial
             return [
                 'plan' => 'free',
-                'plan_label' => __('carbex.subscription.plans.free'),
+                'plan_label' => __('linscarbon.subscription.plans.free'),
                 'monthly_tokens' => 50000,
                 'monthly_requests' => 100,
                 'features' => ['chat_widget'],
@@ -128,28 +128,28 @@ class AISettings extends Component
         return match ($subscription->plan) {
             'starter' => [
                 'plan' => 'starter',
-                'plan_label' => __('carbex.subscription.plans.starter'),
+                'plan_label' => __('linscarbon.subscription.plans.starter'),
                 'monthly_tokens' => 200000,
                 'monthly_requests' => 500,
                 'features' => ['chat_widget', 'emission_helper'],
             ],
             'professional' => [
                 'plan' => 'professional',
-                'plan_label' => __('carbex.subscription.plans.professional'),
+                'plan_label' => __('linscarbon.subscription.plans.professional'),
                 'monthly_tokens' => 1000000,
                 'monthly_requests' => 2500,
                 'features' => ['chat_widget', 'emission_helper', 'document_extraction'],
             ],
             'enterprise' => [
                 'plan' => 'enterprise',
-                'plan_label' => __('carbex.subscription.plans.enterprise'),
+                'plan_label' => __('linscarbon.subscription.plans.enterprise'),
                 'monthly_tokens' => null, // Unlimited
                 'monthly_requests' => null, // Unlimited
                 'features' => ['chat_widget', 'emission_helper', 'document_extraction', 'custom_prompts', 'api_access'],
             ],
             default => [
                 'plan' => 'free',
-                'plan_label' => __('carbex.subscription.plans.free'),
+                'plan_label' => __('linscarbon.subscription.plans.free'),
                 'monthly_tokens' => 50000,
                 'monthly_requests' => 100,
                 'features' => ['chat_widget'],

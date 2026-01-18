@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notification;
  *
  * Part of Phase 10: Employee engagement module (T182).
  *
- * @see specs/001-carbex-mvp-platform/tasks.md T182
+ * @see specs/001-linscarbon-mvp-platform/tasks.md T182
  */
 class EngagementNewsletterNotification extends Notification implements ShouldQueue
 {
@@ -40,32 +40,32 @@ class EngagementNewsletterNotification extends Notification implements ShouldQue
         $tip = $this->getRandomTip($locale);
 
         $mail = (new MailMessage)
-            ->subject(__('carbex.notifications.newsletter.subject', ['org' => $this->organization->name]))
-            ->greeting(__('carbex.notifications.newsletter.greeting', ['name' => $notifiable->name]))
-            ->line(__('carbex.notifications.newsletter.intro', ['org' => $this->organization->name]));
+            ->subject(__('linscarbon.notifications.newsletter.subject', ['org' => $this->organization->name]))
+            ->greeting(__('linscarbon.notifications.newsletter.greeting', ['name' => $notifiable->name]))
+            ->line(__('linscarbon.notifications.newsletter.intro', ['org' => $this->organization->name]));
 
         // Team stats
         if ($challengesCompleted > 0 || $totalPoints > 0) {
             $mail->line('---')
-                ->line(__('carbex.notifications.newsletter.team_stats'))
-                ->line(__('carbex.notifications.newsletter.challenges_this_month', ['count' => $challengesCompleted]))
-                ->line(__('carbex.notifications.newsletter.total_points', ['count' => $totalPoints]));
+                ->line(__('linscarbon.notifications.newsletter.team_stats'))
+                ->line(__('linscarbon.notifications.newsletter.challenges_this_month', ['count' => $challengesCompleted]))
+                ->line(__('linscarbon.notifications.newsletter.total_points', ['count' => $totalPoints]));
 
             if ($topPerformer) {
-                $mail->line(__('carbex.notifications.newsletter.top_performer', ['name' => $topPerformer]));
+                $mail->line(__('linscarbon.notifications.newsletter.top_performer', ['name' => $topPerformer]));
             }
         }
 
         // Weekly tip
         $mail->line('---')
-            ->line(__('carbex.notifications.newsletter.tip_title'))
+            ->line(__('linscarbon.notifications.newsletter.tip_title'))
             ->line($tip);
 
         // CTA
-        $mail->action(__('carbex.notifications.newsletter.cta'), route('engage.employees'))
-            ->line(__('carbex.notifications.newsletter.closing'));
+        $mail->action(__('linscarbon.notifications.newsletter.cta'), route('engage.employees'))
+            ->line(__('linscarbon.notifications.newsletter.closing'));
 
-        return $mail->salutation(__('carbex.notifications.newsletter.salutation'));
+        return $mail->salutation(__('linscarbon.notifications.newsletter.salutation'));
     }
 
     protected function getRandomTip(string $locale): string

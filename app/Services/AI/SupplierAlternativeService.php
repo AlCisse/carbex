@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
  * Service IA pour suggérer des alternatives fournisseurs plus vertes.
  * Analyse les fournisseurs existants et recommande des options à moindre impact carbone.
  *
- * Constitution Carbex v3.0 - Section 9.6 (Module Fournisseurs Scope 3)
+ * Constitution LinsCarbon v3.0 - Section 9.6 (Module Fournisseurs Scope 3)
  */
 class SupplierAlternativeService
 {
@@ -325,25 +325,25 @@ PROMPT;
             'suggestions' => [
                 [
                     'type' => 'local',
-                    'description' => __('carbex.suppliers.alternative.local'),
+                    'description' => __('linscarbon.suppliers.alternative.local'),
                     'potential_reduction' => 15,
-                    'criteria' => [__('carbex.suppliers.criteria.proximity'), __('carbex.suppliers.criteria.reduced_transport')],
+                    'criteria' => [__('linscarbon.suppliers.criteria.proximity'), __('linscarbon.suppliers.criteria.reduced_transport')],
                 ],
                 [
                     'type' => 'certified',
-                    'description' => __('carbex.suppliers.alternative.certified'),
+                    'description' => __('linscarbon.suppliers.alternative.certified'),
                     'potential_reduction' => 20,
-                    'criteria' => [__('carbex.suppliers.criteria.iso14001'), __('carbex.suppliers.criteria.transparency')],
+                    'criteria' => [__('linscarbon.suppliers.criteria.iso14001'), __('linscarbon.suppliers.criteria.transparency')],
                 ],
                 [
                     'type' => 'collaborative',
-                    'description' => __('carbex.suppliers.alternative.collaborative'),
+                    'description' => __('linscarbon.suppliers.alternative.collaborative'),
                     'potential_reduction' => 10,
-                    'criteria' => [__('carbex.suppliers.criteria.sbti'), __('carbex.suppliers.criteria.partnership')],
+                    'criteria' => [__('linscarbon.suppliers.criteria.sbti'), __('linscarbon.suppliers.criteria.partnership')],
                 ],
             ],
             'potential_reduction' => 15,
-            'reasoning' => __('carbex.suppliers.alternative.reasoning'),
+            'reasoning' => __('linscarbon.suppliers.alternative.reasoning'),
             'criteria' => $criteria['certifications'] ?? [],
         ];
     }

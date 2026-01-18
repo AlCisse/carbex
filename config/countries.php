@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Carbex - Multi-Country Configuration
+ * LinsCarbon - Multi-Country Configuration
  *
  * Supported countries: France (FR), Germany (DE), Belgium (BE),
  * Netherlands (NL), Austria (AT), Switzerland (CH), Spain (ES), Italy (IT)

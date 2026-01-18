@@ -13,7 +13,7 @@ use Livewire\Component;
 /**
  * EvaluationProgress - Step-by-step evaluation checklist
  *
- * Constitution Carbex v3.0 - Section 3.2, T054
+ * Constitution LinsCarbon v3.0 - Section 3.2, T054
  *
  * Displays evaluation steps with status:
  * - Setup steps (organization, sites)
@@ -38,8 +38,8 @@ class EvaluationProgress extends Component
         $orgComplete = $organization && $organization->name && $organization->country_code;
         $steps->push([
             'id' => 'organization',
-            'name' => __('carbex.evaluation.setup_organization'),
-            'description' => __('carbex.evaluation.setup_organization_desc'),
+            'name' => __('linscarbon.evaluation.setup_organization'),
+            'description' => __('linscarbon.evaluation.setup_organization_desc'),
             'status' => $orgComplete ? 'completed' : 'pending',
             'route' => route('settings'),
             'scope' => null,
@@ -49,8 +49,8 @@ class EvaluationProgress extends Component
         $sitesCount = Site::where('organization_id', $organizationId)->count();
         $steps->push([
             'id' => 'sites',
-            'name' => __('carbex.evaluation.setup_sites'),
-            'description' => __('carbex.evaluation.setup_sites_desc'),
+            'name' => __('linscarbon.evaluation.setup_sites'),
+            'description' => __('linscarbon.evaluation.setup_sites_desc'),
             'status' => $sitesCount > 0 ? 'completed' : 'pending',
             'route' => route('settings.sites'),
             'scope' => null,

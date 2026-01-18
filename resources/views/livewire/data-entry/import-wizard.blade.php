@@ -2,7 +2,7 @@
     {{-- Progress Steps --}}
     <nav aria-label="Progress" class="mb-8">
         <ol class="flex items-center justify-center space-x-5">
-            @foreach([1 => __('carbex.import.upload'), 2 => __('carbex.import.map_columns'), 3 => __('carbex.import.validate'), 4 => __('carbex.import.import')] as $stepNum => $stepName)
+            @foreach([1 => __('linscarbon.import.upload'), 2 => __('linscarbon.import.map_columns'), 3 => __('linscarbon.import.validate'), 4 => __('linscarbon.import.import')] as $stepNum => $stepName)
                 <li class="flex items-center">
                     <span class="flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium
                         {{ $step >= $stepNum ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-400' }}">
@@ -34,21 +34,21 @@
     @if($step === 1)
         <x-card>
             <x-slot name="header">
-                <h3 class="text-lg font-semibold">{{ __('carbex.import.upload_data_file') }}</h3>
-                <p class="text-sm text-gray-500">{{ __('carbex.import.import_desc') }}</p>
+                <h3 class="text-lg font-semibold">{{ __('linscarbon.import.upload_data_file') }}</h3>
+                <p class="text-sm text-gray-500">{{ __('linscarbon.import.import_desc') }}</p>
             </x-slot>
 
             <div class="space-y-6">
                 {{-- Import Type --}}
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
-                        {{ __('carbex.import.import_type') }}
+                        {{ __('linscarbon.import.import_type') }}
                     </label>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         @foreach([
-                            'transactions' => ['icon' => 'credit-card', 'label' => __('carbex.import.bank_transactions'), 'desc' => __('carbex.import.csv_export')],
-                            'activities' => ['icon' => 'clipboard-document-list', 'label' => __('carbex.import.activities'), 'desc' => __('carbex.import.activities_desc')],
-                            'fec' => ['icon' => 'document-text', 'label' => __('carbex.import.fec_france'), 'desc' => __('carbex.import.fec_desc')],
+                            'transactions' => ['icon' => 'credit-card', 'label' => __('linscarbon.import.bank_transactions'), 'desc' => __('linscarbon.import.csv_export')],
+                            'activities' => ['icon' => 'clipboard-document-list', 'label' => __('linscarbon.import.activities'), 'desc' => __('linscarbon.import.activities_desc')],
+                            'fec' => ['icon' => 'document-text', 'label' => __('linscarbon.import.fec_france'), 'desc' => __('linscarbon.import.fec_desc')],
                         ] as $type => $config)
                             <button
                                 type="button"
@@ -74,14 +74,14 @@
                 {{-- Site Selection --}}
                 <div>
                     <label for="site" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        {{ __('carbex.import.target_site') }}
+                        {{ __('linscarbon.import.target_site') }}
                     </label>
                     <select
                         id="site"
                         wire:model="siteId"
                         class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-green-500 focus:border-green-500"
                     >
-                        <option value="">{{ __('carbex.import.select_site') }}</option>
+                        <option value="">{{ __('linscarbon.import.select_site') }}</option>
                         @foreach($this->sites as $site)
                             <option value="{{ $site->id }}">{{ $site->name }}</option>
                         @endforeach
@@ -91,7 +91,7 @@
                 {{-- File Upload --}}
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        {{ __('carbex.import.data_file') }}
+                        {{ __('linscarbon.import.data_file') }}
                     </label>
                     <div
                         x-data="{ dragging: false }"
@@ -112,11 +112,11 @@
                         <label for="file-upload" class="cursor-pointer">
                             <x-heroicon-o-cloud-arrow-up class="w-12 h-12 mx-auto text-gray-400 mb-4" />
                             <p class="text-gray-600 dark:text-gray-400">
-                                {{ __('carbex.import.drag_drop') }}
-                                <span class="text-green-600 hover:text-green-700 font-medium">{{ __('carbex.import.browse') }}</span>
+                                {{ __('linscarbon.import.drag_drop') }}
+                                <span class="text-green-600 hover:text-green-700 font-medium">{{ __('linscarbon.import.browse') }}</span>
                             </p>
                             <p class="text-sm text-gray-500 mt-2">
-                                {{ __('carbex.import.file_types') }}
+                                {{ __('linscarbon.import.file_types') }}
                             </p>
                         </label>
 
@@ -130,7 +130,7 @@
 
                         <div wire:loading wire:target="file" class="mt-4">
                             <x-heroicon-o-arrow-path class="w-6 h-6 mx-auto text-green-600 animate-spin" />
-                            <p class="text-sm text-gray-500">{{ __('carbex.import.uploading') }}</p>
+                            <p class="text-sm text-gray-500">{{ __('linscarbon.import.uploading') }}</p>
                         </div>
                     </div>
                     @error('file') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
@@ -145,8 +145,8 @@
                         class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition disabled:opacity-50"
                         {{ !$file || !$siteId ? 'disabled' : '' }}
                     >
-                        <span wire:loading.remove wire:target="analyzeFile">{{ __('carbex.import.analyze_file') }}</span>
-                        <span wire:loading wire:target="analyzeFile">{{ __('carbex.import.analyzing') }}</span>
+                        <span wire:loading.remove wire:target="analyzeFile">{{ __('linscarbon.import.analyze_file') }}</span>
+                        <span wire:loading wire:target="analyzeFile">{{ __('linscarbon.import.analyzing') }}</span>
                     </button>
                 </div>
             </div>
@@ -159,11 +159,11 @@
             <x-slot name="header">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h3 class="text-lg font-semibold">{{ __('carbex.import.map_columns_title') }}</h3>
-                        <p class="text-sm text-gray-500">{{ __('carbex.import.map_columns_desc') }}</p>
+                        <h3 class="text-lg font-semibold">{{ __('linscarbon.import.map_columns_title') }}</h3>
+                        <p class="text-sm text-gray-500">{{ __('linscarbon.import.map_columns_desc') }}</p>
                     </div>
                     <button wire:click="previousStep" class="text-sm text-gray-500 hover:text-gray-700">
-                        &larr; {{ __('carbex.back') }}
+                        &larr; {{ __('linscarbon.back') }}
                     </button>
                 </div>
             </x-slot>
@@ -172,9 +172,9 @@
                 {{-- File Info --}}
                 <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                        <strong>{{ __('carbex.import.detected') }}</strong>
-                        {{ $totalRows }} {{ __('carbex.import.rows') }},
-                        {{ count($headers) }} {{ __('carbex.import.columns') }}
+                        <strong>{{ __('linscarbon.import.detected') }}</strong>
+                        {{ $totalRows }} {{ __('linscarbon.import.rows') }},
+                        {{ count($headers) }} {{ __('linscarbon.import.columns') }}
                     </p>
                 </div>
 
@@ -196,7 +196,7 @@
                                     wire:model="columnMapping.{{ $field }}"
                                     class="w-full rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 focus:ring-green-500 focus:border-green-500 text-sm"
                                 >
-                                    <option value="">{{ __('carbex.import.select_column') }}</option>
+                                    <option value="">{{ __('linscarbon.import.select_column') }}</option>
                                     @foreach($headers as $header)
                                         <option value="{{ $header }}">{{ $header }}</option>
                                     @endforeach
@@ -209,7 +209,7 @@
                 {{-- Sample Data Preview --}}
                 @if(count($sampleRows) > 0)
                     <div>
-                        <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-3">{{ __('carbex.import.sample_data') }}</h4>
+                        <h4 class="font-medium text-gray-700 dark:text-gray-300 mb-3">{{ __('linscarbon.import.sample_data') }}</h4>
                         <div class="overflow-x-auto">
                             <table class="min-w-full text-sm divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead class="bg-gray-50 dark:bg-gray-800">
@@ -245,8 +245,8 @@
                         wire:loading.attr="disabled"
                         class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition"
                     >
-                        <span wire:loading.remove wire:target="validateMapping">{{ __('carbex.import.validate_mapping') }}</span>
-                        <span wire:loading wire:target="validateMapping">{{ __('carbex.import.validating') }}</span>
+                        <span wire:loading.remove wire:target="validateMapping">{{ __('linscarbon.import.validate_mapping') }}</span>
+                        <span wire:loading wire:target="validateMapping">{{ __('linscarbon.import.validating') }}</span>
                     </button>
                 </div>
             </div>
@@ -259,11 +259,11 @@
             <x-slot name="header">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h3 class="text-lg font-semibold">{{ __('carbex.import.validation_results') }}</h3>
-                        <p class="text-sm text-gray-500">{{ __('carbex.import.review_before_import') }}</p>
+                        <h3 class="text-lg font-semibold">{{ __('linscarbon.import.validation_results') }}</h3>
+                        <p class="text-sm text-gray-500">{{ __('linscarbon.import.review_before_import') }}</p>
                     </div>
                     <button wire:click="previousStep" class="text-sm text-gray-500 hover:text-gray-700">
-                        &larr; {{ __('carbex.back') }}
+                        &larr; {{ __('linscarbon.back') }}
                     </button>
                 </div>
             </x-slot>
@@ -273,19 +273,19 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
                         <span class="block text-2xl font-bold text-gray-900 dark:text-white">{{ $totalRows }}</span>
-                        <span class="text-sm text-gray-500">{{ __('carbex.import.total_rows') }}</span>
+                        <span class="text-sm text-gray-500">{{ __('linscarbon.import.total_rows') }}</span>
                     </div>
                     <div class="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
                         <span class="block text-2xl font-bold text-green-600">{{ $validRowCount }}</span>
-                        <span class="text-sm text-green-600">{{ __('carbex.import.valid') }}</span>
+                        <span class="text-sm text-green-600">{{ __('linscarbon.import.valid') }}</span>
                     </div>
                     <div class="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg text-center">
                         <span class="block text-2xl font-bold text-red-600">{{ $invalidRowCount }}</span>
-                        <span class="text-sm text-red-600">{{ __('carbex.import.invalid') }}</span>
+                        <span class="text-sm text-red-600">{{ __('linscarbon.import.invalid') }}</span>
                     </div>
                     <div class="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg text-center">
                         <span class="block text-2xl font-bold text-yellow-600">{{ count($validationWarnings) }}</span>
-                        <span class="text-sm text-yellow-600">{{ __('carbex.import.warnings') }}</span>
+                        <span class="text-sm text-yellow-600">{{ __('linscarbon.import.warnings') }}</span>
                     </div>
                 </div>
 
@@ -294,14 +294,14 @@
                     <div class="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
                         <h4 class="font-medium text-red-800 dark:text-red-200 mb-2">
                             <x-heroicon-s-exclamation-triangle class="w-5 h-5 inline mr-1" />
-                            {{ __('carbex.import.validation_errors') }}
+                            {{ __('linscarbon.import.validation_errors') }}
                         </h4>
                         <ul class="list-disc list-inside text-sm text-red-700 dark:text-red-300 space-y-1">
                             @foreach(array_slice($validationErrors, 0, 10) as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                             @if(count($validationErrors) > 10)
-                                <li class="font-medium">{{ __('carbex.import.and_more', ['count' => count($validationErrors) - 10]) }}</li>
+                                <li class="font-medium">{{ __('linscarbon.import.and_more', ['count' => count($validationErrors) - 10]) }}</li>
                             @endif
                         </ul>
                     </div>
@@ -312,7 +312,7 @@
                     <div class="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
                         <h4 class="font-medium text-yellow-800 dark:text-yellow-200 mb-2">
                             <x-heroicon-s-exclamation-circle class="w-5 h-5 inline mr-1" />
-                            {{ __('carbex.import.warnings') }}
+                            {{ __('linscarbon.import.warnings') }}
                         </h4>
                         <ul class="list-disc list-inside text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
                             @foreach(array_slice($validationWarnings, 0, 5) as $warning)
@@ -329,7 +329,7 @@
                         wire:click="resetWizard"
                         class="px-6 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
                     >
-                        {{ __('carbex.cancel') }}
+                        {{ __('linscarbon.cancel') }}
                     </button>
                     <button
                         type="button"
@@ -339,9 +339,9 @@
                         {{ $invalidRowCount > 0 && $validRowCount === 0 ? 'disabled' : '' }}
                     >
                         <span wire:loading.remove wire:target="startImport">
-                            {{ __('carbex.import.import_rows', ['count' => $validRowCount]) }}
+                            {{ __('linscarbon.import.import_rows', ['count' => $validRowCount]) }}
                         </span>
-                        <span wire:loading wire:target="startImport">{{ __('carbex.import.starting') }}</span>
+                        <span wire:loading wire:target="startImport">{{ __('linscarbon.import.starting') }}</span>
                     </button>
                 </div>
             </div>
@@ -355,17 +355,17 @@
                 <div class="text-green-600 mb-4">
                     <x-heroicon-s-check-circle class="w-20 h-20 mx-auto" />
                 </div>
-                <h3 class="text-2xl font-bold mb-2">{{ __('carbex.import.import_started') }}</h3>
+                <h3 class="text-2xl font-bold mb-2">{{ __('linscarbon.import.import_started') }}</h3>
                 <p class="text-gray-500 mb-6">
-                    {{ __('carbex.import.processing_background') }}
+                    {{ __('linscarbon.import.processing_background') }}
                 </p>
 
                 <div class="flex justify-center space-x-4">
                     <button wire:click="resetWizard" class="px-6 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition">
-                        {{ __('carbex.import.import_another') }}
+                        {{ __('linscarbon.import.import_another') }}
                     </button>
                     <a href="{{ route('dashboard') }}" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition">
-                        {{ __('carbex.import.go_to_dashboard') }}
+                        {{ __('linscarbon.import.go_to_dashboard') }}
                     </a>
                 </div>
             @endif

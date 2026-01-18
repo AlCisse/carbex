@@ -3,8 +3,8 @@
     <div class="mb-6">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.title') }}</h1>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.subtitle') }}</p>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.title') }}</h1>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.subtitle') }}</p>
             </div>
             <div class="flex items-center space-x-4">
                 <!-- Year Selector -->
@@ -27,10 +27,10 @@
                     </svg>
                 </div>
                 <div class="ml-3">
-                    <h3 class="text-sm font-medium text-green-800 dark:text-green-200">{{ __('carbex.csrd_dashboard.applicable') }}</h3>
+                    <h3 class="text-sm font-medium text-green-800 dark:text-green-200">{{ __('linscarbon.csrd_dashboard.applicable') }}</h3>
                     <p class="mt-1 text-sm text-green-700 dark:text-green-300">
-                        {{ __('carbex.csrd_dashboard.organization_classified') }} <strong>{{ ucfirst($this->csrdApplicability['category']) }}</strong>.
-                        {{ __('carbex.csrd_dashboard.first_reporting_year') }}: <strong>{{ $this->csrdApplicability['first_reporting_year'] }}</strong>
+                        {{ __('linscarbon.csrd_dashboard.organization_classified') }} <strong>{{ ucfirst($this->csrdApplicability['category']) }}</strong>.
+                        {{ __('linscarbon.csrd_dashboard.first_reporting_year') }}: <strong>{{ $this->csrdApplicability['first_reporting_year'] }}</strong>
                     </p>
                 </div>
             </div>
@@ -44,9 +44,9 @@
                     </svg>
                 </div>
                 <div class="ml-3">
-                    <h3 class="text-sm font-medium text-yellow-800 dark:text-yellow-200">{{ __('carbex.csrd_dashboard.may_not_apply') }}</h3>
+                    <h3 class="text-sm font-medium text-yellow-800 dark:text-yellow-200">{{ __('linscarbon.csrd_dashboard.may_not_apply') }}</h3>
                     <p class="mt-1 text-sm text-yellow-700 dark:text-yellow-300">
-                        {{ __('carbex.csrd_dashboard.voluntary_adoption') }}
+                        {{ __('linscarbon.csrd_dashboard.voluntary_adoption') }}
                     </p>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.overall_compliance') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.overall_compliance') }}</p>
                     <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-white">{{ $this->complianceScore['score'] ?? 0 }}%</p>
                 </div>
                 <div class="h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
@@ -79,7 +79,7 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.esrs2_disclosures') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.esrs2_disclosures') }}</p>
                     <p class="mt-2 text-3xl font-bold text-gray-900 dark:text-white">{{ $this->esrs2Progress['completed'] }}/{{ $this->esrs2Progress['total'] }}</p>
                 </div>
                 <div class="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <a href="{{ route('csrd.esrs2') }}" class="mt-4 inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                {{ __('carbex.csrd_dashboard.manage_disclosures') }}
+                {{ __('linscarbon.csrd_dashboard.manage_disclosures') }}
                 <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -100,7 +100,7 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.transition_plan') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.transition_plan') }}</p>
                     @if($this->transitionPlan)
                         <p class="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $this->transitionPlan->status === 'approved' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' }}">
@@ -109,7 +109,7 @@
                         </p>
                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ $this->transitionPlan->temperature_target }}</p>
                     @else
-                        <p class="mt-2 text-lg font-semibold text-red-600 dark:text-red-400">{{ __('carbex.csrd_dashboard.not_created') }}</p>
+                        <p class="mt-2 text-lg font-semibold text-red-600 dark:text-red-400">{{ __('linscarbon.csrd_dashboard.not_created') }}</p>
                     @endif
                 </div>
                 <div class="h-12 w-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
@@ -119,7 +119,7 @@
                 </div>
             </div>
             <a href="{{ route('csrd.transition-plan') }}" class="mt-4 inline-flex items-center text-sm text-purple-600 dark:text-purple-400 hover:underline">
-                {{ __('carbex.csrd_dashboard.edit_plan') }}
+                {{ __('linscarbon.csrd_dashboard.edit_plan') }}
                 <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -130,13 +130,13 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.eu_taxonomy') }}</p>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.eu_taxonomy') }}</p>
                     @if($this->taxonomyReport)
                         <p class="mt-2 text-lg font-semibold text-gray-900 dark:text-white">
-                            {{ number_format($this->taxonomyReport->turnover_aligned_percent ?? 0, 1) }}% {{ __('carbex.csrd_dashboard.aligned') }}
+                            {{ number_format($this->taxonomyReport->turnover_aligned_percent ?? 0, 1) }}% {{ __('linscarbon.csrd_dashboard.aligned') }}
                         </p>
                     @else
-                        <p class="mt-2 text-lg font-semibold text-red-600 dark:text-red-400">{{ __('carbex.csrd_dashboard.not_reported') }}</p>
+                        <p class="mt-2 text-lg font-semibold text-red-600 dark:text-red-400">{{ __('linscarbon.csrd_dashboard.not_reported') }}</p>
                     @endif
                 </div>
                 <div class="h-12 w-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
@@ -146,7 +146,7 @@
                 </div>
             </div>
             <a href="{{ route('csrd.taxonomy') }}" class="mt-4 inline-flex items-center text-sm text-teal-600 dark:text-teal-400 hover:underline">
-                {{ __('carbex.csrd_dashboard.edit_report') }}
+                {{ __('linscarbon.csrd_dashboard.edit_report') }}
                 <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -158,13 +158,13 @@
     <div class="mb-6 border-b border-gray-200 dark:border-gray-700">
         <nav class="-mb-px flex space-x-8">
             <button wire:click="setTab('overview')" class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'overview' ? 'border-green-500 text-green-600 dark:text-green-400' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400' }}">
-                {{ __('carbex.csrd_dashboard.overview') }}
+                {{ __('linscarbon.csrd_dashboard.overview') }}
             </button>
             <button wire:click="setTab('deadlines')" class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'deadlines' ? 'border-green-500 text-green-600 dark:text-green-400' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400' }}">
-                {{ __('carbex.csrd_dashboard.deadlines') }}
+                {{ __('linscarbon.csrd_dashboard.deadlines') }}
             </button>
             <button wire:click="setTab('due-diligence')" class="whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm {{ $activeTab === 'due-diligence' ? 'border-green-500 text-green-600 dark:text-green-400' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400' }}">
-                {{ __('carbex.csrd_dashboard.due_diligence_lksg') }}
+                {{ __('linscarbon.csrd_dashboard.due_diligence_lksg') }}
             </button>
         </nav>
     </div>
@@ -174,9 +174,9 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- ESRS 2 Progress -->
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('carbex.csrd_dashboard.esrs2_general_disclosures') }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('linscarbon.csrd_dashboard.esrs2_general_disclosures') }}</h3>
                 <div class="space-y-4">
-                    @foreach(['bp' => __('carbex.csrd_dashboard.basis_preparation'), 'gov' => __('carbex.csrd_dashboard.governance'), 'sbm' => __('carbex.csrd_dashboard.strategy_business_model'), 'iro' => __('carbex.csrd_dashboard.impacts_risks_opportunities')] as $category => $label)
+                    @foreach(['bp' => __('linscarbon.csrd_dashboard.basis_preparation'), 'gov' => __('linscarbon.csrd_dashboard.governance'), 'sbm' => __('linscarbon.csrd_dashboard.strategy_business_model'), 'iro' => __('linscarbon.csrd_dashboard.impacts_risks_opportunities')] as $category => $label)
                         <div>
                             <div class="flex justify-between text-sm mb-1">
                                 <span class="text-gray-600 dark:text-gray-400">{{ $label }}</span>
@@ -189,7 +189,7 @@
                     @endforeach
                 </div>
                 <a href="{{ route('csrd.esrs2') }}" class="mt-4 inline-flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                    {{ __('carbex.csrd_dashboard.view_all_disclosures') }}
+                    {{ __('linscarbon.csrd_dashboard.view_all_disclosures') }}
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
@@ -198,7 +198,7 @@
 
             <!-- Quick Actions -->
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('carbex.csrd_dashboard.quick_actions') }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('linscarbon.csrd_dashboard.quick_actions') }}</h3>
                 <div class="space-y-3">
                     <a href="{{ route('csrd.esrs2') }}" class="flex items-center p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                         <div class="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-3">
@@ -207,8 +207,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.esrs2_disclosures') }}</p>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.manage_general_disclosures') }}</p>
+                            <p class="font-medium text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.esrs2_disclosures') }}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.manage_general_disclosures') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('csrd.transition-plan') }}" class="flex items-center p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
@@ -218,8 +218,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.climate_transition_plan') }}</p>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.esrs_e1_requirements') }}</p>
+                            <p class="font-medium text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.climate_transition_plan') }}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.esrs_e1_requirements') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('csrd.taxonomy') }}" class="flex items-center p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
@@ -229,8 +229,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.eu_taxonomy_report') }}</p>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.article8_disclosure') }}</p>
+                            <p class="font-medium text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.eu_taxonomy_report') }}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.article8_disclosure') }}</p>
                         </div>
                     </a>
                     <a href="{{ route('csrd.due-diligence') }}" class="flex items-center p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
@@ -240,8 +240,8 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-medium text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.value_chain_due_diligence') }}</p>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.lksg_csddd_compliance') }}</p>
+                            <p class="font-medium text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.value_chain_due_diligence') }}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.lksg_csddd_compliance') }}</p>
                         </div>
                     </a>
                 </div>
@@ -250,7 +250,7 @@
     @elseif($activeTab === 'deadlines')
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.upcoming_deadlines') }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.upcoming_deadlines') }}</h3>
             </div>
             <ul class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse($this->upcomingDeadlines as $deadline)
@@ -265,14 +265,14 @@
                                     {{ $deadline['date'] }}
                                 </p>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    {{ $deadline['days_remaining'] }} {{ __('carbex.csrd_dashboard.days_remaining') }}
+                                    {{ $deadline['days_remaining'] }} {{ __('linscarbon.csrd_dashboard.days_remaining') }}
                                 </p>
                             </div>
                         </div>
                     </li>
                 @empty
                     <li class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
-                        {{ __('carbex.csrd_dashboard.no_upcoming_deadlines') }}
+                        {{ __('linscarbon.csrd_dashboard.no_upcoming_deadlines') }}
                     </li>
                 @endforelse
             </ul>
@@ -281,8 +281,8 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div class="flex items-center justify-between mb-6">
                 <div>
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.csrd_dashboard.due_diligence_status') }}</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.lksg_german_law') }}</p>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.csrd_dashboard.due_diligence_status') }}</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.lksg_german_law') }}</p>
                 </div>
                 @if($this->dueDiligence)
                     <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $this->dueDiligence->lksg_status === 'compliant' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' }}">
@@ -295,25 +295,25 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                         <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ number_format($this->dueDiligence->compliance_score, 0) }}%</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.compliance_score') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.compliance_score') }}</p>
                     </div>
                     <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                         <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ count($this->dueDiligence->identified_risks ?? []) }}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.risks_identified') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.risks_identified') }}</p>
                     </div>
                     <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                         <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $this->dueDiligence->suppliers_assessed }}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.suppliers_assessed') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.suppliers_assessed') }}</p>
                     </div>
                     <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                         <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $this->dueDiligence->complaints_resolved }}/{{ $this->dueDiligence->complaints_received }}</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.csrd_dashboard.complaints_resolved') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.csrd_dashboard.complaints_resolved') }}</p>
                     </div>
                 </div>
             @endif
 
             <a href="{{ route('csrd.due-diligence') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                {{ $this->dueDiligence ? __('carbex.csrd_dashboard.manage_due_diligence') : __('carbex.csrd_dashboard.start_assessment') }}
+                {{ $this->dueDiligence ? __('linscarbon.csrd_dashboard.manage_due_diligence') : __('linscarbon.csrd_dashboard.start_assessment') }}
                 <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>

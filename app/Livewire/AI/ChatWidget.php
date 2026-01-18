@@ -38,7 +38,7 @@ class ChatWidget extends Component
     {
         $user = Auth::user();
         if (!$user || !$user->organization) {
-            return ['enabled' => false, 'message' => __('carbex.ai.not_logged_in')];
+            return ['enabled' => false, 'message' => __('linscarbon.ai.not_logged_in')];
         }
 
         $organization = $user->organization;
@@ -50,7 +50,7 @@ class ChatWidget extends Component
         if (!($quotas['enabled'] ?? false)) {
             return [
                 'enabled' => false,
-                'message' => __('carbex.ai.not_available'),
+                'message' => __('linscarbon.ai.not_available'),
                 'plan' => $plan,
             ];
         }

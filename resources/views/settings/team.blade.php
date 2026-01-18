@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot name="header">
-        <h1 class="text-xl font-semibold text-gray-900">{{ __('carbex.settings.users') }}</h1>
+        <h1 class="text-xl font-semibold text-gray-900">{{ __('linscarbon.settings.users') }}</h1>
     </x-slot>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">

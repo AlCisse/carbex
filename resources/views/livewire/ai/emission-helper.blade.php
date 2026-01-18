@@ -4,12 +4,12 @@
         type="button"
         wire:click="openHelper"
         class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg hover:bg-emerald-100 transition-colors"
-        title="{{ __('carbex.ai.ai_help') }}"
+        title="{{ __('linscarbon.ai.ai_help') }}"
     >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
         </svg>
-        <span>{{ __('carbex.ai.ai_help') }}</span>
+        <span>{{ __('linscarbon.ai.ai_help') }}</span>
     </button>
 
     {{-- Sliding Panel --}}
@@ -53,7 +53,7 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <h2 class="text-lg font-semibold text-white" id="slide-over-title">
-                                    {{ __('carbex.ai.ai_help') }}
+                                    {{ __('linscarbon.ai.ai_help') }}
                                 </h2>
                                 @if($aiAvailable)
                                     <p class="text-xs text-emerald-100 mt-0.5">
@@ -66,7 +66,7 @@
                                 class="text-emerald-100 hover:text-white transition-colors"
                                 wire:click="closeHelper"
                             >
-                                <span class="sr-only">{{ __('carbex.ai.close') }}</span>
+                                <span class="sr-only">{{ __('linscarbon.ai.close') }}</span>
                                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -76,7 +76,7 @@
                         {{-- Category context --}}
                         @if($categoryCode)
                             <div class="mt-3 px-3 py-2 bg-white/10 rounded-lg">
-                                <p class="text-xs text-emerald-100">{{ __('carbex.ai.helper.current_category') }}</p>
+                                <p class="text-xs text-emerald-100">{{ __('linscarbon.ai.helper.current_category') }}</p>
                                 <p class="text-sm font-medium text-white">{{ $categoryCode }} - {{ $categoryName }}</p>
                             </div>
                         @endif
@@ -91,12 +91,12 @@
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
-                                    <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.ai.helper.not_configured') }}</h3>
+                                    <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('linscarbon.ai.helper.not_configured') }}</h3>
                                     <p class="mt-1 text-sm text-gray-500">
-                                        {{ __('carbex.ai.helper.configure_api_key') }}
+                                        {{ __('linscarbon.ai.helper.configure_api_key') }}
                                     </p>
                                     <a href="{{ route('settings') }}" class="mt-4 inline-flex items-center gap-1 text-sm text-emerald-600 hover:text-emerald-700">
-                                        {{ __('carbex.ai.helper.configure_ai') }}
+                                        {{ __('linscarbon.ai.helper.configure_ai') }}
                                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -108,7 +108,7 @@
                             @if(count($suggestions) > 0)
                                 <div class="p-4 border-b">
                                     <h3 class="text-sm font-medium text-gray-900 mb-3">
-                                        {{ __('carbex.ai.helper.suggested_sources') }}
+                                        {{ __('linscarbon.ai.helper.suggested_sources') }}
                                     </h3>
                                     <div class="space-y-2">
                                         @foreach($suggestions as $index => $suggestion)
@@ -134,7 +134,7 @@
                             @if($categorySuggestion)
                                 <div class="p-4 border-b bg-blue-50">
                                     <h3 class="text-sm font-medium text-blue-900 mb-2">
-                                        {{ __('carbex.ai.helper.suggested_category') }}
+                                        {{ __('linscarbon.ai.helper.suggested_category') }}
                                     </h3>
                                     <div class="bg-white rounded-lg border border-blue-200 p-3">
                                         <div class="flex items-center justify-between">
@@ -157,7 +157,7 @@
                                             wire:click="applyCategory"
                                             class="mt-3 w-full px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colors"
                                         >
-                                            {{ __('carbex.ai.helper.use_category') }}
+                                            {{ __('linscarbon.ai.helper.use_category') }}
                                         </button>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                             @if($factorSuggestion)
                                 <div class="p-4 border-b bg-purple-50">
                                     <h3 class="text-sm font-medium text-purple-900 mb-2">
-                                        {{ __('carbex.ai.helper.suggested_factor') }}
+                                        {{ __('linscarbon.ai.helper.suggested_factor') }}
                                     </h3>
                                     <div class="bg-white rounded-lg border border-purple-200 p-3">
                                         <p class="font-medium text-gray-900">{{ $factorSuggestion['name'] }}</p>
@@ -180,7 +180,7 @@
                                             wire:click="applyFactor"
                                             class="mt-3 w-full px-3 py-1.5 text-sm font-medium text-purple-700 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
                                         >
-                                            {{ __('carbex.ai.helper.use_factor') }}
+                                            {{ __('linscarbon.ai.helper.use_factor') }}
                                         </button>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
 
                             {{-- Quick Actions --}}
                             <div class="p-4 border-b">
-                                <h3 class="text-sm font-medium text-gray-900 mb-3">{{ __('carbex.ai.helper.quick_actions') }}</h3>
+                                <h3 class="text-sm font-medium text-gray-900 mb-3">{{ __('linscarbon.ai.helper.quick_actions') }}</h3>
                                 <div class="flex flex-wrap gap-2">
                                     <button
                                         type="button"
@@ -198,7 +198,7 @@
                                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        {{ __('carbex.ai.helper.how_to_fill') }}
+                                        {{ __('linscarbon.ai.helper.how_to_fill') }}
                                     </button>
                                     <button
                                         type="button"
@@ -209,7 +209,7 @@
                                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                         </svg>
-                                        {{ __('carbex.ai.helper.suggest_factor') }}
+                                        {{ __('linscarbon.ai.helper.suggest_factor') }}
                                     </button>
                                     <button
                                         type="button"
@@ -220,7 +220,7 @@
                                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                                         </svg>
-                                        {{ __('carbex.ai.helper.suggest_category') }}
+                                        {{ __('linscarbon.ai.helper.suggest_category') }}
                                     </button>
                                 </div>
                             </div>
@@ -238,7 +238,7 @@
                                         <svg class="mx-auto h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                         </svg>
-                                        <p class="text-sm">{{ __('carbex.ai.helper.ask_about_category') }}</p>
+                                        <p class="text-sm">{{ __('linscarbon.ai.helper.ask_about_category') }}</p>
                                     </div>
                                 @endforelse
 
@@ -259,7 +259,7 @@
                             {{-- Quick prompts --}}
                             @if(count($messages) === 0)
                                 <div class="px-4 pb-4">
-                                    <p class="text-xs text-gray-500 mb-2">{{ __('carbex.ai.helper.frequent_questions') }}</p>
+                                    <p class="text-xs text-gray-500 mb-2">{{ __('linscarbon.ai.helper.frequent_questions') }}</p>
                                     <div class="flex flex-wrap gap-2">
                                         @foreach($this->quickPrompts as $prompt)
                                             <button
@@ -298,7 +298,7 @@
                                 <input
                                     type="text"
                                     wire:model.live.debounce.300ms="userQuestion"
-                                    placeholder="{{ __('carbex.ai.ask_question') }}"
+                                    placeholder="{{ __('linscarbon.ai.ask_question') }}"
                                     class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                                     @disabled($isLoading)
                                 >

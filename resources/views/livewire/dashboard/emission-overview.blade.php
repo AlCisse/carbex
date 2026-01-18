@@ -7,7 +7,7 @@
         <div class="relative">
             <div class="flex items-center justify-between mb-2">
                 <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                    {{ __('carbex.dashboard.total_emissions') }}
+                    {{ __('linscarbon.dashboard.total_emissions') }}
                 </span>
                 @if($this->kpis['total_emissions']['trend_direction'] !== 'stable')
                     <span class="flex items-center text-sm font-medium
@@ -35,7 +35,7 @@
     <x-card dusk="scope-1-card">
         <div class="flex items-center justify-between mb-2">
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                {{ __('carbex.dashboard.scope_1') }}
+                {{ __('linscarbon.dashboard.scope_1') }}
             </span>
             <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
                 {{ $this->kpis['scope_1']['percent'] }}%
@@ -50,14 +50,14 @@
                 <div class="bg-green-500 h-1.5 rounded-full" style="width: {{ min($this->kpis['scope_1']['percent'], 100) }}%"></div>
             </div>
         </div>
-        <p class="text-xs text-gray-500 mt-2">{{ __('carbex.dashboard.direct_emissions') }}</p>
+        <p class="text-xs text-gray-500 mt-2">{{ __('linscarbon.dashboard.direct_emissions') }}</p>
     </x-card>
 
     {{-- Scope 2 Card --}}
     <x-card>
         <div class="flex items-center justify-between mb-2">
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                {{ __('carbex.dashboard.scope_2') }}
+                {{ __('linscarbon.dashboard.scope_2') }}
             </span>
             <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
                 {{ $this->kpis['scope_2']['percent'] }}%
@@ -72,14 +72,14 @@
                 <div class="bg-blue-500 h-1.5 rounded-full" style="width: {{ min($this->kpis['scope_2']['percent'], 100) }}%"></div>
             </div>
         </div>
-        <p class="text-xs text-gray-500 mt-2">{{ __('carbex.dashboard.indirect_energy') }}</p>
+        <p class="text-xs text-gray-500 mt-2">{{ __('linscarbon.dashboard.indirect_energy') }}</p>
     </x-card>
 
     {{-- Scope 3 Card --}}
     <x-card>
         <div class="flex items-center justify-between mb-2">
             <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                {{ __('carbex.dashboard.scope_3') }}
+                {{ __('linscarbon.dashboard.scope_3') }}
             </span>
             <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">
                 {{ $this->kpis['scope_3']['percent'] }}%
@@ -94,7 +94,7 @@
                 <div class="bg-purple-500 h-1.5 rounded-full" style="width: {{ min($this->kpis['scope_3']['percent'], 100) }}%"></div>
             </div>
         </div>
-        <p class="text-xs text-gray-500 mt-2">{{ __('carbex.dashboard.value_chain') }}</p>
+        <p class="text-xs text-gray-500 mt-2">{{ __('linscarbon.dashboard.value_chain') }}</p>
     </x-card>
 
     {{-- Transaction Coverage Card --}}
@@ -102,14 +102,14 @@
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">
-                    {{ __('carbex.dashboard.transaction_coverage') }}
+                    {{ __('linscarbon.dashboard.transaction_coverage') }}
                 </h3>
                 <div class="mt-1 flex items-baseline">
                     <span class="text-2xl font-bold text-gray-900 dark:text-white">
                         {{ $this->kpis['transactions']['coverage_percent'] }}%
                     </span>
                     <span class="ml-2 text-sm text-gray-500">
-                        {{ __('carbex.dashboard.categorized_of_total', [
+                        {{ __('linscarbon.dashboard.categorized_of_total', [
                             'categorized' => number_format($this->kpis['transactions']['categorized']),
                             'total' => number_format($this->kpis['transactions']['total']),
                         ]) }}
@@ -119,7 +119,7 @@
             @if($this->kpis['transactions']['pending'] > 0)
                 <a href="{{ route('transactions.index', ['filter' => 'pending']) }}"
                    class="text-sm text-green-600 hover:text-green-700 dark:text-green-400">
-                    {{ __('carbex.dashboard.pending_count', ['count' => $this->kpis['transactions']['pending']]) }}
+                    {{ __('linscarbon.dashboard.pending_count', ['count' => $this->kpis['transactions']['pending']]) }}
                     <x-heroicon-s-arrow-right class="w-4 h-4 inline ml-1" />
                 </a>
             @endif

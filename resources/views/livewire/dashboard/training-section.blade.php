@@ -6,8 +6,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
             <div class="text-left">
-                <h3 class="text-lg font-semibold text-gray-900">{{ __('carbex.training.title') }}</h3>
-                <p class="text-sm text-gray-500">{{ __('carbex.training.subtitle') }}</p>
+                <h3 class="text-lg font-semibold text-gray-900">{{ __('linscarbon.training.title') }}</h3>
+                <p class="text-sm text-gray-500">{{ __('linscarbon.training.subtitle') }}</p>
             </div>
         </div>
         <svg class="w-5 h-5 text-gray-400 transition-transform {{ $expanded ? 'rotate-180' : '' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -25,7 +25,7 @@
                     <div class="relative aspect-video bg-gray-200 group cursor-pointer" x-data="{ playing: false }">
                         @if(!$video['youtube_id'])
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="text-gray-400">{{ __('carbex.training.coming_soon') }}</span>
+                                <span class="text-gray-400">{{ __('linscarbon.training.coming_soon') }}</span>
                             </div>
                         @else
                             <template x-if="!playing">
@@ -67,10 +67,10 @@
                     <svg class="w-4 h-4 inline mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    {{ __('carbex.training.need_help') }}
+                    {{ __('linscarbon.training.need_help') }}
                 </p>
-                <a href="mailto:support@carbex.fr" class="text-sm text-green-600 hover:text-green-700 font-medium">
-                    {{ __('carbex.training.contact_support') }}
+                <a href="mailto:support@linscarbon.fr" class="text-sm text-green-600 hover:text-green-700 font-medium">
+                    {{ __('linscarbon.training.contact_support') }}
                 </a>
             </div>
         </div>

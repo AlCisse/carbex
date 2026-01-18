@@ -12,7 +12,7 @@ use Livewire\Component;
 /**
  * CarbonEquivalents - Display carbon footprint as relatable equivalents
  *
- * Constitution Carbex v3.0 - Section 3.2, T051
+ * Constitution LinsCarbon v3.0 - Section 3.2, T051
  *
  * Displays total emissions as:
  * - X Paris-New York round trips

@@ -121,7 +121,7 @@ class BadgeShowcase extends Component
     {
         $url = urlencode($this->getShareUrl() ?? '');
         $title = urlencode($this->selectedBadge['name'] ?? 'Carbon Badge');
-        $summary = urlencode(__('carbex.promote.linkedin_summary', [
+        $summary = urlencode(__('linscarbon.promote.linkedin_summary', [
             'badge' => $this->selectedBadge['name'] ?? '',
             'company' => $this->organization?->name ?? '',
         ]));
@@ -132,7 +132,7 @@ class BadgeShowcase extends Component
     public function getTwitterShareUrl(): string
     {
         $url = urlencode($this->getShareUrl() ?? '');
-        $text = urlencode(__('carbex.promote.twitter_text', [
+        $text = urlencode(__('linscarbon.promote.twitter_text', [
             'badge' => $this->selectedBadge['name'] ?? '',
         ]));
 
@@ -213,7 +213,7 @@ class BadgeShowcase extends Component
         if ($filename) {
             $this->dispatch('download-file', [
                 'url' => Storage::url($filename),
-                'filename' => "carbex-badge-{$badge->code}.{$this->downloadFormat}",
+                'filename' => "linscarbon-badge-{$badge->code}.{$this->downloadFormat}",
             ]);
         }
     }
@@ -232,7 +232,7 @@ class BadgeShowcase extends Component
 
         $this->dispatch('download-html', [
             'content' => $html,
-            'filename' => 'carbex-email-signature.html',
+            'filename' => 'linscarbon-email-signature.html',
         ]);
     }
 
@@ -246,7 +246,7 @@ class BadgeShowcase extends Component
         // For now, dispatch a notification
         $this->dispatch('notify', [
             'type' => 'info',
-            'message' => __('carbex.promote.social_kit_preparing'),
+            'message' => __('linscarbon.promote.social_kit_preparing'),
         ]);
     }
 
@@ -304,7 +304,7 @@ class BadgeShowcase extends Component
   <!-- Badge icon placeholder -->
   <circle cx="100" cy="90" r="35" fill="white" opacity="0.9"/>
 
-  <!-- Carbex logo text -->
+  <!-- LinsCarbon logo text -->
   <text x="100" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
     CARBEX
   </text>

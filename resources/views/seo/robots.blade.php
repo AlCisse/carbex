@@ -1,5 +1,5 @@
-# Carbex - robots.txt
-# https://carbex.fr
+# LinsCarbon - robots.txt
+# https://linscarbon.fr
 
 User-agent: *
 Allow: /

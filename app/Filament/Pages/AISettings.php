@@ -156,7 +156,7 @@ class AISettings extends Page implements HasForms
                             ->label('Activer')
                             ->live(),
                         Select::make('anthropic_model')
-                            ->label(__('carbex.settings.ai.model'))
+                            ->label(__('linscarbon.settings.ai.model'))
                             ->options([
                                 'claude-sonnet-4-20250514' => 'Claude Sonnet 4 ★',
                                 'claude-3-5-sonnet-20241022' => 'Claude 3.5 Sonnet',
@@ -179,7 +179,7 @@ class AISettings extends Page implements HasForms
                             ->label('Activer')
                             ->live(),
                         Select::make('openai_model')
-                            ->label(__('carbex.settings.ai.model'))
+                            ->label(__('linscarbon.settings.ai.model'))
                             ->options([
                                 'gpt-4.5-preview' => 'GPT-4.5 Preview (Premium)',
                                 'gpt-4o' => 'GPT-4o ★',
@@ -205,7 +205,7 @@ class AISettings extends Page implements HasForms
                             ->label('Activer')
                             ->live(),
                         Select::make('google_model')
-                            ->label(__('carbex.settings.ai.model'))
+                            ->label(__('linscarbon.settings.ai.model'))
                             ->options([
                                 'gemini-2.0-flash' => 'Gemini 2.0 Flash ★',
                                 'gemini-2.0-flash-lite' => 'Gemini 2.0 Flash Lite',
@@ -228,7 +228,7 @@ class AISettings extends Page implements HasForms
                             ->label('Activer')
                             ->live(),
                         Select::make('deepseek_model')
-                            ->label(__('carbex.settings.ai.model'))
+                            ->label(__('linscarbon.settings.ai.model'))
                             ->options([
                                 'deepseek-chat' => 'DeepSeek Chat ★',
                                 'deepseek-coder' => 'DeepSeek Coder',

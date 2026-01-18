@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  *
  * Représente un type de badge pouvant être obtenu par une organisation ou un utilisateur.
  *
- * Constitution Carbex v3.0 - Section 9.9 (Gamification)
+ * Constitution LinsCarbon v3.0 - Section 9.9 (Gamification)
  *
  * @property string $id
  * @property string $code

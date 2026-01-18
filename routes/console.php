@@ -32,7 +32,7 @@ Artisan::command('inspire', function () {
 | Scheduled Tasks
 |--------------------------------------------------------------------------
 |
-| Define scheduled tasks for the Carbex application.
+| Define scheduled tasks for the LinsCarbon application.
 |
 */
 

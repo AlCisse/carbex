@@ -1,4 +1,4 @@
-# Carbex User Guide
+# LinsCarbon User Guide
 
 > Carbon Footprint Platform for European SMEs
 
@@ -23,7 +23,7 @@
 
 ### Account Creation
 
-1. Go to [carbex.app](https://carbex.app)
+1. Go to [linscarbon.app](https://linscarbon.app)
 2. Click **Create Account**
 3. Enter your information:
    - Professional email
@@ -97,7 +97,7 @@ The dashboard presents a summary view of your carbon footprint.
 
 ### Organizational Scope
 
-Carbex supports two approaches:
+LinsCarbon supports two approaches:
 
 - **Operational Control**: 100% of emissions from sites you control
 - **Equity Share**: Emissions proportional to your ownership stake
@@ -200,7 +200,7 @@ Emission calculation is automatic based on emission factors.
 
 ### Automatic Categorization
 
-Carbex automatically categorizes your transactions:
+LinsCarbon automatically categorizes your transactions:
 
 - **Built-in AI**: Analyzes description and merchant
 - **MCC Codes**: Classification by merchant code
@@ -217,7 +217,7 @@ To correct a category:
 
 ### Features
 
-The Carbex AI assistant helps you:
+The LinsCarbon AI assistant helps you:
 
 - **Analyze** your carbon data
 - **Answer** your compliance questions
@@ -390,7 +390,7 @@ Configure your AI preferences:
 
 ### General
 
-**Q: Is Carbex GDPR compliant?**
+**Q: Is LinsCarbon GDPR compliant?**
 > Yes, your data is hosted in Europe (OVH France) and encrypted. You can export or delete your data at any time.
 
 **Q: Can I try for free?**
@@ -429,16 +429,16 @@ Configure your AI preferences:
 
 ### Contact
 
-- **Email**: support@carbex.app
+- **Email**: support@linscarbon.app
 - **Chat**: Icon at bottom right (business hours)
-- **Documentation**: docs.carbex.app
+- **Documentation**: docs.linscarbon.app
 
 ### Resources
 
-- [Help Center](https://help.carbex.app)
-- [Video Tutorials](https://carbex.app/tutorials)
-- [Blog](https://carbex.app/blog)
-- [Webinars](https://carbex.app/webinars)
+- [Help Center](https://help.linscarbon.app)
+- [Video Tutorials](https://linscarbon.app/tutorials)
+- [Blog](https://linscarbon.app/blog)
+- [Webinars](https://linscarbon.app/webinars)
 
 ---
 

@@ -1,6 +1,6 @@
-# uSearch - Recherche Semantique pour Carbex
+# uSearch - Recherche Semantique pour LinsCarbon
 
-> Documentation technique de l'integration uSearch pour la recherche vectorielle et semantique dans Carbex.
+> Documentation technique de l'integration uSearch pour la recherche vectorielle et semantique dans LinsCarbon.
 
 **Version**: 1.0
 **Derniere mise a jour**: 2026-01-13
@@ -26,9 +26,9 @@
 
 ### Qu'est-ce que uSearch ?
 
-[uSearch](https://github.com/unum-cloud/usearch) est une bibliotheque de recherche vectorielle haute performance utilisee pour implementer la recherche semantique dans Carbex. Elle permet de trouver des elements similaires basee sur la signification plutot que sur des correspondances exactes de mots-cles.
+[uSearch](https://github.com/unum-cloud/usearch) est une bibliotheque de recherche vectorielle haute performance utilisee pour implementer la recherche semantique dans LinsCarbon. Elle permet de trouver des elements similaires basee sur la signification plutot que sur des correspondances exactes de mots-cles.
 
-### Cas d'usage dans Carbex
+### Cas d'usage dans LinsCarbon
 
 | Index | Description | Modeles |
 |-------|-------------|---------|
@@ -120,11 +120,11 @@ services:
     build:
       context: ./services/usearch-api
       dockerfile: Dockerfile
-    container_name: carbex-usearch
+    container_name: linscarbon-usearch
     ports:
       - "8001:8001"
     environment:
-      - USEARCH_API_KEY=${USEARCH_API_KEY:-carbex-dev-key}
+      - USEARCH_API_KEY=${USEARCH_API_KEY:-linscarbon-dev-key}
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - EMBEDDING_PROVIDER=${EMBEDDING_PROVIDER:-local}
       - VECTOR_DIMENSIONS=${VECTOR_DIMENSIONS:-384}
@@ -620,7 +620,7 @@ class FactorSelector extends Component
                     after:bg-white after:rounded-full after:h-5 after:w-5
                     after:transition-all"></div>
         <span class="ms-3 text-sm font-medium text-gray-700">
-            {{ __('carbex.emissions.semantic_search') }}
+            {{ __('linscarbon.emissions.semantic_search') }}
         </span>
     </label>
 
@@ -629,8 +629,8 @@ class FactorSelector extends Component
         <span class="ml-4 text-xs px-2 py-1 rounded-full
                      {{ $searchMode === 'semantic' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-600' }}">
             {{ $searchMode === 'semantic'
-                ? __('carbex.emissions.mode_semantic')
-                : __('carbex.emissions.mode_text') }}
+                ? __('linscarbon.emissions.mode_semantic')
+                : __('linscarbon.emissions.mode_text') }}
         </span>
     @endif
 </div>
@@ -638,14 +638,14 @@ class FactorSelector extends Component
 {{-- Champ de recherche --}}
 <input type="text"
        wire:model.live.debounce.300ms="search"
-       placeholder="{{ __('carbex.emissions.search_placeholder') }}"
+       placeholder="{{ __('linscarbon.emissions.search_placeholder') }}"
        class="w-full rounded-lg border-gray-300">
 ```
 
 ### Traductions
 
 ```php
-// lang/fr/carbex.php
+// lang/fr/linscarbon.php
 'emissions' => [
     'semantic_search' => 'Recherche intelligente (IA)',
     'mode_semantic' => 'Mode semantique',
@@ -653,7 +653,7 @@ class FactorSelector extends Component
     'search_placeholder' => 'Rechercher un facteur d\'emission...',
 ],
 
-// lang/en/carbex.php
+// lang/en/linscarbon.php
 'emissions' => [
     'semantic_search' => 'Smart search (AI)',
     'mode_semantic' => 'Semantic mode',
@@ -661,7 +661,7 @@ class FactorSelector extends Component
     'search_placeholder' => 'Search for an emission factor...',
 ],
 
-// lang/de/carbex.php
+// lang/de/linscarbon.php
 'emissions' => [
     'semantic_search' => 'Intelligente Suche (KI)',
     'mode_semantic' => 'Semantischer Modus',

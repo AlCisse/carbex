@@ -72,7 +72,7 @@ class OrganizationController extends Controller
         $organization->update($validated);
 
         return response()->json([
-            'message' => __('carbex.organization.updated'),
+            'message' => __('linscarbon.organization.updated'),
             'organization' => $this->formatOrganization($organization->fresh()),
         ]);
     }
@@ -157,7 +157,7 @@ class OrganizationController extends Controller
         ]);
 
         return response()->json([
-            'message' => __('carbex.organization.settings_updated'),
+            'message' => __('linscarbon.organization.settings_updated'),
             'settings' => $organization->fresh()->settings,
         ]);
     }

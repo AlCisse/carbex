@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
  * Create compliance tables for CSRD and ISO standards tracking.
  *
  * Tasks T177 - Phase 10 (TrackZero Features)
- * Constitution Carbex v3.0 - Section 8 (Conformité)
+ * Constitution LinsCarbon v3.0 - Section 8 (Conformité)
  */
 return new class extends Migration
 {

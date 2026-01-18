@@ -5,7 +5,7 @@ namespace App\Services\Carbon;
 /**
  * EquivalentCalculator - Convert CO2 emissions to relatable equivalents
  *
- * Constitution Carbex v3.0 - Section 2.6, T053
+ * Constitution LinsCarbon v3.0 - Section 2.6, T053
  *
  * Converts kgCO2e into everyday equivalents that are easier to understand:
  * - Flights (Paris-New York round trip)
@@ -74,22 +74,22 @@ class EquivalentCalculator
                 'type' => 'paris_ny_flights',
                 'value' => $this->toParisNyFlights($kgCo2e),
                 'icon' => 'airplane',
-                'label' => 'carbex.equivalents.paris_ny',
-                'unit' => 'carbex.equivalents.round_trips',
+                'label' => 'linscarbon.equivalents.paris_ny',
+                'unit' => 'linscarbon.equivalents.round_trips',
             ];
             $equivalents[] = [
                 'type' => 'earth_tours',
                 'value' => $this->toEarthTours($kgCo2e),
                 'icon' => 'globe',
-                'label' => 'carbex.equivalents.earth_tours',
-                'unit' => 'carbex.equivalents.tours',
+                'label' => 'linscarbon.equivalents.earth_tours',
+                'unit' => 'linscarbon.equivalents.tours',
             ];
             $equivalents[] = [
                 'type' => 'french_person_years',
                 'value' => $this->toFrenchPersonYears($kgCo2e),
                 'icon' => 'user',
-                'label' => 'carbex.equivalents.french_person',
-                'unit' => 'carbex.equivalents.years',
+                'label' => 'linscarbon.equivalents.french_person',
+                'unit' => 'linscarbon.equivalents.years',
             ];
         }
         // For medium amounts (1-10 tonnes)
@@ -98,21 +98,21 @@ class EquivalentCalculator
                 'type' => 'paris_ny_flights',
                 'value' => $this->toParisNyFlights($kgCo2e),
                 'icon' => 'airplane',
-                'label' => 'carbex.equivalents.paris_ny',
-                'unit' => 'carbex.equivalents.round_trips',
+                'label' => 'linscarbon.equivalents.paris_ny',
+                'unit' => 'linscarbon.equivalents.round_trips',
             ];
             $equivalents[] = [
                 'type' => 'hotel_nights',
                 'value' => $this->toHotelNights($kgCo2e),
                 'icon' => 'building',
-                'label' => 'carbex.equivalents.hotel_nights',
-                'unit' => 'carbex.equivalents.nights',
+                'label' => 'linscarbon.equivalents.hotel_nights',
+                'unit' => 'linscarbon.equivalents.nights',
             ];
             $equivalents[] = [
                 'type' => 'car_km',
                 'value' => $this->toCarKm($kgCo2e),
                 'icon' => 'car',
-                'label' => 'carbex.equivalents.car_km',
+                'label' => 'linscarbon.equivalents.car_km',
                 'unit' => 'km',
             ];
         }
@@ -122,22 +122,22 @@ class EquivalentCalculator
                 'type' => 'hotel_nights',
                 'value' => $this->toHotelNights($kgCo2e),
                 'icon' => 'building',
-                'label' => 'carbex.equivalents.hotel_nights',
-                'unit' => 'carbex.equivalents.nights',
+                'label' => 'linscarbon.equivalents.hotel_nights',
+                'unit' => 'linscarbon.equivalents.nights',
             ];
             $equivalents[] = [
                 'type' => 'car_km',
                 'value' => $this->toCarKm($kgCo2e),
                 'icon' => 'car',
-                'label' => 'carbex.equivalents.car_km',
+                'label' => 'linscarbon.equivalents.car_km',
                 'unit' => 'km',
             ];
             $equivalents[] = [
                 'type' => 'streaming_hours',
                 'value' => $this->toStreamingHours($kgCo2e),
                 'icon' => 'play',
-                'label' => 'carbex.equivalents.streaming',
-                'unit' => 'carbex.equivalents.hours',
+                'label' => 'linscarbon.equivalents.streaming',
+                'unit' => 'linscarbon.equivalents.hours',
             ];
         }
 
@@ -146,8 +146,8 @@ class EquivalentCalculator
             'type' => 'trees_needed',
             'value' => $this->toTreesNeeded($kgCo2e),
             'icon' => 'tree',
-            'label' => 'carbex.equivalents.trees_needed',
-            'unit' => 'carbex.equivalents.trees',
+            'label' => 'linscarbon.equivalents.trees_needed',
+            'unit' => 'linscarbon.equivalents.trees',
         ];
 
         return array_slice($equivalents, 0, $count);

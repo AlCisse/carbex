@@ -9,9 +9,9 @@
                     </svg>
                 </div>
                 <div>
-                    <h2 class="text-lg font-semibold text-white">{{ __('carbex.ai.recommendations_title') }}</h2>
+                    <h2 class="text-lg font-semibold text-white">{{ __('linscarbon.ai.recommendations_title') }}</h2>
                     @if($aiAvailable)
-                        <p class="text-xs text-emerald-100">{{ __('carbex.ai.powered_by', ['provider' => $providerName]) }}</p>
+                        <p class="text-xs text-emerald-100">{{ __('linscarbon.ai.powered_by', ['provider' => $providerName]) }}</p>
                     @endif
                 </div>
             </div>
@@ -26,12 +26,12 @@
                         <svg class="w-4 h-4" wire:loading.class="animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
-                        {{ __('carbex.ai.refresh') }}
+                        {{ __('linscarbon.ai.refresh') }}
                     </button>
                 @endif
                 @if($assessmentYear)
                     <span class="px-3 py-1 text-sm font-medium text-white bg-white/20 rounded-full">
-                        {{ __('carbex.ai.assessment_year', ['year' => $assessmentYear]) }}
+                        {{ __('linscarbon.ai.assessment_year', ['year' => $assessmentYear]) }}
                     </span>
                 @endif
             </div>
@@ -48,12 +48,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.ai.not_configured') }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.ai.not_configured') }}</h3>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-                    {{ __('carbex.ai.configure_to_use') }}
+                    {{ __('linscarbon.ai.configure_to_use') }}
                 </p>
                 <a href="{{ route('settings') }}" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700">
-                    {{ __('carbex.ai.configure_ai') }}
+                    {{ __('linscarbon.ai.configure_ai') }}
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
@@ -68,27 +68,27 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.ai.no_emission_data_title') }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.ai.no_emission_data_title') }}</h3>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-                    {{ __('carbex.ai.no_emission_data_desc') }}
+                    {{ __('linscarbon.ai.no_emission_data_desc') }}
                 </p>
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a href="{{ route('emissions') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
-                        {{ __('carbex.ai.add_emissions') }}
+                        {{ __('linscarbon.ai.add_emissions') }}
                     </a>
                     <a href="{{ route('banking') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                         </svg>
-                        {{ __('carbex.ai.import_transactions') }}
+                        {{ __('linscarbon.ai.import_transactions') }}
                     </a>
                 </div>
                 @if($assessmentYear)
                     <p class="mt-4 text-xs text-gray-400 dark:text-gray-500">
-                        {{ __('carbex.ai.assessment_year', ['year' => $assessmentYear]) }}
+                        {{ __('linscarbon.ai.assessment_year', ['year' => $assessmentYear]) }}
                     </p>
                 @endif
             </div>
@@ -101,9 +101,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('carbex.ai.ready_to_analyze') }}</h3>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">{{ __('linscarbon.ai.ready_to_analyze') }}</h3>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-                    {{ __('carbex.ai.analyze_description') }}
+                    {{ __('linscarbon.ai.analyze_description') }}
                 </p>
                 <button
                     type="button"
@@ -114,8 +114,8 @@
                     <svg class="w-5 h-5" wire:loading.class="animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
-                    <span wire:loading.remove wire:target="analyze">{{ __('carbex.ai.start_analysis') }}</span>
-                    <span wire:loading wire:target="analyze">{{ __('carbex.ai.analyzing') }}</span>
+                    <span wire:loading.remove wire:target="analyze">{{ __('linscarbon.ai.start_analysis') }}</span>
+                    <span wire:loading wire:target="analyze">{{ __('linscarbon.ai.analyzing') }}</span>
                 </button>
             </div>
 
@@ -123,7 +123,7 @@
             {{-- Loading state --}}
             <div class="text-center py-12">
                 <div class="animate-spin mx-auto w-12 h-12 border-4 border-emerald-200 border-t-emerald-600 rounded-full mb-4"></div>
-                <p class="text-gray-500 dark:text-gray-400">{{ __('carbex.ai.analyzing_emissions') }}</p>
+                <p class="text-gray-500 dark:text-gray-400">{{ __('linscarbon.ai.analyzing_emissions') }}</p>
             </div>
 
         @else
@@ -132,15 +132,15 @@
                 {{-- Summary Stats --}}
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.dashboard.total_emissions') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.dashboard.total_emissions') }}</p>
                         <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $this->formatEmissions($totalEmissions) }}</p>
                     </div>
                     <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.ai.recommendations_count') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.ai.recommendations_count') }}</p>
                         <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{{ count($recommendations) }}</p>
                     </div>
                     <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('carbex.ai.potential_reduction') }}</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('linscarbon.ai.potential_reduction') }}</p>
                         <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                             {{ array_sum(array_column($recommendations, 'impact')) }}%
                         </p>
@@ -154,7 +154,7 @@
                             <svg class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
-                            {{ __('carbex.ai.key_insights') }}
+                            {{ __('linscarbon.ai.key_insights') }}
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             @foreach($insights as $insight)
@@ -174,7 +174,7 @@
                             <svg class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                             </svg>
-                            {{ __('carbex.ai.recommended_actions') }}
+                            {{ __('linscarbon.ai.recommended_actions') }}
                         </h3>
                         @if(count($selectedRecommendations) > 0)
                             <button
@@ -185,7 +185,7 @@
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
-                                {{ __('carbex.ai.add_selected', ['count' => count($selectedRecommendations)]) }}
+                                {{ __('linscarbon.ai.add_selected', ['count' => count($selectedRecommendations)]) }}
                             </button>
                         @endif
                     </div>
@@ -225,7 +225,7 @@
                                                     type="button"
                                                     wire:click.stop="showDetails({{ $index }})"
                                                     class="flex-shrink-0 p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-                                                    title="{{ __('carbex.ai.view_details') }}"
+                                                    title="{{ __('linscarbon.ai.view_details') }}"
                                                 >
                                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -236,7 +236,7 @@
                                                     type="button"
                                                     wire:click.stop="addSingleAction({{ $index }})"
                                                     class="flex-shrink-0 p-2 text-emerald-600 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 rounded-lg transition-colors"
-                                                    title="{{ __('carbex.ai.add_action') }}"
+                                                    title="{{ __('linscarbon.ai.add_action') }}"
                                                 >
                                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -291,7 +291,7 @@
                                 <svg class="mx-auto w-12 h-12 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                 </svg>
-                                {{ __('carbex.ai.no_recommendations') }}
+                                {{ __('linscarbon.ai.no_recommendations') }}
                             </div>
                         @endforelse
                     </div>
@@ -304,7 +304,7 @@
                             <svg class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                             </svg>
-                            {{ __('carbex.ai.top_emission_categories') }}
+                            {{ __('linscarbon.ai.top_emission_categories') }}
                         </h3>
                         <div class="space-y-2">
                             @foreach($topCategories as $category)
@@ -359,7 +359,7 @@
                     <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-emerald-600 to-emerald-700">
                         <div class="flex items-center justify-between">
                             <h3 class="text-lg font-semibold text-white" id="modal-title">
-                                {{ __('carbex.ai.recommendation_details') }}
+                                {{ __('linscarbon.ai.recommendation_details') }}
                             </h3>
                             <button type="button" wire:click="closeDetails" class="text-white/80 hover:text-white">
                                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -382,7 +382,7 @@
                         @if(!empty($detailRecommendation['description']))
                             <div>
                                 <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                                    {{ __('carbex.ai.detail.description') }}
+                                    {{ __('linscarbon.ai.detail.description') }}
                                 </h5>
                                 <p class="text-gray-600 dark:text-gray-400">
                                     {{ $detailRecommendation['description'] }}
@@ -396,13 +396,13 @@
                             @if(isset($detailRecommendation['impact']))
                                 <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-4">
                                     <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-                                        {{ __('carbex.ai.detail.impact') }}
+                                        {{ __('linscarbon.ai.detail.impact') }}
                                     </p>
                                     <p class="text-2xl font-bold text-emerald-700 dark:text-emerald-300 mt-1">
                                         -{{ $detailRecommendation['impact'] }}%
                                     </p>
                                     <p class="text-xs text-emerald-600/70 dark:text-emerald-400/70 mt-1">
-                                        {{ __('carbex.ai.detail.co2_reduction') }}
+                                        {{ __('linscarbon.ai.detail.co2_reduction') }}
                                     </p>
                                 </div>
                             @endif
@@ -410,20 +410,20 @@
                             {{-- Cost --}}
                             <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
                                 <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                                    {{ __('carbex.ai.detail.cost') }}
+                                    {{ __('linscarbon.ai.detail.cost') }}
                                 </p>
                                 <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                     {{ $detailRecommendation['cost_label'] ?? '€€' }}
                                 </p>
                                 <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                                    {{ __('carbex.ai.detail.investment') }}
+                                    {{ __('linscarbon.ai.detail.investment') }}
                                 </p>
                             </div>
 
                             {{-- Difficulty --}}
                             <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
                                 <p class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                                    {{ __('carbex.ai.detail.difficulty') }}
+                                    {{ __('linscarbon.ai.detail.difficulty') }}
                                 </p>
                                 <p class="text-lg font-bold mt-1 {{ $this->getDifficultyClass($detailRecommendation['difficulty'] ?? 'medium') }} px-3 py-1 rounded-full inline-block">
                                     {{ $detailRecommendation['difficulty_label'] ?? ucfirst($detailRecommendation['difficulty'] ?? 'medium') }}
@@ -434,7 +434,7 @@
                             @if(!empty($detailRecommendation['timeline']))
                                 <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
                                     <p class="text-sm text-blue-600 dark:text-blue-400 font-medium">
-                                        {{ __('carbex.ai.detail.timeline') }}
+                                        {{ __('linscarbon.ai.detail.timeline') }}
                                     </p>
                                     <p class="text-lg font-bold text-blue-700 dark:text-blue-300 mt-1">
                                         {{ $detailRecommendation['timeline'] }}
@@ -447,7 +447,7 @@
                         @if(!empty($detailRecommendation['scopes']))
                             <div>
                                 <h5 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                                    {{ __('carbex.ai.detail.affected_scopes') }}
+                                    {{ __('linscarbon.ai.detail.affected_scopes') }}
                                 </h5>
                                 <div class="flex gap-2">
                                     @foreach($detailRecommendation['scopes'] as $scope)
@@ -467,7 +467,7 @@
                             wire:click="closeDetails"
                             class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                         >
-                            {{ __('carbex.common.close') }}
+                            {{ __('linscarbon.common.close') }}
                         </button>
                         <button
                             type="button"
@@ -477,7 +477,7 @@
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
-                            {{ __('carbex.ai.add_to_plan') }}
+                            {{ __('linscarbon.ai.add_to_plan') }}
                         </button>
                     </div>
                 </div>

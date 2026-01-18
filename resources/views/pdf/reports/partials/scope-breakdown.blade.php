@@ -1,6 +1,6 @@
 {{-- Scope Breakdown Partial for PDF Reports --}}
 <div class="scope-breakdown-section">
-    <h2 class="section-title">{{ __('carbex.scope_breakdown.title') }}</h2>
+    <h2 class="section-title">{{ __('linscarbon.scope_breakdown.title') }}</h2>
 
     {{-- Overview Chart (Visual representation) --}}
     <div class="scope-overview">
@@ -33,7 +33,7 @@
         <div class="scope-header scope-1">
             <h3>
                 <span class="badge badge-green">Scope 1</span>
-                {{ __('carbex.scope_breakdown.direct_emissions') }}
+                {{ __('linscarbon.scope_breakdown.direct_emissions') }}
             </h3>
             <div class="scope-total">
                 <span class="value">{{ number_format($scopes['scope_1']['tonnes'] ?? 0, 2) }}</span>
@@ -41,18 +41,18 @@
             </div>
         </div>
         <p class="scope-description">
-            {{ __('carbex.scope_breakdown.scope1_desc') }}
+            {{ __('linscarbon.scope_breakdown.scope1_desc') }}
         </p>
 
         @if(!empty($scopes['scope_1']['categories']))
             <table>
                 <thead>
                     <tr>
-                        <th>{{ __('carbex.scope_breakdown.category') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.emissions_tco2e') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.share') }}</th>
+                        <th>{{ __('linscarbon.scope_breakdown.category') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.emissions_tco2e') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.share') }}</th>
                         @if(isset($scopes['scope_1']['categories'][0]['trend']))
-                            <th class="text-center">{{ __('carbex.scope_breakdown.trend') }}</th>
+                            <th class="text-center">{{ __('linscarbon.scope_breakdown.trend') }}</th>
                         @endif
                     </tr>
                 </thead>
@@ -72,7 +72,7 @@
                 </tbody>
             </table>
         @else
-            <p class="no-data">{{ __('carbex.scope_breakdown.no_scope1_data') }}</p>
+            <p class="no-data">{{ __('linscarbon.scope_breakdown.no_scope1_data') }}</p>
         @endif
     </div>
 
@@ -81,7 +81,7 @@
         <div class="scope-header scope-2">
             <h3>
                 <span class="badge badge-blue">Scope 2</span>
-                {{ __('carbex.scope_breakdown.energy_indirect') }}
+                {{ __('linscarbon.scope_breakdown.energy_indirect') }}
             </h3>
             <div class="scope-total">
                 <span class="value">{{ number_format($scopes['scope_2']['tonnes'] ?? 0, 2) }}</span>
@@ -89,13 +89,13 @@
             </div>
         </div>
         <p class="scope-description">
-            {{ __('carbex.scope_breakdown.scope2_desc') }}
+            {{ __('linscarbon.scope_breakdown.scope2_desc') }}
         </p>
 
         @if(isset($scopes['scope_2']['method']))
             <p class="method-note">
-                <strong>{{ __('carbex.scope_breakdown.calculation_method') }}:</strong>
-                {{ $scopes['scope_2']['method'] === 'location' ? __('carbex.scope_breakdown.location_based') : __('carbex.scope_breakdown.market_based') }}
+                <strong>{{ __('linscarbon.scope_breakdown.calculation_method') }}:</strong>
+                {{ $scopes['scope_2']['method'] === 'location' ? __('linscarbon.scope_breakdown.location_based') : __('linscarbon.scope_breakdown.market_based') }}
             </p>
         @endif
 
@@ -103,10 +103,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>{{ __('carbex.scope_breakdown.category') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.consumption') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.emissions_tco2e') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.share') }}</th>
+                        <th>{{ __('linscarbon.scope_breakdown.category') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.consumption') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.emissions_tco2e') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.share') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -127,15 +127,15 @@
                 </tbody>
             </table>
         @else
-            <p class="no-data">{{ __('carbex.scope_breakdown.no_scope2_data') }}</p>
+            <p class="no-data">{{ __('linscarbon.scope_breakdown.no_scope2_data') }}</p>
         @endif
 
         {{-- Electricity mix information --}}
         @if(isset($scopes['scope_2']['electricity_mix']))
             <div class="electricity-mix">
-                <h4>{{ __('carbex.scope_breakdown.electricity_mix') }}</h4>
+                <h4>{{ __('linscarbon.scope_breakdown.electricity_mix') }}</h4>
                 <p>
-                    {{ __('carbex.scope_breakdown.grid_emission_factor') }}:
+                    {{ __('linscarbon.scope_breakdown.grid_emission_factor') }}:
                     <strong>{{ $scopes['scope_2']['electricity_mix']['factor'] }} kg CO₂e/kWh</strong>
                     ({{ $scopes['scope_2']['electricity_mix']['source'] }})
                 </p>
@@ -148,7 +148,7 @@
         <div class="scope-header scope-3">
             <h3>
                 <span class="badge badge-purple">Scope 3</span>
-                {{ __('carbex.scope_breakdown.value_chain') }}
+                {{ __('linscarbon.scope_breakdown.value_chain') }}
             </h3>
             <div class="scope-total">
                 <span class="value">{{ number_format($scopes['scope_3']['tonnes'] ?? 0, 2) }}</span>
@@ -156,17 +156,17 @@
             </div>
         </div>
         <p class="scope-description">
-            {{ __('carbex.scope_breakdown.scope3_desc') }}
+            {{ __('linscarbon.scope_breakdown.scope3_desc') }}
         </p>
 
         @if(!empty($scopes['scope_3']['categories']))
             <table>
                 <thead>
                     <tr>
-                        <th>{{ __('carbex.scope_breakdown.category') }}</th>
-                        <th>{{ __('carbex.scope_breakdown.ghg_category') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.emissions_tco2e') }}</th>
-                        <th class="text-right">{{ __('carbex.scope_breakdown.share') }}</th>
+                        <th>{{ __('linscarbon.scope_breakdown.category') }}</th>
+                        <th>{{ __('linscarbon.scope_breakdown.ghg_category') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.emissions_tco2e') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.share') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -187,21 +187,21 @@
                 </tbody>
             </table>
         @else
-            <p class="no-data">{{ __('carbex.scope_breakdown.no_scope3_data') }}</p>
+            <p class="no-data">{{ __('linscarbon.scope_breakdown.no_scope3_data') }}</p>
         @endif
 
         {{-- Scope 3 Coverage --}}
         @if(isset($scopes['scope_3']['coverage']))
             <div class="coverage-note">
-                <h4>{{ __('carbex.scope_breakdown.scope3_coverage') }}</h4>
+                <h4>{{ __('linscarbon.scope_breakdown.scope3_coverage') }}</h4>
                 <p>
-                    {{ __('carbex.scope_breakdown.currently_tracking') }}
+                    {{ __('linscarbon.scope_breakdown.currently_tracking') }}
                     <strong>{{ count($scopes['scope_3']['coverage']['included'] ?? []) }}</strong>
-                    {{ __('carbex.scope_breakdown.of_15_categories') }}.
+                    {{ __('linscarbon.scope_breakdown.of_15_categories') }}.
                 </p>
                 @if(!empty($scopes['scope_3']['coverage']['not_relevant']))
                     <p class="small">
-                        {{ __('carbex.scope_breakdown.not_relevant') }}:
+                        {{ __('linscarbon.scope_breakdown.not_relevant') }}:
                         {{ implode(', ', $scopes['scope_3']['coverage']['not_relevant']) }}
                     </p>
                 @endif
@@ -211,15 +211,15 @@
 
     {{-- Summary Table --}}
     <div class="summary-table">
-        <h3>{{ __('carbex.scope_breakdown.summary_by_scope') }}</h3>
+        <h3>{{ __('linscarbon.scope_breakdown.summary_by_scope') }}</h3>
         <table class="totals-table">
             <thead>
                 <tr>
-                    <th>{{ __('carbex.scope_breakdown.scope') }}</th>
-                    <th class="text-right">{{ __('carbex.scope_breakdown.emissions_tco2e') }}</th>
-                    <th class="text-right">{{ __('carbex.scope_breakdown.share_of_total') }}</th>
+                    <th>{{ __('linscarbon.scope_breakdown.scope') }}</th>
+                    <th class="text-right">{{ __('linscarbon.scope_breakdown.emissions_tco2e') }}</th>
+                    <th class="text-right">{{ __('linscarbon.scope_breakdown.share_of_total') }}</th>
                     @if(isset($scopes['scope_1']['previous_period']))
-                        <th class="text-right">{{ __('carbex.scope_breakdown.vs_previous') }}</th>
+                        <th class="text-right">{{ __('linscarbon.scope_breakdown.vs_previous') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -255,7 +255,7 @@
                     @endif
                 </tr>
                 <tr class="totals-row">
-                    <td><strong>{{ __('carbex.scope_breakdown.total') }}</strong></td>
+                    <td><strong>{{ __('linscarbon.scope_breakdown.total') }}</strong></td>
                     <td class="text-right"><strong>{{ number_format($total, 2) }}</strong></td>
                     <td class="text-right"><strong>100%</strong></td>
                     @if(isset($scopes['total_change']))

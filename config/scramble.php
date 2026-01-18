@@ -22,9 +22,9 @@ return [
      * OpenAPI info block
      */
     'info' => [
-        'title' => env('APP_NAME', 'Carbex API'),
+        'title' => env('APP_NAME', 'LinsCarbon API'),
         'version' => '1.0.0',
-        'description' => 'Carbex Carbon Footprint Tracking Platform API.
+        'description' => 'LinsCarbon Carbon Footprint Tracking Platform API.
 
 Track and manage your organization\'s carbon emissions through:
 - Bank transaction synchronization
@@ -33,8 +33,8 @@ Track and manage your organization\'s carbon emissions through:
 - Automated reporting (BEGES, GHG Protocol)
 - Multi-site management',
         'contact' => [
-            'name' => 'Carbex Support',
-            'email' => 'support@carbex.app',
+            'name' => 'LinsCarbon Support',
+            'email' => 'support@linscarbon.app',
         ],
         'license' => [
             'name' => 'Proprietary',

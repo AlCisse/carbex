@@ -191,17 +191,17 @@ class Site extends Model
     public function getBuildingTypeLabelAttribute(): string
     {
         return match ($this->building_type) {
-            'office_modern' => __('carbex.sites.building_types.office_modern'),
-            'office_traditional' => __('carbex.sites.building_types.office_traditional'),
-            'warehouse_heated' => __('carbex.sites.building_types.warehouse_heated'),
-            'warehouse_unheated' => __('carbex.sites.building_types.warehouse_unheated'),
-            'retail_standalone' => __('carbex.sites.building_types.retail_standalone'),
-            'retail_mall' => __('carbex.sites.building_types.retail_mall'),
-            'factory_light' => __('carbex.sites.building_types.factory_light'),
-            'factory_heavy' => __('carbex.sites.building_types.factory_heavy'),
-            'datacenter' => __('carbex.sites.building_types.datacenter'),
-            'mixed_use' => __('carbex.sites.building_types.mixed_use'),
-            'other' => __('carbex.sites.building_types.other'),
+            'office_modern' => __('linscarbon.sites.building_types.office_modern'),
+            'office_traditional' => __('linscarbon.sites.building_types.office_traditional'),
+            'warehouse_heated' => __('linscarbon.sites.building_types.warehouse_heated'),
+            'warehouse_unheated' => __('linscarbon.sites.building_types.warehouse_unheated'),
+            'retail_standalone' => __('linscarbon.sites.building_types.retail_standalone'),
+            'retail_mall' => __('linscarbon.sites.building_types.retail_mall'),
+            'factory_light' => __('linscarbon.sites.building_types.factory_light'),
+            'factory_heavy' => __('linscarbon.sites.building_types.factory_heavy'),
+            'datacenter' => __('linscarbon.sites.building_types.datacenter'),
+            'mixed_use' => __('linscarbon.sites.building_types.mixed_use'),
+            'other' => __('linscarbon.sites.building_types.other'),
             default => $this->building_type ?? '-',
         };
     }

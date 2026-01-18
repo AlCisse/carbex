@@ -3,12 +3,12 @@
     <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl shadow-lg p-6 text-white">
         <div class="flex items-center justify-between">
             <div>
-                <h2 class="text-2xl font-bold">{{ $score['level_name'] ?? __('carbex.gamification.level.starter') }}</h2>
-                <p class="text-emerald-100 mt-1">{{ __('carbex.gamification.total_points', ['points' => $score['total_points'] ?? 0]) }}</p>
+                <h2 class="text-2xl font-bold">{{ $score['level_name'] ?? __('linscarbon.gamification.level.starter') }}</h2>
+                <p class="text-emerald-100 mt-1">{{ __('linscarbon.gamification.total_points', ['points' => $score['total_points'] ?? 0]) }}</p>
             </div>
             <div class="text-right">
                 <div class="text-5xl font-bold">{{ $score['badge_count'] ?? 0 }}</div>
-                <div class="text-emerald-100 text-sm">{{ __('carbex.gamification.badges_earned') }}</div>
+                <div class="text-emerald-100 text-sm">{{ __('linscarbon.gamification.badges_earned') }}</div>
             </div>
         </div>
 
@@ -16,8 +16,8 @@
         @if(($score['level'] ?? 0) < 5)
             <div class="mt-4">
                 <div class="flex justify-between text-sm text-emerald-100 mb-1">
-                    <span>{{ __('carbex.gamification.next_level') }}</span>
-                    <span>{{ $score['next_level_points'] ?? 0 }} {{ __('carbex.gamification.points') }}</span>
+                    <span>{{ __('linscarbon.gamification.next_level') }}</span>
+                    <span>{{ $score['next_level_points'] ?? 0 }} {{ __('linscarbon.gamification.points') }}</span>
                 </div>
                 <div class="w-full bg-emerald-700 rounded-full h-2">
                     <div class="bg-white rounded-full h-2 transition-all duration-500"
@@ -26,7 +26,7 @@
             </div>
         @else
             <div class="mt-4 text-emerald-100 text-center">
-                {{ __('carbex.gamification.max_level_reached') }}
+                {{ __('linscarbon.gamification.max_level_reached') }}
             </div>
         @endif
 
@@ -37,14 +37,14 @@
                 <svg class="w-4 h-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                {{ __('carbex.gamification.check_badges') }}
+                {{ __('linscarbon.gamification.check_badges') }}
             </button>
             <button wire:click="loadLeaderboard"
                     class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors">
                 <svg class="w-4 h-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
-                {{ __('carbex.gamification.leaderboard') }}
+                {{ __('linscarbon.gamification.leaderboard') }}
             </button>
         </div>
     </div>
@@ -52,18 +52,18 @@
     {{-- Grille des badges --}}
     <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6">
         <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-            {{ __('carbex.gamification.your_badges') }}
+            {{ __('linscarbon.gamification.your_badges') }}
         </h3>
 
         {{-- Filtres par catégorie --}}
         <div class="flex flex-wrap gap-2 mb-6">
             @php
                 $categories = [
-                    'all' => __('carbex.gamification.category.all'),
-                    'assessment' => __('carbex.gamification.category.assessment'),
-                    'reduction' => __('carbex.gamification.category.reduction'),
-                    'engagement' => __('carbex.gamification.category.engagement'),
-                    'expert' => __('carbex.gamification.category.expert'),
+                    'all' => __('linscarbon.gamification.category.all'),
+                    'assessment' => __('linscarbon.gamification.category.assessment'),
+                    'reduction' => __('linscarbon.gamification.category.reduction'),
+                    'engagement' => __('linscarbon.gamification.category.engagement'),
+                    'expert' => __('linscarbon.gamification.category.expert'),
                 ];
             @endphp
             @foreach($categories as $key => $label)
@@ -139,7 +139,7 @@
                         {{ $badge['name'] }}
                     </h4>
                     <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-1">
-                        {{ $badge['points'] }} {{ __('carbex.gamification.points') }}
+                        {{ $badge['points'] }} {{ __('linscarbon.gamification.points') }}
                     </p>
 
                     {{-- Barre de progression (si non obtenu) --}}
@@ -153,7 +153,7 @@
                         </div>
                     @else
                         <p class="text-center text-xs text-emerald-600 dark:text-emerald-400 mt-2">
-                            {{ __('carbex.gamification.earned_on') }} {{ $badge['earned_at'] }}
+                            {{ __('linscarbon.gamification.earned_on') }} {{ $badge['earned_at'] }}
                         </p>
                     @endif
 
@@ -169,7 +169,7 @@
                 </div>
             @empty
                 <div class="col-span-full text-center py-8 text-slate-500 dark:text-slate-400">
-                    {{ __('carbex.gamification.no_badges_available') }}
+                    {{ __('linscarbon.gamification.no_badges_available') }}
                 </div>
             @endforelse
         </div>
@@ -184,7 +184,7 @@
                 <div class="inline-block align-bottom bg-white dark:bg-slate-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                     <div class="bg-white dark:bg-slate-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                            {{ __('carbex.gamification.leaderboard') }}
+                            {{ __('linscarbon.gamification.leaderboard') }}
                         </h3>
 
                         <div class="space-y-3">
@@ -201,7 +201,7 @@
                                             {{ $entry['organization_name'] }}
                                         </p>
                                         <p class="text-sm text-slate-500 dark:text-slate-400">
-                                            {{ $entry['badge_count'] }} {{ __('carbex.gamification.badges') }}
+                                            {{ $entry['badge_count'] }} {{ __('linscarbon.gamification.badges') }}
                                         </p>
                                     </div>
                                     <div class="text-right">
@@ -209,7 +209,7 @@
                                             {{ $entry['total_points'] }}
                                         </p>
                                         <p class="text-xs text-slate-500 dark:text-slate-400">
-                                            {{ __('carbex.gamification.points') }}
+                                            {{ __('linscarbon.gamification.points') }}
                                         </p>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                     <div class="bg-slate-50 dark:bg-slate-700/50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button wire:click="hideLeaderboard"
                                 class="w-full inline-flex justify-center rounded-md border border-slate-300 dark:border-slate-600 shadow-sm px-4 py-2 bg-white dark:bg-slate-800 text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 sm:w-auto sm:text-sm">
-                            {{ __('carbex.common.close') }}
+                            {{ __('linscarbon.common.close') }}
                         </button>
                     </div>
                 </div>
@@ -237,21 +237,21 @@
                 <div class="inline-block align-bottom bg-white dark:bg-slate-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full">
                     <div class="bg-white dark:bg-slate-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                            {{ __('carbex.gamification.share_badge') }}
+                            {{ __('linscarbon.gamification.share_badge') }}
                         </h3>
 
                         @if($shareUrl)
                             <div class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                                        {{ __('carbex.gamification.share_link') }}
+                                        {{ __('linscarbon.gamification.share_link') }}
                                     </label>
                                     <div class="flex gap-2">
                                         <input type="text" readonly value="{{ $shareUrl }}"
                                                class="flex-1 rounded-md border-slate-300 dark:border-slate-600 dark:bg-slate-700 text-sm">
                                         <button onclick="navigator.clipboard.writeText('{{ $shareUrl }}')"
                                                 class="px-3 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 text-sm">
-                                            {{ __('carbex.common.copy') }}
+                                            {{ __('linscarbon.common.copy') }}
                                         </button>
                                     </div>
                                 </div>
@@ -262,7 +262,7 @@
                                        class="flex-1 py-2 px-4 bg-[#0077b5] text-white rounded-md text-center text-sm hover:bg-[#006097]">
                                         LinkedIn
                                     </a>
-                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($shareUrl) }}&text={{ urlencode(__('carbex.gamification.share_text')) }}"
+                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode($shareUrl) }}&text={{ urlencode(__('linscarbon.gamification.share_text')) }}"
                                        target="_blank"
                                        class="flex-1 py-2 px-4 bg-[#1da1f2] text-white rounded-md text-center text-sm hover:bg-[#0c85d0]">
                                         Twitter
@@ -275,7 +275,7 @@
                     <div class="bg-slate-50 dark:bg-slate-700/50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button wire:click="closeShareModal"
                                 class="w-full inline-flex justify-center rounded-md border border-slate-300 dark:border-slate-600 shadow-sm px-4 py-2 bg-white dark:bg-slate-800 text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 sm:w-auto sm:text-sm">
-                            {{ __('carbex.common.close') }}
+                            {{ __('linscarbon.common.close') }}
                         </button>
                     </div>
                 </div>

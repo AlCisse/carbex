@@ -86,7 +86,7 @@ class PrivacySettings extends Component
 
         $this->dispatch('notify', [
             'type' => 'success',
-            'message' => __('carbex.gdpr.consent_updated'),
+            'message' => __('linscarbon.gdpr.consent_updated'),
         ]);
     }
 
@@ -111,12 +111,12 @@ class PrivacySettings extends Component
 
             $this->dispatch('notify', [
                 'type' => 'success',
-                'message' => __('carbex.gdpr.export_ready'),
+                'message' => __('linscarbon.gdpr.export_ready'),
             ]);
         } catch (\Exception $e) {
             $this->dispatch('notify', [
                 'type' => 'error',
-                'message' => __('carbex.gdpr.export_error'),
+                'message' => __('linscarbon.gdpr.export_error'),
             ]);
         }
 
@@ -158,10 +158,10 @@ class PrivacySettings extends Component
      */
     public function deleteAccount(): void
     {
-        $confirmWord = __('carbex.gdpr.delete_confirm_word');
+        $confirmWord = __('linscarbon.gdpr.delete_confirm_word');
 
         if (strtoupper($this->deleteConfirmation) !== strtoupper($confirmWord)) {
-            $this->addError('deleteConfirmation', __('carbex.gdpr.delete_confirm_error'));
+            $this->addError('deleteConfirmation', __('linscarbon.gdpr.delete_confirm_error'));
             return;
         }
 
@@ -186,7 +186,7 @@ class PrivacySettings extends Component
         session()->regenerateToken();
 
         // Redirect to home with message
-        return redirect()->route('home')->with('success', __('carbex.gdpr.account_deleted'));
+        return redirect()->route('home')->with('success', __('linscarbon.gdpr.account_deleted'));
     }
 
     public function render()

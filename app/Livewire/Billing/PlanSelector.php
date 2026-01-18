@@ -9,7 +9,7 @@ use Livewire\Component;
 /**
  * PlanSelector - Plan selection and Stripe checkout integration
  *
- * Constitution Carbex v3.0 - Section 6.3, T079-T081
+ * Constitution LinsCarbon v3.0 - Section 6.3, T079-T081
  */
 class PlanSelector extends Component
 {
@@ -76,10 +76,10 @@ class PlanSelector extends Component
         $plans = [];
         foreach ($this->plansConfig as $key => $config) {
             $plans[$key] = array_merge($config, [
-                'name' => __("carbex.billing.plans.{$key}.name"),
-                'description' => __("carbex.billing.plans.{$key}.description"),
-                'duration' => $key === 'free' ? __('carbex.billing.plans.free.duration') : null,
-                'features' => __("carbex.billing.plans.{$key}.features"),
+                'name' => __("linscarbon.billing.plans.{$key}.name"),
+                'description' => __("linscarbon.billing.plans.{$key}.description"),
+                'duration' => $key === 'free' ? __('linscarbon.billing.plans.free.duration') : null,
+                'features' => __("linscarbon.billing.plans.{$key}.features"),
             ]);
         }
         return $plans;
@@ -151,7 +151,7 @@ class PlanSelector extends Component
             $this->discountPercent = $this->promoCodes[$code]['discount'];
             session()->flash('promo_success', $this->promoCodes[$code]['description']);
         } else {
-            $this->promoError = __('carbex.billing.invalid_promo_code');
+            $this->promoError = __('linscarbon.billing.invalid_promo_code');
         }
     }
 
@@ -186,7 +186,7 @@ class PlanSelector extends Component
             'discount_percent' => $this->discountPercent,
             'final' => $finalPrice,
             'annual_savings' => $annualSavings,
-            'period_label' => '/' . ($this->billingPeriod === 'annual' ? __('carbex.billing.year') : __('carbex.billing.month')),
+            'period_label' => '/' . ($this->billingPeriod === 'annual' ? __('linscarbon.billing.year') : __('linscarbon.billing.month')),
         ];
     }
 
@@ -207,7 +207,7 @@ class PlanSelector extends Component
             'reports_monthly_limit' => 1,
         ]);
 
-        session()->flash('message', __('carbex.billing.trial_started'));
+        session()->flash('message', __('linscarbon.billing.trial_started'));
 
         $this->redirect(route('dashboard'));
     }
@@ -261,7 +261,7 @@ class PlanSelector extends Component
             $this->redirect($checkout->url);
         } catch (\Exception $e) {
             $this->processing = false;
-            session()->flash('error', __('carbex.billing.checkout_error'));
+            session()->flash('error', __('linscarbon.billing.checkout_error'));
 
             report($e);
         }

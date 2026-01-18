@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'prefix' => env('SCOUT_PREFIX', 'carbex_'),
+    'prefix' => env('SCOUT_PREFIX', 'linscarbon_'),
 
     /*
     |--------------------------------------------------------------------------

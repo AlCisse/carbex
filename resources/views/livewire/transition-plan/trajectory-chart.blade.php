@@ -3,13 +3,13 @@
     <div class="px-6 py-4 border-b border-gray-200">
         <div class="flex items-center justify-between">
             <div>
-                <h3 class="text-lg font-semibold text-gray-900">{{ __('carbex.trajectory.chart_title') }}</h3>
-                <p class="text-sm text-gray-500 mt-1">{{ __('carbex.trajectory.chart_subtitle') }}</p>
+                <h3 class="text-lg font-semibold text-gray-900">{{ __('linscarbon.trajectory.chart_title') }}</h3>
+                <p class="text-sm text-gray-500 mt-1">{{ __('linscarbon.trajectory.chart_subtitle') }}</p>
             </div>
 
             @if($this->targets->count() > 1)
                 <div>
-                    <label for="target-select" class="sr-only">{{ __('carbex.trajectory.select_target') }}</label>
+                    <label for="target-select" class="sr-only">{{ __('linscarbon.trajectory.select_target') }}</label>
                     <select
                         id="target-select"
                         wire:model.live="selectedTargetId"
@@ -90,7 +90,7 @@
                             xaxis: {
                                 categories: chartData.categories,
                                 title: {
-                                    text: '{{ __('carbex.trajectory.axis_years') }}',
+                                    text: '{{ __('linscarbon.trajectory.axis_years') }}',
                                     style: {
                                         fontSize: '12px',
                                         fontWeight: 500,
@@ -114,7 +114,7 @@
                             },
                             yaxis: {
                                 title: {
-                                    text: '{{ __('carbex.trajectory.axis_emissions') }}',
+                                    text: '{{ __('linscarbon.trajectory.axis_emissions') }}',
                                     style: {
                                         fontSize: '12px',
                                         fontWeight: 500,
@@ -157,7 +157,7 @@
                                 intersect: false,
                                 y: {
                                     formatter: function(val) {
-                                        if (val === null) return '{{ __('carbex.trajectory.no_data') }}';
+                                        if (val === null) return '{{ __('linscarbon.trajectory.no_data') }}';
                                         return val.toLocaleString('fr-FR', {maximumFractionDigits: 1}) + ' tCO\u2082e';
                                     }
                                 }
@@ -168,7 +168,7 @@
                                     borderColor: '#9CA3AF',
                                     borderWidth: 2,
                                     label: {
-                                        text: '{{ __('carbex.trajectory.today') }}',
+                                        text: '{{ __('linscarbon.trajectory.today') }}',
                                         style: {
                                             color: '#fff',
                                             background: '#6B7280'
@@ -211,7 +211,7 @@
                     <!-- Baseline -->
                     <div class="text-center">
                         <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                            {{ __('carbex.trajectory.baseline') }}
+                            {{ __('linscarbon.trajectory.baseline') }}
                         </p>
                         <p class="mt-1 text-xl font-semibold text-gray-900">
                             {{ number_format($this->summary['baseline_total'], 0, ',', ' ') }} t
@@ -221,7 +221,7 @@
                     <!-- Target -->
                     <div class="text-center">
                         <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                            {{ __('carbex.trajectory.target') }} {{ $this->selectedTarget->target_year }}
+                            {{ __('linscarbon.trajectory.target') }} {{ $this->selectedTarget->target_year }}
                         </p>
                         <p class="mt-1 text-xl font-semibold text-green-600">
                             {{ number_format($this->summary['target_total'], 0, ',', ' ') }} t
@@ -231,7 +231,7 @@
                     <!-- Reduction -->
                     <div class="text-center">
                         <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                            {{ __('carbex.trajectory.reduction') }}
+                            {{ __('linscarbon.trajectory.reduction') }}
                         </p>
                         <p class="mt-1 text-xl font-semibold text-blue-600">
                             -{{ number_format($this->summary['reduction_total'], 0, ',', ' ') }} t
@@ -241,7 +241,7 @@
                     <!-- Status -->
                     <div class="text-center">
                         <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                            {{ __('carbex.trajectory.status') }}
+                            {{ __('linscarbon.trajectory.status') }}
                         </p>
                         @if($this->summary['current_emissions'] !== null)
                             @if($this->summary['on_track'])
@@ -249,19 +249,19 @@
                                     <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                     </svg>
-                                    {{ __('carbex.trajectory.on_track') }}
+                                    {{ __('linscarbon.trajectory.on_track') }}
                                 </p>
                             @else
                                 <p class="mt-1 text-xl font-semibold text-red-600 flex items-center justify-center">
                                     <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                                     </svg>
-                                    {{ __('carbex.trajectory.off_track') }}
+                                    {{ __('linscarbon.trajectory.off_track') }}
                                 </p>
                             @endif
                         @else
                             <p class="mt-1 text-lg font-medium text-gray-400">
-                                {{ __('carbex.trajectory.years_left', ['years' => $this->summary['years_remaining']]) }}
+                                {{ __('linscarbon.trajectory.years_left', ['years' => $this->summary['years_remaining']]) }}
                             </p>
                         @endif
                     </div>
@@ -274,11 +274,11 @@
             <div class="flex items-center justify-center space-x-6 text-sm">
                 <div class="flex items-center">
                     <span class="w-8 h-0.5 bg-green-600 mr-2"></span>
-                    <span class="text-gray-600">{{ __('carbex.trajectory.actual_emissions') }}</span>
+                    <span class="text-gray-600">{{ __('linscarbon.trajectory.actual_emissions') }}</span>
                 </div>
                 <div class="flex items-center">
                     <span class="w-8 h-0.5 bg-red-600 mr-2" style="background: repeating-linear-gradient(to right, #DC2626 0, #DC2626 4px, transparent 4px, transparent 8px);"></span>
-                    <span class="text-gray-600">{{ __('carbex.trajectory.target_trajectory') }}</span>
+                    <span class="text-gray-600">{{ __('linscarbon.trajectory.target_trajectory') }}</span>
                 </div>
             </div>
         </div>
@@ -288,14 +288,14 @@
             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.trajectory.empty') }}</h3>
-            <p class="mt-1 text-sm text-gray-500">{{ __('carbex.trajectory.empty_description') }}</p>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('linscarbon.trajectory.empty') }}</h3>
+            <p class="mt-1 text-sm text-gray-500">{{ __('linscarbon.trajectory.empty_description') }}</p>
             <div class="mt-6">
                 <a href="{{ route('transition-plan.trajectory') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700">
                     <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    {{ __('carbex.trajectory.create_target') }}
+                    {{ __('linscarbon.trajectory.create_target') }}
                 </a>
             </div>
         </div>
