@@ -2681,7 +2681,7 @@ return [
     'legal' => [
         // Common
         'label' => 'Legal',
-        'last_updated' => 'Last updated: December 2024',
+        'last_updated' => 'Last updated: January 2026',
 
         // Legal Notice
         'mentions' => [
@@ -2772,11 +2772,23 @@ return [
             'section7_title' => '7. External Links',
             'section7_text' => 'The website may contain links to third-party websites. LinsCarbon is not responsible for their content.',
 
-            'section8_title' => '8. Applicable Law',
-            'section8_text' => 'This legal notice is governed by German law. Any dispute shall be submitted to the competent courts in Berlin.',
+            'section8_title' => '8. Consumer Dispute Resolution',
+            'section8_1_title' => '8.1 Information pursuant to § 36 VSBG',
+            'section8_1_text' => 'We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.',
+            'section8_2_title' => '8.2 European Consumer Centre',
+            'section8_2_text' => 'For cross-border disputes within the EU, consumers may contact the European Consumer Centre Germany (ECC):',
+            'evz_name' => 'European Consumer Centre Germany',
+            'evz_address' => 'Bahnhofsplatz 3, 77694 Kehl, Germany',
+            'evz_website' => 'Website',
+            'evz_phone' => 'Phone: +49 (0)7851 991 48 0',
+            'section8_3_title' => '8.3 Notice',
+            'section8_3_text' => 'The EU Online Dispute Resolution (ODR) platform was discontinued on July 20, 2025, and is no longer available.',
 
-            'section9_title' => '9. Contact',
-            'section9_text' => 'For any questions regarding this legal notice or the protection of your data:',
+            'section9_title' => '9. Applicable Law',
+            'section9_text' => 'This legal notice is governed by German law. Any dispute shall be submitted to the competent courts in Berlin.',
+
+            'section10_title' => '10. Contact',
+            'section10_text' => 'For any questions regarding this legal notice or the protection of your data:',
             'contact_legal' => 'Email',
             'contact_dpo_label' => 'DPO',
             'contact_mail' => 'Mail: LinsCarbon Ltd - Legal Department, 123 Main Street, Berlin, Germany',

@@ -128,10 +128,27 @@
             <p>{{ __('linscarbon.legal.mentions.section7_text') }}</p>
 
             <h2 style="color: var(--text-primary);">{{ __('linscarbon.legal.mentions.section8_title') }}</h2>
-            <p>{{ __('linscarbon.legal.mentions.section8_text') }}</p>
+
+            <h3 style="color: var(--text-primary);">{{ __('linscarbon.legal.mentions.section8_1_title') }}</h3>
+            <p>{{ __('linscarbon.legal.mentions.section8_1_text') }}</p>
+
+            <h3 style="color: var(--text-primary);">{{ __('linscarbon.legal.mentions.section8_2_title') }}</h3>
+            <p>{{ __('linscarbon.legal.mentions.section8_2_text') }}</p>
+            <div class="bg-gray-50 p-6 rounded-xl my-6">
+                <p class="mb-2"><strong>{{ __('linscarbon.legal.mentions.evz_name') }}</strong></p>
+                <p class="mb-2">{{ __('linscarbon.legal.mentions.evz_address') }}</p>
+                <p class="mb-2">{{ __('linscarbon.legal.mentions.evz_website') }} : <a href="https://www.evz.de" target="_blank" rel="noopener" style="color: var(--accent);">www.evz.de</a></p>
+                <p>{{ __('linscarbon.legal.mentions.evz_phone') }}</p>
+            </div>
+
+            <h3 style="color: var(--text-primary);">{{ __('linscarbon.legal.mentions.section8_3_title') }}</h3>
+            <p class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">{{ __('linscarbon.legal.mentions.section8_3_text') }}</p>
 
             <h2 style="color: var(--text-primary);">{{ __('linscarbon.legal.mentions.section9_title') }}</h2>
             <p>{{ __('linscarbon.legal.mentions.section9_text') }}</p>
+
+            <h2 style="color: var(--text-primary);">{{ __('linscarbon.legal.mentions.section10_title') }}</h2>
+            <p>{{ __('linscarbon.legal.mentions.section10_text') }}</p>
             <ul>
                 <li>{{ __('linscarbon.legal.mentions.contact_legal') }} : <a href="mailto:legal@linscarbon.de" style="color: var(--accent);">legal@linscarbon.de</a></li>
                 <li>{{ __('linscarbon.legal.mentions.contact_dpo_label') }} : <a href="mailto:dpo@linscarbon.de" style="color: var(--accent);">dpo@linscarbon.de</a></li>

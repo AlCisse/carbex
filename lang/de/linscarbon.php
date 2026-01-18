@@ -2909,7 +2909,7 @@ return [
     'legal' => [
         // Common
         'label' => 'Rechtliches',
-        'last_updated' => 'Zuletzt aktualisiert: Dezember 2024',
+        'last_updated' => 'Zuletzt aktualisiert: Januar 2026',
 
         // Legal Notice (Impressum)
         'mentions' => [
@@ -3000,11 +3000,23 @@ return [
             'section7_title' => '7. Externe Links',
             'section7_text' => 'Diese Website kann Links zu Websites Dritter enthalten. LinsCarbon ist nicht verantwortlich für deren Inhalte.',
 
-            'section8_title' => '8. Anwendbares Recht',
-            'section8_text' => 'Dieses Impressum unterliegt deutschem Recht. Bei Streitigkeiten sind die Gerichte in Berlin zuständig.',
+            'section8_title' => '8. Verbraucherstreitbeilegung',
+            'section8_1_title' => '8.1 Information nach § 36 VSBG',
+            'section8_1_text' => 'Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
+            'section8_2_title' => '8.2 Europäisches Verbraucherzentrum',
+            'section8_2_text' => 'Für grenzüberschreitende Streitigkeiten innerhalb der EU können Verbraucher das Europäische Verbraucherzentrum Deutschland (EVZ) kontaktieren:',
+            'evz_name' => 'Europäisches Verbraucherzentrum Deutschland',
+            'evz_address' => 'Bahnhofsplatz 3, 77694 Kehl',
+            'evz_website' => 'Webseite',
+            'evz_phone' => 'Telefon: +49 (0)7851 991 48 0',
+            'section8_3_title' => '8.3 Hinweis',
+            'section8_3_text' => 'Die EU-Plattform zur Online-Streitbeilegung (OS-Plattform) wurde zum 20. Juli 2025 eingestellt und steht nicht mehr zur Verfügung.',
 
-            'section9_title' => '9. Kontakt',
-            'section9_text' => 'Bei Fragen zu diesem Impressum oder zum Schutz Ihrer Daten:',
+            'section9_title' => '9. Anwendbares Recht',
+            'section9_text' => 'Dieses Impressum unterliegt deutschem Recht. Bei Streitigkeiten sind die Gerichte in Berlin zuständig.',
+
+            'section10_title' => '10. Kontakt',
+            'section10_text' => 'Bei Fragen zu diesem Impressum oder zum Schutz Ihrer Daten:',
             'contact_legal' => 'E-Mail',
             'contact_dpo_label' => 'Datenschutzbeauftragter',
             'contact_mail' => 'Post: LinsCarbon GmbH - Rechtsabteilung, Musterstraße 123, 10115 Berlin',

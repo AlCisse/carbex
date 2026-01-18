@@ -2949,7 +2949,7 @@ return [
     'legal' => [
         // Common
         'label' => 'Legal',
-        'last_updated' => 'Dernière mise à jour : Décembre 2024',
+        'last_updated' => 'Dernière mise à jour : Janvier 2026',
 
         // Legal Notice (Mentions légales)
         'mentions' => [
@@ -3040,11 +3040,23 @@ return [
             'section7_title' => '7. Liens externes',
             'section7_text' => 'Le site peut contenir des liens vers des sites tiers. LinsCarbon n\'est pas responsable du contenu de ces sites.',
 
-            'section8_title' => '8. Droit applicable',
-            'section8_text' => 'Les présentes mentions légales sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de Paris.',
+            'section8_title' => '8. Règlement des litiges de consommation',
+            'section8_1_title' => '8.1 Information conformément au § 36 VSBG',
+            'section8_1_text' => 'Nous ne sommes pas tenus et ne souhaitons pas participer à une procédure de règlement des litiges devant un organisme de médiation des consommateurs.',
+            'section8_2_title' => '8.2 Centre Européen des Consommateurs',
+            'section8_2_text' => 'Pour les litiges transfrontaliers au sein de l\'UE, les consommateurs peuvent contacter le Centre Européen des Consommateurs Allemagne (EVZ):',
+            'evz_name' => 'Centre Européen des Consommateurs Allemagne',
+            'evz_address' => 'Bahnhofsplatz 3, 77694 Kehl, Allemagne',
+            'evz_website' => 'Site web',
+            'evz_phone' => 'Téléphone: +49 (0)7851 991 48 0',
+            'section8_3_title' => '8.3 Avertissement',
+            'section8_3_text' => 'La plateforme de règlement en ligne des litiges de l\'UE (plateforme RLL) a été fermée le 20 juillet 2025 et n\'est plus disponible.',
 
-            'section9_title' => '9. Contact',
-            'section9_text' => 'Pour toute question concernant ces mentions légales ou la protection de vos données :',
+            'section9_title' => '9. Droit applicable',
+            'section9_text' => 'Les présentes mentions légales sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de Paris.',
+
+            'section10_title' => '10. Contact',
+            'section10_text' => 'Pour toute question concernant ces mentions légales ou la protection de vos données :',
             'contact_legal' => 'Email',
             'contact_dpo_label' => 'DPO',
             'contact_mail' => 'Courrier : LinsCarbon SAS - Service Juridique, 123 Avenue de la République, 75011 Paris',
