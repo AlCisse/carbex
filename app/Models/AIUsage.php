@@ -44,16 +44,23 @@ class AIUsage extends Model
         'anthropic' => [
             'claude-sonnet-4-20250514' => ['input' => 0.3, 'output' => 1.5],
             'claude-3-5-sonnet-20241022' => ['input' => 0.3, 'output' => 1.5],
+            'claude-3-5-haiku-20241022' => ['input' => 0.08, 'output' => 0.4],
             'claude-3-haiku-20240307' => ['input' => 0.025, 'output' => 0.125],
             'claude-3-opus-20240229' => ['input' => 1.5, 'output' => 7.5],
         ],
         'openai' => [
+            'gpt-4.5-preview' => ['input' => 7.5, 'output' => 15.0],
             'gpt-4o' => ['input' => 0.25, 'output' => 1.0],
             'gpt-4o-mini' => ['input' => 0.015, 'output' => 0.06],
+            'o3-mini' => ['input' => 0.11, 'output' => 0.44],
+            'o1' => ['input' => 1.5, 'output' => 6.0],
+            'o1-mini' => ['input' => 0.3, 'output' => 1.2],
             'gpt-4-turbo' => ['input' => 1.0, 'output' => 3.0],
             'gpt-3.5-turbo' => ['input' => 0.05, 'output' => 0.15],
         ],
         'google' => [
+            'gemini-2.0-flash' => ['input' => 0.01, 'output' => 0.04],
+            'gemini-2.0-flash-lite' => ['input' => 0.0075, 'output' => 0.03],
             'gemini-1.5-pro' => ['input' => 0.125, 'output' => 0.5],
             'gemini-1.5-flash' => ['input' => 0.0075, 'output' => 0.03],
             'gemini-pro' => ['input' => 0.05, 'output' => 0.15],

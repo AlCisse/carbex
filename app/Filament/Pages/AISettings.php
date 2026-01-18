@@ -104,6 +104,7 @@ class AISettings extends Page implements HasForms
                             ->options([
                                 'claude-sonnet-4-20250514' => 'Claude Sonnet 4 ★',
                                 'claude-3-5-sonnet-20241022' => 'Claude 3.5 Sonnet',
+                                'claude-3-5-haiku-20241022' => 'Claude 3.5 Haiku',
                                 'claude-3-haiku-20240307' => 'Claude 3 Haiku',
                                 'claude-3-opus-20240229' => 'Claude 3 Opus (Premium)',
                             ])
@@ -124,8 +125,12 @@ class AISettings extends Page implements HasForms
                         Select::make('openai_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
+                                'gpt-4.5-preview' => 'GPT-4.5 Preview (Premium)',
                                 'gpt-4o' => 'GPT-4o ★',
                                 'gpt-4o-mini' => 'GPT-4o Mini',
+                                'o3-mini' => 'o3-mini (Reasoning)',
+                                'o1' => 'o1 (Reasoning Premium)',
+                                'o1-mini' => 'o1-mini (Reasoning)',
                                 'gpt-4-turbo' => 'GPT-4 Turbo',
                                 'gpt-3.5-turbo' => 'GPT-3.5 Turbo',
                             ])
@@ -146,7 +151,9 @@ class AISettings extends Page implements HasForms
                         Select::make('google_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
-                                'gemini-1.5-pro' => 'Gemini 1.5 Pro ★',
+                                'gemini-2.0-flash' => 'Gemini 2.0 Flash ★',
+                                'gemini-2.0-flash-lite' => 'Gemini 2.0 Flash Lite',
+                                'gemini-1.5-pro' => 'Gemini 1.5 Pro',
                                 'gemini-1.5-flash' => 'Gemini 1.5 Flash',
                                 'gemini-pro' => 'Gemini Pro',
                             ])
