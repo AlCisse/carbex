@@ -237,7 +237,7 @@
                         <h3 class="text-lg font-medium">{{ __('carbex.settings.ai.upgrade_title') }}</h3>
                         <p class="mt-1 text-sm text-green-100">{{ __('carbex.settings.ai.upgrade_desc') }}</p>
                     </div>
-                    <a href="{{ route('billing.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-green-600 bg-white hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-600 focus:ring-white">
+                    <a href="{{ route('settings.billing') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-green-600 bg-white hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-600 focus:ring-white">
                         {{ __('carbex.settings.ai.view_plans') }}
                         <svg class="ml-2 -mr-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
