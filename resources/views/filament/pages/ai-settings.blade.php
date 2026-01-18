@@ -22,88 +22,117 @@
         </x-slot>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            @foreach($subscriptionPlans as $planKey => $plan)
-                @php
-                    $modelProperty = "{$planKey}Model";
-                    $currentModel = $this->$modelProperty;
-                    $colorClasses = match($plan['color']) {
-                        'gray' => 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800',
-                        'blue' => 'border-blue-300 dark:border-blue-600 bg-blue-50 dark:bg-blue-900/20',
-                        'purple' => 'border-purple-300 dark:border-purple-600 bg-purple-50 dark:bg-purple-900/20',
-                        'amber' => 'border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20',
-                        default => 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800',
-                    };
-                    $iconColorClasses = match($plan['color']) {
-                        'gray' => 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300',
-                        'blue' => 'bg-blue-200 dark:bg-blue-800 text-blue-600 dark:text-blue-300',
-                        'purple' => 'bg-purple-200 dark:bg-purple-800 text-purple-600 dark:text-purple-300',
-                        'amber' => 'bg-amber-200 dark:bg-amber-800 text-amber-600 dark:text-amber-300',
-                        default => 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300',
-                    };
-                    $badgeClasses = match($plan['color']) {
-                        'gray' => 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300',
-                        'blue' => 'bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-300',
-                        'purple' => 'bg-purple-100 dark:bg-purple-800 text-purple-700 dark:text-purple-300',
-                        'amber' => 'bg-amber-100 dark:bg-amber-800 text-amber-700 dark:text-amber-300',
-                        default => 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300',
-                    };
-                @endphp
-                <div class="rounded-xl border-2 {{ $colorClasses }} p-5 transition-all hover:shadow-md">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg {{ $iconColorClasses }} flex items-center justify-center">
-                                @if($plan['icon'] === 'gift')
-                                    <x-heroicon-o-gift class="w-6 h-6" />
-                                @elseif($plan['icon'] === 'rocket')
-                                    <x-heroicon-o-rocket-launch class="w-6 h-6" />
-                                @elseif($plan['icon'] === 'briefcase')
-                                    <x-heroicon-o-briefcase class="w-6 h-6" />
-                                @elseif($plan['icon'] === 'building-office')
-                                    <x-heroicon-o-building-office class="w-6 h-6" />
-                                @endif
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white text-lg">{{ $plan['name'] }}</h3>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">{{ $plan['description'] }}</p>
-                            </div>
-                        </div>
+            {{-- Gratuit --}}
+            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #9ca3af">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-gray flex items-center justify-center">
+                        <x-heroicon-o-gift class="w-5 h-5" />
                     </div>
-
-                    <div class="flex gap-2 mb-4">
-                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium {{ $badgeClasses }}">
-                            <x-heroicon-m-cpu-chip class="w-3 h-3 mr-1" />
-                            {{ $plan['tokens'] }}
-                        </span>
-                        <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium {{ $badgeClasses }}">
-                            <x-heroicon-m-chat-bubble-left-right class="w-3 h-3 mr-1" />
-                            {{ $plan['requests'] }}
-                        </span>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            Modèle IA attribué
-                        </label>
-                        <select
-                            wire:change="saveSubscriptionModel('{{ $planKey }}', $event.target.value)"
-                            class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 text-sm"
-                        >
-                            @foreach($this->getAllModelsOptions() as $group => $models)
-                                <optgroup label="{{ $group }}">
-                                    @foreach($models as $modelKey => $modelLabel)
-                                        <option value="{{ $modelKey }}" {{ $currentModel === $modelKey ? 'selected' : '' }}>
-                                            {{ $modelLabel }}
-                                        </option>
-                                    @endforeach
-                                </optgroup>
-                            @endforeach
-                        </select>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                            Actuel: <span class="font-medium">{{ $this->getModelLabel($currentModel) }}</span>
-                        </p>
+                    <div>
+                        <h3 class="font-semibold fi-section-header-heading">Gratuit</h3>
+                        <p class="text-xs fi-section-header-description">Essai gratuit</p>
                     </div>
                 </div>
-            @endforeach
+                <div class="flex gap-2 mb-3">
+                    <x-filament::badge color="gray" size="sm">50K tokens/mois</x-filament::badge>
+                    <x-filament::badge color="gray" size="sm">100 req/mois</x-filament::badge>
+                </div>
+                <x-filament::input.wrapper>
+                    <x-filament::input.select wire:change="saveSubscriptionModel('free', $event.target.value)">
+                        @foreach($this->getAllModelsOptions() as $group => $models)
+                            <optgroup label="{{ $group }}">
+                                @foreach($models as $modelKey => $modelLabel)
+                                    <option value="{{ $modelKey }}" {{ $freeModel === $modelKey ? 'selected' : '' }}>{{ $modelLabel }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </x-filament::input.select>
+                </x-filament::input.wrapper>
+            </div>
+
+            {{-- Starter --}}
+            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #60a5fa">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-info flex items-center justify-center">
+                        <x-heroicon-o-rocket-launch class="w-5 h-5" />
+                    </div>
+                    <div>
+                        <h3 class="font-semibold fi-section-header-heading">Starter</h3>
+                        <p class="text-xs fi-section-header-description">Petites équipes</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-3">
+                    <x-filament::badge color="info" size="sm">200K tokens/mois</x-filament::badge>
+                    <x-filament::badge color="info" size="sm">500 req/mois</x-filament::badge>
+                </div>
+                <x-filament::input.wrapper>
+                    <x-filament::input.select wire:change="saveSubscriptionModel('starter', $event.target.value)">
+                        @foreach($this->getAllModelsOptions() as $group => $models)
+                            <optgroup label="{{ $group }}">
+                                @foreach($models as $modelKey => $modelLabel)
+                                    <option value="{{ $modelKey }}" {{ $starterModel === $modelKey ? 'selected' : '' }}>{{ $modelLabel }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </x-filament::input.select>
+                </x-filament::input.wrapper>
+            </div>
+
+            {{-- Professional --}}
+            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #a855f7">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-warning flex items-center justify-center">
+                        <x-heroicon-o-briefcase class="w-5 h-5" />
+                    </div>
+                    <div>
+                        <h3 class="font-semibold fi-section-header-heading">Professional</h3>
+                        <p class="text-xs fi-section-header-description">Entreprises en croissance</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-3">
+                    <x-filament::badge color="warning" size="sm">1M tokens/mois</x-filament::badge>
+                    <x-filament::badge color="warning" size="sm">2500 req/mois</x-filament::badge>
+                </div>
+                <x-filament::input.wrapper>
+                    <x-filament::input.select wire:change="saveSubscriptionModel('professional', $event.target.value)">
+                        @foreach($this->getAllModelsOptions() as $group => $models)
+                            <optgroup label="{{ $group }}">
+                                @foreach($models as $modelKey => $modelLabel)
+                                    <option value="{{ $modelKey }}" {{ $professionalModel === $modelKey ? 'selected' : '' }}>{{ $modelLabel }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </x-filament::input.select>
+                </x-filament::input.wrapper>
+            </div>
+
+            {{-- Enterprise --}}
+            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #f59e0b">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-success flex items-center justify-center">
+                        <x-heroicon-o-building-office class="w-5 h-5" />
+                    </div>
+                    <div>
+                        <h3 class="font-semibold fi-section-header-heading">Enterprise</h3>
+                        <p class="text-xs fi-section-header-description">Solution sur mesure</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-3">
+                    <x-filament::badge color="success" size="sm">Illimité</x-filament::badge>
+                    <x-filament::badge color="success" size="sm">Illimité</x-filament::badge>
+                </div>
+                <x-filament::input.wrapper>
+                    <x-filament::input.select wire:change="saveSubscriptionModel('enterprise', $event.target.value)">
+                        @foreach($this->getAllModelsOptions() as $group => $models)
+                            <optgroup label="{{ $group }}">
+                                @foreach($models as $modelKey => $modelLabel)
+                                    <option value="{{ $modelKey }}" {{ $enterpriseModel === $modelKey ? 'selected' : '' }}>{{ $modelLabel }}</option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </x-filament::input.select>
+                </x-filament::input.wrapper>
+            </div>
         </div>
     </x-filament::section>
 
