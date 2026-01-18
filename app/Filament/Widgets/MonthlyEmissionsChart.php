@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class MonthlyEmissionsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Monthly Emissions Trend';
+    protected ?string $heading = 'Monthly Emissions Trend';
 
     protected static ?int $sort = 3;
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class EmissionsByCountryChart extends ChartWidget
 {
-    protected static ?string $heading = 'Emissions by Country';
+    protected ?string $heading = 'Emissions by Country';
 
     protected static ?int $sort = 2;
 

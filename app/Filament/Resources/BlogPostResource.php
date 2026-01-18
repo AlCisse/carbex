@@ -6,8 +6,8 @@ use App\Filament\Resources\BlogPostResource\Pages;
 use App\Models\BlogPost;
 use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
@@ -16,9 +16,9 @@ class BlogPostResource extends Resource
 {
     protected static ?string $model = BlogPost::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static ?string $navigationGroup = 'Contenu';
+    protected static string | \UnitEnum | null $navigationGroup = 'Contenu';
 
     protected static ?string $navigationLabel = 'Articles de blog';
 
@@ -28,9 +28,9 @@ class BlogPostResource extends Resource
 
     protected static ?int $navigationSort = 10;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\Section::make('Contenu')
                     ->schema([

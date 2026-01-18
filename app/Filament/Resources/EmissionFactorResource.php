@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EmissionFactorResource\Pages;
 use App\Models\EmissionFactor;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -14,15 +14,15 @@ class EmissionFactorResource extends Resource
 {
     protected static ?string $model = EmissionFactor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calculator';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-calculator';
 
-    protected static ?string $navigationGroup = 'Carbon Data';
+    protected static string | \UnitEnum | null $navigationGroup = 'Carbon Data';
 
     protected static ?int $navigationSort = 1;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\Section::make('Factor Information')
                     ->schema([

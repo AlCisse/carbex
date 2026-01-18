@@ -11,11 +11,11 @@ use Filament\Pages\Page;
 
 class AISettings extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-cpu-chip';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cpu-chip';
     protected static ?string $navigationLabel = 'Configuration IA';
-    protected static ?string $navigationGroup = 'Paramètres';
+    protected static string | \UnitEnum | null $navigationGroup = 'Paramètres';
     protected static ?int $navigationSort = 100;
-    protected static string $view = 'filament.pages.ai-settings';
+    protected string $view = 'filament.pages.ai-settings';
 
     public ?array $data = [];
 
