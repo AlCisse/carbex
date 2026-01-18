@@ -3238,6 +3238,127 @@ return [
             'cta_subtitle' => 'Commencez votre bilan carbone aujourd\'hui et contribuez à la transition écologique.',
             'cta_button' => 'Démarrer l\'essai gratuit',
         ],
+
+        // Privacy Policy (Confidentialité)
+        'privacy' => [
+            'title' => 'Politique de Confidentialité',
+            'meta_description' => 'Politique de confidentialité de Carbex. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.',
+
+            'intro' => 'Carbex SAS (ci-après "Carbex", "nous", "notre") s\'engage à protéger la vie privée de ses utilisateurs. Cette politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.',
+
+            // Article 1
+            'article1_title' => '1. Responsable du traitement',
+            'article1_text' => 'Le responsable du traitement de vos données personnelles est :',
+            'company_name' => 'Raison sociale : Carbex SAS',
+            'company_address' => 'Adresse : 123 Avenue de la République, 75011 Paris, France',
+            'company_email' => 'Email : contact@carbex.app',
+            'dpo_contact' => 'Délégué à la Protection des Données (DPO) : privacy@carbex.app',
+
+            // Article 2
+            'article2_title' => '2. Données collectées',
+            'article2_1_title' => '2.1 Données personnelles',
+            'article2_1_text' => 'Nous collectons les données personnelles suivantes :',
+            'data_identity' => 'Données d\'identification : nom, prénom, adresse email professionnelle',
+            'data_contact' => 'Données de contact : numéro de téléphone professionnel (optionnel)',
+            'data_professional' => 'Données professionnelles : fonction, nom de l\'entreprise, secteur d\'activité',
+            'data_connection' => 'Données de connexion : adresse IP, identifiants de session, horodatage des connexions',
+
+            'article2_2_title' => '2.2 Données de l\'organisation',
+            'article2_2_text' => 'Pour fournir nos services de bilan carbone, nous collectons :',
+            'data_org_info' => 'Informations légales : raison sociale, SIRET/SIREN, numéro de TVA',
+            'data_financial' => 'Données financières : factures fournisseurs, montants des achats',
+            'data_energy' => 'Données énergétiques : consommations électriques, gaz, carburants',
+            'data_emissions' => 'Données d\'émissions : résultats des calculs de bilan carbone',
+
+            'article2_3_title' => '2.3 Données bancaires (optionnel)',
+            'article2_3_text' => 'Si vous utilisez notre fonctionnalité de connexion bancaire :',
+            'data_bank_transactions' => 'Transactions bancaires : date, montant, libellé des opérations',
+            'data_bank_note' => 'Note : Nous n\'avons jamais accès à vos identifiants bancaires. La connexion est sécurisée via des agrégateurs certifiés PSD2 (Bridge, FinAPI).',
+
+            // Article 3
+            'article3_title' => '3. Finalités du traitement',
+            'article3_text' => 'Vos données sont traitées pour les finalités suivantes :',
+            'purpose_account' => 'Gestion de votre compte utilisateur et authentification',
+            'purpose_carbon' => 'Calcul et suivi de votre bilan carbone (Scopes 1, 2, 3)',
+            'purpose_reports' => 'Génération de rapports réglementaires (BEGES, CSRD)',
+            'purpose_ai' => 'Fonctionnement de l\'assistant IA pour l\'aide à la saisie',
+            'purpose_billing' => 'Facturation et gestion de votre abonnement',
+            'purpose_support' => 'Support client et assistance technique',
+            'purpose_improve' => 'Amélioration de nos services (statistiques anonymisées)',
+            'purpose_legal' => 'Respect de nos obligations légales et réglementaires',
+
+            // Article 4
+            'article4_title' => '4. Bases légales du traitement',
+            'article4_text' => 'Le traitement de vos données repose sur les bases légales suivantes :',
+            'legal_contract' => 'Exécution du contrat : fourniture de nos services de bilan carbone',
+            'legal_consent' => 'Consentement : connexion bancaire, newsletter, cookies non essentiels',
+            'legal_interest' => 'Intérêt légitime : amélioration des services, sécurité de la plateforme',
+            'legal_obligation' => 'Obligation légale : conservation des factures, réponse aux réquisitions',
+
+            // Article 5
+            'article5_title' => '5. Destinataires des données',
+            'article5_text' => 'Vos données peuvent être transmises aux destinataires suivants :',
+            'recipient_team' => 'Équipe Carbex : accès limité au personnel habilité',
+            'recipient_hosting' => 'Hébergeur : OVH (serveurs en France, certifié ISO 27001)',
+            'recipient_payment' => 'Paiement : Stripe (traitement sécurisé des paiements)',
+            'recipient_banking' => 'Agrégation bancaire : Bridge (France), FinAPI (Allemagne) - certifiés PSD2',
+            'recipient_ai' => 'IA : Anthropic (Claude), OpenAI, Google - données minimales et anonymisées',
+            'recipient_analytics' => 'Analytics : Plausible (solution respectueuse de la vie privée, sans cookies)',
+            'recipient_note' => 'Tous nos sous-traitants sont soumis à des engagements de confidentialité et de sécurité conformes au RGPD.',
+
+            // Article 6
+            'article6_title' => '6. Transferts internationaux',
+            'article6_text' => 'Vos données sont principalement hébergées en France et dans l\'Union Européenne. En cas de transfert vers des pays tiers (notamment pour les services d\'IA), nous nous assurons de la mise en place de garanties appropriées : décision d\'adéquation, clauses contractuelles types de la Commission européenne, ou certification du destinataire.',
+
+            // Article 7
+            'article7_title' => '7. Durée de conservation',
+            'article7_text' => 'Nous conservons vos données selon les durées suivantes :',
+            'retention_account' => 'Données de compte : durée de l\'abonnement + 3 ans',
+            'retention_carbon' => 'Données de bilan carbone : durée de l\'abonnement + 5 ans (archivage)',
+            'retention_billing' => 'Données de facturation : 10 ans (obligation légale)',
+            'retention_logs' => 'Logs de connexion : 1 an',
+            'retention_cookies' => 'Cookies : 13 mois maximum',
+
+            // Article 8
+            'article8_title' => '8. Vos droits',
+            'article8_text' => 'Conformément au RGPD, vous disposez des droits suivants :',
+            'right_access' => 'Droit d\'accès : obtenir une copie de vos données personnelles',
+            'right_rectification' => 'Droit de rectification : corriger des données inexactes ou incomplètes',
+            'right_erasure' => 'Droit à l\'effacement ("droit à l\'oubli") : demander la suppression de vos données',
+            'right_portability' => 'Droit à la portabilité : recevoir vos données dans un format structuré et lisible',
+            'right_restriction' => 'Droit à la limitation : restreindre le traitement dans certains cas',
+            'right_objection' => 'Droit d\'opposition : vous opposer au traitement pour des raisons légitimes',
+            'right_withdraw' => 'Droit de retirer votre consentement : à tout moment, sans affecter la licéité du traitement antérieur',
+            'rights_exercise' => 'Pour exercer vos droits, contactez-nous à :',
+            'rights_authority' => 'En cas de litige non résolu, vous pouvez saisir la CNIL (Commission Nationale de l\'Informatique et des Libertés) : www.cnil.fr',
+
+            // Article 9
+            'article9_title' => '9. Cookies',
+            'article9_text' => 'Notre site utilise des cookies pour améliorer votre expérience. Voici les catégories de cookies utilisés :',
+            'cookies_essential_title' => '9.1 Cookies essentiels',
+            'cookies_essential_text' => 'Ces cookies sont nécessaires au fonctionnement du site : authentification, sécurité (CSRF), préférences de langue. Ils ne nécessitent pas votre consentement.',
+            'cookies_analytics_title' => '9.2 Cookies analytiques',
+            'cookies_analytics_text' => 'Nous utilisons Plausible Analytics, une solution respectueuse de la vie privée qui ne collecte pas de données personnelles et ne nécessite pas de consentement. Aucun cookie tiers n\'est déposé.',
+            'cookies_preferences_title' => '9.3 Gestion des préférences',
+            'cookies_preferences_text' => 'Vous pouvez gérer vos préférences de cookies via notre bandeau de consentement ou les paramètres de votre navigateur.',
+
+            // Article 10
+            'article10_title' => '10. Sécurité des données',
+            'article10_text' => 'Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données :',
+            'security_encryption' => 'Chiffrement des données en transit (TLS 1.3) et au repos (AES-256)',
+            'security_access' => 'Contrôle d\'accès strict et authentification forte (2FA)',
+            'security_audit' => 'Audits de sécurité réguliers et tests de pénétration',
+            'security_backup' => 'Sauvegardes quotidiennes chiffrées avec rétention de 30 jours',
+            'security_hosting' => 'Hébergement certifié ISO 27001 dans des datacenters français',
+
+            // Article 11
+            'article11_title' => '11. Modifications de la politique',
+            'article11_text' => 'Nous pouvons modifier cette politique de confidentialité à tout moment. En cas de modification substantielle, nous vous informerons par email ou via une notification sur la plateforme. La date de dernière mise à jour est indiquée en haut de ce document.',
+
+            // Article 12
+            'article12_title' => '12. Contact',
+            'article12_text' => 'Pour toute question concernant cette politique de confidentialité ou vos données personnelles, contactez notre Délégué à la Protection des Données :',
+        ],
     ],
 
     /*

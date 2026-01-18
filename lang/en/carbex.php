@@ -2970,6 +2970,127 @@ return [
             'cta_subtitle' => 'Start your carbon footprint today and contribute to the ecological transition.',
             'cta_button' => 'Start free trial',
         ],
+
+        // Privacy Policy
+        'privacy' => [
+            'title' => 'Privacy Policy',
+            'meta_description' => 'Carbex Privacy Policy. Learn how we collect, use and protect your personal data in compliance with GDPR.',
+
+            'intro' => 'Carbex Ltd (hereinafter "Carbex", "we", "our") is committed to protecting the privacy of its users. This privacy policy explains how we collect, use, store and protect your personal data in accordance with the General Data Protection Regulation (GDPR).',
+
+            // Article 1
+            'article1_title' => '1. Data Controller',
+            'article1_text' => 'The data controller for your personal data is:',
+            'company_name' => 'Company name: Carbex Ltd',
+            'company_address' => 'Address: 123 Main Street, Berlin, Germany',
+            'company_email' => 'Email: contact@carbex.app',
+            'dpo_contact' => 'Data Protection Officer (DPO): privacy@carbex.app',
+
+            // Article 2
+            'article2_title' => '2. Data Collected',
+            'article2_1_title' => '2.1 Personal Data',
+            'article2_1_text' => 'We collect the following personal data:',
+            'data_identity' => 'Identification data: name, surname, professional email address',
+            'data_contact' => 'Contact data: professional phone number (optional)',
+            'data_professional' => 'Professional data: job title, company name, industry sector',
+            'data_connection' => 'Connection data: IP address, session identifiers, connection timestamps',
+
+            'article2_2_title' => '2.2 Organization Data',
+            'article2_2_text' => 'To provide our carbon footprint services, we collect:',
+            'data_org_info' => 'Legal information: company name, registration number, VAT number',
+            'data_financial' => 'Financial data: supplier invoices, purchase amounts',
+            'data_energy' => 'Energy data: electricity, gas, fuel consumption',
+            'data_emissions' => 'Emissions data: carbon footprint calculation results',
+
+            'article2_3_title' => '2.3 Banking Data (optional)',
+            'article2_3_text' => 'If you use our bank connection feature:',
+            'data_bank_transactions' => 'Bank transactions: date, amount, transaction description',
+            'data_bank_note' => 'Note: We never have access to your bank credentials. The connection is secured via PSD2-certified aggregators (Bridge, FinAPI).',
+
+            // Article 3
+            'article3_title' => '3. Processing Purposes',
+            'article3_text' => 'Your data is processed for the following purposes:',
+            'purpose_account' => 'Managing your user account and authentication',
+            'purpose_carbon' => 'Calculating and tracking your carbon footprint (Scopes 1, 2, 3)',
+            'purpose_reports' => 'Generating regulatory reports (CSRD, GHG Protocol)',
+            'purpose_ai' => 'Operating the AI assistant for data entry assistance',
+            'purpose_billing' => 'Billing and subscription management',
+            'purpose_support' => 'Customer support and technical assistance',
+            'purpose_improve' => 'Improving our services (anonymized statistics)',
+            'purpose_legal' => 'Compliance with our legal and regulatory obligations',
+
+            // Article 4
+            'article4_title' => '4. Legal Basis for Processing',
+            'article4_text' => 'The processing of your data is based on the following legal grounds:',
+            'legal_contract' => 'Contract performance: providing our carbon footprint services',
+            'legal_consent' => 'Consent: bank connection, newsletter, non-essential cookies',
+            'legal_interest' => 'Legitimate interest: service improvement, platform security',
+            'legal_obligation' => 'Legal obligation: invoice retention, response to legal requests',
+
+            // Article 5
+            'article5_title' => '5. Data Recipients',
+            'article5_text' => 'Your data may be shared with the following recipients:',
+            'recipient_team' => 'Carbex team: access limited to authorized personnel',
+            'recipient_hosting' => 'Hosting provider: Hetzner (servers in Germany, ISO 27001 certified)',
+            'recipient_payment' => 'Payment: Stripe (secure payment processing)',
+            'recipient_banking' => 'Banking aggregation: Bridge (France), FinAPI (Germany) - PSD2 certified',
+            'recipient_ai' => 'AI: Anthropic (Claude), OpenAI, Google - minimal and anonymized data',
+            'recipient_analytics' => 'Analytics: Plausible (privacy-friendly solution, no cookies)',
+            'recipient_note' => 'All our subcontractors are bound by confidentiality and security commitments in compliance with GDPR.',
+
+            // Article 6
+            'article6_title' => '6. International Transfers',
+            'article6_text' => 'Your data is primarily hosted in Germany and the European Union. In case of transfer to third countries (particularly for AI services), we ensure appropriate safeguards are in place: adequacy decision, EU Commission standard contractual clauses, or recipient certification.',
+
+            // Article 7
+            'article7_title' => '7. Data Retention',
+            'article7_text' => 'We retain your data according to the following periods:',
+            'retention_account' => 'Account data: duration of subscription + 3 years',
+            'retention_carbon' => 'Carbon footprint data: duration of subscription + 5 years (archiving)',
+            'retention_billing' => 'Billing data: 10 years (legal obligation)',
+            'retention_logs' => 'Connection logs: 1 year',
+            'retention_cookies' => 'Cookies: 13 months maximum',
+
+            // Article 8
+            'article8_title' => '8. Your Rights',
+            'article8_text' => 'Under GDPR, you have the following rights:',
+            'right_access' => 'Right of access: obtain a copy of your personal data',
+            'right_rectification' => 'Right to rectification: correct inaccurate or incomplete data',
+            'right_erasure' => 'Right to erasure ("right to be forgotten"): request deletion of your data',
+            'right_portability' => 'Right to data portability: receive your data in a structured, readable format',
+            'right_restriction' => 'Right to restriction: limit processing in certain cases',
+            'right_objection' => 'Right to object: object to processing for legitimate reasons',
+            'right_withdraw' => 'Right to withdraw consent: at any time, without affecting the lawfulness of prior processing',
+            'rights_exercise' => 'To exercise your rights, contact us at:',
+            'rights_authority' => 'In case of unresolved dispute, you can contact the data protection authority in your country.',
+
+            // Article 9
+            'article9_title' => '9. Cookies',
+            'article9_text' => 'Our website uses cookies to improve your experience. Here are the categories of cookies used:',
+            'cookies_essential_title' => '9.1 Essential Cookies',
+            'cookies_essential_text' => 'These cookies are necessary for the website to function: authentication, security (CSRF), language preferences. They do not require your consent.',
+            'cookies_analytics_title' => '9.2 Analytics Cookies',
+            'cookies_analytics_text' => 'We use Plausible Analytics, a privacy-friendly solution that does not collect personal data and does not require consent. No third-party cookies are placed.',
+            'cookies_preferences_title' => '9.3 Preference Management',
+            'cookies_preferences_text' => 'You can manage your cookie preferences via our consent banner or your browser settings.',
+
+            // Article 10
+            'article10_title' => '10. Data Security',
+            'article10_text' => 'We implement appropriate technical and organizational measures to protect your data:',
+            'security_encryption' => 'Data encryption in transit (TLS 1.3) and at rest (AES-256)',
+            'security_access' => 'Strict access control and strong authentication (2FA)',
+            'security_audit' => 'Regular security audits and penetration testing',
+            'security_backup' => 'Daily encrypted backups with 30-day retention',
+            'security_hosting' => 'ISO 27001 certified hosting in German data centers',
+
+            // Article 11
+            'article11_title' => '11. Policy Changes',
+            'article11_text' => 'We may modify this privacy policy at any time. In case of substantial changes, we will notify you by email or via a platform notification. The last update date is indicated at the top of this document.',
+
+            // Article 12
+            'article12_title' => '12. Contact',
+            'article12_text' => 'For any questions about this privacy policy or your personal data, contact our Data Protection Officer:',
+        ],
     ],
 
     /*

@@ -48,6 +48,7 @@ Route::get('/cgv', fn () => view('marketing.legal.cgv'))->name('cgv');
 Route::get('/cgu', fn () => view('marketing.legal.cgu'))->name('cgu');
 Route::get('/mentions-legales', fn () => view('marketing.legal.mentions'))->name('mentions-legales');
 Route::get('/nos-engagements', fn () => view('marketing.legal.engagements'))->name('engagements');
+Route::get('/confidentialite', fn () => view('marketing.legal.confidentialite'))->name('confidentialite');
 
 // SEO
 Route::get('/sitemap.xml', [\App\Http\Controllers\SeoController::class, 'sitemap'])->name('sitemap');

@@ -3198,6 +3198,127 @@ return [
             'cta_subtitle' => 'Starten Sie noch heute Ihre CO2-Bilanz und tragen Sie zur ökologischen Transformation bei.',
             'cta_button' => 'Kostenlose Testversion starten',
         ],
+
+        // Privacy Policy (Datenschutzerklärung)
+        'privacy' => [
+            'title' => 'Datenschutzerklärung',
+            'meta_description' => 'Datenschutzerklärung von Carbex. Erfahren Sie, wie wir Ihre personenbezogenen Daten DSGVO-konform erheben, verwenden und schützen.',
+
+            'intro' => 'Die Carbex GmbH (nachfolgend "Carbex", "wir", "uns") verpflichtet sich zum Schutz der Privatsphäre ihrer Nutzer. Diese Datenschutzerklärung erläutert, wie wir Ihre personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) und dem Bundesdatenschutzgesetz (BDSG) erheben, verwenden, speichern und schützen.',
+
+            // Article 1
+            'article1_title' => '1. Verantwortlicher',
+            'article1_text' => 'Verantwortlicher für die Verarbeitung Ihrer personenbezogenen Daten ist:',
+            'company_name' => 'Firmenname: Carbex GmbH',
+            'company_address' => 'Adresse: Musterstraße 123, 10115 Berlin, Deutschland',
+            'company_email' => 'E-Mail: contact@carbex.app',
+            'dpo_contact' => 'Datenschutzbeauftragter (DSB): privacy@carbex.app',
+
+            // Article 2
+            'article2_title' => '2. Erhobene Daten',
+            'article2_1_title' => '2.1 Personenbezogene Daten',
+            'article2_1_text' => 'Wir erheben folgende personenbezogene Daten:',
+            'data_identity' => 'Identifikationsdaten: Name, Vorname, geschäftliche E-Mail-Adresse',
+            'data_contact' => 'Kontaktdaten: geschäftliche Telefonnummer (optional)',
+            'data_professional' => 'Berufliche Daten: Funktion, Firmenname, Branche',
+            'data_connection' => 'Verbindungsdaten: IP-Adresse, Session-Kennungen, Zeitstempel der Verbindungen',
+
+            'article2_2_title' => '2.2 Organisationsdaten',
+            'article2_2_text' => 'Zur Erbringung unserer CO2-Bilanz-Dienste erheben wir:',
+            'data_org_info' => 'Rechtliche Informationen: Firmenname, Handelsregisternummer, USt-IdNr.',
+            'data_financial' => 'Finanzdaten: Lieferantenrechnungen, Einkaufsbeträge',
+            'data_energy' => 'Energiedaten: Strom-, Gas-, Kraftstoffverbrauch',
+            'data_emissions' => 'Emissionsdaten: Ergebnisse der CO2-Bilanz-Berechnungen',
+
+            'article2_3_title' => '2.3 Bankdaten (optional)',
+            'article2_3_text' => 'Wenn Sie unsere Bankanbindungsfunktion nutzen:',
+            'data_bank_transactions' => 'Banktransaktionen: Datum, Betrag, Verwendungszweck',
+            'data_bank_note' => 'Hinweis: Wir haben niemals Zugriff auf Ihre Bankzugangsdaten. Die Verbindung erfolgt sicher über PSD2-zertifizierte Aggregatoren (Bridge, FinAPI).',
+
+            // Article 3
+            'article3_title' => '3. Zwecke der Verarbeitung',
+            'article3_text' => 'Ihre Daten werden für folgende Zwecke verarbeitet:',
+            'purpose_account' => 'Verwaltung Ihres Benutzerkontos und Authentifizierung',
+            'purpose_carbon' => 'Berechnung und Verfolgung Ihrer CO2-Bilanz (Scope 1, 2, 3)',
+            'purpose_reports' => 'Erstellung regulatorischer Berichte (CSRD, GHG Protocol)',
+            'purpose_ai' => 'Betrieb des KI-Assistenten zur Unterstützung bei der Dateneingabe',
+            'purpose_billing' => 'Abrechnung und Abonnementverwaltung',
+            'purpose_support' => 'Kundensupport und technische Unterstützung',
+            'purpose_improve' => 'Verbesserung unserer Dienste (anonymisierte Statistiken)',
+            'purpose_legal' => 'Erfüllung unserer gesetzlichen und regulatorischen Pflichten',
+
+            // Article 4
+            'article4_title' => '4. Rechtsgrundlagen der Verarbeitung',
+            'article4_text' => 'Die Verarbeitung Ihrer Daten basiert auf folgenden Rechtsgrundlagen:',
+            'legal_contract' => 'Vertragserfüllung: Erbringung unserer CO2-Bilanz-Dienste',
+            'legal_consent' => 'Einwilligung: Bankanbindung, Newsletter, nicht-essenzielle Cookies',
+            'legal_interest' => 'Berechtigtes Interesse: Serviceverbesserung, Plattformsicherheit',
+            'legal_obligation' => 'Gesetzliche Verpflichtung: Aufbewahrung von Rechnungen, Reaktion auf behördliche Anfragen',
+
+            // Article 5
+            'article5_title' => '5. Datenempfänger',
+            'article5_text' => 'Ihre Daten können an folgende Empfänger weitergegeben werden:',
+            'recipient_team' => 'Carbex-Team: Zugang beschränkt auf autorisiertes Personal',
+            'recipient_hosting' => 'Hosting-Anbieter: Hetzner (Server in Deutschland, ISO 27001 zertifiziert)',
+            'recipient_payment' => 'Zahlung: Stripe (sichere Zahlungsabwicklung)',
+            'recipient_banking' => 'Bankaggregation: Bridge (Frankreich), FinAPI (Deutschland) - PSD2-zertifiziert',
+            'recipient_ai' => 'KI: Anthropic (Claude), OpenAI, Google - minimale und anonymisierte Daten',
+            'recipient_analytics' => 'Analytics: Plausible (datenschutzfreundliche Lösung, ohne Cookies)',
+            'recipient_note' => 'Alle unsere Auftragsverarbeiter sind durch DSGVO-konforme Vertraulichkeits- und Sicherheitsverpflichtungen gebunden.',
+
+            // Article 6
+            'article6_title' => '6. Internationale Übertragungen',
+            'article6_text' => 'Ihre Daten werden hauptsächlich in Deutschland und der Europäischen Union gehostet. Bei Übertragungen in Drittländer (insbesondere für KI-Dienste) stellen wir angemessene Garantien sicher: Angemessenheitsbeschluss, EU-Standardvertragsklauseln oder Zertifizierung des Empfängers.',
+
+            // Article 7
+            'article7_title' => '7. Speicherdauer',
+            'article7_text' => 'Wir speichern Ihre Daten gemäß folgender Fristen:',
+            'retention_account' => 'Kontodaten: Dauer des Abonnements + 3 Jahre',
+            'retention_carbon' => 'CO2-Bilanz-Daten: Dauer des Abonnements + 5 Jahre (Archivierung)',
+            'retention_billing' => 'Rechnungsdaten: 10 Jahre (gesetzliche Verpflichtung)',
+            'retention_logs' => 'Verbindungsprotokolle: 1 Jahr',
+            'retention_cookies' => 'Cookies: maximal 13 Monate',
+
+            // Article 8
+            'article8_title' => '8. Ihre Rechte',
+            'article8_text' => 'Gemäß DSGVO haben Sie folgende Rechte:',
+            'right_access' => 'Auskunftsrecht: eine Kopie Ihrer personenbezogenen Daten erhalten',
+            'right_rectification' => 'Berichtigungsrecht: unrichtige oder unvollständige Daten korrigieren',
+            'right_erasure' => 'Recht auf Löschung ("Recht auf Vergessenwerden"): Löschung Ihrer Daten beantragen',
+            'right_portability' => 'Recht auf Datenübertragbarkeit: Ihre Daten in einem strukturierten, lesbaren Format erhalten',
+            'right_restriction' => 'Recht auf Einschränkung: die Verarbeitung in bestimmten Fällen einschränken',
+            'right_objection' => 'Widerspruchsrecht: der Verarbeitung aus berechtigten Gründen widersprechen',
+            'right_withdraw' => 'Recht auf Widerruf der Einwilligung: jederzeit, ohne Beeinträchtigung der Rechtmäßigkeit der bisherigen Verarbeitung',
+            'rights_exercise' => 'Zur Ausübung Ihrer Rechte kontaktieren Sie uns unter:',
+            'rights_authority' => 'Bei ungelösten Streitigkeiten können Sie sich an den Bundesbeauftragten für den Datenschutz und die Informationsfreiheit (BfDI) wenden: www.bfdi.bund.de',
+
+            // Article 9
+            'article9_title' => '9. Cookies',
+            'article9_text' => 'Unsere Website verwendet Cookies zur Verbesserung Ihrer Erfahrung. Hier sind die verwendeten Cookie-Kategorien:',
+            'cookies_essential_title' => '9.1 Essenzielle Cookies',
+            'cookies_essential_text' => 'Diese Cookies sind für den Betrieb der Website erforderlich: Authentifizierung, Sicherheit (CSRF), Spracheinstellungen. Sie erfordern keine Einwilligung.',
+            'cookies_analytics_title' => '9.2 Analyse-Cookies',
+            'cookies_analytics_text' => 'Wir verwenden Plausible Analytics, eine datenschutzfreundliche Lösung, die keine personenbezogenen Daten erhebt und keine Einwilligung erfordert. Es werden keine Drittanbieter-Cookies gesetzt.',
+            'cookies_preferences_title' => '9.3 Einstellungsverwaltung',
+            'cookies_preferences_text' => 'Sie können Ihre Cookie-Einstellungen über unser Einwilligungsbanner oder Ihre Browsereinstellungen verwalten.',
+
+            // Article 10
+            'article10_title' => '10. Datensicherheit',
+            'article10_text' => 'Wir setzen angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer Daten um:',
+            'security_encryption' => 'Datenverschlüsselung bei Übertragung (TLS 1.3) und Speicherung (AES-256)',
+            'security_access' => 'Strenge Zugriffskontrolle und starke Authentifizierung (2FA)',
+            'security_audit' => 'Regelmäßige Sicherheitsaudits und Penetrationstests',
+            'security_backup' => 'Tägliche verschlüsselte Backups mit 30 Tagen Aufbewahrung',
+            'security_hosting' => 'ISO 27001 zertifiziertes Hosting in deutschen Rechenzentren',
+
+            // Article 11
+            'article11_title' => '11. Änderungen der Datenschutzerklärung',
+            'article11_text' => 'Wir können diese Datenschutzerklärung jederzeit ändern. Bei wesentlichen Änderungen informieren wir Sie per E-Mail oder über eine Plattformbenachrichtigung. Das Datum der letzten Aktualisierung finden Sie am Anfang dieses Dokuments.',
+
+            // Article 12
+            'article12_title' => '12. Kontakt',
+            'article12_text' => 'Bei Fragen zu dieser Datenschutzerklärung oder Ihren personenbezogenen Daten kontaktieren Sie unseren Datenschutzbeauftragten:',
+        ],
     ],
 
     /*
