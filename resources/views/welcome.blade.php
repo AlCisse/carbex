@@ -731,8 +731,8 @@
                 <div>
                     <p class="text-sm font-semibold" style="color: var(--text-primary); margin-bottom: 16px;">{{ __('carbex.home.footer.legal') }}</p>
                     <ul style="display: flex; flex-direction: column; gap: 12px;" class="text-sm">
-                        <li><a href="#" style="color: var(--text-secondary);">{{ __('carbex.home.footer.privacy') }}</a></li>
-                        <li><a href="#" style="color: var(--text-secondary);">{{ __('carbex.home.footer.terms') }}</a></li>
+                        <li><a href="{{ route('confidentialite') }}" style="color: var(--text-secondary);">{{ __('carbex.home.footer.privacy') }}</a></li>
+                        <li><a href="{{ route('cgu') }}" style="color: var(--text-secondary);">{{ __('carbex.home.footer.terms') }}</a></li>
                     </ul>
                 </div>
             </div>

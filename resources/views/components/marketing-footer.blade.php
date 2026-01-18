@@ -32,6 +32,7 @@
                     <li><a href="{{ route('cgu') }}" class="hover:underline">{{ __('carbex.footer.terms_use') }}</a></li>
                     <li><a href="{{ route('engagements') }}" class="hover:underline">{{ __('carbex.footer.commitments') }}</a></li>
                     <li><a href="{{ route('mentions-legales') }}" class="hover:underline">{{ __('carbex.footer.legal_notice') }}</a></li>
+                    <li><a href="{{ route('confidentialite') }}" class="hover:underline">{{ __('carbex.footer.privacy') }}</a></li>
                     <li><a href="{{ route('contact') }}" class="hover:underline">{{ __('carbex.footer.contact') }}</a></li>
                 </ul>
             </div>
@@ -105,7 +106,7 @@
                 &copy; {{ date('Y') }} Carbex GmbH. {{ __('carbex.footer.all_rights_reserved') }}
             </p>
             <div class="flex items-center gap-6 text-sm" style="color: var(--text-muted);">
-                <a href="{{ route('mentions-legales') }}" class="hover:underline">{{ __('carbex.footer.privacy') }}</a>
+                <a href="{{ route('confidentialite') }}" class="hover:underline">{{ __('carbex.footer.privacy') }}</a>
                 <a href="{{ route('cgu') }}" class="hover:underline">{{ __('carbex.footer.terms') }}</a>
                 <a href="{{ route('mentions-legales') }}#cookies" class="hover:underline">{{ __('carbex.footer.cookies') }}</a>
             </div>
