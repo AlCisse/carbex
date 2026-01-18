@@ -20,6 +20,7 @@ use Filament\Actions\Action;
 class AISettings extends Page implements HasForms
 {
     use InteractsWithForms;
+
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cpu-chip';
     protected static ?string $navigationLabel = 'Configuration IA';
     protected static string | \UnitEnum | null $navigationGroup = 'Paramètres';
@@ -27,6 +28,12 @@ class AISettings extends Page implements HasForms
     protected string $view = 'filament.pages.ai-settings';
 
     public ?array $data = [];
+
+    // API Keys (for input)
+    public string $anthropicApiKey = '';
+    public string $openaiApiKey = '';
+    public string $googleApiKey = '';
+    public string $deepseekApiKey = '';
 
     public function mount(): void
     {
@@ -45,6 +52,26 @@ class AISettings extends Page implements HasForms
             'max_tokens' => $settings['max_tokens'] ?? 4096,
             'temperature' => $settings['temperature'] ?? '0.7',
         ]);
+
+        // Load masked API keys
+        $this->anthropicApiKey = $this->getMaskedKey('anthropic');
+        $this->openaiApiKey = $this->getMaskedKey('openai');
+        $this->googleApiKey = $this->getMaskedKey('google');
+        $this->deepseekApiKey = $this->getMaskedKey('deepseek');
+    }
+
+    protected function getMaskedKey(string $provider): string
+    {
+        $key = AISetting::getValue("{$provider}_api_key");
+        if (!$key) {
+            return '';
+        }
+
+        if (strlen($key) <= 8) {
+            return str_repeat('*', strlen($key));
+        }
+
+        return substr($key, 0, 4) . str_repeat('*', strlen($key) - 8) . substr($key, -4);
     }
 
     public function form(Schema $form): Schema
@@ -71,7 +98,7 @@ class AISettings extends Page implements HasForms
                     ->schema([
                         Toggle::make('anthropic_enabled')
                             ->label('Activer')
-                            ->helperText('Les clés API sont stockées dans les secrets Docker'),
+                            ->live(),
                         Select::make('anthropic_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
@@ -92,7 +119,8 @@ class AISettings extends Page implements HasForms
                     ->collapsed()
                     ->schema([
                         Toggle::make('openai_enabled')
-                            ->label('Activer'),
+                            ->label('Activer')
+                            ->live(),
                         Select::make('openai_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
@@ -113,7 +141,8 @@ class AISettings extends Page implements HasForms
                     ->collapsed()
                     ->schema([
                         Toggle::make('google_enabled')
-                            ->label('Activer'),
+                            ->label('Activer')
+                            ->live(),
                         Select::make('google_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
@@ -133,7 +162,8 @@ class AISettings extends Page implements HasForms
                     ->collapsed()
                     ->schema([
                         Toggle::make('deepseek_enabled')
-                            ->label('Activer'),
+                            ->label('Activer')
+                            ->live(),
                         Select::make('deepseek_model')
                             ->label(__('carbex.settings.ai.model'))
                             ->options([
@@ -183,23 +213,115 @@ class AISettings extends Page implements HasForms
             ->send();
     }
 
-    protected function getProviderStatus(string $provider): string
+    public function saveApiKey(string $provider): void
+    {
+        $keyProperty = "{$provider}ApiKey";
+        $newKey = $this->$keyProperty;
+
+        // Don't save if it's empty or contains only asterisks (masked)
+        if (empty($newKey) || preg_match('/^\*+$/', $newKey) || str_contains($newKey, '****')) {
+            Notification::make()
+                ->title('Clé API invalide')
+                ->body('Veuillez entrer une nouvelle clé API valide.')
+                ->danger()
+                ->send();
+            return;
+        }
+
+        // Save the encrypted API key
+        AISetting::setValue("{$provider}_api_key", $newKey);
+
+        // Auto-enable provider
+        AISetting::setValue("{$provider}_enabled", true);
+
+        AISetting::clearCache();
+
+        // Update masked display
+        $this->$keyProperty = $this->getMaskedKey($provider);
+
+        // Refresh form to update status
+        $this->mount();
+
+        Notification::make()
+            ->title('Clé API sauvegardée')
+            ->body('La clé API ' . ucfirst($provider) . ' a été enregistrée de manière sécurisée.')
+            ->success()
+            ->send();
+    }
+
+    public function removeApiKey(string $provider): void
+    {
+        AISetting::where('key', "{$provider}_api_key")->delete();
+        AISetting::clearCache();
+
+        $keyProperty = "{$provider}ApiKey";
+        $this->$keyProperty = '';
+
+        Notification::make()
+            ->title('Clé API supprimée')
+            ->body('La clé API ' . ucfirst($provider) . ' a été supprimée.')
+            ->success()
+            ->send();
+    }
+
+    public function testConnection(string $provider): void
     {
         $manager = app(AIManager::class);
         $providerInstance = $manager->provider($provider);
 
-        if (!$providerInstance) {
-            return '❌ Provider non trouvé';
+        if (!$providerInstance || !$providerInstance->isAvailable()) {
+            Notification::make()
+                ->title('Provider non configuré')
+                ->body('Le provider ' . ucfirst($provider) . ' n\'est pas correctement configuré.')
+                ->danger()
+                ->send();
+            return;
         }
 
-        if ($providerInstance->isAvailable()) {
-            return '✅ Configuré et actif';
+        try {
+            $response = $providerInstance->prompt('Say "OK" in exactly one word.');
+
+            if ($response) {
+                Notification::make()
+                    ->title('Connexion réussie')
+                    ->body('Le provider ' . ucfirst($provider) . ' fonctionne correctement.')
+                    ->success()
+                    ->send();
+            } else {
+                Notification::make()
+                    ->title('Échec de connexion')
+                    ->body('Le provider ' . ucfirst($provider) . ' n\'a pas répondu.')
+                    ->danger()
+                    ->send();
+            }
+        } catch (\Exception $e) {
+            Notification::make()
+                ->title('Erreur de connexion')
+                ->body('Erreur: ' . $e->getMessage())
+                ->danger()
+                ->send();
+        }
+    }
+
+    protected function getProviderStatus(string $provider): string
+    {
+        // Check if API key exists in database
+        $dbKey = AISetting::getValue("{$provider}_api_key");
+        if ($dbKey) {
+            $manager = app(AIManager::class);
+            $providerInstance = $manager->provider($provider);
+
+            if ($providerInstance && $providerInstance->isAvailable()) {
+                return '✅ Configuré et actif';
+            }
+
+            return '⚠️ Clé enregistrée - Vérifiez la configuration';
         }
 
-        // Check if API key exists in Docker secrets
+        // Check Docker secrets
         $secretPath = "/run/secrets/{$provider}_api_key";
         if (file_exists($secretPath)) {
-            return '⚠️ Clé trouvée mais provider désactivé';
+            return '✅ Clé via Docker secrets';
         }
 
         return '❌ Clé API non configurée';

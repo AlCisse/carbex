@@ -4,12 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Crypt;
 
 class AISetting extends Model
 {
     protected $table = 'ai_settings';
 
     protected $fillable = ['key', 'value', 'type', 'description'];
+
+    /**
+     * Keys that should be stored encrypted.
+     */
+    protected static array $encryptedKeys = [
+        'anthropic_api_key',
+        'openai_api_key',
+        'google_api_key',
+        'deepseek_api_key',
+    ];
+
+    /**
+     * Check if a key should be encrypted.
+     */
+    public static function isEncryptedKey(string $key): bool
+    {
+        return in_array($key, self::$encryptedKeys);
+    }
 
     /**
      * Get a setting value by key.
@@ -24,7 +43,19 @@ class AISetting extends Model
             return $default;
         }
 
-        return self::castValue($setting->value, $setting->type);
+        $value = $setting->value;
+
+        // Decrypt if this is an encrypted key
+        if (self::isEncryptedKey($key) && $value) {
+            try {
+                $value = Crypt::decryptString($value);
+            } catch (\Exception $e) {
+                // If decryption fails, value might be unencrypted (legacy)
+                // Return as-is
+            }
+        }
+
+        return self::castValue($value, $setting->type);
     }
 
     /**
@@ -49,6 +80,11 @@ class AISetting extends Model
             'json' => json_encode($value),
             default => (string) $value,
         };
+
+        // Encrypt if this is a sensitive key
+        if (self::isEncryptedKey($key) && $storedValue) {
+            $storedValue = Crypt::encryptString($storedValue);
+        }
 
         self::updateOrCreate(
             ['key' => $key],
