@@ -79,62 +79,6 @@
             </div>
         </x-card>
 
-        <!-- Available AI Providers (Read-Only) -->
-        <x-card>
-            <x-slot name="header">
-                <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.available_providers') }}</h2>
-                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.providers_configured_by_admin') }}</p>
-            </x-slot>
-
-            @if (count($availableProviders) > 0)
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    @foreach ($availableProviders as $key => $provider)
-                        <div class="rounded-lg border border-green-200 bg-green-50 p-4">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-3
-                                    {{ $key === 'anthropic' ? 'bg-orange-100' : '' }}
-                                    {{ $key === 'openai' ? 'bg-emerald-100' : '' }}
-                                    {{ $key === 'google' ? 'bg-blue-100' : '' }}
-                                    {{ $key === 'deepseek' ? 'bg-purple-100' : '' }}
-                                ">
-                                    <span class="font-bold text-sm
-                                        {{ $key === 'anthropic' ? 'text-orange-600' : '' }}
-                                        {{ $key === 'openai' ? 'text-emerald-600' : '' }}
-                                        {{ $key === 'google' ? 'text-blue-600' : '' }}
-                                        {{ $key === 'deepseek' ? 'text-purple-600' : '' }}
-                                    ">{{ strtoupper(substr($key, 0, 1)) }}</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-medium text-gray-900">{{ $provider['name'] }}</h3>
-                                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    @if ($provider['model'])
-                                        <p class="text-xs text-gray-500">{{ $provider['model'] }}</p>
-                                    @endif
-                                    @if ($key === $defaultProvider)
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 mt-1">
-                                            {{ __('carbex.settings.ai.default') }}
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="text-center py-8">
-                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.settings.ai.no_providers') }}</h3>
-                    <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.contact_admin') }}</p>
-                </div>
-            @endif
-        </x-card>
-
         <!-- AI Features Available -->
         <x-card>
             <x-slot name="header">
