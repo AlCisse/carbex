@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Carbex MVP Platform
+# Specification Quality Checklist: LinsCarbon MVP Platform
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-12-28

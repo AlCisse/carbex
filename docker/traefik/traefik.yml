@@ -1,6 +1,6 @@
 # ===========================================
 # Traefik Configuration
-# Carbex - Reverse Proxy & SSL
+# LinsCarbon - Reverse Proxy & SSL
 # ===========================================
 
 # API and Dashboard
@@ -43,7 +43,7 @@ providers:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: ssl@carbex.eu
+      email: ssl@linscarbon.eu
       storage: /letsencrypt/acme.json
       httpChallenge:
         entryPoint: web

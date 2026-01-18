@@ -1,5 +1,5 @@
 # uSearch API Microservice
-# Semantic Search for Carbex
+# Semantic Search for LinsCarbon
 
 FROM python:3.11-slim
 

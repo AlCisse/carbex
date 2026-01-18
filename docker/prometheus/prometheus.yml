@@ -3,7 +3,7 @@ global:
   evaluation_interval: 15s
 
   external_labels:
-    monitor: 'carbex-monitor'
+    monitor: 'linscarbon-monitor'
 
 alerting:
   alertmanagers:
@@ -21,14 +21,14 @@ scrape_configs:
       - targets: ['localhost:9090']
 
   # Laravel application metrics
-  - job_name: 'carbex-app'
+  - job_name: 'linscarbon-app'
     metrics_path: '/metrics'
     static_configs:
       - targets: ['app:9000']
     relabel_configs:
       - source_labels: [__address__]
         target_label: instance
-        replacement: 'carbex-app'
+        replacement: 'linscarbon-app'
 
   # Laravel Horizon (queue monitoring)
   - job_name: 'horizon'

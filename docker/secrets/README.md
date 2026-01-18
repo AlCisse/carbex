@@ -58,7 +58,7 @@ secrets:
 
 Dans le container, vérifiez que les secrets sont bien montés :
 ```bash
-docker exec -it carbex-app ls -la /run/secrets/
+docker exec -it linscarbon-app ls -la /run/secrets/
 ```
 
 ## Sécurité

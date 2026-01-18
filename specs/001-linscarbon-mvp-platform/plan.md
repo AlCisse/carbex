@@ -1,6 +1,6 @@
-# Implementation Plan: Carbex MVP Platform
+# Implementation Plan: LinsCarbon MVP Platform
 
-**Branch**: `001-carbex-mvp-platform` | **Updated**: 2025-01-12 | **Spec**: [spec.md](./spec.md)
+**Branch**: `001-linscarbon-mvp-platform` | **Updated**: 2025-01-12 | **Spec**: [spec.md](./spec.md)
 **Reference**: Plateforme SaaS bilan carbone PME **augmentee par l'IA**
 **Constitution**: v4.0 — IA-Native, German Market Priority
 
@@ -8,7 +8,7 @@
 
 ## Summary
 
-Carbex est une solution SaaS de comptabilite carbone pour les PME europeennes, **augmentee par l'intelligence artificielle multi-providers**. L'objectif est de permettre aux entreprises de mesurer, analyser et reduire leur bilan carbone selon les standards GHG Protocol, ISO 14064-1, ISO 50001 et les reglementations nationales (ADEME FR, UBA DE), **tout en reduisant de 80% le temps de saisie grace a l'IA et l'Open Banking**.
+LinsCarbon est une solution SaaS de comptabilite carbone pour les PME europeennes, **augmentee par l'intelligence artificielle multi-providers**. L'objectif est de permettre aux entreprises de mesurer, analyser et reduire leur bilan carbone selon les standards GHG Protocol, ISO 14064-1, ISO 50001 et les reglementations nationales (ADEME FR, UBA DE), **tout en reduisant de 80% le temps de saisie grace a l'IA et l'Open Banking**.
 
 **Marche prioritaire**: Allemagne (DE) - P0
 **Differenciateur cle**: Zero-Input Carbon via Open Banking PSD2 + IA Multi-Providers
@@ -111,7 +111,7 @@ Carbex est une solution SaaS de comptabilite carbone pour les PME europeennes, *
 ### Navigation (5 Pillars)
 
 ```text
-CARBEX
+LINSCARBON
 ├── MESURER (Measure)
 │   ├── Dashboard (KPIs, trends, equivalents)
 │   ├── Scope 1 - Direct emissions
@@ -267,9 +267,9 @@ tests/
 └── Fixtures/                   # Test data
 
 lang/
-├── de/carbex.php               # German (PRIMARY)
-├── en/carbex.php               # English
-└── fr/carbex.php               # French
+├── de/linscarbon.php               # German (PRIMARY)
+├── en/linscarbon.php               # English
+└── fr/linscarbon.php               # French
 ```
 
 ---

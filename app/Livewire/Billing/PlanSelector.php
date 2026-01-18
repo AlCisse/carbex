@@ -89,7 +89,7 @@ class PlanSelector extends Component
      * Valid promo codes (in production, these would come from database/Stripe).
      */
     private array $promoCodes = [
-        'CARBEX20' => ['discount' => 20, 'description' => '20% de réduction'],
+        'LINSCARBON20' => ['discount' => 20, 'description' => '20% de réduction'],
         'LAUNCH50' => ['discount' => 50, 'description' => '50% de réduction - Offre lancement'],
         'PME10' => ['discount' => 10, 'description' => '10% de réduction PME'],
     ];
@@ -274,7 +274,7 @@ class PlanSelector extends Component
     {
         // In production, map promo codes to Stripe coupon IDs
         $couponMapping = [
-            'CARBEX20' => env('STRIPE_COUPON_CARBEX20'),
+            'LINSCARBON20' => env('STRIPE_COUPON_LINSCARBON20'),
             'LAUNCH50' => env('STRIPE_COUPON_LAUNCH50'),
             'PME10' => env('STRIPE_COUPON_PME10'),
         ];

@@ -1,9 +1,9 @@
-# Data Model: Carbex MVP Platform
+# Data Model: LinsCarbon MVP Platform
 
-**Feature**: 001-carbex-mvp-platform
+**Feature**: 001-linscarbon-mvp-platform
 **Updated**: 2025-01-12
 **Database**: PostgreSQL 16 / MySQL 8.0
-**Reference**: Constitution Carbex v4.0 - German Market Priority
+**Reference**: Constitution LinsCarbon v4.0 - German Market Priority
 
 ---
 
@@ -181,7 +181,7 @@
 
 ### Organization
 
-The primary tenant entity representing a company using Carbex.
+The primary tenant entity representing a company using LinsCarbon.
 
 ```php
 Schema::create('organizations', function (Blueprint $table) {
@@ -1164,7 +1164,7 @@ Schema::create('sso_configurations', function (Blueprint $table) {
     $table->string('idp_slo_url')->nullable();
     $table->text('idp_certificate');
     $table->string('sp_entity_id');
-    $table->json('attribute_mapping');                    // IdP attr → Carbex user fields
+    $table->json('attribute_mapping');                    // IdP attr → LinsCarbon user fields
     $table->boolean('is_active')->default(false);
     $table->boolean('auto_provision')->default(true);
     $table->timestamps();

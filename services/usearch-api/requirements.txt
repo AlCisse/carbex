@@ -1,5 +1,5 @@
 # uSearch API Dependencies
-# Carbex Semantic Search Microservice
+# LinsCarbon Semantic Search Microservice
 
 # Web Framework
 fastapi==0.115.6

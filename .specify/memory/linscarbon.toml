@@ -1,5 +1,5 @@
 # =============================================================================
-# CARBEX - Configuration Projet
+# LINSCARBON - Configuration Projet
 # =============================================================================
 # Plateforme SaaS de bilan carbone automatique pour PME europeennes
 # Document genere le 28.12.2025
@@ -10,14 +10,14 @@
 # =============================================================================
 
 [project]
-name = "Carbex"
+name = "LinsCarbon"
 version = "1.0.0"
 description = "Plateforme SaaS de bilan carbone automatique pour PME europeennes"
 type = "saas"
 license = "proprietary"
 created = "2025-12-28"
-repository = "github.com/carbex/carbex"
-website = "https://carbex.io"
+repository = "github.com/linscarbon/linscarbon"
+website = "https://linscarbon.io"
 
 [project.innovation]
 name = "Zero-Input Carbon"
@@ -486,7 +486,7 @@ features = [
 name = "Super Admin"
 scope = "platform"
 permissions = ["all"]
-description = "Administrateur plateforme Carbex"
+description = "Administrateur plateforme LinsCarbon"
 
 [roles.org_admin]
 name = "Organization Admin"
@@ -871,8 +871,8 @@ environments = ["staging", "production"]
 
 [compliance.gdpr]
 data_location = "EU (Scaleway Paris)"
-dpo_email = "dpo@carbex.io"
-privacy_policy = "https://carbex.io/privacy"
+dpo_email = "dpo@linscarbon.io"
+privacy_policy = "https://linscarbon.io/privacy"
 
 [compliance.gdpr.retention]
 user_data = "account lifetime + 3 years"
@@ -914,7 +914,7 @@ consent_management = true
 [specs]
 constitution_file = ".specify/memory/constitution.md"
 hosting_security_file = ".specify/memory/hosting-security.md"
-config_file = ".specify/memory/carbex.toml"
+config_file = ".specify/memory/linscarbon.toml"
 
 [specs.documents]
 "01" = { name = "Vision & Personas", sections = "1-3", file = "constitution.md" }

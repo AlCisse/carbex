@@ -5,7 +5,7 @@ test.describe('Settings Pages', () => {
         // Login
         await page.goto('/login');
         await page.waitForTimeout(1000);
-        await page.fill('#email', 'test@carbex.fr');
+        await page.fill('#email', 'test@linscarbon.fr');
         await page.fill('#password', 'password');
         await page.click('button[type="submit"]');
         await page.waitForURL('**/dashboard**', { timeout: 15000 });
@@ -25,7 +25,7 @@ test.describe('Settings Pages', () => {
         }
         
         // Check for raw translation keys
-        const rawKeys = body?.match(/carbex\.[a-z_\.]+/gi)?.filter(k => !['carbex.fr', 'carbex.com', 'carbex.de', 'carbex.io', 'carbex.eu'].includes(k));
+        const rawKeys = body?.match(/linscarbon\.[a-z_\.]+/gi)?.filter(k => !['linscarbon.fr', 'linscarbon.com', 'linscarbon.de', 'linscarbon.io', 'linscarbon.eu'].includes(k));
         if (rawKeys && rawKeys.length > 0) {
             console.log('⚠️ Missing translations:', [...new Set(rawKeys)].slice(0, 5));
         }

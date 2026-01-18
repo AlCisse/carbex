@@ -87,7 +87,7 @@
                                             </svg>
                                         @endif
                                     </div>
-                                    <span class="text-xs font-bold text-white/90 text-center">CARBEX</span>
+                                    <span class="text-xs font-bold text-white/90 text-center">LINSCARBON</span>
                                 </div>
                             </div>
 

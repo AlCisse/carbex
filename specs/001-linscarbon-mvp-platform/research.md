@@ -1,6 +1,6 @@
-# Research Findings: Carbex MVP Platform
+# Research Findings: LinsCarbon MVP Platform
 
-**Feature**: 001-carbex-mvp-platform
+**Feature**: 001-linscarbon-mvp-platform
 **Date**: 2025-12-28
 **Status**: Complete
 
@@ -367,7 +367,7 @@ class EmissionRecord extends Model
 
 ```php
 // config/cache.php
-'prefix' => env('CACHE_PREFIX', 'carbex'),
+'prefix' => env('CACHE_PREFIX', 'linscarbon'),
 
 // In application code
 Cache::tags(['org:' . $org->id, 'emissions'])

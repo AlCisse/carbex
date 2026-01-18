@@ -1,6 +1,6 @@
 # ===========================================
 # Fail2Ban Configuration
-# Carbex - Intrusion Prevention
+# LinsCarbon - Intrusion Prevention
 # ===========================================
 
 [DEFAULT]
@@ -14,8 +14,8 @@ findtime = 600
 maxretry = 5
 
 # Email notifications (configure sendmail)
-destemail = security@carbex.eu
-sender = fail2ban@carbex.eu
+destemail = security@linscarbon.eu
+sender = fail2ban@linscarbon.eu
 mta = sendmail
 
 # Action: ban IP and send email
@@ -67,20 +67,20 @@ logpath = /var/log/nginx/*access*.log
 maxretry = 6
 
 # ===========================================
-# Laravel/Carbex Specific
+# Laravel/LinsCarbon Specific
 # ===========================================
-[carbex-login]
+[linscarbon-login]
 enabled = true
-filter = carbex-login
+filter = linscarbon-login
 port = http,https
 logpath = /var/www/html/storage/logs/laravel.log
 maxretry = 5
 findtime = 300
 bantime = 7200
 
-[carbex-api]
+[linscarbon-api]
 enabled = true
-filter = carbex-api
+filter = linscarbon-api
 port = http,https
 logpath = /var/www/html/storage/logs/laravel.log
 maxretry = 100

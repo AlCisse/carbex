@@ -6,8 +6,8 @@ test.describe('Home Page', () => {
   });
 
   test('should load the home page', async ({ page }) => {
-    // Check that the page loads with Carbex title
-    await expect(page).toHaveTitle(/Carbex/);
+    // Check that the page loads with LinsCarbon title
+    await expect(page).toHaveTitle(/LinsCarbon/);
   });
 
   test('should display hero section', async ({ page }) => {
@@ -79,7 +79,7 @@ test.describe('Home Page', () => {
     await expect(footer).toBeVisible();
 
     // Check copyright
-    await expect(footer).toContainText('Carbex');
+    await expect(footer).toContainText('LinsCarbon');
   });
 
   test('should display language selector', async ({ page }) => {

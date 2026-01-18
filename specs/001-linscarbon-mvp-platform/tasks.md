@@ -1,6 +1,6 @@
-# Tasks: Carbex MVP Platform
+# Tasks: LinsCarbon MVP Platform
 
-**Input**: Design documents from `/specs/001-carbex-mvp-platform/`
+**Input**: Design documents from `/specs/001-linscarbon-mvp-platform/`
 **Reference**: Plateforme SaaS bilan carbone PME **augmentée par l'IA**
 **Constitution**: v3.0 — IA-Native
 **Generated**: 2025-12-30
@@ -53,7 +53,7 @@
 - [x] T021 🟠 Layout app principal avec sidebar
 - [x] T022 🟠 Composants Blade (button, input, card)
 
-## 1.4 Navigation Carbex (Complété)
+## 1.4 Navigation LinsCarbon (Complété)
 
 - [x] T023 🔴 **Créer sidebar avec structure scopes** dans `resources/views/components/sidebar.blade.php`
   - Dashboard
@@ -79,7 +79,7 @@
   - Rapports & exports
 
 - [x] T024 🔴 **Créer header** avec `resources/views/components/header.blade.php`
-  - Logo CARBEX
+  - Logo LINSCARBON
   - Icônes: Notifications, Signets, Paramètres
   - Sélecteur année "Mes Bilans"
   - Menu utilisateur (avatar + nom)
@@ -92,7 +92,7 @@
   - Profil
   - Mot de passe
 
-**Checkpoint Navigation**: [x] Navigation Carbex complète
+**Checkpoint Navigation**: [x] Navigation LinsCarbon complète
 
 ---
 
@@ -256,7 +256,7 @@
   - Calculer % progression par scope
   - Calculer % progression global
 
-**Checkpoint Emission Entry**: [x] Interface de saisie Carbex complète
+**Checkpoint Emission Entry**: [x] Interface de saisie LinsCarbon complète
 
 ---
 
@@ -346,7 +346,7 @@
   > Note: Implémenté avec EmissionOverview, ScopeBreakdown, TopCategories, TrendChart, IntensityMetrics, SiteComparison
   - Assembler tous les composants
 
-**Checkpoint Dashboard**: [x] Dashboard Carbex complet (ProgressCircle, CarbonEquivalents, EvaluationProgress, TrainingSection)
+**Checkpoint Dashboard**: [x] Dashboard LinsCarbon complet (ProgressCircle, CarbonEquivalents, EvaluationProgress, TrainingSection)
 
 ---
 
@@ -560,11 +560,11 @@
 
 ## 7.1 Traductions Complètes
 
-- [x] T084 🟠 **Compléter traductions FR** dans `lang/fr/carbex.php`
+- [x] T084 🟠 **Compléter traductions FR** dans `lang/fr/linscarbon.php`
   > Note: Dossier lang/fr/ existe
-- [x] T085 🟠 [P] **Compléter traductions EN** dans `lang/en/carbex.php`
+- [x] T085 🟠 [P] **Compléter traductions EN** dans `lang/en/linscarbon.php`
   > Note: Dossier lang/en/ existe
-- [x] T086 🟠 [P] **Compléter traductions DE** dans `lang/de/carbex.php`
+- [x] T086 🟠 [P] **Compléter traductions DE** dans `lang/de/linscarbon.php`
   > Note: Dossier lang/de/ existe
 
 ## 7.2 Tests
@@ -601,7 +601,7 @@
 - [x] T100 🟢 ADRs (Architecture Decision Records)
   > Implémenté: 5 nouveaux ADRs ajoutés dans docs/adr/ (Livewire, GHG Protocol, Multi-tenant, Facteurs ADEME, Rapports)
 
-**Checkpoint Final**: [x] MVP Carbex Phase 7 complet
+**Checkpoint Final**: [x] MVP LinsCarbon Phase 7 complet
 
 ---
 
@@ -723,10 +723,10 @@
 
 ---
 
-# PHASE 9: Intelligence Artificielle (Différenciateur Carbex)
+# PHASE 9: Intelligence Artificielle (Différenciateur LinsCarbon)
 
 > **Source**: Analyse concurrentielle (Greenly EcoPilot, CarbonAnalytics, Watershed, Climatiq)
-> **Objectif**: Faire de Carbex le 1er outil de bilan carbone IA-augmenté pour PME en France
+> **Objectif**: Faire de LinsCarbon le 1er outil de bilan carbone IA-augmenté pour PME en France
 
 ## 9.1 Infrastructure IA
 
@@ -1075,7 +1075,7 @@
   > Implémenté: BadgeShareController + views/badges/public.blade.php, embed.blade.php
   - Affichage badge vérifié
   - Infos entreprise (opt-in)
-  - Lien vers Carbex
+  - Lien vers LinsCarbon
 
 - [x] T172 🟡 **Créer générateur d'assets marketing**
   > Implémenté: BadgeShowcase avec downloadBadge(), views/badges/email-signature.blade.php

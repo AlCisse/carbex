@@ -306,7 +306,7 @@ class BadgeShowcase extends Component
 
   <!-- LinsCarbon logo text -->
   <text x="100" y="180" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
-    CARBEX
+    LINSCARBON
   </text>
 
   <!-- Badge name -->

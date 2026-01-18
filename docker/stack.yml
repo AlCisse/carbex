@@ -1,7 +1,7 @@
 # ===========================================
-# Carbex - Docker Swarm Stack
+# LinsCarbon - Docker Swarm Stack
 # ===========================================
-# Deploy: docker stack deploy -c stack.yml carbex
+# Deploy: docker stack deploy -c stack.yml linscarbon
 # ===========================================
 
 version: "3.8"
@@ -11,7 +11,7 @@ services:
   # Application
   # -----------------------------------------
   app:
-    image: ghcr.io/carbex/carbex-app:${APP_VERSION:-latest}
+    image: ghcr.io/linscarbon/linscarbon-app:${APP_VERSION:-latest}
     networks:
       - traefik-public
       - internal
@@ -31,11 +31,11 @@ services:
         max_attempts: 3
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.carbex.rule=Host(`app.carbex.eu`)"
-        - "traefik.http.routers.carbex.entrypoints=websecure"
-        - "traefik.http.routers.carbex.tls.certresolver=letsencrypt"
-        - "traefik.http.services.carbex.loadbalancer.server.port=80"
-        - "traefik.http.routers.carbex.middlewares=security-headers@file"
+        - "traefik.http.routers.linscarbon.rule=Host(`app.linscarbon.eu`)"
+        - "traefik.http.routers.linscarbon.entrypoints=websecure"
+        - "traefik.http.routers.linscarbon.tls.certresolver=letsencrypt"
+        - "traefik.http.services.linscarbon.loadbalancer.server.port=80"
+        - "traefik.http.routers.linscarbon.middlewares=security-headers@file"
       resources:
         limits:
           cpus: '1'
@@ -46,12 +46,12 @@ services:
     environment:
       APP_ENV: production
       APP_DEBUG: "false"
-      APP_URL: https://app.carbex.eu
+      APP_URL: https://app.linscarbon.eu
       LOG_CHANNEL: stderr
       DB_CONNECTION: pgsql
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_DATABASE: carbex
+      DB_DATABASE: linscarbon
       REDIS_HOST: redis
       REDIS_PORT: 6379
       MEILISEARCH_HOST: http://meilisearch:7700
@@ -78,7 +78,7 @@ services:
   # Queue Worker (Horizon)
   # -----------------------------------------
   horizon:
-    image: ghcr.io/carbex/carbex-app:${APP_VERSION:-latest}
+    image: ghcr.io/linscarbon/linscarbon-app:${APP_VERSION:-latest}
     command: php artisan horizon
     networks:
       - internal
@@ -106,7 +106,7 @@ services:
   # Scheduler
   # -----------------------------------------
   scheduler:
-    image: ghcr.io/carbex/carbex-app:${APP_VERSION:-latest}
+    image: ghcr.io/linscarbon/linscarbon-app:${APP_VERSION:-latest}
     command: sh -c "while true; do php artisan schedule:run --verbose --no-interaction; sleep 60; done"
     networks:
       - internal
@@ -146,15 +146,15 @@ services:
         reservations:
           memory: 512M
     environment:
-      POSTGRES_DB: carbex
-      POSTGRES_USER: carbex
+      POSTGRES_DB: linscarbon
+      POSTGRES_USER: linscarbon
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
     secrets:
       - db_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U carbex -d carbex"]
+      test: ["CMD-SHELL", "pg_isready -U linscarbon -d linscarbon"]
       interval: 10s
       timeout: 5s
       retries: 5

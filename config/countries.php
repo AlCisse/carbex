@@ -18,7 +18,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'default' => env('CARBEX_DEFAULT_COUNTRY', 'FR'),
+    'default' => env('LINSCARBON_DEFAULT_COUNTRY', 'FR'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'supported' => explode(',', env('CARBEX_SUPPORTED_COUNTRIES', 'FR,DE')),
+    'supported' => explode(',', env('LINSCARBON_SUPPORTED_COUNTRIES', 'FR,DE')),
 
     /*
     |--------------------------------------------------------------------------

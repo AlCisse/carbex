@@ -2,7 +2,7 @@ services:
   # Nginx Web Server
   nginx:
     image: nginx:alpine
-    container_name: carbex-nginx
+    container_name: linscarbon-nginx
     restart: unless-stopped
     ports:
       - "8000:80"
@@ -12,7 +12,7 @@ services:
     depends_on:
       - app
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # PHP Application (Development)
   app:
@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
       target: development
-    container_name: carbex-app
+    container_name: linscarbon-app
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
@@ -33,8 +33,8 @@ services:
       DB_CONNECTION: pgsql
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_DATABASE: carbex
-      DB_USERNAME: carbex
+      DB_DATABASE: linscarbon
+      DB_USERNAME: linscarbon
       DB_PASSWORD: secret
       REDIS_HOST: redis
       REDIS_PORT: 6379
@@ -47,7 +47,7 @@ services:
       MEILISEARCH_HOST: http://meilisearch:7700
       MEILISEARCH_KEY: masterKey
       USEARCH_URL: http://usearch:8001
-      USEARCH_API_KEY: ${USEARCH_API_KEY:-carbex-usearch-dev-key}
+      USEARCH_API_KEY: ${USEARCH_API_KEY:-linscarbon-usearch-dev-key}
       VECTOR_DIMENSIONS: ${VECTOR_DIMENSIONS:-384}
     depends_on:
       postgres:
@@ -55,33 +55,33 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # PostgreSQL 17 - Primary Database
   postgres:
     image: postgres:17
-    container_name: carbex-postgres
+    container_name: linscarbon-postgres
     restart: unless-stopped
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: carbex
-      POSTGRES_USER: carbex
+      POSTGRES_DB: linscarbon
+      POSTGRES_USER: linscarbon
       POSTGRES_PASSWORD: secret
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U carbex -d carbex"]
+      test: ["CMD-SHELL", "pg_isready -U linscarbon -d linscarbon"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # Redis 7.4 - Cache, Queues, Sessions
   redis:
     image: redis:7.4-alpine
-    container_name: carbex-redis
+    container_name: linscarbon-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
@@ -93,12 +93,12 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # Meilisearch 1.11 - Emission Factor Search (Text)
   meilisearch:
     image: getmeili/meilisearch:v1.11
-    container_name: carbex-meilisearch
+    container_name: linscarbon-meilisearch
     restart: unless-stopped
     ports:
       - "7700:7700"
@@ -113,21 +113,21 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # uSearch API - Semantic Vector Search
   usearch:
     build:
       context: ./services/usearch-api
       dockerfile: Dockerfile
-    container_name: carbex-usearch
+    container_name: linscarbon-usearch
     restart: unless-stopped
     ports:
       - "8001:8001"
     environment:
       PORT: 8001
       DEBUG: "false"
-      USEARCH_API_KEY: ${USEARCH_API_KEY:-carbex-usearch-dev-key}
+      USEARCH_API_KEY: ${USEARCH_API_KEY:-linscarbon-usearch-dev-key}
       CORS_ORIGINS: http://localhost,http://localhost:8000,http://nginx
       EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
@@ -144,12 +144,12 @@ services:
       start_period: 10s
       retries: 3
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # Mailpit - Local Email Testing
   mailpit:
     image: axllent/mailpit:latest
-    container_name: carbex-mailpit
+    container_name: linscarbon-mailpit
     restart: unless-stopped
     ports:
       - "1025:1025"  # SMTP
@@ -159,12 +159,12 @@ services:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
     networks:
-      - carbex-network
+      - linscarbon-network
 
   # Selenium Chrome - Browser Testing (Laravel Dusk)
   selenium:
     image: seleniarm/standalone-chromium:latest
-    container_name: carbex-selenium
+    container_name: linscarbon-selenium
     restart: unless-stopped
     ports:
       - "4444:4444"  # Selenium Hub
@@ -177,7 +177,7 @@ services:
     depends_on:
       - nginx
     networks:
-      - carbex-network
+      - linscarbon-network
 
 volumes:
   postgres_data:
@@ -192,5 +192,5 @@ volumes:
     driver: local
 
 networks:
-  carbex-network:
+  linscarbon-network:
     driver: bridge

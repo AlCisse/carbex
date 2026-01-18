@@ -1,5 +1,5 @@
 # ===========================================
-# Carbex - Multi-stage Dockerfile
+# LinsCarbon - Multi-stage Dockerfile
 # ===========================================
 
 # ---------------------------------------------
@@ -44,8 +44,8 @@ RUN npm run build
 # ---------------------------------------------
 FROM php:8.4-fpm-alpine AS production
 
-LABEL maintainer="Carbex <dev@carbex.eu>"
-LABEL description="Carbex - Carbon Footprint Calculator for SMEs"
+LABEL maintainer="LinsCarbon <dev@linscarbon.eu>"
+LABEL description="LinsCarbon - Carbon Footprint Calculator for SMEs"
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -87,7 +87,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && apk del .build-deps
 
 # Configure PHP
-COPY docker/php/php.ini /usr/local/etc/php/conf.d/99-carbex.ini
+COPY docker/php/php.ini /usr/local/etc/php/conf.d/99-linscarbon.ini
 COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 

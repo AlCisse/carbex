@@ -1,10 +1,10 @@
 #!/bin/bash
 # ===========================================
-# Carbex - PostgreSQL Backup Script
+# LinsCarbon - PostgreSQL Backup Script
 # Uploads to Scaleway Object Storage
 # ===========================================
 # Usage: ./backup.sh [daily|weekly|monthly]
-# Cron: 0 2 * * * /opt/carbex/scripts/backup.sh daily
+# Cron: 0 2 * * * /opt/linscarbon/scripts/backup.sh daily
 # ===========================================
 
 set -euo pipefail
@@ -12,14 +12,14 @@ set -euo pipefail
 # Configuration
 BACKUP_TYPE="${1:-daily}"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-BACKUP_DIR="/tmp/carbex-backups"
-BACKUP_NAME="carbex_${BACKUP_TYPE}_${TIMESTAMP}"
+BACKUP_DIR="/tmp/linscarbon-backups"
+BACKUP_NAME="linscarbon_${BACKUP_TYPE}_${TIMESTAMP}"
 
 # Database configuration (from environment or Docker secrets)
 DB_HOST="${DB_HOST:-postgres}"
 DB_PORT="${DB_PORT:-5432}"
-DB_NAME="${DB_NAME:-carbex}"
-DB_USER="${DB_USER:-carbex}"
+DB_NAME="${DB_NAME:-linscarbon}"
+DB_USER="${DB_USER:-linscarbon}"
 
 # Load password from Docker secret if available
 if [ -f /run/secrets/db_password ]; then
@@ -32,7 +32,7 @@ fi
 SCW_ACCESS_KEY="${SCW_ACCESS_KEY:-}"
 SCW_SECRET_KEY="${SCW_SECRET_KEY:-}"
 SCW_REGION="${SCW_REGION:-fr-par}"
-SCW_BUCKET="${SCW_BUCKET:-carbex-backups}"
+SCW_BUCKET="${SCW_BUCKET:-linscarbon-backups}"
 SCW_ENDPOINT="https://s3.${SCW_REGION}.scw.cloud"
 
 # Retention periods (in days)
@@ -168,7 +168,7 @@ log_info "========================================="
 if [ -n "${SLACK_WEBHOOK_URL:-}" ]; then
     curl -s -X POST "${SLACK_WEBHOOK_URL}" \
         -H 'Content-type: application/json' \
-        -d "{\"text\": \"✅ Carbex backup completed: ${BACKUP_NAME} (${DUMP_SIZE})\"}"
+        -d "{\"text\": \"✅ LinsCarbon backup completed: ${BACKUP_NAME} (${DUMP_SIZE})\"}"
 fi
 
 exit 0

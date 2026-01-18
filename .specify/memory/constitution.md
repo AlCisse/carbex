@@ -1,4 +1,4 @@
-# Carbex — Constitution du Projet
+# LinsCarbon — Constitution du Projet
 
 > **Document fondateur v4.0 — Janvier 2025**
 > Plateforme SaaS de bilan carbone pour PME **augmentee par l'IA**
@@ -10,7 +10,7 @@
 
 ### 1.1 Mission
 
-Carbex est une plateforme SaaS permettant aux PME europeennes de realiser leur bilan carbone de maniere guidee et structuree selon les standards GHG Protocol, ISO 14064 et les reglementations nationales (ADEME FR, UBA DE). **Notre differenciateur cle : l'integration native d'un assistant IA multi-providers qui reduit de 80% le temps de saisie et offre des recommandations personnalisees.**
+LinsCarbon est une plateforme SaaS permettant aux PME europeennes de realiser leur bilan carbone de maniere guidee et structuree selon les standards GHG Protocol, ISO 14064 et les reglementations nationales (ADEME FR, UBA DE). **Notre differenciateur cle : l'integration native d'un assistant IA multi-providers qui reduit de 80% le temps de saisie et offre des recommandations personnalisees.**
 
 ### 1.2 Objectifs
 
@@ -446,7 +446,7 @@ GET    /api/v1/external/reports
 ## 7. Navigation (5 Piliers)
 
 ```
-CARBEX
+LINSCARBON
 ├── MESURER (Measure)
 │   ├── Dashboard
 │   ├── Scope 1/2/3 (par categorie)
@@ -529,8 +529,8 @@ CARBEX
 
 ### 10.3 Traductions
 
-- Fichiers : `lang/{de,en,fr}/carbex.php`
-- Pattern : `{{ __('carbex.section.key') }}`
+- Fichiers : `lang/{de,en,fr}/linscarbon.php`
+- Pattern : `{{ __('linscarbon.section.key') }}`
 - **Aucun texte hardcode** dans les vues
 
 ---
@@ -565,11 +565,11 @@ CARBEX
 ## 12. Contacts et Ressources
 
 ### DPO (Datenschutzbeauftragter)
-- Email : dpo@carbex.de
+- Email : dpo@linscarbon.de
 - Autorite : BfDI (www.bfdi.bund.de)
 
 ### Support
-- Email : support@carbex.de
+- Email : support@linscarbon.de
 - Chat : Widget integre (IA + humain)
 
 ### Legal

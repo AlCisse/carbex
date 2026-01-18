@@ -1,6 +1,6 @@
 #!/bin/bash
 # ===========================================
-# Carbex - Initialize Docker Secrets
+# LinsCarbon - Initialize Docker Secrets
 # ===========================================
 # Usage: ./init-secrets.sh [environment]
 # environment: dev, staging, prod (default: dev)
@@ -15,7 +15,7 @@ if [ "$ENV" != "prod" ]; then
     PREFIX="${ENV}_"
 fi
 
-echo "🔐 Initializing Carbex Docker Secrets for: $ENV"
+echo "🔐 Initializing LinsCarbon Docker Secrets for: $ENV"
 echo "================================================"
 
 # Check if running in Swarm mode
@@ -86,4 +86,4 @@ echo "================================================"
 echo "✅ Secrets initialization complete!"
 echo ""
 echo "📋 List all secrets: docker secret ls"
-echo "🚀 Deploy stack: docker stack deploy -c docker/stack.yml carbex"
+echo "🚀 Deploy stack: docker stack deploy -c docker/stack.yml linscarbon"

@@ -1,15 +1,15 @@
-# Carbex Platform - Rapport d'Audit Exhaustif
+# LinsCarbon Platform - Rapport d'Audit Exhaustif
 
 **Date**: 16 janvier 2026
 **Auditeur**: Claude Code
-**Version auditée**: Branch `001-carbex-mvp-platform`
+**Version auditée**: Branch `001-linscarbon-mvp-platform`
 **URL testée**: http://localhost:8000/
 
 ---
 
 ## Sommaire Exécutif
 
-L'audit exhaustif de la plateforme Carbex a révélé une implémentation globalement conforme au spec.md et plan.md, avec un MVP fonctionnel à 95%+. Cependant, **5 bugs critiques de traduction** ont été identifiés qui nécessitent une correction avant le déploiement en production sur le marché allemand (P0).
+L'audit exhaustif de la plateforme LinsCarbon a révélé une implémentation globalement conforme au spec.md et plan.md, avec un MVP fonctionnel à 95%+. Cependant, **5 bugs critiques de traduction** ont été identifiés qui nécessitent une correction avant le déploiement en production sur le marché allemand (P0).
 
 ### Statut Global
 
@@ -300,8 +300,8 @@ Sur la page AI Configuration, le mot "Recommandé" reste en français quelle que
 
 1. **Corriger les titres des catégories Scope**
    - Identifier la source (DB, config, ou Blade)
-   - Implémenter les clés de traduction `carbex.emissions.categories.{scope}.{category}.title`
-   - Ajouter les traductions dans `lang/de/carbex.php`, `lang/en/carbex.php`, `lang/fr/carbex.php`
+   - Implémenter les clés de traduction `linscarbon.emissions.categories.{scope}.{category}.title`
+   - Ajouter les traductions dans `lang/de/linscarbon.php`, `lang/en/linscarbon.php`, `lang/fr/linscarbon.php`
 
 2. **Corriger la page AI Configuration**
    - Ajouter les clés de traduction pour tous les textes EN
@@ -321,7 +321,7 @@ Sur la page AI Configuration, le mot "Recommandé" reste en français quelle que
 
 ## 11. Conclusion
 
-La plateforme Carbex est **fonctionnellement complète** et conforme à 95%+ du spec.md et plan.md. Les fonctionnalités core (dashboard, scopes, billing, auth) fonctionnent correctement.
+La plateforme LinsCarbon est **fonctionnellement complète** et conforme à 95%+ du spec.md et plan.md. Les fonctionnalités core (dashboard, scopes, billing, auth) fonctionnent correctement.
 
 Cependant, **le déploiement sur le marché allemand (P0) est bloqué** par le bug critique des titres de catégories hardcodés en français. Ce bug doit être corrigé avant toute mise en production.
 
@@ -339,4 +339,4 @@ Cependant, **le déploiement sur le marché allemand (P0) est bloqué** par le b
 
 **Rapport généré le**: 16 janvier 2026
 **Auditeur**: Claude Code (claude-opus-4-5-20251101)
-**Branche testée**: `001-carbex-mvp-platform`
+**Branche testée**: `001-linscarbon-mvp-platform`

@@ -46,7 +46,7 @@
       "pluginVersion": "10.0.0",
       "targets": [
         {
-          "expr": "carbex_active_organizations",
+          "expr": "linscarbon_active_organizations",
           "legendFormat": "Organizations",
           "refId": "A"
         }
@@ -87,7 +87,7 @@
       },
       "targets": [
         {
-          "expr": "increase(carbex_emissions_calculated_total[24h])",
+          "expr": "increase(linscarbon_emissions_calculated_total[24h])",
           "legendFormat": "Emissions",
           "refId": "A"
         }
@@ -130,7 +130,7 @@
       },
       "targets": [
         {
-          "expr": "carbex_pending_transactions",
+          "expr": "linscarbon_pending_transactions",
           "legendFormat": "Pending",
           "refId": "A"
         }
@@ -173,7 +173,7 @@
       },
       "targets": [
         {
-          "expr": "sum(carbex_queue_size)",
+          "expr": "sum(linscarbon_queue_size)",
           "legendFormat": "Queue Size",
           "refId": "A"
         }
@@ -338,7 +338,7 @@
       },
       "targets": [
         {
-          "expr": "sum(increase(carbex_emissions_calculated_total[24h])) by (scope)",
+          "expr": "sum(increase(linscarbon_emissions_calculated_total[24h])) by (scope)",
           "legendFormat": "Scope {{scope}}",
           "refId": "A"
         }
@@ -392,12 +392,12 @@
   "refresh": "30s",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["carbex", "application"],
+  "tags": ["linscarbon", "application"],
   "templating": { "list": [] },
   "time": { "from": "now-6h", "to": "now" },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Carbex Application Dashboard",
-  "uid": "carbex-app",
+  "title": "LinsCarbon Application Dashboard",
+  "uid": "linscarbon-app",
   "version": 1
 }

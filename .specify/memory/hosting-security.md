@@ -1,4 +1,4 @@
-# Carbex — Architecture Hosting & Sécurité
+# LinsCarbon — Architecture Hosting & Sécurité
 ## Document Complémentaire à la Constitution
 
 Ce document décrit l'architecture d'hébergement sécurisée pour un SaaS B2B gérant des données financières sensibles (Open Banking, comptabilité).
@@ -9,7 +9,7 @@ Ce document décrit l'architecture d'hébergement sécurisée pour un SaaS B2B g
 
 ### 1.1 Niveau de sécurité cible
 
-**Niveau bancaire** — Carbex manipule :
+**Niveau bancaire** — LinsCarbon manipule :
 - Données Open Banking (transactions bancaires)
 - Données comptables (FEC, DATEV)
 - Tokens d'accès API tierces
@@ -170,11 +170,11 @@ echo "$(date): Cloudflare IPs updated" >> /var/log/cloudflare-ips.log
 
 ```
 Type    Name              Content              Proxy    TTL
-A       carbex.io         <SERVER_IP>          ON       Auto
-CNAME   www               carbex.io            ON       Auto
-CNAME   app               carbex.io            ON       Auto
-CNAME   api               carbex.io            ON       Auto
-CNAME   admin             carbex.io            ON       Auto (+ Zero Trust)
+A       linscarbon.io         <SERVER_IP>          ON       Auto
+CNAME   www               linscarbon.io            ON       Auto
+CNAME   app               linscarbon.io            ON       Auto
+CNAME   api               linscarbon.io            ON       Auto
+CNAME   admin             linscarbon.io            ON       Auto (+ Zero Trust)
 ```
 
 ### 3.2 SSL/TLS Settings
@@ -220,14 +220,14 @@ and not ip.src in {<ALLOWED_IPS>}
 ### 3.4 Zero Trust Access (Admin Panel)
 
 ```yaml
-Application: Carbex Admin
-Domain: admin.carbex.io
+Application: LinsCarbon Admin
+Domain: admin.linscarbon.io
 
 Policies:
   - Name: Admin Only
     Action: Allow
     Include:
-      - Emails ending in: @carbex.io
+      - Emails ending in: @linscarbon.io
     Require:
       - Login Methods: Google Workspace
       - Device Posture: Require WARP client
@@ -271,7 +271,7 @@ entryPoints:
 certificatesResolvers:
   cloudflare:
     acme:
-      email: ssl@carbex.io
+      email: ssl@linscarbon.io
       storage: /etc/traefik/acme.json
       dnsChallenge:
         provider: cloudflare
@@ -400,8 +400,8 @@ http:
 
 # Database
 echo "SuperSecurePassword123!" | docker secret create db_password -
-echo "carbex_production" | docker secret create db_database -
-echo "carbex_user" | docker secret create db_username -
+echo "linscarbon_production" | docker secret create db_database -
+echo "linscarbon_user" | docker secret create db_username -
 
 # Redis
 openssl rand -base64 32 | docker secret create redis_password -
@@ -436,10 +436,10 @@ openssl rand -base64 32 | docker secret create meilisearch_master_key -
     'port' => env('DB_PORT', '5432'),
     'database' => file_exists('/run/secrets/db_database')
         ? trim(file_get_contents('/run/secrets/db_database'))
-        : env('DB_DATABASE', 'carbex'),
+        : env('DB_DATABASE', 'linscarbon'),
     'username' => file_exists('/run/secrets/db_username')
         ? trim(file_get_contents('/run/secrets/db_username'))
-        : env('DB_USERNAME', 'carbex'),
+        : env('DB_USERNAME', 'linscarbon'),
     'password' => file_exists('/run/secrets/db_password')
         ? trim(file_get_contents('/run/secrets/db_password'))
         : env('DB_PASSWORD', ''),
@@ -497,7 +497,7 @@ version: "3.9"
 
 services:
   app:
-    image: carbex/app:${VERSION:-latest}
+    image: linscarbon/app:${VERSION:-latest}
     deploy:
       replicas: 3
       update_config:
@@ -510,7 +510,7 @@ services:
         max_attempts: 3
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.app.rule=Host(`app.carbex.io`)"
+        - "traefik.http.routers.app.rule=Host(`app.linscarbon.io`)"
         - "traefik.http.routers.app.entrypoints=websecure"
         - "traefik.http.routers.app.tls.certresolver=cloudflare"
         - "traefik.http.services.app.loadbalancer.server.port=8080"
@@ -541,7 +541,7 @@ services:
       - SESSION_DRIVER=redis
 
   queue:
-    image: carbex/app:${VERSION:-latest}
+    image: linscarbon/app:${VERSION:-latest}
     command: php artisan horizon
     deploy:
       replicas: 2
@@ -559,7 +559,7 @@ services:
       - internal
 
   scheduler:
-    image: carbex/app:${VERSION:-latest}
+    image: linscarbon/app:${VERSION:-latest}
     command: php artisan schedule:work
     deploy:
       replicas: 1
@@ -730,8 +730,8 @@ banaction = nftables-multiport
 ignoreip = 127.0.0.1/8 ::1
 
 # Email alerting
-destemail = security@carbex.io
-sender = fail2ban@carbex.io
+destemail = security@linscarbon.io
+sender = fail2ban@linscarbon.io
 action = %(action_mwl)s
 
 [sshd]
@@ -804,7 +804,7 @@ EOF
       replicas: 1
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.grafana.rule=Host(`monitoring.carbex.io`)"
+        - "traefik.http.routers.grafana.rule=Host(`monitoring.linscarbon.io`)"
         - "traefik.http.routers.grafana.middlewares=auth-admin@file"
     volumes:
       - grafana_data:/var/lib/grafana
@@ -838,7 +838,7 @@ EOF
 # alerting-rules.yml (Prometheus)
 
 groups:
-  - name: carbex-critical
+  - name: linscarbon-critical
     rules:
       - alert: HighErrorRate
         expr: rate(traefik_service_requests_total{code=~"5.."}[5m]) > 0.1
@@ -901,25 +901,25 @@ groups:
 set -e
 
 BACKUP_DIR="/tmp/backups"
-S3_BUCKET="s3://carbex-backups-eu/postgres"
+S3_BUCKET="s3://linscarbon-backups-eu/postgres"
 DATE=$(date +%Y%m%d-%H%M%S)
 ENCRYPTION_KEY=$(cat /run/secrets/backup_encryption_key)
 
 # Dump
 docker exec $(docker ps -q -f name=postgres) \
-  pg_dump -U carbex -Fc carbex > "${BACKUP_DIR}/carbex-${DATE}.dump"
+  pg_dump -U linscarbon -Fc linscarbon > "${BACKUP_DIR}/linscarbon-${DATE}.dump"
 
 # Encrypt
 gpg --symmetric --cipher-algo AES256 \
   --passphrase "$ENCRYPTION_KEY" \
   --batch --yes \
-  "${BACKUP_DIR}/carbex-${DATE}.dump"
+  "${BACKUP_DIR}/linscarbon-${DATE}.dump"
 
 # Upload to S3
-aws s3 cp "${BACKUP_DIR}/carbex-${DATE}.dump.gpg" "${S3_BUCKET}/"
+aws s3 cp "${BACKUP_DIR}/linscarbon-${DATE}.dump.gpg" "${S3_BUCKET}/"
 
 # Cleanup local
-rm -f "${BACKUP_DIR}/carbex-${DATE}.dump"*
+rm -f "${BACKUP_DIR}/linscarbon-${DATE}.dump"*
 
 # Cleanup old backups (keep 30 days)
 aws s3 ls "${S3_BUCKET}/" | while read -r line; do
@@ -1000,7 +1000,7 @@ Cette architecture offre :
 - **Haute disponibilité** : Swarm replicas, rolling updates
 - **Coût maîtrisé** : ~75€/mois au lancement
 
-Cette architecture est adaptée à un SaaS B2B manipulant des données financières sensibles et peut évoluer avec la croissance de Carbex.
+Cette architecture est adaptée à un SaaS B2B manipulant des données financières sensibles et peut évoluer avec la croissance de LinsCarbon.
 
 ---
 

@@ -1,19 +1,19 @@
 openapi: 3.1.0
 info:
-  title: Carbex API
+  title: LinsCarbon API
   description: |
-    API for the Carbex carbon footprint calculation platform.
+    API for the LinsCarbon carbon footprint calculation platform.
     Supports web application (Livewire) and future mobile apps.
   version: 1.0.0
   contact:
-    email: api@carbex.io
+    email: api@linscarbon.io
   license:
     name: Proprietary
 
 servers:
-  - url: https://api.carbex.io/v1
+  - url: https://api.linscarbon.io/v1
     description: Production
-  - url: https://staging-api.carbex.io/v1
+  - url: https://staging-api.linscarbon.io/v1
     description: Staging
   - url: http://localhost:8000/api/v1
     description: Local development

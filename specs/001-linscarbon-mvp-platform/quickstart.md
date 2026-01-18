@@ -1,6 +1,6 @@
-# Developer Quickstart: Carbex MVP Platform
+# Developer Quickstart: LinsCarbon MVP Platform
 
-**Feature**: 001-carbex-mvp-platform
+**Feature**: 001-linscarbon-mvp-platform
 **Date**: 2025-12-28
 
 ---
@@ -17,8 +17,8 @@
 
 ```bash
 # Clone repository
-git clone git@github.com:carbex/carbex-app.git
-cd carbex-app
+git clone git@github.com:linscarbon/linscarbon-app.git
+cd linscarbon-app
 
 # Copy environment file
 cp .env.example .env
@@ -54,8 +54,8 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: carbex
-      POSTGRES_USER: carbex
+      POSTGRES_DB: linscarbon
+      POSTGRES_USER: linscarbon
       POSTGRES_PASSWORD: secret
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -100,7 +100,7 @@ Update `.env` with:
 
 ```env
 # Application
-APP_NAME=Carbex
+APP_NAME=LinsCarbon
 APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://localhost:8000
@@ -109,8 +109,8 @@ APP_URL=http://localhost:8000
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=carbex
-DB_USERNAME=carbex
+DB_DATABASE=linscarbon
+DB_USERNAME=linscarbon
 DB_PASSWORD=secret
 
 # Redis
@@ -144,7 +144,7 @@ STRIPE_WEBHOOK_SECRET=whsec_xxx
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=eu-west-3
-AWS_BUCKET=carbex-dev
+AWS_BUCKET=linscarbon-dev
 TEXTRACT_REGION=eu-west-1
 
 MAIL_MAILER=log
@@ -232,10 +232,10 @@ php artisan scout:import "App\Models\EmissionFactor"
 php artisan queue:monitor
 
 # Simulate bank sync (with mock data)
-php artisan carbex:sync-bank --mock
+php artisan linscarbon:sync-bank --mock
 
 # Import emission factors from ADEME
-php artisan carbex:import-factors ademe
+php artisan linscarbon:import-factors ademe
 
 # Generate OpenAPI documentation
 php artisan scramble:export > docs/openapi.json
@@ -278,7 +278,7 @@ stripe listen --forward-to localhost:8000/stripe/webhook
 ## 12. Project Structure
 
 ```
-carbex-app/
+linscarbon-app/
 ├── app/
 │   ├── Console/Commands/      # Artisan commands
 │   ├── Http/
@@ -291,7 +291,7 @@ carbex-app/
 │   │   └── AI/                # Claude integration
 │   └── Jobs/                  # Queue jobs
 ├── config/
-│   ├── carbex.php             # App-specific config
+│   ├── linscarbon.php             # App-specific config
 │   ├── countries.php          # Country settings
 │   └── banking.php            # Banking providers
 ├── database/

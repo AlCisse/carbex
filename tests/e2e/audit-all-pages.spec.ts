@@ -106,7 +106,7 @@ test.describe('Public Pages Audit', () => {
             }
 
             // Check for raw translation keys
-            const rawKeys = body?.match(/carbex\.[a-z_\.]+/gi)?.filter(k => !['carbex.fr', 'carbex.com', 'carbex.de', 'carbex.io', 'carbex.eu'].includes(k));
+            const rawKeys = body?.match(/linscarbon\.[a-z_\.]+/gi)?.filter(k => !['linscarbon.fr', 'linscarbon.com', 'linscarbon.de', 'linscarbon.io', 'linscarbon.eu'].includes(k));
             if (rawKeys && rawKeys.length > 0) {
                 console.log(`   ⚠️ Missing translations: ${[...new Set(rawKeys)].slice(0, 3).join(', ')}`);
             }
@@ -121,7 +121,7 @@ test.describe('Authenticated Pages Audit', () => {
         // Login
         await page.goto('/login');
         await page.waitForTimeout(500);
-        await page.fill('#email', 'test@carbex.fr');
+        await page.fill('#email', 'test@linscarbon.fr');
         await page.fill('#password', 'password');
         await page.click('button[type="submit"]');
         await page.waitForURL('**/dashboard**', { timeout: 15000 });
@@ -146,7 +146,7 @@ test.describe('Authenticated Pages Audit', () => {
             }
 
             // Check for raw translation keys
-            const rawKeys = body?.match(/carbex\.[a-z_\.]+/gi)?.filter(k => !['carbex.fr', 'carbex.com', 'carbex.de', 'carbex.io', 'carbex.eu'].includes(k));
+            const rawKeys = body?.match(/linscarbon\.[a-z_\.]+/gi)?.filter(k => !['linscarbon.fr', 'linscarbon.com', 'linscarbon.de', 'linscarbon.io', 'linscarbon.eu'].includes(k));
             if (rawKeys && rawKeys.length > 0) {
                 console.log(`   ⚠️ Missing translations: ${[...new Set(rawKeys)].slice(0, 3).join(', ')}`);
             }

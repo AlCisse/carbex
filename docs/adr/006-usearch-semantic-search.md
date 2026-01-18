@@ -80,7 +80,7 @@ Nous adoptons **uSearch** comme moteur de recherche vectorielle, deploye en tant
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                    CARBEX APP                       │
+│                    LINSCARBON APP                       │
 │  ┌─────────────┐    ┌──────────────────────────┐   │
 │  │ Livewire UI │───▶│ SemanticSearchService    │   │
 │  └─────────────┘    │ + FactorRAGService       │   │

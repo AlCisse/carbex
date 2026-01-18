@@ -9,7 +9,7 @@ test('Download generated report', async ({ page }) => {
     await page.goto('/login');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1000);
-    await page.locator('#email').fill('test@carbex.fr');
+    await page.locator('#email').fill('test@linscarbon.fr');
     await page.locator('#password').fill('password');
     await page.locator('#password').press('Enter');
     await page.waitForSelector('aside', { timeout: 30000 });

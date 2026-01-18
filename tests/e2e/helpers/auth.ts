@@ -6,7 +6,7 @@ import { Page, expect } from '@playwright/test';
  */
 
 export const TEST_USER = {
-    email: 'test@carbex.fr',
+    email: 'test@linscarbon.fr',
     password: 'password',
 };
 

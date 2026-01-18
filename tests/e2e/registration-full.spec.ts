@@ -4,7 +4,7 @@ test.describe('Full Registration Flow', () => {
   test('should complete full registration process', async ({ page }) => {
     // Generate unique email
     const timestamp = Date.now();
-    const testEmail = `test_user_${timestamp}@carbex-test.io`;
+    const testEmail = `test_user_${timestamp}@linscarbon-test.io`;
 
     // Navigate to registration page
     await page.goto('/register');

@@ -1,5 +1,5 @@
 """
-uSearch API - Semantic Search Microservice for Carbex
+uSearch API - Semantic Search Microservice for LinsCarbon
 ======================================================
 FastAPI microservice exposing uSearch vector similarity search.
 Handles embedding storage, indexing, and semantic queries.
@@ -75,7 +75,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Carbex uSearch API",
+    title="LinsCarbon uSearch API",
     description="Semantic search microservice using uSearch vector similarity engine",
     version="1.0.0",
     lifespan=lifespan,

@@ -1,6 +1,6 @@
 # uSearch API - Semantic Search Microservice
 
-Microservice Python/FastAPI exposant uSearch pour la recherche semantique vectorielle dans Carbex.
+Microservice Python/FastAPI exposant uSearch pour la recherche semantique vectorielle dans LinsCarbon.
 
 ## Architecture
 
@@ -88,10 +88,10 @@ uvicorn app.main:app --reload --port 8001
 pytest tests/ -v
 
 # Docker build
-docker build -t carbex-usearch .
+docker build -t linscarbon-usearch .
 
 # Docker run
-docker run -p 8001:8001 -e OPENAI_API_KEY=sk-... carbex-usearch
+docker run -p 8001:8001 -e OPENAI_API_KEY=sk-... linscarbon-usearch
 ```
 
 ## Usage Example

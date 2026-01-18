@@ -95,7 +95,7 @@ return [
 
             // Sync Configuration
             'sync' => [
-                'interval_hours' => env('CARBEX_SYNC_INTERVAL_HOURS', 1),
+                'interval_hours' => env('LINSCARBON_SYNC_INTERVAL_HOURS', 1),
                 'max_days_history' => 90,
                 'batch_size' => 100,
                 'retry_attempts' => 3,
@@ -175,7 +175,7 @@ return [
 
             // Sync Configuration
             'sync' => [
-                'interval_hours' => env('CARBEX_SYNC_INTERVAL_HOURS', 1),
+                'interval_hours' => env('LINSCARBON_SYNC_INTERVAL_HOURS', 1),
                 'max_days_history' => 90,
                 'batch_size' => 500,
                 'retry_attempts' => 3,

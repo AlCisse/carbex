@@ -1,6 +1,6 @@
-# Feature Specification: Carbex MVP - Plateforme SaaS Bilan Carbone Automatique
+# Feature Specification: LinsCarbon MVP - Plateforme SaaS Bilan Carbone Automatique
 
-**Feature Branch**: `001-carbex-mvp-platform`
+**Feature Branch**: `001-linscarbon-mvp-platform`
 **Created**: 2025-12-28
 **Updated**: 2025-01-12
 **Status**: Implemented
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-Carbex is a SaaS platform that automates carbon footprint calculation for European SMEs (10-250 employees) subject to CSRD 2025, BEGES, LkSG (German Supply Chain Act), and EU sustainability reporting requirements. The platform's core innovation is "Zero-Input Carbon" - automatic data collection via Open Banking (PSD2), energy provider APIs, supplier integrations, and AI-powered multi-provider categorization, reducing manual data entry from 80% to under 20%.
+LinsCarbon is a SaaS platform that automates carbon footprint calculation for European SMEs (10-250 employees) subject to CSRD 2025, BEGES, LkSG (German Supply Chain Act), and EU sustainability reporting requirements. The platform's core innovation is "Zero-Input Carbon" - automatic data collection via Open Banking (PSD2), energy provider APIs, supplier integrations, and AI-powered multi-provider categorization, reducing manual data entry from 80% to under 20%.
 
 **Target Markets**: Germany (P0 - Primary), France (P1), EU expansion (AT, CH, BE, NL, ES, IT)
 **Core Value Proposition**: First carbon footprint in 2 hours (vs. 2-4 weeks traditional)
@@ -215,8 +215,8 @@ Enterprise organizations configure SSO/SAML authentication for their employees, 
 **Acceptance Scenarios**:
 
 1. **Given** an Enterprise plan organization, **When** admin configures SAML settings, **Then** they can enter IdP metadata (Azure AD, Okta, etc.)
-2. **Given** SAML is configured, **When** a user accesses Carbex, **Then** they are redirected to their IdP for authentication
-3. **Given** successful IdP authentication, **When** user returns to Carbex, **Then** they are automatically logged in with mapped roles
+2. **Given** SAML is configured, **When** a user accesses LinsCarbon, **Then** they are redirected to their IdP for authentication
+3. **Given** successful IdP authentication, **When** user returns to LinsCarbon, **Then** they are automatically logged in with mapped roles
 4. **Given** IdP provides group claims, **When** mapped, **Then** users are assigned correct organization roles
 
 ---
@@ -238,7 +238,7 @@ An organization creates carbon reduction targets aligned with SBTi methodology a
 
 ### User Story 13 - Public API & Webhooks (Priority: P2)
 
-External systems integrate with Carbex via REST API and receive real-time notifications via webhooks.
+External systems integrate with LinsCarbon via REST API and receive real-time notifications via webhooks.
 
 **Status**: IMPLEMENTED
 
@@ -662,7 +662,7 @@ An organization views their CSRD (Corporate Sustainability Reporting Directive) 
 
 ### Data Protection
 - **GDPR/DSGVO**: Full compliance with EU data protection
-- **Art. 37(5) DSGVO**: Data Protection Officer (dpo@carbex.de)
+- **Art. 37(5) DSGVO**: Data Protection Officer (dpo@linscarbon.de)
 - **Data residency**: EU-only hosting (Scaleway Paris/Amsterdam)
 - **Encryption**: AES-256 at rest, TLS 1.3 in transit
 - **Data retention**: Configurable per organization
