@@ -4,6 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubscriptionResource\Pages;
 use App\Models\Subscription;
+use Filament\Actions\ViewAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\Action;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -258,9 +262,9 @@ class SubscriptionResource extends Resource
                     ->label(__('carbex.admin.subscriptions.canceling')),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('cancel')
+                ViewAction::make(),
+                EditAction::make(),
+                Action::make('cancel')
                     ->label(__('carbex.admin.subscriptions.cancel'))
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
@@ -268,9 +272,7 @@ class SubscriptionResource extends Resource
                     ->visible(fn (Subscription $record): bool => $record->status === 'active'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                DeleteBulkAction::make(),
             ]);
     }
 

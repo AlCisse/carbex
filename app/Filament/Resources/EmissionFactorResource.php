@@ -4,6 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EmissionFactorResource\Pages;
 use App\Models\EmissionFactor;
+use Filament\Actions\ViewAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ReplicateAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -143,7 +147,7 @@ class EmissionFactorResource extends Resource
                     ->sortable()
                     ->limit(40),
 
-                Tables\Columns\TextColumn::make('category')
+                Tables\Columns\TextColumn::make('sector')
                     ->badge()
                     ->sortable(),
 
@@ -158,7 +162,8 @@ class EmissionFactorResource extends Resource
                     ->formatStateUsing(fn (int $state): string => "Scope {$state}")
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('value')
+                Tables\Columns\TextColumn::make('factor_kg_co2e')
+                    ->label('Factor (kgCO2e)')
                     ->numeric(decimalPlaces: 4)
                     ->sortable(),
 
@@ -168,9 +173,6 @@ class EmissionFactorResource extends Resource
                 Tables\Columns\TextColumn::make('country')
                     ->badge()
                     ->placeholder('Global')
-                    ->sortable(),
-
-                Tables\Columns\TextColumn::make('year')
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('source')
@@ -188,7 +190,7 @@ class EmissionFactorResource extends Resource
                         3 => 'Scope 3',
                     ]),
 
-                Tables\Filters\SelectFilter::make('category')
+                Tables\Filters\SelectFilter::make('sector')
                     ->options([
                         'electricity' => 'Electricity',
                         'natural_gas' => 'Natural Gas',
@@ -213,16 +215,14 @@ class EmissionFactorResource extends Resource
                 Tables\Filters\TernaryFilter::make('is_active'),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\ReplicateAction::make(),
+                ViewAction::make(),
+                EditAction::make(),
+                ReplicateAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                DeleteBulkAction::make(),
             ])
-            ->defaultSort('category');
+            ->defaultSort('name');
     }
 
     public static function getRelations(): array
@@ -242,6 +242,6 @@ class EmissionFactorResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['name', 'name_en', 'category', 'source'];
+        return ['name', 'name_en', 'sector', 'source'];
     }
 }
