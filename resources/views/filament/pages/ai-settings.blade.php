@@ -13,7 +13,7 @@
     <x-filament::section class="mt-8">
         <x-slot name="heading">
             <div class="flex items-center gap-2">
-                <x-heroicon-o-credit-card class="w-5 h-5" />
+                <x-heroicon-o-credit-card style="width: 1rem; height: 1rem;" />
                 Modèles par abonnement
             </div>
         </x-slot>
