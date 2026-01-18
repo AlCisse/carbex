@@ -21,22 +21,11 @@
             Configurez le modèle IA attribué à chaque type d'abonnement
         </x-slot>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {{-- Gratuit --}}
-            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #9ca3af">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-gray flex items-center justify-center">
-                        <x-heroicon-o-gift class="w-5 h-5" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold fi-section-header-heading">Gratuit</h3>
-                        <p class="text-xs fi-section-header-description">Essai gratuit</p>
-                    </div>
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <x-filament::badge color="gray" size="sm">50K tokens/mois</x-filament::badge>
-                    <x-filament::badge color="gray" size="sm">100 req/mois</x-filament::badge>
-                </div>
+            <div class="rounded-xl border p-5 bg-white dark:bg-gray-900">
+                <p class="text-xs font-semibold tracking-wide text-gray-500 dark:text-gray-400 uppercase">Gratuit</p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-3">50K tokens · 100 req/mois</p>
                 <x-filament::input.wrapper>
                     <x-filament::input.select wire:change="saveSubscriptionModel('free', $event.target.value)">
                         @foreach($this->getAllModelsOptions() as $group => $models)
@@ -51,20 +40,9 @@
             </div>
 
             {{-- Starter --}}
-            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #60a5fa">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-info flex items-center justify-center">
-                        <x-heroicon-o-rocket-launch class="w-5 h-5" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold fi-section-header-heading">Starter</h3>
-                        <p class="text-xs fi-section-header-description">Petites équipes</p>
-                    </div>
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <x-filament::badge color="info" size="sm">200K tokens/mois</x-filament::badge>
-                    <x-filament::badge color="info" size="sm">500 req/mois</x-filament::badge>
-                </div>
+            <div class="rounded-xl border p-5 bg-white dark:bg-gray-900">
+                <p class="text-xs font-semibold tracking-wide text-blue-600 dark:text-blue-400 uppercase">Starter</p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-3">200K tokens · 500 req/mois</p>
                 <x-filament::input.wrapper>
                     <x-filament::input.select wire:change="saveSubscriptionModel('starter', $event.target.value)">
                         @foreach($this->getAllModelsOptions() as $group => $models)
@@ -79,20 +57,9 @@
             </div>
 
             {{-- Professional --}}
-            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #a855f7">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-warning flex items-center justify-center">
-                        <x-heroicon-o-briefcase class="w-5 h-5" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold fi-section-header-heading">Professional</h3>
-                        <p class="text-xs fi-section-header-description">Entreprises en croissance</p>
-                    </div>
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <x-filament::badge color="warning" size="sm">1M tokens/mois</x-filament::badge>
-                    <x-filament::badge color="warning" size="sm">2500 req/mois</x-filament::badge>
-                </div>
+            <div class="rounded-xl border p-5 bg-white dark:bg-gray-900">
+                <p class="text-xs font-semibold tracking-wide text-purple-600 dark:text-purple-400 uppercase">Professional</p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-3">1M tokens · 2500 req/mois</p>
                 <x-filament::input.wrapper>
                     <x-filament::input.select wire:change="saveSubscriptionModel('professional', $event.target.value)">
                         @foreach($this->getAllModelsOptions() as $group => $models)
@@ -107,20 +74,9 @@
             </div>
 
             {{-- Enterprise --}}
-            <div class="rounded-xl border p-4 bg-white dark:bg-gray-800" style="border-color: #f59e0b">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg fi-badge fi-color-success flex items-center justify-center">
-                        <x-heroicon-o-building-office class="w-5 h-5" />
-                    </div>
-                    <div>
-                        <h3 class="font-semibold fi-section-header-heading">Enterprise</h3>
-                        <p class="text-xs fi-section-header-description">Solution sur mesure</p>
-                    </div>
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <x-filament::badge color="success" size="sm">Illimité</x-filament::badge>
-                    <x-filament::badge color="success" size="sm">Illimité</x-filament::badge>
-                </div>
+            <div class="rounded-xl border p-5 bg-white dark:bg-gray-900">
+                <p class="text-xs font-semibold tracking-wide text-amber-600 dark:text-amber-400 uppercase">Enterprise</p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-3">Illimité</p>
                 <x-filament::input.wrapper>
                     <x-filament::input.select wire:change="saveSubscriptionModel('enterprise', $event.target.value)">
                         @foreach($this->getAllModelsOptions() as $group => $models)
