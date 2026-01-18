@@ -3,8 +3,8 @@
 namespace App\Livewire\Settings;
 
 use App\Models\AISetting;
+use App\Models\AIUsage;
 use App\Services\AI\AIManager;
-use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -13,243 +13,162 @@ use Livewire\Component;
 #[Title('AI Settings - Carbex')]
 class AISettings extends Component
 {
-    // Provider settings
+    // Read-only provider info from admin
+    public array $availableProviders = [];
     public string $defaultProvider = 'anthropic';
-    public bool $anthropicEnabled = true;
-    public bool $openaiEnabled = false;
-    public bool $googleEnabled = false;
-    public bool $deepseekEnabled = false;
+    public string $currentModel = '';
 
-    // API Keys (masked)
-    public string $anthropicApiKey = '';
-    public string $openaiApiKey = '';
-    public string $googleApiKey = '';
-    public string $deepseekApiKey = '';
-
-    // Model selections
-    public string $anthropicModel = 'claude-sonnet-4-20250514';
-    public string $openaiModel = 'gpt-4o';
-    public string $googleModel = 'gemini-1.5-pro';
-    public string $deepseekModel = 'deepseek-chat';
-
-    // Generation parameters
-    public int $maxTokens = 4096;
-    public float $temperature = 0.7;
-
-    // Feature flags
+    // AI Features enabled by admin
     public bool $chatWidgetEnabled = true;
     public bool $emissionHelperEnabled = true;
     public bool $documentExtractionEnabled = false;
 
-    // Provider info
-    public array $availableProviders = [];
-    public array $providerModels = [];
+    // Usage stats
+    public array $usageStats = [];
+    public array $subscriptionLimits = [];
 
     public function mount(): void
     {
-        // Load settings from database/config
-        $this->loadSettings();
-        $this->loadProviderInfo();
+        $this->loadAdminSettings();
+        $this->loadUsageStats();
     }
 
-    protected function loadSettings(): void
-    {
-        // Load from AISetting model or fall back to config
-        $this->defaultProvider = AISetting::getValue('default_provider', config('ai.default_provider', 'anthropic'));
-
-        // Provider enabled states
-        $this->anthropicEnabled = (bool) AISetting::getValue('anthropic_enabled', config('ai.providers.anthropic.enabled', true));
-        $this->openaiEnabled = (bool) AISetting::getValue('openai_enabled', config('ai.providers.openai.enabled', false));
-        $this->googleEnabled = (bool) AISetting::getValue('google_enabled', config('ai.providers.google.enabled', false));
-        $this->deepseekEnabled = (bool) AISetting::getValue('deepseek_enabled', config('ai.providers.deepseek.enabled', false));
-
-        // Model selections
-        $this->anthropicModel = AISetting::getValue('anthropic_model', config('ai.providers.anthropic.default_model', 'claude-sonnet-4-20250514'));
-        $this->openaiModel = AISetting::getValue('openai_model', config('ai.providers.openai.default_model', 'gpt-4o'));
-        $this->googleModel = AISetting::getValue('google_model', config('ai.providers.google.default_model', 'gemini-1.5-pro'));
-        $this->deepseekModel = AISetting::getValue('deepseek_model', config('ai.providers.deepseek.default_model', 'deepseek-chat'));
-
-        // Generation parameters
-        $this->maxTokens = (int) AISetting::getValue('max_tokens', config('ai.max_tokens', 4096));
-        $this->temperature = (float) AISetting::getValue('temperature', config('ai.temperature', 0.7));
-
-        // Feature flags
-        $this->chatWidgetEnabled = (bool) AISetting::getValue('chat_widget_enabled', config('ai.features.chat_widget', true));
-        $this->emissionHelperEnabled = (bool) AISetting::getValue('emission_helper_enabled', config('ai.features.emission_helper', true));
-        $this->documentExtractionEnabled = (bool) AISetting::getValue('document_extraction_enabled', config('ai.features.document_extraction', false));
-
-        // Load masked API keys (show if configured)
-        $this->anthropicApiKey = $this->getMaskedKey('anthropic');
-        $this->openaiApiKey = $this->getMaskedKey('openai');
-        $this->googleApiKey = $this->getMaskedKey('google');
-        $this->deepseekApiKey = $this->getMaskedKey('deepseek');
-    }
-
-    protected function loadProviderInfo(): void
+    protected function loadAdminSettings(): void
     {
         $manager = app(AIManager::class);
 
-        $this->providerModels = [
-            'anthropic' => config('ai.providers.anthropic.models', []),
-            'openai' => config('ai.providers.openai.models', []),
-            'google' => config('ai.providers.google.models', []),
-            'deepseek' => config('ai.providers.deepseek.models', []),
-        ];
-
+        // Load which providers admin has configured
         foreach ($manager->getProviders() as $key => $provider) {
-            $this->availableProviders[$key] = [
-                'name' => $provider->getName(),
-                'available' => $provider->isAvailable(),
+            $enabled = (bool) AISetting::getValue("{$key}_enabled", false);
+            $available = $provider->isAvailable();
+
+            if ($enabled && $available) {
+                $this->availableProviders[$key] = [
+                    'name' => $provider->getName(),
+                    'model' => AISetting::getValue("{$key}_model", ''),
+                    'available' => true,
+                ];
+            }
+        }
+
+        // Default provider
+        $this->defaultProvider = AISetting::getValue('default_provider', 'anthropic');
+
+        // Get current model for default provider
+        $this->currentModel = AISetting::getValue("{$this->defaultProvider}_model", '');
+
+        // Feature flags set by admin
+        $this->chatWidgetEnabled = (bool) AISetting::getValue('chat_widget_enabled', true);
+        $this->emissionHelperEnabled = (bool) AISetting::getValue('emission_helper_enabled', true);
+        $this->documentExtractionEnabled = (bool) AISetting::getValue('document_extraction_enabled', false);
+    }
+
+    protected function loadUsageStats(): void
+    {
+        $user = auth()->user();
+        $organization = $user->organization;
+        $subscription = $organization?->subscription;
+
+        // Get usage limits from subscription
+        $this->subscriptionLimits = $this->getSubscriptionAILimits($subscription);
+
+        // Get current month usage
+        $startOfMonth = now()->startOfMonth();
+        $endOfMonth = now()->endOfMonth();
+
+        $usage = AIUsage::where('organization_id', $organization?->id)
+            ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->selectRaw('
+                COUNT(*) as total_requests,
+                SUM(input_tokens) as total_input_tokens,
+                SUM(output_tokens) as total_output_tokens,
+                SUM(cost_cents) as total_cost_cents
+            ')
+            ->first();
+
+        $this->usageStats = [
+            'requests' => $usage?->total_requests ?? 0,
+            'input_tokens' => $usage?->total_input_tokens ?? 0,
+            'output_tokens' => $usage?->total_output_tokens ?? 0,
+            'total_tokens' => ($usage?->total_input_tokens ?? 0) + ($usage?->total_output_tokens ?? 0),
+            'cost_cents' => $usage?->total_cost_cents ?? 0,
+            'cost_formatted' => number_format(($usage?->total_cost_cents ?? 0) / 100, 2) . ' €',
+            'limit' => $this->subscriptionLimits['monthly_tokens'] ?? null,
+            'usage_percent' => $this->calculateUsagePercent($usage),
+        ];
+    }
+
+    protected function getSubscriptionAILimits(?object $subscription): array
+    {
+        if (!$subscription) {
+            // Free tier / Trial
+            return [
+                'plan' => 'free',
+                'plan_label' => __('carbex.subscription.plans.free'),
+                'monthly_tokens' => 50000,
+                'monthly_requests' => 100,
+                'features' => ['chat_widget'],
             ];
         }
+
+        // Plan-based limits
+        return match ($subscription->plan) {
+            'starter' => [
+                'plan' => 'starter',
+                'plan_label' => __('carbex.subscription.plans.starter'),
+                'monthly_tokens' => 200000,
+                'monthly_requests' => 500,
+                'features' => ['chat_widget', 'emission_helper'],
+            ],
+            'professional' => [
+                'plan' => 'professional',
+                'plan_label' => __('carbex.subscription.plans.professional'),
+                'monthly_tokens' => 1000000,
+                'monthly_requests' => 2500,
+                'features' => ['chat_widget', 'emission_helper', 'document_extraction'],
+            ],
+            'enterprise' => [
+                'plan' => 'enterprise',
+                'plan_label' => __('carbex.subscription.plans.enterprise'),
+                'monthly_tokens' => null, // Unlimited
+                'monthly_requests' => null, // Unlimited
+                'features' => ['chat_widget', 'emission_helper', 'document_extraction', 'custom_prompts', 'api_access'],
+            ],
+            default => [
+                'plan' => 'free',
+                'plan_label' => __('carbex.subscription.plans.free'),
+                'monthly_tokens' => 50000,
+                'monthly_requests' => 100,
+                'features' => ['chat_widget'],
+            ],
+        };
     }
 
-    protected function getMaskedKey(string $provider): string
+    protected function calculateUsagePercent(?object $usage): ?float
     {
-        // Check if key exists in database
-        $dbKey = AISetting::getValue("{$provider}_api_key");
-        if ($dbKey) {
-            return $this->maskKey($dbKey);
+        $limit = $this->subscriptionLimits['monthly_tokens'] ?? null;
+
+        if ($limit === null) {
+            return null; // Unlimited
         }
 
-        // Check config/env
-        $configKey = match ($provider) {
-            'anthropic' => config('ai.providers.anthropic.api_key'),
-            'openai' => config('ai.providers.openai.api_key'),
-            'google' => config('ai.providers.google.api_key'),
-            'deepseek' => config('ai.providers.deepseek.api_key'),
-            default => null,
+        $totalTokens = ($usage?->total_input_tokens ?? 0) + ($usage?->total_output_tokens ?? 0);
+
+        return min(100, round(($totalTokens / $limit) * 100, 1));
+    }
+
+    public function hasFeature(string $feature): bool
+    {
+        $adminEnabled = match ($feature) {
+            'chat_widget' => $this->chatWidgetEnabled,
+            'emission_helper' => $this->emissionHelperEnabled,
+            'document_extraction' => $this->documentExtractionEnabled,
+            default => false,
         };
 
-        return $configKey ? $this->maskKey($configKey) : '';
-    }
+        $subscriptionHasFeature = in_array($feature, $this->subscriptionLimits['features'] ?? []);
 
-    protected function maskKey(string $key): string
-    {
-        if (strlen($key) <= 8) {
-            return str_repeat('*', strlen($key));
-        }
-
-        return substr($key, 0, 4) . str_repeat('*', strlen($key) - 8) . substr($key, -4);
-    }
-
-    public function rules(): array
-    {
-        return [
-            'defaultProvider' => 'required|string|in:anthropic,openai,google,deepseek',
-            'maxTokens' => 'required|integer|min:256|max:32000',
-            'temperature' => 'required|numeric|min:0|max:2',
-        ];
-    }
-
-    public function saveSettings(): void
-    {
-        $organization = auth()->user()->organization;
-        Gate::authorize('update', $organization);
-
-        $this->validate();
-
-        // Save provider settings
-        AISetting::setValue('default_provider', $this->defaultProvider);
-        AISetting::setValue('anthropic_enabled', $this->anthropicEnabled);
-        AISetting::setValue('openai_enabled', $this->openaiEnabled);
-        AISetting::setValue('google_enabled', $this->googleEnabled);
-        AISetting::setValue('deepseek_enabled', $this->deepseekEnabled);
-
-        // Save model selections
-        AISetting::setValue('anthropic_model', $this->anthropicModel);
-        AISetting::setValue('openai_model', $this->openaiModel);
-        AISetting::setValue('google_model', $this->googleModel);
-        AISetting::setValue('deepseek_model', $this->deepseekModel);
-
-        // Save generation parameters
-        AISetting::setValue('max_tokens', $this->maxTokens);
-        AISetting::setValue('temperature', $this->temperature);
-
-        // Save feature flags
-        AISetting::setValue('chat_widget_enabled', $this->chatWidgetEnabled);
-        AISetting::setValue('emission_helper_enabled', $this->emissionHelperEnabled);
-        AISetting::setValue('document_extraction_enabled', $this->documentExtractionEnabled);
-
-        // Clear cache
-        AISetting::clearCache();
-
-        session()->flash('success', __('carbex.settings.ai.saved'));
-    }
-
-    public function saveApiKey(string $provider): void
-    {
-        $organization = auth()->user()->organization;
-        Gate::authorize('update', $organization);
-
-        $keyProperty = "{$provider}ApiKey";
-        $enabledProperty = "{$provider}Enabled";
-        $newKey = $this->$keyProperty;
-
-        // Don't save if it's the masked version or empty
-        if (empty($newKey) || str_contains($newKey, '*')) {
-            session()->flash('error', __('carbex.settings.ai.invalid_key'));
-            return;
-        }
-
-        // Save the API key
-        AISetting::setValue("{$provider}_api_key", $newKey);
-
-        // Auto-enable the provider when saving a key
-        $this->$enabledProperty = true;
-        AISetting::setValue("{$provider}_enabled", true);
-
-        AISetting::clearCache();
-
-        // Reload masked key
-        $this->$keyProperty = $this->maskKey($newKey);
-
-        // Reload provider info
-        $this->loadProviderInfo();
-
-        session()->flash('success', __('carbex.settings.ai.key_saved', ['provider' => ucfirst($provider)]));
-    }
-
-    public function removeApiKey(string $provider): void
-    {
-        $organization = auth()->user()->organization;
-        Gate::authorize('update', $organization);
-
-        // Remove from database
-        AISetting::where('key', "{$provider}_api_key")->delete();
-        AISetting::clearCache();
-
-        // Clear the field
-        $keyProperty = "{$provider}ApiKey";
-        $this->$keyProperty = '';
-
-        // Reload provider info
-        $this->loadProviderInfo();
-
-        session()->flash('success', __('carbex.settings.ai.key_removed', ['provider' => ucfirst($provider)]));
-    }
-
-    public function testConnection(string $provider): void
-    {
-        $manager = app(AIManager::class);
-        $providerInstance = $manager->provider($provider);
-
-        if (!$providerInstance || !$providerInstance->isAvailable()) {
-            session()->flash('error', __('carbex.settings.ai.not_configured', ['provider' => ucfirst($provider)]));
-            return;
-        }
-
-        try {
-            $response = $providerInstance->prompt('Say "Connection successful" in exactly 2 words.');
-
-            if ($response) {
-                session()->flash('success', __('carbex.settings.ai.connection_success', ['provider' => ucfirst($provider)]));
-            } else {
-                session()->flash('error', __('carbex.settings.ai.connection_failed', ['provider' => ucfirst($provider)]));
-            }
-        } catch (\Exception $e) {
-            session()->flash('error', __('carbex.settings.ai.connection_error', ['error' => $e->getMessage()]));
-        }
+        return $adminEnabled && $subscriptionHasFeature;
     }
 
     public function render()

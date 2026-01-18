@@ -1,386 +1,250 @@
 <div>
-    @if (session('success'))
-        <x-alert type="success" dismissible class="mb-6">
-            {{ session('success') }}
-        </x-alert>
-    @endif
-
-    @if (session('error'))
-        <x-alert type="error" dismissible class="mb-6">
-            {{ session('error') }}
-        </x-alert>
-    @endif
-
     <div class="space-y-8">
-        <!-- AI Status Overview -->
+        <!-- Current Plan & Usage Overview -->
         <x-card>
             <x-slot name="header">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.status') }}</h2>
-                        <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.status_desc') }}</p>
+                        <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.usage_title') }}</h2>
+                        <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.usage_desc') }}</p>
                     </div>
-                    @php
-                        $hasAvailable = collect($availableProviders)->contains('available', true);
-                    @endphp
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $hasAvailable ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
-                        <span class="w-2 h-2 mr-2 rounded-full {{ $hasAvailable ? 'bg-green-500' : 'bg-red-500' }}"></span>
-                        {{ $hasAvailable ? __('carbex.settings.ai.connected') : __('carbex.settings.ai.not_connected') }}
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        {{ $subscriptionLimits['plan_label'] ?? 'Free' }}
                     </span>
                 </div>
             </x-slot>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                @foreach ($availableProviders as $key => $provider)
-                    <div class="rounded-lg border {{ $provider['available'] ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50' }} p-4">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-gray-900">{{ $provider['name'] }}</span>
-                            @if ($provider['available'])
-                                <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                </svg>
-                            @else
-                                <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                </svg>
-                            @endif
-                        </div>
-                        <p class="mt-1 text-xs {{ $provider['available'] ? 'text-green-600' : 'text-gray-500' }}">
-                            {{ $provider['available'] ? __('carbex.settings.ai.configured') : __('carbex.settings.ai.not_configured_status') }}
-                        </p>
+            <!-- Usage Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tokens Used -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-600">{{ __('carbex.settings.ai.tokens_used') }}</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
                     </div>
-                @endforeach
+                    <div class="text-2xl font-bold text-gray-900">
+                        {{ number_format($usageStats['total_tokens'] ?? 0) }}
+                    </div>
+                    @if ($usageStats['limit'])
+                        <div class="mt-2">
+                            <div class="flex justify-between text-xs text-gray-500 mb-1">
+                                <span>{{ __('carbex.settings.ai.of_limit', ['limit' => number_format($usageStats['limit'])]) }}</span>
+                                <span>{{ $usageStats['usage_percent'] }}%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="h-2 rounded-full {{ $usageStats['usage_percent'] > 80 ? 'bg-red-500' : ($usageStats['usage_percent'] > 50 ? 'bg-yellow-500' : 'bg-green-500') }}"
+                                     style="width: {{ min(100, $usageStats['usage_percent']) }}%"></div>
+                            </div>
+                        </div>
+                    @else
+                        <p class="mt-2 text-xs text-gray-500">{{ __('carbex.settings.ai.unlimited') }}</p>
+                    @endif
+                </div>
+
+                <!-- Requests This Month -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-600">{{ __('carbex.settings.ai.requests_month') }}</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-bold text-gray-900">
+                        {{ number_format($usageStats['requests'] ?? 0) }}
+                    </div>
+                    @if ($subscriptionLimits['monthly_requests'] ?? null)
+                        <p class="mt-2 text-xs text-gray-500">
+                            {{ __('carbex.settings.ai.of_requests', ['limit' => number_format($subscriptionLimits['monthly_requests'])]) }}
+                        </p>
+                    @else
+                        <p class="mt-2 text-xs text-gray-500">{{ __('carbex.settings.ai.unlimited') }}</p>
+                    @endif
+                </div>
+
+                <!-- Estimated Cost -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-600">{{ __('carbex.settings.ai.estimated_cost') }}</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-bold text-gray-900">
+                        {{ $usageStats['cost_formatted'] ?? '0,00 €' }}
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500">{{ __('carbex.settings.ai.included_in_plan') }}</p>
+                </div>
             </div>
         </x-card>
 
-        <!-- API Keys Configuration -->
+        <!-- Available AI Providers (Read-Only) -->
         <x-card>
             <x-slot name="header">
-                <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.api_keys') }}</h2>
-                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.api_keys_desc') }}</p>
+                <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.available_providers') }}</h2>
+                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.providers_configured_by_admin') }}</p>
             </x-slot>
 
-            <div class="space-y-6">
-                <!-- Anthropic -->
-                <div class="rounded-lg border border-gray-200 p-4">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center mr-3">
-                                <span class="text-orange-600 font-bold text-sm">A</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium text-gray-900">Anthropic (Claude)</h3>
-                                <p class="text-xs text-gray-500">{{ __('carbex.settings.ai.anthropic_desc') }}</p>
+            @if (count($availableProviders) > 0)
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @foreach ($availableProviders as $key => $provider)
+                        <div class="rounded-lg border border-green-200 bg-green-50 p-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center mr-3
+                                    {{ $key === 'anthropic' ? 'bg-orange-100' : '' }}
+                                    {{ $key === 'openai' ? 'bg-emerald-100' : '' }}
+                                    {{ $key === 'google' ? 'bg-blue-100' : '' }}
+                                    {{ $key === 'deepseek' ? 'bg-purple-100' : '' }}
+                                ">
+                                    <span class="font-bold text-sm
+                                        {{ $key === 'anthropic' ? 'text-orange-600' : '' }}
+                                        {{ $key === 'openai' ? 'text-emerald-600' : '' }}
+                                        {{ $key === 'google' ? 'text-blue-600' : '' }}
+                                        {{ $key === 'deepseek' ? 'text-purple-600' : '' }}
+                                    ">{{ strtoupper(substr($key, 0, 1)) }}</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-medium text-gray-900">{{ $provider['name'] }}</h3>
+                                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    @if ($provider['model'])
+                                        <p class="text-xs text-gray-500">{{ $provider['model'] }}</p>
+                                    @endif
+                                    @if ($key === $defaultProvider)
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 mt-1">
+                                            {{ __('carbex.settings.ai.default') }}
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" wire:model.live="anthropicEnabled" class="sr-only peer">
-                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
-                    </div>
-                    <div class="flex gap-2">
-                        <input
-                            type="password"
-                            wire:model="anthropicApiKey"
-                            placeholder="sk-ant-api03-..."
-                            class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                        >
-                        <button
-                            wire:click="saveApiKey('anthropic')"
-                            class="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                        >
-                            {{ __('carbex.common.save') }}
-                        </button>
-                        @if ($availableProviders['anthropic']['available'] ?? false)
-                            <button
-                                wire:click="testConnection('anthropic')"
-                                class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                            >
-                                {{ __('carbex.settings.ai.test') }}
-                            </button>
-                        @endif
-                    </div>
-                    @if ($anthropicEnabled)
-                        <div class="mt-3">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.model') }}</label>
-                            <select wire:model="anthropicModel" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
-                                @foreach ($providerModels['anthropic'] ?? [] as $model => $label)
-                                    <option value="{{ $model }}">{{ $label }}</option>
-                                @endforeach
-                            </select>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-8">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">{{ __('carbex.settings.ai.no_providers') }}</h3>
+                    <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.contact_admin') }}</p>
+                </div>
+            @endif
+        </x-card>
+
+        <!-- AI Features Available -->
+        <x-card>
+            <x-slot name="header">
+                <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.features') }}</h2>
+                <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.features_for_plan') }}</p>
+            </x-slot>
+
+            <div class="space-y-4">
+                <!-- Chat Widget -->
+                <div class="flex items-center justify-between p-4 rounded-lg border {{ $this->hasFeature('chat_widget') ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50' }}">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg {{ $this->hasFeature('chat_widget') ? 'bg-green-100' : 'bg-gray-100' }} flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 {{ $this->hasFeature('chat_widget') ? 'text-green-600' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
                         </div>
+                        <div>
+                            <span class="font-medium {{ $this->hasFeature('chat_widget') ? 'text-gray-900' : 'text-gray-500' }}">
+                                {{ __('carbex.settings.ai.chat_widget') }}
+                            </span>
+                            <p class="text-sm {{ $this->hasFeature('chat_widget') ? 'text-gray-600' : 'text-gray-400' }}">
+                                {{ __('carbex.settings.ai.chat_widget_desc') }}
+                            </p>
+                        </div>
+                    </div>
+                    @if ($this->hasFeature('chat_widget'))
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            {{ __('carbex.common.active') }}
+                        </span>
+                    @else
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                            {{ __('carbex.common.unavailable') }}
+                        </span>
                     @endif
                 </div>
 
-                <!-- OpenAI -->
-                <div class="rounded-lg border border-gray-200 p-4">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center mr-3">
-                                <span class="text-emerald-600 font-bold text-sm">O</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium text-gray-900">OpenAI (GPT)</h3>
-                                <p class="text-xs text-gray-500">{{ __('carbex.settings.ai.openai_desc') }}</p>
-                            </div>
+                <!-- Emission Helper -->
+                <div class="flex items-center justify-between p-4 rounded-lg border {{ $this->hasFeature('emission_helper') ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50' }}">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg {{ $this->hasFeature('emission_helper') ? 'bg-green-100' : 'bg-gray-100' }} flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 {{ $this->hasFeature('emission_helper') ? 'text-green-600' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
                         </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" wire:model.live="openaiEnabled" class="sr-only peer">
-                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
-                    </div>
-                    <div class="flex gap-2">
-                        <input
-                            type="password"
-                            wire:model="openaiApiKey"
-                            placeholder="sk-..."
-                            class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                        >
-                        <button
-                            wire:click="saveApiKey('openai')"
-                            class="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                        >
-                            {{ __('carbex.common.save') }}
-                        </button>
-                        @if ($availableProviders['openai']['available'] ?? false)
-                            <button
-                                wire:click="testConnection('openai')"
-                                class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                            >
-                                {{ __('carbex.settings.ai.test') }}
-                            </button>
-                        @endif
-                    </div>
-                    @if ($openaiEnabled)
-                        <div class="mt-3">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.model') }}</label>
-                            <select wire:model="openaiModel" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
-                                @foreach ($providerModels['openai'] ?? [] as $model => $label)
-                                    <option value="{{ $model }}">{{ $label }}</option>
-                                @endforeach
-                            </select>
+                        <div>
+                            <span class="font-medium {{ $this->hasFeature('emission_helper') ? 'text-gray-900' : 'text-gray-500' }}">
+                                {{ __('carbex.settings.ai.emission_helper') }}
+                            </span>
+                            <p class="text-sm {{ $this->hasFeature('emission_helper') ? 'text-gray-600' : 'text-gray-400' }}">
+                                {{ __('carbex.settings.ai.emission_helper_desc') }}
+                            </p>
                         </div>
+                    </div>
+                    @if ($this->hasFeature('emission_helper'))
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            {{ __('carbex.common.active') }}
+                        </span>
+                    @else
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                            {{ __('carbex.common.unavailable') }}
+                        </span>
                     @endif
                 </div>
 
-                <!-- Google -->
-                <div class="rounded-lg border border-gray-200 p-4">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center mr-3">
-                                <span class="text-blue-600 font-bold text-sm">G</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium text-gray-900">Google (Gemini)</h3>
-                                <p class="text-xs text-gray-500">{{ __('carbex.settings.ai.google_desc') }}</p>
-                            </div>
+                <!-- Document Extraction -->
+                <div class="flex items-center justify-between p-4 rounded-lg border {{ $this->hasFeature('document_extraction') ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50' }}">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-lg {{ $this->hasFeature('document_extraction') ? 'bg-green-100' : 'bg-gray-100' }} flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 {{ $this->hasFeature('document_extraction') ? 'text-green-600' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
                         </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" wire:model.live="googleEnabled" class="sr-only peer">
-                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
-                    </div>
-                    <div class="flex gap-2">
-                        <input
-                            type="password"
-                            wire:model="googleApiKey"
-                            placeholder="AIza..."
-                            class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                        >
-                        <button
-                            wire:click="saveApiKey('google')"
-                            class="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                        >
-                            {{ __('carbex.common.save') }}
-                        </button>
-                        @if ($availableProviders['google']['available'] ?? false)
-                            <button
-                                wire:click="testConnection('google')"
-                                class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                            >
-                                {{ __('carbex.settings.ai.test') }}
-                            </button>
-                        @endif
-                    </div>
-                    @if ($googleEnabled)
-                        <div class="mt-3">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.model') }}</label>
-                            <select wire:model="googleModel" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
-                                @foreach ($providerModels['google'] ?? [] as $model => $label)
-                                    <option value="{{ $model }}">{{ $label }}</option>
-                                @endforeach
-                            </select>
+                        <div>
+                            <span class="font-medium {{ $this->hasFeature('document_extraction') ? 'text-gray-900' : 'text-gray-500' }}">
+                                {{ __('carbex.settings.ai.document_extraction') }}
+                            </span>
+                            <p class="text-sm {{ $this->hasFeature('document_extraction') ? 'text-gray-600' : 'text-gray-400' }}">
+                                {{ __('carbex.settings.ai.document_extraction_desc') }}
+                            </p>
                         </div>
-                    @endif
-                </div>
-
-                <!-- DeepSeek -->
-                <div class="rounded-lg border border-gray-200 p-4">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center mr-3">
-                                <span class="text-purple-600 font-bold text-sm">D</span>
-                            </div>
-                            <div>
-                                <h3 class="font-medium text-gray-900">DeepSeek</h3>
-                                <p class="text-xs text-gray-500">{{ __('carbex.settings.ai.deepseek_desc') }}</p>
-                            </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" wire:model.live="deepseekEnabled" class="sr-only peer">
-                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
                     </div>
-                    <div class="flex gap-2">
-                        <input
-                            type="password"
-                            wire:model="deepseekApiKey"
-                            placeholder="sk-..."
-                            class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                        >
-                        <button
-                            wire:click="saveApiKey('deepseek')"
-                            class="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                        >
-                            {{ __('carbex.common.save') }}
-                        </button>
-                        @if ($availableProviders['deepseek']['available'] ?? false)
-                            <button
-                                wire:click="testConnection('deepseek')"
-                                class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                            >
-                                {{ __('carbex.settings.ai.test') }}
-                            </button>
-                        @endif
-                    </div>
-                    @if ($deepseekEnabled)
-                        <div class="mt-3">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.model') }}</label>
-                            <select wire:model="deepseekModel" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
-                                @foreach ($providerModels['deepseek'] ?? [] as $model => $label)
-                                    <option value="{{ $model }}">{{ $label }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    @if ($this->hasFeature('document_extraction'))
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            {{ __('carbex.common.active') }}
+                        </span>
+                    @else
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                            {{ __('carbex.common.unavailable') }}
+                        </span>
                     @endif
                 </div>
             </div>
         </x-card>
 
-        <!-- General Settings -->
-        <form wire:submit="saveSettings">
-            <x-card>
-                <x-slot name="header">
-                    <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.general') }}</h2>
-                    <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.general_desc') }}</p>
-                </x-slot>
-
-                <div class="space-y-6">
-                    <!-- Default Provider -->
+        <!-- Upgrade CTA -->
+        @if (($subscriptionLimits['plan'] ?? 'free') !== 'enterprise')
+            <div class="rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 p-6 text-white">
+                <div class="flex items-center justify-between">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.default_provider') }}</label>
-                        <select wire:model="defaultProvider" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
-                            <option value="anthropic">Anthropic (Claude)</option>
-                            <option value="openai">OpenAI (GPT)</option>
-                            <option value="google">Google (Gemini)</option>
-                            <option value="deepseek">DeepSeek</option>
-                        </select>
-                        <p class="mt-1 text-xs text-gray-500">{{ __('carbex.settings.ai.default_provider_desc') }}</p>
+                        <h3 class="text-lg font-medium">{{ __('carbex.settings.ai.upgrade_title') }}</h3>
+                        <p class="mt-1 text-sm text-green-100">{{ __('carbex.settings.ai.upgrade_desc') }}</p>
                     </div>
-
-                    <!-- Generation Parameters -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.max_tokens') }}</label>
-                            <input
-                                type="number"
-                                wire:model="maxTokens"
-                                min="256"
-                                max="32000"
-                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                            >
-                            <p class="mt-1 text-xs text-gray-500">{{ __('carbex.settings.ai.max_tokens_desc') }}</p>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('carbex.settings.ai.temperature') }}</label>
-                            <input
-                                type="number"
-                                wire:model="temperature"
-                                min="0"
-                                max="2"
-                                step="0.1"
-                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
-                            >
-                            <p class="mt-1 text-xs text-gray-500">{{ __('carbex.settings.ai.temperature_desc') }}</p>
-                        </div>
-                    </div>
-                </div>
-            </x-card>
-
-            <!-- Feature Flags -->
-            <x-card class="mt-8">
-                <x-slot name="header">
-                    <h2 class="text-lg font-medium text-gray-900">{{ __('carbex.settings.ai.features') }}</h2>
-                    <p class="mt-1 text-sm text-gray-500">{{ __('carbex.settings.ai.features_desc') }}</p>
-                </x-slot>
-
-                <div class="space-y-4">
-                    <label class="flex items-center justify-between p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-50">
-                        <div>
-                            <span class="font-medium text-gray-900">{{ __('carbex.settings.ai.chat_widget') }}</span>
-                            <p class="text-sm text-gray-500">{{ __('carbex.settings.ai.chat_widget_desc') }}</p>
-                        </div>
-                        <input type="checkbox" wire:model="chatWidgetEnabled" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
-                    </label>
-
-                    <label class="flex items-center justify-between p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-50">
-                        <div>
-                            <span class="font-medium text-gray-900">{{ __('carbex.settings.ai.emission_helper') }}</span>
-                            <p class="text-sm text-gray-500">{{ __('carbex.settings.ai.emission_helper_desc') }}</p>
-                        </div>
-                        <input type="checkbox" wire:model="emissionHelperEnabled" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
-                    </label>
-
-                    <label class="flex items-center justify-between p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-50">
-                        <div>
-                            <span class="font-medium text-gray-900">{{ __('carbex.settings.ai.document_extraction') }}</span>
-                            <p class="text-sm text-gray-500">{{ __('carbex.settings.ai.document_extraction_desc') }}</p>
-                        </div>
-                        <input type="checkbox" wire:model="documentExtractionEnabled" class="h-5 w-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
-                    </label>
-                </div>
-            </x-card>
-
-            <!-- Submit Button -->
-            <div class="mt-6 flex justify-end">
-                <x-button type="submit" wire:loading.attr="disabled">
-                    <span wire:loading.remove>{{ __('carbex.common.save') }}</span>
-                    <span wire:loading>{{ __('carbex.common.saving') }}</span>
-                </x-button>
-            </div>
-        </form>
-
-        <!-- Help Section -->
-        <div class="rounded-lg bg-blue-50 border border-blue-200 p-6">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-blue-800">{{ __('carbex.settings.ai.help_title') }}</h3>
-                    <div class="mt-2 text-sm text-blue-700">
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><a href="https://console.anthropic.com/" target="_blank" class="underline hover:text-blue-900">Anthropic Console</a> - {{ __('carbex.settings.ai.get_anthropic_key') }}</li>
-                            <li><a href="https://platform.openai.com/api-keys" target="_blank" class="underline hover:text-blue-900">OpenAI Platform</a> - {{ __('carbex.settings.ai.get_openai_key') }}</li>
-                            <li><a href="https://aistudio.google.com/app/apikey" target="_blank" class="underline hover:text-blue-900">Google AI Studio</a> - {{ __('carbex.settings.ai.get_google_key') }}</li>
-                            <li><a href="https://platform.deepseek.com/" target="_blank" class="underline hover:text-blue-900">DeepSeek Platform</a> - {{ __('carbex.settings.ai.get_deepseek_key') }}</li>
-                        </ul>
-                    </div>
+                    <a href="{{ route('billing.index') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-green-600 bg-white hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-600 focus:ring-white">
+                        {{ __('carbex.settings.ai.view_plans') }}
+                        <svg class="ml-2 -mr-1 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>
