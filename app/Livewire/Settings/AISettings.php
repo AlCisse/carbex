@@ -86,13 +86,16 @@ class AISettings extends Component
             ')
             ->first();
 
+        $requestsUsed = $usage?->total_requests ?? 0;
+        $requestsLimit = $this->subscriptionLimits['monthly_requests'] ?? null;
+        $remainingRequests = $requestsLimit !== null ? max(0, $requestsLimit - $requestsUsed) : null;
+
         $this->usageStats = [
-            'requests' => $usage?->total_requests ?? 0,
+            'requests' => $requestsUsed,
+            'remaining_requests' => $remainingRequests,
             'input_tokens' => $usage?->total_input_tokens ?? 0,
             'output_tokens' => $usage?->total_output_tokens ?? 0,
             'total_tokens' => ($usage?->total_input_tokens ?? 0) + ($usage?->total_output_tokens ?? 0),
-            'cost_cents' => $usage?->total_cost_cents ?? 0,
-            'cost_formatted' => number_format(($usage?->total_cost_cents ?? 0) / 100, 2) . ' €',
             'limit' => $this->subscriptionLimits['monthly_tokens'] ?? null,
             'usage_percent' => $this->calculateUsagePercent($usage),
         ];
