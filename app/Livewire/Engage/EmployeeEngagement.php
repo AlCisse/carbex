@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Engage;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
@@ -15,23 +16,22 @@ class EmployeeEngagement extends Component
     public string $activeTab = 'quiz';
 
     // Quiz state
-    public int $currentQuestion = 0;
-    public array $answers = [];
+    public int $quizStep = 0;
+    public array $quizAnswers = [];
     public bool $quizCompleted = false;
     public ?int $quizScore = null;
 
     // Calculator state
     public array $calculatorInputs = [
-        'commute_km' => '',
+        'commute_km' => 0,
         'commute_mode' => 'car_petrol',
         'diet' => 'mixed',
         'flights_short' => 0,
         'flights_long' => 0,
-        'heating_type' => 'gas',
-        'electricity_kwh' => '',
+        'heating' => 'gas',
+        'electricity_kwh' => 0,
     ];
-    public ?float $calculatedFootprint = null;
-    public ?array $footprintBreakdown = null;
+    public ?array $calculatorResult = null;
 
     // Challenges state
     public array $activeChallenges = [];
@@ -71,7 +71,7 @@ class EmployeeEngagement extends Component
                 'c' => 'Indirect emissions from supply chain',
                 'd' => 'Emissions from waste',
             ],
-            'correct' => 'b',
+            'correct' => 'a',
         ],
         [
             'question' => 'What percentage of global emissions come from transportation?',
@@ -81,7 +81,7 @@ class EmployeeEngagement extends Component
                 'c' => 'About 50%',
                 'd' => 'About 80%',
             ],
-            'correct' => 'b',
+            'correct' => 'd',
         ],
         [
             'question' => 'What is carbon neutrality?',
@@ -124,17 +124,25 @@ class EmployeeEngagement extends Component
             'duration_days' => 7,
             'co2_saved_kg' => 15,
         ],
+        'digital_detox' => [
+            'title' => 'Digital Detox',
+            'description' => 'Reduce screen time and digital device usage',
+            'points' => 40,
+            'duration_days' => 7,
+            'co2_saved_kg' => 5,
+        ],
     ];
 
     public function mount(): void
     {
         $user = Auth::user();
         if ($user) {
-            // Use session storage for engagement data
-            $key = 'engage_' . $user->id;
-            $this->userPoints = session($key . '_points', 0);
-            $this->activeChallenges = session($key . '_challenges', []);
-            $this->participateInLeaderboard = session($key . '_leaderboard', false);
+            $settings = $user->settings ?? [];
+            $this->userPoints = $settings['engagement_points'] ?? 0;
+            $this->activeChallenges = $settings['active_challenges'] ?? [];
+            $this->participateInLeaderboard = $settings['participate_leaderboard'] ?? false;
+            $this->quizScore = $settings['quiz_score'] ?? null;
+            $this->quizCompleted = isset($settings['quiz_completed_at']);
         }
     }
 
@@ -147,10 +155,10 @@ class EmployeeEngagement extends Component
 
     public function answerQuiz(string $answer): void
     {
-        $this->answers[$this->currentQuestion] = $answer;
+        $this->quizAnswers[$this->quizStep] = $answer;
 
-        if ($this->currentQuestion < count($this->questions) - 1) {
-            $this->currentQuestion++;
+        if ($this->quizStep < count($this->questions) - 1) {
+            $this->quizStep++;
         } else {
             $this->completeQuiz();
         }
@@ -161,13 +169,19 @@ class EmployeeEngagement extends Component
         $this->quizCompleted = true;
         $correct = 0;
 
-        foreach ($this->answers as $index => $answer) {
+        foreach ($this->quizAnswers as $index => $answer) {
             if ($answer === $this->questions[$index]['correct']) {
                 $correct++;
             }
         }
 
         $this->quizScore = (int) round(($correct / count($this->questions)) * 100);
+
+        // Save quiz results to user settings
+        $this->updateUserSettings([
+            'quiz_score' => $this->quizScore,
+            'quiz_completed_at' => now()->toDateTimeString(),
+        ]);
 
         // Award points
         $pointsEarned = $this->quizScore >= 60 ? 20 : 5;
@@ -176,8 +190,8 @@ class EmployeeEngagement extends Component
 
     public function resetQuiz(): void
     {
-        $this->currentQuestion = 0;
-        $this->answers = [];
+        $this->quizStep = 0;
+        $this->quizAnswers = [];
         $this->quizCompleted = false;
         $this->quizScore = null;
     }
@@ -185,7 +199,7 @@ class EmployeeEngagement extends Component
     #[Computed]
     public function currentQuestionData(): array
     {
-        return $this->questions[$this->currentQuestion] ?? $this->questions[0];
+        return $this->questions[$this->quizStep] ?? $this->questions[0];
     }
 
     #[Computed]
@@ -198,7 +212,6 @@ class EmployeeEngagement extends Component
 
     public function calculateFootprint(): void
     {
-        $footprint = 0;
         $breakdown = [];
 
         // Commute emissions
@@ -212,9 +225,8 @@ class EmployeeEngagement extends Component
             'bike' => 0,
             'walk' => 0,
         ];
-        $commuteEmissions = $commuteKm * 220 * ($emissionFactors[$commuteMode] ?? 0.21); // 220 working days
+        $commuteEmissions = $commuteKm * 220 * ($emissionFactors[$commuteMode] ?? 0.21);
         $breakdown['commute'] = round($commuteEmissions / 1000, 2);
-        $footprint += $commuteEmissions;
 
         // Diet emissions (annual kg CO2)
         $dietFactors = [
@@ -225,36 +237,94 @@ class EmployeeEngagement extends Component
         ];
         $dietEmissions = $dietFactors[$this->calculatorInputs['diet'] ?? 'mixed'];
         $breakdown['diet'] = round($dietEmissions / 1000, 2);
-        $footprint += $dietEmissions;
 
         // Flight emissions
         $shortFlights = (int) ($this->calculatorInputs['flights_short'] ?? 0);
         $longFlights = (int) ($this->calculatorInputs['flights_long'] ?? 0);
         $flightEmissions = ($shortFlights * 200) + ($longFlights * 1000);
         $breakdown['flights'] = round($flightEmissions / 1000, 2);
-        $footprint += $flightEmissions;
 
-        // Home energy
+        // Home energy - electricity
         $electricityKwh = (float) ($this->calculatorInputs['electricity_kwh'] ?? 2500);
-        $electricityEmissions = $electricityKwh * 0.5; // Average grid factor
+        $electricityEmissions = $electricityKwh * 0.5;
         $breakdown['electricity'] = round($electricityEmissions / 1000, 2);
-        $footprint += $electricityEmissions;
 
+        // Heating
         $heatingFactors = [
             'gas' => 2000,
             'oil' => 2500,
             'electric' => 1000,
             'heat_pump' => 500,
         ];
-        $heatingEmissions = $heatingFactors[$this->calculatorInputs['heating_type'] ?? 'gas'];
+        $heatingEmissions = $heatingFactors[$this->calculatorInputs['heating'] ?? 'gas'];
         $breakdown['heating'] = round($heatingEmissions / 1000, 2);
-        $footprint += $heatingEmissions;
 
-        $this->calculatedFootprint = round($footprint / 1000, 2); // Convert to tonnes
-        $this->footprintBreakdown = $breakdown;
+        $total = array_sum($breakdown);
+
+        // Comparison with average
+        $averageFootprint = 10.0; // tonnes CO2 per person
+        $comparison = [
+            'average' => $averageFootprint,
+            'difference' => round($total - $averageFootprint, 2),
+            'percentage' => round(($total / $averageFootprint) * 100, 0),
+        ];
+
+        // Tips based on highest category
+        $tips = $this->generateTips($breakdown);
+
+        $this->calculatorResult = [
+            'total' => round($total, 2),
+            'breakdown' => $breakdown,
+            'comparison' => $comparison,
+            'tips' => $tips,
+        ];
+
+        // Save to user settings
+        $this->updateUserSettings([
+            'carbon_footprint' => $this->calculatorResult['total'],
+            'footprint_calculated_at' => now()->toDateTimeString(),
+        ]);
 
         // Award points for completing calculator
         $this->addPoints(10);
+    }
+
+    protected function generateTips(array $breakdown): array
+    {
+        $tips = [];
+
+        if (($breakdown['commute'] ?? 0) > 2) {
+            $tips[] = __('linscarbon.engage.tips.reduce_commute');
+        }
+        if (($breakdown['flights'] ?? 0) > 1) {
+            $tips[] = __('linscarbon.engage.tips.reduce_flights');
+        }
+        if (($breakdown['diet'] ?? 0) > 2.5) {
+            $tips[] = __('linscarbon.engage.tips.reduce_meat');
+        }
+        if (($breakdown['heating'] ?? 0) > 2) {
+            $tips[] = __('linscarbon.engage.tips.improve_insulation');
+        }
+
+        if (empty($tips)) {
+            $tips[] = __('linscarbon.engage.tips.keep_going');
+        }
+
+        return $tips;
+    }
+
+    public function resetCalculator(): void
+    {
+        $this->calculatorInputs = [
+            'commute_km' => 0,
+            'commute_mode' => 'car_petrol',
+            'diet' => 'mixed',
+            'flights_short' => 0,
+            'flights_long' => 0,
+            'heating' => 'gas',
+            'electricity_kwh' => 0,
+        ];
+        $this->calculatorResult = null;
     }
 
     // ==================== Challenge Methods ====================
@@ -265,26 +335,36 @@ class EmployeeEngagement extends Component
             return;
         }
 
-        if (in_array($challengeKey, $this->activeChallenges)) {
+        if (isset($this->activeChallenges[$challengeKey])) {
             return; // Already joined
         }
 
-        $this->activeChallenges[] = $challengeKey;
-        $this->saveUserSettings();
+        $this->activeChallenges[$challengeKey] = [
+            'joined_at' => now()->toDateTimeString(),
+            'status' => 'active',
+        ];
+
+        $this->updateUserSettings([
+            'active_challenges' => $this->activeChallenges,
+        ]);
     }
 
     public function leaveChallenge(string $challengeKey): void
     {
-        $this->activeChallenges = array_filter(
-            $this->activeChallenges,
-            fn ($c) => $c !== $challengeKey
-        );
-        $this->saveUserSettings();
+        unset($this->activeChallenges[$challengeKey]);
+
+        $this->updateUserSettings([
+            'active_challenges' => $this->activeChallenges,
+        ]);
     }
 
     public function completeChallenge(string $challengeKey): void
     {
-        if (! in_array($challengeKey, $this->activeChallenges)) {
+        if (! isset($this->activeChallenges[$challengeKey])) {
+            return;
+        }
+
+        if (($this->activeChallenges[$challengeKey]['status'] ?? '') !== 'active') {
             return;
         }
 
@@ -293,7 +373,12 @@ class EmployeeEngagement extends Component
             $this->addPoints($challenge['points']);
         }
 
-        $this->leaveChallenge($challengeKey);
+        $this->activeChallenges[$challengeKey]['status'] = 'completed';
+        $this->activeChallenges[$challengeKey]['completed_at'] = now()->toDateTimeString();
+
+        $this->updateUserSettings([
+            'active_challenges' => $this->activeChallenges,
+        ]);
     }
 
     #[Computed]
@@ -307,26 +392,58 @@ class EmployeeEngagement extends Component
     public function toggleLeaderboardParticipation(): void
     {
         $this->participateInLeaderboard = ! $this->participateInLeaderboard;
-        $this->saveUserSettings();
+
+        $this->updateUserSettings([
+            'participate_leaderboard' => $this->participateInLeaderboard,
+        ]);
     }
 
     #[Computed]
     public function leaderboard(): array
     {
-        // Mock leaderboard data
-        return [
-            ['name' => 'Marie D.', 'points' => 450, 'rank' => 1],
-            ['name' => 'Jean P.', 'points' => 380, 'rank' => 2],
-            ['name' => 'Sophie L.', 'points' => 320, 'rank' => 3],
-            ['name' => Auth::user()?->name ?? 'You', 'points' => $this->userPoints, 'rank' => 4],
-            ['name' => 'Pierre M.', 'points' => 180, 'rank' => 5],
-        ];
+        $user = Auth::user();
+        if (! $user) {
+            return [];
+        }
+
+        // Get users from same organization who participate in leaderboard
+        $users = User::where('organization_id', $user->organization_id)
+            ->get()
+            ->filter(function ($u) {
+                return ($u->settings['participate_leaderboard'] ?? false) === true;
+            })
+            ->map(function ($u) {
+                return [
+                    'id' => $u->id,
+                    'name' => $u->name,
+                    'points' => $u->settings['engagement_points'] ?? 0,
+                ];
+            })
+            ->sortByDesc('points')
+            ->values()
+            ->toArray();
+
+        // Add rank
+        foreach ($users as $index => &$userData) {
+            $userData['rank'] = $index + 1;
+        }
+
+        return $users;
     }
 
     #[Computed]
-    public function userRank(): int
+    public function userRank(): ?int
     {
-        return 4; // Mock rank
+        $leaderboard = $this->leaderboard;
+        $user = Auth::user();
+
+        foreach ($leaderboard as $index => $userData) {
+            if ($userData['id'] === $user?->id) {
+                return $index + 1;
+            }
+        }
+
+        return null;
     }
 
     // ==================== Helper Methods ====================
@@ -334,21 +451,23 @@ class EmployeeEngagement extends Component
     protected function addPoints(int $points): void
     {
         $this->userPoints += $points;
-        $this->saveUserSettings();
+
+        $this->updateUserSettings([
+            'engagement_points' => $this->userPoints,
+        ]);
     }
 
-    protected function saveUserSettings(): void
+    protected function updateUserSettings(array $newSettings): void
     {
         $user = Auth::user();
         if (! $user) {
             return;
         }
 
-        // Use session storage for engagement data
-        $key = 'engage_' . $user->id;
-        session([$key . '_points' => $this->userPoints]);
-        session([$key . '_challenges' => $this->activeChallenges]);
-        session([$key . '_leaderboard' => $this->participateInLeaderboard]);
+        $settings = $user->settings ?? [];
+        $settings = array_merge($settings, $newSettings);
+
+        $user->update(['settings' => $settings]);
     }
 
     public function render()

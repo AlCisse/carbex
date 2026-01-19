@@ -54,7 +54,7 @@
                             {{ __('linscarbon.engage.quiz.question') }}
                         </h2>
                         <span class="text-sm text-gray-500 dark:text-gray-400">
-                            {{ $currentQuestion + 1 }} / {{ $this->totalQuestions }}
+                            {{ $quizStep + 1 }} / {{ $this->totalQuestions }}
                         </span>
                     </div>
 
@@ -107,7 +107,7 @@
                     {{ __('linscarbon.engage.calculator.title') }}
                 </h2>
 
-                @if(!$calculatedFootprint)
+                @if(!$calculatorResult)
                     <div class="grid md:grid-cols-2 gap-6">
                         <!-- Commute -->
                         <div>
@@ -186,7 +186,7 @@
                                 {{ __('linscarbon.engage.calculator.heating_type') }}
                             </label>
                             <select
-                                wire:model="calculatorInputs.heating_type"
+                                wire:model="calculatorInputs.heating"
                                 class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                             >
                                 <option value="gas">{{ __('linscarbon.engage.calculator.heating.gas') }}</option>
@@ -211,7 +211,7 @@
                                 {{ __('linscarbon.engage.calculator.your_footprint') }}
                             </p>
                             <p class="text-4xl font-bold text-emerald-600 dark:text-emerald-400">
-                                {{ $calculatedFootprint }} {{ __('linscarbon.engage.calculator.tonnes_year') }}
+                                {{ $calculatorResult['total'] ?? 0 }} {{ __('linscarbon.engage.calculator.tonnes_year') }}
                             </p>
                         </div>
 
@@ -220,7 +220,7 @@
                                 {{ __('linscarbon.engage.calculator.breakdown') }}
                             </h3>
                             <div class="space-y-2">
-                                @foreach($footprintBreakdown as $category => $value)
+                                @foreach($calculatorResult['breakdown'] ?? [] as $category => $value)
                                     <div class="flex justify-between items-center">
                                         <span class="text-gray-600 dark:text-gray-400 capitalize">{{ str_replace('_', ' ', $category) }}</span>
                                         <span class="font-medium text-gray-900 dark:text-white">{{ $value }} t</span>
@@ -230,7 +230,7 @@
                         </div>
 
                         <button
-                            wire:click="$set('calculatedFootprint', null)"
+                            wire:click="resetCalculator"
                             class="text-emerald-600 hover:text-emerald-700 font-medium"
                         >
                             {{ __('linscarbon.engage.calculator.recalculate') }}
@@ -264,7 +264,7 @@
                                 {{ __('linscarbon.engage.challenges.co2_saved') }}: {{ $challenge['co2_saved_kg'] }} kg
                             </div>
 
-                            @if(in_array($key, $activeChallenges))
+                            @if(isset($activeChallenges[$key]))
                                 <div class="flex space-x-2">
                                     <button
                                         wire:click="completeChallenge('{{ $key }}')"

@@ -251,7 +251,8 @@ class EmployeeEngagementTest extends TestCase
         $component = Livewire::actingAs($this->user)
             ->test(EmployeeEngagement::class);
 
-        $challenges = $component->get('activeChallenges');
+        // Access the computed property via the component instance
+        $challenges = $component->instance()->availableChallenges;
 
         $this->assertNotEmpty($challenges);
         $this->assertGreaterThanOrEqual(5, count($challenges));
