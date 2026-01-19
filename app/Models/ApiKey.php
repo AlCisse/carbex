@@ -61,8 +61,13 @@ class ApiKey extends Model
         'rate_limit_per_day' => 'integer',
     ];
 
+    /**
+     * SECURITY: Hide sensitive attributes from serialization.
+     * The hashed key and temporary plain key must never be exposed in API responses.
+     */
     protected $hidden = [
         'key',
+        '_plain_key',
     ];
 
     /**

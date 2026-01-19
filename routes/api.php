@@ -39,13 +39,18 @@ Route::get('/health', fn () => response()->json(['status' => 'ok', 'timestamp' =
 Route::prefix('v1')->group(function () {
 
     // Authentication
+    // SECURITY: Rate limiting to prevent brute force attacks
     Route::prefix('auth')->group(function () {
-        Route::post('/register', [AuthController::class, 'register']);
-        Route::post('/login', [AuthController::class, 'login']);
-        Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink']);
-        Route::post('/reset-password', [PasswordResetController::class, 'reset']);
+        Route::post('/register', [AuthController::class, 'register'])
+            ->middleware(['throttle:3,1']); // 3 attempts per minute
+        Route::post('/login', [AuthController::class, 'login'])
+            ->middleware(['throttle:5,1']); // 5 attempts per minute
+        Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])
+            ->middleware(['throttle:3,1']); // 3 attempts per minute
+        Route::post('/reset-password', [PasswordResetController::class, 'reset'])
+            ->middleware(['throttle:3,1']); // 3 attempts per minute
         Route::get('/verify-email/{id}/{hash}', [AuthController::class, 'verifyEmail'])
-            ->middleware(['signed'])
+            ->middleware(['signed', 'throttle:6,1'])
             ->name('verification.verify');
     });
 
