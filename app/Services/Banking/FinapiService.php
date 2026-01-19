@@ -25,6 +25,7 @@ class FinapiService implements BankingProviderInterface
     private string $clientId;
     private string $clientSecret;
     private string $dataDecryptionKey;
+    private string $webhookSecret;
     private bool $sandbox;
 
     public function __construct()
@@ -32,6 +33,7 @@ class FinapiService implements BankingProviderInterface
         $this->clientId = config('services.finapi.client_id', '');
         $this->clientSecret = config('services.finapi.client_secret', '');
         $this->dataDecryptionKey = config('services.finapi.data_decryption_key', '');
+        $this->webhookSecret = config('services.finapi.webhook_secret', '');
         $this->sandbox = config('services.finapi.sandbox', true);
     }
 
@@ -543,5 +545,23 @@ class FinapiService implements BankingProviderInterface
         $description = preg_replace('/\s+/', ' ', $description);
 
         return trim($description);
+    }
+
+    /**
+     * Verify webhook signature.
+     *
+     * SECURITY: Validates that the webhook request is authentic and came from Finapi.
+     * Uses HMAC-SHA256 with timing-safe comparison to prevent timing attacks.
+     */
+    public function verifyWebhookSignature(string $payload, string $signature): bool
+    {
+        if (empty($this->webhookSecret)) {
+            Log::warning('Finapi: Webhook secret not configured, rejecting webhook');
+            return false;
+        }
+
+        $expected = hash_hmac('sha256', $payload, $this->webhookSecret);
+
+        return hash_equals($expected, $signature);
     }
 }

@@ -13,7 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
  * Authenticates requests using API keys provided via:
  * - Authorization header: `Authorization: Bearer cbx_xxxxx`
  * - X-API-Key header: `X-API-Key: cbx_xxxxx`
- * - Query parameter: `?api_key=cbx_xxxxx` (not recommended)
+ *
+ * SECURITY: Query parameter support has been removed to prevent
+ * API key exposure in server logs, browser history, and referrer headers.
  */
 class AuthenticateApiKey
 {
@@ -90,11 +92,8 @@ class AuthenticateApiKey
             return $apiKeyHeader;
         }
 
-        // Check query parameter (not recommended but supported)
-        $queryKey = $request->query('api_key');
-        if ($queryKey) {
-            return $queryKey;
-        }
+        // SECURITY: Query parameter support removed to prevent credential exposure
+        // API keys in URLs are logged in server logs, browser history, and referrer headers
 
         return null;
     }

@@ -7,6 +7,7 @@ use App\Jobs\SyncBankTransactions;
 use App\Models\BankConnection;
 use App\Notifications\BankConnectionExpired;
 use App\Services\Banking\BridgeService;
+use App\Services\Banking\FinapiService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -49,9 +50,23 @@ class BankingWebhookController extends Controller
 
     /**
      * Handle Finapi webhooks.
+     *
+     * SECURITY: Verifies webhook signature before processing.
      */
-    public function finapi(Request $request): JsonResponse
+    public function finapi(Request $request, FinapiService $finapiService): JsonResponse
     {
+        $payload = $request->getContent();
+        $signature = $request->header('X-Finapi-Signature', '');
+
+        // SECURITY: Verify webhook signature to prevent unauthorized data injection
+        if (! $finapiService->verifyWebhookSignature($payload, $signature)) {
+            Log::warning('BankingWebhook: Invalid Finapi signature', [
+                'ip' => $request->ip(),
+            ]);
+
+            return response()->json(['error' => 'Invalid signature'], 401);
+        }
+
         $data = $request->json()->all();
         $eventType = $data['callbackType'] ?? null;
 

@@ -201,12 +201,14 @@ class MerchantRuleService
         string $categoryId
     ): void {
         // Find matching transactions without category
+        // SECURITY: Using parameterized queries to prevent SQL injection
+        $likePattern = '%' . $merchantPattern . '%';
         $transactions = Transaction::where('organization_id', $organizationId)
             ->whereNull('category_id')
-            ->where(function ($query) use ($merchantPattern) {
-                $query->where(DB::raw('LOWER(merchant_name)'), 'like', "%{$merchantPattern}%")
-                    ->orWhere(DB::raw('LOWER(clean_description)'), 'like', "%{$merchantPattern}%")
-                    ->orWhere(DB::raw('LOWER(description)'), 'like', "%{$merchantPattern}%");
+            ->where(function ($query) use ($likePattern) {
+                $query->whereRaw('LOWER(merchant_name) LIKE ?', [$likePattern])
+                    ->orWhereRaw('LOWER(clean_description) LIKE ?', [$likePattern])
+                    ->orWhereRaw('LOWER(description) LIKE ?', [$likePattern]);
             })
             ->get();
 

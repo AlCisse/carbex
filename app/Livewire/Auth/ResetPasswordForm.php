@@ -7,9 +7,9 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password as PasswordRule;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -23,11 +23,32 @@ class ResetPasswordForm extends Component
     #[Rule('required|email')]
     public string $email = '';
 
-    #[Rule('required|string|min:8|confirmed')]
     public string $password = '';
 
-    #[Rule('required|string')]
     public string $password_confirmation = '';
+
+    /**
+     * SECURITY: Strong password validation rules.
+     * Requires minimum 8 characters, mixed case, numbers, symbols,
+     * and checks against compromised password databases.
+     */
+    protected function rules(): array
+    {
+        return [
+            'email' => ['required', 'email'],
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                PasswordRule::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+            ],
+            'password_confirmation' => ['required', 'string'],
+        ];
+    }
 
     public function mount(string $token, ?string $email = null): void
     {

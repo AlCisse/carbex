@@ -55,7 +55,8 @@
     <!-- Content -->
     <div class="max-w-3xl mx-auto px-6">
         <div class="prose prose-lg max-w-none" style="color: var(--text-secondary);">
-            {!! $post->content !!}
+            {{-- SECURITY: Using safe_content accessor to prevent XSS --}}
+            {!! $post->safe_content !!}
         </div>
 
         <!-- Share -->

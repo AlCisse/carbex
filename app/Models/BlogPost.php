@@ -107,4 +107,25 @@ class BlogPost extends Model
         $wordCount = str_word_count(strip_tags($this->content));
         return max(1, ceil($wordCount / 200));
     }
+
+    /**
+     * Get sanitized content for safe HTML output.
+     *
+     * SECURITY: Strips potentially dangerous HTML tags (script, style, iframe, etc.)
+     * while preserving safe formatting tags for blog content.
+     */
+    public function getSafeContentAttribute(): string
+    {
+        // Allow only safe HTML tags for blog formatting
+        $allowedTags = '<p><br><strong><b><em><i><u><a><ul><ol><li><h1><h2><h3><h4><h5><h6><blockquote><pre><code><img><figure><figcaption><table><thead><tbody><tr><th><td><hr><div><span>';
+
+        $content = strip_tags($this->content, $allowedTags);
+
+        // Remove potentially dangerous attributes (onclick, onerror, javascript:, etc.)
+        $content = preg_replace('/\s*on\w+\s*=\s*["\'][^"\']*["\']/i', '', $content);
+        $content = preg_replace('/\s*javascript\s*:/i', '', $content);
+        $content = preg_replace('/\s*data\s*:/i', '', $content);
+
+        return $content;
+    }
 }

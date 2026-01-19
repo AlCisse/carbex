@@ -45,9 +45,12 @@ return [
     | considered expired. This will override any values set in the token's
     | "expires_at" attribute, but first-party sessions are not affected.
     |
+    | SECURITY: Set to 7 days (10080 minutes) by default. Tokens should not
+    | live forever to limit exposure if compromised.
+    |
     */
 
-    'expiration' => null,
+    'expiration' => env('SANCTUM_TOKEN_EXPIRATION', 10080), // 7 days
 
     /*
     |--------------------------------------------------------------------------
@@ -58,11 +61,14 @@ return [
     | security scanning initiatives maintained by open source platforms
     | that notify developers if they commit tokens into repositories.
     |
+    | SECURITY: Using 'lc_' prefix enables GitHub's secret scanning to detect
+    | accidentally committed LinsCarbon API tokens.
+    |
     | See: https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning
     |
     */
 
-    'token_prefix' => env('SANCTUM_TOKEN_PREFIX', ''),
+    'token_prefix' => env('SANCTUM_TOKEN_PREFIX', 'lc_'),
 
     /*
     |--------------------------------------------------------------------------
