@@ -4,7 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\AISetting;
 use App\Services\AI\AIManager;
-use Filament\Schemas\Components\Placeholder;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
