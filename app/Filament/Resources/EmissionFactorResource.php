@@ -8,6 +8,7 @@ use Filament\Actions\ViewAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Forms;
 use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -30,15 +31,15 @@ class EmissionFactorResource extends Resource
             ->schema([
                 Schemas\Components\Section::make('Factor Information')
                     ->schema([
-                        Schemas\Components\TextInput::make('name')
+                        Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
 
-                        Schemas\Components\TextInput::make('name_en')
+                        Forms\Components\TextInput::make('name_en')
                             ->label('Name (English)')
                             ->maxLength(255),
 
-                        Schemas\Components\Select::make('category')
+                        Forms\Components\Select::make('category')
                             ->options([
                                 'electricity' => 'Electricity',
                                 'natural_gas' => 'Natural Gas',
@@ -51,10 +52,10 @@ class EmissionFactorResource extends Resource
                             ->required()
                             ->searchable(),
 
-                        Schemas\Components\TextInput::make('subcategory')
+                        Forms\Components\TextInput::make('subcategory')
                             ->maxLength(100),
 
-                        Schemas\Components\Select::make('scope')
+                        Forms\Components\Select::make('scope')
                             ->options([
                                 1 => 'Scope 1 - Direct',
                                 2 => 'Scope 2 - Energy',
@@ -62,7 +63,7 @@ class EmissionFactorResource extends Resource
                             ])
                             ->required(),
 
-                        Schemas\Components\TextInput::make('ghg_category')
+                        Forms\Components\TextInput::make('ghg_category')
                             ->label('GHG Protocol Category')
                             ->helperText('e.g., Cat. 1, Cat. 6')
                             ->maxLength(20),
@@ -71,22 +72,22 @@ class EmissionFactorResource extends Resource
 
                 Schemas\Components\Section::make('Value & Units')
                     ->schema([
-                        Schemas\Components\TextInput::make('value')
+                        Forms\Components\TextInput::make('value')
                             ->required()
                             ->numeric()
                             ->step(0.000001),
 
-                        Schemas\Components\TextInput::make('unit')
+                        Forms\Components\TextInput::make('unit')
                             ->required()
                             ->maxLength(50)
                             ->helperText('e.g., kgCO2e/kWh, kgCO2e/km'),
 
-                        Schemas\Components\TextInput::make('uncertainty')
+                        Forms\Components\TextInput::make('uncertainty')
                             ->numeric()
                             ->suffix('%')
                             ->helperText('Uncertainty percentage'),
 
-                        Schemas\Components\Select::make('calculation_method')
+                        Forms\Components\Select::make('calculation_method')
                             ->options([
                                 'location_based' => 'Location-based',
                                 'market_based' => 'Market-based',
@@ -98,7 +99,7 @@ class EmissionFactorResource extends Resource
 
                 Schemas\Components\Section::make('Source & Metadata')
                     ->schema([
-                        Schemas\Components\Select::make('country')
+                        Forms\Components\Select::make('country')
                             ->options([
                                 'FR' => 'France',
                                 'DE' => 'Germany',
@@ -113,25 +114,25 @@ class EmissionFactorResource extends Resource
                             ->searchable()
                             ->placeholder('Global (all countries)'),
 
-                        Schemas\Components\TextInput::make('year')
+                        Forms\Components\TextInput::make('year')
                             ->numeric()
                             ->minValue(2000)
                             ->maxValue(2050)
                             ->required(),
 
-                        Schemas\Components\TextInput::make('source')
+                        Forms\Components\TextInput::make('source')
                             ->required()
                             ->maxLength(255)
                             ->helperText('e.g., ADEME, DEFRA, EPA'),
 
-                        Schemas\Components\TextInput::make('source_url')
+                        Forms\Components\TextInput::make('source_url')
                             ->url()
                             ->maxLength(500),
 
-                        Schemas\Components\Textarea::make('notes')
+                        Forms\Components\Textarea::make('notes')
                             ->rows(3),
 
-                        Schemas\Components\Toggle::make('is_active')
+                        Forms\Components\Toggle::make('is_active')
                             ->default(true),
                     ])
                     ->columns(2),

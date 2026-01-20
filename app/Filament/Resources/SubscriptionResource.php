@@ -8,6 +8,7 @@ use Filament\Actions\ViewAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Forms;
 use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -30,14 +31,14 @@ class SubscriptionResource extends Resource
             ->schema([
                 Schemas\Components\Section::make(__('linscarbon.admin.subscriptions.general'))
                     ->schema([
-                        Schemas\Components\Select::make('organization_id')
+                        Forms\Components\Select::make('organization_id')
                             ->label(__('linscarbon.admin.subscriptions.organization'))
                             ->relationship('organization', 'name')
                             ->searchable()
                             ->preload()
                             ->required(),
 
-                        Schemas\Components\Select::make('plan')
+                        Forms\Components\Select::make('plan')
                             ->label(__('linscarbon.admin.subscriptions.plan'))
                             ->options([
                                 'starter' => __('linscarbon.admin.subscriptions.plans.starter'),
@@ -46,7 +47,7 @@ class SubscriptionResource extends Resource
                             ])
                             ->required(),
 
-                        Schemas\Components\Select::make('status')
+                        Forms\Components\Select::make('status')
                             ->label(__('linscarbon.admin.subscriptions.status'))
                             ->options([
                                 'active' => __('linscarbon.admin.subscriptions.statuses.active'),
@@ -58,7 +59,7 @@ class SubscriptionResource extends Resource
                             ])
                             ->required(),
 
-                        Schemas\Components\Select::make('billing_cycle')
+                        Forms\Components\Select::make('billing_cycle')
                             ->label(__('linscarbon.admin.subscriptions.billing_cycle'))
                             ->options([
                                 'monthly' => __('linscarbon.admin.subscriptions.cycles.monthly'),
@@ -69,15 +70,15 @@ class SubscriptionResource extends Resource
 
                 Schemas\Components\Section::make(__('linscarbon.admin.subscriptions.stripe'))
                     ->schema([
-                        Schemas\Components\TextInput::make('stripe_subscription_id')
+                        Forms\Components\TextInput::make('stripe_subscription_id')
                             ->label(__('linscarbon.admin.subscriptions.stripe_subscription_id'))
                             ->maxLength(255),
 
-                        Schemas\Components\TextInput::make('stripe_customer_id')
+                        Forms\Components\TextInput::make('stripe_customer_id')
                             ->label(__('linscarbon.admin.subscriptions.stripe_customer_id'))
                             ->maxLength(255),
 
-                        Schemas\Components\TextInput::make('stripe_price_id')
+                        Forms\Components\TextInput::make('stripe_price_id')
                             ->label(__('linscarbon.admin.subscriptions.stripe_price_id'))
                             ->maxLength(255),
                     ])
@@ -86,64 +87,64 @@ class SubscriptionResource extends Resource
 
                 Schemas\Components\Section::make(__('linscarbon.admin.subscriptions.period'))
                     ->schema([
-                        Schemas\Components\DateTimePicker::make('current_period_start')
+                        Forms\Components\DateTimePicker::make('current_period_start')
                             ->label(__('linscarbon.admin.subscriptions.period_start')),
 
-                        Schemas\Components\DateTimePicker::make('current_period_end')
+                        Forms\Components\DateTimePicker::make('current_period_end')
                             ->label(__('linscarbon.admin.subscriptions.period_end')),
 
-                        Schemas\Components\DateTimePicker::make('trial_ends_at')
+                        Forms\Components\DateTimePicker::make('trial_ends_at')
                             ->label(__('linscarbon.admin.subscriptions.trial_ends_at')),
 
-                        Schemas\Components\DateTimePicker::make('canceled_at')
+                        Forms\Components\DateTimePicker::make('canceled_at')
                             ->label(__('linscarbon.admin.subscriptions.canceled_at')),
 
-                        Schemas\Components\Toggle::make('cancel_at_period_end')
+                        Forms\Components\Toggle::make('cancel_at_period_end')
                             ->label(__('linscarbon.admin.subscriptions.cancel_at_period_end')),
                     ])
                     ->columns(3),
 
                 Schemas\Components\Section::make(__('linscarbon.admin.subscriptions.limits'))
                     ->schema([
-                        Schemas\Components\TextInput::make('bank_connections_limit')
+                        Forms\Components\TextInput::make('bank_connections_limit')
                             ->label(__('linscarbon.admin.subscriptions.bank_connections_limit'))
                             ->numeric()
                             ->minValue(0),
 
-                        Schemas\Components\TextInput::make('bank_connections_used')
+                        Forms\Components\TextInput::make('bank_connections_used')
                             ->label(__('linscarbon.admin.subscriptions.bank_connections_used'))
                             ->numeric()
                             ->minValue(0)
                             ->disabled(),
 
-                        Schemas\Components\TextInput::make('users_limit')
+                        Forms\Components\TextInput::make('users_limit')
                             ->label(__('linscarbon.admin.subscriptions.users_limit'))
                             ->numeric()
                             ->minValue(0),
 
-                        Schemas\Components\TextInput::make('users_used')
+                        Forms\Components\TextInput::make('users_used')
                             ->label(__('linscarbon.admin.subscriptions.users_used'))
                             ->numeric()
                             ->minValue(0)
                             ->disabled(),
 
-                        Schemas\Components\TextInput::make('sites_limit')
+                        Forms\Components\TextInput::make('sites_limit')
                             ->label(__('linscarbon.admin.subscriptions.sites_limit'))
                             ->numeric()
                             ->minValue(0),
 
-                        Schemas\Components\TextInput::make('sites_used')
+                        Forms\Components\TextInput::make('sites_used')
                             ->label(__('linscarbon.admin.subscriptions.sites_used'))
                             ->numeric()
                             ->minValue(0)
                             ->disabled(),
 
-                        Schemas\Components\TextInput::make('reports_monthly_limit')
+                        Forms\Components\TextInput::make('reports_monthly_limit')
                             ->label(__('linscarbon.admin.subscriptions.reports_limit'))
                             ->numeric()
                             ->minValue(0),
 
-                        Schemas\Components\TextInput::make('reports_monthly_used')
+                        Forms\Components\TextInput::make('reports_monthly_used')
                             ->label(__('linscarbon.admin.subscriptions.reports_used'))
                             ->numeric()
                             ->minValue(0)
@@ -153,7 +154,7 @@ class SubscriptionResource extends Resource
 
                 Schemas\Components\Section::make(__('linscarbon.admin.subscriptions.features_section'))
                     ->schema([
-                        Schemas\Components\CheckboxList::make('features')
+                        Forms\Components\CheckboxList::make('features')
                             ->label(__('linscarbon.admin.subscriptions.features'))
                             ->options([
                                 'banking_integration' => __('linscarbon.admin.subscriptions.feature_options.banking'),
