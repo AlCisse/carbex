@@ -209,6 +209,6 @@ class OrganizationResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['name', 'legal_name', 'siren'];
+        return ['name', 'legal_name', 'registration_number'];
     }
 }

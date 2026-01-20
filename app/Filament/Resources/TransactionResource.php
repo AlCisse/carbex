@@ -325,7 +325,7 @@ class TransactionResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['description', 'clean_description', 'counterparty_name'];
+        return ['description', 'clean_description', 'merchant_name'];
     }
 
     public static function getNavigationLabel(): string
