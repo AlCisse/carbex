@@ -7,7 +7,7 @@ use App\Models\Organization;
 use Filament\Actions\ViewAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Forms;
+use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -28,28 +28,28 @@ class OrganizationResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Organization Details')
+                Schemas\Components\Section::make('Organization Details')
                     ->schema([
-                        Forms\Components\TextInput::make('name')
+                        Schemas\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('legal_name')
+                        Schemas\Components\TextInput::make('legal_name')
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('siren')
+                        Schemas\Components\TextInput::make('siren')
                             ->label('SIREN')
                             ->maxLength(9),
 
-                        Forms\Components\TextInput::make('siret')
+                        Schemas\Components\TextInput::make('siret')
                             ->label('SIRET')
                             ->maxLength(14),
 
-                        Forms\Components\TextInput::make('vat_number')
+                        Schemas\Components\TextInput::make('vat_number')
                             ->label('VAT Number')
                             ->maxLength(20),
 
-                        Forms\Components\Select::make('country')
+                        Schemas\Components\Select::make('country')
                             ->options([
                                 'FR' => 'France',
                                 'DE' => 'Germany',
@@ -62,7 +62,7 @@ class OrganizationResource extends Resource
                             ])
                             ->required(),
 
-                        Forms\Components\Select::make('sector')
+                        Schemas\Components\Select::make('sector')
                             ->options([
                                 'services' => 'Services',
                                 'manufacturing' => 'Manufacturing',
@@ -76,39 +76,39 @@ class OrganizationResource extends Resource
                                 'other' => 'Other',
                             ]),
 
-                        Forms\Components\TextInput::make('employees_count')
+                        Schemas\Components\TextInput::make('employees_count')
                             ->numeric()
                             ->minValue(1),
 
-                        Forms\Components\TextInput::make('annual_revenue')
+                        Schemas\Components\TextInput::make('annual_revenue')
                             ->numeric()
                             ->prefix('€'),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('Subscription')
+                Schemas\Components\Section::make('Subscription')
                     ->schema([
-                        Forms\Components\Select::make('plan')
+                        Schemas\Components\Select::make('plan')
                             ->options([
                                 'starter' => 'Starter',
                                 'professional' => 'Professional',
                                 'enterprise' => 'Enterprise',
                             ]),
 
-                        Forms\Components\Toggle::make('is_trial')
+                        Schemas\Components\Toggle::make('is_trial')
                             ->label('On Trial'),
 
-                        Forms\Components\DatePicker::make('trial_ends_at'),
+                        Schemas\Components\DatePicker::make('trial_ends_at'),
                     ])
                     ->columns(3),
 
-                Forms\Components\Section::make('Settings')
+                Schemas\Components\Section::make('Settings')
                     ->schema([
-                        Forms\Components\Toggle::make('is_active')
+                        Schemas\Components\Toggle::make('is_active')
                             ->label('Active')
                             ->default(true),
 
-                        Forms\Components\KeyValue::make('settings')
+                        Schemas\Components\KeyValue::make('settings')
                             ->label('Custom Settings'),
                     ]),
             ]);

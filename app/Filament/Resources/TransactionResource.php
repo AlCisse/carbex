@@ -7,7 +7,7 @@ use App\Models\Transaction;
 use Filament\Actions\ViewAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Forms;
+use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -27,39 +27,39 @@ class TransactionResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make(__('linscarbon.admin.transactions.general'))
+                Schemas\Components\Section::make(__('linscarbon.admin.transactions.general'))
                     ->schema([
-                        Forms\Components\Select::make('organization_id')
+                        Schemas\Components\Select::make('organization_id')
                             ->label(__('linscarbon.admin.transactions.organization'))
                             ->relationship('organization', 'name')
                             ->searchable()
                             ->preload()
                             ->required(),
 
-                        Forms\Components\Select::make('bank_account_id')
+                        Schemas\Components\Select::make('bank_account_id')
                             ->label(__('linscarbon.admin.transactions.bank_account'))
                             ->relationship('bankAccount', 'name')
                             ->searchable()
                             ->preload(),
 
-                        Forms\Components\DatePicker::make('date')
+                        Schemas\Components\DatePicker::make('date')
                             ->label(__('linscarbon.admin.transactions.date'))
                             ->required(),
 
-                        Forms\Components\DatePicker::make('value_date')
+                        Schemas\Components\DatePicker::make('value_date')
                             ->label(__('linscarbon.admin.transactions.value_date')),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.transactions.amount_section'))
+                Schemas\Components\Section::make(__('linscarbon.admin.transactions.amount_section'))
                     ->schema([
-                        Forms\Components\TextInput::make('amount')
+                        Schemas\Components\TextInput::make('amount')
                             ->label(__('linscarbon.admin.transactions.amount'))
                             ->required()
                             ->numeric()
                             ->prefix('EUR'),
 
-                        Forms\Components\Select::make('currency')
+                        Schemas\Components\Select::make('currency')
                             ->label(__('linscarbon.admin.transactions.currency'))
                             ->options([
                                 'EUR' => 'EUR',
@@ -69,11 +69,11 @@ class TransactionResource extends Resource
                             ])
                             ->default('EUR'),
 
-                        Forms\Components\TextInput::make('original_amount')
+                        Schemas\Components\TextInput::make('original_amount')
                             ->label(__('linscarbon.admin.transactions.original_amount'))
                             ->numeric(),
 
-                        Forms\Components\Select::make('original_currency')
+                        Schemas\Components\Select::make('original_currency')
                             ->label(__('linscarbon.admin.transactions.original_currency'))
                             ->options([
                                 'EUR' => 'EUR',
@@ -82,7 +82,7 @@ class TransactionResource extends Resource
                                 'CHF' => 'CHF',
                             ]),
 
-                        Forms\Components\Select::make('type')
+                        Schemas\Components\Select::make('type')
                             ->label(__('linscarbon.admin.transactions.type'))
                             ->options([
                                 'debit' => __('linscarbon.admin.transactions.types.debit'),
@@ -90,7 +90,7 @@ class TransactionResource extends Resource
                                 'transfer' => __('linscarbon.admin.transactions.types.transfer'),
                             ]),
 
-                        Forms\Components\Select::make('status')
+                        Schemas\Components\Select::make('status')
                             ->label(__('linscarbon.admin.transactions.status'))
                             ->options([
                                 'pending' => __('linscarbon.admin.transactions.statuses.pending'),
@@ -102,61 +102,61 @@ class TransactionResource extends Resource
                     ])
                     ->columns(3),
 
-                Forms\Components\Section::make(__('linscarbon.admin.transactions.description_section'))
+                Schemas\Components\Section::make(__('linscarbon.admin.transactions.description_section'))
                     ->schema([
-                        Forms\Components\Textarea::make('description')
+                        Schemas\Components\Textarea::make('description')
                             ->label(__('linscarbon.admin.transactions.description'))
                             ->rows(2),
 
-                        Forms\Components\TextInput::make('clean_description')
+                        Schemas\Components\TextInput::make('clean_description')
                             ->label(__('linscarbon.admin.transactions.clean_description'))
                             ->maxLength(500),
 
-                        Forms\Components\TextInput::make('counterparty_name')
+                        Schemas\Components\TextInput::make('counterparty_name')
                             ->label(__('linscarbon.admin.transactions.counterparty_name'))
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('counterparty_iban')
+                        Schemas\Components\TextInput::make('counterparty_iban')
                             ->label(__('linscarbon.admin.transactions.counterparty_iban'))
                             ->maxLength(34),
 
-                        Forms\Components\TextInput::make('mcc_code')
+                        Schemas\Components\TextInput::make('mcc_code')
                             ->label(__('linscarbon.admin.transactions.mcc_code'))
                             ->maxLength(4),
 
-                        Forms\Components\TextInput::make('merchant_category')
+                        Schemas\Components\TextInput::make('merchant_category')
                             ->label(__('linscarbon.admin.transactions.merchant_category'))
                             ->maxLength(100),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.transactions.categorization'))
+                Schemas\Components\Section::make(__('linscarbon.admin.transactions.categorization'))
                     ->schema([
-                        Forms\Components\Select::make('category_id')
+                        Schemas\Components\Select::make('category_id')
                             ->label(__('linscarbon.admin.transactions.category'))
                             ->relationship('category', 'name')
                             ->searchable()
                             ->preload(),
 
-                        Forms\Components\Select::make('ai_category_id')
+                        Schemas\Components\Select::make('ai_category_id')
                             ->label(__('linscarbon.admin.transactions.ai_category'))
                             ->relationship('aiCategory', 'name')
                             ->searchable()
                             ->preload()
                             ->disabled(),
 
-                        Forms\Components\TextInput::make('ai_confidence')
+                        Schemas\Components\TextInput::make('ai_confidence')
                             ->label(__('linscarbon.admin.transactions.ai_confidence'))
                             ->numeric()
                             ->suffix('%')
                             ->disabled(),
 
-                        Forms\Components\Textarea::make('ai_reasoning')
+                        Schemas\Components\Textarea::make('ai_reasoning')
                             ->label(__('linscarbon.admin.transactions.ai_reasoning'))
                             ->rows(2)
                             ->disabled(),
 
-                        Forms\Components\Select::make('user_category_id')
+                        Schemas\Components\Select::make('user_category_id')
                             ->label(__('linscarbon.admin.transactions.user_category'))
                             ->relationship('userCategory', 'name')
                             ->searchable()
@@ -164,25 +164,25 @@ class TransactionResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.transactions.flags'))
+                Schemas\Components\Section::make(__('linscarbon.admin.transactions.flags'))
                     ->schema([
-                        Forms\Components\Toggle::make('is_excluded')
+                        Schemas\Components\Toggle::make('is_excluded')
                             ->label(__('linscarbon.admin.transactions.is_excluded')),
 
-                        Forms\Components\TextInput::make('exclusion_reason')
+                        Schemas\Components\TextInput::make('exclusion_reason')
                             ->label(__('linscarbon.admin.transactions.exclusion_reason'))
                             ->maxLength(255),
 
-                        Forms\Components\Toggle::make('is_recurring')
+                        Schemas\Components\Toggle::make('is_recurring')
                             ->label(__('linscarbon.admin.transactions.is_recurring')),
 
-                        Forms\Components\Select::make('validated_by')
+                        Schemas\Components\Select::make('validated_by')
                             ->label(__('linscarbon.admin.transactions.validated_by'))
                             ->relationship('validatedBy', 'name')
                             ->searchable()
                             ->preload(),
 
-                        Forms\Components\DateTimePicker::make('validated_at')
+                        Schemas\Components\DateTimePicker::make('validated_at')
                             ->label(__('linscarbon.admin.transactions.validated_at')),
                     ])
                     ->columns(3),

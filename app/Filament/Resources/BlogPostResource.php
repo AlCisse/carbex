@@ -9,7 +9,7 @@ use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Forms;
+use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -36,9 +36,9 @@ class BlogPostResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Contenu')
+                Schemas\Components\Section::make('Contenu')
                     ->schema([
-                        Forms\Components\TextInput::make('title')
+                        Schemas\Components\TextInput::make('title')
                             ->label('Titre')
                             ->required()
                             ->maxLength(255)
@@ -50,19 +50,19 @@ class BlogPostResource extends Resource
                                 $set('slug', Str::slug($state));
                             }),
 
-                        Forms\Components\TextInput::make('slug')
+                        Schemas\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true)
                             ->rules(['alpha_dash']),
 
-                        Forms\Components\Textarea::make('excerpt')
+                        Schemas\Components\Textarea::make('excerpt')
                             ->label('Extrait')
                             ->rows(3)
                             ->maxLength(500)
                             ->helperText('Resume court affiche dans les listes'),
 
-                        Forms\Components\RichEditor::make('content')
+                        Schemas\Components\RichEditor::make('content')
                             ->label('Contenu')
                             ->required()
                             ->columnSpanFull()
@@ -84,9 +84,9 @@ class BlogPostResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make('Media')
+                Schemas\Components\Section::make('Media')
                     ->schema([
-                        Forms\Components\FileUpload::make('featured_image')
+                        Schemas\Components\FileUpload::make('featured_image')
                             ->label('Image a la une')
                             ->image()
                             ->imageResizeMode('cover')
@@ -97,9 +97,9 @@ class BlogPostResource extends Resource
                             ->columnSpanFull(),
                     ]),
 
-                Forms\Components\Section::make('Publication')
+                Schemas\Components\Section::make('Publication')
                     ->schema([
-                        Forms\Components\Select::make('author_id')
+                        Schemas\Components\Select::make('author_id')
                             ->label('Auteur')
                             ->relationship('author', 'name')
                             ->searchable()
@@ -107,7 +107,7 @@ class BlogPostResource extends Resource
                             ->required()
                             ->default(fn () => auth()->id()),
 
-                        Forms\Components\Select::make('status')
+                        Schemas\Components\Select::make('status')
                             ->label('Statut')
                             ->options([
                                 'draft' => 'Brouillon',
@@ -116,20 +116,20 @@ class BlogPostResource extends Resource
                             ->required()
                             ->default('draft'),
 
-                        Forms\Components\DateTimePicker::make('published_at')
+                        Schemas\Components\DateTimePicker::make('published_at')
                             ->label('Date de publication')
                             ->helperText('Laissez vide pour publier immediatement'),
                     ])
                     ->columns(3),
 
-                Forms\Components\Section::make('SEO')
+                Schemas\Components\Section::make('SEO')
                     ->schema([
-                        Forms\Components\TextInput::make('meta_title')
+                        Schemas\Components\TextInput::make('meta_title')
                             ->label('Titre SEO')
                             ->maxLength(60)
                             ->helperText('60 caracteres max'),
 
-                        Forms\Components\Textarea::make('meta_description')
+                        Schemas\Components\Textarea::make('meta_description')
                             ->label('Description SEO')
                             ->rows(2)
                             ->maxLength(160)

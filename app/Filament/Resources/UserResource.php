@@ -7,7 +7,7 @@ use App\Models\User;
 use Filament\Actions\ViewAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Forms;
+use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -29,52 +29,52 @@ class UserResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make(__('linscarbon.admin.users.personal_info'))
+                Schemas\Components\Section::make(__('linscarbon.admin.users.personal_info'))
                     ->schema([
-                        Forms\Components\TextInput::make('first_name')
+                        Schemas\Components\TextInput::make('first_name')
                             ->label(__('linscarbon.admin.users.first_name'))
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('last_name')
+                        Schemas\Components\TextInput::make('last_name')
                             ->label(__('linscarbon.admin.users.last_name'))
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('name')
+                        Schemas\Components\TextInput::make('name')
                             ->label(__('linscarbon.admin.users.display_name'))
                             ->required()
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('email')
+                        Schemas\Components\TextInput::make('email')
                             ->label(__('linscarbon.admin.users.email'))
                             ->email()
                             ->required()
                             ->unique(ignoreRecord: true)
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('phone')
+                        Schemas\Components\TextInput::make('phone')
                             ->label(__('linscarbon.admin.users.phone'))
                             ->tel()
                             ->maxLength(20),
 
-                        Forms\Components\TextInput::make('job_title')
+                        Schemas\Components\TextInput::make('job_title')
                             ->label(__('linscarbon.admin.users.job_title'))
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('department')
+                        Schemas\Components\TextInput::make('department')
                             ->label(__('linscarbon.admin.users.department'))
                             ->maxLength(255),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.users.organization_role'))
+                Schemas\Components\Section::make(__('linscarbon.admin.users.organization_role'))
                     ->schema([
-                        Forms\Components\Select::make('organization_id')
+                        Schemas\Components\Select::make('organization_id')
                             ->label(__('linscarbon.admin.users.organization'))
                             ->relationship('organization', 'name')
                             ->searchable()
                             ->preload(),
 
-                        Forms\Components\Select::make('role')
+                        Schemas\Components\Select::make('role')
                             ->label(__('linscarbon.admin.users.role'))
                             ->options([
                                 'owner' => __('linscarbon.admin.users.roles.owner'),
@@ -87,31 +87,31 @@ class UserResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.users.security'))
+                Schemas\Components\Section::make(__('linscarbon.admin.users.security'))
                     ->schema([
-                        Forms\Components\TextInput::make('password')
+                        Schemas\Components\TextInput::make('password')
                             ->label(__('linscarbon.admin.users.password'))
                             ->password()
                             ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                             ->dehydrated(fn (?string $state): bool => filled($state))
                             ->required(fn (string $operation): bool => $operation === 'create'),
 
-                        Forms\Components\Toggle::make('is_active')
+                        Schemas\Components\Toggle::make('is_active')
                             ->label(__('linscarbon.admin.users.is_active'))
                             ->default(true),
 
-                        Forms\Components\Toggle::make('two_factor_enabled')
+                        Schemas\Components\Toggle::make('two_factor_enabled')
                             ->label(__('linscarbon.admin.users.two_factor'))
                             ->disabled(),
 
-                        Forms\Components\DateTimePicker::make('email_verified_at')
+                        Schemas\Components\DateTimePicker::make('email_verified_at')
                             ->label(__('linscarbon.admin.users.email_verified_at')),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.users.preferences'))
+                Schemas\Components\Section::make(__('linscarbon.admin.users.preferences'))
                     ->schema([
-                        Forms\Components\Select::make('locale')
+                        Schemas\Components\Select::make('locale')
                             ->label(__('linscarbon.admin.users.locale'))
                             ->options([
                                 'de' => 'Deutsch',
@@ -120,7 +120,7 @@ class UserResource extends Resource
                             ])
                             ->default('de'),
 
-                        Forms\Components\Select::make('timezone')
+                        Schemas\Components\Select::make('timezone')
                             ->label(__('linscarbon.admin.users.timezone'))
                             ->options([
                                 'Europe/Berlin' => 'Europe/Berlin',

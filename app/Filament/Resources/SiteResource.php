@@ -7,7 +7,7 @@ use App\Models\Site;
 use Filament\Actions\ViewAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Forms;
+use Filament\Schemas;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -27,29 +27,29 @@ class SiteResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make(__('linscarbon.admin.sites.general_info'))
+                Schemas\Components\Section::make(__('linscarbon.admin.sites.general_info'))
                     ->schema([
-                        Forms\Components\Select::make('organization_id')
+                        Schemas\Components\Select::make('organization_id')
                             ->label(__('linscarbon.admin.sites.organization'))
                             ->relationship('organization', 'name')
                             ->searchable()
                             ->preload()
                             ->required(),
 
-                        Forms\Components\TextInput::make('name')
+                        Schemas\Components\TextInput::make('name')
                             ->label(__('linscarbon.admin.sites.name'))
                             ->required()
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('code')
+                        Schemas\Components\TextInput::make('code')
                             ->label(__('linscarbon.admin.sites.code'))
                             ->maxLength(50),
 
-                        Forms\Components\Textarea::make('description')
+                        Schemas\Components\Textarea::make('description')
                             ->label(__('linscarbon.admin.sites.description'))
                             ->rows(2),
 
-                        Forms\Components\Select::make('type')
+                        Schemas\Components\Select::make('type')
                             ->label(__('linscarbon.admin.sites.type'))
                             ->options([
                                 'office' => __('linscarbon.admin.sites.types.office'),
@@ -60,7 +60,7 @@ class SiteResource extends Resource
                                 'other' => __('linscarbon.admin.sites.types.other'),
                             ]),
 
-                        Forms\Components\Select::make('building_type')
+                        Schemas\Components\Select::make('building_type')
                             ->label(__('linscarbon.admin.sites.building_type'))
                             ->options([
                                 'office_modern' => __('linscarbon.sites.building_types.office_modern'),
@@ -78,25 +78,25 @@ class SiteResource extends Resource
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.sites.location'))
+                Schemas\Components\Section::make(__('linscarbon.admin.sites.location'))
                     ->schema([
-                        Forms\Components\TextInput::make('address_line_1')
+                        Schemas\Components\TextInput::make('address_line_1')
                             ->label(__('linscarbon.admin.sites.address_line_1'))
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('address_line_2')
+                        Schemas\Components\TextInput::make('address_line_2')
                             ->label(__('linscarbon.admin.sites.address_line_2'))
                             ->maxLength(255),
 
-                        Forms\Components\TextInput::make('city')
+                        Schemas\Components\TextInput::make('city')
                             ->label(__('linscarbon.admin.sites.city'))
                             ->maxLength(100),
 
-                        Forms\Components\TextInput::make('postal_code')
+                        Schemas\Components\TextInput::make('postal_code')
                             ->label(__('linscarbon.admin.sites.postal_code'))
                             ->maxLength(20),
 
-                        Forms\Components\Select::make('country')
+                        Schemas\Components\Select::make('country')
                             ->label(__('linscarbon.admin.sites.country'))
                             ->options([
                                 'DE' => 'Germany',
@@ -109,42 +109,42 @@ class SiteResource extends Resource
                                 'IT' => 'Italy',
                             ]),
 
-                        Forms\Components\TextInput::make('latitude')
+                        Schemas\Components\TextInput::make('latitude')
                             ->label(__('linscarbon.admin.sites.latitude'))
                             ->numeric(),
 
-                        Forms\Components\TextInput::make('longitude')
+                        Schemas\Components\TextInput::make('longitude')
                             ->label(__('linscarbon.admin.sites.longitude'))
                             ->numeric(),
                     ])
                     ->columns(2),
 
-                Forms\Components\Section::make(__('linscarbon.admin.sites.characteristics'))
+                Schemas\Components\Section::make(__('linscarbon.admin.sites.characteristics'))
                     ->schema([
-                        Forms\Components\TextInput::make('floor_area_m2')
+                        Schemas\Components\TextInput::make('floor_area_m2')
                             ->label(__('linscarbon.admin.sites.floor_area'))
                             ->numeric()
                             ->suffix('m2'),
 
-                        Forms\Components\TextInput::make('employee_count')
+                        Schemas\Components\TextInput::make('employee_count')
                             ->label(__('linscarbon.admin.sites.employee_count'))
                             ->numeric()
                             ->minValue(0),
 
-                        Forms\Components\TextInput::make('construction_year')
+                        Schemas\Components\TextInput::make('construction_year')
                             ->label(__('linscarbon.admin.sites.construction_year'))
                             ->numeric()
                             ->minValue(1800)
                             ->maxValue(date('Y')),
 
-                        Forms\Components\TextInput::make('occupancy_rate')
+                        Schemas\Components\TextInput::make('occupancy_rate')
                             ->label(__('linscarbon.admin.sites.occupancy_rate'))
                             ->numeric()
                             ->suffix('%')
                             ->minValue(0)
                             ->maxValue(100),
 
-                        Forms\Components\Select::make('energy_rating')
+                        Schemas\Components\Select::make('energy_rating')
                             ->label(__('linscarbon.admin.sites.energy_rating'))
                             ->options([
                                 'A' => 'A',
@@ -158,28 +158,28 @@ class SiteResource extends Resource
                     ])
                     ->columns(3),
 
-                Forms\Components\Section::make(__('linscarbon.admin.sites.energy'))
+                Schemas\Components\Section::make(__('linscarbon.admin.sites.energy'))
                     ->schema([
-                        Forms\Components\TextInput::make('electricity_provider')
+                        Schemas\Components\TextInput::make('electricity_provider')
                             ->label(__('linscarbon.admin.sites.electricity_provider'))
                             ->maxLength(255),
 
-                        Forms\Components\Toggle::make('renewable_energy')
+                        Schemas\Components\Toggle::make('renewable_energy')
                             ->label(__('linscarbon.admin.sites.renewable_energy')),
 
-                        Forms\Components\TextInput::make('renewable_percentage')
+                        Schemas\Components\TextInput::make('renewable_percentage')
                             ->label(__('linscarbon.admin.sites.renewable_percentage'))
                             ->numeric()
                             ->suffix('%')
                             ->minValue(0)
                             ->maxValue(100),
 
-                        Forms\Components\TextInput::make('annual_energy_kwh')
+                        Schemas\Components\TextInput::make('annual_energy_kwh')
                             ->label(__('linscarbon.admin.sites.annual_energy'))
                             ->numeric()
                             ->suffix('kWh'),
 
-                        Forms\Components\Select::make('heating_type')
+                        Schemas\Components\Select::make('heating_type')
                             ->label(__('linscarbon.admin.sites.heating_type'))
                             ->options([
                                 'gas' => __('linscarbon.admin.sites.heating_types.gas'),
@@ -190,7 +190,7 @@ class SiteResource extends Resource
                                 'none' => __('linscarbon.admin.sites.heating_types.none'),
                             ]),
 
-                        Forms\Components\Select::make('cooling_type')
+                        Schemas\Components\Select::make('cooling_type')
                             ->label(__('linscarbon.admin.sites.cooling_type'))
                             ->options([
                                 'ac' => __('linscarbon.admin.sites.cooling_types.ac'),
@@ -201,12 +201,12 @@ class SiteResource extends Resource
                     ])
                     ->columns(3),
 
-                Forms\Components\Section::make(__('linscarbon.admin.sites.status'))
+                Schemas\Components\Section::make(__('linscarbon.admin.sites.status'))
                     ->schema([
-                        Forms\Components\Toggle::make('is_primary')
+                        Schemas\Components\Toggle::make('is_primary')
                             ->label(__('linscarbon.admin.sites.is_primary')),
 
-                        Forms\Components\Toggle::make('is_active')
+                        Schemas\Components\Toggle::make('is_active')
                             ->label(__('linscarbon.admin.sites.is_active'))
                             ->default(true),
                     ])
