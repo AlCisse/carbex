@@ -8,27 +8,39 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /**
+     * GHG category codes (BEGES) mapped to their scope.
+     *
+     * @var array<string, int>
+     */
+    protected array $categories = [
+        '1.1' => 1,
+        '1.2' => 1,
+        '1.4' => 1,
+        '1.5' => 1,
+        '2.1' => 2,
+        '3.1' => 3,
+        '3.2' => 3,
+        '3.3' => 3,
+        '3.5' => 3,
+        '4.1' => 3,
+        '4.2' => 3,
+        '4.3' => 3,
+        '4.4' => 3,
+        '4.5' => 3,
+    ];
+
     public function index(): JsonResponse
     {
-        // TODO: Return emission categories
-        return response()->json([
-            'data' => [
-                ['id' => '1.1', 'scope' => 1, 'name' => 'Sources fixes de combustion'],
-                ['id' => '1.2', 'scope' => 1, 'name' => 'Sources mobiles de combustion'],
-                ['id' => '1.4', 'scope' => 1, 'name' => 'Émissions fugitives'],
-                ['id' => '1.5', 'scope' => 1, 'name' => 'Biomasse (sols et forêts)'],
-                ['id' => '2.1', 'scope' => 2, 'name' => 'Consommation d\'électricité'],
-                ['id' => '3.1', 'scope' => 3, 'name' => 'Transport de marchandise amont'],
-                ['id' => '3.2', 'scope' => 3, 'name' => 'Transport de marchandise aval'],
-                ['id' => '3.3', 'scope' => 3, 'name' => 'Déplacements domicile-travail'],
-                ['id' => '3.5', 'scope' => 3, 'name' => 'Déplacements professionnels'],
-                ['id' => '4.1', 'scope' => 3, 'name' => 'Achats de biens'],
-                ['id' => '4.2', 'scope' => 3, 'name' => 'Immobilisations de biens'],
-                ['id' => '4.3', 'scope' => 3, 'name' => 'Gestion des déchets'],
-                ['id' => '4.4', 'scope' => 3, 'name' => 'Actifs en leasing amont'],
-                ['id' => '4.5', 'scope' => 3, 'name' => 'Achats de services'],
-            ],
-        ]);
+        $data = collect($this->categories)
+            ->map(fn (int $scope, string $code) => [
+                'id' => $code,
+                'scope' => $scope,
+                'name' => __('linscarbon.emissions.categories.' . str_replace('.', '_', $code)),
+            ])
+            ->values();
+
+        return response()->json(['data' => $data]);
     }
 
     public function emissionFactors(Request $request): JsonResponse

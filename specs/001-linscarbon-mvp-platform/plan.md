@@ -34,7 +34,7 @@ LinsCarbon est une solution SaaS de comptabilite carbone pour les PME europeenne
 | Phase 15 | i18n (DE/EN/FR) | DONE | 100% |
 | Phase 16 | Testing & QA | DONE | 100% |
 | **Total MVP** | **All Phases** | **DONE** | **100%** |
-| Phase 17 | Semantic Search (uSearch) | PLANNED | 0% |
+| Phase 17 | Semantic Search (uSearch) | IN PROGRESS | 65% |
 
 ---
 
@@ -810,14 +810,15 @@ POST          /api/v1/search/indexes/reindex   # Trigger reindexing
 
 ## Next Steps (Post-MVP)
 
-### Phase 17 - Semantic Search (Priority)
+### Phase 17 - Semantic Search (In Progress — 22/33 tasks, see tasks.md)
 
-- [ ] Python/FastAPI microservice with uSearch
-- [ ] Embedding generation (OpenAI/Claude)
-- [ ] Laravel services (USearchClient, SemanticSearchService)
-- [ ] Hybrid search (Meilisearch + uSearch)
-- [ ] Factor search enhancement in FactorRAGService
+- [x] Python/FastAPI microservice with uSearch (`services/usearch-api/`)
+- [x] Embedding generation (OpenAI/Claude) — `EmbeddingService`
+- [x] Laravel services (USearchClient, SemanticSearchService)
+- [x] Hybrid search (Meilisearch + uSearch) — `FactorSelector` semantic mode
+- [x] Factor search enhancement in FactorRAGService (`aiEnhancedSearch`)
 - [ ] Admin dashboard for index monitoring
+- [ ] Global semantic search (Cmd+K), PHP test coverage (T212-T214), Prometheus metrics
 
 ### Phase 2 - Q1 2025
 
@@ -892,6 +893,6 @@ POST          /api/v1/search/indexes/reindex   # Trigger reindexing
 
 ---
 
-> **Document generated**: January 2025
+> **Document generated**: January 2025 — Last updated: 2026-07-12
 > **MVP Status**: COMPLETE (100%)
-> **Next milestone**: Phase 17 (Semantic Search with uSearch)
+> **Next milestone**: Finish Phase 17 (Semantic Search with uSearch) — remaining: UI global search, admin dashboard, PHP tests

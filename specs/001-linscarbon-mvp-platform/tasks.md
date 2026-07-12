@@ -1156,7 +1156,7 @@
 
 ## 11.1 Infrastructure uSearch
 
-- [ ] T183 🔴 **Créer microservice Python/FastAPI** pour uSearch
+- [x] T183 🔴 **Créer microservice Python/FastAPI** pour uSearch
   ```
   services/usearch-api/
   ├── main.py           # FastAPI app
@@ -1170,20 +1170,20 @@
   └── Dockerfile
   ```
 
-- [ ] T184 🔴 **Configurer uSearch** dans le microservice
+- [x] T184 🔴 **Configurer uSearch** dans le microservice
   - Algorithm: HNSW (Hierarchical Navigable Small World)
   - Dimensions: 1536 (OpenAI) ou 1024 (Claude)
   - Metric: Cosine similarity
   - Memory-mapped index pour persistance
 
-- [ ] T185 🔴 **Créer Dockerfile uSearch** dans `docker/usearch/Dockerfile`
+- [x] T185 🔴 **Créer Dockerfile uSearch** dans `docker/usearch/Dockerfile` *(implémenté dans `services/usearch-api/Dockerfile`)*
   ```dockerfile
   FROM python:3.11-slim
   RUN pip install usearch fastapi uvicorn openai anthropic
   # ...
   ```
 
-- [ ] T186 🔴 **Ajouter service uSearch** dans `docker-compose.yml`
+- [x] T186 🔴 **Ajouter service uSearch** dans `docker-compose.yml`
   ```yaml
   usearch:
     build: ./docker/usearch
@@ -1197,7 +1197,7 @@
 
 ## 11.2 Base de Données Embeddings
 
-- [ ] T187 🔴 **Créer migration vector_indices** dans `database/migrations/`
+- [x] T187 🔴 **Créer migration vector_indices** dans `database/migrations/`
   ```php
   - id (uuid)
   - name (string) // 'emission_factors', 'transactions', 'documents'
@@ -1210,7 +1210,7 @@
   - metadata (json)
   ```
 
-- [ ] T188 🔴 **Créer migration embeddings** dans `database/migrations/`
+- [x] T188 🔴 **Créer migration embeddings** dans `database/migrations/`
   ```php
   - id (uuid)
   - embeddable_type (string) // 'EmissionFactor', 'Transaction'
@@ -1221,18 +1221,18 @@
   - created_at (timestamp)
   ```
 
-- [ ] T189 🔴 **Créer model VectorIndex** dans `app/Models/VectorIndex.php`
+- [x] T189 🔴 **Créer model VectorIndex** dans `app/Models/VectorIndex.php`
   - Relations: embeddings
   - Scopes: ready, ofType
   - Methods: rebuild, getStats
 
-- [ ] T190 🔴 **Créer model Embedding** dans `app/Models/Embedding.php`
+- [x] T190 🔴 **Créer model Embedding** dans `app/Models/Embedding.php`
   - Relations: embeddable (morphTo)
   - Trait: HasEmbedding pour models indexables
 
 ## 11.3 Service Laravel pour uSearch
 
-- [ ] T191 🔴 **Créer config/usearch.php** avec paramètres
+- [x] T191 🔴 **Créer config/usearch.php** avec paramètres
   ```php
   return [
       'api_url' => env('USEARCH_API_URL', 'http://usearch:8000'),
@@ -1252,7 +1252,7 @@
   ];
   ```
 
-- [ ] T192 🔴 **Créer USearchClient** dans `app/Services/Search/USearchClient.php`
+- [x] T192 🔴 **Créer USearchClient** dans `app/Services/Search/USearchClient.php`
   ```php
   class USearchClient
   {
@@ -1264,7 +1264,7 @@
   }
   ```
 
-- [ ] T193 🔴 **Créer EmbeddingService** dans `app/Services/Search/EmbeddingService.php`
+- [x] T193 🔴 **Créer EmbeddingService** dans `app/Services/Search/EmbeddingService.php`
   ```php
   class EmbeddingService
   {
@@ -1274,7 +1274,7 @@
   }
   ```
 
-- [ ] T194 🔴 **Créer SemanticSearchService** dans `app/Services/Search/SemanticSearchService.php`
+- [x] T194 🔴 **Créer SemanticSearchService** dans `app/Services/Search/SemanticSearchService.php`
   ```php
   class SemanticSearchService
   {
@@ -1287,18 +1287,18 @@
 
 ## 11.4 Indexation des Facteurs d'Émission
 
-- [ ] T195 🔴 **Créer job IndexEmissionFactors** dans `app/Jobs/IndexEmissionFactors.php`
+- [x] T195 🔴 **Créer job IndexEmissionFactors** dans `app/Jobs/IndexEmissionFactors.php`
   - Batch processing (500 facteurs à la fois)
   - Génération embeddings via OpenAI
   - Stockage dans uSearch index
   - Progress tracking
 
-- [ ] T196 🔴 **Créer commande artisan** `php artisan usearch:index-factors`
+- [x] T196 🔴 **Créer commande artisan** `php artisan usearch:index-factors`
   - Option --fresh pour réindexer tout
   - Option --chunk pour taille batch
   - Progress bar
 
-- [ ] T197 🟠 **Créer trait HasEmbedding** dans `app/Models/Concerns/HasEmbedding.php`
+- [x] T197 🟠 **Créer trait HasEmbedding** dans `app/Models/Concerns/HasEmbedding.php`
   ```php
   trait HasEmbedding
   {
@@ -1309,14 +1309,14 @@
   }
   ```
 
-- [ ] T198 🟠 **Ajouter HasEmbedding** aux models
+- [ ] T198 🟠 **Ajouter HasEmbedding** aux models *(partiel : EmissionFactor fait, Transaction et UploadedDocument restants)*
   - EmissionFactor
   - Transaction
   - UploadedDocument
 
 ## 11.5 Intégration dans FactorRAGService
 
-- [ ] T199 🔴 **Améliorer FactorRAGService** avec recherche sémantique
+- [x] T199 🔴 **Améliorer FactorRAGService** avec recherche sémantique
   ```php
   // Avant: recherche ILIKE PostgreSQL
   // Après: recherche hybride (sémantique + textuelle)
@@ -1337,13 +1337,13 @@
   - Trouve facteurs similaires à un facteur donné
   - Utilise distance cosine dans uSearch
 
-- [ ] T201 🟠 **Améliorer aiEnhancedSearch** avec contexte sémantique
+- [x] T201 🟠 **Améliorer aiEnhancedSearch** avec contexte sémantique
   - Utilise embeddings pour meilleur contexte RAG
   - Améliore la précision des suggestions
 
 ## 11.6 Interface Utilisateur
 
-- [ ] T202 🟠 **Améliorer FactorSelector** avec recherche sémantique
+- [x] T202 🟠 **Améliorer FactorSelector** avec recherche sémantique
   - Indicateur "Recherche sémantique activée"
   - Affichage score de similarité (0-100%)
   - Suggestions "Vous vouliez peut-être..."
@@ -1362,7 +1362,7 @@
 
 ## 11.7 API Endpoints
 
-- [ ] T206 🟠 **Créer SemanticSearchController** dans `app/Http/Controllers/Api/SemanticSearchController.php`
+- [x] T206 🟠 **Créer SemanticSearchController** dans `app/Http/Controllers/Api/SemanticSearchController.php`
   ```php
   // GET /api/v1/search/semantic
   public function search(Request $request): JsonResponse;
@@ -1374,7 +1374,7 @@
   public function hybrid(Request $request): JsonResponse;
   ```
 
-- [ ] T207 🟠 **Ajouter routes API** dans `routes/api.php`
+- [x] T207 🟠 **Ajouter routes API** dans `routes/api.php`
   ```php
   Route::prefix('search')->group(function () {
       Route::get('semantic', [SemanticSearchController::class, 'search']);
@@ -1383,7 +1383,7 @@
   });
   ```
 
-- [ ] T208 🟡 **Documenter API** avec Scramble
+- [x] T208 🟡 **Documenter API** avec Scramble
   - Endpoints search/semantic
   - Paramètres (query, filters, limit)
   - Exemples de réponses
@@ -1395,7 +1395,7 @@
   - Performance (temps moyen requête)
   - Actions (rebuild, clear cache)
 
-- [ ] T210 🟡 **Créer commande health check** `php artisan usearch:health`
+- [x] T210 🟡 **Créer commande health check** `php artisan usearch:health`
   - Vérifie connexion au microservice
   - Vérifie état des index
   - Retourne status code pour monitoring
@@ -1422,12 +1422,12 @@
   - Test authentification API
   - Test rate limiting
 
-- [ ] T215 🟡 **Tests Integration uSearch**
+- [ ] T215 🟡 **Tests Integration uSearch** *(partiel : tests Python du microservice dans `services/usearch-api/tests/test_api.py`)*
   - Test connexion microservice
   - Test indexation complète
   - Test performance (<100ms)
 
-**Checkpoint Semantic Search**: [ ] Phase 11 - Recherche sémantique uSearch (T183-T215)
+**Checkpoint Semantic Search**: [ ] Phase 11 - Recherche sémantique uSearch (T183-T215) — 22/33 tâches faites (vérifié 2026-07-12) ; restent T198 (partiel), T200, T203-T205, T209, T211-T215
 
 ---
 

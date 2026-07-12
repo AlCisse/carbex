@@ -3,7 +3,7 @@
 > Carbon footprint SaaS platform for European SMEs
 > **Priority Market**: Germany (DE)
 
-Last updated: 2025-01-12
+Last updated: 2026-07-12
 
 ## Tech Stack
 
@@ -12,9 +12,9 @@ Last updated: 2025-01-12
 - **Database**: MySQL 8.0 / PostgreSQL
 - **Cache/Queue**: Redis + Laravel Horizon
 - **Search**: Laravel Scout (Meilisearch)
-- **Admin**: Filament 3.x
+- **Admin**: Filament 4.x
 - **Payments**: Laravel Cashier (Stripe)
-- **Testing**: PHPUnit + Pest + Playwright (E2E)
+- **Testing**: PHPUnit + Playwright (E2E) + Laravel Dusk
 
 ## Project Structure
 
@@ -358,6 +358,7 @@ Base URL: `/api/v1/`
 
 ## Recent Changes
 
+- 2026-07-12: Git repository initialized; API category names translated (DE/EN/FR) via `SetApiLocale` middleware; `emissions.categories.*` lang keys aligned with BEGES taxonomy; German translations added to `EmissionCategorySeeder`; docs synced (Filament 4.x, Phase 17 status)
 - 2025-01-12: Updated spec.md and constitution.md to v4.0
 - 2025-01-11: Added Playwright E2E tests
 - 2025-01-10: Full i18n cleanup (no hardcoded text)

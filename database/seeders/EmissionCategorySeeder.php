@@ -42,7 +42,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'kWh',
             'calculation_method' => 'activity_based',
             'sort_order' => 1,
-            'translations' => ['en' => ['name' => 'Stationary combustion']],
+            'translations' => [
+                'en' => ['name' => 'Stationary combustion'],
+                'de' => ['name' => 'Stationäre Verbrennung'],
+            ],
         ]);
 
         $this->createCategory($scope1->id, [
@@ -54,7 +57,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'liter',
             'calculation_method' => 'activity_based',
             'sort_order' => 2,
-            'translations' => ['en' => ['name' => 'Mobile combustion']],
+            'translations' => [
+                'en' => ['name' => 'Mobile combustion'],
+                'de' => ['name' => 'Mobile Verbrennung'],
+            ],
         ]);
 
         $this->createCategory($scope1->id, [
@@ -66,7 +72,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'kg',
             'calculation_method' => 'activity_based',
             'sort_order' => 3,
-            'translations' => ['en' => ['name' => 'Fugitive emissions']],
+            'translations' => [
+                'en' => ['name' => 'Fugitive emissions'],
+                'de' => ['name' => 'Flüchtige Emissionen'],
+            ],
         ]);
 
         $this->createCategory($scope1->id, [
@@ -78,7 +87,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'ha',
             'calculation_method' => 'activity_based',
             'sort_order' => 4,
-            'translations' => ['en' => ['name' => 'Biomass (land and forests)']],
+            'translations' => [
+                'en' => ['name' => 'Biomass (land and forests)'],
+                'de' => ['name' => 'Biomasse (Böden und Wälder)'],
+            ],
         ]);
 
         // Fuel category (pour AdemeFactorSeeder)
@@ -92,7 +104,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 5,
             'keywords' => ['diesel', 'essence', 'gazole', 'fioul', 'gaz naturel'],
-            'translations' => ['en' => ['name' => 'Fuels']],
+            'translations' => [
+                'en' => ['name' => 'Fuels'],
+                'de' => ['name' => 'Brennstoffe'],
+            ],
         ]);
 
         $this->command->info('  - Scope 1: 6 categories');
@@ -121,7 +136,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'kWh',
             'calculation_method' => 'activity_based',
             'sort_order' => 1,
-            'translations' => ['en' => ['name' => 'Electricity consumption']],
+            'translations' => [
+                'en' => ['name' => 'Electricity consumption'],
+                'de' => ['name' => 'Stromverbrauch'],
+            ],
         ]);
 
         // Electricity category (pour AdemeFactorSeeder)
@@ -135,7 +153,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 2,
             'keywords' => ['électricité', 'kwh', 'réseau chaleur', 'chauffage urbain'],
-            'translations' => ['en' => ['name' => 'Electricity and heat']],
+            'translations' => [
+                'en' => ['name' => 'Electricity and heat'],
+                'de' => ['name' => 'Strom und Wärme'],
+            ],
         ]);
 
         $this->command->info('  - Scope 2: 3 categories');
@@ -166,7 +187,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'tkm',
             'calculation_method' => 'activity_based',
             'sort_order' => 1,
-            'translations' => ['en' => ['name' => 'Upstream transportation']],
+            'translations' => [
+                'en' => ['name' => 'Upstream transportation'],
+                'de' => ['name' => 'Vorgelagerter Gütertransport'],
+            ],
         ]);
 
         // upstream_transport (pour AdemeFactorSeeder)
@@ -181,7 +205,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 2,
             'keywords' => ['fret', 'transport', 'camion', 'bateau', 'avion', 'train'],
-            'translations' => ['en' => ['name' => 'Upstream freight transport']],
+            'translations' => [
+                'en' => ['name' => 'Upstream freight transport'],
+                'de' => ['name' => 'Vorgelagerter Frachttransport'],
+            ],
         ]);
 
         // Transport aval
@@ -195,7 +222,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'tkm',
             'calculation_method' => 'activity_based',
             'sort_order' => 3,
-            'translations' => ['en' => ['name' => 'Downstream transportation']],
+            'translations' => [
+                'en' => ['name' => 'Downstream transportation'],
+                'de' => ['name' => 'Nachgelagerter Gütertransport'],
+            ],
         ]);
 
         // downstream_transport (pour AdemeFactorSeeder)
@@ -210,7 +240,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 4,
             'keywords' => ['livraison', 'distribution', 'expédition'],
-            'translations' => ['en' => ['name' => 'Downstream freight transport']],
+            'translations' => [
+                'en' => ['name' => 'Downstream freight transport'],
+                'de' => ['name' => 'Nachgelagerter Frachttransport'],
+            ],
         ]);
 
         // Déplacements domicile-travail
@@ -224,7 +257,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'km',
             'calculation_method' => 'activity_based',
             'sort_order' => 5,
-            'translations' => ['en' => ['name' => 'Employee commuting']],
+            'translations' => [
+                'en' => ['name' => 'Employee commuting'],
+                'de' => ['name' => 'Pendlerverkehr'],
+            ],
         ]);
 
         // employee_commuting (pour AdemeFactorSeeder)
@@ -239,7 +275,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 6,
             'keywords' => ['trajet', 'domicile', 'travail', 'voiture', 'bus', 'métro'],
-            'translations' => ['en' => ['name' => 'Employee commuting']],
+            'translations' => [
+                'en' => ['name' => 'Employee commuting'],
+                'de' => ['name' => 'Pendlerverkehr'],
+            ],
         ]);
 
         // Déplacements professionnels
@@ -253,7 +292,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'pkm',
             'calculation_method' => 'activity_based',
             'sort_order' => 7,
-            'translations' => ['en' => ['name' => 'Business travel']],
+            'translations' => [
+                'en' => ['name' => 'Business travel'],
+                'de' => ['name' => 'Geschäftsreisen'],
+            ],
         ]);
 
         // business_travel (pour AdemeFactorSeeder)
@@ -268,7 +310,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 8,
             'keywords' => ['voyage', 'avion', 'train', 'hôtel', 'mission'],
-            'translations' => ['en' => ['name' => 'Business travel']],
+            'translations' => [
+                'en' => ['name' => 'Business travel'],
+                'de' => ['name' => 'Geschäftsreisen'],
+            ],
         ]);
 
         // Achats de biens
@@ -282,7 +327,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'EUR',
             'calculation_method' => 'spend_based',
             'sort_order' => 9,
-            'translations' => ['en' => ['name' => 'Purchased goods']],
+            'translations' => [
+                'en' => ['name' => 'Purchased goods'],
+                'de' => ['name' => 'Einkauf von Gütern'],
+            ],
         ]);
 
         // purchased_goods (pour AdemeFactorSeeder)
@@ -298,7 +346,10 @@ class EmissionCategorySeeder extends Seeder
             'sort_order' => 10,
             'keywords' => ['achat', 'fourniture', 'équipement', 'matériel', 'service'],
             'mcc_codes' => ['5311', '5411', '5611', '5651', '5691', '5999'],
-            'translations' => ['en' => ['name' => 'Purchased goods and services']],
+            'translations' => [
+                'en' => ['name' => 'Purchased goods and services'],
+                'de' => ['name' => 'Eingekaufte Waren und Dienstleistungen'],
+            ],
         ]);
 
         // Immobilisations
@@ -312,7 +363,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'EUR',
             'calculation_method' => 'spend_based',
             'sort_order' => 11,
-            'translations' => ['en' => ['name' => 'Capital goods']],
+            'translations' => [
+                'en' => ['name' => 'Capital goods'],
+                'de' => ['name' => 'Investitionsgüter'],
+            ],
         ]);
 
         // Déchets
@@ -326,7 +380,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'kg',
             'calculation_method' => 'activity_based',
             'sort_order' => 12,
-            'translations' => ['en' => ['name' => 'Waste management']],
+            'translations' => [
+                'en' => ['name' => 'Waste management'],
+                'de' => ['name' => 'Abfallwirtschaft'],
+            ],
         ]);
 
         // waste (pour AdemeFactorSeeder)
@@ -341,7 +398,10 @@ class EmissionCategorySeeder extends Seeder
             'calculation_method' => 'activity_based',
             'sort_order' => 13,
             'keywords' => ['déchet', 'recyclage', 'incinération', 'enfouissement'],
-            'translations' => ['en' => ['name' => 'Waste generated']],
+            'translations' => [
+                'en' => ['name' => 'Waste generated'],
+                'de' => ['name' => 'Erzeugte Abfälle'],
+            ],
         ]);
 
         // Leasing amont
@@ -355,7 +415,10 @@ class EmissionCategorySeeder extends Seeder
             'default_unit' => 'EUR',
             'calculation_method' => 'spend_based',
             'sort_order' => 14,
-            'translations' => ['en' => ['name' => 'Upstream leased assets']],
+            'translations' => [
+                'en' => ['name' => 'Upstream leased assets'],
+                'de' => ['name' => 'Vorgelagertes Leasing'],
+            ],
         ]);
 
         // Achats de services
@@ -371,7 +434,10 @@ class EmissionCategorySeeder extends Seeder
             'sort_order' => 15,
             'keywords' => ['conseil', 'informatique', 'comptabilité', 'juridique'],
             'mcc_codes' => ['7311', '7372', '7392', '8111', '8911'],
-            'translations' => ['en' => ['name' => 'Purchased services']],
+            'translations' => [
+                'en' => ['name' => 'Purchased services'],
+                'de' => ['name' => 'Einkauf von Dienstleistungen'],
+            ],
         ]);
 
         $this->command->info('  - Scope 3: 16 categories');

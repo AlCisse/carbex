@@ -18,6 +18,11 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\SecurityHeaders::class,
         ]);
 
+        // API locale from ?lang= or Accept-Language (stateless)
+        $middleware->api(append: [
+            \App\Http\Middleware\SetApiLocale::class,
+        ]);
+
         // Middleware aliases for subscription features
         $middleware->alias([
             'plan.limit' => \App\Http\Middleware\CheckPlanLimits::class,
