@@ -1,0 +1,197 @@
+services:
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: linscarbon-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/docker.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - linscarbon-network
+
+  # PHP Application (Development)
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: development
+    container_name: linscarbon-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html:cached
+      - vendor_data:/var/www/html/vendor
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: linscarbon
+      DB_USERNAME: linscarbon
+      DB_PASSWORD: secret
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CACHE_DRIVER: redis
+      SESSION_DRIVER: redis
+      QUEUE_CONNECTION: redis
+      MAIL_MAILER: smtp
+      MAIL_HOST: mailpit
+      MAIL_PORT: 1025
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_KEY: masterKey
+      USEARCH_URL: http://usearch:8001
+      USEARCH_API_KEY: ${USEARCH_API_KEY:-linscarbon-usearch-dev-key}
+      VECTOR_DIMENSIONS: ${VECTOR_DIMENSIONS:-384}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - linscarbon-network
+
+  # PostgreSQL 17 - Primary Database
+  postgres:
+    image: postgres:17
+    container_name: linscarbon-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: linscarbon
+      POSTGRES_USER: linscarbon
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U linscarbon -d linscarbon"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - linscarbon-network
+
+  # Redis 7.4 - Cache, Queues, Sessions
+  redis:
+    image: redis:7.4-alpine
+    container_name: linscarbon-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - linscarbon-network
+
+  # Meilisearch 1.11 - Emission Factor Search (Text)
+  meilisearch:
+    image: getmeili/meilisearch:v1.11
+    container_name: linscarbon-meilisearch
+    restart: unless-stopped
+    ports:
+      - "7700:7700"
+    environment:
+      MEILI_MASTER_KEY: masterKey
+      MEILI_ENV: development
+    volumes:
+      - meilisearch_data:/meili_data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7700/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - linscarbon-network
+
+  # uSearch API - Semantic Vector Search
+  usearch:
+    build:
+      context: ./services/usearch-api
+      dockerfile: Dockerfile
+    container_name: linscarbon-usearch
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      PORT: 8001
+      DEBUG: "false"
+      USEARCH_API_KEY: ${USEARCH_API_KEY:-linscarbon-usearch-dev-key}
+      CORS_ORIGINS: http://localhost,http://localhost:8000,http://nginx
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-local}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      INDEX_PATH: /data/indexes
+      VECTOR_DIMENSIONS: ${VECTOR_DIMENSIONS:-384}
+    volumes:
+      - usearch_data:/data/indexes
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8001/health').raise_for_status()"]
+      interval: 30s
+      timeout: 10s
+      start_period: 10s
+      retries: 3
+    networks:
+      - linscarbon-network
+
+  # Mailpit - Local Email Testing
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: linscarbon-mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - linscarbon-network
+
+  # Selenium Chrome - Browser Testing (Laravel Dusk)
+  selenium:
+    image: seleniarm/standalone-chromium:latest
+    container_name: linscarbon-selenium
+    restart: unless-stopped
+    ports:
+      - "4444:4444"  # Selenium Hub
+      - "7900:7900"  # noVNC for viewing tests
+    shm_size: 2gb
+    environment:
+      SE_NODE_MAX_SESSIONS: 2
+    extra_hosts:
+      - "nginx:172.20.0.2"
+    depends_on:
+      - nginx
+    networks:
+      - linscarbon-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  meilisearch_data:
+    driver: local
+  usearch_data:
+    driver: local
+  vendor_data:
+    driver: local
+
+networks:
+  linscarbon-network:
+    driver: bridge

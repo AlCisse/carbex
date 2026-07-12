@@ -1,0 +1,18 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app/
+
+    level: 5
+
+    ignoreErrors:
+        # Ignore dynamic model properties
+        - '#Property .* does not accept .*#'
+
+    excludePaths:
+        analyseAndScan:
+            - app/Console/Kernel.php (?)
+
+    reportUnmatchedIgnoredErrors: false

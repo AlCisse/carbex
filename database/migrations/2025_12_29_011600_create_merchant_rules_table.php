@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('merchant_rules', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignUuid('organization_id')->constrained()->cascadeOnDelete();
+            $table->string('merchant_pattern');
+            $table->foreignUuid('category_id')->constrained()->cascadeOnDelete();
+            $table->decimal('confidence', 3, 2)->default(0.95);
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->timestamps();
+
+            $table->unique(['organization_id', 'merchant_pattern']);
+            $table->index(['organization_id', 'merchant_pattern']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('merchant_rules');
+    }
+};

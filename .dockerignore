@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+specs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Testing
+tests/
+phpunit.xml
+phpstan.neon
+.phpunit.result.cache
+
+# Development files
+.env
+.env.local
+.env.*.local
+.editorconfig
+pint.json
+
+# Logs
+*.log
+storage/logs/*
+
+# Cache
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Specify
+.specify/
+.claude/
+CLAUDE.md
