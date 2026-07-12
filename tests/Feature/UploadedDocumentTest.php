@@ -163,21 +163,14 @@ class UploadedDocumentTest extends TestCase
             ->validated()
             ->create();
 
-        // Test the method logic without actually saving (to avoid FK constraint)
-        // The linkEmissionRecord method sets these attributes
-        $fakeEmissionId = \Illuminate\Support\Str::uuid()->toString();
+        $emissionRecord = \App\Models\EmissionRecord::factory()->create([
+            'organization_id' => $this->organization->id,
+        ]);
 
-        // Temporarily disable FK checks for this test
-        \Illuminate\Support\Facades\DB::statement('SET session_replication_role = replica;');
+        $document->linkEmissionRecord($emissionRecord->id);
 
-        try {
-            $document->linkEmissionRecord($fakeEmissionId);
-
-            $this->assertEquals($fakeEmissionId, $document->emission_record_id);
-            $this->assertTrue($document->emission_created);
-        } finally {
-            \Illuminate\Support\Facades\DB::statement('SET session_replication_role = DEFAULT;');
-        }
+        $this->assertEquals($emissionRecord->id, $document->emission_record_id);
+        $this->assertTrue($document->emission_created);
     }
 
     public function test_extracted_value_helpers(): void

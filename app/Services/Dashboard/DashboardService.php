@@ -189,13 +189,20 @@ class DashboardService
         $period = CarbonPeriod::create($startDate->startOfMonth(), '1 month', $endDate->endOfMonth());
         $months = collect($period)->map(fn ($date) => $date->format('Y-m'))->toArray();
 
+        // Month bucketing expression per SQL dialect (pgsql, mysql, sqlite for tests)
+        $monthExpression = match (EmissionRecord::query()->getConnection()->getDriverName()) {
+            'pgsql' => "TO_CHAR(date, 'YYYY-MM')",
+            'mysql', 'mariadb' => "DATE_FORMAT(date, '%Y-%m')",
+            default => "strftime('%Y-%m', date)",
+        };
+
         // Get actual data
         $data = EmissionRecord::where('organization_id', $organizationId)
             ->when($siteId, fn ($q) => $q->where('site_id', $siteId))
             ->where('date', '>=', $startDate)
             ->where('date', '<=', $endDate)
-            ->selectRaw("TO_CHAR(date, 'YYYY-MM') as month, scope, SUM(co2e_kg) as total")
-            ->groupByRaw("TO_CHAR(date, 'YYYY-MM'), scope")
+            ->selectRaw("{$monthExpression} as month, scope, SUM(co2e_kg) as total")
+            ->groupByRaw("{$monthExpression}, scope")
             ->get()
             ->groupBy('month');
 
