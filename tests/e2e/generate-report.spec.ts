@@ -11,7 +11,7 @@ test('Generate Complete Carbon Footprint report', async ({ page }) => {
 
     // Go to reports
     console.log('Navigating to Reports page...');
-    await page.goto('/reports');
+    await page.goto('/reports?lang=en');
     await page.waitForLoadState('networkidle');
 
     // Click the first Generate button (Complete Carbon Footprint)
@@ -85,7 +85,7 @@ test('Generate ADEME Declaration', async ({ page }) => {
     await login(page);
 
     // Go to reports
-    await page.goto('/reports');
+    await page.goto('/reports?lang=en');
     await page.waitForLoadState('networkidle');
 
     // Click the second Generate button (ADEME Declaration) to open modal
@@ -120,7 +120,7 @@ test('Generate GHG Protocol Report', async ({ page }) => {
     await login(page);
 
     // Go to reports
-    await page.goto('/reports');
+    await page.goto('/reports?lang=en');
     await page.waitForLoadState('networkidle');
 
     // Click the third Generate button (GHG Protocol) to open modal

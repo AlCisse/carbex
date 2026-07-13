@@ -14,7 +14,8 @@ test('Debug custom factor creation', async ({ page }) => {
     await login(page);
 
     console.log('1. Navigating to /emissions/1/1.1...');
-    await page.goto('/emissions/1/1.1');
+    // Force English locale so placeholder/button locators are deterministic
+    await page.goto('/emissions/1/1.1?lang=en');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1000);
 

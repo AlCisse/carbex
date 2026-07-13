@@ -23,6 +23,8 @@ class EmissionRecord extends Model
         'category_id',
         'emission_factor_id',
         'year',
+        'month',
+        'quarter',
         'date',
         'period_start',
         'period_end',
@@ -65,6 +67,26 @@ class EmissionRecord extends Model
         'factor_snapshot' => 'array',
         'metadata' => 'array',
     ];
+
+    protected static function booted(): void
+    {
+        // Several columns are NOT NULL but derivable: fill them when absent
+        // so every creation path (Livewire, imports, API) stays valid
+        static::creating(function (EmissionRecord $record): void {
+            if ($record->date !== null) {
+                $record->year ??= $record->date->year;
+                $record->month ??= $record->date->month;
+                $record->quarter ??= (int) ceil($record->date->month / 3);
+            }
+
+            $record->activity_quantity ??= $record->quantity;
+            $record->activity_unit ??= $record->unit;
+            $record->emissions_total ??= $record->co2e_kg ?? 0;
+            $record->emissions_tonnes ??= ($record->co2e_kg ?? 0) / 1000;
+            $record->emissions_co2 ??= $record->co2_kg ?? 0;
+            $record->calculated_at ??= now();
+        });
+    }
 
     public function assessment(): BelongsTo
     {

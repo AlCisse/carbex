@@ -10,8 +10,8 @@ test('Test submit Add source form on 1.1', async ({ page }) => {
     // Use shared login helper
     await login(page);
 
-    // Go to 1.1
-    await page.goto('/emissions/1/1.1');
+    // Go to 1.1 (force English locale — locators below are English-only)
+    await page.goto('/emissions/1/1.1?lang=en');
     await page.waitForLoadState('networkidle');
 
     // Click Add source button

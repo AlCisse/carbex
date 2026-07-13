@@ -16,7 +16,7 @@ test('Download generated report', async ({ page }) => {
 
     // Go to reports
     console.log('Navigating to Reports page...');
-    await page.goto('/reports');
+    await page.goto('/reports?lang=en');
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(1000);
 
