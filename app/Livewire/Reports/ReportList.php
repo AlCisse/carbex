@@ -204,12 +204,15 @@ class ReportList extends Component
      */
     private function getReportName(string $type, int $year): string
     {
-        return match ($type) {
-            'carbon_footprint' => "Bilan Carbone {$year}",
-            'ademe' => "Déclaration ADEME {$year}",
-            'ghg' => "GHG Protocol Report {$year}",
-            default => "Report {$year}",
+        // Named in the locale active at generation time
+        $label = match ($type) {
+            'carbon_footprint' => __('linscarbon.reports.carbon_footprint'),
+            'ademe' => __('linscarbon.reports.ademe'),
+            'ghg' => __('linscarbon.reports.ghg'),
+            default => __('linscarbon.reports.title'),
         };
+
+        return "{$label} {$year}";
     }
 
     /**

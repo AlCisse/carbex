@@ -337,7 +337,7 @@ class EmissionRecordSeeder extends Seeder
         if ($itServicesFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.5',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $itServicesFactor->id,
                 'quantity' => 48000,
@@ -357,7 +357,7 @@ class EmissionRecordSeeder extends Seeder
         if ($itHardwareFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.1',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $itHardwareFactor->id,
                 'quantity' => 35000,
@@ -377,7 +377,7 @@ class EmissionRecordSeeder extends Seeder
         if ($consultingFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.5',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $consultingFactor->id,
                 'quantity' => 25000,
@@ -397,7 +397,7 @@ class EmissionRecordSeeder extends Seeder
         if ($officeSuppliesFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.1',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $officeSuppliesFactor->id,
                 'quantity' => 8000,
@@ -417,7 +417,7 @@ class EmissionRecordSeeder extends Seeder
         if ($furnitureFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.2',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $furnitureFactor->id,
                 'quantity' => 12000,
@@ -437,7 +437,7 @@ class EmissionRecordSeeder extends Seeder
         if ($cateringFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.5',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $cateringFactor->id,
                 'quantity' => 24000,
@@ -457,7 +457,7 @@ class EmissionRecordSeeder extends Seeder
         if ($marketingFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.5',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $marketingFactor->id,
                 'quantity' => 18000,
@@ -477,7 +477,7 @@ class EmissionRecordSeeder extends Seeder
         if ($rentFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.4',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $rentFactor->id,
                 'quantity' => 96000,
@@ -497,7 +497,7 @@ class EmissionRecordSeeder extends Seeder
         if ($financeFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.1',
+                'ghg_category' => '4.5',
                 'scope_3_category' => 1,
                 'emission_factor_id' => $financeFactor->id,
                 'quantity' => 15000,
@@ -528,7 +528,7 @@ class EmissionRecordSeeder extends Seeder
             // Assume 50 kg average per delivery
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.4',
+                'ghg_category' => '3.1',
                 'scope_3_category' => 4,
                 'emission_factor_id' => $vanFactor->id,
                 'quantity' => 500, // 500 deliveries × 50kg × 20km = 500 tkm
@@ -558,7 +558,7 @@ class EmissionRecordSeeder extends Seeder
         if ($paperFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.5',
+                'ghg_category' => '4.3',
                 'scope_3_category' => 5,
                 'emission_factor_id' => $paperFactor->id,
                 'quantity' => 2000,
@@ -578,7 +578,7 @@ class EmissionRecordSeeder extends Seeder
         if ($plasticFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.5',
+                'ghg_category' => '4.3',
                 'scope_3_category' => 5,
                 'emission_factor_id' => $plasticFactor->id,
                 'quantity' => 300,
@@ -598,7 +598,7 @@ class EmissionRecordSeeder extends Seeder
         if ($wasteFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.5',
+                'ghg_category' => '4.3',
                 'scope_3_category' => 5,
                 'emission_factor_id' => $wasteFactor->id,
                 'quantity' => 1500,
@@ -618,7 +618,7 @@ class EmissionRecordSeeder extends Seeder
         if ($ewasteFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.5',
+                'ghg_category' => '4.3',
                 'scope_3_category' => 5,
                 'emission_factor_id' => $ewasteFactor->id,
                 'quantity' => 150,
@@ -638,7 +638,7 @@ class EmissionRecordSeeder extends Seeder
         if ($bioFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.5',
+                'ghg_category' => '4.3',
                 'scope_3_category' => 5,
                 'emission_factor_id' => $bioFactor->id,
                 'quantity' => 800,
@@ -668,7 +668,7 @@ class EmissionRecordSeeder extends Seeder
         if ($shortFlightFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.6',
+                'ghg_category' => '3.5',
                 'scope_3_category' => 6,
                 'emission_factor_id' => $shortFlightFactor->id,
                 'quantity' => 18000, // 15 trips × 1,200 km
@@ -688,7 +688,7 @@ class EmissionRecordSeeder extends Seeder
         if ($mediumFlightFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.6',
+                'ghg_category' => '3.5',
                 'scope_3_category' => 6,
                 'emission_factor_id' => $mediumFlightFactor->id,
                 'quantity' => 12500, // 5 trips × 2,500 km
@@ -708,7 +708,7 @@ class EmissionRecordSeeder extends Seeder
         if ($iceFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.6',
+                'ghg_category' => '3.5',
                 'scope_3_category' => 6,
                 'emission_factor_id' => $iceFactor->id,
                 'quantity' => 32000, // 80 trips × 400 km
@@ -728,7 +728,7 @@ class EmissionRecordSeeder extends Seeder
         if ($taxiFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.6',
+                'ghg_category' => '3.5',
                 'scope_3_category' => 6,
                 'emission_factor_id' => $taxiFactor->id,
                 'quantity' => 3000, // 200 trips × 15 km
@@ -748,7 +748,7 @@ class EmissionRecordSeeder extends Seeder
         if ($hotelFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.6',
+                'ghg_category' => '3.5',
                 'scope_3_category' => 6,
                 'emission_factor_id' => $hotelFactor->id,
                 'quantity' => 120,
@@ -768,7 +768,7 @@ class EmissionRecordSeeder extends Seeder
         if ($busFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.6',
+                'ghg_category' => '3.5',
                 'scope_3_category' => 6,
                 'emission_factor_id' => $busFactor->id,
                 'quantity' => 3500,
@@ -809,7 +809,7 @@ class EmissionRecordSeeder extends Seeder
         if ($sbahnFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.7',
+                'ghg_category' => '3.3',
                 'scope_3_category' => 7,
                 'emission_factor_id' => $sbahnFactor->id,
                 'quantity' => 79200,
@@ -829,7 +829,7 @@ class EmissionRecordSeeder extends Seeder
         if ($ubahnFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.7',
+                'ghg_category' => '3.3',
                 'scope_3_category' => 7,
                 'emission_factor_id' => $ubahnFactor->id,
                 'quantity' => 26400, // 5 employees × 12 km × 2 × 220
@@ -849,7 +849,7 @@ class EmissionRecordSeeder extends Seeder
         if ($carPetrolFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.7',
+                'ghg_category' => '3.3',
                 'scope_3_category' => 7,
                 'emission_factor_id' => $carPetrolFactor->id,
                 'quantity' => 66000,
@@ -869,7 +869,7 @@ class EmissionRecordSeeder extends Seeder
         if ($carDieselFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.7',
+                'ghg_category' => '3.3',
                 'scope_3_category' => 7,
                 'emission_factor_id' => $carDieselFactor->id,
                 'quantity' => 63360,
@@ -889,7 +889,7 @@ class EmissionRecordSeeder extends Seeder
         if ($carElectricFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.7',
+                'ghg_category' => '3.3',
                 'scope_3_category' => 7,
                 'emission_factor_id' => $carElectricFactor->id,
                 'quantity' => 26400,
@@ -909,7 +909,7 @@ class EmissionRecordSeeder extends Seeder
         if ($busFactor) {
             $this->createEmissionRecord([
                 'scope' => 3,
-                'ghg_category' => '3.7',
+                'ghg_category' => '3.3',
                 'scope_3_category' => 7,
                 'emission_factor_id' => $busFactor->id,
                 'quantity' => 22000,
