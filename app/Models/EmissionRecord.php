@@ -66,21 +66,57 @@ class EmissionRecord extends Model
         'is_estimated' => 'boolean',
         'factor_snapshot' => 'array',
         'metadata' => 'array',
+        'calculated_at' => 'datetime',
     ];
 
     protected static function booted(): void
     {
-        // Several columns are NOT NULL but derivable: fill them when absent
-        // so every creation path (Livewire, imports, API) stays valid
-        static::creating(function (EmissionRecord $record): void {
-            if ($record->date !== null) {
-                $record->year ??= $record->date->year;
-                $record->month ??= $record->date->month;
-                $record->quarter ??= (int) ceil($record->date->month / 3);
+        // Several NOT NULL columns mirror other fields (year/month/quarter
+        // mirror date; activity_*/emissions_* mirror quantity/unit/co2e_kg).
+        // Sync them on every save — creation AND edition — but never override
+        // a value the caller set explicitly (dirty) in the same save.
+        static::saving(function (EmissionRecord $record): void {
+            // date is NOT NULL: fall back to the covered period
+            $record->date ??= $record->period_start;
+
+            if ($record->date !== null && $record->isDirty('date')) {
+                if (! $record->isDirty('year')) {
+                    $record->year = $record->date->year;
+                }
+                if (! $record->isDirty('month')) {
+                    $record->month = $record->date->month;
+                }
+                if (! $record->isDirty('quarter')) {
+                    $record->quarter = (int) ceil($record->date->month / 3);
+                }
             }
 
-            $record->activity_quantity ??= $record->quantity;
-            $record->activity_unit ??= $record->unit;
+            if ($record->isDirty('quantity') && ! $record->isDirty('activity_quantity')) {
+                $record->activity_quantity = $record->quantity;
+            }
+            if ($record->isDirty('unit') && ! $record->isDirty('activity_unit')) {
+                $record->activity_unit = $record->unit;
+            }
+            if ($record->isDirty('co2e_kg')) {
+                if (! $record->isDirty('emissions_total')) {
+                    $record->emissions_total = $record->co2e_kg ?? 0;
+                }
+                if (! $record->isDirty('emissions_tonnes')) {
+                    $record->emissions_tonnes = ($record->co2e_kg ?? 0) / 1000;
+                }
+                if (! $record->isDirty('calculated_at')) {
+                    $record->calculated_at = now();
+                }
+            }
+            if ($record->isDirty('co2_kg') && ! $record->isDirty('emissions_co2')) {
+                // CO2 component only; 0 = gas breakdown unknown, so
+                // emissions_co2+ch4+n2o may sum below emissions_total (CO2e)
+                $record->emissions_co2 = $record->co2_kg ?? 0;
+            }
+
+            // NOT NULL backstops for creation paths omitting source fields
+            $record->activity_quantity ??= $record->quantity ?? 0;
+            $record->activity_unit ??= $record->unit ?? '';
             $record->emissions_total ??= $record->co2e_kg ?? 0;
             $record->emissions_tonnes ??= ($record->co2e_kg ?? 0) / 1000;
             $record->emissions_co2 ??= $record->co2_kg ?? 0;

@@ -98,3 +98,29 @@ test.describe('Language Switcher', () => {
     await expect(page.locator('body')).toContainText(/Email|Password|Sign in|Login/i);
   });
 });
+
+test.describe('Authenticated pages i18n (DE/FR)', () => {
+  // Guards against hardcoded category titles (bug found in the 2026-01 audit):
+  // the scope page heading must follow the locale, not ship in a fixed language.
+  test('scope page title matches sidebar taxonomy in German', async ({ page }) => {
+    const { login } = await import('./helpers/auth');
+    await login(page);
+
+    await page.goto('/emissions/3/3.1?lang=de');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.locator('h1, h2').first()).toContainText('Vorgelagerter Gütertransport');
+    await expect(page.locator('aside')).toContainText('Vorgelagerter Gütertransport');
+  });
+
+  test('scope page title matches sidebar taxonomy in French', async ({ page }) => {
+    const { login } = await import('./helpers/auth');
+    await login(page);
+
+    await page.goto('/emissions/3/3.1?lang=fr');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.locator('h1, h2').first()).toContainText('Transport de marchandise amont');
+    await expect(page.locator('aside')).toContainText('Transport de marchandise amont');
+  });
+});
